@@ -12,14 +12,20 @@ const START = '<!-- PLUGINS_START -->';
 const END = '<!-- PLUGINS_END -->';
 
 const data = JSON.parse(readFileSync(dataPath, 'utf8'));
-const plugins = [...(data.plugins || [])].sort((a, b) => (b.stars || 0) - (a.stars || 0));
+const plugins = [...(data.plugins || [])].sort((a, b) => {
+  if (Boolean(a.official) !== Boolean(b.official)) return a.official ? -1 : 1;
+  return (b.stars || 0) - (a.stars || 0);
+});
 
 const rows = plugins.map((p) => {
-  const name = p.repo_url ? `[${p.name}](${p.repo_url})` : p.name;
+  const official = p.official ? '★ 官方 ' : '';
+  const name = p.repo_url ? `${official}[${p.name}](${p.repo_url})` : `${official}${p.name}`;
   const desc = (p.description || '').replaceAll('|', '\\|').replaceAll('\n', ' ');
+  const privacy = p.privacy_risk ? `（隐私风险：${(p.privacy_notes || []).join('；')}）` : '';
+  const security = (p.security_notes || []).length ? `（安全提示：${p.security_notes.join('；')}）` : '';
   const usage = (p.usage || '见项目 README').replaceAll('`', '').replaceAll('|', '\\|').replaceAll('\n', ' ');
   const link = p.repo_url || '';
-  return `| ${name} | ${desc} | \`${usage}\` | [查看](${link}) |`;
+  return `| ${name} | ${desc}${privacy}${security} | \`${usage}\` | [查看](${link}) |`;
 });
 
 const table = [
@@ -27,7 +33,7 @@ const table = [
   '| --- | --- | --- | --- |',
   ...rows,
   '',
-  `共收录 ${plugins.length} 个插件，数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。`,
+  `共收录 ${plugins.length} 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。`,
 ].join('\n');
 
 const readme = readFileSync(readmePath, 'utf8');

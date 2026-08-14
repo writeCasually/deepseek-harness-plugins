@@ -36,7 +36,10 @@ function categoryLabel(category) {
 }
 
 function matches(plugin) {
-  if (state.filter !== "all" && plugin.category !== state.filter) return false;
+  if (state.filter === "official" && !plugin.official) return false;
+  if (state.filter !== "all" && state.filter !== "official" && plugin.category !== state.filter) {
+    return false;
+  }
   if (!state.query) return true;
   const q = state.query.toLowerCase();
   const haystack = [
@@ -65,6 +68,7 @@ function renderCard(plugin) {
           <a href="${escapeHtml(plugin.repo_url)}" target="_blank" rel="noopener">${escapeHtml(plugin.name)}</a>
         </h2>
         <div class="badges">
+          ${plugin.official ? '<span class="badge official">★ 官方</span>' : ""}
           <span class="badge stars" title="Star 数">
             <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true">
               <path d="M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5z" />
@@ -76,6 +80,16 @@ function renderCard(plugin) {
       </div>
       <p class="desc">${escapeHtml(plugin.description || "")}</p>
       <pre class="usage">${escapeHtml(plugin.usage || "安装与用法见项目 README")}</pre>
+      ${
+        plugin.privacy_risk
+          ? `<p class="privacy-note">隐私风险：${escapeHtml((plugin.privacy_notes || []).join("；"))}</p>`
+          : ""
+      }
+      ${
+        plugin.security_notes && plugin.security_notes.length
+          ? `<p class="security-note">安全提示：${escapeHtml(plugin.security_notes.join("；"))}</p>`
+          : ""
+      }
       <div class="card-meta">
         <span class="meta-left">
           ${meta.map((m) => `<span>${escapeHtml(m)}</span>`).join("")}
@@ -89,7 +103,10 @@ function renderCard(plugin) {
 function render() {
   const list = state.plugins
     .filter(matches)
-    .sort((a, b) => (b.stars || 0) - (a.stars || 0));
+    .sort((a, b) => {
+      if (Boolean(a.official) !== Boolean(b.official)) return a.official ? -1 : 1;
+      return (b.stars || 0) - (a.stars || 0);
+    });
 
   grid.innerHTML = list.map(renderCard).join("");
   empty.hidden = list.length > 0;

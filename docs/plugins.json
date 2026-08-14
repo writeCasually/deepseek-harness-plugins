@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-08-14T00:00:00Z",
+  "schema_version": 2,
+  "generated_at": "2026-08-14T05:22:32.485Z",
   "plugins": [
     {
       "id": "deepseek-ai/deepseek-harness",
@@ -12,11 +12,20 @@
       "stars": 68011,
       "language": "TypeScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh", "dsh-plugin"],
+      "topics": [
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin"
+      ],
       "category": "core",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": true,
+      "compatibility": "official",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "zhu1090093659/dsh-web-ui",
@@ -28,11 +37,20 @@
       "stars": 942,
       "language": "TypeScript",
       "license": "unknown",
-      "topics": ["deepseek-harness", "dsh-plugin", "plugin"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "plugin"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "liustack/modlens",
@@ -44,11 +62,20 @@
       "stars": 870,
       "language": "TypeScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin", "vision"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "vision"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "ccch1mneyyy/dsh-TUI",
@@ -60,11 +87,20 @@
       "stars": 497,
       "language": "TypeScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin", "tui"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "tui"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "omdsh-dev/DSH-better-sidebar",
@@ -76,11 +112,19 @@
       "stars": 382,
       "language": "TypeScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "Anionex/dsh-vision-toolkit",
@@ -92,11 +136,20 @@
       "stars": 232,
       "language": "TypeScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin", "vision"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "vision"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "liustack/modsearch",
@@ -108,11 +161,20 @@
       "stars": 73,
       "language": "TypeScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin", "search"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "search"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "omdsh-dev/dsh-at-file",
@@ -124,11 +186,19 @@
       "stars": 62,
       "language": "JavaScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -140,11 +210,19 @@
       "stars": 34,
       "language": "JavaScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "omdsh-dev/dsh-notification",
@@ -156,11 +234,19 @@
       "stars": 26,
       "language": "JavaScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "Anionex/dsh-turn-rewind",
@@ -172,11 +258,19 @@
       "stars": 25,
       "language": "JavaScript",
       "license": "BSD-3-Clause",
-      "topics": ["deepseek-harness", "dsh-plugin"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "csyangwen/dsh-memory-evolve",
@@ -188,11 +282,19 @@
       "stars": 25,
       "language": "JavaScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "omdsh-dev/dsh-genui",
@@ -204,11 +306,19 @@
       "stars": 37,
       "language": "TypeScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "Lum1104/dsh-browser",
@@ -220,11 +330,20 @@
       "stars": 47,
       "language": "TypeScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin", "browser"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "browser"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "icetomoyo/dsh_workflow",
@@ -236,11 +355,20 @@
       "stars": 42,
       "language": "TypeScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin", "workflow"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "workflow"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "vlln/whale-girl",
@@ -252,11 +380,19 @@
       "stars": 61,
       "language": "JavaScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "hust-open-atom-club/oh-dsh",
@@ -268,11 +404,19 @@
       "stars": 92,
       "language": "TypeScript",
       "license": "BSD-3-Clause",
-      "topics": ["deepseek-harness", "dsh-plugin"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
       "category": "distribution",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "Ruler4396/dsh-launcher",
@@ -284,11 +428,20 @@
       "stars": 40,
       "language": "C#",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin", "launcher"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "launcher"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "ZSeven-W/dsh-openpencil",
@@ -300,11 +453,19 @@
       "stars": 45,
       "language": "TypeScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "Nagi-ovo/dsh-visualize",
@@ -316,11 +477,20 @@
       "stars": 52,
       "language": "TypeScript",
       "license": "unknown",
-      "topics": ["deepseek-harness", "dsh-plugin", "visualize"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "visualize"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "NanmiCoder/dsh-agent-teams",
@@ -332,11 +502,20 @@
       "stars": 146,
       "language": "TypeScript",
       "license": "unknown",
-      "topics": ["deepseek-harness", "dsh-plugin", "multi-agent"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "multi-agent"
+      ],
       "category": "plugin",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "0xsline/awesome-deepseek-harness",
@@ -348,11 +527,20 @@
       "stars": 230,
       "language": "Python",
       "license": "CC0-1.0",
-      "topics": ["deepseek-harness", "dsh-plugin", "awesome-list"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "awesome-list"
+      ],
       "category": "collection",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "AdamPlatin123/awesome-dsh-plugins",
@@ -364,11 +552,20 @@
       "stars": 510,
       "language": "Shell",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin", "awesome-list"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "awesome-list"
+      ],
       "category": "collection",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
     },
     {
       "id": "bruc3van/awesome-dsh-plugin",
@@ -380,11 +577,175 @@
       "stars": 35,
       "language": "JavaScript",
       "license": "MIT",
-      "topics": ["deepseek-harness", "dsh-plugin", "awesome-list"],
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "awesome-list"
+      ],
       "category": "collection",
       "source": "curated",
       "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z"
+      "reviewed_at": "2026-08-14T00:00:00Z",
+      "official": false,
+      "compatibility": "compatible",
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": []
+    },
+    {
+      "id": "sandbaseai/sandbase-harness",
+      "name": "sandbase-harness",
+      "description": "Open-source CMA-compatible agent runtime. Run multi-agent systems locally with any model (Ollama/vLLM/Claude/GPT), MCP tools, scenario templates, and a beautiful dashboard. One command start. Built for enterprise teams.",
+      "usage": "dsh plugin --profile web add github:sandbaseai/sandbase-harness",
+      "repo_url": "https://github.com/sandbaseai/sandbase-harness",
+      "homepage": "https://github.com/sandbaseai/sandbase-harness",
+      "stars": 566,
+      "language": "TypeScript",
+      "license": "NOASSERTION",
+      "topics": [
+        "dsh-plugin",
+        "dsh-plugin-verify",
+        "dsh-plugins"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络"
+      ],
+      "security_notes": [],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T05:22:32.485Z"
+    },
+    {
+      "id": "awesome-dsh-plugin/awesome-dsh-plugin",
+      "name": "awesome-dsh-plugin",
+      "description": "A curated list of plugins for DeepSeek Harness (dsh) · DeepSeek Harness 插件精选列表",
+      "usage": "dsh plugin --profile web add github:awesome-dsh-plugin/awesome-dsh-plugin",
+      "repo_url": "https://github.com/awesome-dsh-plugin/awesome-dsh-plugin",
+      "homepage": "https://awesome-dsh-plugin.com",
+      "stars": 302,
+      "language": "HTML",
+      "license": "CC0-1.0",
+      "topics": [
+        "awesome",
+        "awesome-list",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin"
+      ],
+      "category": "collection",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "security_notes": [],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T05:22:32.485Z"
+    },
+    {
+      "id": "Small-tailqwq/dsh-deep-whale",
+      "name": "dsh-deep-whale",
+      "description": "DSH Web 鲸鱼娘皮肤系列(深海女仆工坊 maid-atelier)——CC BY-NC-SA 4.0",
+      "usage": "dsh plugin --profile web add github:Small-tailqwq/dsh-deep-whale",
+      "repo_url": "https://github.com/Small-tailqwq/dsh-deep-whale",
+      "homepage": "https://github.com/Small-tailqwq/dsh-deep-whale",
+      "stars": 277,
+      "language": "TypeScript",
+      "license": "unknown",
+      "topics": [
+        "dsh",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T05:22:32.485Z"
+    },
+    {
+      "id": "Nagi-ovo/dsh-ads",
+      "name": "dsh-ads",
+      "description": "是兄弟就来蹬我！DSH Web UI 广告：2005 年中文站点风格的侧栏广告 / 对话内信息流 / 角落弹窗 + 一个真实热区比视觉小得多的关闭叉。素材全虚构，域名打码。",
+      "usage": "dsh plugin --profile web add github:Nagi-ovo/dsh-ads",
+      "repo_url": "https://github.com/Nagi-ovo/dsh-ads",
+      "homepage": "https://github.com/Nagi-ovo/dsh-ads",
+      "stars": 214,
+      "language": "TypeScript",
+      "license": "unknown",
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "trolling",
+        "web-ui"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址"
+      ],
+      "security_notes": [
+        "存在疑似混淆内容"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T05:22:32.485Z"
+    },
+    {
+      "id": "zhaoolee/notes",
+      "name": "notes",
+      "description": "开源版锤子便签，复刻锤科美学，一键Docker私有化部署，支持skill调用，支持dsh plugin，支持多租户，一键生成公众号格式，支持导出便签为图片",
+      "usage": "dsh plugin --profile web add github:zhaoolee/notes",
+      "repo_url": "https://github.com/zhaoolee/notes",
+      "homepage": "https://notes.fangyuanxiaozhan.com",
+      "stars": 134,
+      "language": "TypeScript",
+      "license": "unknown",
+      "topics": [
+        "dsh-plugin",
+        "notes",
+        "smartisan"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "security_notes": [
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T05:22:32.485Z"
     }
   ]
 }

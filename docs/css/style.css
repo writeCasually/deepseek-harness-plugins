@@ -263,6 +263,12 @@ main {
   border-color: #bfe3e8;
 }
 
+.badge.official {
+  color: #7c2d12;
+  background: #ffedd5;
+  border-color: #fed7aa;
+}
+
 .desc {
   margin: 0;
   color: var(--muted);
@@ -279,6 +285,26 @@ main {
   color: #39424e;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
+}
+
+.privacy-note {
+  margin: 0;
+  padding: 7px 9px;
+  border-radius: var(--radius);
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  font-size: 12px;
+}
+
+.security-note {
+  margin: 0;
+  padding: 7px 9px;
+  border-radius: var(--radius);
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+  font-size: 12px;
 }
 
 .card-meta {
