@@ -8,9 +8,7 @@ GitHub 上带 `dsh-plugin` 话题的仓库，经过代码安全审查后补充�
 
 汇总页面（GitHub Pages）：
 
-```text
-https://writeCasually.github.io/deepseek-harness-plugins/
-```
+[https://writeCasually.github.io/deepseek-harness-plugins/](https://writeCasually.github.io/deepseek-harness-plugins/)
 
 ## 项目简介
 
