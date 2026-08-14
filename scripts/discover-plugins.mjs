@@ -192,6 +192,12 @@ function toEntry(repo, review, compatibility) {
     repo_url: repo.html_url,
     homepage: repo.homepage || repo.html_url,
     stars: repo.stargazers_count || 0,
+    forks: repo.forks_count ?? 0,
+    open_issues: repo.open_issues_count ?? 0,
+    // search 结果不含 subscribers_count，此处先置 0，后续由 refresh-live-data 用仓库接口补真值。
+    watchers: repo.subscribers_count ?? 0,
+    pushed_at: repo.pushed_at || '',
+    archived: !!repo.archived,
     language: repo.language || 'unknown',
     license: (repo.license && repo.license.spdx_id) || 'unknown',
     topics: repo.topics || [],
@@ -281,6 +287,11 @@ function normalizeEntry(p) {
     privacy_notes: p.privacy_notes ?? [],
     security_notes: p.security_notes ?? [],
     category: p.category ?? 'plugin',
+    forks: p.forks ?? 0,
+    open_issues: p.open_issues ?? 0,
+    watchers: p.watchers ?? 0,
+    pushed_at: p.pushed_at ?? '',
+    archived: p.archived ?? false,
   };
 }
 

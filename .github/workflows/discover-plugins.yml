@@ -11,7 +11,8 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: discover-plugins
+  # 与 refresh-live-data 共享同一组，避免两个工作流同时写 docs/plugins.json 造成冲突。
+  group: plugins-data-mutation
   cancel-in-progress: false
 
 jobs:

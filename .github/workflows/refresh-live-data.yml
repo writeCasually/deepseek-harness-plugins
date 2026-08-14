@@ -1,0 +1,47 @@
+name: Refresh live data
+
+on:
+  schedule:
+    # 每 2 小时刷新一次插件实时数据（UTC，北京时间 +8）。
+    - cron: "7 */2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  # 与 discover-plugins 共享同一组，避免两个工作流同时写 docs/plugins.json 造成冲突。
+  group: plugins-data-mutation
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Refresh live data
+        run: node scripts/refresh-live-data.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit changes
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "无实时数据变更，跳过提交。"
+            exit 0
+          fi
+
+          git add docs/plugins.json README.md README.en.md
+          git commit -m "chore: 刷新插件实时数据 ($(date -u +%FT%TZ))"
+          git push

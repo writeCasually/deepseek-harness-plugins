@@ -49,9 +49,9 @@ function localizedPlugin(plugin, lang, translations) {
 function buildTable(plugins, lang, translations) {
   const isEn = lang === 'en';
   const header = isEn
-    ? '| Plugin | Description | Usage | Project |'
-    : '| 插件名称 | 功能简介 | 用法 | 项目链接 |';
-  const separator = '| --- | --- | --- | --- |';
+    ? '| Plugin | Description | Usage |'
+    : '| 插件名称 | 功能简介 | 用法 |';
+  const separator = '| --- | --- | --- |';
 
   const rows = plugins.map((plugin) => {
     const localized = localizedPlugin(plugin, lang, translations);
@@ -74,9 +74,7 @@ function buildTable(plugins, lang, translations) {
       .replaceAll('`', '')
       .replaceAll('|', '\\|')
       .replaceAll('\n', ' ');
-    const link = localized.repo_url || '';
-    const linkLabel = isEn ? 'View' : '查看';
-    return `| ${name} | ${desc}${privacy}${security} | \`${usage}\` | [${linkLabel}](${link}) |`;
+    return `| ${name} | ${desc}${privacy}${security} | \`${usage}\` |`;
   });
 
   const countText = isEn

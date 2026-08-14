@@ -38,6 +38,13 @@ const UI = {
     viewProject: "查看项目",
     stars: "Star 数",
     officialBadge: "官方",
+    updatedTip: "最近更新",
+    updatedToday: "今日更新",
+    updatedDaysAgo: (n) => `${n}天前更新`,
+    updatedMonthsAgo: (n) => `${n}个月前更新`,
+    updatedYearsAgo: (n) => `${n}年前更新`,
+    forksTip: "Fork 数",
+    issuesTip: "未解决的问题",
     searchFilter: "搜索与筛选",
     filters: "分类筛选",
     pluginList: "插件列表",
@@ -69,6 +76,13 @@ const UI = {
     viewProject: "View project",
     stars: "Stars",
     officialBadge: "Official",
+    updatedTip: "Last update",
+    updatedToday: "updated today",
+    updatedDaysAgo: (n) => `updated ${n}d ago`,
+    updatedMonthsAgo: (n) => `updated ${n}mo ago`,
+    updatedYearsAgo: (n) => `updated ${n}y ago`,
+    forksTip: "Forks",
+    issuesTip: "Open issues",
     searchFilter: "Search and filter",
     filters: "Category filters",
     pluginList: "Plugin list",
@@ -123,6 +137,24 @@ function formatStars(n) {
   return String(n);
 }
 
+function formatRelative(iso, copy) {
+  const d = new Date(iso);
+  if (!iso || Number.isNaN(d?.getTime())) return null;
+  const days = Math.floor((Date.now() - d.getTime()) / 86_400_000);
+  if (days < 0) return null;
+  const dateStr = d.toISOString().slice(0, 10);
+  let str;
+  if (days === 0) str = copy.updatedToday;
+  else if (days < 30) str = copy.updatedDaysAgo(days);
+  else if (days < 365) str = copy.updatedMonthsAgo(Math.round(days / 30));
+  else str = copy.updatedYearsAgo(Math.floor(days / 365));
+  return { str, dateStr, fresh: days <= 30 };
+}
+
+const ICON_CLOCK = '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const ICON_FORK = '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9"/><path d="M12 12v3"/></svg>';
+const ICON_ISSUE = '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/></svg>';
+
 function categoryLabel(category) {
   return CATEGORY_LABELS[state.lang][category] || CATEGORY_LABELS[state.lang].plugin;
 }
@@ -164,13 +196,30 @@ function matches(plugin) {
 
 function renderCard(plugin) {
   const category = plugin.category || "plugin";
-  const meta = [
+  const separator = state.lang === "en" ? "; " : "；";
+  const copy = UI[state.lang];
+
+  const updated = formatRelative(plugin.pushed_at, copy);
+  const updatedItem = updated
+    ? `<span class="meta-item meta-updated ${updated.fresh ? "is-fresh" : ""}" title="${copy.updatedTip}: ${updated.dateStr}">${ICON_CLOCK}${escapeHtml(updated.str)}</span>`
+    : "";
+  const forksItem = plugin.forks
+    ? `<span class="meta-item" title="${copy.forksTip}">${ICON_FORK}${formatStars(plugin.forks)}</span>`
+    : "";
+  const issuesItem = plugin.open_issues > 0
+    ? `<span class="meta-item meta-issue" title="${copy.issuesTip}">${ICON_ISSUE}${plugin.open_issues}</span>`
+    : "";
+  const baseMeta = [
     plugin.language && plugin.language !== "unknown" ? plugin.language : null,
     plugin.license && plugin.license !== "unknown" ? plugin.license : null,
   ].filter(Boolean);
 
-  const separator = state.lang === "en" ? "; " : "；";
-  const copy = UI[state.lang];
+  const metaLeft = [
+    updatedItem,
+    forksItem,
+    issuesItem,
+    ...baseMeta.map((m) => `<span class="meta-item">${escapeHtml(m)}</span>`),
+  ].filter(Boolean).join("");
 
   return `
     <article class="card">
@@ -202,9 +251,7 @@ function renderCard(plugin) {
           : ""
       }
       <div class="card-meta">
-        <span class="meta-left">
-          ${meta.map((m) => `<span>${escapeHtml(m)}</span>`).join("")}
-        </span>
+        <span class="meta-left">${metaLeft}</span>
         <a href="${escapeHtml(plugin.repo_url)}" target="_blank" rel="noopener">${copy.viewProject}</a>
       </div>
     </article>

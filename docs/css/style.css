@@ -259,7 +259,8 @@ main {
 .badges {
   display: flex;
   gap: 6px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
 }
 
 .badge {
@@ -350,6 +351,25 @@ main {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.meta-item svg {
+  flex-shrink: 0;
+}
+
+.meta-updated.is-fresh {
+  color: #16a34a;
+}
+
+.meta-issue {
+  color: #b45309;
 }
 
 .empty {
