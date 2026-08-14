@@ -114,6 +114,35 @@ a:hover {
   text-decoration: none;
 }
 
+.lang-switch {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.lang-option {
+  border: 0;
+  padding: 7px 10px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.lang-option + .lang-option {
+  border-left: 1px solid var(--line);
+}
+
+.lang-option:hover {
+  color: var(--accent);
+}
+
+.lang-option.is-active {
+  background: var(--accent);
+  color: #fff;
+}
+
 main {
   padding: 24px 0 48px;
 }

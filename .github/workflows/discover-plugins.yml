@@ -50,7 +50,7 @@ jobs:
           body="自动检索 GitHub \`dsh-plugin\` 话题并完成静态安全审查后生成，请人工复核后合并。"
 
           git checkout -b "$branch"
-          git add docs/plugins.json data/review-log.json README.md
+          git add docs/plugins.json data/review-log.json README.md README.en.md
           git commit -m "chore: 更新 dsh-plugin 插件汇总 (${date})"
           git push --set-upstream origin "$branch"
 

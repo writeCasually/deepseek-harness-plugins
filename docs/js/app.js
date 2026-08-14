@@ -1,14 +1,91 @@
 const CATEGORY_LABELS = {
-  core: "核心",
-  plugin: "插件",
-  distribution: "发行版",
-  collection: "精选列表",
+  zh: {
+    core: "核心",
+    plugin: "插件",
+    distribution: "发行版",
+    collection: "精选列表",
+  },
+  en: {
+    core: "Core",
+    plugin: "Plugin",
+    distribution: "Distribution",
+    collection: "Collection",
+  },
+};
+
+const UI = {
+  zh: {
+    title: "DeepSeek Harness 插件汇总",
+    description:
+      "DeepSeek Harness（DSH）社区插件汇总：按名称、功能简介与用法快速查找插件与项目链接。",
+    tagline: "发现、检索与安全审查 DeepSeek Harness 社区插件",
+    github: "项目仓库",
+    topic: "dsh-plugin 话题",
+    search: "搜索插件名称或功能简介…",
+    all: "全部",
+    official: "官方",
+    plugin: "插件",
+    collection: "精选列表",
+    distribution: "发行版",
+    core: "核心",
+    empty: "没有找到匹配的插件。",
+    stats: (n) => `共 ${n} 个插件`,
+    updated: (date) => `数据更新时间：${date}`,
+    loadError: "加载插件数据失败，请稍后重试。",
+    privacy: "隐私风险",
+    security: "安全提示",
+    defaultUsage: "安装与用法见项目 README",
+    viewProject: "查看项目",
+    stars: "Star 数",
+    officialBadge: "官方",
+    searchFilter: "搜索与筛选",
+    filters: "分类筛选",
+    pluginList: "插件列表",
+    language: "语言",
+    dataSource:
+      '数据来源：<a href="https://github.com/topics/dsh-plugin" target="_blank" rel="noopener">GitHub dsh-plugin 话题</a>，每天自动检索并做静态安全审查，结果以 Pull Request 形式合并。',
+  },
+  en: {
+    title: "DeepSeek Harness Plugin Index",
+    description:
+      "A community index of DeepSeek Harness (DSH) plugins: find plugins and project links by name, description, and usage.",
+    tagline: "Discover, search, and safely review DeepSeek Harness community plugins",
+    github: "Repository",
+    topic: "dsh-plugin topic",
+    search: "Search plugin name or description…",
+    all: "All",
+    official: "Official",
+    plugin: "Plugins",
+    collection: "Collections",
+    distribution: "Distributions",
+    core: "Core",
+    empty: "No matching plugins found.",
+    stats: (n) => (n === 1 ? "1 plugin" : `${n} plugins`),
+    updated: (date) => `Data updated: ${date}`,
+    loadError: "Failed to load plugin data. Please try again later.",
+    privacy: "Privacy risk",
+    security: "Security note",
+    defaultUsage: "See the project README for installation and usage",
+    viewProject: "View project",
+    stars: "Stars",
+    officialBadge: "Official",
+    searchFilter: "Search and filter",
+    filters: "Category filters",
+    pluginList: "Plugin list",
+    language: "Language",
+    dataSource:
+      'Data source: <a href="https://github.com/topics/dsh-plugin" target="_blank" rel="noopener">GitHub dsh-plugin topic</a>. Discovered and statically reviewed daily, then merged through pull requests.',
+  },
 };
 
 const state = {
   plugins: [],
+  translations: { plugins: {} },
   filter: "all",
   query: "",
+  lang: detectLanguage(),
+  generatedDate: "",
+  loaded: false,
 };
 
 const grid = document.querySelector("#grid");
@@ -16,6 +93,21 @@ const empty = document.querySelector("#empty");
 const stats = document.querySelector("#stats");
 const updated = document.querySelector("#updated");
 const searchInput = document.querySelector("#search");
+const metaDescription = document.querySelector('meta[name="description"]');
+
+function readStoredLanguage() {
+  try {
+    return localStorage.getItem("dsh-language");
+  } catch {
+    return null;
+  }
+}
+
+function detectLanguage() {
+  const saved = readStoredLanguage();
+  if (saved === "zh" || saved === "en") return saved;
+  return navigator.language?.toLowerCase().startsWith("zh") ? "zh" : "en";
+}
 
 function escapeHtml(value) {
   return String(value)
@@ -32,7 +124,23 @@ function formatStars(n) {
 }
 
 function categoryLabel(category) {
-  return CATEGORY_LABELS[category] || "插件";
+  return CATEGORY_LABELS[state.lang][category] || CATEGORY_LABELS[state.lang].plugin;
+}
+
+function localizedPlugin(plugin) {
+  const translation = state.translations.plugins?.[plugin.id] || {};
+  return {
+    ...plugin,
+    name: translation.name || plugin.name,
+    description: translation.description || plugin.description,
+    usage: translation.usage || plugin.usage,
+    privacy_notes: Array.isArray(translation.privacy_notes)
+      ? translation.privacy_notes
+      : plugin.privacy_notes,
+    security_notes: Array.isArray(translation.security_notes)
+      ? translation.security_notes
+      : plugin.security_notes,
+  };
 }
 
 function matches(plugin) {
@@ -61,6 +169,9 @@ function renderCard(plugin) {
     plugin.license && plugin.license !== "unknown" ? plugin.license : null,
   ].filter(Boolean);
 
+  const separator = state.lang === "en" ? "; " : "；";
+  const copy = UI[state.lang];
+
   return `
     <article class="card">
       <div class="card-top">
@@ -68,8 +179,8 @@ function renderCard(plugin) {
           <a href="${escapeHtml(plugin.repo_url)}" target="_blank" rel="noopener">${escapeHtml(plugin.name)}</a>
         </h2>
         <div class="badges">
-          ${plugin.official ? '<span class="badge official">★ 官方</span>' : ""}
-          <span class="badge stars" title="Star 数">
+          ${plugin.official ? `<span class="badge official">★ ${copy.officialBadge}</span>` : ""}
+          <span class="badge stars" title="${copy.stars}">
             <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true">
               <path d="M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5z" />
             </svg>
@@ -79,29 +190,32 @@ function renderCard(plugin) {
         </div>
       </div>
       <p class="desc">${escapeHtml(plugin.description || "")}</p>
-      <pre class="usage">${escapeHtml(plugin.usage || "安装与用法见项目 README")}</pre>
+      <pre class="usage">${escapeHtml(plugin.usage || copy.defaultUsage)}</pre>
       ${
         plugin.privacy_risk
-          ? `<p class="privacy-note">隐私风险：${escapeHtml((plugin.privacy_notes || []).join("；"))}</p>`
+          ? `<p class="privacy-note">${copy.privacy}：${escapeHtml((plugin.privacy_notes || []).join(separator))}</p>`
           : ""
       }
       ${
         plugin.security_notes && plugin.security_notes.length
-          ? `<p class="security-note">安全提示：${escapeHtml(plugin.security_notes.join("；"))}</p>`
+          ? `<p class="security-note">${copy.security}：${escapeHtml(plugin.security_notes.join(separator))}</p>`
           : ""
       }
       <div class="card-meta">
         <span class="meta-left">
           ${meta.map((m) => `<span>${escapeHtml(m)}</span>`).join("")}
         </span>
-        <a href="${escapeHtml(plugin.repo_url)}" target="_blank" rel="noopener">查看项目</a>
+        <a href="${escapeHtml(plugin.repo_url)}" target="_blank" rel="noopener">${copy.viewProject}</a>
       </div>
     </article>
   `;
 }
 
 function render() {
+  if (!state.loaded) return;
+
   const list = state.plugins
+    .map(localizedPlugin)
     .filter(matches)
     .sort((a, b) => {
       if (Boolean(a.official) !== Boolean(b.official)) return a.official ? -1 : 1;
@@ -110,7 +224,58 @@ function render() {
 
   grid.innerHTML = list.map(renderCard).join("");
   empty.hidden = list.length > 0;
-  stats.textContent = `共 ${list.length} 个插件`;
+  stats.textContent = UI[state.lang].stats(list.length);
+
+  if (state.generatedDate) {
+    updated.textContent = UI[state.lang].updated(state.generatedDate);
+  } else {
+    updated.textContent = "";
+  }
+}
+
+function applyLanguageText(lang) {
+  const copy = UI[lang];
+  document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+  document.title = copy.title;
+  if (metaDescription) metaDescription.setAttribute("content", copy.description);
+
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.dataset.i18n;
+    if (copy[key]) element.textContent = copy[key];
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    const key = element.dataset.i18nPlaceholder;
+    if (copy[key]) element.placeholder = copy[key];
+  });
+
+  document.querySelectorAll("[data-i18n-html]").forEach((element) => {
+    const key = element.dataset.i18nHtml;
+    if (copy[key]) element.innerHTML = copy[key];
+  });
+
+  document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+    const key = element.dataset.i18nAriaLabel;
+    if (copy[key]) element.setAttribute("aria-label", copy[key]);
+  });
+}
+
+function updateLanguageButtons() {
+  document.querySelectorAll(".lang-option").forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.lang === state.lang);
+  });
+}
+
+function setLanguage(lang) {
+  state.lang = lang;
+  try {
+    localStorage.setItem("dsh-language", lang);
+  } catch {
+    // 忽略无法写入 localStorage 的隐私/安全限制。
+  }
+  applyLanguageText(lang);
+  updateLanguageButtons();
+  render();
 }
 
 async function load() {
@@ -119,19 +284,32 @@ async function load() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     state.plugins = Array.isArray(data.plugins) ? data.plugins : [];
+
+    try {
+      const translationRes = await fetch("./translations/en.json", { cache: "no-cache" });
+      if (translationRes.ok) state.translations = await translationRes.json();
+    } catch {
+      state.translations = { plugins: {} };
+    }
+
     if (data.generated_at) {
       const d = new Date(data.generated_at);
       if (!Number.isNaN(d.getTime())) {
-        updated.textContent = `数据更新时间：${d.toISOString().slice(0, 10)}`;
+        state.generatedDate = d.toISOString().slice(0, 10);
       }
     }
   } catch (err) {
+    state.loaded = true;
     grid.innerHTML = "";
     empty.hidden = false;
-    empty.textContent = "加载插件数据失败，请稍后重试。";
+    empty.textContent = UI[state.lang].loadError;
     console.error(err);
     return;
   }
+
+  state.loaded = true;
+  applyLanguageText(state.lang);
+  updateLanguageButtons();
   render();
 }
 
@@ -149,4 +327,12 @@ document.querySelectorAll(".filter").forEach((button) => {
   });
 });
 
+document.querySelectorAll(".lang-option").forEach((button) => {
+  button.addEventListener("click", () => {
+    setLanguage(button.dataset.lang);
+  });
+});
+
+applyLanguageText(state.lang);
+updateLanguageButtons();
 load();

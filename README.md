@@ -1,5 +1,7 @@
 # DeepSeek Harness 插件汇总
 
+[中文](README.md) | [English](README.en.md)
+
 一个用于收集、展示和安全审查 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
 （简称 DSH）社区插件的汇总项目。插件列表同时以网页和本 README 两种形式呈现，并每天自动检索
 GitHub 上带 `dsh-plugin` 话题的仓库，经过代码安全审查后补充到汇总中。
@@ -84,6 +86,7 @@ deepseek-harness-plugins/
 │   ├── index.html
 │   ├── css/
 │   ├── js/
+│   ├── translations/
 │   └── plugins.json      # 单一数据源
 ├── plugins/              # 本项目自研插件源码
 ├── scripts/              # 检索、安全审查与 README 生成脚本

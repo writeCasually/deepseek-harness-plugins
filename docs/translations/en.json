@@ -1,0 +1,134 @@
+{
+  "language": "en",
+  "plugins": {
+    "deepseek-ai/deepseek-harness": {
+      "description": "DeepSeek Harness core runtime: Everything is a Plugin.",
+      "usage": "npx @deepseek-ai/dsh starts the core; mount plugins with `dsh plugin --profile web add <source>`"
+    },
+    "zhu1090093659/dsh-web-ui": {
+      "description": "A collection of plugins and skins for the DSH Web UI: task board, Git graph, right panel, mobile remote, whale-girl pet, live token stats, and skin center.",
+      "usage": "dsh plugin --profile web add github:zhu1090093659/dsh-web-ui, then restart Web"
+    },
+    "liustack/modlens": {
+      "description": "The first DeepSeek Harness vision plugin that gives text-only models eyes: paste an image to get structured JSON evidence (OCR, layout, and more).",
+      "usage": "dsh plugin add @liustack/modlens (npm); paste an image to let the text-only model see"
+    },
+    "ccch1mneyyy/dsh-TUI": {
+      "description": "Claude Code-style full-screen terminal TUI plugin: pixel whale header, live work status line, streamed thinking, double-Esc rollback, context progress bar, and TPS dashboard.",
+      "usage": "dsh plugin --profile tui add github:ccch1mneyyy/dsh-TUI (one-command npm install)"
+    },
+    "omdsh-dev/DSH-better-sidebar": {
+      "description": "A complete sidebar workspace: file management and preview, embedded browser, real terminal, Git panel, background jobs page, and third-party tab registration."
+    },
+    "Anionex/dsh-vision-toolkit": {
+      "description": "Brings agent-vision-toolkit into DSH as a native Profile Bundle: intent-aware image Q&A, long screenshot OCR, UI restoration, pixel verification, and other vision tools."
+    },
+    "liustack/modsearch": {
+      "description": "A web search plugin that connects text-only models to the internet: search the web or X and return structured JSON evidence (search, fetch, cite).",
+      "usage": "dsh plugin add @liustack/modsearch (npm)"
+    },
+    "omdsh-dev/dsh-at-file": {
+      "description": "Codex-style @file mentions: search workspace files from the input, press Enter to attach, and inject file contents when sending."
+    },
+    "omdsh-dev/dsh-open-in-vscode": {
+      "description": "Opens VS Code in the current directory directly from the sidebar workspace menu in the DSH Web GUI."
+    },
+    "omdsh-dev/dsh-notification": {
+      "description": "Sends a desktop notification when a DeepSeek Harness session completes, with rules for result type and keywords."
+    },
+    "Anionex/dsh-turn-rewind": {
+      "description": "A conversation and code state rollback plugin based on a persistent Change Ledger."
+    },
+    "csyangwen/dsh-memory-evolve": {
+      "description": "A plugin-only cross-session long-term memory and background self-evolution system: five-track memory, Git branch awareness, skill self-evolution, four-track tasks, session broadcast, and search."
+    },
+    "omdsh-dev/dsh-genui": {
+      "description": "Renders interactive UI components in assistant replies: layouts, charts, forms, quizzes, mermaid, and more, inlined through dsh-ui fences."
+    },
+    "Lum1104/dsh-browser": {
+      "description": "A Chrome sidebar extension and bridge plugin that lets DSH control the browser you are already using without vision capabilities.",
+      "usage": "Run scripts/install.sh to install the Chrome MV3 extension and plugin bridge"
+    },
+    "icetomoyo/dsh_workflow": {
+      "description": "Upgrades DSH's one-off multi-agent scheduling into a Workflow layer that can be generated, saved, governed, observed, and recovered."
+    },
+    "vlln/whale-girl": {
+      "description": "A DSH Web GUI desktop pet plugin in QQ-pet style: a floating, draggable companion in the lower-right corner that you can feed and play with."
+    },
+    "hust-open-atom-club/oh-dsh": {
+      "description": "An all-in-one DeepSeek Harness community distribution: unified desktop, Web UI, and TUI experiences with layered installation.",
+      "usage": "Use the desktop/Web/TUI install scripts in the README to install the distribution"
+    },
+    "Ruler4396/dsh-launcher": {
+      "description": "A lightweight Windows launcher for DeepSeek Harness: starts at login, runs in a small standalone window, and opens with a double click.",
+      "usage": "Download the .msi or portable ZIP from Releases and double-click to run"
+    },
+    "ZSeven-W/dsh-openpencil": {
+      "description": "OpenPencil design preview and editing plugin: preview, inspect, and edit real .op documents in a session.",
+      "usage": "dsh plugin add @zseven-w/dsh-openpencil (npm)"
+    },
+    "Nagi-ovo/dsh-visualize": {
+      "description": "In-conversation generative UI plugin: the model draws interactive HTML cards directly into the conversation flow for simulators, charts, comparison panels, and UI mockups."
+    },
+    "NanmiCoder/dsh-agent-teams": {
+      "description": "AgentTeams multi-agent teamwork plugin: one sentence drives a team to complete a goal, with a live team activity panel in the top-right of the Web GUI."
+    },
+    "0xsline/awesome-deepseek-harness": {
+      "description": "A curated DeepSeek Harness ecosystem list: plugins, tools, and infrastructure from dsh-external/hub and public dsh-plugin topics.",
+      "usage": "Open the website to browse the ecosystem list, or git clone it to read locally"
+    },
+    "AdamPlatin123/awesome-dsh-plugins": {
+      "description": "A front-index repository (Radar): automatically scans and discovers DSH plugin candidates, then moves tested candidates into the downstream curated directory repositories.",
+      "usage": "Open the website to view the automatic Radar scan and curated directories"
+    },
+    "bruc3van/awesome-dsh-plugin": {
+      "description": "Find the right DeepSeek Harness plugin in 30 seconds: tells you what problem a plugin solves, who it is for, and where to start.",
+      "usage": "Open the website and choose plugins by the problem they solve"
+    },
+    "sandbaseai/sandbase-harness": {
+      "privacy_notes": [
+        "Accesses third-party network endpoints",
+        "Reads browser cookies/storage and sends them over the network"
+      ]
+    },
+    "awesome-dsh-plugin/awesome-dsh-plugin": {
+      "description": "A curated list of plugins for DeepSeek Harness (dsh).",
+      "privacy_notes": [
+        "Accesses third-party network endpoints"
+      ]
+    },
+    "Small-tailqwq/dsh-deep-whale": {
+      "description": "DSH Web whale-girl skin series (Maid Atelier) - CC BY-NC-SA 4.0.",
+      "privacy_notes": [
+        "Accesses third-party network endpoints",
+        "Reads environment variables that may contain sensitive information"
+      ],
+      "security_notes": [
+        "Uses dynamic code or subprocess execution",
+        "Contains possible obfuscation"
+      ]
+    },
+    "Nagi-ovo/dsh-ads": {
+      "description": "A DSH Web UI ad plugin in the style of a 2005 Chinese site: sidebar ads, in-conversation feed ads, corner pop-ups, and a close button whose real hit area is much smaller than it appears. All materials are fictional and domains are masked.",
+      "privacy_notes": [
+        "Reads credential-like environment variables and sends them over the network, potentially leaking secrets",
+        "Accesses third-party network endpoints"
+      ],
+      "security_notes": [
+        "Contains possible obfuscation"
+      ]
+    },
+    "zhaoolee/notes": {
+      "description": "An open-source hammer-style notes app replicating the aesthetic of Smartisan Notes: one-command Docker private deployment, skill calls, dsh plugin support, multi-tenancy, one-command WeChat article formatting, and image export for notes.",
+      "privacy_notes": [
+        "Accesses third-party network endpoints",
+        "Reads environment variables and accesses third-party endpoints; confirm that sensitive information is not sent externally"
+      ],
+      "security_notes": [
+        "Uses dynamic code or subprocess execution",
+        "Contains Base64 decoding",
+        "Contains possible obfuscation"
+      ]
+    }
+  }
+}
