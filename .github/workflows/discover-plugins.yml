@@ -67,7 +67,8 @@ jobs:
           if [ -n "$existing" ]; then
             pr_number="$existing"
           else
-            pr_number="$(gh pr create --base main --head "$branch" --title "$title" --body "Pending merge verdict..." --json number --jq '.number')"
+            gh pr create --base main --head "$branch" --title "$title" --body "Pending merge verdict..."
+            pr_number="$(gh pr list --head "$branch" --json number --jq '.[0].number')"
           fi
 
           # 读取本轮静态审查的最严重 verdict：

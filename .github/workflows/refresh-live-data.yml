@@ -64,7 +64,8 @@ jobs:
             gh pr edit "$existing" --title "$title" --body "$body"
             pr_number="$existing"
           else
-            pr_number="$(gh pr create --base main --head "$branch" --title "$title" --body "$body" --json number --jq '.number')"
+            gh pr create --base main --head "$branch" --title "$title" --body "$body"
+            pr_number="$(gh pr list --head "$branch" --json number --jq '.[0].number')"
           fi
 
           # 分支保护要求通过 PR 提交(0 审批、无必需检查),bot 凭 GITHUB_TOKEN 即可自合。
