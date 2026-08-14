@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-14T05:22:32.485Z",
+  "generated_at": "2026-08-14T10:03:43.084Z",
   "plugins": [
     {
       "id": "deepseek-ai/deepseek-harness",
@@ -746,6 +746,740 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-14T05:22:32.485Z"
+    },
+    {
+      "id": "tt-a1i/archify",
+      "name": "archify",
+      "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+      "usage": "dsh plugin --profile web add github:tt-a1i/archify",
+      "repo_url": "https://github.com/tt-a1i/archify",
+      "homepage": "https://tt-a1i.github.io/archify/",
+      "stars": 12260,
+      "language": "HTML",
+      "license": "MIT",
+      "topics": [
+        "agent-skills",
+        "anthropic",
+        "architecture-diagram",
+        "claude-skill",
+        "codex",
+        "dark-mode",
+        "data-flow-diagram",
+        "deepseek-harness",
+        "developer-tools",
+        "diagram-as-code",
+        "dsh-plugin",
+        "html-diagram",
+        "lifecycle-diagram",
+        "mermaid-alternative",
+        "opencode",
+        "sequence-diagram",
+        "svg",
+        "system-design",
+        "workflow-diagram"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "存在 Base64 解码行为",
+        "使用动态代码或子进程执行"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "anywhere-labs/deepseek-harness-desktop",
+      "name": "deepseek-harness-desktop",
+      "description": "基于官方 DeepSeek Harness 打造的 Electron 桌面端，深度适配 macOS 和 Windows，提供最佳的，开箱即用的体验。",
+      "usage": "dsh plugin --profile web add github:anywhere-labs/deepseek-harness-desktop",
+      "repo_url": "https://github.com/anywhere-labs/deepseek-harness-desktop",
+      "homepage": "https://deepseekdesktop.com",
+      "stars": 557,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "deepseek",
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "security_notes": [],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "mnemon-dev/mnemon",
+      "name": "mnemon",
+      "description": "LLM-supervised persistent memory for AI agents — graph-based recall, cross-session knowledge, single binary. Works with Claude Code, OpenClaw, and any CLI agent.",
+      "usage": "dsh plugin --profile web add github:mnemon-dev/mnemon",
+      "repo_url": "https://github.com/mnemon-dev/mnemon",
+      "homepage": "https://github.com/mnemon-dev/mnemon#readme",
+      "stars": 429,
+      "language": "Go",
+      "license": "Apache-2.0",
+      "topics": [
+        "agent-framework",
+        "agent-memory",
+        "ai-agent",
+        "ai-tools",
+        "claude",
+        "claude-code",
+        "cli",
+        "context-window",
+        "dsh",
+        "dsh-plugin",
+        "knowledge-graph",
+        "llm-agent",
+        "llm-memory",
+        "llm-supervised",
+        "memory",
+        "openclaw",
+        "persistent-memory"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "security_notes": [],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "Electricitysheep/dsh-handbook",
+      "name": "dsh-handbook",
+      "description": "DeepSeek Harness (dsh) 从 0 到 1 深度手册：安装/插件开发/性能调优/实测案例/同模型多 Agent 实测对比（中文 + 英文 PDF）",
+      "usage": "dsh plugin --profile web add github:Electricitysheep/dsh-handbook",
+      "repo_url": "https://github.com/Electricitysheep/dsh-handbook",
+      "homepage": "https://github.com/Electricitysheep/dsh-handbook",
+      "stars": 138,
+      "language": "HTML",
+      "license": "unknown",
+      "topics": [
+        "agent",
+        "agent-framework",
+        "ai-agents",
+        "beginners",
+        "deepseek",
+        "deepseek-ai",
+        "dsh-plugin",
+        "getting-started",
+        "guide",
+        "harness",
+        "llm",
+        "tutorial"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "security_notes": [
+        "使用动态代码或子进程执行"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "huiliyi37/dsh-tianshu-tui",
+      "name": "dsh-tianshu-tui",
+      "description": "dsh-tianshu-tui — DeepSeek Harness terminal UI +harness workflow。是官方 DeepSeek Harness 上的交互式终端 UI 插件。渲染核心从本仓库自研的harness agent  Tianshu-Tui 演进而来，在官方的基础上增加了TDD、证据门、视觉图像模块等工作流。",
+      "usage": "dsh plugin --profile web add github:huiliyi37/dsh-tianshu-tui",
+      "repo_url": "https://github.com/huiliyi37/dsh-tianshu-tui",
+      "homepage": "https://github.com/huiliyi37/dsh-tianshu-tui",
+      "stars": 111,
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "topics": [
+        "dsh",
+        "dsh-plugin",
+        "harness",
+        "harness-engineering"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "security_notes": [
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "wink-run/tokenbank",
+      "name": "tokenbank",
+      "description": "Token Bank — the local LLM gateway that sits between your AI agents and every provider.  Know where tokens go · Spend less with smart routing to Ollama, Groq, GitHub Models · Earn by sharing idle quota on a community P2P network.  One-click onboarding for Cursor, Claude Code, Codex CLI, Gemini CLI — no agent changes. Full trace, seamless model swap",
+      "usage": "dsh plugin --profile web add github:wink-run/tokenbank",
+      "repo_url": "https://github.com/wink-run/tokenbank",
+      "homepage": "https://tokenbank.wink.run",
+      "stars": 71,
+      "language": "JavaScript",
+      "license": "Apache-2.0",
+      "topics": [
+        "agent",
+        "anthropic",
+        "claudecode",
+        "codex",
+        "cursor",
+        "dsh",
+        "dsh-plugin",
+        "llm",
+        "llm-gateway",
+        "llm-gateway-system",
+        "llm-proxy",
+        "llm-router",
+        "local",
+        "local-first",
+        "observability",
+        "openai",
+        "openclaw",
+        "token",
+        "token-usage",
+        "tokenhub"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "security_notes": [
+        "使用动态代码或子进程执行"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "labring/sealos-skills",
+      "name": "sealos-skills",
+      "description": "AI agent skills for Sealos — deploy any project, provision databases, object storage & more with one command. Works with Claude Code, Gemini CLI, Codex.",
+      "usage": "dsh plugin --profile web add github:labring/sealos-skills",
+      "repo_url": "https://github.com/labring/sealos-skills",
+      "homepage": "https://sealos.io/sealos-skills",
+      "stars": 70,
+      "language": "Python",
+      "license": "unknown",
+      "topics": [
+        "agent-skills",
+        "ai-agent",
+        "claude-code",
+        "cloud-native",
+        "codex",
+        "deployment",
+        "docker",
+        "dsh-plugin",
+        "gemini-cli",
+        "kubernetes",
+        "sealos"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "security_notes": [],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "Nagi-ovo/dsh-find-plugins",
+      "name": "dsh-find-plugins",
+      "description": "",
+      "usage": "dsh plugin --profile web add github:Nagi-ovo/dsh-find-plugins",
+      "repo_url": "https://github.com/Nagi-ovo/dsh-find-plugins",
+      "homepage": "https://github.com/Nagi-ovo/dsh-find-plugins",
+      "stars": 66,
+      "language": "JavaScript",
+      "license": "unknown",
+      "topics": [
+        "agent-skills",
+        "deepseek-harness",
+        "dsh-plugin",
+        "plugin-discovery"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "security_notes": [],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "Jayden-X-L/forkprobe",
+      "name": "forkprobe",
+      "description": "Compare multiple skills on the same task and pick the winner.",
+      "usage": "dsh plugin --profile web add github:Jayden-X-L/forkprobe",
+      "repo_url": "https://github.com/Jayden-X-L/forkprobe",
+      "homepage": "https://jayden-x-l.github.io/forkprobe/",
+      "stars": 64,
+      "language": "Python",
+      "license": "MIT",
+      "topics": [
+        "agent-workflow",
+        "ai-agents",
+        "claude-code",
+        "codex",
+        "deepseek-harness",
+        "dsh-plugin",
+        "pptx",
+        "research-writing",
+        "skill-comparison",
+        "skills"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "security_notes": [
+        "存在疑似混淆内容"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "Lyn-77/ProMentor",
+      "name": "ProMentor",
+      "description": "ProMentor 是一个 AI Coding Agent Skill。装上它，你的 AI 编程助手立刻化身为导师——扫描项目架构、生成阶梯式 Chapter、带你手写核心逻辑、自动判题、AI Code Review。",
+      "usage": "dsh plugin --profile web add github:Lyn-77/ProMentor",
+      "repo_url": "https://github.com/Lyn-77/ProMentor",
+      "homepage": "https://github.com/Lyn-77/ProMentor",
+      "stars": 50,
+      "language": "TypeScript",
+      "license": "unknown",
+      "topics": [
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "security_notes": [],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "Alex-Yanggg/awesome-DSH-plugin",
+      "name": "awesome-DSH-plugin",
+      "description": "A meticulously curated list of useful plugins, extensions, tools and development resources built for DSH, covering productivity enhancement, functional expansion, debugging utilities and custom development modules.",
+      "usage": "dsh plugin --profile web add github:Alex-Yanggg/awesome-DSH-plugin",
+      "repo_url": "https://github.com/Alex-Yanggg/awesome-DSH-plugin",
+      "homepage": "https://github.com/Alex-Yanggg/awesome-DSH-plugin",
+      "stars": 46,
+      "language": "Python",
+      "license": "CC0-1.0",
+      "topics": [
+        "agents",
+        "awesome",
+        "awesome-list",
+        "deepseek",
+        "dsh-plugin",
+        "plugins"
+      ],
+      "category": "collection",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "security_notes": [],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "btspoony/mstar-harness",
+      "name": "mstar-harness",
+      "description": "A Skill-driven Harness/Loop Engineering Workflow Agent Plugin",
+      "usage": "dsh plugin --profile web add github:btspoony/mstar-harness",
+      "repo_url": "https://github.com/btspoony/mstar-harness",
+      "homepage": "https://github.com/btspoony/mstar-harness",
+      "stars": 42,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "cursor-plugin",
+        "dsh-plugin",
+        "harness-engineering",
+        "knowledge-management",
+        "omp-plugin",
+        "opencode-plugin",
+        "sdd",
+        "spec-driven",
+        "subagents"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "security_notes": [
+        "使用动态代码或子进程执行"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "LaplaceYoung/oh-my-dsh",
+      "name": "oh-my-dsh",
+      "description": "oh-my-dsh：面向 DSH (DeepSeek Harness) 的插件生态——700+ 插件，只通过扩展接缝注册，不修改 agent-loop 骨架",
+      "usage": "dsh plugin --profile web add github:LaplaceYoung/oh-my-dsh",
+      "repo_url": "https://github.com/LaplaceYoung/oh-my-dsh",
+      "homepage": "https://github.com/LaplaceYoung/oh-my-dsh",
+      "stars": 40,
+      "language": "TypeScript",
+      "license": "unknown",
+      "topics": [
+        "agent",
+        "deepseek-harness",
+        "dsh-ecosystem",
+        "dsh-plugin",
+        "oh-my-dsh"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "security_notes": [],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "ChisaAlter/Deepseek-Harness-Desktop",
+      "name": "Deepseek-Harness-Desktop",
+      "description": "DSH桌面端，支持主题和背景图等多种个性化配置。Electron desktop shell for DeepSeek Harness web UI",
+      "usage": "dsh plugin --profile web add github:ChisaAlter/Deepseek-Harness-Desktop",
+      "repo_url": "https://github.com/ChisaAlter/Deepseek-Harness-Desktop",
+      "homepage": "https://github.com/ChisaAlter/Deepseek-Harness-Desktop",
+      "stars": 35,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "deepseek",
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "存在疑似混淆内容"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "hikariming/dshfind",
+      "name": "dshfind",
+      "description": "DSH (DeepSeek Harness) 原理学习、插件市场与最佳实践 · Learn DSH principles, plugin marketplace & best practices",
+      "usage": "dsh plugin --profile web add github:hikariming/dshfind",
+      "repo_url": "https://github.com/hikariming/dshfind",
+      "homepage": "https://dshfind.com",
+      "stars": 29,
+      "language": "MDX",
+      "license": "unknown",
+      "topics": [
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "security_notes": [
+        "存在疑似混淆内容",
+        "存在 Base64 解码行为"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "omdsh-dev/dsh-annotation",
+      "name": "dsh-annotation",
+      "description": "DSH Web 选中批注插件：选文字→批注→回车随消息发送；气泡隐藏批注块（零闪烁）；回复按 Annotation N 逐条对照（可悬浮芯片）。官方 bundle，零核心改动",
+      "usage": "dsh plugin --profile web add github:omdsh-dev/dsh-annotation",
+      "repo_url": "https://github.com/omdsh-dev/dsh-annotation",
+      "homepage": "https://github.com/omdsh-dev/dsh-annotation",
+      "stars": 28,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "dsh",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "security_notes": [
+        "使用动态代码或子进程执行"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "vlln/plugin-registry",
+      "name": "plugin-registry",
+      "description": "DSH 插件生态基建：薄控制台（浏览器面板管理官方 repository 插件，0 patch）+ make-dsh-plugin skill 官方插件开发引导",
+      "usage": "dsh plugin --profile web add github:vlln/plugin-registry",
+      "repo_url": "https://github.com/vlln/plugin-registry",
+      "homepage": "https://github.com/vlln/plugin-registry",
+      "stars": 28,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "console",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "dsh-repository-plugin",
+        "plugin-management",
+        "ui"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "security_notes": [
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "alingalingling/ui-status-label",
+      "name": "ui-status-label",
+      "description": "把你鲸鱼娘思考时的 deep diving 自定义成任意你想要的样子",
+      "usage": "dsh plugin --profile web add github:alingalingling/ui-status-label",
+      "repo_url": "https://github.com/alingalingling/ui-status-label",
+      "homepage": "https://github.com/alingalingling/ui-status-label",
+      "stars": 27,
+      "language": "TypeScript",
+      "license": "unknown",
+      "topics": [
+        "dsh",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "security_notes": [],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "multica-ai/dsh-multica-runtime",
+      "name": "dsh-multica-runtime",
+      "description": "Support dsh runtime on Multica.",
+      "usage": "dsh plugin --profile web add github:multica-ai/dsh-multica-runtime",
+      "repo_url": "https://github.com/multica-ai/dsh-multica-runtime",
+      "homepage": "https://github.com/multica-ai/dsh-multica-runtime",
+      "stars": 27,
+      "language": "TypeScript",
+      "license": "unknown",
+      "topics": [
+        "dsh",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址"
+      ],
+      "security_notes": [
+        "存在疑似混淆内容"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "Dominic789654/awesome-deepseek-harness",
+      "name": "awesome-deepseek-harness",
+      "description": "A curated list of plugins, skills, MCP servers, patch/profile layers, orchestrators & UIs for DeepSeek Harness (DSH). Visualization · PPT · Coding · Agents · Loops (auto-research) and more. #dsh",
+      "usage": "dsh plugin --profile web add github:Dominic789654/awesome-deepseek-harness",
+      "repo_url": "https://github.com/Dominic789654/awesome-deepseek-harness",
+      "homepage": "https://github.com/Dominic789654/awesome-deepseek-harness",
+      "stars": 26,
+      "language": "TypeScript",
+      "license": "NOASSERTION",
+      "topics": [
+        "agent",
+        "agent-framework",
+        "ai-agent",
+        "ai-agents",
+        "awesome",
+        "awesome-list",
+        "coding-agent",
+        "deepseek",
+        "deepseek-ai",
+        "deepseek-harness",
+        "deepseek-harness-plugin",
+        "deepseek-harness-plugins",
+        "dsh",
+        "dsh-patch",
+        "dsh-plugin",
+        "dsh-plugins",
+        "llm",
+        "llm-agent",
+        "mcp",
+        "plugins"
+      ],
+      "category": "collection",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "security_notes": [],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
+    },
+    {
+      "id": "pingfanfan/hello-dsh",
+      "name": "hello-dsh",
+      "description": "从零开始，看懂 DeepSeek Harness 的「万物皆可插件」— 零基础插件开发教程（含 22 个中文技能实例）| Zero-to-plugin tutorial for DeepSeek Harness",
+      "usage": "dsh plugin --profile web add github:pingfanfan/hello-dsh",
+      "repo_url": "https://github.com/pingfanfan/hello-dsh",
+      "homepage": "https://github.com/pingfanfan/hello-dsh/blob/main/docs/hello-dsh.md",
+      "stars": 26,
+      "language": "Python",
+      "license": "MIT",
+      "topics": [
+        "ai-agent",
+        "chinese",
+        "cordis",
+        "deepseek",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "tutorial"
+      ],
+      "category": "plugin",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "security_notes": [],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-14T10:03:43.084Z"
     }
   ]
 }
