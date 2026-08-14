@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-14T10:03:43.084Z",
+  "generated_at": "2026-08-14T10:49:36.953Z",
   "plugins": [
     {
       "id": "deepseek-ai/deepseek-harness",
@@ -9,7 +9,7 @@
       "usage": "npx @deepseek-ai/dsh 启动核心；插件经 dsh plugin --profile web add <源> 挂载",
       "repo_url": "https://github.com/deepseek-ai/deepseek-harness",
       "homepage": "https://github.com/deepseek-ai/deepseek-harness",
-      "stars": 68011,
+      "stars": 84989,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -25,7 +25,12 @@
       "compatibility": "official",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 7511,
+      "open_issues": 0,
+      "watchers": 329,
+      "pushed_at": "2026-08-13T13:00:21Z",
+      "archived": false
     },
     {
       "id": "zhu1090093659/dsh-web-ui",
@@ -34,7 +39,7 @@
       "usage": "dsh plugin --profile web add github:zhu1090093659/dsh-web-ui 后重启 Web",
       "repo_url": "https://github.com/zhu1090093659/dsh-web-ui",
       "homepage": "https://github.com/zhu1090093659/dsh-web-ui",
-      "stars": 942,
+      "stars": 1528,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -50,7 +55,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 66,
+      "open_issues": 38,
+      "watchers": 3,
+      "pushed_at": "2026-08-14T10:13:48Z",
+      "archived": false
     },
     {
       "id": "liustack/modlens",
@@ -59,7 +69,7 @@
       "usage": "dsh plugin add @liustack/modlens（npm）；粘贴图片即可让纯文本模型“看见”",
       "repo_url": "https://github.com/liustack/modlens",
       "homepage": "https://github.com/liustack/modlens",
-      "stars": 870,
+      "stars": 1071,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -75,7 +85,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 33,
+      "open_issues": 3,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T10:43:35Z",
+      "archived": false
     },
     {
       "id": "ccch1mneyyy/dsh-TUI",
@@ -84,7 +99,7 @@
       "usage": "dsh plugin --profile tui add github:ccch1mneyyy/dsh-TUI（npm 一键安装）",
       "repo_url": "https://github.com/ccch1mneyyy/dsh-TUI",
       "homepage": "https://github.com/ccch1mneyyy/dsh-TUI",
-      "stars": 497,
+      "stars": 715,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -100,7 +115,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 30,
+      "open_issues": 48,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T10:06:52Z",
+      "archived": false
     },
     {
       "id": "omdsh-dev/DSH-better-sidebar",
@@ -109,7 +129,7 @@
       "usage": "dsh plugin --profile web add github:omdsh-dev/DSH-better-sidebar",
       "repo_url": "https://github.com/omdsh-dev/DSH-better-sidebar",
       "homepage": "https://github.com/omdsh-dev/DSH-better-sidebar",
-      "stars": 382,
+      "stars": 619,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -124,7 +144,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 34,
+      "open_issues": 22,
+      "watchers": 2,
+      "pushed_at": "2026-08-14T10:29:35Z",
+      "archived": false
     },
     {
       "id": "Anionex/dsh-vision-toolkit",
@@ -133,7 +158,7 @@
       "usage": "dsh plugin add github:Anionex/dsh-vision-toolkit",
       "repo_url": "https://github.com/Anionex/dsh-vision-toolkit",
       "homepage": "https://agent-vision.anionex.me",
-      "stars": 232,
+      "stars": 289,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -149,7 +174,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 17,
+      "open_issues": 5,
+      "watchers": 2,
+      "pushed_at": "2026-08-14T10:44:34Z",
+      "archived": false
     },
     {
       "id": "liustack/modsearch",
@@ -158,7 +188,7 @@
       "usage": "dsh plugin add @liustack/modsearch（npm）",
       "repo_url": "https://github.com/liustack/modsearch",
       "homepage": "https://github.com/liustack/modsearch",
-      "stars": 73,
+      "stars": 80,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -174,7 +204,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 4,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T09:25:24Z",
+      "archived": false
     },
     {
       "id": "omdsh-dev/dsh-at-file",
@@ -183,7 +218,7 @@
       "usage": "dsh plugin --profile web add https://github.com/omdsh-dev/dsh-at-file/archive/refs/heads/main.tar.gz",
       "repo_url": "https://github.com/omdsh-dev/dsh-at-file",
       "homepage": "https://github.com/omdsh-dev/dsh-at-file",
-      "stars": 62,
+      "stars": 105,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
@@ -198,7 +233,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 4,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T07:27:34Z",
+      "archived": false
     },
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -207,7 +247,7 @@
       "usage": "dsh plugin --profile web add github:omdsh-dev/dsh-open-in-vscode",
       "repo_url": "https://github.com/omdsh-dev/dsh-open-in-vscode",
       "homepage": "https://github.com/omdsh-dev/dsh-open-in-vscode",
-      "stars": 34,
+      "stars": 38,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
@@ -222,7 +262,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 3,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-13T16:13:51Z",
+      "archived": false
     },
     {
       "id": "omdsh-dev/dsh-notification",
@@ -231,7 +276,7 @@
       "usage": "dsh plugin --profile web add https://github.com/omdsh-dev/dsh-notification/archive/refs/heads/main.tar.gz",
       "repo_url": "https://github.com/omdsh-dev/dsh-notification",
       "homepage": "https://github.com/omdsh-dev/dsh-notification",
-      "stars": 26,
+      "stars": 36,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
@@ -246,7 +291,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 3,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-08-13T15:28:50Z",
+      "archived": false
     },
     {
       "id": "Anionex/dsh-turn-rewind",
@@ -255,7 +305,7 @@
       "usage": "dsh plugin add github:Anionex/dsh-turn-rewind",
       "repo_url": "https://github.com/Anionex/dsh-turn-rewind",
       "homepage": "https://github.com/Anionex/dsh-turn-rewind",
-      "stars": 25,
+      "stars": 34,
       "language": "JavaScript",
       "license": "BSD-3-Clause",
       "topics": [
@@ -270,7 +320,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 1,
+      "pushed_at": "2026-08-14T08:47:59Z",
+      "archived": false
     },
     {
       "id": "csyangwen/dsh-memory-evolve",
@@ -279,7 +334,7 @@
       "usage": "dsh plugin add github:csyangwen/dsh-memory-evolve",
       "repo_url": "https://github.com/csyangwen/dsh-memory-evolve",
       "homepage": "https://github.com/csyangwen/dsh-memory-evolve",
-      "stars": 25,
+      "stars": 31,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
@@ -294,7 +349,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 4,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T08:15:33Z",
+      "archived": false
     },
     {
       "id": "omdsh-dev/dsh-genui",
@@ -303,7 +363,7 @@
       "usage": "dsh plugin --profile web add github:omdsh-dev/dsh-genui",
       "repo_url": "https://github.com/omdsh-dev/dsh-genui",
       "homepage": "https://github.com/omdsh-dev/dsh-genui",
-      "stars": 37,
+      "stars": 66,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -318,7 +378,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 3,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T08:01:36Z",
+      "archived": false
     },
     {
       "id": "Lum1104/dsh-browser",
@@ -327,7 +392,7 @@
       "usage": "运行 scripts/install.sh 安装 Chrome MV3 扩展与插件桥接",
       "repo_url": "https://github.com/Lum1104/dsh-browser",
       "homepage": "https://github.com/Lum1104/dsh-browser",
-      "stars": 47,
+      "stars": 70,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -343,7 +408,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 2,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T04:27:30Z",
+      "archived": false
     },
     {
       "id": "icetomoyo/dsh_workflow",
@@ -352,7 +422,7 @@
       "usage": "dsh plugin add github:icetomoyo/dsh_workflow",
       "repo_url": "https://github.com/icetomoyo/dsh_workflow",
       "homepage": "https://github.com/icetomoyo/dsh_workflow",
-      "stars": 42,
+      "stars": 53,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -368,7 +438,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 1,
+      "pushed_at": "2026-08-13T23:53:40Z",
+      "archived": false
     },
     {
       "id": "vlln/whale-girl",
@@ -377,7 +452,7 @@
       "usage": "dsh plugin --profile web add \"github:vlln/whale-girl#main\"",
       "repo_url": "https://github.com/vlln/whale-girl",
       "homepage": "https://github.com/vlln/whale-girl",
-      "stars": 61,
+      "stars": 112,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
@@ -392,7 +467,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 4,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-08-13T14:22:20Z",
+      "archived": false
     },
     {
       "id": "hust-open-atom-club/oh-dsh",
@@ -401,7 +481,7 @@
       "usage": "按 README 的桌面/Web/TUI 安装脚本一键安装发行版",
       "repo_url": "https://github.com/hust-open-atom-club/oh-dsh",
       "homepage": "https://github.com/hust-open-atom-club/oh-dsh",
-      "stars": 92,
+      "stars": 148,
       "language": "TypeScript",
       "license": "BSD-3-Clause",
       "topics": [
@@ -416,7 +496,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 12,
+      "open_issues": 5,
+      "watchers": 2,
+      "pushed_at": "2026-08-14T09:25:03Z",
+      "archived": false
     },
     {
       "id": "Ruler4396/dsh-launcher",
@@ -425,7 +510,7 @@
       "usage": "下载 Releases 的 .msi 或便携 ZIP，双击运行",
       "repo_url": "https://github.com/Ruler4396/dsh-launcher",
       "homepage": "https://github.com/Ruler4396/dsh-launcher",
-      "stars": 40,
+      "stars": 55,
       "language": "C#",
       "license": "MIT",
       "topics": [
@@ -441,7 +526,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T10:48:08Z",
+      "archived": false
     },
     {
       "id": "ZSeven-W/dsh-openpencil",
@@ -450,7 +540,7 @@
       "usage": "dsh plugin add @zseven-w/dsh-openpencil（npm）",
       "repo_url": "https://github.com/ZSeven-W/dsh-openpencil",
       "homepage": "https://github.com/ZSeven-W/dsh-openpencil",
-      "stars": 45,
+      "stars": 64,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -465,7 +555,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 1,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-13T14:54:25Z",
+      "archived": false
     },
     {
       "id": "Nagi-ovo/dsh-visualize",
@@ -474,7 +569,7 @@
       "usage": "dsh plugin --profile web add github:Nagi-ovo/dsh-visualize",
       "repo_url": "https://github.com/Nagi-ovo/dsh-visualize",
       "homepage": "https://github.com/Nagi-ovo/dsh-visualize",
-      "stars": 52,
+      "stars": 72,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -490,7 +585,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 2,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T01:18:39Z",
+      "archived": false
     },
     {
       "id": "NanmiCoder/dsh-agent-teams",
@@ -499,7 +599,7 @@
       "usage": "npx -p @deepseek-ai/dsh dsh plugin --profile web add github:NanmiCoder/dsh-agent-teams",
       "repo_url": "https://github.com/NanmiCoder/dsh-agent-teams",
       "homepage": "https://github.com/NanmiCoder/dsh-agent-teams",
-      "stars": 146,
+      "stars": 207,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -515,7 +615,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 18,
+      "open_issues": 3,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T10:34:37Z",
+      "archived": false
     },
     {
       "id": "0xsline/awesome-deepseek-harness",
@@ -524,7 +629,7 @@
       "usage": "打开网页浏览生态精选，或 git clone 到本地阅读",
       "repo_url": "https://github.com/0xsline/awesome-deepseek-harness",
       "homepage": "https://deepseekdocs.com/",
-      "stars": 230,
+      "stars": 319,
       "language": "Python",
       "license": "CC0-1.0",
       "topics": [
@@ -540,7 +645,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 90,
+      "open_issues": 0,
+      "watchers": 2,
+      "pushed_at": "2026-08-14T10:41:00Z",
+      "archived": false
     },
     {
       "id": "AdamPlatin123/awesome-dsh-plugins",
@@ -549,7 +659,7 @@
       "usage": "打开网页查看自动扫描 Radar 与精选目录",
       "repo_url": "https://github.com/AdamPlatin123/awesome-dsh-plugins",
       "homepage": "https://github.com/AdamPlatin123/awesome-dsh-plugins",
-      "stars": 510,
+      "stars": 664,
       "language": "Shell",
       "license": "MIT",
       "topics": [
@@ -565,7 +675,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 56,
+      "open_issues": 7,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T10:36:46Z",
+      "archived": false
     },
     {
       "id": "bruc3van/awesome-dsh-plugin",
@@ -574,7 +689,7 @@
       "usage": "打开网页按“解决什么问题”快速选择插件",
       "repo_url": "https://github.com/bruc3van/awesome-dsh-plugin",
       "homepage": "https://github.com/bruc3van/awesome-dsh-plugin",
-      "stars": 35,
+      "stars": 65,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
@@ -590,7 +705,12 @@
       "compatibility": "compatible",
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": []
+      "security_notes": [],
+      "forks": 13,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T09:39:49Z",
+      "archived": false
     },
     {
       "id": "sandbaseai/sandbase-harness",
@@ -599,7 +719,7 @@
       "usage": "dsh plugin --profile web add github:sandbaseai/sandbase-harness",
       "repo_url": "https://github.com/sandbaseai/sandbase-harness",
       "homepage": "https://github.com/sandbaseai/sandbase-harness",
-      "stars": 566,
+      "stars": 571,
       "language": "TypeScript",
       "license": "NOASSERTION",
       "topics": [
@@ -619,7 +739,12 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T05:22:32.485Z"
+      "reviewed_at": "2026-08-14T05:22:32.485Z",
+      "forks": 53,
+      "open_issues": 1,
+      "watchers": 19,
+      "pushed_at": "2026-08-14T07:42:03Z",
+      "archived": false
     },
     {
       "id": "awesome-dsh-plugin/awesome-dsh-plugin",
@@ -628,7 +753,7 @@
       "usage": "dsh plugin --profile web add github:awesome-dsh-plugin/awesome-dsh-plugin",
       "repo_url": "https://github.com/awesome-dsh-plugin/awesome-dsh-plugin",
       "homepage": "https://awesome-dsh-plugin.com",
-      "stars": 302,
+      "stars": 613,
       "language": "HTML",
       "license": "CC0-1.0",
       "topics": [
@@ -649,7 +774,12 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T05:22:32.485Z"
+      "reviewed_at": "2026-08-14T05:22:32.485Z",
+      "forks": 119,
+      "open_issues": 9,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T10:38:58Z",
+      "archived": false
     },
     {
       "id": "Small-tailqwq/dsh-deep-whale",
@@ -658,7 +788,7 @@
       "usage": "dsh plugin --profile web add github:Small-tailqwq/dsh-deep-whale",
       "repo_url": "https://github.com/Small-tailqwq/dsh-deep-whale",
       "homepage": "https://github.com/Small-tailqwq/dsh-deep-whale",
-      "stars": 277,
+      "stars": 448,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -680,7 +810,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T05:22:32.485Z"
+      "reviewed_at": "2026-08-14T05:22:32.485Z",
+      "forks": 14,
+      "open_issues": 10,
+      "watchers": 1,
+      "pushed_at": "2026-08-14T08:48:54Z",
+      "archived": false
     },
     {
       "id": "Nagi-ovo/dsh-ads",
@@ -689,7 +824,7 @@
       "usage": "dsh plugin --profile web add github:Nagi-ovo/dsh-ads",
       "repo_url": "https://github.com/Nagi-ovo/dsh-ads",
       "homepage": "https://github.com/Nagi-ovo/dsh-ads",
-      "stars": 214,
+      "stars": 289,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -712,7 +847,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T05:22:32.485Z"
+      "reviewed_at": "2026-08-14T05:22:32.485Z",
+      "forks": 1,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T01:18:40Z",
+      "archived": false
     },
     {
       "id": "zhaoolee/notes",
@@ -721,7 +861,7 @@
       "usage": "dsh plugin --profile web add github:zhaoolee/notes",
       "repo_url": "https://github.com/zhaoolee/notes",
       "homepage": "https://notes.fangyuanxiaozhan.com",
-      "stars": 134,
+      "stars": 138,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -745,7 +885,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T05:22:32.485Z"
+      "reviewed_at": "2026-08-14T05:22:32.485Z",
+      "forks": 3,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T03:11:25Z",
+      "archived": false
     },
     {
       "id": "tt-a1i/archify",
@@ -754,7 +899,7 @@
       "usage": "dsh plugin --profile web add github:tt-a1i/archify",
       "repo_url": "https://github.com/tt-a1i/archify",
       "homepage": "https://tt-a1i.github.io/archify/",
-      "stars": 12260,
+      "stars": 12282,
       "language": "HTML",
       "license": "MIT",
       "topics": [
@@ -793,7 +938,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 925,
+      "open_issues": 13,
+      "watchers": 76,
+      "pushed_at": "2026-08-14T09:31:46Z",
+      "archived": false
     },
     {
       "id": "anywhere-labs/deepseek-harness-desktop",
@@ -802,7 +952,7 @@
       "usage": "dsh plugin --profile web add github:anywhere-labs/deepseek-harness-desktop",
       "repo_url": "https://github.com/anywhere-labs/deepseek-harness-desktop",
       "homepage": "https://deepseekdesktop.com",
-      "stars": 557,
+      "stars": 643,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -821,7 +971,12 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 33,
+      "open_issues": 2,
+      "watchers": 3,
+      "pushed_at": "2026-08-14T01:16:53Z",
+      "archived": false
     },
     {
       "id": "mnemon-dev/mnemon",
@@ -864,7 +1019,12 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 60,
+      "open_issues": 11,
+      "watchers": 2,
+      "pushed_at": "2026-08-13T19:34:26Z",
+      "archived": false
     },
     {
       "id": "Electricitysheep/dsh-handbook",
@@ -873,7 +1033,7 @@
       "usage": "dsh plugin --profile web add github:Electricitysheep/dsh-handbook",
       "repo_url": "https://github.com/Electricitysheep/dsh-handbook",
       "homepage": "https://github.com/Electricitysheep/dsh-handbook",
-      "stars": 138,
+      "stars": 143,
       "language": "HTML",
       "license": "unknown",
       "topics": [
@@ -903,7 +1063,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 3,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T10:49:21Z",
+      "archived": false
     },
     {
       "id": "huiliyi37/dsh-tianshu-tui",
@@ -912,7 +1077,7 @@
       "usage": "dsh plugin --profile web add github:huiliyi37/dsh-tianshu-tui",
       "repo_url": "https://github.com/huiliyi37/dsh-tianshu-tui",
       "homepage": "https://github.com/huiliyi37/dsh-tianshu-tui",
-      "stars": 111,
+      "stars": 112,
       "language": "TypeScript",
       "license": "Apache-2.0",
       "topics": [
@@ -936,7 +1101,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 3,
+      "open_issues": 6,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T08:03:45Z",
+      "archived": false
     },
     {
       "id": "wink-run/tokenbank",
@@ -984,7 +1154,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 11,
+      "open_issues": 3,
+      "watchers": 1,
+      "pushed_at": "2026-08-14T08:24:51Z",
+      "archived": false
     },
     {
       "id": "labring/sealos-skills",
@@ -1020,7 +1195,12 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 19,
+      "open_issues": 6,
+      "watchers": 1,
+      "pushed_at": "2026-08-14T06:36:11Z",
+      "archived": false
     },
     {
       "id": "Nagi-ovo/dsh-find-plugins",
@@ -1029,7 +1209,7 @@
       "usage": "dsh plugin --profile web add github:Nagi-ovo/dsh-find-plugins",
       "repo_url": "https://github.com/Nagi-ovo/dsh-find-plugins",
       "homepage": "https://github.com/Nagi-ovo/dsh-find-plugins",
-      "stars": 66,
+      "stars": 67,
       "language": "JavaScript",
       "license": "unknown",
       "topics": [
@@ -1049,7 +1229,12 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 0,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T01:42:38Z",
+      "archived": false
     },
     {
       "id": "Jayden-X-L/forkprobe",
@@ -1058,7 +1243,7 @@
       "usage": "dsh plugin --profile web add github:Jayden-X-L/forkprobe",
       "repo_url": "https://github.com/Jayden-X-L/forkprobe",
       "homepage": "https://jayden-x-l.github.io/forkprobe/",
-      "stars": 64,
+      "stars": 65,
       "language": "Python",
       "license": "MIT",
       "topics": [
@@ -1088,7 +1273,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 3,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T04:43:09Z",
+      "archived": false
     },
     {
       "id": "Lyn-77/ProMentor",
@@ -1118,7 +1308,12 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 1,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-13T18:44:52Z",
+      "archived": false
     },
     {
       "id": "Alex-Yanggg/awesome-DSH-plugin",
@@ -1149,7 +1344,12 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 30,
+      "open_issues": 14,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T03:28:17Z",
+      "archived": false
     },
     {
       "id": "btspoony/mstar-harness",
@@ -1185,7 +1385,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 2,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T08:21:17Z",
+      "archived": false
     },
     {
       "id": "LaplaceYoung/oh-my-dsh",
@@ -1215,7 +1420,12 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 1,
+      "open_issues": 0,
+      "watchers": 1,
+      "pushed_at": "2026-08-13T13:04:56Z",
+      "archived": false
     },
     {
       "id": "ChisaAlter/Deepseek-Harness-Desktop",
@@ -1224,7 +1434,7 @@
       "usage": "dsh plugin --profile web add github:ChisaAlter/Deepseek-Harness-Desktop",
       "repo_url": "https://github.com/ChisaAlter/Deepseek-Harness-Desktop",
       "homepage": "https://github.com/ChisaAlter/Deepseek-Harness-Desktop",
-      "stars": 35,
+      "stars": 36,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
@@ -1247,7 +1457,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 2,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T07:37:44Z",
+      "archived": false
     },
     {
       "id": "hikariming/dshfind",
@@ -1256,7 +1471,7 @@
       "usage": "dsh plugin --profile web add github:hikariming/dshfind",
       "repo_url": "https://github.com/hikariming/dshfind",
       "homepage": "https://dshfind.com",
-      "stars": 29,
+      "stars": 35,
       "language": "MDX",
       "license": "unknown",
       "topics": [
@@ -1279,7 +1494,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T09:21:48Z",
+      "archived": false
     },
     {
       "id": "omdsh-dev/dsh-annotation",
@@ -1288,7 +1508,7 @@
       "usage": "dsh plugin --profile web add github:omdsh-dev/dsh-annotation",
       "repo_url": "https://github.com/omdsh-dev/dsh-annotation",
       "homepage": "https://github.com/omdsh-dev/dsh-annotation",
-      "stars": 28,
+      "stars": 29,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
@@ -1308,7 +1528,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 0,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-08-13T15:09:15Z",
+      "archived": false
     },
     {
       "id": "vlln/plugin-registry",
@@ -1344,7 +1569,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 1,
+      "open_issues": 6,
+      "watchers": 0,
+      "pushed_at": "2026-08-13T14:22:05Z",
+      "archived": false
     },
     {
       "id": "alingalingling/ui-status-label",
@@ -1371,7 +1601,12 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 0,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-08-13T16:17:36Z",
+      "archived": false
     },
     {
       "id": "multica-ai/dsh-multica-runtime",
@@ -1401,7 +1636,12 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 0,
+      "open_issues": 1,
+      "watchers": 1,
+      "pushed_at": "2026-08-14T09:45:21Z",
+      "archived": false
     },
     {
       "id": "Dominic789654/awesome-deepseek-harness",
@@ -1410,7 +1650,7 @@
       "usage": "dsh plugin --profile web add github:Dominic789654/awesome-deepseek-harness",
       "repo_url": "https://github.com/Dominic789654/awesome-deepseek-harness",
       "homepage": "https://github.com/Dominic789654/awesome-deepseek-harness",
-      "stars": 26,
+      "stars": 27,
       "language": "TypeScript",
       "license": "NOASSERTION",
       "topics": [
@@ -1446,7 +1686,12 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 9,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T10:39:57Z",
+      "archived": false
     },
     {
       "id": "pingfanfan/hello-dsh",
@@ -1455,7 +1700,7 @@
       "usage": "dsh plugin --profile web add github:pingfanfan/hello-dsh",
       "repo_url": "https://github.com/pingfanfan/hello-dsh",
       "homepage": "https://github.com/pingfanfan/hello-dsh/blob/main/docs/hello-dsh.md",
-      "stars": 26,
+      "stars": 28,
       "language": "Python",
       "license": "MIT",
       "topics": [
@@ -1479,7 +1724,12 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z"
+      "reviewed_at": "2026-08-14T10:03:43.084Z",
+      "forks": 1,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-14T00:14:32Z",
+      "archived": false
     }
   ]
 }
