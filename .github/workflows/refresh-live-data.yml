@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   # 与 discover-plugins 共享同一组，避免两个工作流同时写 docs/plugins.json 造成冲突。
@@ -31,7 +32,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit changes
+      - name: Open pull request
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
@@ -42,6 +43,27 @@ jobs:
             exit 0
           fi
 
+          date="$(date -u +%F)"
+          branch="refresh/${date}"
+          title="刷新插件实时数据 (${date})"
+          body="自动刷新插件 stars/forks/issues/watchers/pushed_at/archived 等实时数据，并重新生成 README。"
+
+          git checkout -B "$branch"
           git add docs/plugins.json README.md README.en.md
           git commit -m "chore: 刷新插件实时数据 ($(date -u +%FT%TZ))"
-          git push
+
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+            git fetch origin "$branch"
+            git push --force-with-lease origin "$branch"
+          else
+            git push --set-upstream origin "$branch"
+          fi
+
+          existing="$(gh pr list --head "$branch" --json number --jq '.[0].number')"
+          if [ -n "$existing" ]; then
+            gh pr edit "$existing" --title "$title" --body "$body"
+          else
+            gh pr create --base main --head "$branch" --title "$title" --body "$body"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
