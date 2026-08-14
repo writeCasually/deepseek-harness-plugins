@@ -9,6 +9,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  actions: write
 
 concurrency:
   # 与 discover-plugins 共享同一组，避免两个工作流同时写 docs/plugins.json 造成冲突。
@@ -74,6 +75,6 @@ jobs:
 
           # GITHUB_TOKEN 的 push 不会触发其它 workflow 的 push 事件,
           # 故主动 dispatch Pages 部署使刷新数据上线。
-          gh workflow run deploy-pages.yml
+          gh workflow run deploy-pages.yml || echo "[warn] dispatch deploy-pages 失败,数据已合并到 main,下次手动触发即可。"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -9,6 +9,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  actions: write
 
 concurrency:
   # 与 refresh-live-data 共享同一组，避免两个工作流同时写 docs/plugins.json 造成冲突。
@@ -96,5 +97,5 @@ jobs:
             # 与 refresh-live-data 一致：立即 squash 合并（不走 auto-merge 开关，无需仓库另开设置）。
             gh pr merge "$pr_number" --squash --delete-branch
             # GITHUB_TOKEN 的 push 不递归触发其它 workflow 的 push 事件，故合并后主动 dispatch Pages。
-            gh workflow run deploy-pages.yml
+            gh workflow run deploy-pages.yml || echo "[warn] dispatch deploy-pages 失败,数据已合并到 main,下次手动触发即可。"
           fi
