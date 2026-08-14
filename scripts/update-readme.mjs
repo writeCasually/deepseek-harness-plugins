@@ -46,6 +46,16 @@ function localizedPlugin(plugin, lang, translations) {
   };
 }
 
+// 转义可能触发主动渲染的 markdown 字符（链接 / HTML / 代码块），
+// 防止插件 description 注入钓鱼链接等主动内容；其它字符保持原样以维持可读。
+function escapeMarkdown(text) {
+  return text
+    .replaceAll('\\', '\\\\')
+    .replaceAll('`', '\\`')
+    .replaceAll('[', '\\[')
+    .replaceAll('<', '\\<');
+}
+
 function buildTable(plugins, lang, translations) {
   const isEn = lang === 'en';
   const header = isEn
@@ -59,7 +69,9 @@ function buildTable(plugins, lang, translations) {
     const name = localized.repo_url
       ? `${official}[${localized.name}](${localized.repo_url})`
       : `${official}${localized.name}`;
-    const desc = (localized.description || '').replaceAll('|', '\\|').replaceAll('\n', ' ');
+    const desc = escapeMarkdown(localized.description || '')
+      .replaceAll('|', '\\|')
+      .replaceAll('\n', ' ');
     const privacy = localized.privacy_risk
       ? (isEn
           ? ` (Privacy risk: ${(localized.privacy_notes || []).join('; ')})`
