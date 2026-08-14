@@ -397,6 +397,30 @@ async function main() {
 
     writeFileSync(DATA_PATH, JSON.stringify(output, null, 2));
     updateReadmeFiles();
+
+    // 本轮新审查的最严重 verdict，决定 workflow 是否可以安全地自动合并：
+    //   worst_verdict = 'clean'     -> 本轮无新审查（只刷新元数据/README），自动合并安全
+    //   worst_verdict = 'approved'  -> 本轮所有新插件全部通过静态审查，自动合并安全
+    //   worst_verdict = 'flagged'|'blocked' -> 出现告警/阻断级发现，workflow 应停止自动合并并保留人工复核
+    const VERDICT_RANK = { approved: 0, skip: 0, flagged: 1, blocked: 2 };
+    const worstVerdict = reviewLog.length === 0
+      ? 'clean'
+      : reviewLog.reduce(
+          (worst, d) => ((VERDICT_RANK[d.verdict] ?? 0) > (VERDICT_RANK[worst] ?? 0) ? d.verdict : worst),
+          'approved',
+        );
+    const verdictCounts = reviewLog.reduce((acc, d) => {
+      acc[d.verdict] = (acc[d.verdict] ?? 0) + 1;
+      return acc;
+    }, {});
+    writeFileSync(
+      join(root, 'data', 'run-summary.json'),
+      JSON.stringify(
+        { run_at: NOW, new_reviews: reviewLog.length, worst_verdict: worstVerdict, verdicts: verdictCounts },
+        null,
+        2,
+      ),
+    );
   }
 
   console.log(
