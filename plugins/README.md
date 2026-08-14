@@ -1,5 +1,7 @@
 # 插件目录
 
+[中文](README.md) | [English](README.en.md)
+
 本目录用于存放本项目自研的 DeepSeek Harness 插件源码。
 
 每个插件应遵循以下约定：

@@ -23,58 +23,69 @@
             </svg>
           </span>
           <div>
-            <h1>DeepSeek Harness 插件汇总</h1>
-            <p class="tagline">发现、检索与安全审查 DeepSeek Harness 社区插件</p>
+            <h1 data-i18n="title">DeepSeek Harness 插件汇总</h1>
+            <p class="tagline" data-i18n="tagline">发现、检索与安全审查 DeepSeek Harness 社区插件</p>
           </div>
         </div>
-        <div class="header-actions">
-          <a class="gh-link" href="https://github.com/writeCasually/deepseek-harness-plugins" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-              <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
-            </svg>
-            项目仓库
-          </a>
-          <a class="gh-link" href="https://github.com/topics/dsh-plugin" target="_blank" rel="noopener">
-            dsh-plugin 话题
-          </a>
+      </div>
+      <div class="header-actions">
+        <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria-label="language">
+          <button class="lang-option is-active" type="button" data-lang="zh">中文</button>
+          <button class="lang-option" type="button" data-lang="en">EN</button>
+        </div>
+        <a class="gh-link" href="https://github.com/writeCasually/deepseek-harness-plugins" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
+          </svg>
+          <span data-i18n="github">项目仓库</span>
+        </a>
+        <a class="gh-link" href="https://github.com/topics/dsh-plugin" target="_blank" rel="noopener">
+          <span data-i18n="topic">dsh-plugin 话题</span>
+        </a>
         </div>
       </div>
     </header>
 
     <main class="container">
-      <section class="toolbar" aria-label="搜索与筛选">
+      <section class="toolbar" aria-label="搜索与筛选" data-i18n-aria-label="searchFilter">
         <div class="search-box">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <circle cx="11" cy="11" r="7" />
             <path d="m20 20-3.5-3.5" stroke-linecap="round" />
           </svg>
-          <input id="search" type="search" placeholder="搜索插件名称或功能简介…" autocomplete="off" />
+          <input
+            id="search"
+            type="search"
+            placeholder="搜索插件名称或功能简介…"
+            data-i18n-placeholder="search"
+            autocomplete="off"
+          />
         </div>
         <div id="stats" class="stats" aria-live="polite"></div>
       </section>
 
-      <nav class="filters" aria-label="分类筛选">
-        <button class="filter is-active" data-filter="all" type="button">全部</button>
-        <button class="filter" data-filter="official" type="button">官方</button>
-        <button class="filter" data-filter="plugin" type="button">插件</button>
-        <button class="filter" data-filter="collection" type="button">精选列表</button>
-        <button class="filter" data-filter="distribution" type="button">发行版</button>
-        <button class="filter" data-filter="core" type="button">核心</button>
+      <nav class="filters" aria-label="分类筛选" data-i18n-aria-label="filters">
+        <button class="filter is-active" data-filter="all" type="button" data-i18n="all">全部</button>
+        <button class="filter" data-filter="official" type="button" data-i18n="official">官方</button>
+        <button class="filter" data-filter="plugin" type="button" data-i18n="plugin">插件</button>
+        <button class="filter" data-filter="collection" type="button" data-i18n="collection">精选列表</button>
+        <button class="filter" data-filter="distribution" type="button" data-i18n="distribution">发行版</button>
+        <button class="filter" data-filter="core" type="button" data-i18n="core">核心</button>
       </nav>
 
-      <section id="grid" class="grid" aria-label="插件列表">
+      <section id="grid" class="grid" aria-label="插件列表" data-i18n-aria-label="pluginList">
         <div class="skeleton"></div>
         <div class="skeleton"></div>
         <div class="skeleton"></div>
         <div class="skeleton"></div>
       </section>
 
-      <p id="empty" class="empty" hidden>没有找到匹配的插件。</p>
+      <p id="empty" class="empty" hidden data-i18n="empty">没有找到匹配的插件。</p>
     </main>
 
     <footer class="site-footer">
       <div class="container">
-        <p>
+        <p data-i18n-html="dataSource">
           数据来源：<a href="https://github.com/topics/dsh-plugin" target="_blank" rel="noopener">GitHub dsh-plugin 话题</a>，
           每天自动检索并做静态安全审查，结果以 Pull Request 形式合并。
         </p>

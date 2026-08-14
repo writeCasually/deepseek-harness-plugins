@@ -50,7 +50,7 @@ jobs:
           body="自动检索 GitHub \`dsh-plugin\` 话题并完成静态安全审查后生成，请人工复核后合并。"
 
           git checkout -b "$branch"
-          git add docs/plugins.json data/review-log.json README.md
+          git add docs/plugins.json data/review-log.json README.md README.en.md
           git commit -m "chore: 更新 dsh-plugin 插件汇总 (${date})"
           git push --set-upstream origin "$branch"
 
@@ -58,5 +58,12 @@ jobs:
           if [ -n "$existing" ]; then
             gh pr edit "$existing" --title "$title" --body "$body"
           else
-            gh pr create --base main --head "$branch" --title "$title" --body "$body"
+            if ! gh pr create --base main --head "$branch" --title "$title" --body "$body" 2>pr-create.log; then
+              if grep -q "GitHub Actions is not permitted to create or approve pull requests" pr-create.log; then
+                echo "::error::创建 PR 被仓库设置拒绝。请到 Settings → Actions → General → Workflow permissions 勾选 “Allow GitHub Actions to create and approve pull requests”。"
+              else
+                cat pr-create.log
+              fi
+              exit 1
+            fi
           fi
