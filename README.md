@@ -19,6 +19,7 @@ DeepSeek Harness 以“一切都是插件”为核心设计，社区围绕它产
 
 - 网页汇总页：支持搜索、按分类与官方标记筛选，展示每个插件的名称、功能简介、用法与项目链接。
 - 单一数据源：`docs/plugins.json` 同时驱动网页与 README 插件列表。
+- 多语言简介：插件仓库存在 `README.zh*.md` / `README.en*.md` 等简洁文档时，网页会按当前语言展示对应简介，中文优先、英文兜底。
 - DSH 适用性判断：先确认插件是否真正能在 DeepSeek Harness 运行，无法确认的不予收录。
 - 安全与隐私审查：对非官方插件做静态扫描，检测隐私泄露风险并标记说明。
 - 官方优先：DeepSeek AI 官方插件排在最前。
@@ -122,9 +123,10 @@ deepseek-harness-plugins/
 
 1. 通过 GitHub Search API 检索 `topic:dsh-plugin`。
 2. 检查仓库是否带 `cordis`、`.dsh-plugin`、`dsh.bundle` 等 DSH 插件标记，确认其适用于 DeepSeek Harness。
-3. 下载 README 与源码抽样文件，做安全与隐私静态扫描；发现隐私泄露风险会标记并附说明。
-4. 官方插件优先；单次只处理有限数量，剩余仓库留给下一次定时任务继续。
-5. 将通过审查的插件写入 `docs/plugins.json`，重新生成 README，并以 Pull Request 形式提交人工合并。
+3. 下载 README、多语言 README 与源码抽样文件，做安全与隐私静态扫描；发现隐私泄露风险会标记并附说明。
+4. 从 `README.zh*.md` / `README.en*.md` 提取简洁简介，写入插件条目的 `description_i18n`。
+5. 官方插件优先；单次只处理有限数量，剩余仓库留给下一次定时任务继续。
+6. 将通过审查的插件写入 `docs/plugins.json`，重新生成 README，并以 Pull Request 形式提交人工合并。
 
 ### GitHub Pages 部署
 

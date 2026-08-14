@@ -5,6 +5,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { updateReadmeFiles } from './update-readme.mjs';
+import { collectLocalizedDescriptions } from './plugin-docs.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA_PATH = join(root, 'docs', 'plugins.json');
@@ -183,7 +184,7 @@ function usageFor(repo) {
   return `dsh plugin --profile web add github:${repo.full_name}`;
 }
 
-function toEntry(repo, review, compatibility) {
+function toEntry(repo, review, compatibility, descriptionI18n = {}) {
   return {
     id: repo.full_name,
     name: repo.name,
@@ -205,6 +206,9 @@ function toEntry(repo, review, compatibility) {
     official: compatibility.official,
     compatibility: compatibility.official ? 'official' : 'compatible',
     compatibility_reason: compatibility.reason,
+    ...(Object.keys(descriptionI18n).length
+      ? { description_i18n: descriptionI18n }
+      : {}),
     privacy_risk: review.privacyNotes.length > 0,
     privacy_notes: review.privacyNotes.map((n) => n.explanation),
     security_notes: review.findings
@@ -232,6 +236,14 @@ async function reviewRepo(repo) {
   if (!compatibility.compatible) {
     return { verdict: 'skip', compatibility, findings: [], privacyNotes: [], readme };
   }
+
+  const descriptionI18n = await collectLocalizedDescriptions({
+    api,
+    repo,
+    paths,
+    defaultReadme: readme,
+    defaultReadmePath: readmeData?.path || '',
+  });
 
   const codePaths = paths
     .filter((p) => /\.(?:js|mjs|cjs|ts|tsx|py|sh|bash|zsh|ps1|yml|yaml|json)$/i.test(p))
@@ -274,7 +286,14 @@ async function reviewRepo(repo) {
   let verdict = 'approved';
   if (hasSecurityCritical) verdict = 'blocked';
   else if (hasPrivacyCritical || hasSecurityWarning || hasPrivacyWarning) verdict = 'flagged';
-  return { verdict, compatibility, findings: securityFindings, privacyNotes, readme };
+  return {
+    verdict,
+    compatibility,
+    findings: securityFindings,
+    privacyNotes,
+    readme,
+    descriptionI18n,
+  };
 }
 
 function normalizeEntry(p) {
@@ -359,7 +378,10 @@ async function main() {
     );
 
     if (review.verdict === 'approved' || review.verdict === 'flagged') {
-      byId.set(repo.full_name, toEntry(repo, review, review.compatibility));
+      byId.set(
+        repo.full_name,
+        toEntry(repo, review, review.compatibility, review.descriptionI18n || {}),
+      );
     }
 
     if (!TOKEN) await sleep(700);
@@ -375,7 +397,7 @@ async function main() {
     );
 
   const output = {
-    schema_version: 2,
+    schema_version: 3,
     generated_at: NOW,
     plugins: approved,
   };

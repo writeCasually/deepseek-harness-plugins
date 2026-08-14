@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "generated_at": "2026-08-14T10:49:36.953Z",
   "plugins": [
     {
@@ -30,7 +30,11 @@
       "open_issues": 0,
       "watchers": 329,
       "pushed_at": "2026-08-13T13:00:21Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "DeepSeek Harness 核心运行时：Everything is a Plugin。",
+        "en": "DeepSeek Harness core runtime: Everything is a Plugin."
+      }
     },
     {
       "id": "zhu1090093659/dsh-web-ui",
@@ -60,7 +64,11 @@
       "open_issues": 38,
       "watchers": 3,
       "pushed_at": "2026-08-14T10:13:48Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "DSH Web UI 的插件与皮肤集合：任务看板、Git 图谱、右侧面板、移动端远程、鲸鱼娘宠物、实时令牌统计与皮肤中心。",
+        "en": "A collection of plugins and skins for the DSH Web UI: task board, Git graph, right panel, mobile remote, whale-girl pet, live token stats, and skin center."
+      }
     },
     {
       "id": "liustack/modlens",
@@ -90,7 +98,11 @@
       "open_issues": 3,
       "watchers": 0,
       "pushed_at": "2026-08-14T10:43:35Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "首个 DeepSeek Harness 视觉插件，给纯文本模型“装上眼睛”：直接粘贴图片即可得到结构化 JSON 证据（OCR、布局等）。",
+        "en": "The first DeepSeek Harness vision plugin that gives text-only models eyes: paste an image to get structured JSON evidence (OCR, layout, and more)."
+      }
     },
     {
       "id": "ccch1mneyyy/dsh-TUI",
@@ -120,7 +132,11 @@
       "open_issues": 48,
       "watchers": 0,
       "pushed_at": "2026-08-14T10:06:52Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "Claude Code 风格全屏终端 TUI 插件：像素鲸鱼顶栏、实时工作状态行、思考流式展开、双击 Esc 回滚、上下文进度条与 TPS 仪表。",
+        "en": "Claude Code-style full-screen terminal TUI plugin: pixel whale header, live work status line, streamed thinking, double-Esc rollback, context progress bar, and TPS dashboard."
+      }
     },
     {
       "id": "omdsh-dev/DSH-better-sidebar",
@@ -149,7 +165,11 @@
       "open_issues": 22,
       "watchers": 2,
       "pushed_at": "2026-08-14T10:29:35Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "侧边栏完整工作台：文件管理与预览、内嵌浏览器、真实终端、Git 面板、后台任务页，并支持第三方注册新 Tab。",
+        "en": "A complete sidebar workspace: file management and preview, embedded browser, real terminal, Git panel, background jobs page, and third-party tab registration."
+      }
     },
     {
       "id": "Anionex/dsh-vision-toolkit",
@@ -179,7 +199,11 @@
       "open_issues": 5,
       "watchers": 2,
       "pushed_at": "2026-08-14T10:44:34Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "把 agent-vision-toolkit 以原生 Profile Bundle 引入 DSH：带意图的图片问答、长截图 OCR、UI 还原、像素校验等视觉工具。",
+        "en": "Brings agent-vision-toolkit into DSH as a native Profile Bundle: intent-aware image Q&A, long screenshot OCR, UI restoration, pixel verification, and other vision tools."
+      }
     },
     {
       "id": "liustack/modsearch",
@@ -209,7 +233,11 @@
       "open_issues": 1,
       "watchers": 0,
       "pushed_at": "2026-08-14T09:25:24Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "给纯文本模型“接上互联网”的 Web 搜索插件：搜索网页或 X，返回结构化 JSON 证据（搜索、抓取、引用）。",
+        "en": "A web search plugin that connects text-only models to the internet: search the web or X and return structured JSON evidence (search, fetch, cite)."
+      }
     },
     {
       "id": "omdsh-dev/dsh-at-file",
@@ -238,7 +266,11 @@
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-14T07:27:34Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "Codex 风格 @file 提及：在输入框搜索工作区文件，回车附加，发送时把文件内容注入模型。",
+        "en": "Codex-style @file mentions: search workspace files from the input, press Enter to attach, and inject file contents when sending."
+      }
     },
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -267,7 +299,11 @@
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-13T16:13:51Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "从 DSH Web GUI 的侧边栏工作区菜单直接在当前目录打开 VS Code。",
+        "en": "Opens VS Code in the current directory directly from the sidebar workspace menu in the DSH Web GUI."
+      }
     },
     {
       "id": "omdsh-dev/dsh-notification",
@@ -296,7 +332,11 @@
       "open_issues": 1,
       "watchers": 0,
       "pushed_at": "2026-08-13T15:28:50Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "DeepSeek Harness 会话完成时发送桌面通知，支持按结果类型和关键词规则控制。",
+        "en": "Sends a desktop notification when a DeepSeek Harness session completes, with rules for result type and keywords."
+      }
     },
     {
       "id": "Anionex/dsh-turn-rewind",
@@ -325,7 +365,11 @@
       "open_issues": 0,
       "watchers": 1,
       "pushed_at": "2026-08-14T08:47:59Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "对话与代码状态回退插件：基于持久 Change Ledger，回滚对话和工作区状态。",
+        "en": "A conversation and code state rollback plugin based on a persistent Change Ledger."
+      }
     },
     {
       "id": "csyangwen/dsh-memory-evolve",
@@ -354,7 +398,11 @@
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-14T08:15:33Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "纯插件实现的跨会话长期记忆与后台自我进化：五轨记忆、git 分支感知、技能自我进化、四轨待办、会话广播与搜索。",
+        "en": "A plugin-only cross-session long-term memory and background self-evolution system: five-track memory, Git branch awareness, skill self-evolution, four-track tasks, session broadcast, and search."
+      }
     },
     {
       "id": "omdsh-dev/dsh-genui",
@@ -383,7 +431,11 @@
       "open_issues": 2,
       "watchers": 0,
       "pushed_at": "2026-08-14T08:01:36Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "在助手回复中渲染交互式 UI 组件：布局、图表、表单、测验、mermaid 等，经 dsh-ui fence 内联展示。",
+        "en": "Renders interactive UI components in assistant replies: layouts, charts, forms, quizzes, mermaid, and more, inlined through dsh-ui fences."
+      }
     },
     {
       "id": "Lum1104/dsh-browser",
@@ -413,7 +465,11 @@
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-14T04:27:30Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "Chrome 侧边栏扩展与桥接插件，让 DSH 直接操作你正在使用的浏览器，无需视觉能力。",
+        "en": "A Chrome sidebar extension and bridge plugin that lets DSH control the browser you are already using without vision capabilities."
+      }
     },
     {
       "id": "icetomoyo/dsh_workflow",
@@ -443,7 +499,11 @@
       "open_issues": 0,
       "watchers": 1,
       "pushed_at": "2026-08-13T23:53:40Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "把 DSH 的一次性多 Agent 调度升级为可生成、保存、治理、观察、恢复的 Workflow 层。",
+        "en": "Upgrades DSH's one-off multi-agent scheduling into a Workflow layer that can be generated, saved, governed, observed, and recovered."
+      }
     },
     {
       "id": "vlln/whale-girl",
@@ -472,7 +532,11 @@
       "open_issues": 2,
       "watchers": 0,
       "pushed_at": "2026-08-13T14:22:20Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "DSH Web GUI 桌面宠物插件（QQ 宠物形态）：右下角悬浮、可拖拽、投喂与玩耍的积累型伙伴。",
+        "en": "A DSH Web GUI desktop pet plugin in QQ-pet style: a floating, draggable companion in the lower-right corner that you can feed and play with."
+      }
     },
     {
       "id": "hust-open-atom-club/oh-dsh",
@@ -501,7 +565,11 @@
       "open_issues": 5,
       "watchers": 2,
       "pushed_at": "2026-08-14T09:25:03Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "一站式 DeepSeek Harness 社区发行版：桌面端、Web UI 与 TUI 三种形态统一体验，分层安装。",
+        "en": "An all-in-one DeepSeek Harness community distribution: unified desktop, Web UI, and TUI experiences with layered installation."
+      }
     },
     {
       "id": "Ruler4396/dsh-launcher",
@@ -531,7 +599,11 @@
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-14T10:48:08Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "DeepSeek Harness 的 Windows 轻量启动器：开机自启 + 独立小窗口，双击即用。",
+        "en": "A lightweight Windows launcher for DeepSeek Harness: starts at login, runs in a small standalone window, and opens with a double click."
+      }
     },
     {
       "id": "ZSeven-W/dsh-openpencil",
@@ -560,7 +632,11 @@
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-13T14:54:25Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "OpenPencil 设计预览与编辑插件：在会话中预览、检查并编辑真实 .op 文档。",
+        "en": "OpenPencil design preview and editing plugin: preview, inspect, and edit real .op documents in a session."
+      }
     },
     {
       "id": "Nagi-ovo/dsh-visualize",
@@ -590,7 +666,11 @@
       "open_issues": 1,
       "watchers": 0,
       "pushed_at": "2026-08-14T01:18:39Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "对话内生成式 UI 插件：模型把交互式 HTML 卡片直接画进会话流，用于模拟器、图表、对比面板与 UI mockup。",
+        "en": "In-conversation generative UI plugin: the model draws interactive HTML cards directly into the conversation flow for simulators, charts, comparison panels, and UI mockups."
+      }
     },
     {
       "id": "NanmiCoder/dsh-agent-teams",
@@ -620,7 +700,11 @@
       "open_issues": 3,
       "watchers": 0,
       "pushed_at": "2026-08-14T10:34:37Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "AgentTeams 多智能体团队插件：一句话驱动团队协作完成目标，并在 Web GUI 右上角实时查看团队活动面板。",
+        "en": "AgentTeams multi-agent teamwork plugin: one sentence drives a team to complete a goal, with a live team activity panel in the top-right of the Web GUI."
+      }
     },
     {
       "id": "0xsline/awesome-deepseek-harness",
@@ -650,7 +734,11 @@
       "open_issues": 0,
       "watchers": 2,
       "pushed_at": "2026-08-14T10:41:00Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "DeepSeek Harness 生态精选：来自 dsh-external/hub 与公开 dsh-plugin 话题的插件、工具与基础设施。",
+        "en": "A curated DeepSeek Harness ecosystem list: plugins, tools, and infrastructure from dsh-external/hub and public dsh-plugin topics."
+      }
     },
     {
       "id": "AdamPlatin123/awesome-dsh-plugins",
@@ -680,7 +768,11 @@
       "open_issues": 7,
       "watchers": 0,
       "pushed_at": "2026-08-14T10:36:46Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "前部索引仓库（Radar）：自动扫描发现所有 dsh 插件候选，经测试合格的移入后序精选目录仓库。",
+        "en": "A front-index repository (Radar): automatically scans and discovers DSH plugin candidates, then moves tested candidates into the downstream curated directory repositories."
+      }
     },
     {
       "id": "bruc3van/awesome-dsh-plugin",
@@ -710,7 +802,11 @@
       "open_issues": 2,
       "watchers": 0,
       "pushed_at": "2026-08-14T09:39:49Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "用 30 秒找到适合你的 DeepSeek Harness 插件：告诉你插件解决什么问题、适合谁、从哪里开始。",
+        "en": "Find the right DeepSeek Harness plugin in 30 seconds: tells you what problem a plugin solves, who it is for, and where to start."
+      }
     },
     {
       "id": "sandbaseai/sandbase-harness",
@@ -744,7 +840,10 @@
       "open_issues": 1,
       "watchers": 19,
       "pushed_at": "2026-08-14T07:42:03Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "en": "Open-source CMA-compatible agent runtime. Run multi-agent systems locally with any model (Ollama/vLLM/Claude/GPT), MCP tools, scenario templates, and a beautiful dashboard. One command start. Built for enterprise teams."
+      }
     },
     {
       "id": "awesome-dsh-plugin/awesome-dsh-plugin",
@@ -779,7 +878,11 @@
       "open_issues": 9,
       "watchers": 0,
       "pushed_at": "2026-08-14T10:38:58Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "A curated list of plugins for DeepSeek Harness (dsh) · DeepSeek Harness 插件精选列表",
+        "en": "A curated list of plugins for DeepSeek Harness (dsh)."
+      }
     },
     {
       "id": "Small-tailqwq/dsh-deep-whale",
@@ -815,7 +918,11 @@
       "open_issues": 10,
       "watchers": 1,
       "pushed_at": "2026-08-14T08:48:54Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "DSH Web 鲸鱼娘皮肤系列(深海女仆工坊 maid-atelier)——CC BY-NC-SA 4.0",
+        "en": "DSH Web whale-girl skin series (Maid Atelier) - CC BY-NC-SA 4.0."
+      }
     },
     {
       "id": "Nagi-ovo/dsh-ads",
@@ -852,7 +959,11 @@
       "open_issues": 1,
       "watchers": 0,
       "pushed_at": "2026-08-14T01:18:40Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "是兄弟就来蹬我！DSH Web UI 广告：2005 年中文站点风格的侧栏广告 / 对话内信息流 / 角落弹窗 + 一个真实热区比视觉小得多的关闭叉。素材全虚构，域名打码。",
+        "en": "A DSH Web UI ad plugin in the style of a 2005 Chinese site: sidebar ads, in-conversation feed ads, corner pop-ups, and a close button whose real hit area is much smaller than it appears. All materials are fictional and domains are masked."
+      }
     },
     {
       "id": "zhaoolee/notes",
@@ -890,7 +1001,11 @@
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-14T03:11:25Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "开源版锤子便签，复刻锤科美学，一键Docker私有化部署，支持skill调用，支持dsh plugin，支持多租户，一键生成公众号格式，支持导出便签为图片",
+        "en": "An open-source hammer-style notes app replicating the aesthetic of Smartisan Notes: one-command Docker private deployment, skill calls, dsh plugin support, multi-tenancy, one-command WeChat article formatting, and image export for notes."
+      }
     },
     {
       "id": "tt-a1i/archify",
@@ -943,7 +1058,10 @@
       "open_issues": 13,
       "watchers": 76,
       "pushed_at": "2026-08-14T09:31:46Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "en": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export."
+      }
     },
     {
       "id": "anywhere-labs/deepseek-harness-desktop",
@@ -976,7 +1094,10 @@
       "open_issues": 2,
       "watchers": 3,
       "pushed_at": "2026-08-14T01:16:53Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "基于官方 DeepSeek Harness 打造的 Electron 桌面端，深度适配 macOS 和 Windows，提供最佳的，开箱即用的体验。"
+      }
     },
     {
       "id": "mnemon-dev/mnemon",
@@ -1024,7 +1145,10 @@
       "open_issues": 11,
       "watchers": 2,
       "pushed_at": "2026-08-13T19:34:26Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "en": "LLM-supervised persistent memory for AI agents — graph-based recall, cross-session knowledge, single binary. Works with Claude Code, OpenClaw, and any CLI agent."
+      }
     },
     {
       "id": "Electricitysheep/dsh-handbook",
@@ -1068,7 +1192,10 @@
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-14T10:49:21Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "DeepSeek Harness (dsh) 从 0 到 1 深度手册：安装/插件开发/性能调优/实测案例/同模型多 Agent 实测对比（中文 + 英文 PDF）"
+      }
     },
     {
       "id": "huiliyi37/dsh-tianshu-tui",
@@ -1106,7 +1233,10 @@
       "open_issues": 6,
       "watchers": 0,
       "pushed_at": "2026-08-14T08:03:45Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "dsh-tianshu-tui — DeepSeek Harness terminal UI +harness workflow。是官方 DeepSeek Harness 上的交互式终端 UI 插件。渲染核心从本仓库自研的harness agent  Tianshu-Tui 演进而来，在官方的基础上增加了TDD、证据门、视觉图像模块等工作流。"
+      }
     },
     {
       "id": "wink-run/tokenbank",
@@ -1159,7 +1289,10 @@
       "open_issues": 3,
       "watchers": 1,
       "pushed_at": "2026-08-14T08:24:51Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "en": "Token Bank — the local LLM gateway that sits between your AI agents and every provider.  Know where tokens go · Spend less with smart routing to Ollama, Groq, GitHub Models · Earn by sharing idle quota on a community P2P network.  One-click onboarding for Cursor, Claude Code, Codex CLI, Gemini CLI — no agent changes. Full trace, seamless model swap"
+      }
     },
     {
       "id": "labring/sealos-skills",
@@ -1200,7 +1333,10 @@
       "open_issues": 6,
       "watchers": 1,
       "pushed_at": "2026-08-14T06:36:11Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "en": "AI agent skills for Sealos — deploy any project, provision databases, object storage & more with one command. Works with Claude Code, Gemini CLI, Codex."
+      }
     },
     {
       "id": "Nagi-ovo/dsh-find-plugins",
@@ -1234,7 +1370,8 @@
       "open_issues": 2,
       "watchers": 0,
       "pushed_at": "2026-08-14T01:42:38Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {}
     },
     {
       "id": "Jayden-X-L/forkprobe",
@@ -1278,7 +1415,10 @@
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-14T04:43:09Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "en": "Compare multiple skills on the same task and pick the winner."
+      }
     },
     {
       "id": "Lyn-77/ProMentor",
@@ -1313,7 +1453,10 @@
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-13T18:44:52Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "ProMentor 是一个 AI Coding Agent Skill。装上它，你的 AI 编程助手立刻化身为导师——扫描项目架构、生成阶梯式 Chapter、带你手写核心逻辑、自动判题、AI Code Review。"
+      }
     },
     {
       "id": "Alex-Yanggg/awesome-DSH-plugin",
@@ -1349,7 +1492,10 @@
       "open_issues": 14,
       "watchers": 0,
       "pushed_at": "2026-08-14T03:28:17Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "en": "A meticulously curated list of useful plugins, extensions, tools and development resources built for DSH, covering productivity enhancement, functional expansion, debugging utilities and custom development modules."
+      }
     },
     {
       "id": "btspoony/mstar-harness",
@@ -1390,7 +1536,10 @@
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-14T08:21:17Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "en": "A Skill-driven Harness/Loop Engineering Workflow Agent Plugin"
+      }
     },
     {
       "id": "LaplaceYoung/oh-my-dsh",
@@ -1425,7 +1574,10 @@
       "open_issues": 0,
       "watchers": 1,
       "pushed_at": "2026-08-13T13:04:56Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "oh-my-dsh：面向 DSH (DeepSeek Harness) 的插件生态——700+ 插件，只通过扩展接缝注册，不修改 agent-loop 骨架"
+      }
     },
     {
       "id": "ChisaAlter/Deepseek-Harness-Desktop",
@@ -1462,7 +1614,10 @@
       "open_issues": 2,
       "watchers": 0,
       "pushed_at": "2026-08-14T07:37:44Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "DSH桌面端，支持主题和背景图等多种个性化配置。Electron desktop shell for DeepSeek Harness web UI"
+      }
     },
     {
       "id": "hikariming/dshfind",
@@ -1499,7 +1654,10 @@
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-14T09:21:48Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "DSH (DeepSeek Harness) 原理学习、插件市场与最佳实践 · Learn DSH principles, plugin marketplace & best practices"
+      }
     },
     {
       "id": "omdsh-dev/dsh-annotation",
@@ -1533,7 +1691,10 @@
       "open_issues": 1,
       "watchers": 0,
       "pushed_at": "2026-08-13T15:09:15Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "DSH Web 选中批注插件：选文字→批注→回车随消息发送；气泡隐藏批注块（零闪烁）；回复按 Annotation N 逐条对照（可悬浮芯片）。官方 bundle，零核心改动"
+      }
     },
     {
       "id": "vlln/plugin-registry",
@@ -1574,7 +1735,10 @@
       "open_issues": 6,
       "watchers": 0,
       "pushed_at": "2026-08-13T14:22:05Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "DSH 插件生态基建：薄控制台（浏览器面板管理官方 repository 插件，0 patch）+ make-dsh-plugin skill 官方插件开发引导"
+      }
     },
     {
       "id": "alingalingling/ui-status-label",
@@ -1606,7 +1770,10 @@
       "open_issues": 1,
       "watchers": 0,
       "pushed_at": "2026-08-13T16:17:36Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "把你鲸鱼娘思考时的 deep diving 自定义成任意你想要的样子"
+      }
     },
     {
       "id": "multica-ai/dsh-multica-runtime",
@@ -1641,7 +1808,10 @@
       "open_issues": 1,
       "watchers": 1,
       "pushed_at": "2026-08-14T09:45:21Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "en": "Support dsh runtime on Multica."
+      }
     },
     {
       "id": "Dominic789654/awesome-deepseek-harness",
@@ -1691,7 +1861,10 @@
       "open_issues": 2,
       "watchers": 0,
       "pushed_at": "2026-08-14T10:39:57Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "en": "A curated list of plugins, skills, MCP servers, patch/profile layers, orchestrators & UIs for DeepSeek Harness (DSH). Visualization · PPT · Coding · Agents · Loops (auto-research) and more. #dsh"
+      }
     },
     {
       "id": "pingfanfan/hello-dsh",
@@ -1729,7 +1902,10 @@
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-14T00:14:32Z",
-      "archived": false
+      "archived": false,
+      "description_i18n": {
+        "zh": "从零开始，看懂 DeepSeek Harness 的「万物皆可插件」— 零基础插件开发教程（含 22 个中文技能实例）| Zero-to-plugin tutorial for DeepSeek Harness"
+      }
     }
   ]
 }

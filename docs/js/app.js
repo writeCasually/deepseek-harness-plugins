@@ -1,3 +1,5 @@
+import { localizedPlugin } from "./localization.mjs";
+
 const CATEGORY_LABELS = {
   zh: {
     core: "核心",
@@ -159,22 +161,6 @@ function categoryLabel(category) {
   return CATEGORY_LABELS[state.lang][category] || CATEGORY_LABELS[state.lang].plugin;
 }
 
-function localizedPlugin(plugin) {
-  const translation = state.translations.plugins?.[plugin.id] || {};
-  return {
-    ...plugin,
-    name: translation.name || plugin.name,
-    description: translation.description || plugin.description,
-    usage: translation.usage || plugin.usage,
-    privacy_notes: Array.isArray(translation.privacy_notes)
-      ? translation.privacy_notes
-      : plugin.privacy_notes,
-    security_notes: Array.isArray(translation.security_notes)
-      ? translation.security_notes
-      : plugin.security_notes,
-  };
-}
-
 function matches(plugin) {
   if (state.filter === "official" && !plugin.official) return false;
   if (state.filter !== "all" && state.filter !== "official" && plugin.category !== state.filter) {
@@ -182,10 +168,11 @@ function matches(plugin) {
   }
   if (!state.query) return true;
   const q = state.query.toLowerCase();
+  const localized = localizedPlugin(plugin, state.lang, state.translations);
   const haystack = [
-    plugin.name,
-    plugin.description,
-    plugin.usage,
+    localized.name,
+    localized.description,
+    localized.usage,
     plugin.id,
     (plugin.topics || []).join(" "),
   ]
@@ -262,7 +249,7 @@ function render() {
   if (!state.loaded) return;
 
   const list = state.plugins
-    .map(localizedPlugin)
+    .map((plugin) => localizedPlugin(plugin, state.lang, state.translations))
     .filter(matches)
     .sort((a, b) => {
       if (Boolean(a.official) !== Boolean(b.official)) return a.official ? -1 : 1;

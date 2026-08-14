@@ -4,6 +4,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join } from 'node:path';
+import { localizedPlugin } from '../docs/js/localization.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA_PATH = join(root, 'docs', 'plugins.json');
@@ -26,24 +27,6 @@ function sortPlugins(plugins) {
     if (Boolean(a.official) !== Boolean(b.official)) return a.official ? -1 : 1;
     return (b.stars || 0) - (a.stars || 0);
   });
-}
-
-function localizedPlugin(plugin, lang, translations) {
-  const translation = translations.plugins?.[plugin.id] || {};
-  if (lang !== 'en') return plugin;
-
-  return {
-    ...plugin,
-    name: translation.name || plugin.name,
-    description: translation.description || plugin.description,
-    usage: translation.usage || plugin.usage,
-    privacy_notes: Array.isArray(translation.privacy_notes)
-      ? translation.privacy_notes
-      : plugin.privacy_notes,
-    security_notes: Array.isArray(translation.security_notes)
-      ? translation.security_notes
-      : plugin.security_notes,
-  };
 }
 
 // 转义可能触发主动渲染的 markdown 字符（链接 / HTML / 代码块），

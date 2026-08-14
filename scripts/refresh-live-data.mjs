@@ -6,6 +6,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { updateReadmeFiles } from './update-readme.mjs';
+import { collectLocalizedDescriptions } from './plugin-docs.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA_PATH = join(root, 'docs', 'plugins.json');
@@ -81,6 +82,7 @@ async function main() {
   let updated = 0;
   let failed = 0;
   let removed = 0;
+  let descriptionsUpdated = 0;
   let visited = 0;
   const archivedIds = new Set();
   for (const entry of plugins) {
@@ -97,7 +99,22 @@ async function main() {
       continue;
     }
 
-    if (applyLiveData(entry, repo)) {
+    let changed = applyLiveData(entry, repo);
+
+    if (!repo.archived && !Object.hasOwn(entry, 'description_i18n')) {
+      const descriptionI18n = await collectLocalizedDescriptions({
+        api,
+        repo,
+        existing: {},
+      });
+      entry.description_i18n = descriptionI18n;
+      if (Object.keys(descriptionI18n).length) {
+        descriptionsUpdated += 1;
+        changed = true;
+      }
+    }
+
+    if (changed) {
       updated += 1;
       console.log(`  已更新 ${entry.id}（stars=${entry.stars}, forks=${entry.forks}）`);
     }
@@ -123,6 +140,7 @@ async function main() {
       updateReadmeFiles();
     }
     const parts = [`刷新 ${updated}`, `移除 ${removed} 个归档`];
+    if (descriptionsUpdated) parts.push(`补充 ${descriptionsUpdated} 个多语言简介`);
     if (failed) parts.push(`${failed} 个获取失败`);
     console.log(`完成：${parts.join('，')}（共 ${plugins.length} 个插件已检查）。`);
   } else {

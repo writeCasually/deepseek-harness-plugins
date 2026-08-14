@@ -24,6 +24,9 @@ Main capabilities:
 - Web index page: search, filter by category and official status, and view each plugin name,
   description, usage, and project link.
 - Single data source: `docs/plugins.json` drives both the website and the README plugin list.
+- Multilingual descriptions: when a plugin repository has concise `README.zh*.md` /
+  `README.en*.md` files, the website displays the matching description with Chinese preferred and
+  English as fallback.
 - DSH compatibility check: plugins are included only when they can be confirmed to run in
   DeepSeek Harness.
 - Security and privacy review: non-official plugins are statically scanned for privacy risks and
@@ -134,11 +137,13 @@ steps:
 1. Search GitHub for `topic:dsh-plugin`.
 2. Check repositories for DSH plugin markers such as `cordis`, `.dsh-plugin`, and `dsh.bundle`
    to confirm compatibility with DeepSeek Harness.
-3. Download README files and sampled source files, then perform a static security and privacy
-   review; privacy risks are annotated when found.
-4. Keep official plugins first and process a limited number of repositories per run so the rest
+3. Download README files, multilingual README files, and sampled source files, then perform a
+   static security and privacy review; privacy risks are annotated when found.
+4. Extract concise descriptions from `README.zh*.md` / `README.en*.md` into each plugin's
+   `description_i18n` field.
+5. Keep official plugins first and process a limited number of repositories per run so the rest
    are handled by the next scheduled run.
-5. Write approved plugins to `docs/plugins.json`, regenerate the README plugin lists, and submit
+6. Write approved plugins to `docs/plugins.json`, regenerate the README plugin lists, and submit
    the result as a pull request for human merge.
 
 ### GitHub Pages Deployment
