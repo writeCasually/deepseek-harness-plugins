@@ -10,9 +10,7 @@ index.
 
 Directory page (GitHub Pages):
 
-```text
-https://writeCasually.github.io/deepseek-harness-plugins/
-```
+[https://writeCasually.github.io/deepseek-harness-plugins/](https://writeCasually.github.io/deepseek-harness-plugins/)
 
 ## About
 
