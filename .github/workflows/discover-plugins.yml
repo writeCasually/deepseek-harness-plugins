@@ -58,12 +58,5 @@ jobs:
           if [ -n "$existing" ]; then
             gh pr edit "$existing" --title "$title" --body "$body"
           else
-            if ! gh pr create --base main --head "$branch" --title "$title" --body "$body" 2>pr-create.log; then
-              if grep -q "GitHub Actions is not permitted to create or approve pull requests" pr-create.log; then
-                echo "::error::创建 PR 被仓库设置拒绝。请到 Settings → Actions → General → Workflow permissions 勾选 “Allow GitHub Actions to create and approve pull requests”。"
-              else
-                cat pr-create.log
-              fi
-              exit 1
-            fi
+            gh pr create --base main --head "$branch" --title "$title" --body "$body"
           fi

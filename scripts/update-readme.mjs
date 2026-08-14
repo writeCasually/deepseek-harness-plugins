@@ -17,12 +17,8 @@ const TARGETS = [
   { path: join(root, 'README.en.md'), lang: 'en' },
 ];
 
-function readJson(path, fallback) {
-  try {
-    return JSON.parse(readFileSync(path, 'utf8'));
-  } catch {
-    return fallback;
-  }
+function readJson(path) {
+  return JSON.parse(readFileSync(path, 'utf8'));
 }
 
 function sortPlugins(plugins) {
@@ -91,8 +87,14 @@ function buildTable(plugins, lang, translations) {
 }
 
 export function updateReadmeFiles() {
-  const data = readJson(DATA_PATH, { plugins: [] });
-  const translations = readJson(TRANSLATION_PATH, { plugins: {} });
+  const data = readJson(DATA_PATH);
+  const translations = (() => {
+    try {
+      return readJson(TRANSLATION_PATH);
+    } catch {
+      return { plugins: {} };
+    }
+  })();
   const plugins = sortPlugins(data.plugins || []);
 
   for (const target of TARGETS) {

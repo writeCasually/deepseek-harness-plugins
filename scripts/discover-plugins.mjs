@@ -284,13 +284,6 @@ function normalizeEntry(p) {
   };
 }
 
-function sortPlugins(list) {
-  return [...list].sort((a, b) => {
-    if (Boolean(a.official) !== Boolean(b.official)) return a.official ? -1 : 1;
-    return (b.stars || 0) - (a.stars || 0);
-  });
-}
-
 async function main() {
   let existing = { plugins: [] };
   try {

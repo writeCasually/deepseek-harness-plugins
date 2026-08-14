@@ -60,7 +60,7 @@ const UI = {
     distribution: "Distributions",
     core: "Core",
     empty: "No matching plugins found.",
-    stats: (n) => `${n} plugins`,
+    stats: (n) => (n === 1 ? "1 plugin" : `${n} plugins`),
     updated: (date) => `Data updated: ${date}`,
     loadError: "Failed to load plugin data. Please try again later.",
     privacy: "Privacy risk",
@@ -95,8 +95,16 @@ const updated = document.querySelector("#updated");
 const searchInput = document.querySelector("#search");
 const metaDescription = document.querySelector('meta[name="description"]');
 
+function readStoredLanguage() {
+  try {
+    return localStorage.getItem("dsh-language");
+  } catch {
+    return null;
+  }
+}
+
 function detectLanguage() {
-  const saved = localStorage.getItem("dsh-language");
+  const saved = readStoredLanguage();
   if (saved === "zh" || saved === "en") return saved;
   return navigator.language?.toLowerCase().startsWith("zh") ? "zh" : "en";
 }
@@ -260,7 +268,11 @@ function updateLanguageButtons() {
 
 function setLanguage(lang) {
   state.lang = lang;
-  localStorage.setItem("dsh-language", lang);
+  try {
+    localStorage.setItem("dsh-language", lang);
+  } catch {
+    // 忽略无法写入 localStorage 的隐私/安全限制。
+  }
   applyLanguageText(lang);
   updateLanguageButtons();
   render();
