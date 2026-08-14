@@ -62,8 +62,17 @@ jobs:
           existing="$(gh pr list --head "$branch" --json number --jq '.[0].number')"
           if [ -n "$existing" ]; then
             gh pr edit "$existing" --title "$title" --body "$body"
+            pr_number="$existing"
           else
-            gh pr create --base main --head "$branch" --title "$title" --body "$body"
+            pr_number="$(gh pr create --base main --head "$branch" --title "$title" --body "$body" --json number --jq '.number')"
           fi
+
+          # 分支保护要求通过 PR 提交(0 审批、无必需检查),bot 凭 GITHUB_TOKEN 即可自合。
+          # 仅此 workflow 自动合并,discover-plugins 的新插件 PR 仍走人工复核。
+          gh pr merge "$pr_number" --squash --delete-branch
+
+          # GITHUB_TOKEN 的 push 不会触发其它 workflow 的 push 事件,
+          # 故主动 dispatch Pages 部署使刷新数据上线。
+          gh workflow run deploy-pages.yml
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
