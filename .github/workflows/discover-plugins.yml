@@ -1,0 +1,62 @@
+name: Discover dsh-plugins
+
+on:
+  schedule:
+    # 每天 11:17（Asia/Shanghai），即 UTC 03:17。
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: discover-plugins
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Discover and review plugins
+        run: node scripts/discover-plugins.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Open pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "没有数据变更，跳过 PR。"
+            exit 0
+          fi
+
+          date="$(date -u +%F)"
+          branch="discover/${date}"
+          title="更新 dsh-plugin 插件汇总 (${date})"
+          body="自动检索 GitHub \`dsh-plugin\` 话题并完成静态安全审查后生成，请人工复核后合并。"
+
+          git checkout -b "$branch"
+          git add docs/plugins.json data/review-log.json README.md
+          git commit -m "chore: 更新 dsh-plugin 插件汇总 (${date})"
+          git push --set-upstream origin "$branch"
+
+          existing="$(gh pr list --head "$branch" --json number --jq '.[0].number')"
+          if [ -n "$existing" ]; then
+            gh pr edit "$existing" --title "$title" --body "$body"
+          else
+            gh pr create --base main --head "$branch" --title "$title" --body "$body"
+          fi
