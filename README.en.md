@@ -140,7 +140,7 @@ steps:
 3. Download README files, multilingual README files, and sampled source files, then perform a
    static security and privacy review; privacy risks are annotated when found.
 4. Extract concise descriptions from `README.zh*.md` / `README.en*.md` into each plugin's
-   `description_i18n` field.
+   `description_i18n` field; existing entries are backfilled once for any missing languages.
 5. Keep official plugins first and process a limited number of repositories per run so the rest
    are handled by the next scheduled run.
 6. Write approved plugins to `docs/plugins.json`, regenerate the README plugin lists, and submit

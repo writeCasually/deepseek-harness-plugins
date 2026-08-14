@@ -26,6 +26,7 @@ for (const plugin of data.plugins || []) {
   }
 
   plugin.description_i18n = descriptions;
+  // 不写入 checked_at，让 refresh 对缺失语言再补采一次仓库 README。
 }
 
 data.schema_version = 3;

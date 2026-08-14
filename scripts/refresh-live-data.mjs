@@ -6,7 +6,11 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { updateReadmeFiles } from './update-readme.mjs';
-import { collectLocalizedDescriptions } from './plugin-docs.mjs';
+import {
+  applyLocalizedDescriptionCheck,
+  collectLocalizedDescriptions,
+  needsLocalizedDescriptionCheck,
+} from './plugin-docs.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA_PATH = join(root, 'docs', 'plugins.json');
@@ -101,17 +105,21 @@ async function main() {
 
     let changed = applyLiveData(entry, repo);
 
-    if (!repo.archived && !Object.hasOwn(entry, 'description_i18n')) {
+    if (!repo.archived && needsLocalizedDescriptionCheck(entry)) {
       const descriptionI18n = await collectLocalizedDescriptions({
         api,
         repo,
-        existing: {},
+        existing: entry.description_i18n || {},
       });
-      entry.description_i18n = descriptionI18n;
-      if (Object.keys(descriptionI18n).length) {
+      const addedLanguages = applyLocalizedDescriptionCheck(
+        entry,
+        descriptionI18n,
+        NOW,
+      );
+      if (addedLanguages > 0) {
         descriptionsUpdated += 1;
-        changed = true;
       }
+      changed = true;
     }
 
     if (changed) {

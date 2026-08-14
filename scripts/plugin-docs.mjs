@@ -32,7 +32,7 @@ function cleanInline(text) {
     .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
     .replace(/<[^>]+>/g, ' ')
     .replace(/`[^`]*`/g, (code) => code.slice(1, -1))
-    .replace(/[*_~]{1,3}/g, '')
+    .replace(/(?<![A-Za-z0-9])[*_~]{1,3}([\s\S]*?)[*_~]{1,3}(?![A-Za-z0-9])/g, '$1')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -62,6 +62,19 @@ export function detectDocumentLanguage(text) {
   if (han > Math.max(latin * 0.08, 3)) return 'zh';
   if (latin > han * 0.08) return 'en';
   return '';
+}
+
+export function needsLocalizedDescriptionCheck(entry = {}) {
+  if (entry.description_i18n_checked_at) return false;
+  const descriptions = entry.description_i18n || {};
+  return !descriptions.zh || !descriptions.en;
+}
+
+export function applyLocalizedDescriptionCheck(entry, descriptions, checkedAt) {
+  const previousCount = Object.keys(entry.description_i18n || {}).length;
+  entry.description_i18n = descriptions;
+  entry.description_i18n_checked_at = checkedAt;
+  return Object.keys(descriptions).length - previousCount;
 }
 
 export function extractBriefDescription(markdown) {
@@ -184,16 +197,10 @@ export async function collectLocalizedDescriptions({
 
   const descriptions = { ...(existing || {}) };
   const candidates = docCandidates(treePaths);
-  const defaultLanguage = detectDocumentLanguage(readmeContent);
-  const defaultBrief = extractBriefDescription(readmeContent);
-
-  if (defaultBrief && defaultLanguage && !descriptions[defaultLanguage]) {
-    descriptions[defaultLanguage] = defaultBrief;
-  }
 
   for (const language of ['zh', 'en']) {
     if (descriptions[language]) continue;
-    const exactPath = candidates[language].find((path) => path !== readmePath);
+    const exactPath = candidates[language][0];
     if (!exactPath) continue;
 
     const content = exactPath === readmePath
@@ -201,6 +208,12 @@ export async function collectLocalizedDescriptions({
       : await fetchDoc(api, repo, exactPath);
     const brief = extractBriefDescription(content);
     if (brief) descriptions[language] = brief;
+  }
+
+  const defaultLanguage = detectDocumentLanguage(readmeContent);
+  const defaultBrief = extractBriefDescription(readmeContent);
+  if (defaultBrief && defaultLanguage && !descriptions[defaultLanguage]) {
+    descriptions[defaultLanguage] = defaultBrief;
   }
 
   const normalized = {};

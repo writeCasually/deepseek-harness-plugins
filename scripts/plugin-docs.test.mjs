@@ -1,10 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  applyLocalizedDescriptionCheck,
   collectLocalizedDescriptions,
   detectDocumentLanguage,
   docCandidates,
   extractBriefDescription,
+  needsLocalizedDescriptionCheck,
 } from './plugin-docs.mjs';
 import { localizedPlugin } from '../docs/js/localization.mjs';
 
@@ -58,6 +60,19 @@ The first DeepSeek Harness vision plugin.
   assert.equal(brief, 'The first DeepSeek Harness vision plugin.');
 });
 
+test('preserves snake-case identifiers while removing Markdown emphasis', () => {
+  const brief = extractBriefDescription(`
+# Example
+
+Uses **dsh_workflow** and \`README_en.md\` to improve _plugin_memory_.
+`);
+
+  assert.equal(
+    brief,
+    'Uses dsh_workflow and README_en.md to improve plugin_memory.',
+  );
+});
+
 test('collects localized README descriptions with API fallback', async () => {
   const calls = [];
   const api = async (path) => {
@@ -94,6 +109,47 @@ test('collects localized README descriptions with API fallback', async () => {
   assert.equal(calls.filter((path) => path.endsWith('/contents/README.zh-CN.md')).length, 1);
 });
 
+test('prefers explicit localized READMEs over inferred default README language', async () => {
+  const api = async (path) => {
+    if (path.includes('/readme')) {
+      return {
+        path: 'README.md',
+        content: Buffer.from(
+          '# 插件\n这是一个中英文混合的默认说明。English default text is also present.',
+        ).toString('base64'),
+      };
+    }
+    if (path.endsWith('/contents/README.zh-CN.md')) {
+      return {
+        content: Buffer.from('# 插件\n显式中文简介。').toString('base64'),
+      };
+    }
+    if (path.endsWith('/contents/README.en.md')) {
+      return {
+        content: Buffer.from('# Plugin\nExplicit English description.').toString('base64'),
+      };
+    }
+    if (path.includes('/git/trees/')) {
+      return { tree: [
+        { type: 'blob', path: 'README.md' },
+        { type: 'blob', path: 'README.zh-CN.md' },
+        { type: 'blob', path: 'README.en.md' },
+      ] };
+    }
+    return null;
+  };
+
+  const descriptions = await collectLocalizedDescriptions({
+    api,
+    repo: { full_name: 'owner/plugin', default_branch: 'main' },
+  });
+
+  assert.deepEqual(descriptions, {
+    zh: '显式中文简介。',
+    en: 'Explicit English description.',
+  });
+});
+
 test('keeps existing localized descriptions without fetching them again', async () => {
   const descriptions = await collectLocalizedDescriptions({
     api: async () => {
@@ -107,6 +163,49 @@ test('keeps existing localized descriptions without fetching them again', async 
   });
 
   assert.deepEqual(descriptions, { en: 'Existing description.' });
+});
+
+test('decides when localized description data still needs a one-time check', () => {
+  assert.equal(needsLocalizedDescriptionCheck({ description_i18n: {} }), true);
+  assert.equal(
+    needsLocalizedDescriptionCheck({ description_i18n: { zh: '中文简介' } }),
+    true,
+  );
+  assert.equal(
+    needsLocalizedDescriptionCheck({
+      description_i18n: { zh: '中文简介', en: 'English description' },
+    }),
+    false,
+  );
+  assert.equal(
+    needsLocalizedDescriptionCheck({
+      description_i18n: { zh: '中文简介' },
+      description_i18n_checked_at: '2026-08-14T00:00:00Z',
+    }),
+    false,
+  );
+});
+
+test('persists the one-time description check even when no language was found', () => {
+  const entry = { description_i18n: {} };
+  const partialEntry = { description_i18n: { zh: '中文简介' } };
+
+  assert.equal(
+    applyLocalizedDescriptionCheck(entry, {}, '2026-08-14T00:00:00Z'),
+    0,
+  );
+  assert.deepEqual(entry, {
+    description_i18n: {},
+    description_i18n_checked_at: '2026-08-14T00:00:00Z',
+  });
+  assert.equal(
+    applyLocalizedDescriptionCheck(
+      partialEntry,
+      { zh: '中文简介', en: 'English description' },
+      '2026-08-14T00:00:00Z',
+    ),
+    1,
+  );
 });
 
 test('selects the description for the active site language with Chinese-first fallback', () => {
