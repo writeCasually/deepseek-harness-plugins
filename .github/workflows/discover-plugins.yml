@@ -49,10 +49,19 @@ jobs:
           title="更新 dsh-plugin 插件汇总 (${date})"
           body="自动检索 GitHub \`dsh-plugin\` 话题并完成静态安全审查后生成，请人工复核后合并。"
 
-          git checkout -b "$branch"
-          git add docs/plugins.json data/review-log.json README.md README.en.md
+          git checkout -B "$branch"
+          git add docs/plugins.json data/review-log.json README.md
+          if [ -f README.en.md ]; then
+            git add README.en.md
+          fi
           git commit -m "chore: 更新 dsh-plugin 插件汇总 (${date})"
-          git push --set-upstream origin "$branch"
+
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+            git fetch origin "$branch"
+            git push --force-with-lease origin "$branch"
+          else
+            git push --set-upstream origin "$branch"
+          fi
 
           existing="$(gh pr list --head "$branch" --json number --jq '.[0].number')"
           if [ -n "$existing" ]; then
