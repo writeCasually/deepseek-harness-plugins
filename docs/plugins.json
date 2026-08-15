@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-08-15T01:42:50.463Z",
+  "generated_at": "2026-08-15T02:59:08.644Z",
   "plugins": [
     {
       "id": "deepseek-ai/deepseek-harness",
@@ -9,7 +9,7 @@
       "usage": "npx @deepseek-ai/dsh 启动核心；插件经 dsh plugin --profile web add <源> 挂载",
       "repo_url": "https://github.com/deepseek-ai/deepseek-harness",
       "homepage": "https://github.com/deepseek-ai/deepseek-harness",
-      "stars": 96657,
+      "stars": 98174,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -26,9 +26,9 @@
       "privacy_risk": false,
       "privacy_notes": [],
       "security_notes": [],
-      "forks": 8995,
+      "forks": 9187,
       "open_issues": 0,
-      "watchers": 379,
+      "watchers": 388,
       "pushed_at": "2026-08-13T13:00:21Z",
       "archived": false,
       "description_i18n": {
@@ -43,7 +43,7 @@
       "usage": "dsh plugin --profile web add github:zhu1090093659/dsh-web-ui 后重启 Web",
       "repo_url": "https://github.com/zhu1090093659/dsh-web-ui",
       "homepage": "https://github.com/zhu1090093659/dsh-web-ui",
-      "stars": 1970,
+      "stars": 2020,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -60,10 +60,10 @@
       "privacy_risk": false,
       "privacy_notes": [],
       "security_notes": [],
-      "forks": 97,
-      "open_issues": 29,
+      "forks": 99,
+      "open_issues": 26,
       "watchers": 3,
-      "pushed_at": "2026-08-15T00:58:33Z",
+      "pushed_at": "2026-08-15T02:56:30Z",
       "archived": false,
       "description_i18n": {
         "zh": "DSH Web UI 的插件与皮肤集合：任务看板、Git 图谱、右侧面板、移动端远程、鲸鱼娘宠物、实时令牌统计与皮肤中心。",
@@ -77,7 +77,7 @@
       "usage": "dsh plugin add @liustack/modlens（npm）；粘贴图片即可让纯文本模型“看见”",
       "repo_url": "https://github.com/liustack/modlens",
       "homepage": "https://github.com/liustack/modlens",
-      "stars": 1320,
+      "stars": 1353,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -95,7 +95,7 @@
       "privacy_notes": [],
       "security_notes": [],
       "forks": 39,
-      "open_issues": 3,
+      "open_issues": 4,
       "watchers": 1,
       "pushed_at": "2026-08-14T20:36:33Z",
       "archived": false,
@@ -111,7 +111,7 @@
       "usage": "dsh plugin --profile tui add github:ccch1mneyyy/dsh-TUI（npm 一键安装）",
       "repo_url": "https://github.com/ccch1mneyyy/dsh-TUI",
       "homepage": "https://github.com/ccch1mneyyy/dsh-TUI",
-      "stars": 910,
+      "stars": 935,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -129,9 +129,9 @@
       "privacy_notes": [],
       "security_notes": [],
       "forks": 41,
-      "open_issues": 47,
+      "open_issues": 48,
       "watchers": 0,
-      "pushed_at": "2026-08-14T21:17:03Z",
+      "pushed_at": "2026-08-15T02:56:57Z",
       "archived": false,
       "description_i18n": {
         "zh": "Claude Code 风格全屏终端 TUI 插件：像素鲸鱼顶栏、实时工作状态行、思考流式展开、双击 Esc 回滚、上下文进度条与 TPS 仪表。",
@@ -145,7 +145,7 @@
       "usage": "dsh plugin --profile web add github:omdsh-dev/DSH-better-sidebar",
       "repo_url": "https://github.com/omdsh-dev/DSH-better-sidebar",
       "homepage": "https://github.com/omdsh-dev/DSH-better-sidebar",
-      "stars": 792,
+      "stars": 815,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -161,10 +161,10 @@
       "privacy_risk": false,
       "privacy_notes": [],
       "security_notes": [],
-      "forks": 45,
-      "open_issues": 40,
+      "forks": 46,
+      "open_issues": 41,
       "watchers": 2,
-      "pushed_at": "2026-08-14T17:55:39Z",
+      "pushed_at": "2026-08-15T02:47:32Z",
       "archived": false,
       "description_i18n": {
         "zh": "侧边栏完整工作台：文件管理与预览、内嵌浏览器、真实终端、Git 面板、后台任务页，并支持第三方注册新 Tab。",
@@ -178,7 +178,7 @@
       "usage": "dsh plugin add github:Anionex/dsh-vision-toolkit",
       "repo_url": "https://github.com/Anionex/dsh-vision-toolkit",
       "homepage": "https://agent-vision.anionex.me",
-      "stars": 337,
+      "stars": 345,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -246,7 +246,7 @@
       "usage": "dsh plugin --profile web add https://github.com/omdsh-dev/dsh-at-file/archive/refs/heads/main.tar.gz",
       "repo_url": "https://github.com/omdsh-dev/dsh-at-file",
       "homepage": "https://github.com/omdsh-dev/dsh-at-file",
-      "stars": 139,
+      "stars": 143,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
@@ -345,7 +345,7 @@
       "usage": "dsh plugin add github:Anionex/dsh-turn-rewind",
       "repo_url": "https://github.com/Anionex/dsh-turn-rewind",
       "homepage": "https://github.com/Anionex/dsh-turn-rewind",
-      "stars": 42,
+      "stars": 43,
       "language": "JavaScript",
       "license": "BSD-3-Clause",
       "topics": [
@@ -378,7 +378,7 @@
       "usage": "dsh plugin add github:csyangwen/dsh-memory-evolve",
       "repo_url": "https://github.com/csyangwen/dsh-memory-evolve",
       "homepage": "https://github.com/csyangwen/dsh-memory-evolve",
-      "stars": 59,
+      "stars": 61,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
@@ -411,7 +411,7 @@
       "usage": "dsh plugin --profile web add github:omdsh-dev/dsh-genui",
       "repo_url": "https://github.com/omdsh-dev/dsh-genui",
       "homepage": "https://github.com/omdsh-dev/dsh-genui",
-      "stars": 76,
+      "stars": 79,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -444,7 +444,7 @@
       "usage": "运行 scripts/install.sh 安装 Chrome MV3 扩展与插件桥接",
       "repo_url": "https://github.com/Lum1104/dsh-browser",
       "homepage": "https://github.com/Lum1104/dsh-browser",
-      "stars": 96,
+      "stars": 98,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -462,9 +462,9 @@
       "privacy_notes": [],
       "security_notes": [],
       "forks": 4,
-      "open_issues": 2,
+      "open_issues": 1,
       "watchers": 1,
-      "pushed_at": "2026-08-15T01:36:14Z",
+      "pushed_at": "2026-08-15T02:53:53Z",
       "archived": false,
       "description_i18n": {
         "zh": "Chrome 侧边栏扩展与桥接插件，让 DSH 直接操作你正在使用的浏览器，无需视觉能力。",
@@ -512,7 +512,7 @@
       "usage": "dsh plugin --profile web add \"github:vlln/whale-girl#main\"",
       "repo_url": "https://github.com/vlln/whale-girl",
       "homepage": "https://github.com/vlln/whale-girl",
-      "stars": 130,
+      "stars": 132,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
@@ -545,7 +545,7 @@
       "usage": "按 README 的桌面/Web/TUI 安装脚本一键安装发行版",
       "repo_url": "https://github.com/hust-open-atom-club/oh-dsh",
       "homepage": "https://github.com/hust-open-atom-club/oh-dsh",
-      "stars": 168,
+      "stars": 171,
       "language": "TypeScript",
       "license": "BSD-3-Clause",
       "topics": [
@@ -578,7 +578,7 @@
       "usage": "下载 Releases 的 .msi 或便携 ZIP，双击运行",
       "repo_url": "https://github.com/Ruler4396/dsh-launcher",
       "homepage": "https://github.com/Ruler4396/dsh-launcher",
-      "stars": 77,
+      "stars": 79,
       "language": "C#",
       "license": "MIT",
       "topics": [
@@ -598,7 +598,7 @@
       "forks": 3,
       "open_issues": 3,
       "watchers": 0,
-      "pushed_at": "2026-08-15T01:35:48Z",
+      "pushed_at": "2026-08-15T02:54:54Z",
       "archived": false,
       "description_i18n": {
         "zh": "DeepSeek Harness 的 Windows 轻量启动器：开机自启 + 独立小窗口，双击即用。",
@@ -645,7 +645,7 @@
       "usage": "dsh plugin --profile web add github:Nagi-ovo/dsh-visualize",
       "repo_url": "https://github.com/Nagi-ovo/dsh-visualize",
       "homepage": "https://github.com/Nagi-ovo/dsh-visualize",
-      "stars": 84,
+      "stars": 86,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -679,7 +679,7 @@
       "usage": "npx -p @deepseek-ai/dsh dsh plugin --profile web add github:NanmiCoder/dsh-agent-teams",
       "repo_url": "https://github.com/NanmiCoder/dsh-agent-teams",
       "homepage": "https://github.com/NanmiCoder/dsh-agent-teams",
-      "stars": 253,
+      "stars": 257,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -713,7 +713,7 @@
       "usage": "打开网页浏览生态精选，或 git clone 到本地阅读",
       "repo_url": "https://github.com/0xsline/awesome-deepseek-harness",
       "homepage": "https://deepseekdocs.com/",
-      "stars": 403,
+      "stars": 408,
       "language": "Python",
       "license": "CC0-1.0",
       "topics": [
@@ -730,8 +730,8 @@
       "privacy_risk": false,
       "privacy_notes": [],
       "security_notes": [],
-      "forks": 123,
-      "open_issues": 28,
+      "forks": 127,
+      "open_issues": 32,
       "watchers": 2,
       "pushed_at": "2026-08-14T14:50:30Z",
       "archived": false,
@@ -747,7 +747,7 @@
       "usage": "打开网页查看自动扫描 Radar 与精选目录",
       "repo_url": "https://github.com/AdamPlatin123/awesome-dsh-plugins",
       "homepage": "https://github.com/AdamPlatin123/awesome-dsh-plugins",
-      "stars": 841,
+      "stars": 855,
       "language": "Shell",
       "license": "MIT",
       "topics": [
@@ -764,10 +764,10 @@
       "privacy_risk": false,
       "privacy_notes": [],
       "security_notes": [],
-      "forks": 68,
-      "open_issues": 5,
+      "forks": 71,
+      "open_issues": 6,
       "watchers": 0,
-      "pushed_at": "2026-08-15T01:12:18Z",
+      "pushed_at": "2026-08-15T02:20:02Z",
       "archived": false,
       "description_i18n": {
         "zh": "前部索引仓库（Radar）：自动扫描发现所有 dsh 插件候选，经测试合格的移入后序精选目录仓库。",
@@ -781,7 +781,7 @@
       "usage": "打开网页按“解决什么问题”快速选择插件",
       "repo_url": "https://github.com/bruc3van/awesome-dsh-plugin",
       "homepage": "https://github.com/bruc3van/awesome-dsh-plugin",
-      "stars": 100,
+      "stars": 109,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
@@ -798,10 +798,10 @@
       "privacy_risk": false,
       "privacy_notes": [],
       "security_notes": [],
-      "forks": 24,
-      "open_issues": 4,
+      "forks": 26,
+      "open_issues": 5,
       "watchers": 0,
-      "pushed_at": "2026-08-14T16:26:22Z",
+      "pushed_at": "2026-08-15T02:30:24Z",
       "archived": false,
       "description_i18n": {
         "zh": "用 30 秒找到适合你的 DeepSeek Harness 插件：告诉你插件解决什么问题、适合谁、从哪里开始。",
@@ -836,10 +836,10 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-14T05:22:32.485Z",
-      "forks": 54,
+      "forks": 55,
       "open_issues": 1,
       "watchers": 19,
-      "pushed_at": "2026-08-15T01:33:20Z",
+      "pushed_at": "2026-08-15T02:31:07Z",
       "archived": false,
       "description_i18n": {
         "en": "Open-source CMA-compatible agent runtime. Run multi-agent systems locally with any model (Ollama/vLLM/Claude/GPT), MCP tools, scenario templates, and a beautiful dashboard. One command start. Built for enterprise teams."
@@ -853,7 +853,7 @@
       "usage": "dsh plugin --profile web add github:awesome-dsh-plugin/awesome-dsh-plugin",
       "repo_url": "https://github.com/awesome-dsh-plugin/awesome-dsh-plugin",
       "homepage": "https://awesome-dsh-plugin.com",
-      "stars": 1179,
+      "stars": 1301,
       "language": "HTML",
       "license": "CC0-1.0",
       "topics": [
@@ -875,10 +875,10 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-14T05:22:32.485Z",
-      "forks": 254,
-      "open_issues": 11,
+      "forks": 278,
+      "open_issues": 12,
       "watchers": 0,
-      "pushed_at": "2026-08-15T01:41:52Z",
+      "pushed_at": "2026-08-15T02:56:46Z",
       "archived": false,
       "description_i18n": {
         "zh": "A curated list of plugins for DeepSeek Harness (dsh) · DeepSeek Harness 插件精选列表",
@@ -892,7 +892,7 @@
       "usage": "dsh plugin --profile web add github:Small-tailqwq/dsh-deep-whale",
       "repo_url": "https://github.com/Small-tailqwq/dsh-deep-whale",
       "homepage": "https://github.com/Small-tailqwq/dsh-deep-whale",
-      "stars": 607,
+      "stars": 621,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -932,7 +932,7 @@
       "usage": "dsh plugin --profile web add github:Nagi-ovo/dsh-ads",
       "repo_url": "https://github.com/Nagi-ovo/dsh-ads",
       "homepage": "https://github.com/Nagi-ovo/dsh-ads",
-      "stars": 341,
+      "stars": 353,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -973,7 +973,7 @@
       "usage": "dsh plugin --profile web add github:zhaoolee/notes",
       "repo_url": "https://github.com/zhaoolee/notes",
       "homepage": "https://notes.fangyuanxiaozhan.com",
-      "stars": 140,
+      "stars": 141,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -1015,7 +1015,7 @@
       "usage": "dsh plugin --profile web add github:tt-a1i/archify",
       "repo_url": "https://github.com/tt-a1i/archify",
       "homepage": "https://tt-a1i.github.io/archify/",
-      "stars": 12569,
+      "stars": 12602,
       "language": "HTML",
       "license": "MIT",
       "topics": [
@@ -1055,9 +1055,9 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-14T10:03:43.084Z",
-      "forks": 937,
+      "forks": 938,
       "open_issues": 13,
-      "watchers": 76,
+      "watchers": 77,
       "pushed_at": "2026-08-14T16:30:40Z",
       "archived": false,
       "description_i18n": {
@@ -1073,7 +1073,7 @@
       "usage": "dsh plugin --profile web add github:anywhere-labs/deepseek-harness-desktop",
       "repo_url": "https://github.com/anywhere-labs/deepseek-harness-desktop",
       "homepage": "https://deepseekdesktop.com",
-      "stars": 2061,
+      "stars": 2341,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -1093,10 +1093,10 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-14T10:03:43.084Z",
-      "forks": 108,
-      "open_issues": 22,
-      "watchers": 7,
-      "pushed_at": "2026-08-15T01:26:03Z",
+      "forks": 120,
+      "open_issues": 25,
+      "watchers": 9,
+      "pushed_at": "2026-08-15T02:00:32Z",
       "archived": false,
       "description_i18n": {
         "zh": "基于官方 DeepSeek Harness 打造的 Electron 桌面端，深度适配 macOS 和 Windows，提供最佳的，开箱即用的体验。",
@@ -1111,7 +1111,7 @@
       "usage": "dsh plugin --profile web add github:mnemon-dev/mnemon",
       "repo_url": "https://github.com/mnemon-dev/mnemon",
       "homepage": "https://github.com/mnemon-dev/mnemon#readme",
-      "stars": 436,
+      "stars": 438,
       "language": "Go",
       "license": "Apache-2.0",
       "topics": [
@@ -1163,7 +1163,7 @@
       "usage": "dsh plugin --profile web add github:Electricitysheep/dsh-handbook",
       "repo_url": "https://github.com/Electricitysheep/dsh-handbook",
       "homepage": "https://github.com/Electricitysheep/dsh-handbook",
-      "stars": 207,
+      "stars": 217,
       "language": "HTML",
       "license": "unknown",
       "topics": [
@@ -1212,7 +1212,7 @@
       "usage": "dsh plugin --profile web add github:huiliyi37/dsh-tianshu-tui",
       "repo_url": "https://github.com/huiliyi37/dsh-tianshu-tui",
       "homepage": "https://github.com/huiliyi37/dsh-tianshu-tui",
-      "stars": 135,
+      "stars": 137,
       "language": "TypeScript",
       "license": "Apache-2.0",
       "topics": [
@@ -1486,7 +1486,7 @@
       "usage": "dsh plugin --profile web add github:Alex-Yanggg/awesome-DSH-plugin",
       "repo_url": "https://github.com/Alex-Yanggg/awesome-DSH-plugin",
       "homepage": "https://github.com/Alex-Yanggg/awesome-DSH-plugin",
-      "stars": 53,
+      "stars": 54,
       "language": "Python",
       "license": "CC0-1.0",
       "topics": [
@@ -1509,7 +1509,7 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-14T10:03:43.084Z",
-      "forks": 38,
+      "forks": 40,
       "open_issues": 21,
       "watchers": 0,
       "pushed_at": "2026-08-14T03:28:17Z",
@@ -1573,7 +1573,7 @@
       "usage": "dsh plugin --profile web add github:LaplaceYoung/oh-my-dsh",
       "repo_url": "https://github.com/LaplaceYoung/oh-my-dsh",
       "homepage": "https://github.com/LaplaceYoung/oh-my-dsh",
-      "stars": 45,
+      "stars": 44,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -1612,7 +1612,7 @@
       "usage": "dsh plugin --profile web add github:ChisaAlter/Deepseek-Harness-Desktop",
       "repo_url": "https://github.com/ChisaAlter/Deepseek-Harness-Desktop",
       "homepage": "https://github.com/ChisaAlter/Deepseek-Harness-Desktop",
-      "stars": 66,
+      "stars": 69,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
@@ -1654,7 +1654,7 @@
       "usage": "dsh plugin --profile web add github:hikariming/dshfind",
       "repo_url": "https://github.com/hikariming/dshfind",
       "homepage": "https://dshfind.com",
-      "stars": 61,
+      "stars": 64,
       "language": "MDX",
       "license": "unknown",
       "topics": [
@@ -1681,7 +1681,7 @@
       "forks": 2,
       "open_issues": 1,
       "watchers": 0,
-      "pushed_at": "2026-08-15T01:19:23Z",
+      "pushed_at": "2026-08-15T02:37:07Z",
       "archived": false,
       "description_i18n": {
         "zh": "DSH (DeepSeek Harness) 原理学习、插件市场与最佳实践 · Learn DSH principles, plugin marketplace & best practices",
@@ -1735,7 +1735,7 @@
       "usage": "dsh plugin --profile web add github:vlln/plugin-registry",
       "repo_url": "https://github.com/vlln/plugin-registry",
       "homepage": "https://github.com/vlln/plugin-registry",
-      "stars": 36,
+      "stars": 38,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
@@ -1816,7 +1816,7 @@
       "usage": "dsh plugin --profile web add github:multica-ai/dsh-multica-runtime",
       "repo_url": "https://github.com/multica-ai/dsh-multica-runtime",
       "homepage": "https://github.com/multica-ai/dsh-multica-runtime",
-      "stars": 31,
+      "stars": 32,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -1855,7 +1855,7 @@
       "usage": "dsh plugin --profile web add github:Dominic789654/awesome-deepseek-harness",
       "repo_url": "https://github.com/Dominic789654/awesome-deepseek-harness",
       "homepage": "https://github.com/Dominic789654/awesome-deepseek-harness",
-      "stars": 33,
+      "stars": 34,
       "language": "TypeScript",
       "license": "NOASSERTION",
       "topics": [
@@ -1910,7 +1910,7 @@
       "usage": "dsh plugin --profile web add github:pingfanfan/hello-dsh",
       "repo_url": "https://github.com/pingfanfan/hello-dsh",
       "homepage": "https://github.com/pingfanfan/hello-dsh/blob/main/docs/hello-dsh.md",
-      "stars": 43,
+      "stars": 44,
       "language": "Python",
       "license": "MIT",
       "topics": [
