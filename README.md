@@ -33,8 +33,8 @@ DeepSeek Harness 以“一切都是插件”为核心设计，社区围绕它产
 | --- | --- | --- |
 | ★ 官方 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) | DeepSeek Harness 核心运行时：Everything is a Plugin。 | `npx @deepseek-ai/dsh 启动核心；插件经 dsh plugin --profile web add <源> 挂载` |
 | [archify](https://github.com/tt-a1i/archify) | 在对话里，把代码仓库或系统描述变成漂亮、可靠、可交互的系统地图。（隐私风险：访问第三方网络地址；读取环境变量（可能包含敏感信息））（安全提示：存在 Base64 解码行为；使用动态代码或子进程执行） | `dsh plugin --profile web add github:tt-a1i/archify` |
-| [dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) | DSH Web UI 的插件与皮肤集合：任务看板、Git 图谱、右侧面板、移动端远程、鲸鱼娘宠物、实时令牌统计与皮肤中心。 | `dsh plugin --profile web add github:zhu1090093659/dsh-web-ui 后重启 Web` |
 | [deepseek-harness-desktop](https://github.com/anywhere-labs/deepseek-harness-desktop) | 基于官方 DeepSeek Harness 打造的 Electron 桌面端，深度适配 macOS 和 Windows，提供最佳的，开箱即用的体验。（隐私风险：访问第三方网络地址） | `dsh plugin --profile web add github:anywhere-labs/deepseek-harness-desktop` |
+| [dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) | DSH Web UI 的插件与皮肤集合：任务看板、Git 图谱、右侧面板、移动端远程、鲸鱼娘宠物、实时令牌统计与皮肤中心。 | `dsh plugin --profile web add github:zhu1090093659/dsh-web-ui 后重启 Web` |
 | [ModLens](https://github.com/liustack/modlens) | 首个 DeepSeek Harness 视觉插件，给纯文本模型“装上眼睛”：直接粘贴图片即可得到结构化 JSON 证据（OCR、布局等）。 | `dsh plugin add @liustack/modlens（npm）；粘贴图片即可让纯文本模型“看见”` |
 | [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) | A curated list of plugins for DeepSeek Harness (dsh) · DeepSeek Harness 插件精选列表（隐私风险：访问第三方网络地址） | `dsh plugin --profile web add github:awesome-dsh-plugin/awesome-dsh-plugin` |
 | [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | Claude Code 风格全屏终端 TUI 插件：像素鲸鱼顶栏、实时工作状态行、思考流式展开、双击 Esc 回滚、上下文进度条与 TPS 仪表。 | `dsh plugin --profile tui add github:ccch1mneyyy/dsh-TUI（npm 一键安装）` |
@@ -50,8 +50,8 @@ DeepSeek Harness 以“一切都是插件”为核心设计，社区围绕它产
 | [dsh-handbook](https://github.com/Electricitysheep/dsh-handbook) | DeepSeek Harness (dsh) 从 0 到 1 深度手册：安装/插件开发/性能调优/实测案例/同模型多 Agent 实测对比（中文 + 英文 PDF）（隐私风险：访问第三方网络地址）（安全提示：使用动态代码或子进程执行） | `dsh plugin --profile web add github:Electricitysheep/dsh-handbook` |
 | [Oh-DSH](https://github.com/hust-open-atom-club/oh-dsh) | 一站式 DeepSeek Harness 社区发行版：桌面端、Web UI 与 TUI 三种形态统一体验，分层安装。 | `按 README 的桌面/Web/TUI 安装脚本一键安装发行版` |
 | [notes](https://github.com/zhaoolee/notes) | 开源版锤子便签，复刻锤科美学，一键Docker私有化部署，支持skill调用，支持dsh plugin，支持多租户，一键生成公众号格式，支持导出便签为图片（隐私风险：访问第三方网络地址；读取环境变量并访问第三方地址，需确认未外发敏感信息）（安全提示：使用动态代码或子进程执行；存在 Base64 解码行为；存在疑似混淆内容） | `dsh plugin --profile web add github:zhaoolee/notes` |
-| [dsh-tianshu-tui](https://github.com/huiliyi37/dsh-tianshu-tui) | dsh-tianshu-tui — DeepSeek Harness terminal UI +harness workflow。是官方 DeepSeek Harness 上的交互式终端 UI 插件。渲染核心从本仓库自研的harness agent  Tianshu-Tui 演进而来，在官方的基础上增加了TDD、证据门、视觉图像模块等工作流。（隐私风险：访问第三方网络地址；读取凭据类环境变量并发送到网络，可能泄露密钥）（安全提示：使用动态代码或子进程执行；存在 Base64 解码行为） | `dsh plugin --profile web add github:huiliyi37/dsh-tianshu-tui` |
 | [dsh-at-file](https://github.com/omdsh-dev/dsh-at-file) | Codex 风格 @file 提及：在输入框搜索工作区文件，回车附加，发送时把文件内容注入模型。 | `dsh plugin --profile web add https://github.com/omdsh-dev/dsh-at-file/archive/refs/heads/main.tar.gz` |
+| [dsh-tianshu-tui](https://github.com/huiliyi37/dsh-tianshu-tui) | dsh-tianshu-tui — DeepSeek Harness terminal UI +harness workflow。是官方 DeepSeek Harness 上的交互式终端 UI 插件。渲染核心从本仓库自研的harness agent  Tianshu-Tui 演进而来，在官方的基础上增加了TDD、证据门、视觉图像模块等工作流。（隐私风险：访问第三方网络地址；读取凭据类环境变量并发送到网络，可能泄露密钥）（安全提示：使用动态代码或子进程执行；存在 Base64 解码行为） | `dsh plugin --profile web add github:huiliyi37/dsh-tianshu-tui` |
 | [whale-girl](https://github.com/vlln/whale-girl) | DSH Web GUI 桌面宠物插件（QQ 宠物形态）：右下角悬浮、可拖拽、投喂与玩耍的积累型伙伴。 | `dsh plugin --profile web add "github:vlln/whale-girl#main"` |
 | [awesome-dsh-plugin](https://github.com/bruc3van/awesome-dsh-plugin) | 用 30 秒找到适合你的 DeepSeek Harness 插件：告诉你插件解决什么问题、适合谁、从哪里开始。 | `打开网页按“解决什么问题”快速选择插件` |
 | [dsh-browser](https://github.com/Lum1104/dsh-browser) | Chrome 侧边栏扩展与桥接插件，让 DSH 直接操作你正在使用的浏览器，无需视觉能力。 | `运行 scripts/install.sh 安装 Chrome MV3 扩展与插件桥接` |
@@ -59,12 +59,12 @@ DeepSeek Harness 以“一切都是插件”为核心设计，社区围绕它产
 | [dsh-visualize](https://github.com/Nagi-ovo/dsh-visualize) | 对话内生成式 UI 插件：模型把交互式 HTML 卡片直接画进会话流，用于模拟器、图表、对比面板与 UI mockup。 | `dsh plugin --profile web add github:Nagi-ovo/dsh-visualize` |
 | [dsh-launcher](https://github.com/Ruler4396/dsh-launcher) | DeepSeek Harness 的 Windows 轻量启动器：开机自启 + 独立小窗口，双击即用。 | `下载 Releases 的 .msi 或便携 ZIP，双击运行` |
 | [dsh-genui](https://github.com/omdsh-dev/dsh-genui) | 在助手回复中渲染交互式 UI 组件：布局、图表、表单、测验、mermaid 等，经 dsh-ui fence 内联展示。 | `dsh plugin --profile web add github:omdsh-dev/dsh-genui` |
-| [tokenbank](https://github.com/wink-run/tokenbank) | > 个人AI中枢 · Token 管家 > > 用的明白 · 用的节省 · 用的简单 · 越用越懂你 · 闲置赚钱（隐私风险：访问第三方网络地址；读取凭据类环境变量并发送到网络，可能泄露密钥）（安全提示：使用动态代码或子进程执行） | `dsh plugin --profile web add github:wink-run/tokenbank` |
 | [dsh-find-plugins](https://github.com/Nagi-ovo/dsh-find-plugins) | English \| 简体中文（隐私风险：读取凭据类环境变量并发送到网络，可能泄露密钥） | `dsh plugin --profile web add github:Nagi-ovo/dsh-find-plugins` |
+| [tokenbank](https://github.com/wink-run/tokenbank) | > 个人AI中枢 · Token 管家 > > 用的明白 · 用的节省 · 用的简单 · 越用越懂你 · 闲置赚钱（隐私风险：访问第三方网络地址；读取凭据类环境变量并发送到网络，可能泄露密钥）（安全提示：使用动态代码或子进程执行） | `dsh plugin --profile web add github:wink-run/tokenbank` |
 | [sealos-skills](https://github.com/labring/sealos-skills) | English \| 简体中文 \| 繁體中文 \| 日本語 \| 한국어 \| Español \| Français \| Deutsch \| Português (Brasil) \| Русский \| العربية \| हिन्दी \| Bahasa Indonesia（隐私风险：访问第三方网络地址） | `dsh plugin --profile web add github:labring/sealos-skills` |
 | [DSH OpenPencil](https://github.com/ZSeven-W/dsh-openpencil) | OpenPencil 设计预览与编辑插件：在会话中预览、检查并编辑真实 .op 文档。 | `dsh plugin add @zseven-w/dsh-openpencil（npm）` |
-| [forkprobe](https://github.com/Jayden-X-L/forkprobe) | 别猜哪个 AI Skill 有用，直接并排看结果。（隐私风险：访问第三方网络地址；读取环境变量（可能包含敏感信息）；读取环境变量并访问第三方地址，需确认未外发敏感信息）（安全提示：存在疑似混淆内容） | `dsh plugin --profile web add github:Jayden-X-L/forkprobe` |
 | [Deepseek-Harness-Desktop](https://github.com/ChisaAlter/Deepseek-Harness-Desktop) | DSH桌面端，支持主题和背景图等多种个性化配置。Electron desktop shell for DeepSeek Harness web UI（隐私风险：访问第三方网络地址；读取本地凭据文件（如 .ssh/.aws/.npmrc）；读取环境变量（可能包含敏感信息））（安全提示：存在疑似混淆内容） | `dsh plugin --profile web add github:ChisaAlter/Deepseek-Harness-Desktop` |
+| [forkprobe](https://github.com/Jayden-X-L/forkprobe) | 别猜哪个 AI Skill 有用，直接并排看结果。（隐私风险：访问第三方网络地址；读取环境变量（可能包含敏感信息）；读取环境变量并访问第三方地址，需确认未外发敏感信息）（安全提示：存在疑似混淆内容） | `dsh plugin --profile web add github:Jayden-X-L/forkprobe` |
 | [dshfind](https://github.com/hikariming/dshfind) | DSH (DeepSeek Harness) 原理学习、插件市场与最佳实践 · Learn DSH principles, plugin marketplace & best practices（隐私风险：访问第三方网络地址；读取凭据类环境变量并发送到网络，可能泄露密钥）（安全提示：存在疑似混淆内容；存在 Base64 解码行为） | `dsh plugin --profile web add github:hikariming/dshfind` |
 | [dsh-memory-evolve](https://github.com/csyangwen/dsh-memory-evolve) | 纯插件实现的跨会话长期记忆与后台自我进化：五轨记忆、git 分支感知、技能自我进化、四轨待办、会话广播与搜索。 | `dsh plugin add github:csyangwen/dsh-memory-evolve` |
 | [DSH Workflow](https://github.com/icetomoyo/dsh_workflow) | 把 DSH 的一次性多 Agent 调度升级为可生成、保存、治理、观察、恢复的 Workflow 层。 | `dsh plugin add github:icetomoyo/dsh_workflow` |
@@ -73,14 +73,14 @@ DeepSeek Harness 以“一切都是插件”为核心设计，社区围绕它产
 | [oh-my-dsh](https://github.com/LaplaceYoung/oh-my-dsh) | oh-my-dsh：面向 DSH (DeepSeek Harness) 的插件生态——700+ 插件，只通过扩展接缝注册，不修改 agent-loop 骨架（隐私风险：访问第三方网络地址） | `dsh plugin --profile web add github:LaplaceYoung/oh-my-dsh` |
 | [mstar-harness](https://github.com/btspoony/mstar-harness) | Harness Workflow Engine · Agent Plugin（隐私风险：访问第三方网络地址）（安全提示：使用动态代码或子进程执行） | `dsh plugin --profile web add github:btspoony/mstar-harness` |
 | [hello-dsh](https://github.com/pingfanfan/hello-dsh) | 从零开始，看懂 DeepSeek Harness 的「万物皆可插件」— 零基础插件开发教程（含 22 个中文技能实例）\| Zero-to-plugin tutorial for DeepSeek Harness（隐私风险：访问第三方网络地址） | `dsh plugin --profile web add github:pingfanfan/hello-dsh` |
-| [dsh-open-in-vscode](https://github.com/omdsh-dev/dsh-open-in-vscode) | 从 DSH Web GUI 的侧边栏工作区菜单直接在当前目录打开 VS Code。 | `dsh plugin --profile web add github:omdsh-dev/dsh-open-in-vscode` |
 | [DSH Turn Rewind](https://github.com/Anionex/dsh-turn-rewind) | 对话与代码状态回退插件：基于持久 Change Ledger，回滚对话和工作区状态。 | `dsh plugin add github:Anionex/dsh-turn-rewind` |
 | [dsh-annotation](https://github.com/omdsh-dev/dsh-annotation) | DSH Web 选中批注插件：选文字→批注→回车随消息发送；气泡隐藏批注块（零闪烁）；回复按 Annotation N 逐条对照（可悬浮芯片）。官方 bundle，零核心改动（隐私风险：访问第三方网络地址）（安全提示：使用动态代码或子进程执行） | `dsh plugin --profile web add github:omdsh-dev/dsh-annotation` |
+| [dsh-open-in-vscode](https://github.com/omdsh-dev/dsh-open-in-vscode) | 从 DSH Web GUI 的侧边栏工作区菜单直接在当前目录打开 VS Code。 | `dsh plugin --profile web add github:omdsh-dev/dsh-open-in-vscode` |
 | [dsh-notification](https://github.com/omdsh-dev/dsh-notification) | DeepSeek Harness 会话完成时发送桌面通知，支持按结果类型和关键词规则控制。 | `dsh plugin --profile web add https://github.com/omdsh-dev/dsh-notification/archive/refs/heads/main.tar.gz` |
 | [plugin-registry](https://github.com/vlln/plugin-registry) | DSH 插件生态基建：薄控制台（浏览器面板管理官方 repository 插件，0 patch）+ make-dsh-plugin skill 官方插件开发引导（隐私风险：访问第三方网络地址；读取凭据类环境变量并发送到网络，可能泄露密钥）（安全提示：使用动态代码或子进程执行；存在疑似混淆内容） | `dsh plugin --profile web add github:vlln/plugin-registry` |
 | [awesome-deepseek-harness](https://github.com/Dominic789654/awesome-deepseek-harness) | > 面向 DeepSeek Harness（DSH） 的 插件 / Skill / MCP / Patch（Profile）层 / 编排器 / 聚合器 / UI 精选清单 —— DeepSeek 官方 agent 运行框架，核心理念 Model + Harness = Agent。（隐私风险：访问第三方网络地址） | `dsh plugin --profile web add github:Dominic789654/awesome-deepseek-harness` |
-| [ui-status-label](https://github.com/alingalingling/ui-status-label) | 把你鲸鱼娘思考时的 deep diving 自定义成任意你想要的样子（隐私风险：访问第三方网络地址） | `dsh plugin --profile web add github:alingalingling/ui-status-label` |
 | [dsh-multica-runtime](https://github.com/multica-ai/dsh-multica-runtime) | Support dsh runtime on Multica.（隐私风险：读取环境变量（可能包含敏感信息）；访问第三方网络地址）（安全提示：存在疑似混淆内容） | `dsh plugin --profile web add github:multica-ai/dsh-multica-runtime` |
+| [ui-status-label](https://github.com/alingalingling/ui-status-label) | 把你鲸鱼娘思考时的 deep diving 自定义成任意你想要的样子（隐私风险：访问第三方网络地址） | `dsh plugin --profile web add github:alingalingling/ui-status-label` |
 
 共收录 50 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
 
