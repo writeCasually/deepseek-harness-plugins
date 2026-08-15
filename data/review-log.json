@@ -1,6 +1,631 @@
 {
-  "updated_at": "2026-08-14T10:03:43.084Z",
+  "updated_at": "2026-08-15T03:55:44.398Z",
   "decisions": [
+    {
+      "id": "strukto-ai/mirage",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "下载远程脚本并直接执行（curl/wget | sh）"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "hyhmrright/brooks-lint",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "reason": "未检测到明确的 DeepSeek Harness 插件标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "GanyuanRan/Aegis",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "xiaobright/dsh-anchored-standard",
+      "verdict": "approved",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "alibaba/loongsuite-pilot",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "reason": "未检测到明确的 DeepSeek Harness 插件标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "dsh-market/dsh-market",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "orziz/odai",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "Leslie-SSS/seeWxapkg",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "reason": "未检测到明确的 DeepSeek Harness 插件标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "ysr666/dsh-vision-router",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "kuangre123/codex-switch",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "reason": "未检测到明确的 DeepSeek Harness 插件标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "JingbiaoMei/Tokdash",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "reason": "未检测到明确的 DeepSeek Harness 插件标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "libukai/awesome-deepseek-harness",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "bradeGithub/DSH-Plugins-Marketplace",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "下载远程脚本并直接执行（curl/wget | sh）"
+      ],
+      "privacy_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "访问第三方网络地址"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "titanwings/dsh-automation",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "lhh010/dsh-ui-whale",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "bowenliang123/dsh-context",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "c3ll256/dsh-toy",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "Nwflower/dsh-chat-import",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "存在疑似混淆内容",
+        "使用动态代码或子进程执行"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "Fishquito7/dsh-skill-viewer",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "存在疑似混淆内容",
+        "存在 Base64 解码行为",
+        "使用动态代码或子进程执行"
+      ],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "wess09/DeepSeekHarnessDesktop",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "reason": "未检测到明确的 DeepSeek Harness 插件标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "Sanqi-normal/dsh-webui-market-plugin",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "使用动态代码或子进程执行"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "HeiGeAi/deepseek-harness-skin",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "使用动态代码或子进程执行"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "openguardrails/openguardrails",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "使用动态代码或子进程执行",
+        "下载远程脚本并直接执行（curl/wget | sh）"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "oil-oil/dsh-vision",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "zenx0x/allinluna",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "vibeinging/dsh-work",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [
+        "读取浏览器 Cookie/存储并发送到网络",
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "Chinesezjc/dsh-interconnect",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "like-study1/Oh-My-DSH",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "使用动态代码或子进程执行"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "WeirdSky924/agent-handoff-skill",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "whiteguo233/dsh-openbiliclaw",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "kuangre123/iosdev",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "reason": "未检测到明确的 DeepSeek Harness 插件标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "834063245-creator/HoloGram",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "omdsh-dev/dsh-custom-tool",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "LayneChai/superpowers-dsh",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "使用动态代码或子进程执行"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "Ayase34/gal-view",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "william-jin-cmu/dsh-vision",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "bruc3van/dsh-desktop",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "存在疑似混淆内容",
+        "使用动态代码或子进程执行"
+      ],
+      "privacy_notes": [
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "ZASENJC/dsh-plugins-store",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
+      },
+      "findings": [
+        "存在疑似混淆内容"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "ali-meoo/meoo-cli",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "reason": "未检测到明确的 DeepSeek Harness 插件标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
+    {
+      "id": "AtlasCloudAI/atlas-cloud-skills",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "reason": "未检测到明确的 DeepSeek Harness 插件标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-15T03:55:44.398Z"
+    },
     {
       "id": "nexu-io/open-design",
       "verdict": "blocked",
