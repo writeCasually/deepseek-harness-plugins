@@ -28,10 +28,17 @@ jobs:
         with:
           node-version: 22
 
+      - name: Run security engine tests
+        run: node scripts/security-review.test.mjs
+
       - name: Discover and review plugins
         run: node scripts/discover-plugins.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # 可选：配置后启用 LLM 深度复核（OpenAI 兼容 chat/completions），
+          # 未配置时自动跳过，仅使用确定性规则 + 供应链检查。
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
 
       - name: Open pull request
         env:

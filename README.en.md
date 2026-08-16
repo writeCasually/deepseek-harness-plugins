@@ -29,8 +29,10 @@ Main capabilities:
   English as fallback.
 - DSH compatibility check: plugins are included only when they can be confirmed to run in
   DeepSeek Harness.
-- Security and privacy review: non-official plugins are statically scanned for privacy risks and
-  annotated with findings.
+- Layered security and privacy review: non-official plugins get evidence-based static scanning
+  (dangerous commands / code execution / leaked secrets / obfuscation) plus supply-chain checks
+  (OSV), with optional LLM deep review; reviews are traceable (commit, evidence, coverage).
+  See [docs/security-review.md](docs/security-review.md).
 - Official first: DeepSeek AI official plugins are displayed before community plugins.
 - Human review entry point: automated discoveries are submitted as pull requests and are published
   after merge.

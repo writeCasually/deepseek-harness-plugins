@@ -21,7 +21,9 @@ DeepSeek Harness 以“一切都是插件”为核心设计，社区围绕它产
 - 单一数据源：`docs/plugins.json` 同时驱动网页与 README 插件列表。
 - 多语言简介：插件仓库存在 `README.zh*.md` / `README.en*.md` 等简洁文档时，网页会按当前语言展示对应简介，中文优先、英文兜底。
 - DSH 适用性判断：先确认插件是否真正能在 DeepSeek Harness 运行，无法确认的不予收录。
-- 安全与隐私审查：对非官方插件做静态扫描，检测隐私泄露风险并标记说明。
+- 分层安全与隐私审查：对非官方插件做证据化静态扫描（危险命令 / 代码执行 / 密钥泄露 / 混淆检测）
+  与供应链漏洞检查（OSV），可选 LLM 深度复核；审查留痕（commit、证据、覆盖率），详见
+  [docs/security-review.md](docs/security-review.md)。
 - 官方优先：DeepSeek AI 官方插件排在最前。
 - 人工复核入口：自动检索结果以 Pull Request 形式提交，合并后即可发布到汇总页。
 

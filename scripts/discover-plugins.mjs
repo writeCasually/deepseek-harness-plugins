@@ -6,6 +6,18 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { updateReadmeFiles } from './update-readme.mjs';
 import { collectLocalizedDescriptions } from './plugin-docs.mjs';
+import {
+  analyzeDependencies,
+  analyzePackageManifest,
+  composeVerdict,
+  extractExternalHosts,
+  llmReview,
+  privacyFindings,
+  scanObfuscation,
+  scanPaths,
+  scanSecrets,
+  scanSecurity,
+} from './security-review.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA_PATH = join(root, 'docs', 'plugins.json');
@@ -49,113 +61,109 @@ function decodeBase64(text) {
   }
 }
 
-// --- 安全扫描规则（可解释的静态启发式） ---
-const SECURITY_RULES = [
-  {
-    id: 'remote-exec',
-    re: /(?:curl|wget)[^|>\n]*\|\s*(?:ba)?sh\b/i,
-    severity: 'critical',
-    explanation: '下载远程脚本并直接执行（curl/wget | sh）',
-  },
-  {
-    id: 'powershell-enc',
-    re: /powershell[^\n]*-(?:enc|encodedcommand)\b/i,
-    severity: 'critical',
-    explanation: '使用 PowerShell 编码命令执行',
-  },
-  {
-    id: 'invoke-expression',
-    re: /Invoke-Expression/i,
-    severity: 'critical',
-    explanation: '使用 PowerShell 动态表达式执行',
-  },
-  {
-    id: 'exfil-endpoint',
-    re: /webhook\.site|requestbin|discord\.com\/api\/webhooks|api\.telegram\.org\/bot\d+|ngrok\.io/i,
-    severity: 'critical',
-    explanation: '可能把数据发送到第三方收集端点',
-  },
-  {
-    id: 'destructive',
-    re: /rm\s+-rf\s+(?:\/|~)|\bmkfs\b|\bdd\s+if=\/dev\/zero/i,
-    severity: 'critical',
-    explanation: '包含破坏性系统命令',
-  },
-  {
-    id: 'eval-exec',
-    re: /\beval\s*\(|\bexec\s*\(|child_process\.(?:exec|execSync|spawn)|os\.system\s*\(|subprocess\.(?:call|run|Popen)\s*\(/i,
-    severity: 'warning',
-    explanation: '使用动态代码或子进程执行',
-  },
-  {
-    id: 'base64',
-    re: /atob\s*\(|Buffer\.from\s*\([^,]+,\s*['"]base64['"]|base64\s+-d/i,
-    severity: 'warning',
-    explanation: '存在 Base64 解码行为',
-  },
-  {
-    id: 'obfuscation',
-    re: /String\.fromCharCode\s*\(|[A-Za-z0-9+/]{80,}={0,2}/,
-    severity: 'warning',
-    explanation: '存在疑似混淆内容',
-  },
-];
+// --- 安全审查编排（规则引擎见 security-review.mjs） ---
+// 每个候选仓库的代码文件采样预算（内容请求数，控制 API 用量）。
+const SCAN_FILE_BUDGET = Number(process.env.SCAN_FILE_BUDGET || 28);
+// OSV 供应链漏洞检查开关（需要对外网络，CI 默认开启，可显式关闭）。
+const OSV_CHECK = process.env.OSV_CHECK !== '0';
 
-// --- 隐私泄露检测标记 ---
-const ENV_ACCESS = /process\.env|os\.environ|getenv\s*\(|environ\[/i;
-const ENV_CRED =
-  /(?:process\.env|os\.environ|getenv\s*\(\s*['"]?)[^)\n]{0,60}(?:SECRET|TOKEN|KEY|PASSWORD|PASSWD|CREDENTIAL|AWS_|OPENAI|ANTHROPIC|GITHUB|DSH_)/i;
-const NETWORK_SEND =
-  /fetch\s*\(|axios|https?\.request\s*\(|requests\.(?:get|post|put|patch)\s*\(|sendBeacon\s*\(|XMLHttpRequest|WebSocket/i;
-const CRED_FILES = /\.ssh\/|id_rsa|\.aws\/credentials|\.npmrc|\.netrc|keychain/i;
-const BROWSER_STORE = /document\.cookie|localStorage|sessionStorage/i;
-const EXTERNAL_URL =
-  /https?:\/\/(?!github\.com|raw\.githubusercontent\.com|api\.github\.com|objects\.githubusercontent\.com|npmjs\.com|registry\.npmjs\.org|nodejs\.org|unpkg\.com|jsdelivr\.net)[a-z0-9.-]+/i;
-
-function scanSecurity(text) {
-  const findings = [];
-  if (!text) return findings;
-  for (const rule of SECURITY_RULES) {
-    if (rule.re.test(text)) {
-      findings.push({ id: rule.id, severity: rule.severity, explanation: rule.explanation });
-    }
+// 代码文件扫描优先级：越靠前越先被拉取审查。
+// -1 表示跳过（node_modules、锁文件、构建产物等）。
+function scanFileScore(path) {
+  const p = String(path).toLowerCase();
+  if (
+    /(^|\/)node_modules\//.test(p) ||
+    /\.(?:min\.js|map|lock|sum|png|jpe?g|gif|webp|ico|svg|woff2?|ttf|eot|pdf|zip|tar\.gz|wasm|exe|msi|dmg|apk)$/.test(p) ||
+    /(^|\/)(?:package-lock\.json|yarn\.lock|pnpm-lock\.yaml|bun\.lockb|composer\.lock|go\.sum|Cargo\.lock)$/.test(p)
+  ) {
+    return -1;
   }
-  return findings;
+  if (/(^|\/)(?:index|main|entry|cli)\.(?:[jt]sx?|mjs|cjs)$/.test(p)) return 100;
+  if (/(^|\/)package\.json$/.test(p)) return 95;
+  if (/(^|\/)(?:install|setup|bootstrap|prepare)\.(?:sh|bash|zsh|ps1|mjs|cjs|js)$/.test(p)) return 90;
+  if (/(^|\/)(?:src|lib|bin|scripts)\//.test(p)) return 80;
+  if (/\.(?:mjs|cjs|js|ts|tsx|py|sh|bash|zsh|ps1)$/.test(p)) return 70;
+  if (/(^|\/)\.github\/workflows\/.+\.ya?ml$/.test(p)) return 65;
+  if (/(^|\/)Dockerfile$/.test(p) || /(^|\/)Makefile$/.test(p) || /\.(?:yml|yaml|json)$/.test(p)) return 60;
+  return 5;
 }
 
-function privacyFindings(text) {
-  const notes = [];
-  if (!text) return notes;
-  const env = ENV_ACCESS.test(text);
-  const envCred = ENV_CRED.test(text);
-  const network = NETWORK_SEND.test(text);
-  const credFiles = CRED_FILES.test(text);
-  const browserStore = BROWSER_STORE.test(text);
-  const externalUrl = EXTERNAL_URL.test(text);
+// 从 dsh.* manifest 提取入口文件路径（优先审查真正的插件入口）。
+function manifestEntryPaths(packageJsonFiles) {
+  const out = [];
+  for (const pkg of packageJsonFiles || []) {
+    const dsh = pkg && typeof pkg === 'object' ? pkg.dsh : undefined;
+    if (!dsh || typeof dsh !== 'object') continue;
+    const values = [];
+    for (const key of ['bundle', 'client', 'profile']) {
+      const v = dsh[key];
+      if (typeof v === 'string') values.push(v);
+      else if (Array.isArray(v)) {
+        for (const item of v) {
+          if (typeof item === 'string') values.push(item);
+          else if (item && typeof item === 'object') values.push(...Object.values(item).filter((x) => typeof x === 'string'));
+        }
+      } else if (v && typeof v === 'object') {
+        values.push(...Object.values(v).filter((x) => typeof x === 'string'));
+      }
+    }
+    for (const s of values) {
+      if (/\.(?:[jt]sx?|mjs|cjs|json|ya?ml)$/i.test(s) && !/^https?:/i.test(s)) out.push(s);
+    }
+  }
+  return out;
+}
 
-  if (credFiles) {
-    notes.push({ severity: 'critical', explanation: '读取本地凭据文件（如 .ssh/.aws/.npmrc）' });
+// 生成待扫描文件清单：manifest 入口 > 高分文件 > 采样上限。
+function prioritizeScanFiles(paths, packageJsonFiles) {
+  const entry = new Set(manifestEntryPaths(packageJsonFiles));
+  return (paths || [])
+    .filter((p) => p && scanFileScore(p) !== -1)
+    .sort((a, b) => {
+      const ea = entry.has(a) ? 1 : 0;
+      const eb = entry.has(b) ? 1 : 0;
+      if (ea !== eb) return eb - ea;
+      return scanFileScore(b) - scanFileScore(a);
+    });
+}
+
+// 仓库元数据信任信号（信息性，不参与裁决）。
+function trustNotesFor(repo) {
+  const notes = [];
+  if (repo.created_at) {
+    const ageDays = (Date.now() - Date.parse(repo.created_at)) / 86_400_000;
+    if (ageDays < 30) notes.push(`仓库创建不足 30 天（${repo.created_at.slice(0, 10)}）`);
   }
-  if (envCred && network) {
-    notes.push({ severity: 'critical', explanation: '读取凭据类环境变量并发送到网络，可能泄露密钥' });
-  }
-  if (browserStore && network) {
-    notes.push({ severity: 'critical', explanation: '读取浏览器 Cookie/存储并发送到网络' });
-  }
-  if (env && externalUrl && !envCred) {
-    notes.push({ severity: 'warning', explanation: '读取环境变量并访问第三方地址，需确认未外发敏感信息' });
-  } else if (env && !envCred) {
-    notes.push({ severity: 'warning', explanation: '读取环境变量（可能包含敏感信息）' });
-  }
-  if (externalUrl) {
-    notes.push({ severity: 'warning', explanation: '访问第三方网络地址' });
-  }
+  if (!repo.license) notes.push('未声明开源许可证');
+  return notes;
+}
+
+// 增量复查：拉取自上次审查 commit 以来变更的文件路径（减少 API 用量）。
+async function changedPaths(repo, base, head, allPaths) {
+  if (!base || !head || base === head) return null;
+  const cmp = await api(
+    `/repos/${repo.full_name}/compare/${encodeURIComponent(base)}...${encodeURIComponent(head)}`,
+    null,
+  );
+  if (!cmp || !Array.isArray(cmp.files)) return null;
+  return cmp.files.map((f) => f.filename).filter((p) => p && allPaths.includes(p));
+}
+
+// 以 (规则, 文件, 行) 去重，输出稳定排序的证据列表。
+function dedupeFindings(findings) {
   const seen = new Set();
-  return notes.filter((n) => {
-    if (seen.has(n.explanation)) return false;
-    seen.add(n.explanation);
-    return true;
-  });
+  const out = [];
+  for (const f of findings) {
+    const key = `${f.id}|${f.file || ''}|${f.line ?? 0}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(f);
+  }
+  return out;
+}
+
+function uniqueExplanations(findings) {
+  return [...new Set(findings.map((f) => f.explanation))];
 }
 
 // --- DeepSeek Harness 适用性判断 ---
@@ -334,16 +342,19 @@ function toEntry(repo, review, compatibility, descriptionI18n = {}) {
       : {}),
     privacy_risk: review.privacyNotes.length > 0,
     privacy_notes: review.privacyNotes.map((n) => n.explanation),
-    security_notes: review.findings
-      .filter((f) => f.severity === 'warning')
-      .map((f) => f.explanation),
+    security_notes: uniqueExplanations(
+      review.findings.filter((f) => f.severity === 'warning'),
+    ),
+    // 审查留痕：记录本次审查对应的 commit，便于后续增量复查与追溯。
+    reviewed_commit: review.reviewedCommit || '',
     source: 'discovered',
     review_status: review.verdict,
     reviewed_at: NOW,
   };
 }
 
-async function reviewRepo(repo) {
+async function reviewRepo(repo, opts = {}) {
+  const { previousCommit } = opts || {};
   const readmeData = await api(`/repos/${repo.full_name}/readme`, null);
   const readme = readmeData && readmeData.content ? decodeBase64(readmeData.content) : '';
 
@@ -354,6 +365,8 @@ async function reviewRepo(repo) {
   const paths = (treeData && treeData.tree ? treeData.tree : [])
     .filter((t) => t.type === 'blob')
     .map((t) => t.path);
+  const reviewedCommit = (treeData && treeData.sha) || '';
+  const totalFiles = paths.length;
 
   // 拉取项目 package.json 作为 DSH 插件注册文件候选（根 + monorepo 子包采样）。
   const packageJsonFiles = await fetchPackageManifests(repo, paths);
@@ -365,7 +378,16 @@ async function reviewRepo(repo) {
     api,
   });
   if (!compatibility.compatible) {
-    return { verdict: 'skip', compatibility, findings: [], privacyNotes: [], readme };
+    return {
+      verdict: 'skip',
+      compatibility,
+      findings: [],
+      privacyNotes: [],
+      readme,
+      reviewedCommit,
+      filesChecked: 0,
+      totalFiles,
+    };
   }
 
   const descriptionI18n = await collectLocalizedDescriptions({
@@ -376,54 +398,133 @@ async function reviewRepo(repo) {
     defaultReadmePath: readmeData?.path || '',
   });
 
-  const codePaths = paths
-    .filter((p) => /\.(?:js|mjs|cjs|ts|tsx|py|sh|bash|zsh|ps1|yml|yaml|json)$/i.test(p))
-    .slice(0, 18);
+  // 增量复查：上次审查 commit 已知时，只重新拉取变更文件（节省 API 预算）。
+  // 仅在 FORCE_REREVIEW 下启用（默认每日任务只审新仓库，不做全量复查）。
+  let codePaths = null;
+  let deltaUsed = false;
+  if (previousCommit && process.env.FORCE_REREVIEW && previousCommit !== reviewedCommit) {
+    const changed = await changedPaths(repo, previousCommit, reviewedCommit, paths);
+    if (Array.isArray(changed) && changed.length > 0) {
+      codePaths = changed;
+      deltaUsed = true;
+    }
+  }
+  if (!codePaths) {
+    // 全量模式：manifest 入口文件优先，其次按启发式得分排序，受采样预算约束。
+    codePaths = prioritizeScanFiles(paths, packageJsonFiles).slice(0, SCAN_FILE_BUDGET);
+  }
 
   const securityFindings = [];
   const privacyNotes = [];
   const seenPrivacy = new Set();
+  const externalHosts = new Set();
+  const samplePool = [];
 
-  securityFindings.push(...scanSecurity(readme));
-  privacyFindings(readme).forEach((n) => {
-    const key = n.explanation;
-    if (!seenPrivacy.has(key)) {
-      seenPrivacy.add(key);
-      privacyNotes.push(n);
-    }
-  });
-
-  for (const file of codePaths) {
-    const data = await api(`/repos/${repo.full_name}/contents/${encodeURIComponent(file)}`, null);
-    if (!data || typeof data.content !== 'string') continue;
-    const content = decodeBase64(data.content);
-    for (const f of scanSecurity(content)) {
-      if (!securityFindings.some((x) => x.id === f.id)) securityFindings.push(f);
-    }
-    for (const n of privacyFindings(content)) {
+  const absorbFindings = (list) => {
+    for (const f of list || []) securityFindings.push(f);
+  };
+  const absorbPrivacy = (notes) => {
+    for (const n of notes || []) {
       if (!seenPrivacy.has(n.explanation)) {
         seenPrivacy.add(n.explanation);
         privacyNotes.push(n);
       }
     }
+  };
+
+  absorbFindings(scanSecurity(readme, { file: readmeData?.path || 'README.md' }));
+  absorbPrivacy(privacyFindings(readme, { file: readmeData?.path || 'README.md' }));
+  for (const h of extractExternalHosts(readme)) externalHosts.add(h);
+
+  // 仓库文件清单零成本信号（双重扩展名伪装等；不消耗 content API）。
+  absorbFindings(scanPaths(paths));
+
+  // package.json 生命周期脚本 / 仿冒依赖名分析（复用已拉取的 manifest，零额外 API）。
+  packageJsonFiles.forEach((pkg, i) => {
+    absorbFindings(analyzePackageManifest(pkg, { file: i === 0 ? 'package.json' : `package.json#${i}` }));
+  });
+
+  let filesChecked = 0;
+  for (const file of codePaths) {
+    const data = await api(`/repos/${repo.full_name}/contents/${encodeURIComponent(file)}`, null);
+    if (!data || typeof data.content !== 'string') continue;
+    const content = decodeBase64(data.content);
+    filesChecked += 1;
+    if (samplePool.length < 8) samplePool.push({ file, snippet: content.slice(0, 500) });
+    absorbFindings(scanSecurity(content, { file }));
+    absorbFindings(scanSecrets(content, { file }));
+    absorbFindings(scanObfuscation(content, { file }));
+    absorbPrivacy(privacyFindings(content, { file }));
+    for (const h of extractExternalHosts(content)) externalHosts.add(h);
     if (securityFindings.some((f) => f.severity === 'critical')) break;
   }
 
-  const hasSecurityCritical = securityFindings.some((f) => f.severity === 'critical');
-  const hasSecurityWarning = securityFindings.some((f) => f.severity === 'warning');
-  const hasPrivacyCritical = privacyNotes.some((n) => n.severity === 'critical');
-  const hasPrivacyWarning = privacyNotes.some((n) => n.severity === 'warning');
+  const uniqueFindings = dedupeFindings(securityFindings);
 
-  let verdict = 'approved';
-  if (hasSecurityCritical) verdict = 'blocked';
-  else if (hasPrivacyCritical || hasSecurityWarning || hasPrivacyWarning) verdict = 'flagged';
+  // 供应链检查：OSV 已知漏洞批量查询（外部服务不可用时失败容忍）。
+  const osv = OSV_CHECK
+    ? await analyzeDependencies(packageJsonFiles, { osvCheck: true })
+    : { status: 'disabled', findings: [] };
+  for (const f of osv.findings) uniqueFindings.push(f);
+
+  // 可选 LLM 深度复核：配置 LLM_API_KEY 后，对确定性结果做第二轮语义审查；
+  // LLM 只升不降（确定性 critical 永远阻断），失败即跳过，不影响主流程。
+  const samples = uniqueFindings
+    .map((f) => `${f.file || '?'}:${f.line || 0} ${String(f.snippet || '').slice(0, 120)}`)
+    .slice(0, 12);
+  for (const s of samplePool) {
+    if (samples.length >= 12) break;
+    samples.push(`${s.file}: ${s.snippet.slice(0, 120)}`);
+  }
+  const llm = await llmReview({
+    repo: repo.full_name,
+    verdict: composeVerdict({ findings: uniqueFindings, privacyNotes }).verdict,
+    findings: uniqueFindings.map(
+      (f) => `${f.severity} [${f.id}] ${f.explanation} @${f.file}:${f.line || 0}`,
+    ),
+    externalHosts: [...externalHosts].slice(0, 10),
+    packageSummary: uniqueFindings
+      .filter((f) => f.id.startsWith('lifecycle') || f.id === 'typosquat' || f.id === 'osv-vuln')
+      .map((f) => f.explanation)
+      .slice(0, 20),
+    samples,
+  });
+  if (llm.status === 'ok' && llm.verdict !== 'none') {
+    for (const f of llm.findings || []) {
+      if (!f || !f.title) continue;
+      uniqueFindings.push({
+        id: 'llm-review',
+        severity: f.severity === 'critical' ? 'critical' : 'warning',
+        explanation: `LLM 深度复核：${f.title}`,
+        file: 'llm-review',
+        line: 0,
+        snippet: String(f.evidence || '').slice(0, 160),
+        source: 'llm',
+      });
+    }
+  }
+
+  const { verdict, blockedReasons, flaggedReasons } = composeVerdict({
+    findings: uniqueFindings,
+    privacyNotes,
+  });
+
   return {
     verdict,
     compatibility,
-    findings: securityFindings,
+    findings: uniqueFindings,
     privacyNotes,
     readme,
     descriptionI18n,
+    reviewedCommit,
+    deltaUsed,
+    filesChecked,
+    totalFiles,
+    blockedReasons,
+    flaggedReasons,
+    trustNotes: trustNotesFor(repo),
+    osv,
+    llm: { status: llm.status, verdict: llm.verdict, rationale: llm.rationale || '', error: llm.error || '' },
   };
 }
 
@@ -441,6 +542,7 @@ function normalizeEntry(p) {
     privacy_risk: p.privacy_risk ?? false,
     privacy_notes: p.privacy_notes ?? [],
     security_notes: p.security_notes ?? [],
+    reviewed_commit: p.reviewed_commit ?? '',
     category,
     forks: p.forks ?? 0,
     open_issues: p.open_issues ?? 0,
@@ -466,6 +568,11 @@ async function main() {
     reviewed = new Set(logDecisions.map((d) => d.id));
   } catch {
     // 尚无审查日志。
+  }
+  // 上次审查对应的 commit（用于 FORCE_REREVIEW 时的增量复查）。
+  const previousCommitById = new Map();
+  for (const d of logDecisions) {
+    if (d.reviewed_commit) previousCommitById.set(d.id, d.reviewed_commit);
   }
 
   const byId = new Map((existing.plugins || []).map((p) => [p.id, p]));
@@ -501,19 +608,47 @@ async function main() {
     }
 
     processed += 1;
-    const review = await reviewRepo(repo);
+    const review = await reviewRepo(repo, {
+      previousCommit: previousCommitById.get(repo.full_name),
+    });
     const decision = {
       id: repo.full_name,
       verdict: review.verdict,
       compatibility: review.compatibility,
       findings: review.findings.map((f) => f.explanation),
       privacy_notes: review.privacyNotes.map((n) => n.explanation),
+      // 证据化审查留痕（规则/严重级/文件/行号/片段）与覆盖信息。
+      evidence: review.findings
+        .map((f) => ({
+          rule: f.id,
+          severity: f.severity,
+          explanation: f.explanation,
+          file: f.file || '',
+          line: f.line ?? 0,
+          snippet: String(f.snippet || '').slice(0, 160),
+        }))
+        .slice(0, 40),
+      trust_notes: review.trustNotes || [],
+      reviewed_commit: review.reviewedCommit || '',
+      review_mode: review.deltaUsed ? 'delta' : 'full',
+      scanned_files: review.filesChecked ?? 0,
+      total_files: review.totalFiles ?? 0,
+      osv: { status: review.osv?.status || 'disabled', findings: (review.osv?.findings || []).length },
+      llm_review: review.llm || { status: 'skipped' },
       reviewed_at: NOW,
     };
     reviewLog.push(decision);
     console.log(
       `  ${repo.full_name} -> ${review.verdict}${review.verdict === 'skip' ? `（${review.compatibility.reason}）` : ''}`,
     );
+    if (process.env.DEBUG_REVIEW) {
+      for (const f of review.findings.slice(0, 20)) {
+        console.log(`      [${f.severity}] ${f.id} ${f.file || ''}:${f.line ?? 0} ${String(f.snippet || '').slice(0, 100)}`);
+      }
+      for (const n of review.privacyNotes) {
+        console.log(`      [${n.severity}] privacy ${n.explanation}`);
+      }
+    }
 
     if (review.verdict === 'approved' || review.verdict === 'flagged') {
       byId.set(
@@ -526,7 +661,7 @@ async function main() {
       byId.get(repo.full_name).source !== 'curated'
     ) {
       // 本轮复查判为 blocked（安全阻断），立即把已收录的旧条目移出列表。
-      // curated 项在上面第 494 行 continue 跳过，不会走到这里。
+      // curated 项在上面的循环开头 continue 跳过，不会走到这里。
       byId.delete(repo.full_name);
     }
 
@@ -595,10 +730,28 @@ async function main() {
       acc[d.verdict] = (acc[d.verdict] ?? 0) + 1;
       return acc;
     }, {});
+    const blockedReasons = [
+      ...new Set(
+        reviewLog
+          .filter((d) => d.verdict === 'blocked')
+          .flatMap((d) => d.findings || []),
+      ),
+    ].slice(0, 20);
     writeFileSync(
       join(root, 'data', 'run-summary.json'),
       JSON.stringify(
-        { run_at: NOW, new_reviews: reviewLog.length, worst_verdict: worstVerdict, verdicts: verdictCounts },
+        {
+          run_at: NOW,
+          new_reviews: reviewLog.length,
+          worst_verdict: worstVerdict,
+          verdicts: verdictCounts,
+          blocked_reasons: blockedReasons,
+          scan: {
+            files_checked: reviewLog.reduce((n, d) => n + (d.scanned_files || 0), 0),
+            osv_used: reviewLog.some((d) => d.osv?.status === 'ok'),
+            llm_used: reviewLog.some((d) => d.llm_review?.status === 'ok'),
+          },
+        },
         null,
         2,
       ),
