@@ -1,185 +1,56 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-08-16T13:39:38.890Z",
+  "generated_at": "2026-08-16T14:19:10.156Z",
   "plugins": [
-    {
-      "id": "deepseek-ai/deepseek-harness",
-      "name": "DeepSeek Harness",
-      "description": "DeepSeek Harness 核心运行时：Everything is a Plugin。",
-      "usage": "npx @deepseek-ai/dsh 启动核心；插件经 dsh plugin --profile web add <源> 挂载",
-      "repo_url": "https://github.com/deepseek-ai/deepseek-harness",
-      "homepage": "https://github.com/deepseek-ai/deepseek-harness",
-      "stars": 126416,
-      "language": "TypeScript",
-      "license": "MIT",
-      "topics": [
-        "deepseek-harness",
-        "dsh",
-        "dsh-plugin"
-      ],
-      "category": "core",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": true,
-      "compatibility": "official",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 12572,
-      "open_issues": 0,
-      "watchers": 519,
-      "pushed_at": "2026-08-13T13:00:21Z",
-      "archived": false,
-      "description_i18n": {
-        "zh": "DeepSeek Harness 核心运行时：Everything is a Plugin。",
-        "en": "DeepSeek Harness core runtime: Everything is a Plugin."
-      },
-      "kind": "official",
-      "reviewed_commit": ""
-    },
-    {
-      "id": "zhu1090093659/dsh-web-ui",
-      "name": "dsh-web-ui",
-      "description": "DSH Web UI 的插件与皮肤集合：任务看板、Git 图谱、右侧面板、移动端远程、鲸鱼娘宠物、实时令牌统计与皮肤中心。",
-      "usage": "dsh plugin --profile web add github:zhu1090093659/dsh-web-ui 后重启 Web",
-      "repo_url": "https://github.com/zhu1090093659/dsh-web-ui",
-      "homepage": "https://github.com/zhu1090093659/dsh-web-ui",
-      "stars": 3221,
-      "language": "TypeScript",
-      "license": "unknown",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin",
-        "plugin"
-      ],
-      "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 190,
-      "open_issues": 55,
-      "watchers": 3,
-      "pushed_at": "2026-08-16T13:37:23Z",
-      "archived": false,
-      "description_i18n": {
-        "zh": "DSH Web UI 的插件与皮肤集合：任务看板、Git 图谱、右侧面板、移动端远程、鲸鱼娘宠物、实时令牌统计与皮肤中心。",
-        "en": "A collection of plugins and skins for the DSH Web UI: task board, Git graph, right panel, mobile remote, whale-girl pet, live token stats, and skin center."
-      },
-      "kind": "code",
-      "reviewed_commit": ""
-    },
-    {
-      "id": "liustack/modlens",
-      "name": "ModLens",
-      "description": "首个 DeepSeek Harness 视觉插件，给纯文本模型“装上眼睛”：直接粘贴图片即可得到结构化 JSON 证据（OCR、布局等）。",
-      "usage": "dsh plugin add @liustack/modlens（npm）；粘贴图片即可让纯文本模型“看见”",
-      "repo_url": "https://github.com/liustack/modlens",
-      "homepage": "https://github.com/liustack/modlens",
-      "stars": 2243,
-      "language": "TypeScript",
-      "license": "MIT",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin",
-        "vision"
-      ],
-      "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 56,
-      "open_issues": 5,
-      "watchers": 1,
-      "pushed_at": "2026-08-16T12:46:07Z",
-      "archived": false,
-      "description_i18n": {
-        "zh": "首个 DeepSeek Harness 视觉插件，给纯文本模型“装上眼睛”：直接粘贴图片即可得到结构化 JSON 证据（OCR、布局等）。",
-        "en": "The first DeepSeek Harness vision plugin that gives text-only models eyes: paste an image to get structured JSON evidence (OCR, layout, and more)."
-      },
-      "kind": "code",
-      "reviewed_commit": ""
-    },
     {
       "id": "ccch1mneyyy/dsh-TUI",
       "name": "dsh-TUI",
-      "description": "Claude Code 风格全屏终端 TUI 插件：像素鲸鱼顶栏、实时工作状态行、思考流式展开、双击 Esc 回滚、上下文进度条与 TPS 仪表。",
-      "usage": "dsh plugin --profile tui add github:ccch1mneyyy/dsh-TUI（npm 一键安装）",
+      "description": "DSH 官方公众号收录的 TUI 补位插件：Claude Code 风，鲸鱼顶栏/实时状态/流式思考/双击 Esc 回滚/上下文进度+TPS。npm 一键装。  DSH official WeChat featured TUI plugin — Claude Code style: whale bar, live status, streaming thoughts, double-Esc rollback, context bar + TPS. npm one-click.",
+      "usage": "dsh plugin --profile web add github:ccch1mneyyy/dsh-TUI",
       "repo_url": "https://github.com/ccch1mneyyy/dsh-TUI",
-      "homepage": "https://github.com/ccch1mneyyy/dsh-TUI",
-      "stars": 1474,
+      "homepage": "https://dshtui.com/",
+      "stars": 1480,
+      "forks": 59,
+      "open_issues": 39,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T14:17:27Z",
+      "archived": false,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
+        "claude-code",
+        "coding-agent",
+        "deepseek",
         "deepseek-harness",
         "dsh-plugin",
+        "ink",
+        "react",
+        "terminal",
         "tui"
       ],
       "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
+      "kind": "dsh-bundle",
       "official": false,
       "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 59,
-      "open_issues": 42,
-      "watchers": 1,
-      "pushed_at": "2026-08-16T13:34:44Z",
-      "archived": false,
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
       "description_i18n": {
-        "zh": "Claude Code 风格全屏终端 TUI 插件：像素鲸鱼顶栏、实时工作状态行、思考流式展开、双击 Esc 回滚、上下文进度条与 TPS 仪表。",
-        "en": "Claude Code-style full-screen terminal TUI plugin: pixel whale header, live work status line, streamed thinking, double-Esc rollback, context progress bar, and TPS dashboard."
+        "zh": ">一个美观且实用的 Claude Code 风格 TUI 插件：像素鲸鱼顶栏、双流光大字、实时工作状态行、思考流式展开、双击 Esc 时间回溯、蓝白上下文进度条 + TPS 仪表。",
+        "en": "dsh-TUI is an interactive terminal front door for DeepSeek Harness. It is mounted as a Cordis plugin and provides a Claude Code-style conversation, tool, session, and fullscreen terminal experience while continuing to use the"
       },
-      "kind": "code",
-      "reviewed_commit": ""
-    },
-    {
-      "id": "omdsh-dev/DSH-better-sidebar",
-      "name": "DSH Better Sidebar",
-      "description": "侧边栏完整工作台：文件管理与预览、内嵌浏览器、真实终端、Git 面板、后台任务页，并支持第三方注册新 Tab。",
-      "usage": "dsh plugin --profile web add github:omdsh-dev/DSH-better-sidebar",
-      "repo_url": "https://github.com/omdsh-dev/DSH-better-sidebar",
-      "homepage": "https://github.com/omdsh-dev/DSH-better-sidebar",
-      "stars": 1522,
-      "language": "TypeScript",
-      "license": "MIT",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin"
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 star-history.com）"
       ],
-      "category": "plugin",
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "依赖 lodash-es@4.17.0 存在已知漏洞（GHSA-29mw-wpgm-hmr9, GHSA-35jh-r3h4-6jhm, GHSA-f23m-r3pf-42rh）",
+        "依赖 semver@7.0.0 存在已知漏洞（GHSA-c2qf-rxjj-qqgw）"
+      ],
+      "reviewed_commit": "123aa64b4f7dc3523d2fcf40f2925014c4325a43",
       "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 99,
-      "open_issues": 64,
-      "watchers": 3,
-      "pushed_at": "2026-08-16T11:25:04Z",
-      "archived": false,
-      "description_i18n": {
-        "zh": "侧边栏完整工作台：文件管理与预览、内嵌浏览器、真实终端、Git 面板、后台任务页，并支持第三方注册新 Tab。",
-        "en": "A complete sidebar workspace: file management and preview, embedded browser, real terminal, Git panel, background jobs page, and third-party tab registration."
-      },
-      "kind": "code",
-      "reviewed_commit": ""
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-16T14:19:10.156Z"
     },
     {
       "id": "Anionex/dsh-vision-toolkit",
@@ -857,94 +728,18 @@
       "reviewed_commit": ""
     },
     {
-      "id": "sandbaseai/sandbase-harness",
-      "name": "sandbase-harness",
-      "description": "Open-source CMA-compatible agent runtime. Run multi-agent systems locally with any model (Ollama/vLLM/Claude/GPT), MCP tools, scenario templates, and a beautiful dashboard. One command start. Built for enterprise teams.",
-      "usage": "dsh plugin --profile web add github:sandbaseai/sandbase-harness",
-      "repo_url": "https://github.com/sandbaseai/sandbase-harness",
-      "homepage": "https://github.com/sandbaseai/sandbase-harness",
-      "stars": 598,
-      "language": "TypeScript",
-      "license": "NOASSERTION",
-      "topics": [
-        "dsh-plugin",
-        "dsh-plugin-verify",
-        "dsh-plugins"
-      ],
-      "category": "plugin",
-      "official": false,
-      "compatibility": "compatible",
-      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
-      "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址",
-        "读取浏览器 Cookie/存储并发送到网络"
-      ],
-      "security_notes": [],
-      "source": "discovered",
-      "review_status": "flagged",
-      "reviewed_at": "2026-08-14T05:22:32.485Z",
-      "forks": 57,
-      "open_issues": 3,
-      "watchers": 20,
-      "pushed_at": "2026-08-15T12:10:33Z",
-      "archived": false,
-      "description_i18n": {
-        "en": "Open-source CMA-compatible agent runtime. Run multi-agent systems locally with any model (Ollama/vLLM/Claude/GPT), MCP tools, scenario templates, and a beautiful dashboard. One command start. Built for enterprise teams."
-      },
-      "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code",
-      "reviewed_commit": ""
-    },
-    {
-      "id": "awesome-dsh-plugin/awesome-dsh-plugin",
-      "name": "awesome-dsh-plugin",
-      "description": "A curated list of plugins for DeepSeek Harness (dsh) · DeepSeek Harness 插件精选列表",
-      "usage": "dsh plugin --profile web add github:awesome-dsh-plugin/awesome-dsh-plugin",
-      "repo_url": "https://github.com/awesome-dsh-plugin/awesome-dsh-plugin",
-      "homepage": "https://awesome-dsh-plugin.com",
-      "stars": 4299,
-      "language": "HTML",
-      "license": "CC0-1.0",
-      "topics": [
-        "awesome",
-        "awesome-list",
-        "deepseek-harness",
-        "dsh",
-        "dsh-plugin"
-      ],
-      "category": "collection",
-      "official": false,
-      "compatibility": "compatible",
-      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
-      "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址"
-      ],
-      "security_notes": [],
-      "source": "discovered",
-      "review_status": "flagged",
-      "reviewed_at": "2026-08-14T05:22:32.485Z",
-      "forks": 797,
-      "open_issues": 65,
-      "watchers": 8,
-      "pushed_at": "2026-08-16T13:12:16Z",
-      "archived": false,
-      "description_i18n": {
-        "zh": "A curated list of plugins for DeepSeek Harness (dsh) · DeepSeek Harness 插件精选列表",
-        "en": "A curated list of plugins for DeepSeek Harness (dsh)."
-      },
-      "kind": "code",
-      "reviewed_commit": ""
-    },
-    {
       "id": "Small-tailqwq/dsh-deep-whale",
       "name": "dsh-deep-whale",
       "description": "DSH Web 鲸鱼娘皮肤系列(深海女仆工坊 maid-atelier)——CC BY-NC-SA 4.0",
       "usage": "dsh plugin --profile web add github:Small-tailqwq/dsh-deep-whale",
       "repo_url": "https://github.com/Small-tailqwq/dsh-deep-whale",
       "homepage": "https://github.com/Small-tailqwq/dsh-deep-whale",
-      "stars": 1034,
+      "stars": 1043,
+      "forks": 35,
+      "open_issues": 22,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T06:34:28Z",
+      "archived": false,
       "language": "TypeScript",
       "license": "unknown",
       "topics": [
@@ -952,32 +747,28 @@
         "dsh-plugin"
       ],
       "category": "plugin",
+      "kind": "dsh-bundle+client",
       "official": false,
       "compatibility": "compatible",
-      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "DeepSeek Harness Web GUI 的鲸鱼娘主题皮肤系列(独立分发仓库)。"
+      },
       "privacy_risk": true,
       "privacy_notes": [
-        "访问第三方网络地址",
-        "读取环境变量（可能包含敏感信息）"
+        "访问第三方网络地址（如 b23.tv、pixiv.net）",
+        "访问第三方网络地址（如 w3.org）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 pixiv.net）"
       ],
       "security_notes": [
-        "使用动态代码或子进程执行",
-        "存在疑似混淆内容"
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "存在疑似混淆内容（长 Base64 块）"
       ],
+      "reviewed_commit": "873f5c6d7f52aa4e4283a5ffd5598229595184da",
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-14T05:22:32.485Z",
-      "forks": 35,
-      "open_issues": 22,
-      "watchers": 1,
-      "pushed_at": "2026-08-16T06:34:28Z",
-      "archived": false,
-      "description_i18n": {
-        "zh": "DSH Web 鲸鱼娘皮肤系列(深海女仆工坊 maid-atelier)——CC BY-NC-SA 4.0",
-        "en": "DSH Web whale-girl skin series (Maid Atelier) - CC BY-NC-SA 4.0."
-      },
-      "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_at": "2026-08-16T14:19:10.156Z"
     },
     {
       "id": "Nagi-ovo/dsh-ads",
@@ -1063,106 +854,6 @@
         "zh": "开源版锤子便签，复刻锤科美学，一键Docker私有化部署，支持skill调用，支持dsh plugin，支持多租户，一键生成公众号格式，支持导出便签为图片",
         "en": "An open-source hammer-style notes app replicating the aesthetic of Smartisan Notes: one-command Docker private deployment, skill calls, dsh plugin support, multi-tenancy, one-command WeChat article formatting, and image export for notes."
       },
-      "kind": "code",
-      "reviewed_commit": ""
-    },
-    {
-      "id": "tt-a1i/archify",
-      "name": "archify",
-      "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
-      "usage": "dsh plugin --profile web add github:tt-a1i/archify",
-      "repo_url": "https://github.com/tt-a1i/archify",
-      "homepage": "https://tt-a1i.github.io/archify/",
-      "stars": 13162,
-      "language": "HTML",
-      "license": "MIT",
-      "topics": [
-        "agent-skills",
-        "anthropic",
-        "architecture-diagram",
-        "claude-skill",
-        "codex",
-        "dark-mode",
-        "data-flow-diagram",
-        "deepseek-harness",
-        "developer-tools",
-        "diagram-as-code",
-        "dsh-plugin",
-        "html-diagram",
-        "lifecycle-diagram",
-        "mermaid-alternative",
-        "opencode",
-        "sequence-diagram",
-        "svg",
-        "system-design",
-        "workflow-diagram"
-      ],
-      "category": "plugin",
-      "official": false,
-      "compatibility": "compatible",
-      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
-      "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "存在 Base64 解码行为",
-        "使用动态代码或子进程执行"
-      ],
-      "source": "discovered",
-      "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z",
-      "forks": 968,
-      "open_issues": 19,
-      "watchers": 79,
-      "pushed_at": "2026-08-14T16:30:40Z",
-      "archived": false,
-      "description_i18n": {
-        "zh": "在对话里，把代码仓库或系统描述变成漂亮、可靠、可交互的系统地图。",
-        "en": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export."
-      },
-      "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code",
-      "reviewed_commit": ""
-    },
-    {
-      "id": "anywhere-labs/deepseek-harness-desktop",
-      "name": "deepseek-harness-desktop",
-      "description": "基于官方 DeepSeek Harness 打造的 Electron 桌面端，深度适配 macOS 和 Windows，提供最佳的，开箱即用的体验。",
-      "usage": "dsh plugin --profile web add github:anywhere-labs/deepseek-harness-desktop",
-      "repo_url": "https://github.com/anywhere-labs/deepseek-harness-desktop",
-      "homepage": "https://deepseekdesktop.com",
-      "stars": 8190,
-      "language": "TypeScript",
-      "license": "MIT",
-      "topics": [
-        "deepseek",
-        "deepseek-harness",
-        "dsh-plugin"
-      ],
-      "category": "plugin",
-      "official": false,
-      "compatibility": "compatible",
-      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
-      "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址"
-      ],
-      "security_notes": [],
-      "source": "discovered",
-      "review_status": "flagged",
-      "reviewed_at": "2026-08-14T10:03:43.084Z",
-      "forks": 340,
-      "open_issues": 122,
-      "watchers": 22,
-      "pushed_at": "2026-08-16T13:18:05Z",
-      "archived": false,
-      "description_i18n": {
-        "zh": "基于官方 DeepSeek Harness 打造的 Electron 桌面端，深度适配 macOS 和 Windows，提供最佳的，开箱即用的体验。",
-        "en": "Desktop Bring the official DeepSeek Harness local Web UI to a native desktop application. The app starts and manages the local Harness service, integrates the system tray and desktop window, and requires no Node.js installation or command-line setup."
-      },
-      "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
       "reviewed_commit": ""
     },
@@ -2047,72 +1738,16 @@
       "reviewed_commit": ""
     },
     {
-      "id": "GanyuanRan/Aegis",
-      "name": "Aegis",
-      "description": "Make AI coding agents architecture-aware: baseline-first, evidence-verified, drift-checked, and safe across long tasks.",
-      "usage": "dsh plugin --profile web add github:GanyuanRan/Aegis",
-      "repo_url": "https://github.com/GanyuanRan/Aegis",
-      "homepage": "https://github.com/GanyuanRan/Aegis",
-      "stars": 1023,
-      "forks": 46,
-      "open_issues": 0,
-      "watchers": 4,
-      "pushed_at": "2026-08-16T05:57:38Z",
-      "archived": false,
-      "language": "Python",
-      "license": "MIT",
-      "topics": [
-        "agent-skills",
-        "ai-agents",
-        "ai-coding",
-        "architecture-driven-development",
-        "awsome-coding-plugin",
-        "baseline-first",
-        "claude-code",
-        "codex",
-        "coding-agents",
-        "dive",
-        "dsh-plugin",
-        "evidence-driven",
-        "first-principles",
-        "opencode",
-        "software-architecture",
-        "spec-driven-development",
-        "spec-kit"
-      ],
-      "category": "plugin",
-      "official": false,
-      "compatibility": "compatible",
-      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
-      "description_i18n": {
-        "zh": "Aegis Method Pack 让 AI 编程 agent 变得可信：少返工、更安全、说“完成”前先给证据。",
-        "en": "English is now the default GitHub README:"
-      },
-      "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "存在疑似混淆内容"
-      ],
-      "source": "discovered",
-      "review_status": "flagged",
-      "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code",
-      "reviewed_commit": ""
-    },
-    {
       "id": "xiaobright/dsh-anchored-standard",
       "name": "dsh-anchored-standard",
       "description": "Two-phase DeepSeek Harness preset: Minimal-aligned bootstrap, then full Standard tools (Project2 98/99)",
       "usage": "dsh plugin --profile web add github:xiaobright/dsh-anchored-standard",
       "repo_url": "https://github.com/xiaobright/dsh-anchored-standard",
       "homepage": "https://github.com/xiaobright/modeltest",
-      "stars": 2793,
-      "forks": 89,
+      "stars": 2827,
+      "forks": 90,
       "open_issues": 31,
-      "watchers": 3,
+      "watchers": 0,
       "pushed_at": "2026-08-16T09:59:56Z",
       "archived": false,
       "language": "JavaScript",
@@ -2124,21 +1759,21 @@
         "llm-agent"
       ],
       "category": "plugin",
+      "kind": "code",
       "official": false,
       "compatibility": "compatible",
-      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "compatibility_reason": "源码 preset/custom-bash.mjs 呈现 Cordis 插件骨架（apply(ctx)）",
       "description_i18n": {
-        "zh": "实验性 DeepSeek Harness agent preset 集合——一个基础模式加两个变体：首轮模型请求锚定在 Minimal 条件上（真实的 Minimal 工具 schema、不注入自动上下文），会话产生持久信号后晋升到小型 resident 目录，重型 Standard 工具按需解锁。",
-        "en": "Experimental DeepSeek Harness agent presets — one base mode plus two variants — that anchor a session's first model request on the Minimal condition (real Minimal tool schema, no auto-injected context), then promote to a small resident catalog once the session is durable, unlocking heavier Standard tools on demand."
+        "zh": "实验性 DeepSeek Harness agent preset 集合——一个基础模式加两个变体：首轮模型请求锚定在 Minimal 条件上（真实的 Minimal 工具 schema、不注入自动上下文），会话产生持久信号后晋升到 小型 resident 目录，重型 Standard 工具按需解锁。",
+        "en": "Experimental DeepSeek Harness agent presets — one base mode plus two variants — that anchor a session's first model request on the Minimal condition (real Minimal tool schema, no auto-injected context), then promote to a small"
       },
       "privacy_risk": false,
       "privacy_notes": [],
       "security_notes": [],
+      "reviewed_commit": "0a38616c1b7ce4219b6d94d95c89f34a90741616",
       "source": "discovered",
       "review_status": "approved",
-      "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_at": "2026-08-16T14:19:10.156Z"
     },
     {
       "id": "dsh-market/dsh-market",
@@ -3362,61 +2997,6 @@
       "reviewed_commit": ""
     },
     {
-      "id": "Q00/ouroboros",
-      "name": "ouroboros",
-      "description": "Agent OS: the agent gets smarter on its own. We just hold the line: the grading command and expected result never make it into the success contract we hand it. Interview-gated, staged evaluation, budgeted evolution loop. MCP server, 13 runtimes: Claude Code, Codex CLI, Gemini CLI, OpenCode, Copilot, Kiro and more.",
-      "usage": "dsh plugin --profile web add github:Q00/ouroboros",
-      "repo_url": "https://github.com/Q00/ouroboros",
-      "homepage": "https://ouroboros.page/",
-      "stars": 5457,
-      "forks": 552,
-      "open_issues": 58,
-      "watchers": 14,
-      "pushed_at": "2026-08-16T13:31:11Z",
-      "archived": false,
-      "language": "Python",
-      "license": "MIT",
-      "topics": [
-        "agent-os",
-        "agentic-ai",
-        "ai-agent",
-        "ai-coding-agent",
-        "claude-code",
-        "cli",
-        "codex",
-        "coding-agent",
-        "deepseek",
-        "deepseek-harness",
-        "developer-tools",
-        "dsh",
-        "dsh-plugin",
-        "github-copilot",
-        "llm-evaluation",
-        "llm-orchestration",
-        "loop-engineering",
-        "mcp",
-        "opencode"
-      ],
-      "category": "plugin",
-      "official": false,
-      "compatibility": "compatible",
-      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
-      "description_i18n": {
-        "zh": "和任何操作系统一样，Ouroboros 分成三层：一层稳定的、提供原语的 OS 层，一层承载领域工作流的应用层，还有一个人真正坐在前面的 shell。三个仓库，一个技术栈：",
-        "en": "Like any OS, Ouroboros is split into a stable OS layer of primitives, an application layer of domain workflows, and a shell that humans actually sit in front of. Three repos, one stack:"
-      },
-      "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址"
-      ],
-      "security_notes": [],
-      "source": "discovered",
-      "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code",
-      "reviewed_commit": ""
-    },
-    {
       "id": "GCWing/BitFun",
       "name": "BitFun",
       "description": "BitFun combines a high-performance agent runtime written in Rust with a polished desktop application. It pairs the depth of a Code Agent with open, general-purpose capabilities for work beyond software development.",
@@ -3424,9 +3004,9 @@
       "repo_url": "https://github.com/GCWing/BitFun",
       "homepage": "https://github.com/GCWing/BitFun",
       "stars": 1747,
-      "forks": 186,
-      "open_issues": 90,
-      "watchers": 7,
+      "forks": 187,
+      "open_issues": 91,
+      "watchers": 0,
       "pushed_at": "2026-08-16T13:15:05Z",
       "archived": false,
       "language": "Rust",
@@ -3447,80 +3027,27 @@
         "vibe-coding"
       ],
       "category": "plugin",
+      "kind": "code",
       "official": false,
       "compatibility": "compatible",
-      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "compatibility_reason": "依赖 DSH/Cordis 生态包 @deepseek-ai/dsh-agent-spine-demo",
       "description_i18n": {
         "zh": "能写代码、能做文档、能操控桌面，并提供小应用、Rust Runtime 和可自部署的多设备互控服务器。",
         "en": "Writes code, produces documents, and drives the desktop — with Mini Apps, a Rust runtime, and a self-hostable device-sync server."
       },
       "privacy_risk": true,
       "privacy_notes": [
-        "访问第三方网络地址",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）"
+        "访问第三方网络地址（如 labs.scale.com、market.openbitfun.com、openbitfun.com、pnpm.io）"
       ],
       "security_notes": [
-        "存在疑似混淆内容"
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+        "依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp）",
+        "依赖 simple-git@3.27.0 存在已知漏洞（GHSA-hffm-xvc3-vprc, GHSA-jcxm-m3jx-f287, GHSA-r275-fr43-pm7q）"
       ],
+      "reviewed_commit": "965de28d9758507b9e30649763456865e6a13978",
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code",
-      "reviewed_commit": ""
-    },
-    {
-      "id": "agentrq/agentrq",
-      "name": "agentrq",
-      "description": "AgentRQ: Human-in-loop realtime conversational task manager for AI Agents. Self-hosted! Control your own agents from wherever you want Mobile, Web, Desktop. Designed to work well with your own Claude subscriptions and any harness.",
-      "usage": "dsh plugin --profile web add github:agentrq/agentrq",
-      "repo_url": "https://github.com/agentrq/agentrq",
-      "homepage": "https://agentrq.com",
-      "stars": 1072,
-      "forks": 80,
-      "open_issues": 16,
-      "watchers": 1,
-      "pushed_at": "2026-08-16T05:07:06Z",
-      "archived": false,
-      "language": "Go",
-      "license": "Apache-2.0",
-      "topics": [
-        "acp-client",
-        "acp-gateway",
-        "agentic-ai",
-        "agentic-workflow",
-        "agents",
-        "deepseek-harness",
-        "deepseek-harness-plugin",
-        "dsh-plugin",
-        "mcp",
-        "mcp-server",
-        "supervisor",
-        "task",
-        "task-manager",
-        "task-scheduler",
-        "todo"
-      ],
-      "category": "plugin",
-      "official": false,
-      "compatibility": "compatible",
-      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
-      "description_i18n": {
-        "zh": "AgentRQ：面向 AI Agent 的实时对话式任务管理器，支持人机协作。自托管部署，可通过移动端、Web、桌面端随时随地控制自己的 Agent，适配你自己的 Claude 订阅与任意 harness。",
-        "en": "AgentRQ is a modern, high-performance platform designed for seamless collaboration between human operators and AI agents. It leverages the Model Context Protocol (MCP) to allow AI models (like Claude) to interact directly with your workspace's task management."
-      },
-      "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址"
-      ],
-      "security_notes": [
-        "存在疑似混淆内容",
-        "存在 Base64 解码行为"
-      ],
-      "source": "discovered",
-      "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_at": "2026-08-16T14:19:10.156Z"
     },
     {
       "id": "ccch1mneyyy/working-activity",
@@ -3532,7 +3059,7 @@
       "stars": 644,
       "forks": 230,
       "open_issues": 0,
-      "watchers": 51,
+      "watchers": 0,
       "pushed_at": "2026-08-15T05:37:59Z",
       "archived": false,
       "language": "TypeScript",
@@ -3546,26 +3073,24 @@
         "working-line"
       ],
       "category": "plugin",
+      "kind": "dsh-bundle+client",
       "official": false,
       "compatibility": "compatible",
-      "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "description_i18n": {
-        "zh": "为 DeepSeek Harness 打造的一条实时“工作状态行”：展示模型的实时活动——俏皮思考文案、真正在跑的工具、已耗时、收尾摘要——在 agent 干活时展示出来。",
-        "en": "A lively real-time \"working line\" extension for pi CLI and DSH, showing the model activity while the agent works."
+        "zh": "为 DeepSeek Harness 打造的一条实时 \"工作状态行\"：模型的实时活动——俏皮思考文案、真正在跑的工具、已耗时、收尾摘要——在 agent 干活时展示出来。"
       },
       "privacy_risk": true,
       "privacy_notes": [
-        "访问第三方网络地址"
+        "读取环境变量（可能包含敏感信息）"
       ],
       "security_notes": [
-        "存在疑似混淆内容"
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
       ],
+      "reviewed_commit": "03d403984b2d16a2adf0c5620e1f6678d569bffb",
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_at": "2026-08-16T14:19:10.156Z"
     },
     {
       "id": "adoresever/graph-memory",
