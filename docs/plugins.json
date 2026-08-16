@@ -1,6 +1,6 @@
 {
-  "schema_version": 3,
-  "generated_at": "2026-08-16T14:19:10.156Z",
+  "schema_version": 4,
+  "generated_at": "2026-08-16T15:15:23.499Z",
   "plugins": [
     {
       "id": "ccch1mneyyy/dsh-TUI",
@@ -9,11 +9,11 @@
       "usage": "dsh plugin --profile web add github:ccch1mneyyy/dsh-TUI",
       "repo_url": "https://github.com/ccch1mneyyy/dsh-TUI",
       "homepage": "https://dshtui.com/",
-      "stars": 1480,
-      "forks": 59,
+      "stars": 1492,
+      "forks": 61,
       "open_issues": 39,
       "watchers": 0,
-      "pushed_at": "2026-08-16T14:17:27Z",
+      "pushed_at": "2026-08-16T15:08:05Z",
       "archived": false,
       "language": "TypeScript",
       "license": "MIT",
@@ -37,20 +37,129 @@
         "zh": ">一个美观且实用的 Claude Code 风格 TUI 插件：像素鲸鱼顶栏、双流光大字、实时工作状态行、思考流式展开、双击 Esc 时间回溯、蓝白上下文进度条 + TPS 仪表。",
         "en": "dsh-TUI is an interactive terminal front door for DeepSeek Harness. It is mounted as a Cordis plugin and provides a Claude Code-style conversation, tool, session, and fullscreen terminal experience while continuing to use the"
       },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:250",
+        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:254",
+        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:260",
+        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:266",
+        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:275",
+        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:287",
+        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:290",
+        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:299",
+        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:311",
+        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:326",
+        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:337",
+        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:345",
+        "依赖 lodash-es@4.17.0 存在已知漏洞（GHSA-29mw-wpgm-hmr9, GHSA-35jh-r3h4-6jhm, GHSA-f23m-r3pf-42rh） @ <dependencies>",
+        "依赖 semver@7.0.0 存在已知漏洞（GHSA-c2qf-rxjj-qqgw） @ <dependencies>",
+        "访问第三方网络地址（如 star-history.com） @ README.md",
+        "读取环境变量（可能包含敏感信息） @ src/screens/Chat.tsx"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "pnpm-lock.yaml",
+          "line": 250
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "pnpm-lock.yaml",
+          "line": 254
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "pnpm-lock.yaml",
+          "line": 260
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "pnpm-lock.yaml",
+          "line": 266
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "pnpm-lock.yaml",
+          "line": 275
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "pnpm-lock.yaml",
+          "line": 287
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "pnpm-lock.yaml",
+          "line": 290
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "pnpm-lock.yaml",
+          "line": 299
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "pnpm-lock.yaml",
+          "line": 311
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "pnpm-lock.yaml",
+          "line": 326
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "pnpm-lock.yaml",
+          "line": 337
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "pnpm-lock.yaml",
+          "line": 345
+        },
+        {
+          "explanation": "依赖 lodash-es@4.17.0 存在已知漏洞（GHSA-29mw-wpgm-hmr9, GHSA-35jh-r3h4-6jhm, GHSA-f23m-r3pf-42rh）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 semver@7.0.0 存在已知漏洞（GHSA-c2qf-rxjj-qqgw）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 star-history.com）",
+          "file": "README.md"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "src/screens/Chat.tsx"
+        }
+      ],
       "privacy_risk": true,
       "privacy_notes": [
-        "访问第三方网络地址（如 star-history.com）"
+        "访问第三方网络地址（如 star-history.com）",
+        "读取环境变量（可能包含敏感信息）"
       ],
       "security_notes": [
         "package.json 的 prepare 脚本会在安装/发布时自动执行",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "存在疑似混淆内容（长 Base64 块）",
         "依赖 lodash-es@4.17.0 存在已知漏洞（GHSA-29mw-wpgm-hmr9, GHSA-35jh-r3h4-6jhm, GHSA-f23m-r3pf-42rh）",
         "依赖 semver@7.0.0 存在已知漏洞（GHSA-c2qf-rxjj-qqgw）"
       ],
-      "reviewed_commit": "123aa64b4f7dc3523d2fcf40f2925014c4325a43",
+      "reviewed_commit": "849ed02eecfbe650726966ea68567ad79aa69f69",
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T14:19:10.156Z"
+      "reviewed_at": "2026-08-16T15:15:23.499Z"
     },
     {
       "id": "Anionex/dsh-vision-toolkit",
@@ -86,7 +195,10 @@
         "en": "Brings agent-vision-toolkit into DSH as a native Profile Bundle: intent-aware image Q&A, long screenshot OCR, UI restoration, pixel verification, and other vision tools."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "liustack/modsearch",
@@ -122,7 +234,10 @@
         "en": "A web search plugin that connects text-only models to the internet: search the web or X and return structured JSON evidence (search, fetch, cite)."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "omdsh-dev/dsh-at-file",
@@ -157,7 +272,10 @@
         "en": "Codex-style @file mentions: search workspace files from the input, press Enter to attach, and inject file contents when sending."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -192,7 +310,10 @@
         "en": "Opens VS Code in the current directory directly from the sidebar workspace menu in the DSH Web GUI."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "omdsh-dev/dsh-notification",
@@ -227,7 +348,10 @@
         "en": "Sends a desktop notification when a DeepSeek Harness session completes, with rules for result type and keywords."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "Anionex/dsh-turn-rewind",
@@ -262,7 +386,10 @@
         "en": "A conversation and code state rollback plugin based on a persistent Change Ledger."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "csyangwen/dsh-memory-evolve",
@@ -297,7 +424,10 @@
         "en": "A plugin-only cross-session long-term memory and background self-evolution system: five-track memory, Git branch awareness, skill self-evolution, four-track tasks, session broadcast, and search."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "omdsh-dev/dsh-genui",
@@ -332,7 +462,10 @@
         "en": "Renders interactive UI components in assistant replies: layouts, charts, forms, quizzes, mermaid, and more, inlined through dsh-ui fences."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "Lum1104/dsh-browser",
@@ -368,7 +501,10 @@
         "en": "A Chrome sidebar extension and bridge plugin that lets DSH control the browser you are already using without vision capabilities."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "icetomoyo/dsh_workflow",
@@ -404,7 +540,10 @@
         "en": "Upgrades DSH's one-off multi-agent scheduling into a Workflow layer that can be generated, saved, governed, observed, and recovered."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "vlln/whale-girl",
@@ -439,7 +578,10 @@
         "en": "A DSH Web GUI desktop pet plugin in QQ-pet style: a floating, draggable companion in the lower-right corner that you can feed and play with."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "hust-open-atom-club/oh-dsh",
@@ -474,7 +616,10 @@
         "en": "An all-in-one DeepSeek Harness community distribution: unified desktop, Web UI, and TUI experiences with layered installation."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "Ruler4396/dsh-launcher",
@@ -510,7 +655,10 @@
         "en": "A lightweight Windows launcher for DeepSeek Harness: starts at login, runs in a small standalone window, and opens with a double click."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "ZSeven-W/dsh-openpencil",
@@ -545,7 +693,10 @@
         "en": "OpenPencil design preview and editing plugin: preview, inspect, and edit real .op documents in a session."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "Nagi-ovo/dsh-visualize",
@@ -581,7 +732,10 @@
         "en": "In-conversation generative UI plugin: the model draws interactive HTML cards directly into the conversation flow for simulators, charts, comparison panels, and UI mockups."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "NanmiCoder/dsh-agent-teams",
@@ -617,7 +771,10 @@
         "en": "AgentTeams multi-agent teamwork plugin: one sentence drives a team to complete a goal, with a live team activity panel in the top-right of the Web GUI."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "0xsline/awesome-deepseek-harness",
@@ -653,7 +810,10 @@
         "en": "A curated DeepSeek Harness ecosystem list: plugins, tools, and infrastructure from dsh-external/hub and public dsh-plugin topics."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "AdamPlatin123/awesome-dsh-plugins",
@@ -689,7 +849,10 @@
         "en": "A front-index repository (Radar): automatically scans and discovers DSH plugin candidates, then moves tested candidates into the downstream curated directory repositories."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "bruc3van/awesome-dsh-plugin",
@@ -725,7 +888,10 @@
         "en": "Find the right DeepSeek Harness plugin in 30 seconds: tells you what problem a plugin solves, who it is for, and where to start."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "Small-tailqwq/dsh-deep-whale",
@@ -734,9 +900,9 @@
       "usage": "dsh plugin --profile web add github:Small-tailqwq/dsh-deep-whale",
       "repo_url": "https://github.com/Small-tailqwq/dsh-deep-whale",
       "homepage": "https://github.com/Small-tailqwq/dsh-deep-whale",
-      "stars": 1043,
+      "stars": 1057,
       "forks": 35,
-      "open_issues": 22,
+      "open_issues": 23,
       "watchers": 0,
       "pushed_at": "2026-08-16T06:34:28Z",
       "archived": false,
@@ -754,6 +920,120 @@
       "description_i18n": {
         "zh": "DeepSeek Harness Web GUI 的鲸鱼娘主题皮肤系列(独立分发仓库)。"
       },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/art.ts:6",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/art.ts:8",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/art.ts:12",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/art.ts:15",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/art.ts:22",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/art.ts:25",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/art.ts:28",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/chrome-art.generated.ts:5",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/chrome-art.generated.ts:6",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/chrome-art.generated.ts:7",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/chrome-art.generated.ts:8",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/chrome-art.generated.ts:9",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/workspace-art.generated.ts:5",
+        "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/workspace-art.generated.ts:6",
+        "访问第三方网络地址（如 b23.tv、pixiv.net） @ README.md",
+        "访问第三方网络地址（如 w3.org） @ maid-atelier/src/client/titlebar-brand.ts",
+        "读取环境变量（可能包含敏感信息） @ maid-atelier/build/tsdown.client.ts",
+        "访问第三方网络地址（如 pixiv.net） @ maid-atelier/NOTICE"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/art.ts",
+          "line": 6
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/art.ts",
+          "line": 8
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/art.ts",
+          "line": 12
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/art.ts",
+          "line": 15
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/art.ts",
+          "line": 22
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/art.ts",
+          "line": 25
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/art.ts",
+          "line": 28
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/chrome-art.generated.ts",
+          "line": 5
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/chrome-art.generated.ts",
+          "line": 6
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/chrome-art.generated.ts",
+          "line": 7
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/chrome-art.generated.ts",
+          "line": 8
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/chrome-art.generated.ts",
+          "line": 9
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/workspace-art.generated.ts",
+          "line": 5
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "maid-atelier/src/client/workspace-art.generated.ts",
+          "line": 6
+        },
+        {
+          "explanation": "访问第三方网络地址（如 b23.tv、pixiv.net）",
+          "file": "README.md"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 w3.org）",
+          "file": "maid-atelier/src/client/titlebar-brand.ts"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "maid-atelier/build/tsdown.client.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 pixiv.net）",
+          "file": "maid-atelier/NOTICE"
+        }
+      ],
       "privacy_risk": true,
       "privacy_notes": [
         "访问第三方网络地址（如 b23.tv、pixiv.net）",
@@ -768,7 +1048,7 @@
       "reviewed_commit": "873f5c6d7f52aa4e4283a5ffd5598229595184da",
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T14:19:10.156Z"
+      "reviewed_at": "2026-08-16T15:15:23.499Z"
     },
     {
       "id": "Nagi-ovo/dsh-ads",
@@ -811,7 +1091,14 @@
         "en": "A DSH Web UI ad plugin in the style of a 2005 Chinese site: sidebar ads, in-conversation feed ads, corner pop-ups, and a close button whose real hit area is much smaller than it appears. All materials are fictional and domains are masked."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "zhaoolee/notes",
@@ -855,7 +1142,16 @@
         "en": "An open-source hammer-style notes app replicating the aesthetic of Smartisan Notes: one-command Docker private deployment, skill calls, dsh plugin support, multi-tenancy, one-command WeChat article formatting, and image export for notes."
       },
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "mnemon-dev/mnemon",
@@ -909,7 +1205,13 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Electricitysheep/dsh-handbook",
@@ -960,7 +1262,13 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "huiliyi37/dsh-tianshu-tui",
@@ -1005,7 +1313,15 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "wink-run/tokenbank",
@@ -1065,7 +1381,14 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "labring/sealos-skills",
@@ -1113,7 +1436,12 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Nagi-ovo/dsh-find-plugins",
@@ -1154,7 +1482,12 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Jayden-X-L/forkprobe",
@@ -1205,7 +1538,15 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Lyn-77/ProMentor",
@@ -1246,7 +1587,14 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Alex-Yanggg/awesome-DSH-plugin",
@@ -1289,7 +1637,12 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "btspoony/mstar-harness",
@@ -1337,7 +1690,13 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "LaplaceYoung/oh-my-dsh",
@@ -1378,7 +1737,12 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "ChisaAlter/Deepseek-Harness-Desktop",
@@ -1422,7 +1786,15 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "hikariming/dshfind",
@@ -1466,7 +1838,15 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "存在疑似混淆内容",
+        "存在 Base64 解码行为"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "omdsh-dev/dsh-annotation",
@@ -1507,7 +1887,13 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "vlln/plugin-registry",
@@ -1554,7 +1940,15 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "alingalingling/ui-status-label",
@@ -1592,7 +1986,12 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "multica-ai/dsh-multica-runtime",
@@ -1633,7 +2032,14 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Dominic789654/awesome-deepseek-harness",
@@ -1690,7 +2096,12 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "pingfanfan/hello-dsh",
@@ -1735,7 +2146,12 @@
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "xiaobright/dsh-anchored-standard",
@@ -1744,9 +2160,9 @@
       "usage": "dsh plugin --profile web add github:xiaobright/dsh-anchored-standard",
       "repo_url": "https://github.com/xiaobright/dsh-anchored-standard",
       "homepage": "https://github.com/xiaobright/modeltest",
-      "stars": 2827,
-      "forks": 90,
-      "open_issues": 31,
+      "stars": 2882,
+      "forks": 92,
+      "open_issues": 33,
       "watchers": 0,
       "pushed_at": "2026-08-16T09:59:56Z",
       "archived": false,
@@ -1767,13 +2183,16 @@
         "zh": "实验性 DeepSeek Harness agent preset 集合——一个基础模式加两个变体：首轮模型请求锚定在 Minimal 条件上（真实的 Minimal 工具 schema、不注入自动上下文），会话产生持久信号后晋升到 小型 resident 目录，重型 Standard 工具按需解锁。",
         "en": "Experimental DeepSeek Harness agent presets — one base mode plus two variants — that anchor a session's first model request on the Minimal condition (real Minimal tool schema, no auto-injected context), then promote to a small"
       },
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": [],
       "privacy_risk": false,
       "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "0a38616c1b7ce4219b6d94d95c89f34a90741616",
       "source": "discovered",
       "review_status": "approved",
-      "reviewed_at": "2026-08-16T14:19:10.156Z"
+      "reviewed_at": "2026-08-16T15:15:23.499Z"
     },
     {
       "id": "dsh-market/dsh-market",
@@ -1816,7 +2235,15 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "orziz/odai",
@@ -1859,7 +2286,14 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "ysr666/dsh-vision-router",
@@ -1904,7 +2338,15 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "libukai/awesome-deepseek-harness",
@@ -1949,7 +2391,12 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "titanwings/dsh-automation",
@@ -1995,7 +2442,15 @@
       "description_i18n": {},
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "lhh010/dsh-ui-whale",
@@ -2033,7 +2488,12 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "bowenliang123/dsh-context",
@@ -2074,7 +2534,13 @@
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "c3ll256/dsh-toy",
@@ -2115,7 +2581,15 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址",
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Nwflower/dsh-chat-import",
@@ -2175,7 +2649,15 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "存在疑似混淆内容",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Fishquito7/dsh-skill-viewer",
@@ -2218,7 +2700,14 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "存在疑似混淆内容",
+        "存在 Base64 解码行为",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Sanqi-normal/dsh-webui-market-plugin",
@@ -2264,7 +2753,15 @@
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "HeiGeAi/deepseek-harness-skin",
@@ -2309,7 +2806,13 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "oil-oil/dsh-vision",
@@ -2353,7 +2856,14 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "zenx0x/allinluna",
@@ -2403,7 +2913,12 @@
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
       "description_i18n_checked_at": "2026-08-16T11:30:21.133Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "vibeinging/dsh-work",
@@ -2461,7 +2976,18 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取浏览器 Cookie/存储并发送到网络",
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）",
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Chinesezjc/dsh-interconnect",
@@ -2503,7 +3029,13 @@
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "like-study1/Oh-My-DSH",
@@ -2552,7 +3084,15 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "WeirdSky924/agent-handoff-skill",
@@ -2597,7 +3137,12 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "whiteguo233/dsh-openbiliclaw",
@@ -2642,7 +3187,15 @@
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "834063245-creator/HoloGram",
@@ -2685,7 +3238,14 @@
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "omdsh-dev/dsh-custom-tool",
@@ -2727,7 +3287,15 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "LayneChai/superpowers-dsh",
@@ -2771,7 +3339,15 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Ayase34/gal-view",
@@ -2811,7 +3387,13 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "william-jin-cmu/dsh-vision",
@@ -2849,7 +3431,12 @@
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "bruc3van/dsh-desktop",
@@ -2895,7 +3482,17 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "读取环境变量（可能包含敏感信息）",
+        "存在疑似混淆内容",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "ZASENJC/dsh-plugins-store",
@@ -2942,7 +3539,15 @@
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Nagi-ovo/voyager",
@@ -2994,7 +3599,14 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "存在 Base64 解码行为"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "GCWing/BitFun",
@@ -3003,7 +3615,7 @@
       "usage": "dsh plugin --profile web add github:GCWing/BitFun",
       "repo_url": "https://github.com/GCWing/BitFun",
       "homepage": "https://github.com/GCWing/BitFun",
-      "stars": 1747,
+      "stars": 1748,
       "forks": 187,
       "open_issues": 91,
       "watchers": 0,
@@ -3035,6 +3647,31 @@
         "zh": "能写代码、能做文档、能操控桌面，并提供小应用、Rust Runtime 和可自部署的多设备互控服务器。",
         "en": "Writes code, produces documents, and drives the desktop — with Mini Apps, a Rust runtime, and a self-hostable device-sync server."
       },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json",
+        "依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp） @ <dependencies>",
+        "依赖 simple-git@3.27.0 存在已知漏洞（GHSA-hffm-xvc3-vprc, GHSA-jcxm-m3jx-f287, GHSA-r275-fr43-pm7q） @ <dependencies>",
+        "访问第三方网络地址（如 labs.scale.com、market.openbitfun.com、openbitfun.com、pnpm.io） @ README.md"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 simple-git@3.27.0 存在已知漏洞（GHSA-hffm-xvc3-vprc, GHSA-jcxm-m3jx-f287, GHSA-r275-fr43-pm7q）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 labs.scale.com、market.openbitfun.com、openbitfun.com、pnpm.io）",
+          "file": "README.md"
+        }
+      ],
       "privacy_risk": true,
       "privacy_notes": [
         "访问第三方网络地址（如 labs.scale.com、market.openbitfun.com、openbitfun.com、pnpm.io）"
@@ -3047,7 +3684,7 @@
       "reviewed_commit": "965de28d9758507b9e30649763456865e6a13978",
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T14:19:10.156Z"
+      "reviewed_at": "2026-08-16T15:15:23.499Z"
     },
     {
       "id": "ccch1mneyyy/working-activity",
@@ -3056,11 +3693,11 @@
       "usage": "dsh plugin --profile web add github:ccch1mneyyy/working-activity",
       "repo_url": "https://github.com/ccch1mneyyy/working-activity",
       "homepage": "https://github.com/ccch1mneyyy/working-activity",
-      "stars": 644,
+      "stars": 645,
       "forks": 230,
-      "open_issues": 0,
+      "open_issues": 1,
       "watchers": 0,
-      "pushed_at": "2026-08-15T05:37:59Z",
+      "pushed_at": "2026-08-16T15:00:25Z",
       "archived": false,
       "language": "TypeScript",
       "license": "MIT",
@@ -3080,17 +3717,177 @@
       "description_i18n": {
         "zh": "为 DeepSeek Harness 打造的一条实时 \"工作状态行\"：模型的实时活动——俏皮思考文案、真正在跑的工具、已耗时、收尾摘要——在 agent 干活时展示出来。"
       },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#1",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/package-lock.json:65",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/package-lock.json:91",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/package-lock.json:107",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/package-lock.json:127",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/package-lock.json:134",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/package-lock.json:150",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/package-lock.json:167",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/package-lock.json:189",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/package-lock.json:205",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/package-lock.json:230",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/package-lock.json:247",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/package-lock.json:275",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/pnpm-lock.yaml:72",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/pnpm-lock.yaml:78",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/pnpm-lock.yaml:87",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/pnpm-lock.yaml:99",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/pnpm-lock.yaml:102",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/pnpm-lock.yaml:111",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/pnpm-lock.yaml:122",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/pnpm-lock.yaml:136",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/pnpm-lock.yaml:151",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/pnpm-lock.yaml:162",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/pnpm-lock.yaml:170",
+        "存在疑似混淆内容（长 Base64 块） @ packages/activity/working-activity/pnpm-lock.yaml:190",
+        "访问第三方网络地址（如 opencollective.com） @ packages/activity/working-activity/package-lock.json"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/package-lock.json",
+          "line": 65
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/package-lock.json",
+          "line": 91
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/package-lock.json",
+          "line": 107
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/package-lock.json",
+          "line": 127
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/package-lock.json",
+          "line": 134
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/package-lock.json",
+          "line": 150
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/package-lock.json",
+          "line": 167
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/package-lock.json",
+          "line": 189
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/package-lock.json",
+          "line": 205
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/package-lock.json",
+          "line": 230
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/package-lock.json",
+          "line": 247
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/package-lock.json",
+          "line": 275
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/pnpm-lock.yaml",
+          "line": 72
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/pnpm-lock.yaml",
+          "line": 78
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/pnpm-lock.yaml",
+          "line": 87
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/pnpm-lock.yaml",
+          "line": 99
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/pnpm-lock.yaml",
+          "line": 102
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/pnpm-lock.yaml",
+          "line": 111
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/pnpm-lock.yaml",
+          "line": 122
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/pnpm-lock.yaml",
+          "line": 136
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/pnpm-lock.yaml",
+          "line": 151
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/pnpm-lock.yaml",
+          "line": 162
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/pnpm-lock.yaml",
+          "line": 170
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "packages/activity/working-activity/pnpm-lock.yaml",
+          "line": 190
+        },
+        {
+          "explanation": "访问第三方网络地址（如 opencollective.com）",
+          "file": "packages/activity/working-activity/package-lock.json"
+        }
+      ],
       "privacy_risk": true,
       "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
+        "访问第三方网络地址（如 opencollective.com）"
       ],
       "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "存在疑似混淆内容（长 Base64 块）"
       ],
-      "reviewed_commit": "03d403984b2d16a2adf0c5620e1f6678d569bffb",
+      "reviewed_commit": "15464797a461c038ba0fec2aeb1efdd7cd6a81e7",
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T14:19:10.156Z"
+      "reviewed_at": "2026-08-16T15:15:23.499Z"
     },
     {
       "id": "adoresever/graph-memory",
@@ -3140,7 +3937,13 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "superdesigndev/superdesign-skill",
@@ -3191,7 +3994,13 @@
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "yogsoth-ai/de-anthropocentric-research-engine",
@@ -3247,7 +4056,14 @@
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "h4dex/opc-nexus",
@@ -3290,7 +4106,13 @@
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "vibeinging/deepseek-harness-desktop-app",
@@ -3348,7 +4170,18 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取浏览器 Cookie/存储并发送到网络",
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）",
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "tinqiao-oss/engramory",
@@ -3402,7 +4235,15 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "liceses/dsh-gitbash-preset",
@@ -3443,7 +4284,13 @@
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Vladimir-Human/humanizer-ru",
@@ -3501,7 +4348,13 @@
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "yjh051108/dsh-super-injector",
@@ -3543,7 +4396,15 @@
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "存在疑似混淆内容",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Zhiyuan-Fan/Awesome-DeepSeek-Harness-Plugins",
@@ -3592,7 +4453,12 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "ZSeven-W/dsh-noema",
@@ -3642,7 +4508,13 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "WYH66666666/DSH-Transparent-UI-Plugin",
@@ -3685,7 +4557,13 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "ningbainb/deepseek-harness-desktop",
@@ -3742,7 +4620,14 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "anysearch-team/anysearch-dsh",
@@ -3787,7 +4672,15 @@
       "kind": "code",
       "description_i18n": {},
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "PC2005-cloud/dsh-pet",
@@ -3829,7 +4722,13 @@
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "LX2000WASD/dsh-web-plugin-manager",
@@ -3872,7 +4771,16 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "存在疑似混淆内容",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "fufankeji/deepseek-harness-studio",
@@ -3920,7 +4828,12 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "tencent-connect/dsh-qqbot",
@@ -3961,7 +4874,13 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "beancookie/awesome-dsh-plugin",
@@ -4003,7 +4922,13 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取浏览器 Cookie/存储并发送到网络",
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "liyupi/dsh-kun-like-pet",
@@ -4044,7 +4969,10 @@
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": []
     },
     {
       "id": "Ychris12138/dsh-usage-stats",
@@ -4093,7 +5021,16 @@
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）",
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Han-1413141/dsh-cost-meter",
@@ -4146,7 +5083,17 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "使用动态代码或子进程执行",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "omdsh-dev/dsh-mnemon",
@@ -4206,7 +5153,15 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Devin-AXIS/deepseek-design",
@@ -4256,7 +5211,13 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "存在 Base64 解码行为"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "whyihaveyou/dsh-suite",
@@ -4305,7 +5266,15 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "dancingmemory/dskin",
@@ -4352,7 +5321,14 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "QCYTSN/dsh-dafeiyu",
@@ -4396,7 +5372,14 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "存在疑似混淆内容",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "HanaAyane/dsh-reasoning-effort",
@@ -4438,7 +5421,13 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "awesome-dsh-plugin/dsh-find-plugin",
@@ -4479,7 +5468,13 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "omdsh-dev/dsh-data-agent",
@@ -4521,7 +5516,14 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "openma-ai/deepseek-harness-tui",
@@ -4563,7 +5565,13 @@
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n": {},
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "存在 Base64 解码行为"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "zuorn/Tydora",
@@ -4616,7 +5624,13 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Tabbit-Browser/dsh-plugin",
@@ -4662,7 +5676,13 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "lire1131/dsh-undo-plugin",
@@ -4705,7 +5725,13 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "HuanLinOTO/dsh-plugin-mineru",
@@ -4746,7 +5772,15 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "存在疑似混淆内容",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Noob-stupid/dsh-plugin-hub",
@@ -4790,7 +5824,12 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "vlln/dsh-navbar",
@@ -4828,7 +5867,12 @@
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n": {},
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "omdsh-dev/dsh-lark",
@@ -4873,7 +5917,14 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "存在疑似混淆内容",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "yyyyukari/dsh-plugin-workshop",
@@ -4916,7 +5967,14 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "tianji-qingtian/dsh-model-router",
@@ -4957,7 +6015,13 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Moeblack/dsh-message-edit",
@@ -4998,7 +6062,14 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "147228/dsh-xiaoyao-skins",
@@ -5043,7 +6114,13 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "keleus/deepseek-pet",
@@ -5083,7 +6160,13 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "存在疑似混淆内容",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Awu12277/dsh-stock-watch",
@@ -5129,7 +6212,15 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "JustGenius-s/DSH-Desktop",
@@ -5173,7 +6264,16 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "存在疑似混淆内容",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Anionex/dsh-computer-use",
@@ -5224,7 +6324,12 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "cpj-dev/dsh-plugin-cc",
@@ -5266,7 +6371,13 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "omdsh-dev/dsh-plugin-check",
@@ -5311,7 +6422,14 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n_checked_at": "2026-08-16T11:30:21.133Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "AwesomeHou/dsh-plugin-marketplace",
@@ -5358,7 +6476,14 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "whitelonng/dshcode",
@@ -5396,7 +6521,12 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "bugmaker2/dsh-plugin-template",
@@ -5433,7 +6563,12 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "kingOfSoySauce/dsh-liang-skin",
@@ -5474,7 +6609,15 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "存在疑似混淆内容",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "hellodigua/dsh-share",
@@ -5518,7 +6661,17 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "使用动态代码或子进程执行",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Co-Engram/Co-Engram",
@@ -5568,7 +6721,15 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T09:48:14.326Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Vladimir-Human/ru-marketplace-mcp",
@@ -5625,7 +6786,13 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T09:48:14.326Z",
       "description_i18n_checked_at": "2026-08-16T11:30:21.133Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "omdsh-dev/dsh_workflow",
@@ -5670,7 +6837,13 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T09:48:14.326Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "fwerkor/local-shell-mcp",
@@ -5715,7 +6888,15 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T09:48:14.326Z",
       "description_i18n_checked_at": "2026-08-16T11:30:21.133Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "xiincs/deepseek-harness-desktop",
@@ -5766,7 +6947,17 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T09:48:14.326Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "存在疑似混淆内容",
+        "存在 Base64 解码行为",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "THEWOLFWALKER/dsh-notifier",
@@ -5806,7 +6997,14 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T09:48:14.326Z",
-      "reviewed_commit": ""
+      "reviewed_commit": "",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息",
+        "使用动态代码或子进程执行"
+      ],
+      "risk_evidence": []
     },
     {
       "id": "Mars-Sea/dsh-commandcode-provider",
@@ -5859,7 +7057,109 @@
       "reviewed_commit": "603bab15a8a2cd333ce80ce666bd815e1c0c18ad",
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T13:03:07.079Z"
+      "reviewed_at": "2026-08-16T13:03:07.079Z",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址（如 api.commandcode.ai、cdn.simpleicons.org、commandcode.ai、deepseek-harness.github.io）",
+        "访问第三方网络地址（如 api.commandcode.ai、commandcode.ai）",
+        "访问第三方网络地址（如 api.commandcode.ai）",
+        "访问第三方网络地址（如 a.com、api.commandcode.ai、example.com、new.example.com）",
+        "访问第三方网络地址（如 api.commandcode.ai、commandcode.ai、deepseek-harness.github.io）",
+        "访问第三方网络地址（如 commandcode.ai、keepachangelog.com、semver.org）",
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
+      ],
+      "risk_evidence": []
+    },
+    {
+      "id": "volcengine/OpenViking",
+      "name": "OpenViking",
+      "description": "Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.",
+      "usage": "dsh plugin --profile web add github:volcengine/OpenViking",
+      "repo_url": "https://github.com/volcengine/OpenViking",
+      "homepage": "https://openviking.ai/",
+      "stars": 28626,
+      "forks": 2262,
+      "open_issues": 445,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T11:25:11Z",
+      "archived": false,
+      "language": "Python",
+      "license": "AGPL-3.0",
+      "topics": [
+        "agent-memory",
+        "agent-plugins",
+        "agentic-rag",
+        "context-database",
+        "dsh-plugin",
+        "self-evolving"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "👋 加入我们的社区",
+        "en": "👋 Join our Community"
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ bot/bridge/src/index.ts",
+        "监听键盘输入事件 @ web-studio/src/routes/sessions/index.tsx:46",
+        "依赖 @whiskeysockets/baileys@7.0.0-rc.9 存在已知漏洞（GHSA-qvv5-jq5g-4cgg） @ <dependencies>",
+        "依赖 ws@8.17.1 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
+        "访问第三方网络地址（如 arxiv.org、blog.openviking.ai、byteplus.com、docs.google.com） @ README.md",
+        "读取环境变量（可能包含敏感信息） @ examples/pi-coding-agent-extension/index.ts",
+        "访问第三方网络地址（如 example.com） @ sdk/typescript/tests/node-consumer/index.ts"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "bot/bridge/src/index.ts"
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "web-studio/src/routes/sessions/index.tsx",
+          "line": 46
+        },
+        {
+          "explanation": "依赖 @whiskeysockets/baileys@7.0.0-rc.9 存在已知漏洞（GHSA-qvv5-jq5g-4cgg）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 ws@8.17.1 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 arxiv.org、blog.openviking.ai、byteplus.com、docs.google.com）",
+          "file": "README.md"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "examples/pi-coding-agent-extension/index.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 example.com）",
+          "file": "sdk/typescript/tests/node-consumer/index.ts"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 arxiv.org、blog.openviking.ai、byteplus.com、docs.google.com）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 example.com）"
+      ],
+      "security_notes": [
+        "监听键盘输入事件",
+        "依赖 @whiskeysockets/baileys@7.0.0-rc.9 存在已知漏洞（GHSA-qvv5-jq5g-4cgg）",
+        "依赖 ws@8.17.1 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
+      ],
+      "reviewed_commit": "dbf3fcccefe43616e4b1c3b60dfe36c2222e2dd6",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-16T15:15:23.499Z"
     }
   ]
 }
