@@ -7,6 +7,7 @@ import {
   docCandidates,
   extractBriefDescription,
   isLanguageSwitcherText,
+  isLanguageSwitcherLine,
   needsLocalizedDescriptionCheck,
 } from './plugin-docs.mjs';
 import { localizedPlugin } from '../docs/js/localization.mjs';
@@ -105,6 +106,68 @@ Actual description here.
 `);
 
   assert.equal(brief, 'Actual description here.');
+});
+
+test('detects single-line language-switcher links without flagging real text', () => {
+  // 单行语言切换链接（区别于 | 分隔的多语言横幅）
+  assert.equal(isLanguageSwitcherLine('[English](./README.md)'), true);
+  assert.equal(isLanguageSwitcherLine('[中文说明](./README.zh-CN.md)'), true);
+  assert.equal(isLanguageSwitcherLine('<a href="README.zh-CN.md">简体中文</a>'), true);
+  assert.equal(isLanguageSwitcherLine('> [English](./README.md)'), true);
+  // 真实内容/段落不应被误判
+  assert.equal(isLanguageSwitcherLine('Experimental DeepSeek Harness agent presets'), false);
+  assert.equal(isLanguageSwitcherLine('![logo](a.png) 一个真正的简介段落文字在此。'), false);
+  assert.equal(isLanguageSwitcherLine('这是英文文档 [Contribution](CONTRIBUTING.md) 请阅读'), false);
+});
+
+test('skips single-line language-switcher links when extracting a brief description', () => {
+  const brief = extractBriefDescription(`
+# dsh-anchored-standard
+
+[中文说明](./README.zh-CN.md)
+
+Experimental DeepSeek Harness agent presets — one base mode plus two variants.
+`);
+
+  assert.equal(
+    brief,
+    'Experimental DeepSeek Harness agent presets — one base mode plus two variants.',
+  );
+});
+
+test('skips promotional nav links when extracting a brief description', () => {
+  const brief = extractBriefDescription(`
+# AgentRQ
+
+<p align="center">
+  <a href="README.zh-CN.md">简体中文</a>
+  <br />
+  <a href="https://www.youtube.com/watch?v=GBAoSpuCzrU">Watch on YouTube in HD</a>
+</p>
+
+AgentRQ is a modern, high-performance platform designed for seamless collaboration between human operators and AI agents.
+`);
+
+  assert.equal(
+    brief,
+    'AgentRQ is a modern, high-performance platform designed for seamless collaboration between human operators and AI agents.',
+  );
+});
+
+test('treats single language tags as missing so refresh re-collects', () => {
+  // 之前被「单一语言标签」（English / 中文说明 / 简体中文）污染的字段应视为缺失
+  assert.equal(
+    needsLocalizedDescriptionCheck({
+      description_i18n: { zh: 'English', en: '中文说明' },
+    }),
+    true,
+  );
+  assert.equal(
+    needsLocalizedDescriptionCheck({
+      description_i18n: { zh: 'English', en: '简体中文' },
+    }),
+    true,
+  );
 });
 
 test('preserves snake-case identifiers while removing Markdown emphasis', () => {

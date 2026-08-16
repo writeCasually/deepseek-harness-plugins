@@ -2077,8 +2077,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English",
-        "en": "中文说明"
+        "zh": "实验性 DeepSeek Harness agent preset 集合——一个基础模式加两个变体：首轮模型请求锚定在 Minimal 条件上（真实的 Minimal 工具 schema、不注入自动上下文），会话产生持久信号后晋升到小型 resident 目录，重型 Standard 工具按需解锁。",
+        "en": "Experimental DeepSeek Harness agent presets — one base mode plus two variants — that anchor a session's first model request on the Minimal condition (real Minimal tool schema, no auto-injected context), then promote to a small resident catalog once the session is durable, unlocking heavier Standard tools on demand."
       },
       "privacy_risk": false,
       "privacy_notes": [],
@@ -3422,8 +3422,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English",
-        "en": "简体中文"
+        "zh": "AgentRQ：面向 AI Agent 的实时对话式任务管理器，支持人机协作。自托管部署，可通过移动端、Web、桌面端随时随地控制自己的 Agent，适配你自己的 Claude 订阅与任意 harness。",
+        "en": "AgentRQ is a modern, high-performance platform designed for seamless collaboration between human operators and AI agents. It leverages the Model Context Protocol (MCP) to allow AI models (like Claude) to interact directly with your workspace's task management."
       },
       "privacy_risk": true,
       "privacy_notes": [

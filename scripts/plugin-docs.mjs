@@ -171,6 +171,80 @@ export function isLanguageSwitcherText(text) {
   return true;
 }
 
+// 单行「语言切换链接」识别（区别于 isLanguageSwitcherText 的多语言横幅）：
+// 很多仓库 README 以一条「[English](./README.md)」「<a>简体中文</a>」链接，
+// 而不是 | 分隔的横幅来切换语言。这类单行在标题后会被误当作简介，需同样跳过。
+// 仅当「整行几乎只由语言切换链接构成」时命中，避免把含链接的真实段落误判。
+const SINGLE_LANG_LINK_TEXT = new Set([
+  'english', 'en', '中文', '简体中文', '繁體中文', '繁体中文', '日本語', '日語',
+  '한국어', 'русский', 'français', 'deutsch', 'español', '中文說明', '中文说明',
+  '简体', '繁體', '英文',
+]);
+function isSingleLangLinkText(text) {
+  const s = (text || '').trim();
+  if (!s) return false;
+  return SINGLE_LANG_LINK_TEXT.has(s.toLowerCase());
+}
+function isDocHref(href) {
+  return /\.(?:md|markdown)(?:[#\s]|$)/i.test(href) || /readme/i.test(href);
+}
+function collectInlineLinks(line) {
+  const links = [];
+  const markdownRe = /\[([^\]]*)\]\(([^)\s]+)\)/g;
+  let m;
+  while ((m = markdownRe.exec(line))) links.push({ text: m[1], href: m[2] });
+  const htmlRe = /<\s*a\b[^>]*href\s*=\s*["']([^"']*)["'][^>]*>\s*([\s\S]*?)\s*<\/\s*a\s*>/gi;
+  while ((m = htmlRe.exec(line))) links.push({ text: m[2], href: m[1] });
+  return links;
+}
+function stripLinksAndFlow(line) {
+  return line
+    .replace(/\[[^\]]*\]\([^)\s]+\)/g, '')
+    .replace(/<\s*a\b[\s\S]*?<\/\s*a\s*>/gi, '')
+    .replace(/<!\[if[^\]]*\]>/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/^[>|`\s\-*_•·]+/, '')
+    .replace(/[|/·•,，、:：()（）`\s]+/g, '')
+    .replace(/^[*\-_=]+$/, '');
+}
+// 仅由「一个或多个链接」构成的导航行（如 [Watch on YouTube](url)、[Join Community](discord)）。
+// 这类行会被误当成简介，应跳过；但若某个链接文本是完整的描述性句子（带句读且较长），
+// 则不跳过，避免丢掉真正放在单链接里的介绍。
+function isLinkOnlyLine(line) {
+  const raw = (line || '').trim();
+  if (!raw) return false;
+  const links = collectInlineLinks(raw);
+  if (links.length === 0) return false;
+  const hasSentenceLike = links.some((l) => {
+    const t = (l.text || '').trim();
+    return t.length > 20 && /[。.!?！？]$/.test(t);
+  });
+  if (hasSentenceLike) return false;
+  return stripLinksAndFlow(raw) === '';
+}
+export function isLanguageSwitcherLine(line) {
+  const raw = (line || '').trim();
+  if (!raw) return false;
+  const links = collectInlineLinks(raw);
+  if (links.length === 0) return false;
+  const hasLanguageLink = links.some(
+    (l) => isSingleLangLinkText(l.text) || isDocHref(l.href),
+  );
+  if (!hasLanguageLink) return false;
+  return stripLinksAndFlow(raw) === '';
+}
+
+// 判断 description_i18n 某字段是否「本质只是语言切换标签」：
+// 多语言横幅（isLanguageSwitcherText）或单一语言名/语言链接标签（如 English、中文说明、简体中文）。
+// 这类值不是真实简介，刷新时应视为缺失并重采覆盖。
+function isLanguageTagOnly(value) {
+  const s = (value || '').trim();
+  if (!s) return true;
+  if (isLanguageSwitcherText(s)) return true;
+  if (isSingleLangLinkText(s)) return true;
+  return /^(english|中文|简体中文|繁體中文|繁体中文|日本語|日語|한국어|中文說明|中文说明|简体|繁體|英文)$/i.test(s);
+}
+
 export function detectDocumentLanguage(text) {
   if (!text) return '';
   const han = (text.match(/\p{Script=Han}/gu) || []).length;
@@ -186,8 +260,8 @@ export function needsLocalizedDescriptionCheck(entry = {}) {
   const descriptions = entry.description_i18n || {};
   const present = (lang) => {
     const value = descriptions[lang];
-    // 语言字段若只是「语言切换横幅」文本，则视为缺失，允许重采覆盖。
-    return Boolean(value && value.trim() && !isLanguageSwitcherText(value));
+    // 语言字段若只是「语言切换横幅/语言标签」文本，则视为缺失，允许重采覆盖。
+    return Boolean(value && !isLanguageTagOnly(value));
   };
   return !present('zh') || !present('en');
 }
@@ -233,7 +307,9 @@ export function extractBriefDescription(markdown) {
       continue;
     }
     if (
-      isLanguageSwitcherText(cleaned)
+      isLanguageSwitcherLine(line)
+      || isLinkOnlyLine(line)
+      || isLanguageSwitcherText(cleaned)
       || NOISE_LINE.test(cleaned)
       || /^[-*_=]{3,}$/.test(cleaned)
     ) continue;
@@ -324,8 +400,8 @@ export async function collectLocalizedDescriptions({
   const descriptions = { ...(existing || {}) };
   const candidates = docCandidates(treePaths);
 
-  // 已存在的语言若只是「语言切换横幅」文本（历史上被误提取），视作缺失并重采覆盖。
-  const isJunk = (value) => !value?.trim() || isLanguageSwitcherText(value);
+  // 已存在的语言若只是「语言切换横幅/标签」文本（历史上被误提取），视作缺失并重采覆盖。
+  const isJunk = (value) => isLanguageTagOnly(value);
 
   for (const language of ['zh', 'en']) {
     if (!isJunk(descriptions[language])) continue;
