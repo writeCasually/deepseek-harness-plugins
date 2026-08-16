@@ -1277,7 +1277,7 @@
       "archived": false,
       "description_i18n": {
         "zh": "dsh-tianshu-tui — DeepSeek Harness terminal UI +harness workflow。是官方 DeepSeek Harness 上的交互式终端 UI 插件。渲染核心从本仓库自研的harness agent  Tianshu-Tui 演进而来，在官方的基础上增加了TDD、证据门、视觉图像模块等工作流。",
-        "en": "中文 | English"
+        "en": "dsh-tianshu-tui (@huiliyi37/dsh-tianshu-tui) is the interactive terminal UI plugin for the official DeepSeek Harness. The render core evolved from Tianshu-Tui (Apache-2.0; file-by-file provenance in SOURCE-MAP.md). The UI is a pure presentation layer: every workflow adds TDD, evidence gates, and visual image modules on top of the official base."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code"
@@ -1382,7 +1382,7 @@
       "pushed_at": "2026-08-14T06:36:11Z",
       "archived": false,
       "description_i18n": {
-        "zh": "English | 简体中文 | 繁體中文 | 日本語 | 한국어 | Español | Français | Deutsch | Português (Brasil) | Русский | العربية | हिन्दी | Bahasa Indonesia",
+        "zh": "通过 AI 智能体将项目部署到 Sealos Cloud。",
         "en": "AI agent skills for Sealos — deploy any project, provision databases, object storage & more with one command. Works with Claude Code, Gemini CLI, Codex."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
@@ -1422,8 +1422,8 @@
       "pushed_at": "2026-08-15T15:58:22Z",
       "archived": false,
       "description_i18n": {
-        "zh": "English | 简体中文",
-        "en": "English | 简体中文"
+        "zh": "对 DSH 说一句「有没有插件能……」，它就会从全 GitHub 的 dsh-plugin topic 里找出候选，解释差别，等你选好以后再安装和验证。",
+        "en": "Ask DSH, \"is there a plugin for this?\" It searches the GitHub dsh-plugin topic, explains the best matches, waits for your choice, then installs and verifies the selected plugin."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code"
@@ -1685,7 +1685,7 @@
       "archived": false,
       "description_i18n": {
         "zh": "DSH桌面端，支持主题和背景图等多种个性化配置。Electron desktop shell for DeepSeek Harness web UI",
-        "en": "中文 · English"
+        "en": "An Electron desktop shell on top of the official DeepSeek Harness Web UI."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code"
@@ -1768,7 +1768,7 @@
       "archived": false,
       "description_i18n": {
         "zh": "DSH Web 选中批注插件：选文字→批注→回车随消息发送；气泡隐藏批注块（零闪烁）；回复按 Annotation N 逐条对照（可悬浮芯片）。官方 bundle，零核心改动",
-        "en": "English · 简体中文"
+        "en": "Selection-annotation plugin for DSH Web: select text → annotate → press Enter to send it along with your message; the model replies to each annotation by number."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
       "kind": "code"
@@ -2113,8 +2113,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English | 中文",
-        "en": "English | 中文"
+        "zh": "装在 DeepSeek Harness 里的插件市场。打开设置 → 插件市场 → 逛一逛，点一下，装好。",
+        "en": "The plugin market inside DeepSeek Harness. Open Settings → Plugin Market → browse, search, one-click install."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -2329,8 +2329,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "简体中文 | English",
-        "en": "简体中文 | English"
+        "zh": "DSH Web UI 的常驻像素鲸鱼伙伴插件：会话标题栏（标题行右侧）常驻一只小鲸鱼，随会话快照实时反应——零核心改动。",
+        "en": "A resident pixel-whale companion plugin for the DSH Web UI: a small whale lives permanently in the session title bar (right side of the title row) and reacts in real time to the session snapshot — zero core changes."
       },
       "privacy_risk": false,
       "privacy_notes": [],
@@ -2405,8 +2405,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English | 简体中文",
-        "en": "English | 简体中文"
+        "zh": "dsh-toy 是一个 DeepSeek Harness 插件，用于将小玩具接入 DSH。",
+        "en": "dsh-toy is a DeepSeek Harness plugin for connecting small toys to DSH."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -2508,8 +2508,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "(English|简体中文)",
-        "en": "(English|简体中文)"
+        "zh": "DSH 插件，可直接在 web 界面快速管理 skill 状态，同时在终端加入快捷的 skill 管理命令。",
+        "en": "A DSH plugin for managing skills right from the web UI and terminal."
       },
       "privacy_risk": false,
       "privacy_notes": [],
@@ -2597,7 +2597,7 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English | 中文",
+        "zh": "DeepSeek Harness 换肤系统：21 套内置皮肤 + 一张图生成整套配色的自定义皮肤。数据源驱动，保对比度推导，构建期校验可读性。",
         "en": "The place you run agents should look the way you like."
       },
       "privacy_risk": true,
@@ -2740,8 +2740,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English | 中文",
-        "en": "中文 | English"
+        "zh": "一个本地的 AI 工作台 Profile Bundle：在官方 DSH Web Profile 之上扩展，把 Agent 会话、项目文件、数据分析、Web 研究、MCP 与 Office 产物整合进一个 Electron 桌面应用。",
+        "en": "A local-first AI workbench for DSH Plugins, combining Agent sessions, project files, data analysis, web research, MCP, and Office artifacts in an Electron desktop app."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -2880,8 +2880,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "中文 | English",
-        "en": "中文 | English"
+        "zh": "跨平台 Agent 接力 skill：在 Codex 或 Claude Code 中建立仓库级连续性记忆，让后续 agent 无需依赖历史聊天即可恢复目标、状态、决策、验证、风险与下一步行动。",
+        "en": "Use this cross-platform skill in Codex or Claude Code to establish repository-local continuity memory so a future agent can recover objective, status, decisions, validation, risks, and next actions without relying on previous chat history."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -3088,8 +3088,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English | 中文",
-        "en": "中文 | English"
+        "zh": "把 DSH 会话界面切换成 Galgame（视觉小说）风格的插件。",
+        "en": "A plugin that switches the DSH session interface into a galgame-style view."
       },
       "privacy_risk": false,
       "privacy_notes": [],
@@ -3165,8 +3165,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "中文 | English",
-        "en": "中文 | English"
+        "zh": "让 Agent 安全地常驻在你的桌面上：官方 Web UI 原封不动，长任务不再被终端和浏览器标签页绑架，精选插件先审查、再安装。",
+        "en": "Keep your Agent safely resident on your desktop: the official Web UI untouched, long tasks no longer hostage to a terminal or a browser tab, curated plugins reviewed before install."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -3466,7 +3466,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English | 中文"
+        "zh": "为 DeepSeek Harness 打造的一条实时“工作状态行”：展示模型的实时活动——俏皮思考文案、真正在跑的工具、已耗时、收尾摘要——在 agent 干活时展示出来。",
+        "en": "A lively real-time \"working line\" extension for pi CLI and DSH, showing the model activity while the agent works."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -3714,8 +3715,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English | 中文",
-        "en": "中文 | English"
+        "zh": "本地 AI 桌面工作台：整合 DSH 会话、项目、文件、Web 研究、插件与 Office 产物。",
+        "en": "DeepSeek Harness Desktop App: a local AI desktop workspace for DSH Sessions, projects, files, web research, plugins, and Office artifacts."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -3960,8 +3961,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English | 简体中文",
-        "en": "English | 简体中文"
+        "zh": "每日维护的 DeepSeek Harness（DSH）公开插件与扩展精选目录，涵盖工具、技能、模型提供商、记忆、自动化、运行时、桌面客户端、浏览器集成与开发者工具。",
+        "en": "A concise, daily-curated directory of public plugins and extensions for DeepSeek Harness (DSH), the open-source DeepSeek agent harness. Explore tools, skills, model providers, memory, automation, runtimes, desktop clients, browser integrations, and developer tools."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -4049,8 +4050,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English | 中文",
-        "en": "English | 中文"
+        "zh": "一套高自由度的玻璃质感主题，套在 DeepSeek Harness 网页端。顶栏、侧边栏、输入框、统计行、轨迹视图都成了磨砂玻璃片；玻璃模糊度、磨砂度、背景（流体或自定义壁纸）都能在设置卡片里自由调节。",
+        "en": "A highly customizable glassmorphism theme layered onto the DeepSeek Harness web UI, turning the top bar, sidebar, input box, stats row, and trajectory view into frosted glass panels with adjustable blur, frosting, and background."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -4105,8 +4106,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English | 中文",
-        "en": "中文 | English"
+        "zh": "DeepSeek Harness 的开源 Windows 桌面客户端与 GUI：零配置安装，集成 Codex、插件、技能、SSH、移动端远程访问，并内置 11 款皮肤。",
+        "en": "Open-source Windows desktop client and GUI for DeepSeek Harness — zero-setup installer with Codex, plugins, skills, SSH, mobile remote access, and 11 skins."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -4229,8 +4230,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "中文 | English",
-        "en": "中文 | English"
+        "zh": "在 Web UI 中一键管理 DeepSeek Harness (DSH) 插件：查看、实时启停、安装/卸载、更新检测、健康检查（依赖/冲突/兼容性分析）、环境管理、插件市场，bundle 与非 bundle 插件全覆盖。",
+        "en": "One-click plugin management for DeepSeek Harness in the Web UI: view, live enable/stop, install/uninstall, update detection, health checks (dependency/conflict/compatibility analysis), environment management, and a plugin marketplace."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -4281,8 +4282,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English | 中文",
-        "en": "> Status key: ✅ Available; 🗓️ Planned. The desktop development workspace, public Plugin Center, and Chinese DeepSeek controls are available today. Planned capabilities will be updated only after the corresponding workflow is runnable."
+        "zh": "DeepSeek Harness 的 macOS & Windows 桌面端：零代码插件商店，一键安装与启用，视觉增强，自动化插件分发与 AI 推荐。",
+        "en": "DeepSeek Harness Desktop for macOS & Windows — zero-code Plugin Store, one-click install and enable, vision enhancement, automatic plugin delivery, and AI recommendations."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -4361,8 +4362,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "English | 中文",
-        "en": "English | 中文"
+        "zh": "DeepSeek Harness (DSH) 插件精选集。",
+        "en": "Awesome DeepSeek Harness (DSH) Plugin."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -4827,8 +4828,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
       "description_i18n": {
-        "zh": "English | 中文",
-        "en": "English | 中文"
+        "zh": "在会话内搜索发现 DSH 插件：实时检索 GitHub dsh-plugin 话题，按 star 排序。",
+        "en": "Find DSH plugins inside the agent — live GitHub dsh-plugin topic search, star-ranked."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -4868,8 +4869,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "description_i18n": {
-        "zh": "English | 中文",
-        "en": "中文 | English"
+        "zh": "DeepSeek Harness 的数据 Agent：面向会话的数据库连接 + 专用 agent 预设，让 AI 写 SQL 并以实时执行反馈迭代。",
+        "en": "Data Agent for DeepSeek Harness: session-scoped database connections with a dedicated agent preset that lets AI write SQL and iterate against live execution feedback."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -5049,8 +5050,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "description_i18n": {
-        "zh": "> 中文 | English | 更新日志",
-        "en": "> English | 中文 | Changelog"
+        "zh": "DSH 崩溃救援插件：可回滚配置与插件代码改动、保留敏感信息的安全快照、一键 SAFE MODE，并内置离线 CLI/GUI——即使 DSH 无法启动也能用。",
+        "en": "DSH crash-rescue plugin: undo config & plugin-code changes, secret-safe snapshots, one-click SAFE MODE, plus offline CLI/GUI that work even when DSH cannot boot."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -5211,8 +5212,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
       "description_i18n": {
-        "zh": "简体中文 | English",
-        "en": "English | 简体中文"
+        "zh": "Lark/飞书 DeepSeek Harness（DSH）即时通讯机器人通道插件。",
+        "en": "Lark/Feishu IM bot channel for DeepSeek Harness."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -5253,7 +5254,7 @@
       "compatibility": "compatible",
       "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "description_i18n": {
-        "zh": "简体中文 | English",
+        "zh": "Steam Workshop 风格的 DSH Web UI 插件浏览器：零服务器、GitHub 驱动搜索、趋势窗口、中文搜索与双语翻译、插件签名过滤，以及智能的一键安装/更新/卸载与已装插件管理。",
         "en": "A Steam Workshop-style plugin browser for DeepSeek Harness (DSH) — zero-server, single-package, living right inside the DSH Web UI sidebar, directly under the \"New Session\" button."
       },
       "privacy_risk": true,
@@ -5597,8 +5598,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "源码/路径引用 @deepseek-ai/dsh 或 @deepseek-ai/cordis",
       "description_i18n": {
-        "zh": "English | 简体中文",
-        "en": "English | 简体中文"
+        "zh": "把 DeepSeek Harness 桥接到 Claude Code，用于审查、反馈、委派与会话导入。",
+        "en": "Bridge Deepseek-harness into Claude Code for review, critique, delegation, and session import."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -5684,8 +5685,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "description_i18n": {
-        "zh": "English | 中文",
-        "en": "English | 中文"
+        "zh": "DeepSeek Harness 插件市场：实时同步 GitHub dsh-plugin 话题（1800+ 仓库）到可搜索、分页的设置页，支持一键安装与 agent 工具（market_search / market_install）。",
+        "en": "Plugin marketplace for DeepSeek Harness — live-syncs the GitHub dsh-plugin topic (1800+ repos) into a searchable, paginated settings tab with one-click install and agent tools (market_search / market_install)."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -5724,8 +5725,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "依赖 DSH/Cordis 生态包 @deepseek-ai/dsh-tool-session-query",
       "description_i18n": {
-        "zh": "English | 中文",
-        "en": "English | 中文"
+        "zh": "DeepSeek Harness 的社区桌面伴侣：面向 macOS 和 Windows 的一键 Electron 应用。",
+        "en": "Community desktop companion for DeepSeek Harness — one-click Electron app for macOS and Windows."
       },
       "privacy_risk": true,
       "privacy_notes": [
@@ -5760,8 +5761,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
       "description_i18n": {
-        "zh": "English | 中文",
-        "en": "English | 中文"
+        "zh": "DeepSeek Harness 插件开发模板。",
+        "en": "Template for deepseek-harness plugin development."
       },
       "privacy_risk": false,
       "privacy_notes": [],
@@ -5837,8 +5838,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "description_i18n": {
-        "zh": "简体中文 | English",
-        "en": "简体中文 | English"
+        "zh": "DSH 对话分享插件：分享单轮或多轮对话，可导出为图片或 Markdown。",
+        "en": "Share DSH Q&As or selected conversation groups as PNG or Markdown."
       },
       "privacy_risk": true,
       "privacy_notes": [

@@ -6,6 +6,7 @@ import {
   detectDocumentLanguage,
   docCandidates,
   extractBriefDescription,
+  isLanguageSwitcherText,
   needsLocalizedDescriptionCheck,
 } from './plugin-docs.mjs';
 import { localizedPlugin } from '../docs/js/localization.mjs';
@@ -58,6 +59,52 @@ The first DeepSeek Harness vision plugin.
 `);
 
   assert.equal(brief, 'The first DeepSeek Harness vision plugin.');
+});
+
+test('detects language-switcher banner lines without flagging real text', () => {
+  assert.equal(isLanguageSwitcherText('简体中文 | English'), true);
+  assert.equal(isLanguageSwitcherText('English | 中文'), true);
+  assert.equal(isLanguageSwitcherText('> 中文 · English'), true);
+  assert.equal(isLanguageSwitcherText('中文 | English | 日本語'), true);
+  // 陌生语言名不应导致识别失败（拉丁与其他书写体系混合）。
+  assert.equal(isLanguageSwitcherText('Icelandic | English | 中文'), true);
+  assert.equal(isLanguageSwitcherText('English | Українська | 中文'), true);
+  assert.equal(isLanguageSwitcherText('عربي | English'), true);
+  assert.equal(isLanguageSwitcherText('Eesti | English | 日本語'), true);
+  assert.equal(
+    isLanguageSwitcherText('The place you run agents should look the way you like.'),
+    false,
+  );
+  // 全是拉丁陌生词且无确定语言名 → 不误判为切换栏（避免整句英文被吞）。
+  assert.equal(isLanguageSwitcherText('Icelandic | French'), false);
+  assert.equal(isLanguageSwitcherText('Fancy | English | Spanish'), false);
+  assert.equal(isLanguageSwitcherText('English'), false);
+  assert.equal(isLanguageSwitcherText('中文'), false);
+  assert.equal(isLanguageSwitcherText('A DSH vision plugin.'), false);
+});
+
+test('skips language-switcher banners when extracting a brief description', () => {
+  const brief = extractBriefDescription(`
+> 简体中文 | English
+
+# My Plugin
+
+The real plugin description about vision and OCR.
+`);
+
+  assert.equal(brief, 'The real plugin description about vision and OCR.');
+});
+
+test('skips markdown language-switcher links when extracting a brief description', () => {
+  const brief = extractBriefDescription(`
+# Example
+
+![logo](x.png) [English](x) | [中文](y)
+
+Actual description here.
+`);
+
+  assert.equal(brief, 'Actual description here.');
 });
 
 test('preserves snake-case identifiers while removing Markdown emphasis', () => {
@@ -165,6 +212,40 @@ test('keeps existing localized descriptions without fetching them again', async 
   assert.deepEqual(descriptions, { en: 'Existing description.' });
 });
 
+test('re-collects languages whose existing value is only a language-switcher banner', async () => {
+  const api = async (path) => {
+    if (path.includes('/readme')) {
+      return {
+        path: 'README.md',
+        content: Buffer.from('# Plugin\nA real DSH plugin description.').toString('base64'),
+      };
+    }
+    if (path.includes('/git/trees/')) {
+      return { tree: [
+        { type: 'blob', path: 'README.md' },
+        { type: 'blob', path: 'README.zh-CN.md' },
+      ] };
+    }
+    if (path.endsWith('/contents/README.zh-CN.md')) {
+      return {
+        content: Buffer.from('# 插件\n用于图片理解的 DSH 插件。').toString('base64'),
+      };
+    }
+    return null;
+  };
+
+  const descriptions = await collectLocalizedDescriptions({
+    api,
+    repo: { full_name: 'owner/plugin', default_branch: 'main' },
+    existing: { zh: '简体中文 | English', en: '简体中文 | English' },
+  });
+
+  assert.deepEqual(descriptions, {
+    zh: '用于图片理解的 DSH 插件。',
+    en: 'A real DSH plugin description.',
+  });
+});
+
 test('decides when localized description data still needs a one-time check', () => {
   assert.equal(needsLocalizedDescriptionCheck({ description_i18n: {} }), true);
   assert.equal(
@@ -180,6 +261,33 @@ test('decides when localized description data still needs a one-time check', () 
   assert.equal(
     needsLocalizedDescriptionCheck({
       description_i18n: { zh: '中文简介' },
+      description_i18n_checked_at: '2026-08-14T00:00:00Z',
+    }),
+    false,
+  );
+});
+
+test('rechecks localized descriptions corrupted by language-switcher banners', () => {
+  // 之前被「语言切换横幅」污染的简介应视为缺失，允许刷新重采覆盖。
+  assert.equal(
+    needsLocalizedDescriptionCheck({
+      description_i18n: { zh: '简体中文 | English', en: '简体中文 | English' },
+    }),
+    true,
+  );
+  assert.equal(
+    needsLocalizedDescriptionCheck({
+      description_i18n: {
+        zh: 'English | 中文',
+        en: 'The place you run agents should look the way you like.',
+      },
+    }),
+    true,
+  );
+  // 已有 checked_at 时保持不重采（尊重既有的一次性检查记录）。
+  assert.equal(
+    needsLocalizedDescriptionCheck({
+      description_i18n: { zh: '简体中文 | English', en: '简体中文 | English' },
       description_i18n_checked_at: '2026-08-14T00:00:00Z',
     }),
     false,
