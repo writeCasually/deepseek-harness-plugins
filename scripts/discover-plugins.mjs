@@ -459,9 +459,11 @@ async function main() {
   }
 
   let reviewed = new Set();
+  let logDecisions = [];
   try {
     const log = JSON.parse(readFileSync(LOG_PATH, 'utf8'));
-    reviewed = new Set((log.decisions || []).map((d) => d.id));
+    logDecisions = Array.isArray(log) ? log : log.decisions || [];
+    reviewed = new Set(logDecisions.map((d) => d.id));
   } catch {
     // 尚无审查日志。
   }
@@ -518,19 +520,41 @@ async function main() {
         repo.full_name,
         toEntry(repo, review, review.compatibility, review.descriptionI18n || {}),
       );
+    } else if (
+      review.verdict === 'blocked' &&
+      byId.has(repo.full_name) &&
+      byId.get(repo.full_name).source !== 'curated'
+    ) {
+      // 本轮复查判为 blocked（安全阻断），立即把已收录的旧条目移出列表。
+      // curated 项在上面第 494 行 continue 跳过，不会走到这里。
+      byId.delete(repo.full_name);
     }
 
     if (!TOKEN) await sleep(700);
   }
 
+  // 汇总每个插件当前可用的最新 verdict：本轮新审查优先，其次既有审查日志
+  // （decisions 为 新→旧 顺序，首个即代表最新判决）。
+  const latestVerdictById = new Map();
+  for (const d of [...reviewLog, ...logDecisions]) {
+    if (!latestVerdictById.has(d.id)) latestVerdictById.set(d.id, d.verdict);
+  }
+
   // 官方仓库与手动精选始终保留；未通过审查/不兼容的已收录项降级移除。
+  // 关键修正：以「最新审查 verdict」为准，而不仅是条目里可能已陈旧的 review_status。
+  // 此前已收录为 flagged 的插件，若最新被判为 blocked，也必须从公开列表移除。
   const approved = [...byId.values()]
     .map(normalizeEntry)
-    .filter(
-      (p) =>
+    .filter((p) => {
+      if (p.source === 'curated' || p.official) return true;
+      // 最新审查为 blocked（安全阻断）时，即便旧条目仍残留 flagged 也必须移除。
+      if (latestVerdictById.get(p.id) === 'blocked') return false;
+      // 兜底：无审查记录或非 blocked 时，以条目自身状态为准。
+      return (
         (p.review_status === 'approved' || p.review_status === 'flagged') &&
-        p.compatibility !== 'unverified',
-    );
+        p.compatibility !== 'unverified'
+      );
+    });
 
   const output = {
     schema_version: 3,

@@ -29,17 +29,31 @@ const headers = {
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function api(path, fallback = null) {
+async function request(path) {
   const res = await fetch(`${API_BASE}${path}`, { headers });
   if (res.status === 403) {
     const reset = res.headers.get('x-ratelimit-reset');
     const wait = reset ? Math.max(0, Number(reset) * 1000 - Date.now()) : 60_000;
     console.warn(`  速率限制，等待 ${Math.round(wait / 1000)}s…`);
     await sleep(Math.min(wait, 65_000));
-    return api(path, fallback);
+    return request(path);
   }
-  if (!res.ok) return fallback;
-  return await res.json();
+  let body = null;
+  if (res.status === 200) body = await res.json();
+  return { status: res.status, body };
+}
+
+async function api(path, fallback = null) {
+  const { status, body } = await request(path);
+  return status === 200 ? body : fallback;
+}
+
+// 仅用于判断仓库是否存在：返回 HTTP 状态码与（200 时的）仓库对象。
+// 仅 HTTP 404 表示仓库确实不存在（被删除/迁移不可达）；其它错误视为瞬时故障，
+// 不据此移除插件，避免误删（详见 refresh 循环）。
+async function fetchRepo(fullName) {
+  const { status, body } = await request(`/repos/${fullName}`);
+  return { status, repo: status === 200 ? body : null };
 }
 
 // --- 实时数据采集器 ---
@@ -85,10 +99,11 @@ async function main() {
 
   let updated = 0;
   let failed = 0;
-  let removed = 0;
+  let archived = 0;
+  let gone = 0;
   let descriptionsUpdated = 0;
   let visited = 0;
-  const archivedIds = new Set();
+  const removedIds = new Set();
   for (const entry of plugins) {
     if (LIMIT && visited >= LIMIT) break;
     visited += 1;
@@ -96,10 +111,21 @@ async function main() {
     const [owner, name] = String(entry.id).split('/');
     if (!owner || !name) continue;
 
-    const repo = await api(`/repos/${owner}/${name}`, null);
+    const { status, repo } = await fetchRepo(`${owner}/${name}`);
+
+    if (status === 404) {
+      // 仓库确定不存在（被删除/不可达）。本项目旨在收录展示现存 dsh 插件，
+      // 掉出搜索排名、stars 变化等都不影响收录，仅当仓库本身消失时才移除。
+      removedIds.add(entry.id);
+      gone += 1;
+      console.log(`  ${entry.id} 仓库已不存在（404），将从列表移除`);
+      if (!TOKEN) await sleep(700);
+      continue;
+    }
     if (!repo) {
+      // 其它非 200（5xx 等）视为瞬时故障，保留条目，本轮跳过刷新。
       failed += 1;
-      console.warn(`  跳过 ${entry.id}（接口失败或仓库不存在）`);
+      console.warn(`  跳过 ${entry.id}（接口失败 status=${status}）`);
       continue;
     }
 
@@ -128,17 +154,18 @@ async function main() {
     }
 
     if (repo.archived) {
-      archivedIds.add(entry.id);
+      removedIds.add(entry.id);
+      archived += 1;
       console.log(`  ${entry.id} 已归档，将从列表移除`);
     }
 
     if (!TOKEN) await sleep(700);
   }
 
-  if (archivedIds.size > 0) {
-    data.plugins = plugins.filter((p) => !archivedIds.has(p.id));
-    removed = archivedIds.size;
+  if (removedIds.size > 0) {
+    data.plugins = plugins.filter((p) => !removedIds.has(p.id));
   }
+  const removed = archived + gone;
 
   if (updated > 0 || removed > 0) {
     data.generated_at = NOW;
@@ -147,7 +174,10 @@ async function main() {
       // README 按 stars 排序，star/排序变化时需重新生成。
       updateReadmeFiles();
     }
-    const parts = [`刷新 ${updated}`, `移除 ${removed} 个归档`];
+    const parts = [
+      `刷新 ${updated}`,
+      `移除 ${removed} 个（归档 ${archived}，仓库不存在 ${gone}）`,
+    ];
     if (descriptionsUpdated) parts.push(`补充 ${descriptionsUpdated} 个多语言简介`);
     if (failed) parts.push(`${failed} 个获取失败`);
     console.log(`完成：${parts.join('，')}（共 ${plugins.length} 个插件已检查）。`);
