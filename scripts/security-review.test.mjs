@@ -3,9 +3,11 @@ import assert from 'node:assert/strict';
 import {
   analyzeDependencies,
   analyzePackageManifest,
+  classifyRiskLevel,
   composeVerdict,
   extractExternalHosts,
   findTyposquatCandidates,
+  isDefiniteMalice,
   levenshtein,
   llmReview,
   privacyFindings,
@@ -253,19 +255,92 @@ test('OSV retries transient failures once and succeeds', async () => {
   assert.ok(res.findings.some((f) => f.id === 'osv-vuln'));
 });
 
-// --- composeVerdict ---
+// --- composeVerdict / 分级 ---
 
-test('composeVerdict: critical blocks, warning flags, clean approves', () => {
-  assert.equal(composeVerdict({ findings: [{ severity: 'critical' }] }).verdict, 'blocked');
+test('composeVerdict: definite-malice critical blocks, gray-zone critical flags', () => {
+  // 确定恶意（remote-exec 等）-> blocked。
   assert.equal(
-    composeVerdict({ findings: [{ severity: 'warning' }], privacyNotes: [] }).verdict,
-    'flagged',
-  );
-  assert.equal(composeVerdict({ findings: [], privacyNotes: [] }).verdict, 'approved');
-  assert.equal(
-    composeVerdict({ findings: [], privacyNotes: [{ severity: 'critical' }] }).verdict,
+    composeVerdict({ findings: [{ id: 'remote-exec', severity: 'critical' }] }).verdict,
     'blocked',
   );
+  assert.ok(
+    composeVerdict({ findings: [{ id: 'lifecycle-postinstall-remote-exec', severity: 'critical' }] }).verdict,
+    'blocked',
+    'lifecycle-*-remote-exec 也应阻断',
+  );
+  // 灰区高风险（无确定恶意 id 的 critical，如读取凭据类环境变量并外发）-> flagged 收录。
+  assert.equal(
+    composeVerdict({ findings: [{ id: 'eval-exec', severity: 'critical' }] }).verdict,
+    'flagged',
+  );
+  // 隐私「读取本地凭据文件」无 id，按文案判定为确定恶意。
+  assert.equal(
+    composeVerdict({ findings: [], privacyNotes: [{ severity: 'critical', explanation: '读取本地凭据文件（如 .ssh/.aws/.npmrc）' }] }).verdict,
+    'blocked',
+  );
+  // 隐私「读取凭据类环境变量并发送到网络」按文案判定为灰区高风险 -> flagged。
+  assert.equal(
+    composeVerdict({ findings: [], privacyNotes: [{ severity: 'critical', explanation: '读取凭据类环境变量并发送到网络，可能泄露密钥' }] }).verdict,
+    'flagged',
+  );
+  // warning -> flagged；干净 -> approved。
+  assert.equal(composeVerdict({ findings: [{ severity: 'warning' }], privacyNotes: [] }).verdict, 'flagged');
+  assert.equal(composeVerdict({ findings: [], privacyNotes: [] }).verdict, 'approved');
+});
+
+test('isDefiniteMalice: id-based and lifecycle and privacy-text classification', () => {
+  assert.equal(isDefiniteMalice({ id: 'crypto-mining' }), true);
+  assert.equal(isDefiniteMalice({ id: 'lifecycle-prepare-remote-exec' }), true);
+  assert.equal(isDefiniteMalice({ id: 'lifecycle-postinstall-destructive' }), true);
+  assert.equal(isDefiniteMalice({ id: 'screen-capture' }), false, '屏幕采集归灰区');
+  assert.equal(isDefiniteMalice({ id: 'eval-exec' }), false, 'eval 归灰区');
+  assert.equal(isDefiniteMalice({ severity: 'critical', explanation: '读取本地凭据文件（如 .ssh/.aws/.npmrc）' }), true);
+  assert.equal(isDefiniteMalice({ severity: 'critical', explanation: '读取凭据类环境变量并发送到网络' }), false);
+});
+
+test('classifyRiskLevel: high for critical, moderate for warning, low for clean', () => {
+  assert.equal(
+    classifyRiskLevel({ findings: [{ id: 'env-exfil', severity: 'critical' }] }).risk_level,
+    'high',
+  );
+  assert.equal(
+    classifyRiskLevel({ findings: [{ severity: 'warning', id: 'base64' }] }).risk_level,
+    'moderate',
+  );
+  assert.equal(classifyRiskLevel({ findings: [], privacyNotes: [] }).risk_level, 'low');
+  const high = classifyRiskLevel({ privacyNotes: [{ severity: 'critical', explanation: '读取凭据类环境变量并发送到网络' }] });
+  assert.equal(high.risk_level, 'high');
+  assert.ok(high.risk_notes.some((n) => /自行审计/.test(n)), '灰区风险应标注「请自行审计」');
+});
+
+test('classifyRiskLevel: risk_evidence carries file:line location, degrades gracefully', () => {
+  const findings = [
+    { id: 'eval-exec', severity: 'critical', explanation: '使用动态代码执行（eval/new Function）', file: 'src/index.js', line: 42 },
+    { id: 'base64', severity: 'warning', explanation: '存在 Base64 解码行为', file: 'lib/a.js', line: 7 },
+  ];
+  const high = classifyRiskLevel({ findings, privacyNotes: [] });
+  assert.equal(high.risk_level, 'high');
+  assert.ok(high.risk_evidence.some((e) => e.file === 'src/index.js' && e.line === 42), '应带文件:行号');
+  assert.ok(high.risk_notes.some((n) => /src\/index\.js:42/.test(n)), 'risk_notes 应内联位置');
+
+  // 无行号（隐私 note）降级为只带文件。
+  const noLine = classifyRiskLevel({
+    findings: [],
+    privacyNotes: [{ severity: 'critical', explanation: '读取凭据类环境变量并发送到网络，可能泄露密钥', file: 'p.js' }],
+  });
+  assert.equal(noLine.risk_level, 'high');
+  assert.ok(noLine.risk_evidence.some((e) => e.file === 'p.js' && e.line === undefined));
+  assert.ok(noLine.risk_notes.some((n) => /p\.js/.test(n)));
+
+  // 无文件无行号（OSV 依赖漏洞）不丢风险，只保留说明。
+  const depOnly = classifyRiskLevel({
+    findings: [{ id: 'osv-vuln', severity: 'warning', explanation: '依赖 axios@1.7.0 存在已知漏洞', file: '<dependencies>', line: 0 }],
+    privacyNotes: [],
+  });
+  assert.equal(depOnly.risk_level, 'moderate');
+  assert.equal(depOnly.risk_evidence.length, 1);
+  assert.equal(depOnly.risk_evidence[0].file, '<dependencies>');
+  assert.equal(depOnly.risk_evidence[0].line, undefined, 'line=0 视为无真实行号，不作为定位');
 });
 
 // --- llmReview ---

@@ -305,6 +305,18 @@ main {
   border-color: #fed7aa;
 }
 
+.badge.risk-high {
+  color: #fff;
+  background: #dc2626;
+  border-color: #b91c1c;
+}
+
+.badge.risk-moderate {
+  color: #92400e;
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
 .desc {
   margin: 0;
   color: var(--muted);
@@ -352,6 +364,40 @@ main {
   border: 1px solid #fde68a;
   color: #92400e;
   font-size: 12px;
+}
+
+.risk-note.risk-high {
+  margin: 0;
+  padding: 7px 9px;
+  border-radius: var(--radius);
+  background: #fef2f2;
+  border: 1px solid #dc2626;
+  color: #991b1b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.risk-note.risk-moderate {
+  margin: 0;
+  padding: 7px 9px;
+  border-radius: var(--radius);
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.risk-loc {
+  color: inherit;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.risk-loc:hover {
+  text-decoration: none;
+  opacity: 0.8;
 }
 
 .card-meta {

@@ -89,8 +89,9 @@ jobs:
 
           # 读取本轮静态审查的最严重 verdict：
           #   clean/approved -> 全部通过，立即 squash 合并并 dispatch Pages
-          #   flagged -> warning 级提示（列表已标注安全/隐私提示），仍自动合并
-          #   blocked -> critical 级发现（恶意插件不会被写入 plugins.json），保留人工复核
+          #   flagged -> warning 级提示或灰区高风险（risk_level=high 已标注供使用者判断），仍自动合并
+          #   blocked -> 确定恶意，脚本已移出 plugins.json（不会进入公开列表），故剩余数据安全，同样自动合并；
+          #              人工可在 review-log 中跟进已拦下的插件。
           worst="clean"
           if [ -f data/run-summary.json ]; then
             worst="$(jq -r '.worst_verdict // "clean"' data/run-summary.json)"
@@ -98,19 +99,15 @@ jobs:
           echo "本轮 worst_verdict=${worst}"
 
           if [ "$worst" = "blocked" ]; then
-            note="本次静态审查发现 critical 级问题（详见 data/review-log.json），保留人工复核后合并。"
-            # 仅更新 PR 描述，不自动合并。
-            gh pr edit "$pr_number" --title "$title" --body "自动检索 GitHub \`dsh-plugin\` 话题并完成静态安全审查后生成。${note}"
+            note="本次静态审查发现 critical 级问题（详见 data/review-log.json）。被阻断插件已移出公开列表，不会出现在 plugins.json；其余数据已自动合并。"
+          elif [ "$worst" = "flagged" ]; then
+            note="本轮部分插件触发 warning 级安全/隐私提示（已在列表中标注），已自动合并。"
           else
-            if [ "$worst" = "flagged" ]; then
-              note="本轮部分插件触发 warning 级安全/隐私提示（已在列表中标注），已自动合并。"
-            else
-              note="本轮新审查全部通过静态安全审查：\`${worst}\`。已自动合并。"
-            fi
-            # 在合并前更新 PR 描述，避免 edit 已合并/关闭的 PR。
-            gh pr edit "$pr_number" --title "$title" --body "自动检索 GitHub \`dsh-plugin\` 话题并完成静态安全审查后生成。${note}"
-            # 与 refresh-live-data 一致：立即 squash 合并（不走 auto-merge 开关，无需仓库另开设置）。
-            gh pr merge "$pr_number" --squash --delete-branch
-            # GITHUB_TOKEN 的 push 不递归触发其它 workflow 的 push 事件，故合并后主动 dispatch Pages。
-            gh workflow run deploy-pages.yml || echo "[warn] dispatch deploy-pages 失败,数据已合并到 main,下次手动触发即可。"
+            note="本轮新审查全部通过静态安全审查：\`${worst}\`。已自动合并。"
           fi
+          # 在合并前更新 PR 描述，避免 edit 已合并/关闭的 PR。
+          gh pr edit "$pr_number" --title "$title" --body "自动检索 GitHub \`dsh-plugin\` 话题并完成静态安全审查后生成。${note}"
+          # 与 refresh-live-data 一致：立即 squash 合并（不走 auto-merge 开关，无需仓库另开设置）。
+          gh pr merge "$pr_number" --squash --delete-branch
+          # GITHUB_TOKEN 的 push 不递归触发其它 workflow 的 push 事件，故合并后主动 dispatch Pages。
+          gh workflow run deploy-pages.yml || echo "[warn] dispatch deploy-pages 失败,数据已合并到 main,下次手动触发即可。"

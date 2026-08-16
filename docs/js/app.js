@@ -39,6 +39,12 @@ const UI = {
     loadError: "加载插件数据失败，请稍后重试。",
     privacy: "隐私风险",
     security: "安全提示",
+    riskLevel: {
+      low: "低风险",
+      moderate: "中等风险",
+      high: "⚠️ 高风险",
+    },
+    riskTitle: "平台未担保其安全，使用前请自行审计",
     defaultUsage: "安装与用法见项目 README",
     profileUsageTip: "这是一个「配置组合」（仅 dsh.profile）：非独立可安装插件，参考其 bundles 组合来配置自己的 profile。",
     viewProject: "查看项目",
@@ -79,6 +85,12 @@ const UI = {
     loadError: "Failed to load plugin data. Please try again later.",
     privacy: "Privacy risk",
     security: "Security note",
+    riskLevel: {
+      low: "Low risk",
+      moderate: "Moderate risk",
+      high: "⚠️ HIGH RISK",
+    },
+    riskTitle: "Not guaranteed safe by this platform — review before use",
     defaultUsage: "See the project README for installation and usage",
     profileUsageTip: "This is a composable profile (dsh.profile only): not an independently installable plugin; reference its bundles list to configure your own profile.",
     viewProject: "View project",
@@ -187,6 +199,16 @@ function matches(plugin) {
   return haystack.includes(q);
 }
 
+// GitHub 文件定位链接：repo/blob/HEAD/<file>#L<line>，HEAD 由 GitHub 自动解析为默认分支。
+// 非真实文件路径（如 <dependencies>、<package.json> 等伪文件）不生成链接。
+function evidenceLink(plugin, file, line) {
+  const base = String(plugin.repo_url || "").replace(/\/+$/, "");
+  if (!base || !file || /\s<[^>]+>\s*$/.test(file) || file.startsWith("<")) return null;
+  const q = encodeURIComponent(file).replace(/%2F/g, "/");
+  const frag = line ? `#L${line}` : "";
+  return `${base}/blob/HEAD/${q}${frag}`;
+}
+
 function renderCard(plugin) {
   const category = plugin.category || "plugin";
   const separator = state.lang === "en" ? "; " : "；";
@@ -222,6 +244,11 @@ function renderCard(plugin) {
         </h2>
         <div class="badges">
           ${plugin.official ? `<span class="badge official">★ ${copy.officialBadge}</span>` : ""}
+          ${
+            plugin.risk_level && plugin.risk_level !== "low"
+              ? `<span class="badge risk-${escapeHtml(plugin.risk_level)}" title="${escapeHtml(copy.riskTitle)}">${escapeHtml(copy.riskLevel[plugin.risk_level] || copy.riskLevel.moderate)}</span>`
+              : ""
+          }
           <span class="badge stars" title="${copy.stars}">
             <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true">
               <path d="M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 20.4l1.1-6.5L2.6 9.3l6.5-.9L12 2.5z" />
@@ -239,12 +266,31 @@ function renderCard(plugin) {
           : ""
       }
       ${
-        plugin.privacy_risk
+        (plugin.risk_evidence && plugin.risk_evidence.length) || (plugin.risk_notes && plugin.risk_notes.length)
+          ? `<p class="risk-note risk-${escapeHtml(plugin.risk_level || "")}" title="${escapeHtml(copy.riskTitle)}">${escapeHtml(copy.riskTitle)}：${
+              plugin.risk_evidence && plugin.risk_evidence.length
+                ? plugin.risk_evidence
+                    .map((ev) => {
+                      const prefix = escapeHtml(ev.explanation);
+                      if (!ev.file) return prefix;
+                      const link = evidenceLink(plugin, ev.file, ev.line);
+                      const label = `${escapeHtml(ev.file)}${ev.line ? `:${ev.line}` : ""}`;
+                      return link
+                        ? `${prefix} <a class="risk-loc" href="${escapeHtml(link)}" target="_blank" rel="noopener">${label}</a>`
+                        : `${prefix} ${label}`;
+                    })
+                    .join("<br>")
+                : escapeHtml(plugin.risk_notes.join(separator))
+            }</p>`
+          : ""
+      }
+      ${
+        plugin.privacy_risk && !(plugin.risk_notes && plugin.risk_notes.length)
           ? `<p class="privacy-note">${copy.privacy}：${escapeHtml((plugin.privacy_notes || []).join(separator))}</p>`
           : ""
       }
       ${
-        plugin.security_notes && plugin.security_notes.length
+        plugin.security_notes && plugin.security_notes.length && !(plugin.risk_notes && plugin.risk_notes.length)
           ? `<p class="security-note">${copy.security}：${escapeHtml(plugin.security_notes.join(separator))}</p>`
           : ""
       }

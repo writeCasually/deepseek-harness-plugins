@@ -9,6 +9,7 @@ import { collectLocalizedDescriptions } from './plugin-docs.mjs';
 import {
   analyzeDependencies,
   analyzePackageManifest,
+  classifyRiskLevel,
   composeVerdict,
   extractExternalHosts,
   llmReview,
@@ -324,6 +325,10 @@ function usageFor(repo, kind) {
 
 function toEntry(repo, review, compatibility, descriptionI18n = {}) {
   const kind = compatibility.kind || 'code';
+  const { risk_level, risk_notes, risk_evidence } = classifyRiskLevel({
+    findings: review.findings,
+    privacyNotes: review.privacyNotes,
+  });
   return {
     id: repo.full_name,
     name: repo.name,
@@ -349,6 +354,10 @@ function toEntry(repo, review, compatibility, descriptionI18n = {}) {
     ...(Object.keys(descriptionI18n).length
       ? { description_i18n: descriptionI18n }
       : {}),
+    // 风险分层：low/moderate/high + 风险说明 + 结构化风险位置（文件:行号），供使用者定位审计。
+    risk_level,
+    risk_notes,
+    risk_evidence,
     privacy_risk: review.privacyNotes.length > 0,
     privacy_notes: review.privacyNotes.map((n) => n.explanation),
     security_notes: uniqueExplanations(
@@ -548,6 +557,10 @@ function normalizeEntry(p) {
     official,
     kind,
     compatibility: p.compatibility ?? (official ? 'official' : 'compatible'),
+    // risk_level 兼容旧条目：无风险标记时按 privacy_risk/security_notes 兜底推断。
+    risk_level: p.risk_level ?? (p.privacy_risk || (p.security_notes || []).length ? 'moderate' : 'low'),
+    risk_notes: p.risk_notes ?? [...(p.privacy_notes || []), ...(p.security_notes || [])],
+    risk_evidence: Array.isArray(p.risk_evidence) ? p.risk_evidence : [],
     privacy_risk: p.privacy_risk ?? false,
     privacy_notes: p.privacy_notes ?? [],
     security_notes: p.security_notes ?? [],
@@ -701,7 +714,7 @@ async function main() {
     });
 
   const output = {
-    schema_version: 3,
+    schema_version: 4,
     generated_at: NOW,
     plugins: approved,
   };
@@ -724,10 +737,11 @@ async function main() {
     writeFileSync(DATA_PATH, JSON.stringify(output, null, 2));
     updateReadmeFiles();
 
-    // 本轮新审查的最严重 verdict，决定 workflow 是否可以安全地自动合并：
-    //   worst_verdict = 'clean'     -> 本轮无新审查（只刷新元数据/README），自动合并安全
-    //   worst_verdict = 'approved'  -> 本轮所有新插件全部通过静态审查，自动合并安全
-    //   worst_verdict = 'flagged'|'blocked' -> 出现告警/阻断级发现，workflow 应停止自动合并并保留人工复核
+    // 本轮新审查的最严重 verdict，供 workflow 的 worst_verdict 门禁作 PR 描述参考：
+    //   worst_verdict = 'clean'     -> 本轮无新审查（只刷新元数据/README）
+    //   worst_verdict = 'approved'  -> 本轮所有新插件全部通过静态审查
+    //   worst_verdict = 'flagged'   -> 出现 warning 或灰区高风险，已标注并收录
+    //   worst_verdict = 'blocked'   -> 出现确定恶意，已移出 plugins.json；剩余数据安全，仍自动合并
     const VERDICT_RANK = { approved: 0, skip: 0, flagged: 1, blocked: 2 };
     const worstVerdict = reviewLog.length === 0
       ? 'clean'

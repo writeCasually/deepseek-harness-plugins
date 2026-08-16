@@ -28,14 +28,29 @@ GitHub 上带 `dsh-plugin` 话题的仓库可以来自任何人。自动收录�
 | T7 | 信任信号（信息性） | 仅入日志 | `trustNotesFor()`：仓库创建不足 30 天、未声明许可证（不参与裁决） |
 | T8 | 审查留痕与增量复查 | 日志/条目字段 | 每次记录 `reviewed_commit`、扫描文件数/总文件数、delta 模式标记；`FORCE_REREVIEW=1` 时通过 GitHub compare API 只重扫变更文件 |
 
-## 判定与裁决
+## 判定与裁决：两级模型
 
-- 任一 **critical** finding（安全或隐私）→ `blocked`：立即移出公开列表，workflow 保留人工复核，不自动合并。
-- 任一 **warning** → `flagged`：在插件列表标注「隐私风险/安全提示」，workflow 仍自动合并。
-- 全部干净 → `approved`，自动合并。
-- `composeVerdict()` 统一汇总，裁决逻辑被 workflow 的 `worst_verdict` 门禁消费。
+> DSH 插件是在 agent 运行时上下文里被加载的第三方代码，权限比普通软件更大。因此本平台采用「分级呈现」而非一刀切：
+> 先把「确定恶意」与「灰区高风险」区分开——前者仍拦截不收录，后者**收录但醒目标注风险，把「是否使用」的决定权交还给使用者**。
 
-> **行为变更说明**：旧逻辑中「隐私 critical」（如凭据外泄）只降级为 flagged；新策略把 privacy critical 与 security critical 同等视为 `blocked`（更保守、更安全）。这会让原本自动合并的少数仓库改为人工复核。
+**确定恶意（`isDefiniteMalice()` 命中即 `blocked`，不收录）：**
+`remote-exec` / `encoded-command` / `invoke-expression` / `decode-exec` / `remote-code-import` / `remote-code-fetch-eval` / `shell-exec` / `spawn-shell` / `shell-flag` / `destructive` / `fork-bomb` / `crypto-mining` / `exfil-endpoint` / `websocket-exfil` / `lifecycle-*-remote-exec` / `lifecycle-*-destructive`。隐私层面：直接读取本地凭据文件（.ssh/.aws/.npmrc）、窃取浏览器 Cookie/存储。
+
+**灰区高风险（critical 但非确定恶意 → 收录，`risk_level=high`）：**
+读取凭据类环境变量并外发、动态执行（`eval-exec`/`os-exec`）、外呼非白名单、屏幕采集、硬编码密钥等。此类收录但醒目标注，供使用者自行判断。
+
+**判定顺序：**
+- 任一**确定恶意** critical → `blocked`：立即移出公开列表，不写入 `plugins.json`；其证据记入 `review-log`。
+- 其他 **critical（灰区高风险）** → `flagged` 收录，条目 `risk_level=high` + `risk_notes` + `risk_evidence`（含「请自行审计」提示）。
+- 任一 **warning** → `flagged` 收录，`risk_level=moderate`。
+- 全部干净 → `approved`，`risk_level=low`。
+- `composeVerdict()` / `classifyRiskLevel()` 统一汇总；workflow 的 `worst_verdict` 门禁消费裁决结果。
+
+> **风险位置（`risk_evidence`）**：`docs/plugins.json` 每条插件的 `risk_evidence` 为结构化数组 `[{explanation, file, line?}]`，记录每个风险点的代码位置，前端/README 据此内联「文件:行号」并链到 GitHub 相应行列，便于使用者快速定位审计。位置降级规则：有真实行号（line>0）记 `文件:行`；否则只记文件路径；连文件也拿不到的（如 OSV 依赖漏洞）只保留说明文本。
+
+> **行为变更说明**：
+> - **schema v3 → v4**：此前所有 critical（含灰区）一律 `blocked` 不收录；现仅「确定恶意」阻断，「灰区高风险」改用 `risk_level=high` + `risk_notes` 收录展示，并新增 `risk_evidence` 记录风险代码位置（`docs/plugins.json` 新增 `risk_level`/`risk_notes`/`risk_evidence` 字段）。
+> - `blocked`（确定恶意）仍不阻止本批其它安全数据的自动合并：被阻断插件已移出公开列表，不会通过合并进入 `plugins.json`，人工复核在 review-log 层完成。
 
 ## 审查留痕
 

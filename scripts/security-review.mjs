@@ -46,7 +46,8 @@ export const EXTERNAL_URL_ALLOWLIST = [
 ];
 
 // --- 确定性安全规则（id / 严重级 / 正则 / 解释） ---
-// 关键规则命中即视为 critical（阻断收录），其余为 warning（标记提示）。
+// 关键规则命中即视为 critical；其中 isDefiniteMalice() 判定为「确定恶意」时阻断收录，
+// 其余 critical 视作「灰区高风险」收录并标记 risk_level=high。warning 为标记提示。
 const SECURITY_RULES = [
   {
     id: 'remote-exec',
@@ -629,22 +630,139 @@ export async function analyzeDependencies(
   }
 }
 
-/** 汇总裁决：任一 critical -> blocked；任一 warning -> flagged；否则 approved。 */
-export function composeVerdict({ findings = [], privacyNotes = [] }) {
+// 确定恶意模式（硬排除，仍 blocked、不收录）：
+// 这些 finding 命中即视为恶意软件行为，无正当用途，不能通过「排版展示/使用者自行判断」合理化。
+// 与之相对，未列入此集合的其它 critical（如读取凭据类环境变量并外发、动态执行、屏幕采集、硬编码密钥、
+// lifecycle 动态脚本等）视为「灰区高风险」，允许收录但标记 risk_level=high 供使用者自行裁决。
+const DEFINITE_MALICE_IDS = new Set([
+  // 远程/动态代码执行
+  'remote-exec',          // curl|sh 下载并执行
+  'encoded-command',      // PowerShell -EncodedCommand
+  'invoke-expression',    // PowerShell 动态表达式
+  'decode-exec',          // Base64/编码字符串 -> eval
+  'remote-code-import',   // import/require 远程 URL
+  'remote-code-fetch-eval', // fetch -> eval/exec
+  'shell-exec',           // child_process.exec/execSync
+  'spawn-shell',          // spawn(...,{shell:true})
+  'shell-flag',           // Python subprocess shell=True
+  // 破坏性/恶意负载
+  'destructive',          // rm -rf 根/主目录
+  'fork-bomb',            // fork 炸弹
+  'crypto-mining',        // 挖矿
+  'exfil-endpoint',       // webhook.site/discord/telegram/ngrok 外发端点
+  'websocket-exfil',      // WebSocket 外联（白名单外）
+  // 包生命周期脚本中的确定性恶意
+  'lifecycle-remote-exec', // 安装脚本下载并执行远程代码（* 通配覆盖 lifecycle-*-remote-exec）
+  'lifecycle-destructive', // 安装脚本含破坏性命令（* 通配覆盖 lifecycle-*-destructive）
+]);
+
+// 按 finding id 或隐私文案判定是否属于「确定恶意」（硬排除，应 blocked）。
+// 命中 DEFINITE_MALICE_IDS，命中 `lifecycle-*-remote-exec` / `lifecycle-*-destructive` 形态，
+// 或命中隐私「直接窃取本地凭据文件 / 窃取浏览器 Cookie 存储」文案。
+export function isDefiniteMalice(f) {
+  if (!f) return false;
+  // 隐私 finding 无 id，用文案判定：直接读取磁盘凭据文件、窃取浏览器 Cookie/存储 属确定性恶意。
+  if (!f.id) {
+    return /读取本地凭据文件|浏览器\s*Cookie|\blocalStorage|\bsessionStorage/.test(f.explanation || '');
+  }
+  return (
+    DEFINITE_MALICE_IDS.has(f.id) ||
+    /^lifecycle-.+-(?:remote-exec|destructive)$/.test(f.id)
+  );
+}
+
+/**
+ * 汇总每个插件的风险层级（供收录展示，区别于 verdict 的合并门禁）：
+ *   - definite-malice critical（隐私或安全）-> 'high'（但此类最终 blocked，不会收录展示）
+ *   - 其它 critical（灰区高风险，如凭据类环境变量外发、动态执行、屏幕采集、硬编码密钥）-> 'high'
+ *   - 有 warning 提示 -> 'moderate'
+ *   - 干净 -> 'low'
+ * 同时返回 risk_evidence：结构化风险位置 [{explanation, file, line}]，供 UI/README 内联「文件:行号」定位；
+ * 拿不到行号时降级为文件路径，连文件都没有时（如 OSV 依赖漏洞）记依赖名/label。
+ * @param {Array<{severity,id,explanation,file?,line?}>} findings
+ * @param {Array<{severity,explanation,file?}>} privacyNotes
+ * @returns {{ risk_level: 'low'|'moderate'|'high', risk_notes: string[], risk_evidence: Array<{explanation,file,line?}> }}
+ */
+export function classifyRiskLevel({ findings = [], privacyNotes = [] } = {}) {
   const all = [...findings, ...privacyNotes];
   const critical = all.filter((f) => f.severity === 'critical');
   const warnings = all.filter((f) => f.severity === 'warning');
+
+  // 位置降级策略：line>0 则记录 文件:行；缺行或 line=0 但带文件则记文件；两者皆无则记解释文本/label。
+  function locOf(f) {
+    if (Number(f.line) > 0) return `${f.file || '?'}:${f.line}`;
+    if (f.file) return f.file;
+    return null;
+  }
+
+  // 归一化：同一 (explanation, file, line) 去重。
+  const evidenceMap = new Map();
+  function pushEvidence(f, explanation) {
+    const key = `${explanation}\u0000${f.file || ''}\u0000${Number(f.line) > 0 ? f.line : 0}`;
+    if (evidenceMap.has(key)) return;
+    const entry = { explanation };
+    if (f.file) entry.file = f.file;
+    if (Number(f.line) > 0) entry.line = f.line;
+    evidenceMap.set(key, entry);
+  }
+
+  const notes = [];
   if (critical.length) {
+    for (const f of critical) {
+      const loc = locOf(f);
+      const prefix = isDefiniteMalice(f) ? '【确定恶意，已阻断】' : '【高风险，请自行审计】';
+      notes.push(`${prefix}${f.explanation}${loc ? ` @ ${loc}` : ''}`);
+      pushEvidence(f, f.explanation);
+    }
+    return { risk_level: 'high', risk_notes: [...new Set(notes)], risk_evidence: [...evidenceMap.values()] };
+  }
+  if (warnings.length) {
+    for (const f of warnings) {
+      const loc = locOf(f);
+      notes.push(`${f.explanation}${loc ? ` @ ${loc}` : ''}`);
+      pushEvidence(f, f.explanation);
+    }
+    return {
+      risk_level: 'moderate',
+      risk_notes: [...new Set(notes)],
+      risk_evidence: [...evidenceMap.values()],
+    };
+  }
+  return { risk_level: 'low', risk_notes: [], risk_evidence: [] };
+}
+
+/** 汇总裁决：任一确定恶意 critical -> blocked（硬排除）；其它 critical/warning 归入 flagged 供收录展示。 */
+export function composeVerdict({ findings = [], privacyNotes = [] }) {
+  const all = [...findings, ...privacyNotes];
+  const definiteCritical = all.filter((f) => f.severity === 'critical' && isDefiniteMalice(f));
+  const highRisk = all.filter((f) => f.severity === 'critical' && !isDefiniteMalice(f));
+  const warnings = all.filter((f) => f.severity === 'warning');
+  const notes = (list) => [...new Set(list.map((f) => f.explanation))];
+  if (definiteCritical.length) {
     return {
       verdict: 'blocked',
-      blockedReasons: [...new Set(critical.map((f) => f.explanation))],
-      flaggedReasons: [...new Set(warnings.map((f) => f.explanation))],
+      blockedReasons: notes(definiteCritical),
+      flaggedReasons: notes([...highRisk, ...warnings]),
+      highRiskReasons: notes(highRisk),
+    };
+  }
+  if (highRisk.length) {
+    return {
+      verdict: 'flagged',
+      blockedReasons: [],
+      flaggedReasons: notes(highRisk),
+      highRiskReasons: notes(highRisk),
     };
   }
   if (warnings.length) {
-    return { verdict: 'flagged', blockedReasons: [], flaggedReasons: [...new Set(warnings.map((f) => f.explanation))] };
+    return {
+      verdict: 'flagged',
+      blockedReasons: [],
+      flaggedReasons: notes(warnings),
+      highRiskReasons: [],
+    };
   }
-  return { verdict: 'approved', blockedReasons: [], flaggedReasons: [] };
+  return { verdict: 'approved', blockedReasons: [], flaggedReasons: [], highRiskReasons: [] };
 }
 
 // --- 可选 LLM 深度复核（OpenAI 兼容 chat/completions） ---
