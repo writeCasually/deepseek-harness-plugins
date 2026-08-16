@@ -26,6 +26,15 @@ const LOG_PATH = join(root, 'data', 'review-log.json');
 const TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
 const LIMIT = Number(process.env.LIMIT || process.env.MAX_REPOS || 40);
 const MAX_PAGES = Number(process.env.MAX_PAGES || 3);
+
+// 布尔开关的稳定解析：仅在显式真实值时启用，避免 Actions 传 '0'/'false' 被 truthy 误触发。
+function envFlag(name) {
+  const v = process.env[name];
+  if (v === undefined || v === null || v === '') return false;
+  return !/^(0|false|no|off)$/i.test(String(v).trim());
+}
+const FORCE_REREVIEW = envFlag('FORCE_REREVIEW');
+const DRY_RUN = envFlag('DRY_RUN');
 const PER_PAGE = 100;
 
 const THIS_REPO = process.env.GITHUB_REPOSITORY || 'writeCasually/deepseek-harness-plugins';
@@ -402,7 +411,7 @@ async function reviewRepo(repo, opts = {}) {
   // 仅在 FORCE_REREVIEW 下启用（默认每日任务只审新仓库，不做全量复查）。
   let codePaths = null;
   let deltaUsed = false;
-  if (previousCommit && process.env.FORCE_REREVIEW && previousCommit !== reviewedCommit) {
+  if (previousCommit && FORCE_REREVIEW && previousCommit !== reviewedCommit) {
     const changed = await changedPaths(repo, previousCommit, reviewedCommit, paths);
     if (Array.isArray(changed) && changed.length > 0) {
       codePaths = changed;
@@ -603,7 +612,7 @@ async function main() {
     if (byId.has(repo.full_name) && byId.get(repo.full_name).source === 'curated') {
       continue;
     }
-    if (reviewed.has(repo.full_name) && !process.env.FORCE_REREVIEW) {
+    if (reviewed.has(repo.full_name) && !FORCE_REREVIEW) {
       continue;
     }
 
@@ -697,7 +706,7 @@ async function main() {
     plugins: approved,
   };
 
-  if (!process.env.DRY_RUN) {
+  if (!DRY_RUN) {
     mkdirSync(dirname(LOG_PATH), { recursive: true });
     let log = [];
     try {

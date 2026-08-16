@@ -5,6 +5,12 @@ on:
     # 每天 11:17（Asia/Shanghai），即 UTC 03:17。
     - cron: "17 3 * * *"
   workflow_dispatch:
+    # 手动触发时的可选开关：勾选后对已审查仓库做全量/增量复查。
+    inputs:
+      force_rereview:
+        description: "强制对已审查插件重新审查（FORCE_REREVIEW=1）"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -35,6 +41,8 @@ jobs:
         run: node scripts/discover-plugins.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # dispatch 勾选 force_rereview 时，对本轮所有插件强制重审。
+          FORCE_REREVIEW: ${{ github.event.inputs.force_rereview == 'true' && '1' || '0' }}
           # 可选：配置后启用 LLM 深度复核（OpenAI 兼容 chat/completions），
           # 未配置时自动跳过，仅使用确定性规则 + 供应链检查。
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
