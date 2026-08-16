@@ -293,6 +293,12 @@ main {
   border-color: #bfe3e8;
 }
 
+.badge.category-profile {
+  color: #6b21a8;
+  background: #f5f3ff;
+  border-color: #ddd6fe;
+}
+
 .badge.official {
   color: #7c2d12;
   background: #ffedd5;
@@ -315,6 +321,17 @@ main {
   color: #39424e;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
+}
+
+.usage-tip {
+  margin: 6px 0 0;
+  padding: 7px 9px;
+  border-radius: var(--radius);
+  background: #f5f3ff;
+  border: 1px solid #ddd6fe;
+  color: #6b21a8;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .privacy-note {

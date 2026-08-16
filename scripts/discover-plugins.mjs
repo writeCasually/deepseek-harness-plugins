@@ -159,37 +159,159 @@ function privacyFindings(text) {
 }
 
 // --- DeepSeek Harness 适用性判断 ---
-function detectCompatibility(repo, paths, readme) {
-  if (repo.full_name.startsWith('deepseek-ai/')) {
-    return { official: true, compatible: true, reason: 'DeepSeek AI 官方仓库' };
+// 判定策略（自上而下，避免仅凭 README 字符串误判）：
+//   1. 注册文件判定：项目（或其 monorepo 子包）的 package.json 声明了 DSH manifest
+//      （`dsh.bundle` / `dsh.client` / `dsh.profile`），即存在 DSH 插件注册文件。
+//   2. 代码判定：package.json 依赖了 DSH/Cordis 包，或源码 import 了
+//      `@deepseek-ai/dsh*` / `@deepseek-ai/cordis`，或落地了 Cordis 插件骨架
+//      （cordis.patch.yml / .dsh-plugin 目录 / apply(ctx) 等）。
+const DSH_REG_MANIFEST_KEYS = ['bundle', 'client', 'profile'];
+// 依赖名命中即视为“DSH/Cordis 生态包”。
+const DSH_DEP_RE = /^@deepseek-ai\/(?:dsh(?:-|$)|cordis(?:-|$))/;
+
+// 拉取项目的 package.json 作为 DSH 注册文件的候选：根注册文件 + monorepo 子包 manifest（采样）。
+async function fetchPackageManifests(repo, paths) {
+  const manifests = [];
+  const root = await api(`/repos/${repo.full_name}/contents/package.json`, null);
+  if (root && typeof root.content === 'string') {
+    try {
+      manifests.push(JSON.parse(decodeBase64(root.content)));
+    } catch {
+      // 根注册文件非法 JSON，忽略。
+    }
   }
-  const combined = `${paths.join('\n')} ${readme}`;
-  const strong = /cordis|\.dsh-plugin|dsh\.bundle|dsh\.client|@deepseek-ai\/dsh|dsh\s+plugin/i;
-  if (strong.test(combined)) {
-    return { official: false, compatible: true, reason: '检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）' };
+  const nested = (paths || [])
+    .filter((p) => /(^|\/)package\.json$/.test(p) && p !== 'package.json')
+    .slice(0, 5);
+  for (const p of nested) {
+    const data = await api(`/repos/${repo.full_name}/contents/${encodeURIComponent(p)}`, null);
+    if (!data || typeof data.content !== 'string') continue;
+    try {
+      manifests.push(JSON.parse(decodeBase64(data.content)));
+    } catch {
+      // 非法 JSON 的子包 manifest，忽略。
+    }
   }
-  return { official: false, compatible: false, reason: '未检测到明确的 DeepSeek Harness 插件标记' };
+  return manifests;
 }
 
-function categoryFor(repo) {
+// 在 package.json 里查找 DSH 插件注册文件：顶层 `dsh` manifest（bundle/client/profile 任一）。
+function registrationReason(pkg) {
+  const dsh = pkg && typeof pkg === 'object' ? pkg.dsh : undefined;
+  if (!dsh || typeof dsh !== 'object') return null;
+  const kinds = DSH_REG_MANIFEST_KEYS.filter((k) => dsh[k] !== undefined);
+  if (kinds.length === 0) return null;
+  const isProfileOnly = kinds.length === 1 && kinds[0] === 'profile';
+  return {
+    reason: `存在 DSH 插件注册文件：package.json 声明 dsh.${kinds.join(' / dsh.')} manifest`,
+    isPlugin: !isProfileOnly,
+    // 判定类型：有 bundle/client 就是可分发的插件；只有 profile 则是可启动的组合包引用。
+    kind: isProfileOnly ? 'profile' : `dsh-${kinds.join('+')}`,
+  };
+}
+
+// 代码判定（a）：package.json 的依赖列表里出现了 DSH/Cordis 生态包。
+function dshDepReason(pkg) {
+  if (!pkg || typeof pkg !== 'object') return null;
+  const deps = [
+    ...Object.keys(pkg.dependencies || {}),
+    ...Object.keys(pkg.peerDependencies || {}),
+    ...Object.keys(pkg.devDependencies || {}),
+  ];
+  for (const d of deps) {
+    if (DSH_DEP_RE.test(d)) return `依赖 DSH/Cordis 生态包 ${d}`;
+  }
+  return null;
+}
+
+// 代码判定（b）：路径/README 引用与源码采样里的 DSH/Cordis 信号。
+async function detectFromSourceCode(repo, { paths, readme, api }) {
+  const joined = `${(paths || []).join('\n')} ${readme || ''}`;
+  if (/@deepseek-ai\/(?:dsh|cordis)/i.test(joined)) {
+    return '源码/路径引用 @deepseek-ai/dsh 或 @deepseek-ai/cordis';
+  }
+  if (/cordis\.patch\.yml|\.dsh-plugin\/|dsh\.client/i.test(joined)) {
+    return '存在 Cordis/DSH 落地标记（cordis.patch.yml/.dsh-plugin/dsh.client 等）';
+  }
+  const codePaths = (paths || [])
+    .filter((p) => /\.(?:js|mjs|cjs|ts|tsx|mts|cts)$/i.test(p))
+    .slice(0, 6);
+  for (const file of codePaths) {
+    const data = await api(`/repos/${repo.full_name}/contents/${encodeURIComponent(file)}`, null);
+    if (!data || typeof data.content !== 'string') continue;
+    const content = decodeBase64(data.content);
+    if (/@deepseek-ai\/(?:dsh|cordis)/i.test(content)) {
+      return `源码 ${file} import/引用 DSH 或 Cordis 模块`;
+    }
+    if (/apply\s*\(\s*ctx\b/.test(content)) {
+      return `源码 ${file} 呈现 Cordis 插件骨架（apply(ctx)）`;
+    }
+  }
+  return null;
+}
+
+async function detectCompatibility(repo, { paths, readme, packageJsonFiles, api }) {
+  if (repo.full_name.startsWith('deepseek-ai/')) {
+    return { official: true, compatible: true, kind: 'official', reason: 'DeepSeek AI 官方仓库' };
+  }
+
+  // 1) 注册文件判定：存在 DSH 插件注册文件（package.json 的 dsh.* manifest）。
+  for (const pkg of packageJsonFiles || []) {
+    const reg = registrationReason(pkg);
+    if (reg) {
+      return { official: false, compatible: true, kind: reg.kind, reason: reg.reason };
+    }
+  }
+
+  // 2) 代码判定（a）：依赖列表命中 DSH/Cordis 生态包。
+  for (const pkg of packageJsonFiles || []) {
+    const dep = dshDepReason(pkg);
+    if (dep) {
+      return { official: false, compatible: true, kind: 'code', reason: dep };
+    }
+  }
+
+  // 3) 代码判定（b）：源码采样与落地标记。
+  const codeReason = await detectFromSourceCode(repo, { paths, readme, api });
+  if (codeReason) {
+    return { official: false, compatible: true, kind: 'code', reason: codeReason };
+  }
+
+  return {
+    official: false,
+    compatible: false,
+    kind: null,
+    reason: '未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记',
+  };
+}
+
+// 分类：优先按包名语义（core/collection/distribution），否则按检测到的 DSH manifest 类型。
+function categoryFor(repo, kind) {
   if (repo.full_name === 'deepseek-ai/deepseek-harness') return 'core';
   const text = [repo.name, repo.description || '', (repo.topics || []).join(' ')].join(' ');
   if (/awesome/i.test(text)) return 'collection';
   if (/发行版|distribution/i.test(text)) return 'distribution';
+  // 仅声明 dsh.profile（无可分发的 bundle/client）的仓库归类为「配置组合」。
+  if (kind === 'profile') return 'profile';
   return 'plugin';
 }
 
-function usageFor(repo) {
+// 使用提示（usage）：按检测类型区分，明确「可安装插件」与「可启动组合」两种用法。
+function usageFor(repo, kind) {
   if (repo.full_name === 'deepseek-ai/deepseek-harness') return 'npx @deepseek-ai/dsh 启动核心';
+  if (kind === 'profile') {
+    return '仅含 dsh.profile 组合（非独立可安装插件）：参考其 bundles 组合，用 dsh plugin 安装其中列出的各 bundle';
+  }
   return `dsh plugin --profile web add github:${repo.full_name}`;
 }
 
 function toEntry(repo, review, compatibility, descriptionI18n = {}) {
+  const kind = compatibility.kind || 'code';
   return {
     id: repo.full_name,
     name: repo.name,
     description: repo.description || '',
-    usage: usageFor(repo),
+    usage: usageFor(repo, kind),
     repo_url: repo.html_url,
     homepage: repo.homepage || repo.html_url,
     stars: repo.stargazers_count || 0,
@@ -202,7 +324,8 @@ function toEntry(repo, review, compatibility, descriptionI18n = {}) {
     language: repo.language || 'unknown',
     license: (repo.license && repo.license.spdx_id) || 'unknown',
     topics: repo.topics || [],
-    category: categoryFor(repo),
+    category: categoryFor(repo, kind),
+    kind,
     official: compatibility.official,
     compatibility: compatibility.official ? 'official' : 'compatible',
     compatibility_reason: compatibility.reason,
@@ -232,7 +355,15 @@ async function reviewRepo(repo) {
     .filter((t) => t.type === 'blob')
     .map((t) => t.path);
 
-  const compatibility = detectCompatibility(repo, paths, readme);
+  // 拉取项目 package.json 作为 DSH 插件注册文件候选（根 + monorepo 子包采样）。
+  const packageJsonFiles = await fetchPackageManifests(repo, paths);
+
+  const compatibility = await detectCompatibility(repo, {
+    paths,
+    readme,
+    packageJsonFiles,
+    api,
+  });
   if (!compatibility.compatible) {
     return { verdict: 'skip', compatibility, findings: [], privacyNotes: [], readme };
   }
@@ -298,14 +429,19 @@ async function reviewRepo(repo) {
 
 function normalizeEntry(p) {
   const official = p.official ?? p.id?.startsWith('deepseek-ai/') ?? false;
+  const kind = p.kind ?? (official ? 'official' : 'code');
+  let category = p.category ?? 'plugin';
+  // 纯 profile 型（无可分发 bundle/client）固定归为「配置组合」类。
+  if (kind === 'profile' && category === 'plugin') category = 'profile';
   return {
     ...p,
     official,
+    kind,
     compatibility: p.compatibility ?? (official ? 'official' : 'compatible'),
     privacy_risk: p.privacy_risk ?? false,
     privacy_notes: p.privacy_notes ?? [],
     security_notes: p.security_notes ?? [],
-    category: p.category ?? 'plugin',
+    category,
     forks: p.forks ?? 0,
     open_issues: p.open_issues ?? 0,
     watchers: p.watchers ?? 0,

@@ -6,12 +6,14 @@ const CATEGORY_LABELS = {
     plugin: "插件",
     distribution: "发行版",
     collection: "精选列表",
+    profile: "配置组合",
   },
   en: {
     core: "Core",
     plugin: "Plugin",
     distribution: "Distribution",
     collection: "Collection",
+    profile: "Profile",
   },
 };
 
@@ -30,6 +32,7 @@ const UI = {
     collection: "精选列表",
     distribution: "发行版",
     core: "核心",
+    profile: "配置组合",
     empty: "没有找到匹配的插件。",
     stats: (n) => `共 ${n} 个插件`,
     updated: (date) => `数据更新时间：${date}`,
@@ -37,6 +40,7 @@ const UI = {
     privacy: "隐私风险",
     security: "安全提示",
     defaultUsage: "安装与用法见项目 README",
+    profileUsageTip: "这是一个「配置组合」（仅 dsh.profile）：非独立可安装插件，参考其 bundles 组合来配置自己的 profile。",
     viewProject: "查看项目",
     stars: "Star 数",
     officialBadge: "官方",
@@ -68,6 +72,7 @@ const UI = {
     collection: "Collections",
     distribution: "Distributions",
     core: "Core",
+    profile: "Profiles",
     empty: "No matching plugins found.",
     stats: (n) => (n === 1 ? "1 plugin" : `${n} plugins`),
     updated: (date) => `Data updated: ${date}`,
@@ -75,6 +80,7 @@ const UI = {
     privacy: "Privacy risk",
     security: "Security note",
     defaultUsage: "See the project README for installation and usage",
+    profileUsageTip: "This is a composable profile (dsh.profile only): not an independently installable plugin; reference its bundles list to configure your own profile.",
     viewProject: "View project",
     stars: "Stars",
     officialBadge: "Official",
@@ -227,6 +233,11 @@ function renderCard(plugin) {
       </div>
       <p class="desc">${escapeHtml(plugin.description || "")}</p>
       <pre class="usage">${escapeHtml(plugin.usage || copy.defaultUsage)}</pre>
+      ${
+        plugin.kind === "profile"
+          ? `<p class="usage-tip">${escapeHtml(copy.profileUsageTip)}</p>`
+          : ""
+      }
       ${
         plugin.privacy_risk
           ? `<p class="privacy-note">${copy.privacy}：${escapeHtml((plugin.privacy_notes || []).join(separator))}</p>`
