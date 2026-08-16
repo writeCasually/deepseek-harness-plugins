@@ -154,6 +154,7 @@ DeepSeek Harness 以“一切都是插件”为核心设计，社区围绕它产
 | [allinluna](https://github.com/zenx0x/allinluna) | > 别再把整个项目塞进一个 AI 对话里。（隐私风险：访问第三方网络地址） | `dsh plugin --profile web add github:zenx0x/allinluna` |
 | [dsh-interconnect](https://github.com/Chinesezjc/dsh-interconnect) | 跨实例消息互通与事件通知插件，用于 DeepSeek Harness (DSH)。（隐私风险：访问第三方网络地址）（安全提示：存在疑似混淆内容） | `dsh plugin --profile web add github:Chinesezjc/dsh-interconnect` |
 | [dsh-notifier](https://github.com/THEWOLFWALKER/dsh-notifier) | > 你的 agent，装进口袋。 —— 通知、审批、遥控，全在你的手机里。（隐私风险：访问第三方网络地址；读取环境变量并访问第三方地址，需确认未外发敏感信息）（安全提示：使用动态代码或子进程执行） | `dsh plugin --profile web add github:THEWOLFWALKER/dsh-notifier` |
+| [dsh-commandcode-provider](https://github.com/Mars-Sea/dsh-commandcode-provider) | 非官方 DeepSeek Harness 的 LLM provider 插件，用于 Command Code，移植自 pi-commandcode-provider（MIT 协议）。它注册了一个 commandcode provider，将请求转换为 Command Code 的 Provider API（POST /alpha/generate，由 pi 插件逆向工程，对应 command-code@1.26.0）。（隐私风险：访问第三方网络地址（如 api.commandcode.ai、cdn.simpleicons.org、commandcode.ai、deepseek-harness.github.io）；访问第三方网络地址（如 api.commandcode.ai、commandcode.ai）；访问第三方网络地址（如 api.commandcode.ai）；访问第三方网络地址（如 a.com、api.commandcode.ai、example.com、new.example.com）；访问第三方网络地址（如 api.commandcode.ai、commandcode.ai、deepseek-harness.github.io）；访问第三方网络地址（如 commandcode.ai、keepachangelog.com、semver.org））（安全提示：package.json 的 prepare 脚本会在安装/发布时自动执行；依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险） | `dsh plugin --profile web add github:Mars-Sea/dsh-commandcode-provider` |
 | [agent-handoff-skill](https://github.com/WeirdSky924/agent-handoff-skill) | 跨平台 Agent 接力 skill：在 Codex 或 Claude Code 中建立仓库级连续性记忆，让后续 agent 无需依赖历史聊天即可恢复目标、状态、决策、验证、风险与下一步行动。（隐私风险：读取环境变量（可能包含敏感信息）） | `dsh plugin --profile web add github:WeirdSky924/agent-handoff-skill` |
 | [Tydora](https://github.com/zuorn/Tydora) | 极致的书写体验 ，所见即所得，界面 纯净 到只剩文字本身。没有一丝多余的干扰，光标所至，思绪便直接落在屏幕上。我把自己对“ 写作手感 ”的所有执念都写了进去，让工具彻底隐退，只留你与 思想的河流 。（隐私风险：访问第三方网络地址）（安全提示：存在疑似混淆内容） | `dsh plugin --profile web add github:zuorn/Tydora` |
 | [dsh-plugin-mineru](https://github.com/HuanLinOTO/dsh-plugin-mineru) | DSH 插件：向模型暴露 MinerU 文档解析工具。MinerU 可将 PDF、图片、DOCX、PPTX、XLSX 等文件转换为结构化的 Markdown / JSON。（隐私风险：访问第三方网络地址；读取凭据类环境变量并发送到网络，可能泄露密钥）（安全提示：存在疑似混淆内容；使用动态代码或子进程执行） | `dsh plugin --profile web add github:HuanLinOTO/dsh-plugin-mineru` |
@@ -176,7 +177,7 @@ DeepSeek Harness 以“一切都是插件”为核心设计，社区围绕它产
 | [dsh-computer-use](https://github.com/Anionex/dsh-computer-use) | 为 DeepSeek Harness 提供原生 macOS 控制能力，默认不碰你的真实光标，也不因指针动作抢占前台；Bundle 可以在键盘输入前把目标应用带到前台，保证输入可靠。（隐私风险：访问第三方网络地址） | `dsh plugin --profile web add github:Anionex/dsh-computer-use` |
 | [dsh-share](https://github.com/hellodigua/dsh-share) | DSH 对话分享插件：分享单轮或多轮对话，可导出为图片或 Markdown。（隐私风险：访问第三方网络地址；读取浏览器 Cookie/存储并发送到网络；读取环境变量并访问第三方地址，需确认未外发敏感信息）（安全提示：使用动态代码或子进程执行；存在 Base64 解码行为；存在疑似混淆内容） | `dsh plugin --profile web add github:hellodigua/dsh-share` |
 
-共收录 142 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
+共收录 143 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
 
 <!-- PLUGINS_END -->
 
