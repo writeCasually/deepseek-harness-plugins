@@ -246,7 +246,29 @@ function renderCard(plugin) {
           ${plugin.official ? `<span class="badge official">★ ${copy.officialBadge}</span>` : ""}
           ${
             plugin.risk_level && plugin.risk_level !== "low"
-              ? `<span class="badge risk-${escapeHtml(plugin.risk_level)}" title="${escapeHtml(copy.riskTitle)}">${escapeHtml(copy.riskLevel[plugin.risk_level] || copy.riskLevel.moderate)}</span>`
+              ? `<div class="risk-popover risk-${escapeHtml(plugin.risk_level)}" tabindex="0">
+                  <span class="badge risk-${escapeHtml(plugin.risk_level)} risk-popover__trigger">${escapeHtml(copy.riskLevel[plugin.risk_level] || copy.riskLevel.moderate)}</span>
+                  <div class="risk-popover__content" role="tooltip">
+                    <div class="risk-popover__title">${escapeHtml(copy.riskTitle)}</div>
+                    ${
+                      (plugin.risk_evidence && plugin.risk_evidence.length)
+                        ? plugin.risk_evidence
+                            .map((ev) => {
+                              const text = escapeHtml(ev.explanation);
+                              if (!ev.file) return `<div class="risk-popover__item">${text}</div>`;
+                              const link = evidenceLink(plugin, ev.file, ev.line);
+                              const label = `${escapeHtml(ev.file)}${ev.line ? `:${ev.line}` : ""}`;
+                              return `<div class="risk-popover__item">${text} ${
+                                link
+                                  ? `<a class="risk-loc" href="${escapeHtml(link)}" target="_blank" rel="noopener">${label}</a>`
+                                  : `<span class="risk-loc risk-loc--plain">${label}</span>`
+                              }</div>`;
+                            })
+                            .join("")
+                        : escapeHtml((plugin.risk_notes || []).join(separator))
+                    }
+                  </div>
+                </div>`
               : ""
           }
           <span class="badge stars" title="${copy.stars}">
@@ -266,31 +288,12 @@ function renderCard(plugin) {
           : ""
       }
       ${
-        (plugin.risk_evidence && plugin.risk_evidence.length) || (plugin.risk_notes && plugin.risk_notes.length)
-          ? `<p class="risk-note risk-${escapeHtml(plugin.risk_level || "")}" title="${escapeHtml(copy.riskTitle)}">${escapeHtml(copy.riskTitle)}：${
-              plugin.risk_evidence && plugin.risk_evidence.length
-                ? plugin.risk_evidence
-                    .map((ev) => {
-                      const prefix = escapeHtml(ev.explanation);
-                      if (!ev.file) return prefix;
-                      const link = evidenceLink(plugin, ev.file, ev.line);
-                      const label = `${escapeHtml(ev.file)}${ev.line ? `:${ev.line}` : ""}`;
-                      return link
-                        ? `${prefix} <a class="risk-loc" href="${escapeHtml(link)}" target="_blank" rel="noopener">${label}</a>`
-                        : `${prefix} ${label}`;
-                    })
-                    .join("<br>")
-                : escapeHtml(plugin.risk_notes.join(separator))
-            }</p>`
-          : ""
-      }
-      ${
-        plugin.privacy_risk && !(plugin.risk_notes && plugin.risk_notes.length)
+        plugin.privacy_risk && !(plugin.risk_evidence && plugin.risk_evidence.length) && !(plugin.risk_notes && plugin.risk_notes.length)
           ? `<p class="privacy-note">${copy.privacy}：${escapeHtml((plugin.privacy_notes || []).join(separator))}</p>`
           : ""
       }
       ${
-        plugin.security_notes && plugin.security_notes.length && !(plugin.risk_notes && plugin.risk_notes.length)
+        plugin.security_notes && plugin.security_notes.length && !(plugin.risk_evidence && plugin.risk_evidence.length) && !(plugin.risk_notes && plugin.risk_notes.length)
           ? `<p class="security-note">${copy.security}：${escapeHtml(plugin.security_notes.join(separator))}</p>`
           : ""
       }

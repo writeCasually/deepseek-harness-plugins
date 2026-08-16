@@ -49,39 +49,17 @@ function buildTable(plugins, lang, translations) {
   const rows = plugins.map((plugin) => {
     const localized = localizedPlugin(plugin, lang, translations);
     const official = localized.official ? (isEn ? '★ Official ' : '★ 官方 ') : '';
-    // 高风险插件加醒目徽标，明确提示「平台未担保其安全，使用前请自行审计」。
-    let riskBadge = '';
-    if (localized.risk_level === 'high') {
-      riskBadge = isEn ? '⚠️ HIGH RISK ' : '⚠️ 高风险 ';
-    } else if (localized.risk_level === 'moderate') {
-      riskBadge = isEn ? '● moderate ' : '● 中等 ';
-    }
     const name = localized.repo_url
-      ? `${official}${riskBadge}[${localized.name}](${localized.repo_url})`
-      : `${official}${riskBadge}${localized.name}`;
+      ? `${official}[${localized.name}](${localized.repo_url})`
+      : `${official}${localized.name}`;
     const desc = escapeMarkdown(localized.description || '')
       .replaceAll('|', '\\|')
       .replaceAll('\n', ' ');
-    // 风险说明：优先用结构化 risk_evidence（附 文件:行号 定位），否则回退到 risk_notes 字符串。
-    const riskEvidence = localized.risk_evidence && localized.risk_evidence.length
-      ? localized.risk_evidence
-      : null;
-    const riskParts = riskEvidence
-      ? riskEvidence.map((ev) => {
-          const loc = ev.file ? `${ev.file}${ev.line ? `:${ev.line}` : ''}` : '';
-          return `${ev.explanation}${loc ? ` [${loc}]` : ''}`;
-        })
-      : (localized.risk_notes || []);
-    const risk = riskParts.length
-      ? (isEn
-          ? ` (Risk: ${riskParts.join('; ')})`
-          : `（风险：${riskParts.join('；')}）`)
-      : '';
     const usage = (localized.usage || (isEn ? 'See project README' : '见项目 README'))
       .replaceAll('`', '')
       .replaceAll('|', '\\|')
       .replaceAll('\n', ' ');
-    return `| ${name} | ${desc}${risk} | \`${usage}\` |`;
+    return `| ${name} | ${desc} | \`${usage}\` |`;
   });
 
   const countText = isEn
