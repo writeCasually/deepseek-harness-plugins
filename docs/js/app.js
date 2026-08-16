@@ -61,6 +61,12 @@ const UI = {
     filters: "分类筛选",
     pluginList: "插件列表",
     language: "语言",
+    officialTitle: "官方预设插件",
+    officialNote:
+      "随 DSH 一起分发的官方内置插件（@deepseek-ai/*），作用独立维护、来自官方 packages 目录，不参与社区发现、安装用法与安全审查。",
+    officialCount: (n) => `共 ${n} 个官方内置插件`,
+    officialList: "官方预设插件列表",
+    officialEmpty: "暂无官方预设插件。",
     dataSource:
       '数据来源：<a href="https://github.com/topics/dsh-plugin" target="_blank" rel="noopener">GitHub dsh-plugin 话题</a>，每天自动检索并做静态安全审查，结果以 Pull Request 形式合并。',
   },
@@ -93,6 +99,12 @@ const UI = {
     riskTitle: "Not guaranteed safe by this platform — review before use",
     defaultUsage: "See the project README for installation and usage",
     profileUsageTip: "This is a composable profile (dsh.profile only): not an independently installable plugin; reference its bundles list to configure your own profile.",
+    officialTitle: "Official preset plugins",
+    officialNote:
+      "Official built-in plugins shipped with DSH (@deepseek-ai/*). Descriptions are maintained independently from the official packages directory and are not part of the community discovery, install-usage, or security review workflow.",
+    officialCount: (n) => `${n} official built-in plugins`,
+    officialList: "Official preset plugin list",
+    officialEmpty: "No official preset plugins found.",
     viewProject: "View project",
     stars: "Stars",
     officialBadge: "Official",
@@ -114,6 +126,7 @@ const UI = {
 
 const state = {
   plugins: [],
+  official: [],
   translations: { plugins: {} },
   filter: "all",
   query: "",
@@ -128,6 +141,12 @@ const stats = document.querySelector("#stats");
 const updated = document.querySelector("#updated");
 const searchInput = document.querySelector("#search");
 const metaDescription = document.querySelector('meta[name="description"]');
+
+// 官方预设插件区块（独立数据，不参与社区审查）
+const officialSection = document.querySelector("#official-section");
+const officialGrid = document.querySelector("#official-grid");
+const officialEmpty = document.querySelector("#official-empty");
+const officialCount = document.querySelector("#official-count");
 
 function readStoredLanguage() {
   try {
@@ -327,6 +346,44 @@ function render() {
   }
 }
 
+// —— 官方预设插件（独立区块，不参与社区审查） ——
+const OFFICIAL_REPO_BASE = "https://github.com/deepseek-ai/deepseek-harness/tree/master/packages";
+
+function renderOfficialCard(entry) {
+  const description = entry.description_zh || entry.description_en || "";
+  const path = entry.path ? `packages/${entry.path}` : `packages/${entry.domain}/${entry.sub}`;
+  const href = `${OFFICIAL_REPO_BASE}/${path.replace(/^\//, "")}`;
+  return `
+    <article class="official-card">
+      <div class="official-card__top">
+        <h3 class="official-card__name"><a href="${escapeHtml(href)}" target="_blank" rel="noopener">${escapeHtml(entry.name)}</a></h3>
+        <span class="badge official official-card__domain">${escapeHtml(entry.domain || "core")}</span>
+      </div>
+      <p class="official-card__desc">${escapeHtml(description)}</p>
+      <p class="official-card__path">${escapeHtml(path)}</p>
+    </article>
+  `;
+}
+
+function renderOfficial() {
+  if (!officialSection) return;
+  if (!state.official || !state.official.length) {
+    officialSection.hidden = true;
+    return;
+  }
+  officialSection.hidden = false;
+  const copy = UI[state.lang];
+  const sorted = [...state.official].sort((a, b) => {
+    if ((a.domain || "") !== (b.domain || "")) return (a.domain || "").localeCompare(b.domain || "");
+    return (a.name || "").localeCompare(b.name || "");
+  });
+  officialGrid.innerHTML = sorted.map(renderOfficialCard).join("");
+  officialEmpty.hidden = sorted.length > 0;
+  officialCount.textContent = copy.officialCount(sorted.length);
+}
+
+
+
 function applyLanguageText(lang) {
   const copy = UI[lang];
   document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
@@ -370,6 +427,7 @@ function setLanguage(lang) {
   applyLanguageText(lang);
   updateLanguageButtons();
   render();
+  renderOfficial();
 }
 
 async function load() {
@@ -401,10 +459,22 @@ async function load() {
     return;
   }
 
+  // 官方预设插件独立加载：与社区列表无关，失败不影响社区列表展示。
+  try {
+    const officialRes = await fetch("./official-plugins.json", { cache: "no-cache" });
+    if (officialRes.ok) {
+      const officialData = await officialRes.json();
+      state.official = Array.isArray(officialData.plugins) ? officialData.plugins : [];
+    }
+  } catch (err) {
+    console.error("Failed to load official plugins:", err);
+  }
+
   state.loaded = true;
   applyLanguageText(state.lang);
   updateLanguageButtons();
   render();
+  renderOfficial();
 }
 
 searchInput.addEventListener("input", (event) => {

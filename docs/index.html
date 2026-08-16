@@ -49,6 +49,18 @@
     </header>
 
     <main class="container">
+      <section id="official-section" class="official-section" aria-labelledby="official-heading" hidden>
+        <div class="official-section__head">
+          <h2 id="official-heading" data-i18n="officialTitle">官方预设插件</h2>
+          <p class="official-section__note" data-i18n="officialNote">
+            随 DSH 一起分发的官方内置插件，独立维护，不参与社区发现与安全审查。
+          </p>
+        </div>
+        <div id="official-count" class="official-section__count"></div>
+        <div id="official-grid" class="official-grid" aria-label="官方预设插件列表" data-i18n-aria-label="officialList"></div>
+        <p id="official-empty" class="empty" hidden data-i18n="officialEmpty">暂无官方预设插件。</p>
+      </section>
+
       <section class="toolbar" aria-label="搜索与筛选" data-i18n-aria-label="searchFilter">
         <div class="search-box">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

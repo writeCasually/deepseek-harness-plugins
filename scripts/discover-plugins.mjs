@@ -23,6 +23,9 @@ import {
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA_PATH = join(root, 'docs', 'plugins.json');
 const LOG_PATH = join(root, 'data', 'review-log.json');
+// 官方预设插件目录为 docs/official-plugins.json（随 DSH 分发的 @deepseek-ai/* 内置插件），
+// 独立维护、不参与本 workflow 的发现/安全审查/刷新。本脚本只读写插件字段与社区 plugins.json，
+// 绝不覆盖 docs/official-plugins.json；请勿在发现/评审流程中加入官方数据。
 
 const TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
 const LIMIT = Number(process.env.LIMIT || process.env.MAX_REPOS || 40);

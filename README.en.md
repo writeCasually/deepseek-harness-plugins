@@ -37,6 +37,28 @@ Main capabilities:
 - Human review entry point: automated discoveries are submitted as pull requests and are published
   after merge.
 
+## Official preset plugins
+
+DSH ships a set of official built-in plugins (`@deepseek-ai/*`, under the official
+[packages/](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages) directory). Their
+descriptions are **maintained independently** and are **not** part of the community install-usage or
+security-review workflow:
+
+- Independent data source: `docs/official-plugins.json` (`plugins` array holds 210 built-in plugins).
+- Rendered in a separate "Official preset plugins" block on the website. The discovery/review
+  scripts (`scripts/*`) and `.github/workflows/*` only read/write `docs/plugins.json` and never
+  rewrite or review the official data file.
+
+Deployable official profile bundles:
+
+| Package | Description |
+| --- | --- |
+| [`@deepseek-ai/dsh-base`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/bundle/base) | Shared dsh core as a profile bundle: every profile's first patch layer inserting the full base plugin set. |
+| [`@deepseek-ai/dsh-web-app`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/bundle/web-app) | The browser-surface bundle: the web patch layer over `dsh-base` plus runtime glue plugins. |
+| [`@deepseek-ai/dsh-headless`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/bundle/headless) | One-shot bundle: direct core Agent/Session runner with no Host, HTTP, or browser layer. |
+
+Full list with per-package descriptions is in [docs/official-plugins.json](docs/official-plugins.json).
+
 ## Plugin List
 
 <!-- PLUGINS_START -->
@@ -203,7 +225,8 @@ deepseek-harness-plugins/
 │   ├── css/
 │   ├── js/
 │   ├── translations/
-│   └── plugins.json      # single data source
+│   ├── plugins.json            # community plugin single data source (discovery/review driven)
+│   └── official-plugins.json   # official preset plugin data (independent, not community-reviewed)
 ├── plugins/              # plugin source code maintained in this repository
 ├── scripts/              # discovery, security review, and README generation scripts
 ├── README.md

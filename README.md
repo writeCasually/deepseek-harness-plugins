@@ -27,6 +27,26 @@ DeepSeek Harness 以“一切都是插件”为核心设计，社区围绕它产
 - 官方优先：DeepSeek AI 官方插件排在最前。
 - 人工复核入口：自动检索结果以 Pull Request 形式提交，合并后即可发布到汇总页。
 
+## 官方预设插件
+
+DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
+[packages/](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages) 目录）。它们的“作用”说明
+**独立维护**、不参与社区插件的安装用法与安全审查 workflow：
+
+- 独立数据源：`docs/official-plugins.json`（`plugins` 数组共 210 个内置插件）。
+- 随网页独立“官方预设插件”区块展示；发现/审查脚本（`scripts/*`）与 `.github/workflows/*` **只读写
+  `docs/plugins.json`，从不改写或审查官方数据文件**。
+
+可部署的官方 profile bundle：
+
+| 包名 | 作用 |
+| --- | --- |
+| [`@deepseek-ai/dsh-base`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/bundle/base) | 共享 dsh 核心，作为每个 profile 的第一层 patch：在空 profile 根上插入全套基础内置插件。 |
+| [`@deepseek-ai/dsh-web-app`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/bundle/web-app) | 浏览器界面 bundle：在 `dsh-base` 上叠加 web patch 层与运行期 glue 插件。 |
+| [`@deepseek-ai/dsh-headless`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/bundle/headless) | 一次性 bundle：无 Host/HTTP/浏览器，直接跑核心 Agent/Session。 |
+
+完整清单与每个包的作用见 [docs/official-plugins.json](docs/official-plugins.json)。
+
 ## 插件列表
 
 <!-- PLUGINS_START -->
@@ -192,7 +212,8 @@ deepseek-harness-plugins/
 │   ├── css/
 │   ├── js/
 │   ├── translations/
-│   └── plugins.json      # 单一数据源
+│   ├── plugins.json            # 社区插件单一数据源（发现/审查驱动）
+│   └── official-plugins.json   # 官方预设插件独立数据（不参与社区审查）
 ├── plugins/              # 本项目自研插件源码
 ├── scripts/              # 检索、安全审查与 README 生成脚本
 ├── README.md
