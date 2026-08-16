@@ -1,6 +1,332 @@
 {
-  "updated_at": "2026-08-16T09:48:14.326Z",
+  "updated_at": "2026-08-16T13:03:07.079Z",
   "decisions": [
+    {
+      "id": "xiaods/k8e",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "下载远程脚本并直接执行（curl/wget | sh）",
+        "下载远程脚本并直接执行（curl/wget | sh）",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "依赖 @grpc/grpc-js@1.12.0 存在已知漏洞（GHSA-5375-pq7m-f5r2, GHSA-99f4-grh7-6pcq）"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 capsule-render.vercel.app、cncf.io、git.io、golang.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "remote-exec",
+          "severity": "critical",
+          "explanation": "下载远程脚本并直接执行（curl/wget | sh）",
+          "file": "README.md",
+          "line": 26,
+          "snippet": "curl -sfL https://k8e.sh/install.sh | sh -"
+        },
+        {
+          "rule": "remote-exec",
+          "severity": "critical",
+          "explanation": "下载远程脚本并直接执行（curl/wget | sh）",
+          "file": "README.md",
+          "line": 169,
+          "snippet": "curl -sfL https://k8e.sh/install.sh | sh -"
+        },
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#2",
+          "line": 0,
+          "snippet": "@deepseek-ai/cordis"
+        },
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#4",
+          "line": 0,
+          "snippet": "@deepseek-ai/cordis"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 @grpc/grpc-js@1.12.0 存在已知漏洞（GHSA-5375-pq7m-f5r2, GHSA-99f4-grh7-6pcq）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "@grpc/grpc-js@1.12.0"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "ce856fae4821f133f378f9b16b04b49247a909bc",
+      "review_mode": "full",
+      "scanned_files": 1,
+      "total_files": 508,
+      "osv": {
+        "status": "ok",
+        "findings": 1
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-08-16T13:03:07.079Z"
+    },
+    {
+      "id": "hairyf/deepseek-harness-desktop",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "987364b0937365e7c97aa6a970e71f21cf2af423",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 130,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-08-16T13:03:07.079Z"
+    },
+    {
+      "id": "Tiger3807861189/J-Space-Cognition-Suite-V3.6",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "46bac14a86398b406c6c6d07baf1fef9cfc8d370",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 20,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-08-16T13:03:07.079Z"
+    },
+    {
+      "id": "zimodzh/dsh-plugin-dev-skills",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "访问第三方网络地址（如 agentskills.io、deepseek-harness.github.io）",
+        "访问第三方网络地址（如 agentskills.io）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "evidence": [],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-15）"
+      ],
+      "reviewed_commit": "7727cee1ec53c44a42c714d149c3828e8ddf6411",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 31,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-08-16T13:03:07.079Z"
+    },
+    {
+      "id": "Mars-Sea/dsh-commandcode-provider",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 api.commandcode.ai、cdn.simpleicons.org、commandcode.ai、deepseek-harness.github.io）",
+        "访问第三方网络地址（如 api.commandcode.ai、commandcode.ai）",
+        "访问第三方网络地址（如 api.commandcode.ai）",
+        "访问第三方网络地址（如 a.com、api.commandcode.ai、example.com、new.example.com）",
+        "访问第三方网络地址（如 api.commandcode.ai、commandcode.ai、deepseek-harness.github.io）",
+        "访问第三方网络地址（如 commandcode.ai、keepachangelog.com、semver.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepare",
+          "severity": "warning",
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "tsdown"
+        },
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "@deepseek-ai/cordis"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-14）"
+      ],
+      "reviewed_commit": "603bab15a8a2cd333ce80ce666bd815e1c0c18ad",
+      "review_mode": "full",
+      "scanned_files": 24,
+      "total_files": 27,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-08-16T13:03:07.079Z"
+    },
+    {
+      "id": "iamaanahmad/everything-kiro",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "458898bc90289cc320f4b7c1731af458bf77c3ad",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 57,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-08-16T13:03:07.079Z"
+    },
+    {
+      "id": "RevolutionLA/dsh-dream-skin",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 awesome-dsh-plugin.com）",
+        "访问第三方网络地址（如 example.com）",
+        "访问第三方网络地址（如 x）",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "访问第三方网络地址（如 keepachangelog.com、semver.org）",
+        "访问第三方网络地址（如 contributor-covenant.org）",
+        "访问第三方网络地址（如 conventionalcommits.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "@deepseek-ai/cordis"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/client.js",
+          "line": 1494,
+          "snippet": "const json = decodeURIComponent(escape(atob(raw)));"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "tests/client.smoke.test.cjs",
+          "line": 43,
+          "snippet": "const atob = (s) => Buffer.from(s, 'base64').toString('binary');"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "tests/client.smoke.test.cjs",
+          "line": 44,
+          "snippet": "const unescapeB = (s) => s.replace(/%([0-9A-Fa-f]{2})/g, (_, h) => String.fromCharCode(parseInt(h, 16)));"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-15）"
+      ],
+      "reviewed_commit": "4b23d230dbeaac1f915ccb3c1a80dd3c19e7e603",
+      "review_mode": "full",
+      "scanned_files": 24,
+      "total_files": 37,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-08-16T13:03:07.079Z"
+    },
     {
       "id": "volcengine/OpenViking",
       "verdict": "blocked",

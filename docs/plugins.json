@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-08-16T11:30:21.133Z",
+  "generated_at": "2026-08-16T13:03:07.079Z",
   "plugins": [
     {
       "id": "deepseek-ai/deepseek-harness",
@@ -35,7 +35,8 @@
         "zh": "DeepSeek Harness 核心运行时：Everything is a Plugin。",
         "en": "DeepSeek Harness core runtime: Everything is a Plugin."
       },
-      "kind": "official"
+      "kind": "official",
+      "reviewed_commit": ""
     },
     {
       "id": "zhu1090093659/dsh-web-ui",
@@ -70,7 +71,8 @@
         "zh": "DSH Web UI 的插件与皮肤集合：任务看板、Git 图谱、右侧面板、移动端远程、鲸鱼娘宠物、实时令牌统计与皮肤中心。",
         "en": "A collection of plugins and skins for the DSH Web UI: task board, Git graph, right panel, mobile remote, whale-girl pet, live token stats, and skin center."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "liustack/modlens",
@@ -105,7 +107,8 @@
         "zh": "首个 DeepSeek Harness 视觉插件，给纯文本模型“装上眼睛”：直接粘贴图片即可得到结构化 JSON 证据（OCR、布局等）。",
         "en": "The first DeepSeek Harness vision plugin that gives text-only models eyes: paste an image to get structured JSON evidence (OCR, layout, and more)."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "ccch1mneyyy/dsh-TUI",
@@ -140,7 +143,8 @@
         "zh": "Claude Code 风格全屏终端 TUI 插件：像素鲸鱼顶栏、实时工作状态行、思考流式展开、双击 Esc 回滚、上下文进度条与 TPS 仪表。",
         "en": "Claude Code-style full-screen terminal TUI plugin: pixel whale header, live work status line, streamed thinking, double-Esc rollback, context progress bar, and TPS dashboard."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "omdsh-dev/DSH-better-sidebar",
@@ -174,7 +178,8 @@
         "zh": "侧边栏完整工作台：文件管理与预览、内嵌浏览器、真实终端、Git 面板、后台任务页，并支持第三方注册新 Tab。",
         "en": "A complete sidebar workspace: file management and preview, embedded browser, real terminal, Git panel, background jobs page, and third-party tab registration."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Anionex/dsh-vision-toolkit",
@@ -209,7 +214,8 @@
         "zh": "把 agent-vision-toolkit 以原生 Profile Bundle 引入 DSH：带意图的图片问答、长截图 OCR、UI 还原、像素校验等视觉工具。",
         "en": "Brings agent-vision-toolkit into DSH as a native Profile Bundle: intent-aware image Q&A, long screenshot OCR, UI restoration, pixel verification, and other vision tools."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "liustack/modsearch",
@@ -244,7 +250,8 @@
         "zh": "给纯文本模型“接上互联网”的 Web 搜索插件：搜索网页或 X，返回结构化 JSON 证据（搜索、抓取、引用）。",
         "en": "A web search plugin that connects text-only models to the internet: search the web or X and return structured JSON evidence (search, fetch, cite)."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "omdsh-dev/dsh-at-file",
@@ -278,7 +285,8 @@
         "zh": "Codex 风格 @file 提及：在输入框搜索工作区文件，回车附加，发送时把文件内容注入模型。",
         "en": "Codex-style @file mentions: search workspace files from the input, press Enter to attach, and inject file contents when sending."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -312,7 +320,8 @@
         "zh": "从 DSH Web GUI 的侧边栏工作区菜单直接在当前目录打开 VS Code。",
         "en": "Opens VS Code in the current directory directly from the sidebar workspace menu in the DSH Web GUI."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "omdsh-dev/dsh-notification",
@@ -346,7 +355,8 @@
         "zh": "DeepSeek Harness 会话完成时发送桌面通知，支持按结果类型和关键词规则控制。",
         "en": "Sends a desktop notification when a DeepSeek Harness session completes, with rules for result type and keywords."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Anionex/dsh-turn-rewind",
@@ -380,7 +390,8 @@
         "zh": "对话与代码状态回退插件：基于持久 Change Ledger，回滚对话和工作区状态。",
         "en": "A conversation and code state rollback plugin based on a persistent Change Ledger."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "csyangwen/dsh-memory-evolve",
@@ -414,7 +425,8 @@
         "zh": "纯插件实现的跨会话长期记忆与后台自我进化：五轨记忆、git 分支感知、技能自我进化、四轨待办、会话广播与搜索。",
         "en": "A plugin-only cross-session long-term memory and background self-evolution system: five-track memory, Git branch awareness, skill self-evolution, four-track tasks, session broadcast, and search."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "omdsh-dev/dsh-genui",
@@ -448,7 +460,8 @@
         "zh": "在助手回复中渲染交互式 UI 组件：布局、图表、表单、测验、mermaid 等，经 dsh-ui fence 内联展示。",
         "en": "Renders interactive UI components in assistant replies: layouts, charts, forms, quizzes, mermaid, and more, inlined through dsh-ui fences."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Lum1104/dsh-browser",
@@ -483,7 +496,8 @@
         "zh": "Chrome 侧边栏扩展与桥接插件，让 DSH 直接操作你正在使用的浏览器，无需视觉能力。",
         "en": "A Chrome sidebar extension and bridge plugin that lets DSH control the browser you are already using without vision capabilities."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "icetomoyo/dsh_workflow",
@@ -518,7 +532,8 @@
         "zh": "把 DSH 的一次性多 Agent 调度升级为可生成、保存、治理、观察、恢复的 Workflow 层。",
         "en": "Upgrades DSH's one-off multi-agent scheduling into a Workflow layer that can be generated, saved, governed, observed, and recovered."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "vlln/whale-girl",
@@ -552,7 +567,8 @@
         "zh": "DSH Web GUI 桌面宠物插件（QQ 宠物形态）：右下角悬浮、可拖拽、投喂与玩耍的积累型伙伴。",
         "en": "A DSH Web GUI desktop pet plugin in QQ-pet style: a floating, draggable companion in the lower-right corner that you can feed and play with."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "hust-open-atom-club/oh-dsh",
@@ -586,7 +602,8 @@
         "zh": "一站式 DeepSeek Harness 社区发行版：桌面端、Web UI 与 TUI 三种形态统一体验，分层安装。",
         "en": "An all-in-one DeepSeek Harness community distribution: unified desktop, Web UI, and TUI experiences with layered installation."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Ruler4396/dsh-launcher",
@@ -621,7 +638,8 @@
         "zh": "DeepSeek Harness 的 Windows 轻量启动器：开机自启 + 独立小窗口，双击即用。",
         "en": "A lightweight Windows launcher for DeepSeek Harness: starts at login, runs in a small standalone window, and opens with a double click."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "ZSeven-W/dsh-openpencil",
@@ -655,7 +673,8 @@
         "zh": "OpenPencil 设计预览与编辑插件：在会话中预览、检查并编辑真实 .op 文档。",
         "en": "OpenPencil design preview and editing plugin: preview, inspect, and edit real .op documents in a session."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Nagi-ovo/dsh-visualize",
@@ -690,7 +709,8 @@
         "zh": "对话内生成式 UI 插件：模型把交互式 HTML 卡片直接画进会话流，用于模拟器、图表、对比面板与 UI mockup。",
         "en": "In-conversation generative UI plugin: the model draws interactive HTML cards directly into the conversation flow for simulators, charts, comparison panels, and UI mockups."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "NanmiCoder/dsh-agent-teams",
@@ -725,7 +745,8 @@
         "zh": "AgentTeams 多智能体团队插件：一句话驱动团队协作完成目标，并在 Web GUI 右上角实时查看团队活动面板。",
         "en": "AgentTeams multi-agent teamwork plugin: one sentence drives a team to complete a goal, with a live team activity panel in the top-right of the Web GUI."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "0xsline/awesome-deepseek-harness",
@@ -760,7 +781,8 @@
         "zh": "DeepSeek Harness 生态精选：来自 dsh-external/hub 与公开 dsh-plugin 话题的插件、工具与基础设施。",
         "en": "A curated DeepSeek Harness ecosystem list: plugins, tools, and infrastructure from dsh-external/hub and public dsh-plugin topics."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "AdamPlatin123/awesome-dsh-plugins",
@@ -795,7 +817,8 @@
         "zh": "前部索引仓库（Radar）：自动扫描发现所有 dsh 插件候选，经测试合格的移入后序精选目录仓库。",
         "en": "A front-index repository (Radar): automatically scans and discovers DSH plugin candidates, then moves tested candidates into the downstream curated directory repositories."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "bruc3van/awesome-dsh-plugin",
@@ -830,7 +853,8 @@
         "zh": "用 30 秒找到适合你的 DeepSeek Harness 插件：告诉你插件解决什么问题、适合谁、从哪里开始。",
         "en": "Find the right DeepSeek Harness plugin in 30 seconds: tells you what problem a plugin solves, who it is for, and where to start."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "sandbaseai/sandbase-harness",
@@ -869,7 +893,8 @@
         "en": "Open-source CMA-compatible agent runtime. Run multi-agent systems locally with any model (Ollama/vLLM/Claude/GPT), MCP tools, scenario templates, and a beautiful dashboard. One command start. Built for enterprise teams."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "awesome-dsh-plugin/awesome-dsh-plugin",
@@ -909,7 +934,8 @@
         "zh": "A curated list of plugins for DeepSeek Harness (dsh) · DeepSeek Harness 插件精选列表",
         "en": "A curated list of plugins for DeepSeek Harness (dsh)."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Small-tailqwq/dsh-deep-whale",
@@ -950,7 +976,8 @@
         "zh": "DSH Web 鲸鱼娘皮肤系列(深海女仆工坊 maid-atelier)——CC BY-NC-SA 4.0",
         "en": "DSH Web whale-girl skin series (Maid Atelier) - CC BY-NC-SA 4.0."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Nagi-ovo/dsh-ads",
@@ -992,7 +1019,8 @@
         "zh": "是兄弟就来蹬我！DSH Web UI 广告：2005 年中文站点风格的侧栏广告 / 对话内信息流 / 角落弹窗 + 一个真实热区比视觉小得多的关闭叉。素材全虚构，域名打码。",
         "en": "A DSH Web UI ad plugin in the style of a 2005 Chinese site: sidebar ads, in-conversation feed ads, corner pop-ups, and a close button whose real hit area is much smaller than it appears. All materials are fictional and domains are masked."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "zhaoolee/notes",
@@ -1035,7 +1063,8 @@
         "zh": "开源版锤子便签，复刻锤科美学，一键Docker私有化部署，支持skill调用，支持dsh plugin，支持多租户，一键生成公众号格式，支持导出便签为图片",
         "en": "An open-source hammer-style notes app replicating the aesthetic of Smartisan Notes: one-command Docker private deployment, skill calls, dsh plugin support, multi-tenancy, one-command WeChat article formatting, and image export for notes."
       },
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "tt-a1i/archify",
@@ -1094,7 +1123,8 @@
         "en": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "anywhere-labs/deepseek-harness-desktop",
@@ -1133,7 +1163,8 @@
         "en": "Desktop Bring the official DeepSeek Harness local Web UI to a native desktop application. The app starts and manages the local Harness service, integrates the system tray and desktop window, and requires no Node.js installation or command-line setup."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "mnemon-dev/mnemon",
@@ -1186,7 +1217,8 @@
         "en": "LLM-supervised persistent memory for AI agents — graph-based recall, cross-session knowledge, single binary. Works with Claude Code, OpenClaw, and any CLI agent."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Electricitysheep/dsh-handbook",
@@ -1236,7 +1268,8 @@
         "en": "> From zero to one with DeepSeek Harness — the beginner's encyclopedia for DeepSeek's open-source agent runtime."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "huiliyi37/dsh-tianshu-tui",
@@ -1280,7 +1313,8 @@
         "en": "dsh-tianshu-tui (@huiliyi37/dsh-tianshu-tui) is the interactive terminal UI plugin for the official DeepSeek Harness. The render core evolved from Tianshu-Tui (Apache-2.0; file-by-file provenance in SOURCE-MAP.md). The UI is a pure presentation layer: every workflow adds TDD, evidence gates, and visual image modules on top of the official base."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "wink-run/tokenbank",
@@ -1339,7 +1373,8 @@
         "en": "Token Bank — the local LLM gateway that sits between your AI agents and every provider.  Know where tokens go · Spend less with smart routing to Ollama, Groq, GitHub Models · Earn by sharing idle quota on a community P2P network.  One-click onboarding for Cursor, Claude Code, Codex CLI, Gemini CLI — no agent changes. Full trace, seamless model swap"
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "labring/sealos-skills",
@@ -1386,7 +1421,8 @@
         "en": "AI agent skills for Sealos — deploy any project, provision databases, object storage & more with one command. Works with Claude Code, Gemini CLI, Codex."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Nagi-ovo/dsh-find-plugins",
@@ -1426,7 +1462,8 @@
         "en": "Ask DSH, \"is there a plugin for this?\" It searches the GitHub dsh-plugin topic, explains the best matches, waits for your choice, then installs and verifies the selected plugin."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Jayden-X-L/forkprobe",
@@ -1476,7 +1513,8 @@
         "en": "Compare multiple skills on the same task and pick the winner."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Lyn-77/ProMentor",
@@ -1516,7 +1554,8 @@
         "zh": "ProMentor 是一个 AI Coding Agent Skill。装上它，你的 AI 编程助手立刻化身为导师——扫描项目架构、生成阶梯式 Chapter、带你手写核心逻辑、自动判题、AI Code Review。"
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Alex-Yanggg/awesome-DSH-plugin",
@@ -1558,7 +1597,8 @@
         "en": "A meticulously curated list of useful plugins, extensions, tools and development resources built for DSH, covering productivity enhancement, functional expansion, debugging utilities and custom development modules."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "btspoony/mstar-harness",
@@ -1605,7 +1645,8 @@
         "en": "A Skill-driven Harness/Loop Engineering Workflow Agent Plugin"
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "LaplaceYoung/oh-my-dsh",
@@ -1645,7 +1686,8 @@
         "zh": "oh-my-dsh：面向 DSH (DeepSeek Harness) 的插件生态——700+ 插件，只通过扩展接缝注册，不修改 agent-loop 骨架"
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "ChisaAlter/Deepseek-Harness-Desktop",
@@ -1688,7 +1730,8 @@
         "en": "An Electron desktop shell on top of the official DeepSeek Harness Web UI."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "hikariming/dshfind",
@@ -1731,7 +1774,8 @@
         "en": "The learning & sharing community for DeepSeek Harness (DSH)"
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "omdsh-dev/dsh-annotation",
@@ -1771,7 +1815,8 @@
         "en": "Selection-annotation plugin for DSH Web: select text → annotate → press Enter to send it along with your message; the model replies to each annotation by number."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "vlln/plugin-registry",
@@ -1817,7 +1862,8 @@
         "zh": "DSH 插件生态基建：薄控制台（浏览器面板管理官方 repository 插件，0 patch）+ make-dsh-plugin skill 官方插件开发引导"
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "alingalingling/ui-status-label",
@@ -1854,7 +1900,8 @@
         "zh": "把你鲸鱼娘思考时的 deep diving 自定义成任意你想要的样子"
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "multica-ai/dsh-multica-runtime",
@@ -1894,7 +1941,8 @@
         "en": "Support dsh runtime on Multica."
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Dominic789654/awesome-deepseek-harness",
@@ -1950,7 +1998,8 @@
         "en": "A curated list of plugins, skills, MCP servers, patch/profile layers, orchestrators & UIs for DeepSeek Harness (DSH). Visualization · PPT · Coding · Agents · Loops (auto-research) and more. #dsh"
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "pingfanfan/hello-dsh",
@@ -1994,7 +2043,8 @@
         "en": "→ Full tutorial: Hello DSH"
       },
       "description_i18n_checked_at": "2026-08-14T14:37:23.837Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "GanyuanRan/Aegis",
@@ -2049,7 +2099,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "xiaobright/dsh-anchored-standard",
@@ -2086,7 +2137,8 @@
       "source": "discovered",
       "review_status": "approved",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "dsh-market/dsh-market",
@@ -2128,7 +2180,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "orziz/odai",
@@ -2170,7 +2223,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "ysr666/dsh-vision-router",
@@ -2214,7 +2268,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "libukai/awesome-deepseek-harness",
@@ -2258,7 +2313,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "titanwings/dsh-automation",
@@ -2303,7 +2359,8 @@
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n": {},
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "lhh010/dsh-ui-whale",
@@ -2340,7 +2397,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "bowenliang123/dsh-context",
@@ -2380,7 +2438,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "c3ll256/dsh-toy",
@@ -2420,7 +2479,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Nwflower/dsh-chat-import",
@@ -2479,7 +2539,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Fishquito7/dsh-skill-viewer",
@@ -2521,7 +2582,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Sanqi-normal/dsh-webui-market-plugin",
@@ -2566,7 +2628,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "HeiGeAi/deepseek-harness-skin",
@@ -2610,7 +2673,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "oil-oil/dsh-vision",
@@ -2653,7 +2717,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "zenx0x/allinluna",
@@ -2702,7 +2767,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "kind": "code",
-      "description_i18n_checked_at": "2026-08-16T11:30:21.133Z"
+      "description_i18n_checked_at": "2026-08-16T11:30:21.133Z",
+      "reviewed_commit": ""
     },
     {
       "id": "vibeinging/dsh-work",
@@ -2759,7 +2825,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Chinesezjc/dsh-interconnect",
@@ -2800,7 +2867,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "like-study1/Oh-My-DSH",
@@ -2848,7 +2916,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "WeirdSky924/agent-handoff-skill",
@@ -2892,7 +2961,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "whiteguo233/dsh-openbiliclaw",
@@ -2936,7 +3006,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "834063245-creator/HoloGram",
@@ -2978,7 +3049,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "omdsh-dev/dsh-custom-tool",
@@ -3019,7 +3091,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "LayneChai/superpowers-dsh",
@@ -3062,7 +3135,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Ayase34/gal-view",
@@ -3101,7 +3175,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "william-jin-cmu/dsh-vision",
@@ -3138,7 +3213,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "bruc3van/dsh-desktop",
@@ -3183,7 +3259,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "ZASENJC/dsh-plugins-store",
@@ -3228,7 +3305,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-15T03:55:44.398Z",
       "description_i18n_checked_at": "2026-08-15T17:31:11.246Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Nagi-ovo/voyager",
@@ -3279,7 +3357,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "Q00/ouroboros",
@@ -3333,7 +3412,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "GCWing/BitFun",
@@ -3384,7 +3464,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "agentrq/agentrq",
@@ -3437,7 +3518,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "ccch1mneyyy/working-activity",
@@ -3481,7 +3563,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "adoresever/graph-memory",
@@ -3530,7 +3613,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "superdesigndev/superdesign-skill",
@@ -3580,7 +3664,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "yogsoth-ai/de-anthropocentric-research-engine",
@@ -3635,7 +3720,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "h4dex/opc-nexus",
@@ -3677,7 +3763,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "vibeinging/deepseek-harness-desktop-app",
@@ -3734,7 +3821,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "tinqiao-oss/engramory",
@@ -3787,7 +3875,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "liceses/dsh-gitbash-preset",
@@ -3827,7 +3916,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "Vladimir-Human/humanizer-ru",
@@ -3884,7 +3974,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "yjh051108/dsh-super-injector",
@@ -3925,7 +4016,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "Zhiyuan-Fan/Awesome-DeepSeek-Harness-Plugins",
@@ -3973,7 +4065,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "ZSeven-W/dsh-noema",
@@ -4022,7 +4115,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "WYH66666666/DSH-Transparent-UI-Plugin",
@@ -4064,7 +4158,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "ningbainb/deepseek-harness-desktop",
@@ -4120,7 +4215,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "anysearch-team/anysearch-dsh",
@@ -4164,7 +4260,8 @@
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
       "description_i18n": {},
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "PC2005-cloud/dsh-pet",
@@ -4205,7 +4302,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "LX2000WASD/dsh-web-plugin-manager",
@@ -4247,7 +4345,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "fufankeji/deepseek-harness-studio",
@@ -4294,7 +4393,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "tencent-connect/dsh-qqbot",
@@ -4334,7 +4434,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "beancookie/awesome-dsh-plugin",
@@ -4375,7 +4476,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
-      "kind": "code"
+      "kind": "code",
+      "reviewed_commit": ""
     },
     {
       "id": "liyupi/dsh-kun-like-pet",
@@ -4415,7 +4517,8 @@
       "review_status": "approved",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "Ychris12138/dsh-usage-stats",
@@ -4463,7 +4566,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:01:02.723Z",
       "kind": "code",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "Han-1413141/dsh-cost-meter",
@@ -4515,7 +4619,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "omdsh-dev/dsh-mnemon",
@@ -4574,7 +4679,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "Devin-AXIS/deepseek-design",
@@ -4623,7 +4729,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "whyihaveyou/dsh-suite",
@@ -4671,7 +4778,8 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "dancingmemory/dskin",
@@ -4717,7 +4825,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "QCYTSN/dsh-dafeiyu",
@@ -4760,7 +4869,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "HanaAyane/dsh-reasoning-effort",
@@ -4801,7 +4911,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "awesome-dsh-plugin/dsh-find-plugin",
@@ -4841,7 +4952,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "omdsh-dev/dsh-data-agent",
@@ -4882,7 +4994,8 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "openma-ai/deepseek-harness-tui",
@@ -4923,7 +5036,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n": {},
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "zuorn/Tydora",
@@ -4975,7 +5089,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "Tabbit-Browser/dsh-plugin",
@@ -5020,7 +5135,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "lire1131/dsh-undo-plugin",
@@ -5062,7 +5178,8 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "HuanLinOTO/dsh-plugin-mineru",
@@ -5102,7 +5219,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "Noob-stupid/dsh-plugin-hub",
@@ -5145,7 +5263,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "vlln/dsh-navbar",
@@ -5182,7 +5301,8 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
       "description_i18n": {},
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "omdsh-dev/dsh-lark",
@@ -5226,7 +5346,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "yyyyukari/dsh-plugin-workshop",
@@ -5268,7 +5389,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "tianji-qingtian/dsh-model-router",
@@ -5308,7 +5430,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "Moeblack/dsh-message-edit",
@@ -5348,7 +5471,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "147228/dsh-xiaoyao-skins",
@@ -5392,7 +5516,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "keleus/deepseek-pet",
@@ -5431,7 +5556,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "Awu12277/dsh-stock-watch",
@@ -5476,7 +5602,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "JustGenius-s/DSH-Desktop",
@@ -5519,7 +5646,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "Anionex/dsh-computer-use",
@@ -5569,7 +5697,8 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "cpj-dev/dsh-plugin-cc",
@@ -5610,7 +5739,8 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "omdsh-dev/dsh-plugin-check",
@@ -5654,7 +5784,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "description_i18n_checked_at": "2026-08-16T11:30:21.133Z"
+      "description_i18n_checked_at": "2026-08-16T11:30:21.133Z",
+      "reviewed_commit": ""
     },
     {
       "id": "AwesomeHou/dsh-plugin-marketplace",
@@ -5700,7 +5831,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "whitelonng/dshcode",
@@ -5737,7 +5869,8 @@
       "security_notes": [],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "bugmaker2/dsh-plugin-template",
@@ -5773,7 +5906,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "kingOfSoySauce/dsh-liang-skin",
@@ -5813,7 +5947,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z",
-      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z"
+      "description_i18n_checked_at": "2026-08-16T05:37:32.676Z",
+      "reviewed_commit": ""
     },
     {
       "id": "hellodigua/dsh-share",
@@ -5856,7 +5991,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T04:46:19.130Z"
+      "reviewed_at": "2026-08-16T04:46:19.130Z",
+      "reviewed_commit": ""
     },
     {
       "id": "Co-Engram/Co-Engram",
@@ -5905,7 +6041,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T09:48:14.326Z"
+      "reviewed_at": "2026-08-16T09:48:14.326Z",
+      "reviewed_commit": ""
     },
     {
       "id": "Vladimir-Human/ru-marketplace-mcp",
@@ -5961,7 +6098,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T09:48:14.326Z",
-      "description_i18n_checked_at": "2026-08-16T11:30:21.133Z"
+      "description_i18n_checked_at": "2026-08-16T11:30:21.133Z",
+      "reviewed_commit": ""
     },
     {
       "id": "omdsh-dev/dsh_workflow",
@@ -6005,7 +6143,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T09:48:14.326Z"
+      "reviewed_at": "2026-08-16T09:48:14.326Z",
+      "reviewed_commit": ""
     },
     {
       "id": "fwerkor/local-shell-mcp",
@@ -6049,7 +6188,8 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T09:48:14.326Z",
-      "description_i18n_checked_at": "2026-08-16T11:30:21.133Z"
+      "description_i18n_checked_at": "2026-08-16T11:30:21.133Z",
+      "reviewed_commit": ""
     },
     {
       "id": "xiincs/deepseek-harness-desktop",
@@ -6099,7 +6239,8 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T09:48:14.326Z"
+      "reviewed_at": "2026-08-16T09:48:14.326Z",
+      "reviewed_commit": ""
     },
     {
       "id": "THEWOLFWALKER/dsh-notifier",
@@ -6138,7 +6279,61 @@
       ],
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T09:48:14.326Z"
+      "reviewed_at": "2026-08-16T09:48:14.326Z",
+      "reviewed_commit": ""
+    },
+    {
+      "id": "Mars-Sea/dsh-commandcode-provider",
+      "name": "dsh-commandcode-provider",
+      "description": "Unofficial DeepSeek Harness LLM provider plugin for Command Code: live model catalog, reasoning-effort support, Models-page card. Ported from pi-commandcode-provider (MIT).",
+      "usage": "dsh plugin --profile web add github:Mars-Sea/dsh-commandcode-provider",
+      "repo_url": "https://github.com/Mars-Sea/dsh-commandcode-provider",
+      "homepage": "https://github.com/Mars-Sea/dsh-commandcode-provider",
+      "stars": 27,
+      "forks": 2,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T09:38:34Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "NOASSERTION",
+      "topics": [
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "llm",
+        "llm-provider",
+        "npm",
+        "plugin",
+        "provider",
+        "typescript"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "非官方 DeepSeek Harness 的 LLM provider 插件，用于 Command Code，移植自 pi-commandcode-provider（MIT 协议）。它注册了一个 commandcode provider，将请求转换为 Command Code 的 Provider API（POST /alpha/generate，由 pi 插件逆向工程，对应 command-code@1.26.0）。",
+        "en": "Unofficial DeepSeek Harness LLM provider plugin for Command Code, ported from pi-commandcode-provider (MIT). It registers a commandcode provider whose requests are translated to Command Code's Provider API (POST /alpha/generate, reverse-engineered by the pi"
+      },
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 api.commandcode.ai、cdn.simpleicons.org、commandcode.ai、deepseek-harness.github.io）",
+        "访问第三方网络地址（如 api.commandcode.ai、commandcode.ai）",
+        "访问第三方网络地址（如 api.commandcode.ai）",
+        "访问第三方网络地址（如 a.com、api.commandcode.ai、example.com、new.example.com）",
+        "访问第三方网络地址（如 api.commandcode.ai、commandcode.ai、deepseek-harness.github.io）",
+        "访问第三方网络地址（如 commandcode.ai、keepachangelog.com、semver.org）"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
+      ],
+      "reviewed_commit": "603bab15a8a2cd333ce80ce666bd815e1c0c18ad",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-16T13:03:07.079Z"
     }
   ]
 }
