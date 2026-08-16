@@ -61,9 +61,8 @@ const UI = {
     filters: "分类筛选",
     pluginList: "插件列表",
     language: "语言",
-    officialTitle: "官方预设插件",
-    officialNote:
-      "随 DSH 一起分发的官方内置插件（@deepseek-ai/*），作用独立维护、来自官方 packages 目录，不参与社区发现、安装用法与安全审查。",
+    officialSearch: "官方预设插件搜索",
+    officialSearchPlaceholder: "搜索官方插件名称或作用…",
     officialCount: (n) => `共 ${n} 个官方内置插件`,
     officialList: "官方预设插件列表",
     officialEmpty: "暂无官方预设插件。",
@@ -99,9 +98,8 @@ const UI = {
     riskTitle: "Not guaranteed safe by this platform — review before use",
     defaultUsage: "See the project README for installation and usage",
     profileUsageTip: "This is a composable profile (dsh.profile only): not an independently installable plugin; reference its bundles list to configure your own profile.",
-    officialTitle: "Official preset plugins",
-    officialNote:
-      "Official built-in plugins shipped with DSH (@deepseek-ai/*). Descriptions are maintained independently from the official packages directory and are not part of the community discovery, install-usage, or security review workflow.",
+    officialSearch: "Official preset plugin search",
+    officialSearchPlaceholder: "Search official plugins by name or description…",
     officialCount: (n) => `${n} official built-in plugins`,
     officialList: "Official preset plugin list",
     officialEmpty: "No official preset plugins found.",
@@ -128,8 +126,10 @@ const state = {
   plugins: [],
   official: [],
   translations: { plugins: {} },
+  panel: "community",
   filter: "all",
   query: "",
+  officialQuery: "",
   lang: detectLanguage(),
   generatedDate: "",
   loaded: false,
@@ -142,11 +142,13 @@ const updated = document.querySelector("#updated");
 const searchInput = document.querySelector("#search");
 const metaDescription = document.querySelector('meta[name="description"]');
 
-// 官方预设插件区块（独立数据，不参与社区审查）
-const officialSection = document.querySelector("#official-section");
+// 官方预设插件独立面板（tab 入口，独立数据，不参与社区审查）
+const communityPanel = document.querySelector("#community-panel");
+const officialPanel = document.querySelector("#official-panel");
 const officialGrid = document.querySelector("#official-grid");
 const officialEmpty = document.querySelector("#official-empty");
 const officialCount = document.querySelector("#official-count");
+const officialSearchInput = document.querySelector("#official-search");
 
 function readStoredLanguage() {
   try {
@@ -199,8 +201,7 @@ function categoryLabel(category) {
 }
 
 function matches(plugin) {
-  if (state.filter === "official" && !plugin.official) return false;
-  if (state.filter !== "all" && state.filter !== "official" && plugin.category !== state.filter) {
+  if (state.filter !== "all" && plugin.category !== state.filter) {
     return false;
   }
   if (!state.query) return true;
@@ -346,34 +347,45 @@ function render() {
   }
 }
 
-// —— 官方预设插件（独立区块，不参与社区审查） ——
+// —— 官方预设插件（独立 tab，独立数据，不参与社区审查） ——
 const OFFICIAL_REPO_BASE = "https://github.com/deepseek-ai/deepseek-harness/tree/master/packages";
+
+function officialHref(entry) {
+  const path = entry.path ? `packages/${entry.path}` : `packages/${entry.domain}/${entry.sub}`;
+  return `${OFFICIAL_REPO_BASE}/${path.replace(/^\//, "")}`;
+}
 
 function renderOfficialCard(entry) {
   const description = entry.description_zh || entry.description_en || "";
-  const path = entry.path ? `packages/${entry.path}` : `packages/${entry.domain}/${entry.sub}`;
-  const href = `${OFFICIAL_REPO_BASE}/${path.replace(/^\//, "")}`;
   return `
     <article class="official-card">
       <div class="official-card__top">
-        <h3 class="official-card__name"><a href="${escapeHtml(href)}" target="_blank" rel="noopener">${escapeHtml(entry.name)}</a></h3>
+        <h3 class="official-card__name"><a href="${escapeHtml(officialHref(entry))}" target="_blank" rel="noopener">${escapeHtml(entry.name)}</a></h3>
         <span class="badge official official-card__domain">${escapeHtml(entry.domain || "core")}</span>
       </div>
       <p class="official-card__desc">${escapeHtml(description)}</p>
-      <p class="official-card__path">${escapeHtml(path)}</p>
     </article>
   `;
 }
 
+function officialMatches(entry) {
+  if (!state.officialQuery) return true;
+  const q = state.officialQuery.toLowerCase();
+  const haystack = [
+    entry.name || "",
+    entry.description_zh || "",
+    entry.description_en || "",
+    entry.domain || "",
+  ]
+    .join(" ")
+    .toLowerCase();
+  return haystack.includes(q);
+}
+
 function renderOfficial() {
-  if (!officialSection) return;
-  if (!state.official || !state.official.length) {
-    officialSection.hidden = true;
-    return;
-  }
-  officialSection.hidden = false;
+  if (!officialPanel) return;
   const copy = UI[state.lang];
-  const sorted = [...state.official].sort((a, b) => {
+  const sorted = (state.official || []).filter(officialMatches).sort((a, b) => {
     if ((a.domain || "") !== (b.domain || "")) return (a.domain || "").localeCompare(b.domain || "");
     return (a.name || "").localeCompare(b.name || "");
   });
@@ -382,7 +394,30 @@ function renderOfficial() {
   officialCount.textContent = copy.officialCount(sorted.length);
 }
 
-
+// —— tab 面板切换：官方 tab 与社区 tab 互斥 ——
+function setPanel(panel) {
+  state.panel = panel;
+  const isOfficial = panel === "official";
+  if (officialPanel) officialPanel.hidden = !isOfficial;
+  if (communityPanel) communityPanel.hidden = isOfficial;
+  document.querySelectorAll(".filter").forEach((b) => {
+    if (b.dataset.panel) {
+      // tab 入口按钮：官方 / 全部
+      b.classList.toggle("is-active", b.dataset.panel === panel);
+    } else if (isOfficial) {
+      // 官方 tab 激活时，社区分类按钮全部取消高亮
+      b.classList.remove("is-active");
+    } else {
+      // 社区面板：按当前社区分类高亮
+      b.classList.toggle("is-active", (b.dataset.communityFilter || "all") === state.filter);
+    }
+  });
+  if (isOfficial) {
+    renderOfficial();
+  } else {
+    render();
+  }
+}
 
 function applyLanguageText(lang) {
   const copy = UI[lang];
@@ -475,6 +510,7 @@ async function load() {
   updateLanguageButtons();
   render();
   renderOfficial();
+  setPanel(state.panel);
 }
 
 searchInput.addEventListener("input", (event) => {
@@ -482,12 +518,21 @@ searchInput.addEventListener("input", (event) => {
   render();
 });
 
+officialSearchInput.addEventListener("input", (event) => {
+  state.officialQuery = event.target.value.trim();
+  if (state.panel === "official") renderOfficial();
+});
+
 document.querySelectorAll(".filter").forEach((button) => {
   button.addEventListener("click", () => {
-    document.querySelectorAll(".filter").forEach((b) => b.classList.remove("is-active"));
-    button.classList.add("is-active");
-    state.filter = button.dataset.filter;
-    render();
+    if (button.dataset.panel && button.dataset.panel === "official") {
+      setPanel("official");
+      return;
+    }
+    // 社区 tab（"全部"）或社区分类过滤：切到社区面板并应用分类
+    if (button.dataset.panel === "community") state.filter = "all";
+    else if (button.dataset.communityFilter) state.filter = button.dataset.communityFilter;
+    setPanel("community");
   });
 });
 

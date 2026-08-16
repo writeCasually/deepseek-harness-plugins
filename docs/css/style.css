@@ -220,43 +220,7 @@ main {
   gap: 14px;
 }
 
-/* ── 官方预设插件独立区块 ─────────────────────────────── */
-.official-section {
-  margin: 0 0 28px;
-  padding: 18px 18px 14px;
-  background: linear-gradient(180deg, #fff8f0, #fffdf8);
-  border: 1px solid #f4e0c3;
-  border-radius: 10px;
-}
-
-.official-section__head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.official-section__head h2 {
-  margin: 0;
-  font-size: 17px;
-  font-weight: 700;
-  color: #7c2d12;
-}
-
-.official-section__note {
-  margin: 2px 0 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.official-section__count {
-  margin: 8px 0 12px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
+/* ── 官方预设插件独立 tab 面板 ─────────────────────────── */
 .official-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -307,14 +271,6 @@ main {
   color: #4b5563;
   font-size: 12.5px;
   line-height: 1.55;
-}
-
-.official-card__path {
-  margin: 0;
-  color: var(--muted);
-  font-size: 11.5px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  overflow-wrap: anywhere;
 }
 
 .card {
