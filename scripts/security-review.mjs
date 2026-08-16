@@ -714,6 +714,12 @@ export function classifyRiskLevel({ findings = [], privacyNotes = [] } = {}) {
       notes.push(`${prefix}${f.explanation}${loc ? ` @ ${loc}` : ''}`);
       pushEvidence(f, f.explanation);
     }
+    // 高风险插件也纳入 warning 位置，供使用者一并定位审计（risk_level 仍为 high）。
+    for (const f of warnings) {
+      const loc = locOf(f);
+      notes.push(`${f.explanation}${loc ? ` @ ${loc}` : ''}`);
+      pushEvidence(f, f.explanation);
+    }
     return { risk_level: 'high', risk_notes: [...new Set(notes)], risk_evidence: [...evidenceMap.values()] };
   }
   if (warnings.length) {

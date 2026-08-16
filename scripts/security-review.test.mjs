@@ -322,6 +322,8 @@ test('classifyRiskLevel: risk_evidence carries file:line location, degrades grac
   assert.equal(high.risk_level, 'high');
   assert.ok(high.risk_evidence.some((e) => e.file === 'src/index.js' && e.line === 42), '应带文件:行号');
   assert.ok(high.risk_notes.some((n) => /src\/index\.js:42/.test(n)), 'risk_notes 应内联位置');
+  // 高风险插件也应保留 warning 位置（lib/a.js:7）供一并审计。
+  assert.ok(high.risk_evidence.some((e) => e.file === 'lib/a.js' && e.line === 7), 'high 插件不应丢弃 warning evidence');
 
   // 无行号（隐私 note）降级为只带文件。
   const noLine = classifyRiskLevel({

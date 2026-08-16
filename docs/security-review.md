@@ -46,7 +46,7 @@ GitHub 上带 `dsh-plugin` 话题的仓库可以来自任何人。自动收录�
 - 全部干净 → `approved`，`risk_level=low`。
 - `composeVerdict()` / `classifyRiskLevel()` 统一汇总；workflow 的 `worst_verdict` 门禁消费裁决结果。
 
-> **风险位置（`risk_evidence`）**：`docs/plugins.json` 每条插件的 `risk_evidence` 为结构化数组 `[{explanation, file, line?}]`，记录每个风险点的代码位置，前端/README 据此内联「文件:行号」并链到 GitHub 相应行列，便于使用者快速定位审计。位置降级规则：有真实行号（line>0）记 `文件:行`；否则只记文件路径；连文件也拿不到的（如 OSV 依赖漏洞）只保留说明文本。
+> **风险位置（`risk_evidence`）**：`docs/plugins.json` 每条插件的 `risk_evidence` 为结构化数组 `[{explanation, file, line?}]`，记录每个风险点的代码位置，前端/README 据此内联「文件:行号」并链到 GitHub 相应行列，便于使用者快速定位审计。位置降级规则：有真实行号（line>0）记 `文件:行`；否则只记文件路径；连文件也拿不到的（如 OSV 依赖漏洞）只保留说明文本。高风险（`risk_level=high`）插件会一并纳入 warning 级的位置。（`risk_notes` 为含定位的易读文本，`risk_evidence` 为结构化数据。）
 
 > **行为变更说明**：
 > - **schema v3 → v4**：此前所有 critical（含灰区）一律 `blocked` 不收录；现仅「确定恶意」阻断，「灰区高风险」改用 `risk_level=high` + `risk_notes` 收录展示，并新增 `risk_evidence` 记录风险代码位置（`docs/plugins.json` 新增 `risk_level`/`risk_notes`/`risk_evidence` 字段）。
