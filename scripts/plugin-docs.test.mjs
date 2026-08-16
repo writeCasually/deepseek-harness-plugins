@@ -67,6 +67,10 @@ test('detects language-switcher banner lines without flagging real text', () => 
   assert.equal(isLanguageSwitcherText('English | 中文'), true);
   assert.equal(isLanguageSwitcherText('> 中文 · English'), true);
   assert.equal(isLanguageSwitcherText('中文 | English | 日本語'), true);
+  // 带 emoji/图标前缀的横幅（如仓库 README 常见「> 🌐 中文 · English」）。
+  assert.equal(isLanguageSwitcherText('> 🌐 中文 · English'), true);
+  assert.equal(isLanguageSwitcherText('> 🌐 English · 中文'), true);
+  assert.equal(isLanguageSwitcherText('> 🔤 中文 · English'), true);
   // 陌生语言名不应导致识别失败（拉丁与其他书写体系混合）。
   assert.equal(isLanguageSwitcherText('Icelandic | English | 中文'), true);
   assert.equal(isLanguageSwitcherText('English | Українська | 中文'), true);
@@ -82,6 +86,22 @@ test('detects language-switcher banner lines without flagging real text', () => 
   assert.equal(isLanguageSwitcherText('English'), false);
   assert.equal(isLanguageSwitcherText('中文'), false);
   assert.equal(isLanguageSwitcherText('A DSH vision plugin.'), false);
+});
+
+test('skips emoji-prefixed language-switcher banners when extracting a brief description', () => {
+  const brief = extractBriefDescription(`
+# dsh-suite
+
+![GitHub stars](https://img.shields.io/github/stars/whyihaveyou/dsh-suite?style=flat-square)
+
+> 🌐 中文 · [English](README.en.md)
+
+**别再翻 dsh-plugin topic 了，这里都是还能跑的插件。**
+
+Real Chinese description continues here.
+`);
+
+  assert.equal(brief, '别再翻 dsh-plugin topic 了，这里都是还能跑的插件。');
 });
 
 test('skips language-switcher banners when extracting a brief description', () => {

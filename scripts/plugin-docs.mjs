@@ -140,7 +140,14 @@ function isLikelyLanguageName(token) {
 }
 
 export function isLanguageSwitcherText(text) {
-  const trimmed = (text || '').trim().replace(/^>+\s*/, '');
+  // 先剥离 blockquote 前缀与 emoji/图标（如「> 🌐 中文 · English」→「中文 · English」），
+  // 再按分隔符切 token。
+  const trimmed = (text || '')
+    .trim()
+    .replace(/^>+\s*/, '')
+    .replace(/\p{Extended_Pictographic}/gu, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
   if (!trimmed) return false;
   const tokens = trimmed.split(LANG_SEPARATOR_RE).filter(Boolean);
   if (tokens.length < 2) return false;

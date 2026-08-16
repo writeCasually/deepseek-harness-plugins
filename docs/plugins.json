@@ -4657,8 +4657,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
       "description_i18n": {
-        "zh": "> 🌐 中文 · English",
-        "en": "> 🌐 English · 中文"
+        "zh": "别再翻 dsh-plugin topic 了，这里都是还能跑的插件。dsh-suite 是 DeepSeek Harness（DSH）插件的活目录——每小时自动刷新、每日兼容实测——外加内置插件商店与 create-dsh-plugin 脚手架。",
+        "en": "Stop scrolling the dsh-plugin topic. Find plugins that still work. dsh-suite is a bilingual, living directory of DeepSeek Harness (DSH) plugins — refreshed hourly, compat-tested daily — with a built-in plugin store and scaffold."
       },
       "privacy_risk": true,
       "privacy_notes": [
