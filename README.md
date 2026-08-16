@@ -33,24 +33,13 @@ DeepSeek Harness 以“一切都是插件”为核心设计，社区围绕它产
 
 | 插件名称 | 功能简介 | 用法 |
 | --- | --- | --- |
-| ★ 官方 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) | DeepSeek Harness 核心运行时：Everything is a Plugin。 | `npx @deepseek-ai/dsh 启动核心；插件经 dsh plugin --profile web add <源> 挂载` |
 | [voyager](https://github.com/Nagi-ovo/voyager) | 我们热爱 AI 聊天助手，但有时候总觉得它们少了一点"秩序感"。（隐私风险：访问第三方网络地址；读取环境变量并访问第三方地址，需确认未外发敏感信息）（安全提示：存在 Base64 解码行为） | `dsh plugin --profile web add github:Nagi-ovo/voyager` |
-| [archify](https://github.com/tt-a1i/archify) | 在对话里，把代码仓库或系统描述变成漂亮、可靠、可交互的系统地图。（隐私风险：访问第三方网络地址；读取环境变量（可能包含敏感信息））（安全提示：存在 Base64 解码行为；使用动态代码或子进程执行） | `dsh plugin --profile web add github:tt-a1i/archify` |
-| [deepseek-harness-desktop](https://github.com/anywhere-labs/deepseek-harness-desktop) | 基于官方 DeepSeek Harness 打造的 Electron 桌面端，深度适配 macOS 和 Windows，提供最佳的，开箱即用的体验。（隐私风险：访问第三方网络地址） | `dsh plugin --profile web add github:anywhere-labs/deepseek-harness-desktop` |
-| [ouroboros](https://github.com/Q00/ouroboros) | 和任何操作系统一样，Ouroboros 分成三层：一层稳定的、提供原语的 OS 层，一层承载领域工作流的应用层，还有一个人真正坐在前面的 shell。三个仓库，一个技术栈：（隐私风险：访问第三方网络地址） | `dsh plugin --profile web add github:Q00/ouroboros` |
-| [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) | A curated list of plugins for DeepSeek Harness (dsh) · DeepSeek Harness 插件精选列表（隐私风险：访问第三方网络地址） | `dsh plugin --profile web add github:awesome-dsh-plugin/awesome-dsh-plugin` |
-| [dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) | DSH Web UI 的插件与皮肤集合：任务看板、Git 图谱、右侧面板、移动端远程、鲸鱼娘宠物、实时令牌统计与皮肤中心。 | `dsh plugin --profile web add github:zhu1090093659/dsh-web-ui 后重启 Web` |
-| [dsh-anchored-standard](https://github.com/xiaobright/dsh-anchored-standard) | 实验性 DeepSeek Harness agent preset 集合——一个基础模式加两个变体：首轮模型请求锚定在 Minimal 条件上（真实的 Minimal 工具 schema、不注入自动上下文），会话产生持久信号后晋升到小型 resident 目录，重型 Standard 工具按需解锁。 | `dsh plugin --profile web add github:xiaobright/dsh-anchored-standard` |
-| [ModLens](https://github.com/liustack/modlens) | 首个 DeepSeek Harness 视觉插件，给纯文本模型“装上眼睛”：直接粘贴图片即可得到结构化 JSON 证据（OCR、布局等）。 | `dsh plugin add @liustack/modlens（npm）；粘贴图片即可让纯文本模型“看见”` |
-| [BitFun](https://github.com/GCWing/BitFun) | 能写代码、能做文档、能操控桌面，并提供小应用、Rust Runtime 和可自部署的多设备互控服务器。（隐私风险：访问第三方网络地址；读取本地凭据文件（如 .ssh/.aws/.npmrc））（安全提示：存在疑似混淆内容） | `dsh plugin --profile web add github:GCWing/BitFun` |
-| [DSH Better Sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) | 侧边栏完整工作台：文件管理与预览、内嵌浏览器、真实终端、Git 面板、后台任务页，并支持第三方注册新 Tab。 | `dsh plugin --profile web add github:omdsh-dev/DSH-better-sidebar` |
-| [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | Claude Code 风格全屏终端 TUI 插件：像素鲸鱼顶栏、实时工作状态行、思考流式展开、双击 Esc 回滚、上下文进度条与 TPS 仪表。 | `dsh plugin --profile tui add github:ccch1mneyyy/dsh-TUI（npm 一键安装）` |
-| [agentrq](https://github.com/agentrq/agentrq) | AgentRQ：面向 AI Agent 的实时对话式任务管理器，支持人机协作。自托管部署，可通过移动端、Web、桌面端随时随地控制自己的 Agent，适配你自己的 Claude 订阅与任意 harness。（隐私风险：访问第三方网络地址）（安全提示：存在疑似混淆内容；存在 Base64 解码行为） | `dsh plugin --profile web add github:agentrq/agentrq` |
+| [dsh-anchored-standard](https://github.com/xiaobright/dsh-anchored-standard) | 实验性 DeepSeek Harness agent preset 集合——一个基础模式加两个变体：首轮模型请求锚定在 Minimal 条件上（真实的 Minimal 工具 schema、不注入自动上下文），会话产生持久信号后晋升到 小型 resident 目录，重型 Standard 工具按需解锁。 | `dsh plugin --profile web add github:xiaobright/dsh-anchored-standard` |
+| [BitFun](https://github.com/GCWing/BitFun) | 能写代码、能做文档、能操控桌面，并提供小应用、Rust Runtime 和可自部署的多设备互控服务器。（隐私风险：访问第三方网络地址（如 labs.scale.com、market.openbitfun.com、openbitfun.com、pnpm.io））（安全提示：package.json 的 postinstall 脚本会在安装/发布时自动执行；依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp）；依赖 simple-git@3.27.0 存在已知漏洞（GHSA-hffm-xvc3-vprc, GHSA-jcxm-m3jx-f287, GHSA-r275-fr43-pm7q）） | `dsh plugin --profile web add github:GCWing/BitFun` |
+| [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | >一个美观且实用的 Claude Code 风格 TUI 插件：像素鲸鱼顶栏、双流光大字、实时工作状态行、思考流式展开、双击 Esc 时间回溯、蓝白上下文进度条 + TPS 仪表。（隐私风险：访问第三方网络地址（如 star-history.com））（安全提示：package.json 的 prepare 脚本会在安装/发布时自动执行；依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险；依赖 lodash-es@4.17.0 存在已知漏洞（GHSA-29mw-wpgm-hmr9, GHSA-35jh-r3h4-6jhm, GHSA-f23m-r3pf-42rh）；依赖 semver@7.0.0 存在已知漏洞（GHSA-c2qf-rxjj-qqgw）） | `dsh plugin --profile web add github:ccch1mneyyy/dsh-TUI` |
+| [dsh-deep-whale](https://github.com/Small-tailqwq/dsh-deep-whale) | DeepSeek Harness Web GUI 的鲸鱼娘主题皮肤系列(独立分发仓库)。（隐私风险：访问第三方网络地址（如 b23.tv、pixiv.net）；访问第三方网络地址（如 w3.org）；读取环境变量（可能包含敏感信息）；访问第三方网络地址（如 pixiv.net））（安全提示：依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险；存在疑似混淆内容（长 Base64 块）） | `dsh plugin --profile web add github:Small-tailqwq/dsh-deep-whale` |
 | [awesome-dsh-plugins](https://github.com/AdamPlatin123/awesome-dsh-plugins) | 前部索引仓库（Radar）：自动扫描发现所有 dsh 插件候选，经测试合格的移入后序精选目录仓库。 | `打开网页查看自动扫描 Radar 与精选目录` |
-| [dsh-deep-whale](https://github.com/Small-tailqwq/dsh-deep-whale) | DSH Web 鲸鱼娘皮肤系列(深海女仆工坊 maid-atelier)——CC BY-NC-SA 4.0（隐私风险：访问第三方网络地址；读取环境变量（可能包含敏感信息））（安全提示：使用动态代码或子进程执行；存在疑似混淆内容） | `dsh plugin --profile web add github:Small-tailqwq/dsh-deep-whale` |
-| [Aegis](https://github.com/GanyuanRan/Aegis) | Aegis Method Pack 让 AI 编程 agent 变得可信：少返工、更安全、说“完成”前先给证据。（隐私风险：访问第三方网络地址；读取环境变量（可能包含敏感信息））（安全提示：存在疑似混淆内容） | `dsh plugin --profile web add github:GanyuanRan/Aegis` |
-| [working-activity](https://github.com/ccch1mneyyy/working-activity) | 为 DeepSeek Harness 打造的一条实时“工作状态行”：展示模型的实时活动——俏皮思考文案、真正在跑的工具、已耗时、收尾摘要——在 agent 干活时展示出来。（隐私风险：访问第三方网络地址）（安全提示：存在疑似混淆内容） | `dsh plugin --profile web add github:ccch1mneyyy/working-activity` |
-| [sandbase-harness](https://github.com/sandbaseai/sandbase-harness) | Open-source CMA-compatible agent runtime. Run multi-agent systems locally with any model (Ollama/vLLM/Claude/GPT), MCP tools, scenario templates, and a beautiful dashboard. One command start. Built for enterprise teams.（隐私风险：访问第三方网络地址；读取浏览器 Cookie/存储并发送到网络） | `dsh plugin --profile web add github:sandbaseai/sandbase-harness` |
+| [working-activity](https://github.com/ccch1mneyyy/working-activity) | 为 DeepSeek Harness 打造的一条实时 "工作状态行"：模型的实时活动——俏皮思考文案、真正在跑的工具、已耗时、收尾摘要——在 agent 干活时展示出来。（隐私风险：读取环境变量（可能包含敏感信息））（安全提示：依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险） | `dsh plugin --profile web add github:ccch1mneyyy/working-activity` |
 | [awesome-deepseek-harness](https://github.com/0xsline/awesome-deepseek-harness) | DeepSeek Harness 生态精选：来自 dsh-external/hub 与公开 dsh-plugin 话题的插件、工具与基础设施。 | `打开网页浏览生态精选，或 git clone 到本地阅读` |
 | [graph-memory](https://github.com/adoresever/graph-memory) | 为 AI Agent 提供可检索、可追溯、跨会话的长期记忆 一个宿主无关的图记忆内核，原生接入 DeepSeek Harness，并继续兼容 OpenClaw。（隐私风险：访问第三方网络地址）（安全提示：使用动态代码或子进程执行） | `dsh plugin --profile web add github:adoresever/graph-memory` |
 | [DSH Vision Toolkit](https://github.com/Anionex/dsh-vision-toolkit) | 把 agent-vision-toolkit 以原生 Profile Bundle 引入 DSH：带意图的图片问答、长截图 OCR、UI 还原、像素校验等视觉工具。 | `dsh plugin add github:Anionex/dsh-vision-toolkit` |
@@ -177,7 +166,7 @@ DeepSeek Harness 以“一切都是插件”为核心设计，社区围绕它产
 | [dsh-plugin-marketplace](https://github.com/AwesomeHou/dsh-plugin-marketplace) | DeepSeek Harness 插件市场：实时同步 GitHub dsh-plugin 话题（1800+ 仓库）到可搜索、分页的设置页，支持一键安装与 agent 工具（market_search / market_install）。（隐私风险：访问第三方网络地址；读取凭据类环境变量并发送到网络，可能泄露密钥）（安全提示：使用动态代码或子进程执行） | `dsh plugin --profile web add github:AwesomeHou/dsh-plugin-marketplace` |
 | [dsh-share](https://github.com/hellodigua/dsh-share) | DSH 对话分享插件：分享单轮或多轮对话，可导出为图片或 Markdown。（隐私风险：访问第三方网络地址；读取浏览器 Cookie/存储并发送到网络；读取环境变量并访问第三方地址，需确认未外发敏感信息）（安全提示：使用动态代码或子进程执行；存在 Base64 解码行为；存在疑似混淆内容） | `dsh plugin --profile web add github:hellodigua/dsh-share` |
 
-共收录 143 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
+共收录 132 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
 
 <!-- PLUGINS_END -->
 
