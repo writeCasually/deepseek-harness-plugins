@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-08-16T09:36:37.443Z",
+  "generated_at": "2026-08-16T09:48:14.326Z",
   "plugins": [
     {
       "id": "deepseek-ai/deepseek-harness",
@@ -5855,6 +5855,286 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T04:46:19.130Z"
+    },
+    {
+      "id": "Co-Engram/Co-Engram",
+      "name": "Co-Engram",
+      "description": "Self-evolving team memory",
+      "usage": "dsh plugin --profile web add github:Co-Engram/Co-Engram",
+      "repo_url": "https://github.com/Co-Engram/Co-Engram",
+      "homepage": "https://github.com/Co-Engram/Co-Engram",
+      "stars": 66,
+      "forks": 2,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T09:40:49Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "unknown",
+      "topics": [
+        "agent-memory",
+        "ai-memory",
+        "claude-code",
+        "cordis",
+        "deepseek-harness",
+        "dsh-plugin",
+        "engram",
+        "mcp",
+        "memory",
+        "team-memory"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "| 差异化 | 含义 | | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | | 稳定 ID + 单文件布局 | 每条记忆是一个带 YAML frontmatter 的 Markdown 文件。engram 使用",
+        "en": "| Differentiator | What it means | | ----------------------------------- | -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+      },
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "使用动态代码或子进程执行"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
+    },
+    {
+      "id": "Vladimir-Human/ru-marketplace-mcp",
+      "name": "ru-marketplace-mcp",
+      "description": "Девять российских маркетплейсов и китайский Taobao как MCP-серверы: Wildberries, Ozon, Яндекс Маркет, Детский мир, Авито, Мегамаркет, Lamoda, DNS, Ситилинк. Плюс сравнение цен по всем сразу. Только чтение, ключи не нужны.",
+      "usage": "dsh plugin --profile web add github:Vladimir-Human/ru-marketplace-mcp",
+      "repo_url": "https://github.com/Vladimir-Human/ru-marketplace-mcp",
+      "homepage": "https://github.com/Vladimir-Human/ru-marketplace-mcp/releases/tag/v1.4.1",
+      "stars": 63,
+      "forks": 10,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T09:29:15Z",
+      "archived": false,
+      "language": "Python",
+      "license": "MIT",
+      "topics": [
+        "avito",
+        "citilink",
+        "claude",
+        "detmir",
+        "dns",
+        "dsh-plugin",
+        "ecommerce",
+        "lamoda",
+        "marketplace",
+        "mcp",
+        "mcp-server",
+        "megamarket",
+        "ozon",
+        "price-comparison",
+        "python",
+        "russia",
+        "scraping",
+        "taobao",
+        "wildberries",
+        "yandex-market"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "en": "MCP-серверы для российских и китайских маркетплейсов. Цены, наличие, рейтинги, отзывы и реквизиты продавцов с Wildberries, Ozon, Яндекс Маркета, Детского мира, Авито, Taobao, Мегамаркета, Lamoda, DNS и Ситилинка. Плюс"
+      },
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
+    },
+    {
+      "id": "omdsh-dev/dsh_workflow",
+      "name": "dsh_workflow",
+      "description": "把Claude Code的UltraCode模式带给DSH，把 DSH 的一次性多 Agent 调度，升级为可生成、可保存、可治理、可观察、可恢复的 Workflow 层",
+      "usage": "dsh plugin --profile web add github:omdsh-dev/dsh_workflow",
+      "repo_url": "https://github.com/omdsh-dev/dsh_workflow",
+      "homepage": "https://github.com/omdsh-dev/dsh_workflow",
+      "stars": 61,
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-13T23:53:40Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "agent-orchestration",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "dshtopic",
+        "multi-agent",
+        "workflow"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "DSH 已经有很强的 Harness 基础设施：模型路由、子 Agent provider、工具权限、审批、Session 日志、后台 jobs 与 UI 事件。但仅有这些“执行原语”，团队仍需在每次会话里重新描述如何拆解、并发、验证和汇总。",
+        "en": "@dsh-external/workflow turns DeepSeek Harness's one-off multi-agent execution into a reusable, governed, observable, and resumable workflow layer. It independently implements the complete workflow capability model demonstrated by KodaX while integrating with"
+      },
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "security_notes": [
+        "使用动态代码或子进程执行"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
+    },
+    {
+      "id": "fwerkor/local-shell-mcp",
+      "name": "local-shell-mcp",
+      "description": "Enables LLM to use a cli environment. ",
+      "usage": "dsh plugin --profile web add github:fwerkor/local-shell-mcp",
+      "repo_url": "https://github.com/fwerkor/local-shell-mcp",
+      "homepage": "https://fwerkor.github.io/local-shell-mcp/",
+      "stars": 48,
+      "forks": 9,
+      "open_issues": 8,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T09:47:17Z",
+      "archived": false,
+      "language": "Python",
+      "license": "MIT",
+      "topics": [
+        "chatgpt-app",
+        "dsh-plugin",
+        "harness",
+        "mcp",
+        "remote-control"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "en": "A ChatGPT-ready MCP control plane for shell, files, browser automation, file links, and remote machines."
+      },
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "security_notes": [
+        "使用动态代码或子进程执行"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
+    },
+    {
+      "id": "xiincs/deepseek-harness-desktop",
+      "name": "deepseek-harness-desktop",
+      "description": "DeepSeek Harness 原生桌面版，基于 Tauri 2，内置 Node.js 运行时，一键安装，极速启动，托盘常驻，自动更新。DeepSeek Harness native desktop version: built on Tauri 2 with a bundled Node.js runtime.",
+      "usage": "dsh plugin --profile web add github:xiincs/deepseek-harness-desktop",
+      "repo_url": "https://github.com/xiincs/deepseek-harness-desktop",
+      "homepage": "https://github.com/xiincs/deepseek-harness-desktop",
+      "stars": 46,
+      "forks": 5,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T09:30:31Z",
+      "archived": false,
+      "language": "Rust",
+      "license": "MIT",
+      "topics": [
+        "agent",
+        "ai-agent",
+        "deepseek",
+        "deepseek-harness",
+        "desktop",
+        "dsh-plugin",
+        "rust",
+        "tauri",
+        "windows"
+      ],
+      "category": "plugin",
+      "kind": "code",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "源码 scripts/check-dsh-version.mjs import/引用 DSH 或 Cordis 模块",
+      "description_i18n": {
+        "zh": "把 DeepSeek Harness 装进一个真正的桌面应用",
+        "en": "A real desktop app for DeepSeek Harness"
+      },
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "security_notes": [
+        "存在疑似混淆内容",
+        "存在 Base64 解码行为",
+        "使用动态代码或子进程执行"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
+    },
+    {
+      "id": "THEWOLFWALKER/dsh-notifier",
+      "name": "dsh-notifier",
+      "description": "Unified notification push plugin for DeepSeek Harness (DSH): one minimal notify() API, 8 channel adapters (telegram/dingtalk/feishu/wxpusher/pushplus/serverchan/bark/webhook), dual trigger (auto session events + agent tool).",
+      "usage": "dsh plugin --profile web add github:THEWOLFWALKER/dsh-notifier",
+      "repo_url": "https://github.com/THEWOLFWALKER/dsh-notifier",
+      "homepage": "https://github.com/THEWOLFWALKER/dsh-notifier",
+      "stars": 26,
+      "forks": 2,
+      "open_issues": 6,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T09:47:55Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "> 你的 agent，装进口袋。 —— 通知、审批、遥控，全在你的手机里。",
+        "en": "> Your agent, in your pocket. — 通知、审批、遥控，全在你的手机里。"
+      },
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "security_notes": [
+        "使用动态代码或子进程执行"
+      ],
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
     }
   ]
 }

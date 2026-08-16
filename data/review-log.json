@@ -1,6 +1,146 @@
 {
-  "updated_at": "2026-08-16T04:58:44.014Z",
+  "updated_at": "2026-08-16T09:48:14.326Z",
   "decisions": [
+    {
+      "id": "volcengine/OpenViking",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "下载远程脚本并直接执行（curl/wget | sh）"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
+    },
+    {
+      "id": "vostride/agent-qa",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
+    },
+    {
+      "id": "Co-Engram/Co-Engram",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "使用动态代码或子进程执行"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
+    },
+    {
+      "id": "Vladimir-Human/ru-marketplace-mcp",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
+    },
+    {
+      "id": "omdsh-dev/dsh_workflow",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "使用动态代码或子进程执行"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址"
+      ],
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
+    },
+    {
+      "id": "fwerkor/local-shell-mcp",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "使用动态代码或子进程执行"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
+    },
+    {
+      "id": "xiincs/deepseek-harness-desktop",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "code",
+        "reason": "源码 scripts/check-dsh-version.mjs import/引用 DSH 或 Cordis 模块"
+      },
+      "findings": [
+        "存在疑似混淆内容",
+        "存在 Base64 解码行为",
+        "使用动态代码或子进程执行"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取浏览器 Cookie/存储并发送到网络",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
+    },
+    {
+      "id": "THEWOLFWALKER/dsh-notifier",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "使用动态代码或子进程执行"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息"
+      ],
+      "reviewed_at": "2026-08-16T09:48:14.326Z"
+    },
     {
       "id": "Han-1413141/dsh-cost-meter",
       "verdict": "flagged",
