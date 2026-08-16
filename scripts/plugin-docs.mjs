@@ -280,7 +280,19 @@ export function applyLocalizedDescriptionCheck(entry, descriptions, checkedAt) {
   return Object.keys(descriptions).length - previousCount;
 }
 
-export function extractBriefDescription(markdown) {
+// 简介段落的最短可接受长度（字符）。第一段过短时（如「English」「中文」「展开查看项目截图」），
+// 视为非简介噪声（既非语言横幅也非描述），跳过继续取下一段。
+// 阈值取低值：真实简介（如 24 字符的「DeepSeek Harness 插件开发模板。」）不应被误杀。
+const MIN_BRIEF_LENGTH = 15;
+
+function briefTooShort(collected) {
+  return collected.join(' ').trim().length < MIN_BRIEF_LENGTH;
+}
+
+export function extractBriefDescription(markdown, options = {}) {
+  // 默认启用「过短段落跳过」；显式语言 README（README.zh-CN.md 等）提供的简介
+  // 即使很短也是作者明确给出的该语言简介，调用方应传 skipShort: false。
+  const skipShort = options.skipShort !== false;
   if (!markdown) return '';
   const lines = withoutCodeFences(withoutFrontMatter(markdown))
     .replace(/\r\n?/g, '\n')
@@ -310,7 +322,14 @@ export function extractBriefDescription(markdown) {
 
     const cleaned = cleanInline(line);
     if (!cleaned) {
-      if (collected.length) break;
+      if (collected.length) {
+        if (skipShort && briefTooShort(collected)) {
+          // 该段太短（可能是语言标签/导航提示），丢弃并继续取下一段。
+          collected = [];
+          continue;
+        }
+        break;
+      }
       continue;
     }
     if (
@@ -322,7 +341,14 @@ export function extractBriefDescription(markdown) {
     ) continue;
 
     collected.push(cleaned);
-    if (cleaned.endsWith('.') || cleaned.endsWith('。') || collected.length >= 3) break;
+    if (cleaned.endsWith('.') || cleaned.endsWith('。') || collected.length >= 3) {
+      if (skipShort && briefTooShort(collected)) {
+        // 本段过短，不是真实简介：丢弃，继续扫描下一段。
+        collected = [];
+        continue;
+      }
+      break;
+    }
   }
 
   return truncateDescription(collected.join(' ').trim());
@@ -418,7 +444,8 @@ export async function collectLocalizedDescriptions({
     const content = exactPath === readmePath
       ? readmeContent
       : await fetchDoc(api, repo, exactPath);
-    const brief = extractBriefDescription(content);
+    // 显式语言 README：作者明确给出的该语言简介，即使很短也采用（不走「过短跳过」）。
+    const brief = extractBriefDescription(content, { skipShort: false });
     if (brief) descriptions[language] = brief;
   }
 

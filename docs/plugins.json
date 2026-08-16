@@ -3290,7 +3290,8 @@
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
       "description_i18n": {
-        "zh": "展开查看项目截图"
+        "zh": "自动分类、收录和验证 GitHub dsh-plugin Topic 项目的静态 DSH 插件市场。",
+        "en": "A static DSH plugin marketplace that automatically categorizes, curates, and verifies GitHub dsh-plugin Topic projects."
       },
       "privacy_risk": true,
       "privacy_notes": [

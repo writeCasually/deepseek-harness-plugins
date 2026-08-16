@@ -128,6 +128,26 @@ Actual description here.
   assert.equal(brief, 'Actual description here.');
 });
 
+test('skips over a too-short first paragraph to the next real description', () => {
+  const brief = extractBriefDescription(`
+# My Plugin
+
+展开查看项目截图
+
+这是一个足够长的真实简介段落，介绍这个插件的功能与定位，所以应该被采用。
+`);
+
+  assert.equal(brief, '这是一个足够长的真实简介段落，介绍这个插件的功能与定位，所以应该被采用。');
+});
+
+test('keeps an explicit localized README short description (skipShort: false)', () => {
+  const brief = extractBriefDescription(
+    '# 插件\n显式中文简介。',
+    { skipShort: false },
+  );
+  assert.equal(brief, '显式中文简介。');
+});
+
 test('detects single-line language-switcher links without flagging real text', () => {
   // 单行语言切换链接（区别于 | 分隔的多语言横幅）
   assert.equal(isLanguageSwitcherLine('[English](./README.md)'), true);
