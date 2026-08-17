@@ -2,7 +2,7 @@
 // 检索 GitHub `dsh-plugin` 话题，判断是否可用于 DeepSeek Harness，
 // 做安全与隐私静态审查，并更新 docs/plugins.json 与 README。
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join } from 'node:path';
 import { updateReadmeFiles } from './update-readme.mjs';
 import { collectLocalizedDescriptions } from './plugin-docs.mjs';
@@ -81,9 +81,11 @@ const SCAN_FILE_BUDGET = Number(process.env.SCAN_FILE_BUDGET || 28);
 const OSV_CHECK = process.env.OSV_CHECK !== '0';
 
 // 代码文件扫描优先级：越靠前越先被拉取审查。
-// -1 表示跳过（node_modules、锁文件、构建产物等）。
-function scanFileScore(path) {
+// -1 表示跳过（node_modules、锁文件、构建产物、文档/配置等非运行文件）。
+export function scanFileScore(path) {
   const p = String(path).toLowerCase();
+
+  // 直接排除非内容路径：依赖目录、构建产物/媒体/安装器、锁文件。
   if (
     /(^|\/)node_modules\//.test(p) ||
     /\.(?:min\.js|map|lock|sum|png|jpe?g|gif|webp|ico|svg|woff2?|ttf|eot|pdf|zip|tar\.gz|wasm|exe|msi|dmg|apk)$/.test(p) ||
@@ -91,18 +93,27 @@ function scanFileScore(path) {
   ) {
     return -1;
   }
+
+  // DSH 插件是 Node.js 项目，经 import() 实际运行的只有 JS/TS 生态。
+  // 其余后缀（.md/.json/.yml/.py/.sh 等）都不是 agent 会运行的代码，一律不扫。
+  // 例外：package.json（安装生命周期脚本）与 Dockerfile/Makefile（构建配方）单独保留。
+  const runnable =
+    /\.(?:mjs|cjs|js|ts|tsx|jsx)$/.test(p) ||
+    /(^|\/)package\.json$/.test(p) ||
+    /(^|\/)(?:dockerfile|makefile)$/.test(p);
+  if (!runnable) return -1;
+
+  // 可运行文件内部再排序：入口/清单/安装脚本 > 代码目录 > 普通代码文件 > 构建配方。
   if (/(^|\/)(?:index|main|entry|cli)\.(?:[jt]sx?|mjs|cjs)$/.test(p)) return 100;
   if (/(^|\/)package\.json$/.test(p)) return 95;
-  if (/(^|\/)(?:install|setup|bootstrap|prepare)\.(?:sh|bash|zsh|ps1|mjs|cjs|js)$/.test(p)) return 90;
+  if (/(^|\/)(?:install|setup|bootstrap|prepare)\.(?:mjs|cjs|js)$/.test(p)) return 90;
   if (/(^|\/)(?:src|lib|bin|scripts)\//.test(p)) return 80;
-  if (/\.(?:mjs|cjs|js|ts|tsx|py|sh|bash|zsh|ps1)$/.test(p)) return 70;
-  if (/(^|\/)\.github\/workflows\/.+\.ya?ml$/.test(p)) return 65;
-  if (/(^|\/)Dockerfile$/.test(p) || /(^|\/)Makefile$/.test(p) || /\.(?:yml|yaml|json)$/.test(p)) return 60;
-  return 5;
+  if (/\.(?:mjs|cjs|js|ts|tsx|jsx)$/.test(p)) return 70;
+  return 60;
 }
 
 // 从 dsh.* manifest 提取入口文件路径（优先审查真正的插件入口）。
-function manifestEntryPaths(packageJsonFiles) {
+export function manifestEntryPaths(packageJsonFiles) {
   const out = [];
   for (const pkg of packageJsonFiles || []) {
     const dsh = pkg && typeof pkg === 'object' ? pkg.dsh : undefined;
@@ -121,14 +132,15 @@ function manifestEntryPaths(packageJsonFiles) {
       }
     }
     for (const s of values) {
-      if (/\.(?:[jt]sx?|mjs|cjs|json|ya?ml)$/i.test(s) && !/^https?:/i.test(s)) out.push(s);
+      // 只把「可运行代码」入口纳入内容扫描；.json/.yml 等配置入口不作为运行风险审查对象。
+      if (/\.(?:[jt]sx?|mjs|cjs)$/i.test(s) && !/^https?:/i.test(s)) out.push(s);
     }
   }
   return out;
 }
 
 // 生成待扫描文件清单：manifest 入口 > 高分文件 > 采样上限。
-function prioritizeScanFiles(paths, packageJsonFiles) {
+export function prioritizeScanFiles(paths, packageJsonFiles) {
   const entry = new Set(manifestEntryPaths(packageJsonFiles));
   return (paths || [])
     .filter((p) => p && scanFileScore(p) !== -1)
@@ -421,8 +433,9 @@ async function reviewRepo(repo, opts = {}) {
   if (previousCommit && FORCE_REREVIEW && previousCommit !== reviewedCommit) {
     const changed = await changedPaths(repo, previousCommit, reviewedCommit, paths);
     if (Array.isArray(changed) && changed.length > 0) {
-      codePaths = changed;
-      deltaUsed = true;
+      // 增量路径同样只扫可运行代码，过滤掉文档/配置类变更（否则风险定位会指向 .md/.yml）。
+      codePaths = changed.filter((p) => scanFileScore(p) !== -1);
+      if (codePaths.length > 0) deltaUsed = true;
     }
   }
   if (!codePaths) {
@@ -448,8 +461,8 @@ async function reviewRepo(repo, opts = {}) {
     }
   };
 
-  absorbFindings(scanSecurity(readme, { file: readmeData?.path || 'README.md' }));
-  absorbPrivacy(privacyFindings(readme, { file: readmeData?.path || 'README.md' }));
+  // README 是文档而非可运行代码，不做安全/隐私 finding 扫描（否则风险定位会指向 .md）。
+  // 仅保留其外联主机，供 LLM 复核阶段的信息透明度参考。
   for (const h of extractExternalHosts(readme)) externalHosts.add(h);
 
   // 仓库文件清单零成本信号（双重扩展名伪装等；不消耗 content API）。
@@ -786,7 +799,10 @@ async function main() {
   );
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+const isMain = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+if (isMain) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

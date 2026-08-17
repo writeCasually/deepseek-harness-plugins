@@ -28,6 +28,8 @@ GitHub 上带 `dsh-plugin` 话题的仓库可以来自任何人。自动收录�
 | T7 | 信任信号（信息性） | 仅入日志 | `trustNotesFor()`：仓库创建不足 30 天、未声明许可证（不参与裁决） |
 | T8 | 审查留痕与增量复查 | 日志/条目字段 | 每次记录 `reviewed_commit`、扫描文件数/总文件数、delta 模式标记；`FORCE_REREVIEW=1` 时通过 GitHub compare API 只重扫变更文件 |
 
+> **内容扫描范围（重要）**：`scanSecurity()` / `scanSecrets()` / `scanObfuscation()` / `privacyFindings()` 只针对「agent 会运行的可执行代码文件」。DSH 插件是 Node.js 项目，经 `import()` 实际运行的只有 JS/TS 生态：`.js`/`.mjs`/`.cjs`（及编译前的源码 `.ts`/`.tsx`/`.jsx`），以及 `Dockerfile`/`Makefile` 与 `install`/`prepare` 等 Node 安装脚本。README（`.md`）、配置文件（`.json/.yml/.yaml/.toml/.ini`）、文档、锁文件，以及非 Node 脚本（`.py/.sh/.bash/.zsh/.ps1`）**均不会** 进入内容扫描，风险定位（`risk_evidence` 的 `file` 字段）因此不会指向这些文件。`package.json` 的依赖与生命周期脚本由 `analyzePackageManifest()` 单独分析（其风险位置记为 `package.json`，属可运行安装脚本范围）。
+
 ## 判定与裁决：两级模型
 
 > DSH 插件是在 agent 运行时上下文里被加载的第三方代码，权限比普通软件更大。因此本平台采用「分级呈现」而非一刀切：
