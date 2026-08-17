@@ -24,7 +24,6 @@ export function localizedPlugin(plugin, lang, translations = {}) {
     ...plugin,
     description,
     name: translation.name || plugin.name,
-    usage: translation.usage || plugin.usage,
     privacy_notes: Array.isArray(translation.privacy_notes)
       ? translation.privacy_notes
       : plugin.privacy_notes,

@@ -42,8 +42,8 @@ function escapeMarkdown(text) {
 function buildTable(plugins, lang, translations) {
   const isEn = lang === 'en';
   const header = isEn
-    ? '| Plugin | Description | Usage |'
-    : '| 插件名称 | 功能简介 | 用法 |';
+    ? '| Plugin | Author | Description |'
+    : '| 插件名称 | 作者 | 功能简介 |';
   const separator = '| --- | --- | --- |';
 
   const rows = plugins.map((plugin) => {
@@ -52,14 +52,13 @@ function buildTable(plugins, lang, translations) {
     const name = localized.repo_url
       ? `${official}[${localized.name}](${localized.repo_url})`
       : `${official}${localized.name}`;
+    // 同名插件可能来自不同作者：作者列始终展示 GitHub 用户名，用于区分。
+    const author = localized.author || String(localized.id || '').split('/')[0] || '';
+    const authorCell = author ? `[@${escapeMarkdown(author)}](https://github.com/${encodeURIComponent(author)})` : '—';
     const desc = escapeMarkdown(localized.description || '')
       .replaceAll('|', '\\|')
       .replaceAll('\n', ' ');
-    const usage = (localized.usage || (isEn ? 'See project README' : '见项目 README'))
-      .replaceAll('`', '')
-      .replaceAll('|', '\\|')
-      .replaceAll('\n', ' ');
-    return `| ${name} | ${desc} | \`${usage}\` |`;
+    return `| ${name} | ${authorCell} | ${desc} |`;
   });
 
   const countText = isEn

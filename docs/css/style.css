@@ -309,6 +309,22 @@ main {
   text-decoration: none;
 }
 
+.card-author {
+  margin: -4px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.card-author__link {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.card-author__link:hover {
+  text-decoration: underline;
+}
+
 .badges {
   display: flex;
   gap: 6px;

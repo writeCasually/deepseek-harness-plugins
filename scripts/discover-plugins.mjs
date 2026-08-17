@@ -316,14 +316,9 @@ function categoryFor(repo, kind) {
   return 'plugin';
 }
 
-// 使用提示（usage）：按检测类型区分，明确「可安装插件」与「可启动组合」两种用法。
-function usageFor(repo, kind) {
-  if (repo.full_name === 'deepseek-ai/deepseek-harness') return 'npx @deepseek-ai/dsh 启动核心';
-  if (kind === 'profile') {
-    return '仅含 dsh.profile 组合（非独立可安装插件）：参考其 bundles 组合，用 dsh plugin 安装其中列出的各 bundle';
-  }
-  return `dsh plugin --profile web add github:${repo.full_name}`;
-}
+// 使用提示（usage）已移除：不同插件的安装方式差异很大，统一模板（如
+// `dsh plugin --profile web add github:...`）会对多数插件构成误导，因此
+// 不再生成/存储/展示 usage 字段，安装方式请以各项目自己的 README 为准。
 
 function toEntry(repo, review, compatibility, descriptionI18n = {}) {
   const kind = compatibility.kind || 'code';
@@ -334,8 +329,9 @@ function toEntry(repo, review, compatibility, descriptionI18n = {}) {
   return {
     id: repo.full_name,
     name: repo.name,
+    // 作者（GitHub 用户名/组织）。同名插件可能来自不同作者，须与 name 一起展示以区分。
+    author: repo.owner?.login || String(repo.full_name).split('/')[0] || '',
     description: repo.description || '',
-    usage: usageFor(repo, kind),
     repo_url: repo.html_url,
     homepage: repo.homepage || repo.html_url,
     stars: repo.stargazers_count || 0,
@@ -556,6 +552,8 @@ function normalizeEntry(p) {
   if (kind === 'profile' && category === 'plugin') category = 'profile';
   return {
     ...p,
+    // author 兼容旧条目：无 author 字段时按 id（owner/name）推导作者。
+    author: p.author ?? (String(p.id || '').split('/')[0] || ''),
     official,
     kind,
     compatibility: p.compatibility ?? (official ? 'official' : 'compatible'),
@@ -716,7 +714,7 @@ async function main() {
     });
 
   const output = {
-    schema_version: 4,
+    schema_version: 6,
     generated_at: NOW,
     plugins: approved,
   };

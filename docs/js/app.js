@@ -19,7 +19,7 @@ const UI = {
   zh: {
     title: "DeepSeek Harness 插件汇总",
     description:
-      "DeepSeek Harness（DSH）社区插件汇总：按名称、功能简介与用法快速查找插件与项目链接。",
+      "DeepSeek Harness（DSH）社区插件汇总：按名称、作者与功能简介快速查找插件与项目链接。",
     tagline: "发现、检索与安全审查 DeepSeek Harness 社区插件",
     github: "项目仓库",
     topic: "dsh-plugin 话题",
@@ -42,9 +42,9 @@ const UI = {
       high: "⚠️ 高风险",
     },
     riskTitle: "平台未担保其安全，使用前请自行审计",
-    defaultUsage: "安装与用法见项目 README",
     profileUsageTip: "这是一个「配置组合」（仅 dsh.profile）：非独立可安装插件，参考其 bundles 组合来配置自己的 profile。",
     viewProject: "查看项目",
+    author: "作者：",
     stars: "Star 数",
     officialBadge: "官方",
     updatedTip: "最近更新",
@@ -69,7 +69,7 @@ const UI = {
   en: {
     title: "DeepSeek Harness Plugin Index",
     description:
-      "A community index of DeepSeek Harness (DSH) plugins: find plugins and project links by name, description, and usage.",
+      "A community index of DeepSeek Harness (DSH) plugins: find plugins and project links by name, author, and description.",
     tagline: "Discover, search, and safely review DeepSeek Harness community plugins",
     github: "Repository",
     topic: "dsh-plugin topic",
@@ -92,7 +92,6 @@ const UI = {
       high: "⚠️ HIGH RISK",
     },
     riskTitle: "Not guaranteed safe by this platform — review before use",
-    defaultUsage: "See the project README for installation and usage",
     profileUsageTip: "This is a composable profile (dsh.profile only): not an independently installable plugin; reference its bundles list to configure your own profile.",
     officialSearch: "Official preset plugin search",
     officialSearchPlaceholder: "Search official plugins by name or description…",
@@ -100,6 +99,7 @@ const UI = {
     officialList: "Official preset plugin list",
     officialEmpty: "No official preset plugins found.",
     viewProject: "View project",
+    author: "by",
     stars: "Stars",
     officialBadge: "Official",
     updatedTip: "Last update",
@@ -206,7 +206,6 @@ function matches(plugin) {
   const haystack = [
     localized.name,
     localized.description,
-    localized.usage,
     plugin.id,
     (plugin.topics || []).join(" "),
   ]
@@ -278,6 +277,13 @@ function renderCard(plugin) {
   const separator = state.lang === "en" ? "; " : "；";
   const copy = UI[state.lang];
 
+  // 同名插件可能来自不同作者：始终在标题下展示作者（@用户名），以便区分。
+  const author = plugin.author || String(plugin.id || "").split("/")[0] || "";
+  const authorGap = state.lang === "en" ? " " : "";
+  const authorMarkup = author
+    ? `<p class="card-author">${escapeHtml(copy.author)}${authorGap}<a class="card-author__link" href="https://github.com/${encodeURIComponent(author)}" target="_blank" rel="noopener">@${escapeHtml(author)}</a></p>`
+    : "";
+
   const updated = formatRelative(plugin.pushed_at, copy);
   const updatedItem = updated
     ? `<span class="meta-item meta-updated ${updated.fresh ? "is-fresh" : ""}" title="${copy.updatedTip}: ${updated.dateStr}">${ICON_CLOCK}${escapeHtml(updated.str)}</span>`
@@ -331,8 +337,8 @@ function renderCard(plugin) {
           <span class="badge category-${escapeHtml(category)}">${categoryLabel(category)}</span>
         </div>
       </div>
+      ${authorMarkup}
       <p class="desc">${escapeHtml(plugin.description || "")}</p>
-      <pre class="usage">${escapeHtml(plugin.usage || copy.defaultUsage)}</pre>
       ${
         plugin.kind === "profile"
           ? `<p class="usage-tip">${escapeHtml(copy.profileUsageTip)}</p>`
