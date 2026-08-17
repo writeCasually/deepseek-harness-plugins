@@ -55,11 +55,14 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | --- | --- | --- |
 | [OpenViking](https://github.com/volcengine/OpenViking) | [@volcengine](https://github.com/volcengine) | 👋 加入我们的社区 |
 | [voyager](https://github.com/Nagi-ovo/voyager) | [@Nagi-ovo](https://github.com/Nagi-ovo) | 我们热爱 AI 聊天助手，但有时候总觉得它们少了一点"秩序感"。 |
-| [dsh-anchored-standard](https://github.com/xiaobright/dsh-anchored-standard) | [@xiaobright](https://github.com/xiaobright) | 实验性 DeepSeek Harness agent preset 集合——一个基础模式加两个变体：首轮模型请求锚定在 Minimal 条件上（真实的 Minimal 工具 schema、不注入自动上下文），会话产生持久信号后晋升到 小型 resident 目录，重型 Standard 工具按需解锁。 |
-| [BitFun](https://github.com/GCWing/BitFun) | [@GCWing](https://github.com/GCWing) | 能写代码、能做文档、能操控桌面，并提供小应用、Rust Runtime 和可自部署的多设备互控服务器。 |
-| [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | [@ccch1mneyyy](https://github.com/ccch1mneyyy) | >一个美观且实用的 Claude Code 风格 TUI 插件：像素鲸鱼顶栏、双流光大字、实时工作状态行、思考流式展开、双击 Esc 时间回溯、蓝白上下文进度条 + TPS 仪表。 |
+| [archify](https://github.com/tt-a1i/archify) | [@tt-a1i](https://github.com/tt-a1i) | 在对话里，把代码仓库或系统描述变成漂亮、可靠、可交互的系统地图。 |
+| [ouroboros](https://github.com/Q00/ouroboros) | [@Q00](https://github.com/Q00) | 和任何操作系统一样，Ouroboros 分成三层：一层稳定的、提供原语的 OS 层，一层承载领域工作流的应用层，还有一个人真正坐在前面的 shell。三个仓库，一个技术栈： |
+| [dsh-anchored-standard](https://github.com/xiaobright/dsh-anchored-standard) | [@xiaobright](https://github.com/xiaobright) | 实验性 DeepSeek Harness agent preset 集合——一个基础模式、两个实时锚定变体和一个预制 会话模式：把模型轨迹锚定在 Minimal 条件上（真实的 Minimal 工具 schema、不注入自动 上下文），会话产生持久信号后晋升到小型 resident 目录，重型 Standard 工具按需解锁。 |
 | [dsh-deep-whale](https://github.com/Small-tailqwq/dsh-deep-whale) | [@Small-tailqwq](https://github.com/Small-tailqwq) | DeepSeek Harness Web GUI 的鲸鱼娘主题皮肤系列(独立分发仓库)。 |
 | [awesome-dsh-plugins](https://github.com/AdamPlatin123/awesome-dsh-plugins) | [@AdamPlatin123](https://github.com/AdamPlatin123) | 前部索引仓库（Radar）：自动扫描发现所有 dsh 插件候选，经测试合格的移入后序精选目录仓库。 |
+| [agentrq](https://github.com/agentrq/agentrq) | [@agentrq](https://github.com/agentrq) | > 本文是面向中文开发者的导读，帮助快速理解 AgentRQ 的定位、架构和本地运行方式。 |
+| [Aegis](https://github.com/GanyuanRan/Aegis) | [@GanyuanRan](https://github.com/GanyuanRan) | Aegis Method Pack 让 AI 编程 agent 变得可信：少返工、更安全、说“完成”前先给证据。 |
+| [awesome-deepseek-harness](https://github.com/Anil-matcha/awesome-deepseek-harness) | [@Anil-matcha](https://github.com/Anil-matcha) | Curated guide to DeepSeek Harness (dsh) and its best community plugins |
 | [dsh-market](https://github.com/dsh-market/dsh-market) | [@dsh-market](https://github.com/dsh-market) | 装在 DeepSeek Harness 里的插件市场。打开设置 → 插件市场 → 逛一逛，点一下，装好。 |
 | [working-activity](https://github.com/ccch1mneyyy/working-activity) | [@ccch1mneyyy](https://github.com/ccch1mneyyy) | 为 DeepSeek Harness 打造的一条实时 "工作状态行"：模型的实时活动——俏皮思考文案、真正在跑的工具、已耗时、收尾摘要——在 agent 干活时展示出来。 |
 | [dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) | [@Anionex](https://github.com/Anionex) | 更强大的视觉工具箱——给 DeepSeek Harness 里的纯文本模型装上眼睛：图片问答、长图 OCR、前端 UI 还原、GUI 视觉任务，一套视觉工具箱和一个 Skill。 |
@@ -183,7 +186,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [dsh-plugin-template](https://github.com/bugmaker2/dsh-plugin-template) | [@bugmaker2](https://github.com/bugmaker2) | DeepSeek Harness 插件开发模板。 |
 | [dsh-plugin-cc](https://github.com/cpj-dev/dsh-plugin-cc) | [@cpj-dev](https://github.com/cpj-dev) | 把 DeepSeek Harness 桥接到 Claude Code，用于审查、反馈、委派与会话导入。 |
 
-共收录 129 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
+共收录 132 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
 
 <!-- PLUGINS_END -->
 
