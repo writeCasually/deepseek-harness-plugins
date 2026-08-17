@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-08-16T23:30:16.091Z",
+  "generated_at": "2026-08-17T04:04:16.717Z",
   "plugins": [
     {
       "id": "ccch1mneyyy/dsh-TUI",
@@ -163,348 +163,729 @@
     },
     {
       "id": "Anionex/dsh-vision-toolkit",
-      "name": "DSH Vision Toolkit",
-      "description": "把 agent-vision-toolkit 以原生 Profile Bundle 引入 DSH：带意图的图片问答、长截图 OCR、UI 还原、像素校验等视觉工具。",
-      "usage": "dsh plugin add github:Anionex/dsh-vision-toolkit",
+      "name": "dsh-vision-toolkit",
+      "description": "让纯文本模型更好地做视觉任务的DeepSeek Harness插件：带意图的图片问答、长截图 OCR、UI 还原等｜DeepSeek Harness-native integration for agent-vision-toolkit: image Q&A, long-screenshot OCR, UI restoration, grounding, pixel diff, Artifacts, and Web UI.",
+      "usage": "dsh plugin --profile web add github:Anionex/dsh-vision-toolkit",
       "repo_url": "https://github.com/Anionex/dsh-vision-toolkit",
-      "homepage": "https://agent-vision.anionex.me",
-      "stars": 526,
+      "homepage": "agent-vision.anionex.me",
+      "stars": 557,
+      "forks": 28,
+      "open_issues": 7,
+      "watchers": 0,
+      "pushed_at": "2026-08-17T03:26:51Z",
+      "archived": false,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
+        "agent-skills",
+        "agent-vision-toolkit",
+        "computer-vision",
+        "deepseek",
         "deepseek-harness",
+        "dsh",
         "dsh-plugin",
-        "vision"
+        "gui-automation",
+        "ocr",
+        "plugin",
+        "python",
+        "screenshot-testing",
+        "text-only-llm",
+        "typescript",
+        "ui-restoration",
+        "vision-language-model",
+        "vision-tools"
       ],
       "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
+      "kind": "dsh-bundle+client",
       "official": false,
       "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 26,
-      "open_issues": 6,
-      "watchers": 2,
-      "pushed_at": "2026-08-16T23:24:30Z",
-      "archived": false,
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "description_i18n": {
-        "zh": "把 agent-vision-toolkit 以原生 Profile Bundle 引入 DSH：带意图的图片问答、长截图 OCR、UI 还原、像素校验等视觉工具。",
-        "en": "Brings agent-vision-toolkit into DSH as a native Profile Bundle: intent-aware image Q&A, long screenshot OCR, UI restoration, pixel verification, and other vision tools."
+        "zh": "更强大的视觉工具箱——给 DeepSeek Harness 里的纯文本模型装上眼睛：图片问答、长图 OCR、前端 UI 还原、GUI 视觉任务，一套视觉工具箱和一个 Skill。",
+        "en": "A more powerful vision toolkit—give text-only models in DeepSeek Harness eyes: image Q&A, long-screenshot OCR, UI restoration, and GUI visual tasks in one toolkit and Skill."
       },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
-    },
-    {
-      "id": "liustack/modsearch",
-      "name": "ModSearch",
-      "description": "给纯文本模型“接上互联网”的 Web 搜索插件：搜索网页或 X，返回结构化 JSON 证据（搜索、抓取、引用）。",
-      "usage": "dsh plugin add @liustack/modsearch（npm）",
-      "repo_url": "https://github.com/liustack/modsearch",
-      "homepage": "https://github.com/liustack/modsearch",
-      "stars": 112,
-      "language": "TypeScript",
-      "license": "MIT",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin",
-        "search"
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ lib/plugin-update.js",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "使用屏幕/画面采集能力 @ lib/runtime.js:1204",
+        "使用屏幕/画面采集能力 @ lib/tools.js:523",
+        "访问第三方网络地址（如 agent-vision.anionex.me、anionex.me、api.example.com、dshfind.com） @ README.md",
+        "访问第三方网络地址（如 vision.anionex.me） @ src/client/index.tsx",
+        "访问第三方网络地址（如 agent-vision.anionex.me、ifdian.net） @ package.json",
+        "访问第三方网络地址（如 dsh.local） @ lib/artifact-access.js",
+        "访问第三方网络地址（如 agent-vision.anionex.me、vision.anionex.me） @ lib/defaults.js",
+        "访问第三方网络地址（如 dsh.internal） @ lib/paste-images.js",
+        "访问第三方网络地址（如 w3.org） @ lib/runtime.js"
       ],
-      "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 5,
-      "open_issues": 2,
-      "watchers": 0,
-      "pushed_at": "2026-08-16T15:49:15Z",
-      "archived": false,
-      "description_i18n": {
-        "zh": "给纯文本模型“接上互联网”的 Web 搜索插件：搜索网页或 X，返回结构化 JSON 证据（搜索、抓取、引用）。",
-        "en": "A web search plugin that connects text-only models to the internet: search the web or X and return structured JSON evidence (search, fetch, cite)."
-      },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
-    },
-    {
-      "id": "omdsh-dev/dsh-at-file",
-      "name": "dsh-at-file",
-      "description": "Codex 风格 @file 提及：在输入框搜索工作区文件，回车附加，发送时把文件内容注入模型。",
-      "usage": "dsh plugin --profile web add https://github.com/omdsh-dev/dsh-at-file/archive/refs/heads/main.tar.gz",
-      "repo_url": "https://github.com/omdsh-dev/dsh-at-file",
-      "homepage": "https://github.com/omdsh-dev/dsh-at-file",
-      "stars": 264,
-      "language": "JavaScript",
-      "license": "MIT",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin"
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "lib/plugin-update.js"
+        },
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "lib/runtime.js",
+          "line": 1204
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "lib/tools.js",
+          "line": 523
+        },
+        {
+          "explanation": "访问第三方网络地址（如 agent-vision.anionex.me、anionex.me、api.example.com、dshfind.com）",
+          "file": "README.md"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 vision.anionex.me）",
+          "file": "src/client/index.tsx"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 agent-vision.anionex.me、ifdian.net）",
+          "file": "package.json"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh.local）",
+          "file": "lib/artifact-access.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 agent-vision.anionex.me、vision.anionex.me）",
+          "file": "lib/defaults.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh.internal）",
+          "file": "lib/paste-images.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 w3.org）",
+          "file": "lib/runtime.js"
+        }
       ],
-      "category": "plugin",
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 agent-vision.anionex.me、anionex.me、api.example.com、dshfind.com）",
+        "访问第三方网络地址（如 vision.anionex.me）",
+        "访问第三方网络地址（如 agent-vision.anionex.me、ifdian.net）",
+        "访问第三方网络地址（如 dsh.local）",
+        "访问第三方网络地址（如 agent-vision.anionex.me、vision.anionex.me）",
+        "访问第三方网络地址（如 dsh.internal）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 w3.org）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "使用屏幕/画面采集能力"
+      ],
+      "reviewed_commit": "86fcf711a669552ca39ccaad7cf441cc70a7859b",
       "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 10,
-      "open_issues": 1,
-      "watchers": 0,
-      "pushed_at": "2026-08-16T14:48:48Z",
-      "archived": false,
-      "description_i18n": {
-        "zh": "Codex 风格 @file 提及：在输入框搜索工作区文件，回车附加，发送时把文件内容注入模型。",
-        "en": "Codex-style @file mentions: search workspace files from the input, press Enter to attach, and inject file contents when sending."
-      },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T04:04:16.717Z"
     },
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
       "name": "dsh-open-in-vscode",
-      "description": "从 DSH Web GUI 的侧边栏工作区菜单直接在当前目录打开 VS Code。",
+      "description": "Open DeepSeek Harness workspace directories in VS Code directly from the web GUI.",
       "usage": "dsh plugin --profile web add github:omdsh-dev/dsh-open-in-vscode",
       "repo_url": "https://github.com/omdsh-dev/dsh-open-in-vscode",
       "homepage": "https://github.com/omdsh-dev/dsh-open-in-vscode",
       "stars": 46,
-      "language": "JavaScript",
-      "license": "MIT",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin"
-      ],
-      "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 5,
+      "forks": 6,
       "open_issues": 0,
       "watchers": 0,
       "pushed_at": "2026-08-16T05:24:58Z",
       "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "dsh",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "description_i18n": {
-        "zh": "从 DSH Web GUI 的侧边栏工作区菜单直接在当前目录打开 VS Code。",
-        "en": "Opens VS Code in the current directory directly from the sidebar workspace menu in the DSH Web GUI."
+        "zh": "在 DeepSeek Harness Web 界面中直接打开工作区目录到 VS Code：侧边栏每个真实 Workspace 行的 … 菜单里新增一行 在 VSCode 中打开。",
+        "en": "Open a workspace directory in VS Code straight from the DeepSeek Harness web GUI: every real Workspace row in the sidebar gains an Open in VSCode row inside its … overflow menu."
       },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "使用动态代码执行（eval/new Function） @ lib/index.js:304",
+        "存在 Base64 解码行为 @ lib/index.js:101",
+        "存在 Base64 解码行为 @ lib/index.js:113",
+        "存在 Base64 解码行为 @ lib/index.js:2220",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5391",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5392",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5393",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5394",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5400",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5401",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5402",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5403",
+        "存在 Base64 解码行为 @ lib/client.js:1283",
+        "存在 Base64 解码行为 @ lib/client.js:2641",
+        "存在 Base64 解码行为 @ lib/client.js:2698",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:4454",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:4455",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:4456",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:4457",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:4463",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:4464",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:4465",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:4466",
+        "访问第三方网络地址（如 code.visualstudio.com） @ README.md",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 json-schema.org） @ lib/index.js",
+        "访问第三方网络地址（如 json-schema.org） @ lib/index.js",
+        "读取环境变量（可能包含敏感信息） @ src/resolve.ts"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "使用动态代码执行（eval/new Function）",
+          "file": "lib/index.js",
+          "line": 304
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 101
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 113
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 2220
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5391
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5392
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5393
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5394
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5400
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5401
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5402
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5403
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/client.js",
+          "line": 1283
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/client.js",
+          "line": 2641
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/client.js",
+          "line": 2698
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 4454
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 4455
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 4456
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 4457
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 4463
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 4464
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 4465
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 4466
+        },
+        {
+          "explanation": "访问第三方网络地址（如 code.visualstudio.com）",
+          "file": "README.md"
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 json-schema.org）",
+          "file": "lib/index.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 json-schema.org）",
+          "file": "lib/index.js"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "src/resolve.ts"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 code.visualstudio.com）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 json-schema.org）",
+        "访问第三方网络地址（如 json-schema.org）",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "使用动态代码执行（eval/new Function）",
+        "存在 Base64 解码行为",
+        "存在编码转义字符串（疑似混淆）"
+      ],
+      "reviewed_commit": "8aed144abdc158a332aa73bce42fc217d962f751",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T04:04:16.717Z"
     },
     {
       "id": "omdsh-dev/dsh-notification",
       "name": "dsh-notification",
-      "description": "DeepSeek Harness 会话完成时发送桌面通知，支持按结果类型和关键词规则控制。",
-      "usage": "dsh plugin --profile web add https://github.com/omdsh-dev/dsh-notification/archive/refs/heads/main.tar.gz",
+      "description": "Desktop notifications for DeepSeek Harness turn completions, with per-outcome controls and include/exclude keyword rules.",
+      "usage": "dsh plugin --profile web add github:omdsh-dev/dsh-notification",
       "repo_url": "https://github.com/omdsh-dev/dsh-notification",
       "homepage": "https://github.com/omdsh-dev/dsh-notification",
-      "stars": 54,
-      "language": "JavaScript",
-      "license": "MIT",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin"
-      ],
-      "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
+      "stars": 55,
       "forks": 6,
-      "open_issues": 0,
+      "open_issues": 1,
       "watchers": 0,
       "pushed_at": "2026-08-16T05:24:57Z",
       "archived": false,
-      "description_i18n": {
-        "zh": "DeepSeek Harness 会话完成时发送桌面通知，支持按结果类型和关键词规则控制。",
-        "en": "Sends a desktop notification when a DeepSeek Harness session completes, with rules for result type and keywords."
-      },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
-    },
-    {
-      "id": "Anionex/dsh-turn-rewind",
-      "name": "DSH Turn Rewind",
-      "description": "对话与代码状态回退插件：基于持久 Change Ledger，回滚对话和工作区状态。",
-      "usage": "dsh plugin add github:Anionex/dsh-turn-rewind",
-      "repo_url": "https://github.com/Anionex/dsh-turn-rewind",
-      "homepage": "https://github.com/Anionex/dsh-turn-rewind",
-      "stars": 63,
-      "language": "JavaScript",
-      "license": "BSD-3-Clause",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin"
-      ],
-      "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 3,
-      "open_issues": 2,
-      "watchers": 1,
-      "pushed_at": "2026-08-16T17:17:17Z",
-      "archived": false,
-      "description_i18n": {
-        "zh": "对话与代码状态回退插件：基于持久 Change Ledger，回滚对话和工作区状态。",
-        "en": "A conversation and code state rollback plugin based on a persistent Change Ledger."
-      },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
-    },
-    {
-      "id": "csyangwen/dsh-memory-evolve",
-      "name": "dsh-memory-evolve",
-      "description": "纯插件实现的跨会话长期记忆与后台自我进化：五轨记忆、git 分支感知、技能自我进化、四轨待办、会话广播与搜索。",
-      "usage": "dsh plugin add github:csyangwen/dsh-memory-evolve",
-      "repo_url": "https://github.com/csyangwen/dsh-memory-evolve",
-      "homepage": "https://github.com/csyangwen/dsh-memory-evolve",
-      "stars": 120,
       "language": "JavaScript",
       "license": "MIT",
       "topics": [
-        "deepseek-harness",
+        "dsh",
         "dsh-plugin"
       ],
       "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
+      "kind": "dsh-bundle+client",
       "official": false,
       "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 8,
-      "open_issues": 7,
-      "watchers": 0,
-      "pushed_at": "2026-08-14T13:55:48Z",
-      "archived": false,
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "description_i18n": {
-        "zh": "纯插件实现的跨会话长期记忆与后台自我进化：五轨记忆、git 分支感知、技能自我进化、四轨待办、会话广播与搜索。",
-        "en": "A plugin-only cross-session long-term memory and background self-evolution system: five-track memory, Git branch awareness, skill self-evolution, four-track tasks, session broadcast, and search."
+        "zh": "DeepSeek Harness Web GUI 的桌面通知插件。当会话结束一轮任务时，浏览器通过系统 Notification API 弹出通知，让你切到别的标签页也能知道 DSH 已经完成。按结束状态开关 + 关键词包含/排除规则，精确控制哪些完成要提醒。",
+        "en": "Desktop notifications for the DeepSeek Harness web GUI. When a session finishes a turn, the browser shows a system notification (via the Notification API), so you can switch tabs and still know when DSH is done. Per-outcome toggles and include/exclude keyword"
       },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "使用动态代码执行（eval/new Function） @ lib/index.js:258",
+        "存在 Base64 解码行为 @ lib/index.js:55",
+        "存在 Base64 解码行为 @ lib/index.js:67",
+        "存在 Base64 解码行为 @ lib/index.js:2074",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5245",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5246",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5247",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5248",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5254",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5255",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5256",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:5257",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:411",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:412",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:413",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:414",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:415",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:416",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:418",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:420",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:421",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:422",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:423",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:424",
+        "访问第三方网络地址（如 json-schema.org） @ lib/index.js"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "使用动态代码执行（eval/new Function）",
+          "file": "lib/index.js",
+          "line": 258
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 55
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 67
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 2074
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5245
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5246
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5247
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5248
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5254
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5255
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5256
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 5257
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 411
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 412
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 413
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 414
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 415
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 416
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 418
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 420
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 421
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 422
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 423
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 424
+        },
+        {
+          "explanation": "访问第三方网络地址（如 json-schema.org）",
+          "file": "lib/index.js"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 json-schema.org）"
+      ],
+      "security_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "使用动态代码执行（eval/new Function）",
+        "存在 Base64 解码行为",
+        "存在编码转义字符串（疑似混淆）"
+      ],
+      "reviewed_commit": "2399457a1f96ed86f761f3bc771539d131eb684f",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T04:04:16.717Z"
+    },
+    {
+      "id": "Anionex/dsh-turn-rewind",
+      "name": "dsh-turn-rewind",
+      "description": "deepseek harness对话和代码状态回退插件 | DSH — rewind conversation and workspace state, powered by a persistent Change Ledger",
+      "usage": "dsh plugin --profile web add github:Anionex/dsh-turn-rewind",
+      "repo_url": "https://github.com/Anionex/dsh-turn-rewind",
+      "homepage": "https://github.com/Anionex/dsh-turn-rewind",
+      "stars": 66,
+      "forks": 3,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T17:17:17Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "BSD-3-Clause",
+      "topics": [
+        "agent-rewind",
+        "cordis-plugin",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "marisa-plugin",
+        "restore-point",
+        "turn-rewind",
+        "workspace-safety"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "为 DeepSeek Harness 提供 Turn 级项目文件恢复，并可选择从恢复后的这一轮继续新对话。",
+        "en": "DSH Turn Rewind is maintained by anionex. If you would like to follow my future work, follow me on X or GitHub."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:287",
+        "访问第三方网络地址（如 anionex.me、x.com） @ README.md",
+        "读取环境变量（可能包含敏感信息） @ lib/git.js",
+        "访问第三方网络地址（如 dsh.local） @ lib/rewind-host.js"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 287
+        },
+        {
+          "explanation": "访问第三方网络地址（如 anionex.me、x.com）",
+          "file": "README.md"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "lib/git.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh.local）",
+          "file": "lib/rewind-host.js"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 anionex.me、x.com）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 dsh.local）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "存在编码转义字符串（疑似混淆）"
+      ],
+      "reviewed_commit": "b1b85f18aaaaf71d76c84613429ce04d71f69620",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T04:04:16.717Z"
     },
     {
       "id": "omdsh-dev/dsh-genui",
       "name": "dsh-genui",
-      "description": "在助手回复中渲染交互式 UI 组件：布局、图表、表单、测验、mermaid 等，经 dsh-ui fence 内联展示。",
+      "description": "GenUI for DeepSeek Harness: interactive UI components rendered inline in assistant replies via the dsh-ui fence — layout, charts, plots, forms, quizzes, mermaid, 3D scenes, and an action event loop back to the model. Ships the fence-teaching host plugin, the browser renderer (client half), and the genui skill.",
       "usage": "dsh plugin --profile web add github:omdsh-dev/dsh-genui",
       "repo_url": "https://github.com/omdsh-dev/dsh-genui",
       "homepage": "https://github.com/omdsh-dev/dsh-genui",
-      "stars": 141,
-      "language": "TypeScript",
-      "license": "MIT",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin"
-      ],
-      "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
+      "stars": 149,
       "forks": 14,
       "open_issues": 4,
       "watchers": 0,
       "pushed_at": "2026-08-16T17:02:46Z",
       "archived": false,
-      "description_i18n": {
-        "zh": "在助手回复中渲染交互式 UI 组件：布局、图表、表单、测验、mermaid 等，经 dsh-ui fence 内联展示。",
-        "en": "Renders interactive UI components in assistant replies: layouts, charts, forms, quizzes, mermaid, and more, inlined through dsh-ui fences."
-      },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
-    },
-    {
-      "id": "Lum1104/dsh-browser",
-      "name": "dsh-browser",
-      "description": "Chrome 侧边栏扩展与桥接插件，让 DSH 直接操作你正在使用的浏览器，无需视觉能力。",
-      "usage": "运行 scripts/install.sh 安装 Chrome MV3 扩展与插件桥接",
-      "repo_url": "https://github.com/Lum1104/dsh-browser",
-      "homepage": "https://github.com/Lum1104/dsh-browser",
-      "stars": 201,
       "language": "TypeScript",
       "license": "MIT",
       "topics": [
-        "deepseek-harness",
-        "dsh-plugin",
-        "browser"
+        "dsh",
+        "dsh-plugin"
       ],
       "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
+      "kind": "dsh-bundle+client",
       "official": false,
       "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 14,
-      "open_issues": 2,
-      "watchers": 1,
-      "pushed_at": "2026-08-16T13:23:18Z",
-      "archived": false,
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "description_i18n": {
-        "zh": "Chrome 侧边栏扩展与桥接插件，让 DSH 直接操作你正在使用的浏览器，无需视觉能力。",
-        "en": "A Chrome sidebar extension and bridge plugin that lets DSH control the browser you are already using without vision capabilities."
+        "zh": "> 让模型的回答长出界面——文字还在，可交互的 UI 已经能用。",
+        "en": "> Give the model's answers a face — the text is still there, and an interactive UI is already live."
       },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "存在疑似混淆内容（长 Base64 块） @ lib/index.js:1379",
+        "存在疑似混淆内容（长 Base64 块） @ src/plugin/index.ts:116",
+        "访问第三方网络地址（如 linux.do） @ README.md",
+        "访问第三方网络地址（如 ...、attacker、x） @ lib/index.js",
+        "访问第三方网络地址（如 ...、x） @ src/plugin/index.ts",
+        "访问第三方网络地址（如 w3.org） @ lib/assets/three.js"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/index.js",
+          "line": 1379
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "src/plugin/index.ts",
+          "line": 116
+        },
+        {
+          "explanation": "访问第三方网络地址（如 linux.do）",
+          "file": "README.md"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 ...、attacker、x）",
+          "file": "lib/index.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 ...、x）",
+          "file": "src/plugin/index.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 w3.org）",
+          "file": "lib/assets/three.js"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 linux.do）",
+        "访问第三方网络地址（如 ...、attacker、x）",
+        "访问第三方网络地址（如 ...、x）",
+        "访问第三方网络地址（如 w3.org）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "存在疑似混淆内容（长 Base64 块）"
+      ],
+      "reviewed_commit": "2187fa48dfb05126850d3a1516be910718afdc79",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T04:04:16.717Z"
     },
     {
       "id": "icetomoyo/dsh_workflow",
@@ -546,80 +927,94 @@
       "risk_evidence": []
     },
     {
-      "id": "vlln/whale-girl",
-      "name": "whale-girl",
-      "description": "DSH Web GUI 桌面宠物插件（QQ 宠物形态）：右下角悬浮、可拖拽、投喂与玩耍的积累型伙伴。",
-      "usage": "dsh plugin --profile web add \"github:vlln/whale-girl#main\"",
-      "repo_url": "https://github.com/vlln/whale-girl",
-      "homepage": "https://github.com/vlln/whale-girl",
-      "stars": 194,
-      "language": "JavaScript",
-      "license": "MIT",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin"
-      ],
-      "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 10,
-      "open_issues": 4,
-      "watchers": 0,
-      "pushed_at": "2026-08-15T15:15:20Z",
-      "archived": false,
-      "description_i18n": {
-        "zh": "DSH Web GUI 桌面宠物插件（QQ 宠物形态）：右下角悬浮、可拖拽、投喂与玩耍的积累型伙伴。",
-        "en": "A DSH Web GUI desktop pet plugin in QQ-pet style: a floating, draggable companion in the lower-right corner that you can feed and play with."
-      },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
-    },
-    {
       "id": "hust-open-atom-club/oh-dsh",
-      "name": "Oh-DSH",
-      "description": "一站式 DeepSeek Harness 社区发行版：桌面端、Web UI 与 TUI 三种形态统一体验，分层安装。",
-      "usage": "按 README 的桌面/Web/TUI 安装脚本一键安装发行版",
+      "name": "oh-dsh",
+      "description": " 一套 DSH runtime，Desktop、Web 与 TUI 三种开发体验。",
+      "usage": "dsh plugin --profile web add github:hust-open-atom-club/oh-dsh",
       "repo_url": "https://github.com/hust-open-atom-club/oh-dsh",
-      "homepage": "https://github.com/hust-open-atom-club/oh-dsh",
-      "stars": 215,
-      "language": "TypeScript",
-      "license": "BSD-3-Clause",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin"
-      ],
-      "category": "distribution",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 19,
-      "open_issues": 25,
-      "watchers": 3,
+      "homepage": "https://dsh.openatom.club/",
+      "stars": 225,
+      "forks": 21,
+      "open_issues": 26,
+      "watchers": 0,
       "pushed_at": "2026-08-16T14:59:56Z",
       "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "ai-agent",
+        "cordis",
+        "dsh",
+        "dsh-plugin",
+        "dsh-plugins"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "description_i18n": {
-        "zh": "一站式 DeepSeek Harness 社区发行版：桌面端、Web UI 与 TUI 三种形态统一体验，分层安装。",
-        "en": "An all-in-one DeepSeek Harness community distribution: unified desktop, Web UI, and TUI experiences with layered installation."
+        "zh": "这里存放一类设计文档。Agent Note 记录影响本代码库的决策或提案：代码和文档无法承载的为什么以及放弃了什么。本文件规定 Agent Note 存放在哪里、何时需要写一份，以及文件内格式。",
+        "en": "🖥️ Three interaction surfaces Use the same ohdsh command to start Desktop, Web, or TUI. All surfaces share sessions, credentials, skins, and plugin caches while keeping separate Profiles."
       },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
+      "risk_level": "moderate",
+      "risk_notes": [
+        "使用系统/子进程执行外部命令 @ .agents/skills/record-browser-gif/scripts/encode_gif.py:70",
+        "使用系统/子进程执行外部命令 @ .agents/skills/record-browser-gif/scripts/encode_gif.py:236",
+        "监听键盘输入事件 @ plugins/panel-controls/src/terminal/TerminalPanel.tsx:60",
+        "访问第三方网络地址（如 dshfind.com） @ README.md",
+        "访问第三方网络地址（如 oh-dsh.internal） @ plugins/sidebar/src/index.ts",
+        "访问第三方网络地址（如 open.bigmodel.cn） @ plugins/vision/src/client/index.tsx",
+        "读取环境变量（可能包含敏感信息） @ src/cli.ts"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "使用系统/子进程执行外部命令",
+          "file": ".agents/skills/record-browser-gif/scripts/encode_gif.py",
+          "line": 70
+        },
+        {
+          "explanation": "使用系统/子进程执行外部命令",
+          "file": ".agents/skills/record-browser-gif/scripts/encode_gif.py",
+          "line": 236
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "plugins/panel-controls/src/terminal/TerminalPanel.tsx",
+          "line": 60
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dshfind.com）",
+          "file": "README.md"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 oh-dsh.internal）",
+          "file": "plugins/sidebar/src/index.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 open.bigmodel.cn）",
+          "file": "plugins/vision/src/client/index.tsx"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "src/cli.ts"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 dshfind.com）",
+        "访问第三方网络地址（如 oh-dsh.internal）",
+        "访问第三方网络地址（如 open.bigmodel.cn）",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "使用系统/子进程执行外部命令",
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "aa883987d3b49f29bffd8eb1fee53234a10823a8",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T04:04:16.717Z"
     },
     {
       "id": "Ruler4396/dsh-launcher",
@@ -661,159 +1056,163 @@
       "risk_evidence": []
     },
     {
-      "id": "ZSeven-W/dsh-openpencil",
-      "name": "DSH OpenPencil",
-      "description": "OpenPencil 设计预览与编辑插件：在会话中预览、检查并编辑真实 .op 文档。",
-      "usage": "dsh plugin add @zseven-w/dsh-openpencil（npm）",
-      "repo_url": "https://github.com/ZSeven-W/dsh-openpencil",
-      "homepage": "https://github.com/ZSeven-W/dsh-openpencil",
-      "stars": 99,
-      "language": "TypeScript",
-      "license": "MIT",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin"
-      ],
-      "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 3,
-      "open_issues": 1,
-      "watchers": 0,
-      "pushed_at": "2026-08-16T17:24:40Z",
-      "archived": false,
-      "description_i18n": {
-        "zh": "OpenPencil 设计预览与编辑插件：在会话中预览、检查并编辑真实 .op 文档。",
-        "en": "OpenPencil design preview and editing plugin: preview, inspect, and edit real .op documents in a session."
-      },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
-    },
-    {
       "id": "Nagi-ovo/dsh-visualize",
       "name": "dsh-visualize",
-      "description": "对话内生成式 UI 插件：模型把交互式 HTML 卡片直接画进会话流，用于模拟器、图表、对比面板与 UI mockup。",
+      "description": "在 DSH 对话中生成交互式可视化｜Render model-generated interactive cards inside DSH conversations",
       "usage": "dsh plugin --profile web add github:Nagi-ovo/dsh-visualize",
       "repo_url": "https://github.com/Nagi-ovo/dsh-visualize",
       "homepage": "https://github.com/Nagi-ovo/dsh-visualize",
       "stars": 161,
-      "language": "TypeScript",
-      "license": "unknown",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin",
-        "visualize"
-      ],
-      "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
       "forks": 3,
       "open_issues": 1,
       "watchers": 0,
       "pushed_at": "2026-08-15T15:58:20Z",
       "archived": false,
+      "language": "TypeScript",
+      "license": "BSD-3-Clause",
+      "topics": [
+        "data-visualization",
+        "deepseek-harness",
+        "dsh-plugin",
+        "interactive-visualization"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "description_i18n": {
-        "zh": "对话内生成式 UI 插件：模型把交互式 HTML 卡片直接画进会话流，用于模拟器、图表、对比面板与 UI mockup。",
-        "en": "In-conversation generative UI plugin: the model draws interactive HTML cards directly into the conversation flow for simulators, charts, comparison panels, and UI mockups."
+        "zh": "让 DSH 不只回答一段文字。模型调用 visualize 后，Web UI 会在对话里直接出现一张可交互卡片，用来做模拟器、图表、对比面板或 UI mockup。",
+        "en": "DSH does not have to answer with text alone. When the model calls visualize, the Web UI renders an interactive card inside the conversation for simulators, charts, comparison panels, and UI mockups."
       },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ lib/client.js:70",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ src/fragment.ts:228",
+        "访问第三方网络地址（如 dshfind.com） @ README.md",
+        "访问第三方网络地址（如 cdnjs.cloudflare.com、esm.sh、fonts.bunny.net、fonts.googleapis.com） @ lib/client.js",
+        "读取环境变量（可能包含敏感信息） @ tsdown.config.ts",
+        "访问第三方网络地址（如 videolan.org） @ assets/demo.mp4"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/client.js",
+          "line": 70
+        },
+        {
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "src/fragment.ts",
+          "line": 228
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dshfind.com）",
+          "file": "README.md"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 cdnjs.cloudflare.com、esm.sh、fonts.bunny.net、fonts.googleapis.com）",
+          "file": "lib/client.js"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "tsdown.config.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 videolan.org）",
+          "file": "assets/demo.mp4"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 dshfind.com）",
+        "访问第三方网络地址（如 cdnjs.cloudflare.com、esm.sh、fonts.bunny.net、fonts.googleapis.com）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 videolan.org）"
+      ],
+      "security_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
+      ],
+      "reviewed_commit": "dd41b388db67f146c928772c6242c0acdb5bbeae",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T04:04:16.717Z"
     },
     {
       "id": "NanmiCoder/dsh-agent-teams",
       "name": "dsh-agent-teams",
-      "description": "AgentTeams 多智能体团队插件：一句话驱动团队协作完成目标，并在 Web GUI 右上角实时查看团队活动面板。",
-      "usage": "npx -p @deepseek-ai/dsh dsh plugin --profile web add github:NanmiCoder/dsh-agent-teams",
+      "description": "AgentTeams plugin for DeepSeek Harness",
+      "usage": "dsh plugin --profile web add github:NanmiCoder/dsh-agent-teams",
       "repo_url": "https://github.com/NanmiCoder/dsh-agent-teams",
       "homepage": "https://github.com/NanmiCoder/dsh-agent-teams",
-      "stars": 414,
-      "language": "TypeScript",
-      "license": "unknown",
-      "topics": [
-        "deepseek-harness",
-        "dsh-plugin",
-        "multi-agent"
-      ],
-      "category": "plugin",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
-      "official": false,
-      "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 37,
-      "open_issues": 11,
+      "stars": 439,
+      "forks": 39,
+      "open_issues": 12,
       "watchers": 0,
       "pushed_at": "2026-08-16T21:15:31Z",
       "archived": false,
-      "description_i18n": {
-        "zh": "AgentTeams 多智能体团队插件：一句话驱动团队协作完成目标，并在 Web GUI 右上角实时查看团队活动面板。",
-        "en": "AgentTeams multi-agent teamwork plugin: one sentence drives a team to complete a goal, with a live team activity panel in the top-right of the Web GUI."
-      },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
-    },
-    {
-      "id": "0xsline/awesome-deepseek-harness",
-      "name": "awesome-deepseek-harness",
-      "description": "DeepSeek Harness 生态精选：来自 dsh-external/hub 与公开 dsh-plugin 话题的插件、工具与基础设施。",
-      "usage": "打开网页浏览生态精选，或 git clone 到本地阅读",
-      "repo_url": "https://github.com/0xsline/awesome-deepseek-harness",
-      "homepage": "https://deepseekdocs.com/",
-      "stars": 602,
-      "language": "Python",
-      "license": "CC0-1.0",
+      "language": "TypeScript",
+      "license": "MIT",
       "topics": [
-        "deepseek-harness",
-        "dsh-plugin",
-        "awesome-list"
+        "agentteams",
+        "deepseekharness",
+        "dsh",
+        "dsh-agent-teams",
+        "dsh-plugin"
       ],
-      "category": "collection",
-      "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-14T00:00:00Z",
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
       "official": false,
       "compatibility": "compatible",
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "forks": 222,
-      "open_issues": 14,
-      "watchers": 2,
-      "pushed_at": "2026-08-16T17:15:04Z",
-      "archived": false,
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "description_i18n": {
-        "zh": "DeepSeek Harness 生态精选：来自 dsh-external/hub 与公开 dsh-plugin 话题的插件、工具与基础设施。",
-        "en": "A curated DeepSeek Harness ecosystem list: plugins, tools, and infrastructure from dsh-external/hub and public dsh-plugin topics."
+        "zh": "dsh-agent-teams 让当前 DeepSeek Harness 会话成为队长：创建可续聊的子 Agent、把目标拆成有依赖的任务，并通过直达消息协调成员工作。",
+        "en": "dsh-agent-teams turns the current DeepSeek Harness session into a captain that can assemble durable sub-agents, split a goal into dependency-aware tasks, and coordinate work through direct messages."
       },
-      "kind": "code",
-      "reviewed_commit": "",
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": []
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "监听键盘输入事件 @ src/client/ActivityPanel.tsx:285",
+        "访问第三方网络地址（如 x） @ src/index.ts",
+        "读取环境变量（可能包含敏感信息） @ tsdown.config.ts"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/ActivityPanel.tsx",
+          "line": 285
+        },
+        {
+          "explanation": "访问第三方网络地址（如 x）",
+          "file": "src/index.ts"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "tsdown.config.ts"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 x）",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "00857a1f1a8559f860286ca082e43f796b5e9389",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T04:04:16.717Z"
     },
     {
       "id": "AdamPlatin123/awesome-dsh-plugins",
@@ -7162,6 +7561,472 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-16T15:15:23.499Z"
+    },
+    {
+      "id": "cocofhu/anime-find",
+      "name": "anime-find",
+      "description": "DeepSeek Harness 搜番插件：对话内多源搜索番剧，卡片展示 Bangumi 评分与详情，支持复制磁力。",
+      "usage": "dsh plugin --profile web add github:cocofhu/anime-find",
+      "repo_url": "https://github.com/cocofhu/anime-find",
+      "homepage": "https://github.com/cocofhu/anime-find#readme",
+      "stars": 133,
+      "forks": 26,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T19:59:40Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "anime",
+        "anime-search",
+        "bangumi",
+        "deepseek",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "magnet",
+        "mikan",
+        "plugin",
+        "torrent",
+        "typescript"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "DeepSeek Harness 搜番插件。在对话中搜索番剧，以可点击卡片展示结果，并在详情面板中查看字幕组、磁力链接和种子文件。"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "监听键盘输入事件 @ src/client.js:601",
+        "存在 Base64 解码行为 @ src/streaming.ts:188",
+        "存在编码转义字符串（疑似混淆） @ src/tests/parse.test.ts:336",
+        "访问第三方网络地址（如 anibt.net、animes.garden、api.minimaxi.com、mikanani.me） @ README.md",
+        "访问第三方网络地址（如 api.bgm.tv、bgm.tv、next.bgm.tv） @ src/bangumi.ts",
+        "访问第三方网络地址（如 anibt.net、api.animes.garden、bgm.tv、dm1.xfdm.pro） @ src/client.js",
+        "访问第三方网络地址（如 dm1.xfdm.pro） @ src/config-store.ts",
+        "访问第三方网络地址（如 anibt.net、api.animes.garden、mikanani.me） @ src/host.ts",
+        "访问第三方网络地址（如 local） @ src/public-path.ts",
+        "访问第三方网络地址（如 example.com） @ src/tests/fixtures/bangumi-comments.json",
+        "访问第三方网络地址（如 bgm.tv） @ src/tests/fixtures/mikan-detail.html",
+        "访问第三方网络地址（如 mikanani.me） @ src/tests/fixtures/mikan-search.html",
+        "访问第三方网络地址（如 anibt.net、api.animes.garden、example.com、mikanani.me） @ src/tests/parse.test.ts",
+        "访问第三方网络地址（如 host） @ src/tests/public-path.test.ts",
+        "访问第三方网络地址（如 anibt.net、api.animes.garden、cdn.example.test、cdn.media.example.test） @ src/tests/streaming.test.ts"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client.js",
+          "line": 601
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "src/streaming.ts",
+          "line": 188
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "src/tests/parse.test.ts",
+          "line": 336
+        },
+        {
+          "explanation": "访问第三方网络地址（如 anibt.net、animes.garden、api.minimaxi.com、mikanani.me）",
+          "file": "README.md"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.bgm.tv、bgm.tv、next.bgm.tv）",
+          "file": "src/bangumi.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 anibt.net、api.animes.garden、bgm.tv、dm1.xfdm.pro）",
+          "file": "src/client.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dm1.xfdm.pro）",
+          "file": "src/config-store.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 anibt.net、api.animes.garden、mikanani.me）",
+          "file": "src/host.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 local）",
+          "file": "src/public-path.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 example.com）",
+          "file": "src/tests/fixtures/bangumi-comments.json"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 bgm.tv）",
+          "file": "src/tests/fixtures/mikan-detail.html"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 mikanani.me）",
+          "file": "src/tests/fixtures/mikan-search.html"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 anibt.net、api.animes.garden、example.com、mikanani.me）",
+          "file": "src/tests/parse.test.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 host）",
+          "file": "src/tests/public-path.test.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 anibt.net、api.animes.garden、cdn.example.test、cdn.media.example.test）",
+          "file": "src/tests/streaming.test.ts"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 anibt.net、animes.garden、api.minimaxi.com、mikanani.me）",
+        "访问第三方网络地址（如 api.bgm.tv、bgm.tv、next.bgm.tv）",
+        "访问第三方网络地址（如 anibt.net、api.animes.garden、bgm.tv、dm1.xfdm.pro）",
+        "访问第三方网络地址（如 dm1.xfdm.pro）",
+        "访问第三方网络地址（如 anibt.net、api.animes.garden、mikanani.me）",
+        "访问第三方网络地址（如 local）",
+        "访问第三方网络地址（如 example.com）",
+        "访问第三方网络地址（如 bgm.tv）",
+        "访问第三方网络地址（如 mikanani.me）",
+        "访问第三方网络地址（如 anibt.net、api.animes.garden、example.com、mikanani.me）",
+        "访问第三方网络地址（如 host）",
+        "访问第三方网络地址（如 anibt.net、api.animes.garden、cdn.example.test、cdn.media.example.test）"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "监听键盘输入事件",
+        "存在 Base64 解码行为",
+        "存在编码转义字符串（疑似混淆）"
+      ],
+      "reviewed_commit": "e135c6c0d2b65074195010773c345e0da8a583cf",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T04:04:16.717Z"
+    },
+    {
+      "id": "wxkingstar/SpecFusion",
+      "name": "SpecFusion",
+      "description": "在 DeepSeek Harness / Claude Code / Cursor / Codex / Gemini CLI 里直接搜索 20 个中国开放平台的 65,600+ 篇 API 文档；零配置，支持 Skill 与 DSH 原生插件。",
+      "usage": "dsh plugin --profile web add github:wxkingstar/SpecFusion",
+      "repo_url": "https://github.com/wxkingstar/SpecFusion",
+      "homepage": "https://specfusion.kingstar.xin/",
+      "stars": 51,
+      "forks": 14,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T17:45:21Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "ai-agents",
+        "alipay",
+        "api-documentation",
+        "chinese-api",
+        "claude-code",
+        "cursor",
+        "deepseek-harness",
+        "dingtalk",
+        "douyin",
+        "dsh-plugin",
+        "feishu",
+        "gemini-cli",
+        "jd",
+        "pinduoduo",
+        "shein",
+        "taobao",
+        "wechat",
+        "wecom",
+        "xiaohongshu",
+        "youzan"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "🌐 官网：specfusion.kingstar.xin"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#2",
+        "存在编码转义字符串（疑似混淆） @ api/src/services/tokenizer.ts:97",
+        "依赖 fastify@5.2.1 存在已知漏洞（GHSA-444r-cwp2-x5xf, GHSA-jx2c-rxcm-jvmq, GHSA-mg2h-6x62-wpwc） @ <dependencies>",
+        "依赖 axios@1.7.7 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5） @ <dependencies>",
+        "依赖 js-yaml@4.1.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj, GHSA-h67p-54hq-rp68） @ <dependencies>",
+        "访问第三方网络地址（如 specfusion.inagora.org、specfusion.kingstar.xin、your-host） @ README.md",
+        "读取环境变量（可能包含敏感信息） @ api/src/index.ts",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 specfusion.inagora.org） @ dsh-plugin/lib/index.js",
+        "访问第三方网络地址（如 specfusion.inagora.org） @ dsh-plugin/lib/index.js",
+        "访问第三方网络地址（如 host、specfusion.inagora.org） @ dsh-plugin/lib/client.js",
+        "访问第三方网络地址（如 api.volcengine.com、developer.work.weixin.qq.com、developers.weixin.qq.com、doc.youzanyun.com） @ dsh-plugin/lib/skill.js",
+        "访问第三方网络地址（如 ideservice.alipay.com、opendocs.alipay.com） @ scrapers/src/sources/alipay.ts",
+        "访问第三方网络地址（如 dashscope.aliyuncs.com、help.aliyun.com） @ scrapers/src/sources/bailian.ts",
+        "访问第三方网络地址（如 open.italent.cn） @ scrapers/src/sources/beisen.ts"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#2"
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "api/src/services/tokenizer.ts",
+          "line": 97
+        },
+        {
+          "explanation": "依赖 fastify@5.2.1 存在已知漏洞（GHSA-444r-cwp2-x5xf, GHSA-jx2c-rxcm-jvmq, GHSA-mg2h-6x62-wpwc）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 axios@1.7.7 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 js-yaml@4.1.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj, GHSA-h67p-54hq-rp68）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 specfusion.inagora.org、specfusion.kingstar.xin、your-host）",
+          "file": "README.md"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "api/src/index.ts"
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 specfusion.inagora.org）",
+          "file": "dsh-plugin/lib/index.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 specfusion.inagora.org）",
+          "file": "dsh-plugin/lib/index.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 host、specfusion.inagora.org）",
+          "file": "dsh-plugin/lib/client.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.volcengine.com、developer.work.weixin.qq.com、developers.weixin.qq.com、doc.youzanyun.com）",
+          "file": "dsh-plugin/lib/skill.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 ideservice.alipay.com、opendocs.alipay.com）",
+          "file": "scrapers/src/sources/alipay.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dashscope.aliyuncs.com、help.aliyun.com）",
+          "file": "scrapers/src/sources/bailian.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 open.italent.cn）",
+          "file": "scrapers/src/sources/beisen.ts"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 specfusion.inagora.org、specfusion.kingstar.xin、your-host）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 specfusion.inagora.org）",
+        "访问第三方网络地址（如 specfusion.inagora.org）",
+        "访问第三方网络地址（如 host、specfusion.inagora.org）",
+        "访问第三方网络地址（如 api.volcengine.com、developer.work.weixin.qq.com、developers.weixin.qq.com、doc.youzanyun.com）",
+        "访问第三方网络地址（如 ideservice.alipay.com、opendocs.alipay.com）",
+        "访问第三方网络地址（如 dashscope.aliyuncs.com、help.aliyun.com）",
+        "访问第三方网络地址（如 open.italent.cn）"
+      ],
+      "security_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "存在编码转义字符串（疑似混淆）",
+        "依赖 fastify@5.2.1 存在已知漏洞（GHSA-444r-cwp2-x5xf, GHSA-jx2c-rxcm-jvmq, GHSA-mg2h-6x62-wpwc）",
+        "依赖 axios@1.7.7 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5）",
+        "依赖 js-yaml@4.1.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj, GHSA-h67p-54hq-rp68）"
+      ],
+      "reviewed_commit": "2d2b007f50dd0f234eb21d0af36f9b34520ee6da",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T04:04:16.717Z"
+    },
+    {
+      "id": "kanghelyu/dsh-deepseek-flow",
+      "name": "dsh-deepseek-flow",
+      "description": "",
+      "usage": "dsh plugin --profile web add github:kanghelyu/dsh-deepseek-flow",
+      "repo_url": "https://github.com/kanghelyu/dsh-deepseek-flow",
+      "homepage": "https://deepseekflow.kanghelyu.org/",
+      "stars": 29,
+      "forks": 3,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T14:23:24Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "ai-workflow",
+        "dark-mode",
+        "deepseek-harness",
+        "developer-tools",
+        "dsh-plugin",
+        "flow-editor",
+        "markdown",
+        "visual-workflow",
+        "visualization",
+        "workflow",
+        "workflow-builder",
+        "workflow-management"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "- Markdown 是唯一事实来源——一份总控 WORKFLOW.md，每个步骤拥有独立的 STEP.md 工作区。",
+        "en": "- Markdown as the source of truth — one master WORKFLOW.md, plus one STEP.md workspace for each step."
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ lib/index.js",
+        "监听键盘输入事件 @ src/client/entry.js:1816",
+        "监听键盘输入事件 @ lib/client.js:3097",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:95",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:126",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:885",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:887",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:889",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:891",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:897",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:898",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:899",
+        "使用屏幕/画面采集能力 @ scripts/df-debug.mjs:62",
+        "使用屏幕/画面采集能力 @ scripts/standalone-ui-qa.mjs:161",
+        "使用屏幕/画面采集能力 @ scripts/ui-shot.mjs:139",
+        "使用屏幕/画面采集能力 @ scripts/ui-shot.mjs:143",
+        "访问第三方网络地址（如 deepseekflow.kanghelyu.org） @ README.md",
+        "读取环境变量（可能包含敏感信息） @ scripts/standalone-ui-qa.mjs"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "lib/index.js"
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/entry.js",
+          "line": 1816
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 3097
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 95
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 126
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 885
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 887
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 889
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 891
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 897
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 898
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 899
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/df-debug.mjs",
+          "line": 62
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/standalone-ui-qa.mjs",
+          "line": 161
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/ui-shot.mjs",
+          "line": 139
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/ui-shot.mjs",
+          "line": 143
+        },
+        {
+          "explanation": "访问第三方网络地址（如 deepseekflow.kanghelyu.org）",
+          "file": "README.md"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "scripts/standalone-ui-qa.mjs"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 deepseekflow.kanghelyu.org）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "监听键盘输入事件",
+        "存在编码转义字符串（疑似混淆）",
+        "使用屏幕/画面采集能力"
+      ],
+      "reviewed_commit": "06d3f16245757fd33f5c444bacfdff3747c5bc87",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T04:04:16.717Z"
     }
   ]
 }

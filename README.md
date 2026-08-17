@@ -61,41 +61,35 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [dsh-deep-whale](https://github.com/Small-tailqwq/dsh-deep-whale) | DeepSeek Harness Web GUI 的鲸鱼娘主题皮肤系列(独立分发仓库)。 | `dsh plugin --profile web add github:Small-tailqwq/dsh-deep-whale` |
 | [awesome-dsh-plugins](https://github.com/AdamPlatin123/awesome-dsh-plugins) | 前部索引仓库（Radar）：自动扫描发现所有 dsh 插件候选，经测试合格的移入后序精选目录仓库。 | `打开网页查看自动扫描 Radar 与精选目录` |
 | [working-activity](https://github.com/ccch1mneyyy/working-activity) | 为 DeepSeek Harness 打造的一条实时 "工作状态行"：模型的实时活动——俏皮思考文案、真正在跑的工具、已耗时、收尾摘要——在 agent 干活时展示出来。 | `dsh plugin --profile web add github:ccch1mneyyy/working-activity` |
-| [awesome-deepseek-harness](https://github.com/0xsline/awesome-deepseek-harness) | DeepSeek Harness 生态精选：来自 dsh-external/hub 与公开 dsh-plugin 话题的插件、工具与基础设施。 | `打开网页浏览生态精选，或 git clone 到本地阅读` |
 | [dsh-market](https://github.com/dsh-market/dsh-market) | 装在 DeepSeek Harness 里的插件市场。打开设置 → 插件市场 → 逛一逛，点一下，装好。 | `dsh plugin --profile web add github:dsh-market/dsh-market` |
-| [DSH Vision Toolkit](https://github.com/Anionex/dsh-vision-toolkit) | 把 agent-vision-toolkit 以原生 Profile Bundle 引入 DSH：带意图的图片问答、长截图 OCR、UI 还原、像素校验等视觉工具。 | `dsh plugin add github:Anionex/dsh-vision-toolkit` |
+| [dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) | 更强大的视觉工具箱——给 DeepSeek Harness 里的纯文本模型装上眼睛：图片问答、长图 OCR、前端 UI 还原、GUI 视觉任务，一套视觉工具箱和一个 Skill。 | `dsh plugin --profile web add github:Anionex/dsh-vision-toolkit` |
 | [graph-memory](https://github.com/adoresever/graph-memory) | 为 AI Agent 提供可检索、可追溯、跨会话的长期记忆 一个宿主无关的图记忆内核，原生接入 DeepSeek Harness，并继续兼容 OpenClaw。 | `dsh plugin --profile web add github:adoresever/graph-memory` |
 | [mnemon](https://github.com/mnemon-dev/mnemon) | LLM-supervised persistent memory for AI agents — graph-based recall, cross-session knowledge, single binary. Works with Claude Code, OpenClaw, and any CLI agent. | `dsh plugin --profile web add github:mnemon-dev/mnemon` |
 | [dsh-ads](https://github.com/Nagi-ovo/dsh-ads) | 是兄弟就来蹬我！DSH Web UI 广告：2005 年中文站点风格的侧栏广告 / 对话内信息流 / 角落弹窗 + 一个真实热区比视觉小得多的关闭叉。素材全虚构，域名打码。 | `dsh plugin --profile web add github:Nagi-ovo/dsh-ads` |
+| [dsh-agent-teams](https://github.com/NanmiCoder/dsh-agent-teams) | dsh-agent-teams 让当前 DeepSeek Harness 会话成为队长：创建可续聊的子 Agent、把目标拆成有依赖的任务，并通过直达消息协调成员工作。 | `dsh plugin --profile web add github:NanmiCoder/dsh-agent-teams` |
 | [dsh-vision-router](https://github.com/ysr666/dsh-vision-router) | 大多数 DSH 视觉插件把图片“翻译”成一段文字描述再喂给 DeepSeek——有损、一次性、看不见像素。本插件把原图像素留在视觉模型侧、把推理留在 DeepSeek 侧，并把“看图”变成一次普通的工具调用： | `dsh plugin --profile web add github:ysr666/dsh-vision-router` |
 | [superdesign-skill](https://github.com/superdesigndev/superdesign-skill) | The design skill for Claude Code, Cursor and any coding agent. Stop shipping AI-slop UI: turn it into shippable, tasteful frontend. Install: npx skills add superdesigndev/superdesign-skill. Powered by superdesign.dev | `dsh plugin --profile web add github:superdesigndev/superdesign-skill` |
-| [dsh-agent-teams](https://github.com/NanmiCoder/dsh-agent-teams) | AgentTeams 多智能体团队插件：一句话驱动团队协作完成目标，并在 Web GUI 右上角实时查看团队活动面板。 | `npx -p @deepseek-ai/dsh dsh plugin --profile web add github:NanmiCoder/dsh-agent-teams` |
 | [de-anthropocentric-research-engine](https://github.com/yogsoth-ai/de-anthropocentric-research-engine) | 900+ pure-markdown skills for autonomous AI research, organized as 9 freely-composable packages over a 4-layer hierarchy (Campaign → Strategy → Tactic → SOP). Non-linear orchestration with backtracking, 6 MCP integrations. The AI is the researcher — you set the direction. | `dsh plugin --profile web add github:yogsoth-ai/de-anthropocentric-research-engine` |
 | [dsh-handbook](https://github.com/Electricitysheep/dsh-handbook) | DeepSeek Harness (dsh) 从 0 到 1 深度手册：安装/插件开发/性能调优/实测案例/同模型多 Agent 实测对比（中文 + 英文 PDF） | `dsh plugin --profile web add github:Electricitysheep/dsh-handbook` |
-| [dsh-at-file](https://github.com/omdsh-dev/dsh-at-file) | Codex 风格 @file 提及：在输入框搜索工作区文件，回车附加，发送时把文件内容注入模型。 | `dsh plugin --profile web add https://github.com/omdsh-dev/dsh-at-file/archive/refs/heads/main.tar.gz` |
-| [Oh-DSH](https://github.com/hust-open-atom-club/oh-dsh) | 一站式 DeepSeek Harness 社区发行版：桌面端、Web UI 与 TUI 三种形态统一体验，分层安装。 | `按 README 的桌面/Web/TUI 安装脚本一键安装发行版` |
+| [oh-dsh](https://github.com/hust-open-atom-club/oh-dsh) | 这里存放一类设计文档。Agent Note 记录影响本代码库的决策或提案：代码和文档无法承载的为什么以及放弃了什么。本文件规定 Agent Note 存放在哪里、何时需要写一份，以及文件内格式。 | `dsh plugin --profile web add github:hust-open-atom-club/oh-dsh` |
 | [dsh-work](https://github.com/vibeinging/dsh-work) | 一个本地的 AI 工作台 Profile Bundle：在官方 DSH Web Profile 之上扩展，把 Agent 会话、项目文件、数据分析、Web 研究、MCP 与 Office 产物整合进一个 Electron 桌面应用。 | `dsh plugin --profile web add github:vibeinging/dsh-work` |
 | [deepseek-harness-desktop-app](https://github.com/vibeinging/deepseek-harness-desktop-app) | 本地 AI 桌面工作台：整合 DSH 会话、项目、文件、Web 研究、插件与 Office 产物。 | `dsh plugin --profile web add github:vibeinging/deepseek-harness-desktop-app` |
-| [dsh-browser](https://github.com/Lum1104/dsh-browser) | Chrome 侧边栏扩展与桥接插件，让 DSH 直接操作你正在使用的浏览器，无需视觉能力。 | `运行 scripts/install.sh 安装 Chrome MV3 扩展与插件桥接` |
-| [whale-girl](https://github.com/vlln/whale-girl) | DSH Web GUI 桌面宠物插件（QQ 宠物形态）：右下角悬浮、可拖拽、投喂与玩耍的积累型伙伴。 | `dsh plugin --profile web add "github:vlln/whale-girl#main"` |
 | [dsh-tianshu-tui](https://github.com/huiliyi37/dsh-tianshu-tui) | dsh-tianshu-tui — DeepSeek Harness terminal UI +harness workflow。是官方 DeepSeek Harness 上的交互式终端 UI 插件。渲染核心从本仓库自研的harness agent  Tianshu-Tui 演进而来，在官方的基础上增加了TDD、证据门、视觉图像模块等工作流。 | `dsh plugin --profile web add github:huiliyi37/dsh-tianshu-tui` |
 | [awesome-dsh-plugin](https://github.com/bruc3van/awesome-dsh-plugin) | 用 30 秒找到适合你的 DeepSeek Harness 插件：告诉你插件解决什么问题、适合谁、从哪里开始。 | `打开网页按“解决什么问题”快速选择插件` |
-| [dsh-visualize](https://github.com/Nagi-ovo/dsh-visualize) | 对话内生成式 UI 插件：模型把交互式 HTML 卡片直接画进会话流，用于模拟器、图表、对比面板与 UI mockup。 | `dsh plugin --profile web add github:Nagi-ovo/dsh-visualize` |
+| [dsh-visualize](https://github.com/Nagi-ovo/dsh-visualize) | 让 DSH 不只回答一段文字。模型调用 visualize 后，Web UI 会在对话里直接出现一张可交互卡片，用来做模拟器、图表、对比面板或 UI mockup。 | `dsh plugin --profile web add github:Nagi-ovo/dsh-visualize` |
 | [engramory](https://github.com/tinqiao-oss/engramory) | 一套有主见、零基础设施的、面向小规模 / 本地 / 文件式智能体记忆的协议 —— 一套强约束的策展纪律 + 一个校验器(tools/engramory_doctor.py),以常驻规则形式加载(CLAUDE.md / AGENTS.md / 宿主的规则文件)。它不是数据库、不是框架、也不是按相关性加载的 skill。记忆就是一个文件夹:一堆小小的、人能直接读的 markdown 文件,加一个每次会话都加载的索引。没有数据库、没有向量、没有服务器——就是你能打开、能读、能改、能 diff | `dsh plugin --profile web add github:tinqiao-oss/engramory` |
 | [DSH-Transparent-UI-Plugin](https://github.com/WYH66666666/DSH-Transparent-UI-Plugin) | 一套高自由度的玻璃质感主题，套在 DeepSeek Harness 网页端。顶栏、侧边栏、输入框、统计行、轨迹视图都成了磨砂玻璃片；玻璃模糊度、磨砂度、背景（流体或自定义壁纸）都能在设置卡片里自由调节。 | `dsh plugin --profile web add github:WYH66666666/DSH-Transparent-UI-Plugin` |
 | [deepseek-harness-studio](https://github.com/fufankeji/deepseek-harness-studio) | DeepSeek Harness 的 macOS & Windows 桌面端：零代码插件商店，一键安装与启用，视觉增强，自动化插件分发与 AI 推荐。 | `dsh plugin --profile web add github:fufankeji/deepseek-harness-studio` |
+| [dsh-genui](https://github.com/omdsh-dev/dsh-genui) | > 让模型的回答长出界面——文字还在，可交互的 UI 已经能用。 | `dsh plugin --profile web add github:omdsh-dev/dsh-genui` |
 | [notes](https://github.com/zhaoolee/notes) | 开源版锤子便签，复刻锤科美学，一键Docker私有化部署，支持skill调用，支持dsh plugin，支持多租户，一键生成公众号格式，支持导出便签为图片 | `dsh plugin --profile web add github:zhaoolee/notes` |
-| [dsh-genui](https://github.com/omdsh-dev/dsh-genui) | 在助手回复中渲染交互式 UI 组件：布局、图表、表单、测验、mermaid 等，经 dsh-ui fence 内联展示。 | `dsh plugin --profile web add github:omdsh-dev/dsh-genui` |
+| [anime-find](https://github.com/cocofhu/anime-find) | DeepSeek Harness 搜番插件。在对话中搜索番剧，以可点击卡片展示结果，并在详情面板中查看字幕组、磁力链接和种子文件。 | `dsh plugin --profile web add github:cocofhu/anime-find` |
 | [dsh-find-plugins](https://github.com/Nagi-ovo/dsh-find-plugins) | 对 DSH 说一句「有没有插件能……」，它就会从全 GitHub 的 dsh-plugin topic 里找出候选，解释差别，等你选好以后再安装和验证。 | `dsh plugin --profile web add github:Nagi-ovo/dsh-find-plugins` |
 | [dsh-launcher](https://github.com/Ruler4396/dsh-launcher) | DeepSeek Harness 的 Windows 轻量启动器：开机自启 + 独立小窗口，双击即用。 | `下载 Releases 的 .msi 或便携 ZIP，双击运行` |
 | [dsh-gitbash-preset](https://github.com/liceses/dsh-gitbash-preset) | DSH 自带的极简模式在 Windows 上无法使用，失败有两层原因： | `dsh plugin --profile web add github:liceses/dsh-gitbash-preset` |
-| [dsh-memory-evolve](https://github.com/csyangwen/dsh-memory-evolve) | 纯插件实现的跨会话长期记忆与后台自我进化：五轨记忆、git 分支感知、技能自我进化、四轨待办、会话广播与搜索。 | `dsh plugin add github:csyangwen/dsh-memory-evolve` |
-| [ModSearch](https://github.com/liustack/modsearch) | 给纯文本模型“接上互联网”的 Web 搜索插件：搜索网页或 X，返回结构化 JSON 证据（搜索、抓取、引用）。 | `dsh plugin add @liustack/modsearch（npm）` |
 | [dsh-context](https://github.com/bowenliang123/dsh-context) | A DeepSeek Harness plugin for  Context insight dashboard — showing what the model's context window is made of and how it evolves. | `dsh plugin --profile web add github:bowenliang123/dsh-context` |
 | [dshfind](https://github.com/hikariming/dshfind) | DSH (DeepSeek Harness) 原理学习、插件市场与最佳实践 · Learn DSH principles, plugin marketplace & best practices | `dsh plugin --profile web add github:hikariming/dshfind` |
 | [Deepseek-Harness-Desktop](https://github.com/ChisaAlter/Deepseek-Harness-Desktop) | DSH桌面端，支持主题和背景图等多种个性化配置。Electron desktop shell for DeepSeek Harness web UI | `dsh plugin --profile web add github:ChisaAlter/Deepseek-Harness-Desktop` |
 | [humanizer-ru](https://github.com/Vladimir-Human/humanizer-ru) | Скилл для ИИ-агентов: находит и убирает следы машинной генерации из русского текста. 38 паттернов, 39 regex-маркеров с реестром доказательств, слепые парные прогоны, файловый слой снятия C2PA/EXIF/XMP \| Russian AI-writing humanizer skill with file metadata cleaning | `dsh plugin --profile web add github:Vladimir-Human/humanizer-ru` |
-| [DSH OpenPencil](https://github.com/ZSeven-W/dsh-openpencil) | OpenPencil 设计预览与编辑插件：在会话中预览、检查并编辑真实 .op 文档。 | `dsh plugin add @zseven-w/dsh-openpencil（npm）` |
 | [Awesome-DeepSeek-Harness-Plugins](https://github.com/Zhiyuan-Fan/Awesome-DeepSeek-Harness-Plugins) | 每日维护的 DeepSeek Harness（DSH）公开插件与扩展精选目录，涵盖工具、技能、模型提供商、记忆、自动化、运行时、桌面客户端、浏览器集成与开发者工具。 | `dsh plugin --profile web add github:Zhiyuan-Fan/Awesome-DeepSeek-Harness-Plugins` |
 | [awesome-deepseek-harness](https://github.com/Dominic789654/awesome-deepseek-harness) | > 面向 DeepSeek Harness（DSH） 的 插件 / Skill / MCP / Patch（Profile）层 / 编排器 / 聚合器 / UI 精选清单 —— DeepSeek 官方 agent 运行框架，核心理念 Model + Harness = Agent。 | `dsh plugin --profile web add github:Dominic789654/awesome-deepseek-harness` |
 | [awesome-deepseek-harness](https://github.com/libukai/awesome-deepseek-harness) | - 目录 - 快速开始 - 启动 Web UI | `dsh plugin --profile web add github:libukai/awesome-deepseek-harness` |
@@ -105,13 +99,13 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [tokenbank](https://github.com/wink-run/tokenbank) | > 个人AI中枢 · Token 管家 > > 用的明白 · 用的节省 · 用的简单 · 越用越懂你 · 闲置赚钱 | `dsh plugin --profile web add github:wink-run/tokenbank` |
 | [gal-view](https://github.com/Ayase34/gal-view) | 把 DSH 会话界面切换成 Galgame（视觉小说）风格的插件。 | `dsh plugin --profile web add github:Ayase34/gal-view` |
 | [sealos-skills](https://github.com/labring/sealos-skills) | 通过 AI 智能体将项目部署到 Sealos Cloud。 | `dsh plugin --profile web add github:labring/sealos-skills` |
+| [dsh-turn-rewind](https://github.com/Anionex/dsh-turn-rewind) | 为 DeepSeek Harness 提供 Turn 级项目文件恢复，并可选择从恢复后的这一轮继续新对话。 | `dsh plugin --profile web add github:Anionex/dsh-turn-rewind` |
 | [forkprobe](https://github.com/Jayden-X-L/forkprobe) | 别猜哪个 AI Skill 有用，直接并排看结果。 | `dsh plugin --profile web add github:Jayden-X-L/forkprobe` |
 | [awesome-DSH-plugin](https://github.com/Alex-Yanggg/awesome-DSH-plugin) | > 面向 DeepSeek Harness（DSH）的社区精选、厂商中立 Plugin 索引——覆盖开发工具、数据工作流、媒体、运维与日常生活等场景。 | `dsh plugin --profile web add github:Alex-Yanggg/awesome-DSH-plugin` |
 | [dsh-annotation](https://github.com/omdsh-dev/dsh-annotation) | DSH Web 选中批注插件：选文字→批注→回车随消息发送；气泡隐藏批注块（零闪烁）；回复按 Annotation N 逐条对照（可悬浮芯片）。官方 bundle，零核心改动 | `dsh plugin --profile web add github:omdsh-dev/dsh-annotation` |
 | [dsh-webui-market-plugin](https://github.com/Sanqi-normal/dsh-webui-market-plugin) | 在 dsh web GUI 内部的社区插件市场：浏览 awesome-dsh-plugin.com 的插件目录，直接在 设置 → 插件 → 插件市场 里安装 / 卸载插件到 profile。界面风格与 harness 前端一致（跟随系统深浅色主题），支持中英文（按系统语言自动切换）。 | `dsh plugin --profile web add github:Sanqi-normal/dsh-webui-market-plugin` |
 | [anysearch-dsh](https://github.com/anysearch-team/anysearch-dsh) | AnySearch web search provider and advanced search tools for DeepSeek Harness (DSH) | `dsh plugin --profile web add github:anysearch-team/anysearch-dsh` |
 | [ru-marketplace-mcp](https://github.com/Vladimir-Human/ru-marketplace-mcp) | Девять российских маркетплейсов и китайский Taobao как MCP-серверы: Wildberries, Ozon, Яндекс Маркет, Детский мир, Авито, Мегамаркет, Lamoda, DNS, Ситилинк. Плюс сравнение цен по всем сразу. Только чтение, ключи не нужны. | `dsh plugin --profile web add github:Vladimir-Human/ru-marketplace-mcp` |
-| [DSH Turn Rewind](https://github.com/Anionex/dsh-turn-rewind) | 对话与代码状态回退插件：基于持久 Change Ledger，回滚对话和工作区状态。 | `dsh plugin add github:Anionex/dsh-turn-rewind` |
 | [DSH Workflow](https://github.com/icetomoyo/dsh_workflow) | 把 DSH 的一次性多 Agent 调度升级为可生成、保存、治理、观察、恢复的 Workflow 层。 | `dsh plugin add github:icetomoyo/dsh_workflow` |
 | [dsh_workflow](https://github.com/omdsh-dev/dsh_workflow) | DSH 已经有很强的 Harness 基础设施：模型路由、子 Agent provider、工具权限、审批、Session 日志、后台 jobs 与 UI 事件。但仅有这些“执行原语”，团队仍需在每次会话里重新描述如何拆解、并发、验证和汇总。 | `dsh plugin --profile web add github:omdsh-dev/dsh_workflow` |
 | [deepseek-harness-desktop](https://github.com/ningbainb/deepseek-harness-desktop) | DeepSeek Harness 的开源 Windows 桌面客户端与 GUI：零配置安装，集成 Codex、插件、技能、SSH、移动端远程访问，并内置 11 款皮肤。 | `dsh plugin --profile web add github:ningbainb/deepseek-harness-desktop` |
@@ -122,7 +116,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [dsh-pet](https://github.com/PC2005-cloud/dsh-pet) | > 一只住在 DeepSeek Harness Web 界面里的桌面宠物：待机呼吸、随机动作、屏幕漫游、点击反应、可拖拽。 | `dsh plugin --profile web add github:PC2005-cloud/dsh-pet` |
 | [ProMentor](https://github.com/Lyn-77/ProMentor) | ProMentor 是一个 AI Coding Agent Skill。装上它，你的 AI 编程助手立刻化身为导师——扫描项目架构、生成阶梯式 Chapter、带你手写核心逻辑、自动判题、AI Code Review。 | `dsh plugin --profile web add github:Lyn-77/ProMentor` |
 | [dsh-mnemon](https://github.com/omdsh-dev/dsh-mnemon) | 完整逐页说明见 Sidebar 与对话交互指南。 | `dsh plugin --profile web add github:omdsh-dev/dsh-mnemon` |
-| [dsh-notification](https://github.com/omdsh-dev/dsh-notification) | DeepSeek Harness 会话完成时发送桌面通知，支持按结果类型和关键词规则控制。 | `dsh plugin --profile web add https://github.com/omdsh-dev/dsh-notification/archive/refs/heads/main.tar.gz` |
+| [dsh-notification](https://github.com/omdsh-dev/dsh-notification) | DeepSeek Harness Web GUI 的桌面通知插件。当会话结束一轮任务时，浏览器通过系统 Notification API 弹出通知，让你切到别的标签页也能知道 DSH 已经完成。按结束状态开关 + 关键词包含/排除规则，精确控制哪些完成要提醒。 | `dsh plugin --profile web add github:omdsh-dev/dsh-notification` |
 | [dsh-undo-plugin](https://github.com/lire1131/dsh-undo-plugin) | DSH 崩溃救援插件：可回滚配置与插件代码改动、保留敏感信息的安全快照、一键 SAFE MODE，并内置离线 CLI/GUI——即使 DSH 无法启动也能用。 | `dsh plugin --profile web add github:lire1131/dsh-undo-plugin` |
 | [dsh-toy](https://github.com/c3ll256/dsh-toy) | dsh-toy 是一个 DeepSeek Harness 插件，用于将小玩具接入 DSH。 | `dsh plugin --profile web add github:c3ll256/dsh-toy` |
 | [dsh-vision](https://github.com/oil-oil/dsh-vision) | \| 当前主模型 \| 图片处理方式 \| 最终回答者 \| \| --- \| --- \| --- \| \| 支持图片 \| 原图直接发送，不压缩、不预先 OCR \| 当前模型 \| | `dsh plugin --profile web add github:oil-oil/dsh-vision` |
@@ -130,6 +124,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [dsh-cost-meter](https://github.com/Han-1413141/dsh-cost-meter) | DeepSeek Harness 会话费用统计插件(界面中英双语) | `dsh plugin --profile web add github:Han-1413141/dsh-cost-meter` |
 | [dsh-reasoning-effort](https://github.com/HanaAyane/dsh-reasoning-effort) | 中文首页现在位于 README.md。 | `dsh plugin --profile web add github:HanaAyane/dsh-reasoning-effort` |
 | [dsh-web-plugin-manager](https://github.com/LX2000WASD/dsh-web-plugin-manager) | 在 Web UI 中一键管理 DeepSeek Harness (DSH) 插件：查看、实时启停、安装/卸载、更新检测、健康检查（依赖/冲突/兼容性分析）、环境管理、插件市场，bundle 与非 bundle 插件全覆盖。 | `dsh plugin --profile web add github:LX2000WASD/dsh-web-plugin-manager` |
+| [SpecFusion](https://github.com/wxkingstar/SpecFusion) | 🌐 官网：specfusion.kingstar.xin | `dsh plugin --profile web add github:wxkingstar/SpecFusion` |
 | [plugin-registry](https://github.com/vlln/plugin-registry) | DSH 插件生态基建：薄控制台（浏览器面板管理官方 repository 插件，0 patch）+ make-dsh-plugin skill 官方插件开发引导 | `dsh plugin --profile web add github:vlln/plugin-registry` |
 | [dsh-qqbot](https://github.com/tencent-connect/dsh-qqbot) | 基于 deepseek-harness (dsh) 的 QQ Bot IM 插件，将 QQ 消息平台作为 dsh agent 的前端协议驱动。 | `dsh plugin --profile web add github:tencent-connect/dsh-qqbot` |
 | [awesome-dsh-plugin](https://github.com/beancookie/awesome-dsh-plugin) | DeepSeek Harness (DSH) 插件精选集。 | `dsh plugin --profile web add github:beancookie/awesome-dsh-plugin` |
@@ -139,7 +134,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [oh-my-dsh](https://github.com/LaplaceYoung/oh-my-dsh) | oh-my-dsh：面向 DSH (DeepSeek Harness) 的插件生态——700+ 插件，只通过扩展接缝注册，不修改 agent-loop 骨架 | `dsh plugin --profile web add github:LaplaceYoung/oh-my-dsh` |
 | [dsh-chat-import](https://github.com/Nwflower/dsh-chat-import) | 把 13 种外部 Agent 聊天历史全保真导入 DeepSeek Harness 为可继续（resume）会话——并可导出 / 同步回 Claude Code。 | `dsh plugin --profile web add github:Nwflower/dsh-chat-import` |
 | [dsh-kun-like-pet](https://github.com/liyupi/dsh-kun-like-pet) | > DeepSeek Harness（DSH）桌面宠物插件 —— 一只住在 Web 界面右下角的小坤宠。 | `dsh plugin --profile web add github:liyupi/dsh-kun-like-pet` |
-| [dsh-open-in-vscode](https://github.com/omdsh-dev/dsh-open-in-vscode) | 从 DSH Web GUI 的侧边栏工作区菜单直接在当前目录打开 VS Code。 | `dsh plugin --profile web add github:omdsh-dev/dsh-open-in-vscode` |
+| [dsh-open-in-vscode](https://github.com/omdsh-dev/dsh-open-in-vscode) | 在 DeepSeek Harness Web 界面中直接打开工作区目录到 VS Code：侧边栏每个真实 Workspace 行的 … 菜单里新增一行 在 VSCode 中打开。 | `dsh plugin --profile web add github:omdsh-dev/dsh-open-in-vscode` |
 | [mstar-harness](https://github.com/btspoony/mstar-harness) | Harness Workflow Engine · Agent Plugin | `dsh plugin --profile web add github:btspoony/mstar-harness` |
 | [dsh-desktop](https://github.com/bruc3van/dsh-desktop) | 让 Agent 安全地常驻在你的桌面上：官方 Web UI 原封不动，长任务不再被终端和浏览器标签页绑架，精选插件先审查、再安装。 | `dsh plugin --profile web add github:bruc3van/dsh-desktop` |
 | [dsh-automation](https://github.com/titanwings/dsh-automation) | DSH 自动化插件：让 Coding 任务按计划在全新 Agent Session 中运行，并由用户或 Agent 创建和管理定时任务。 / Run coding tasks in fresh Agent sessions and manage schedules from DSH Web or an Agent. | `dsh plugin --profile web add github:titanwings/dsh-automation` |
@@ -164,6 +159,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [dsh-navbar](https://github.com/vlln/dsh-navbar) | DSH 插件：对话节点导航条（右缘节点串快速跳转 user 消息）。官方 bundle 插件，dsh plugin --profile web add 安装 | `dsh plugin --profile web add github:vlln/dsh-navbar` |
 | [dsh-ui-whale](https://github.com/lhh010/dsh-ui-whale) | DSH Web UI 的常驻像素鲸鱼伙伴插件：会话标题栏（标题行右侧）常驻一只小鲸鱼，随会话快照实时反应——零核心改动。 | `dsh plugin --profile web add github:lhh010/dsh-ui-whale` |
 | [dsh-notifier](https://github.com/THEWOLFWALKER/dsh-notifier) | > 你的 agent，装进口袋。 —— 通知、审批、遥控，全在你的手机里。 | `dsh plugin --profile web add github:THEWOLFWALKER/dsh-notifier` |
+| [dsh-deepseek-flow](https://github.com/kanghelyu/dsh-deepseek-flow) | - Markdown 是唯一事实来源——一份总控 WORKFLOW.md，每个步骤拥有独立的 STEP.md 工作区。 | `dsh plugin --profile web add github:kanghelyu/dsh-deepseek-flow` |
 | [allinluna](https://github.com/zenx0x/allinluna) | > 别再把整个项目塞进一个 AI 对话里。 | `dsh plugin --profile web add github:zenx0x/allinluna` |
 | [Tydora](https://github.com/zuorn/Tydora) | 极致的书写体验 ，所见即所得，界面 纯净 到只剩文字本身。没有一丝多余的干扰，光标所至，思绪便直接落在屏幕上。我把自己对“ 写作手感 ”的所有执念都写了进去，让工具彻底隐退，只留你与 思想的河流 。 | `dsh plugin --profile web add github:zuorn/Tydora` |
 | [dsh-plugin-mineru](https://github.com/HuanLinOTO/dsh-plugin-mineru) | DSH 插件：向模型暴露 MinerU 文档解析工具。MinerU 可将 PDF、图片、DOCX、PPTX、XLSX 等文件转换为结构化的 Markdown / JSON。 | `dsh plugin --profile web add github:HuanLinOTO/dsh-plugin-mineru` |
@@ -187,7 +183,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [dsh-plugin-template](https://github.com/bugmaker2/dsh-plugin-template) | DeepSeek Harness 插件开发模板。 | `dsh plugin --profile web add github:bugmaker2/dsh-plugin-template` |
 | [Co-Engram](https://github.com/Co-Engram/Co-Engram) | \| 差异化 \| 含义 \| \| ------------------------ \| ------------------------------------------------------------------------------------------------------------------------------------------------ \| \| 稳定 ID + 单文件布局 \| 每条记忆是一个带 YAML frontmatter 的 Markdown 文件。engram 使用 | `dsh plugin --profile web add github:Co-Engram/Co-Engram` |
 
-共收录 133 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
+共收录 129 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
 
 <!-- PLUGINS_END -->
 
