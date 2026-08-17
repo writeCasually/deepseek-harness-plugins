@@ -1,166 +1,7 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-08-17T09:53:10.614Z",
+  "generated_at": "2026-08-17T10:28:20.645Z",
   "plugins": [
-    {
-      "id": "ccch1mneyyy/dsh-TUI",
-      "name": "dsh-TUI",
-      "author": "ccch1mneyyy",
-      "description": "DSH 官方公众号收录的 TUI 补位插件：Claude Code 风，鲸鱼顶栏/实时状态/流式思考/双击 Esc 回滚/上下文进度+TPS。npm 一键装。  DSH official WeChat featured TUI plugin — Claude Code style: whale bar, live status, streaming thoughts, double-Esc rollback, context bar + TPS. npm one-click.",
-      "repo_url": "https://github.com/ccch1mneyyy/dsh-TUI",
-      "homepage": "https://dshtui.com/",
-      "stars": 1747,
-      "forks": 76,
-      "open_issues": 37,
-      "watchers": 0,
-      "pushed_at": "2026-08-17T09:51:54Z",
-      "archived": false,
-      "language": "TypeScript",
-      "license": "MIT",
-      "topics": [
-        "claude-code",
-        "coding-agent",
-        "deepseek",
-        "deepseek-harness",
-        "dsh-plugin",
-        "ink",
-        "react",
-        "terminal",
-        "tui"
-      ],
-      "category": "plugin",
-      "kind": "dsh-bundle",
-      "official": false,
-      "compatibility": "compatible",
-      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
-      "description_i18n": {
-        "zh": ">一个美观且实用的 Claude Code 风格 TUI 插件：像素鲸鱼顶栏、双流光大字、实时工作状态行、思考流式展开、双击 Esc 时间回溯、蓝白上下文进度条 + TPS 仪表。",
-        "en": "dsh-TUI is an interactive terminal front door for DeepSeek Harness. It is mounted as a Cordis plugin and provides a Claude Code-style conversation, tool, session, and fullscreen terminal experience while continuing to use the"
-      },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:250",
-        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:254",
-        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:260",
-        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:266",
-        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:275",
-        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:287",
-        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:290",
-        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:299",
-        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:311",
-        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:326",
-        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:337",
-        "存在疑似混淆内容（长 Base64 块） @ pnpm-lock.yaml:345",
-        "依赖 lodash-es@4.17.0 存在已知漏洞（GHSA-29mw-wpgm-hmr9, GHSA-35jh-r3h4-6jhm, GHSA-f23m-r3pf-42rh） @ <dependencies>",
-        "依赖 semver@7.0.0 存在已知漏洞（GHSA-c2qf-rxjj-qqgw） @ <dependencies>",
-        "访问第三方网络地址（如 star-history.com） @ README.md",
-        "读取环境变量（可能包含敏感信息） @ src/screens/Chat.tsx"
-      ],
-      "risk_evidence": [
-        {
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json"
-        },
-        {
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "pnpm-lock.yaml",
-          "line": 250
-        },
-        {
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "pnpm-lock.yaml",
-          "line": 254
-        },
-        {
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "pnpm-lock.yaml",
-          "line": 260
-        },
-        {
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "pnpm-lock.yaml",
-          "line": 266
-        },
-        {
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "pnpm-lock.yaml",
-          "line": 275
-        },
-        {
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "pnpm-lock.yaml",
-          "line": 287
-        },
-        {
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "pnpm-lock.yaml",
-          "line": 290
-        },
-        {
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "pnpm-lock.yaml",
-          "line": 299
-        },
-        {
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "pnpm-lock.yaml",
-          "line": 311
-        },
-        {
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "pnpm-lock.yaml",
-          "line": 326
-        },
-        {
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "pnpm-lock.yaml",
-          "line": 337
-        },
-        {
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "pnpm-lock.yaml",
-          "line": 345
-        },
-        {
-          "explanation": "依赖 lodash-es@4.17.0 存在已知漏洞（GHSA-29mw-wpgm-hmr9, GHSA-35jh-r3h4-6jhm, GHSA-f23m-r3pf-42rh）",
-          "file": "<dependencies>"
-        },
-        {
-          "explanation": "依赖 semver@7.0.0 存在已知漏洞（GHSA-c2qf-rxjj-qqgw）",
-          "file": "<dependencies>"
-        },
-        {
-          "explanation": "访问第三方网络地址（如 star-history.com）",
-          "file": "README.md"
-        },
-        {
-          "explanation": "读取环境变量（可能包含敏感信息）",
-          "file": "src/screens/Chat.tsx"
-        }
-      ],
-      "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 star-history.com）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在疑似混淆内容（长 Base64 块）",
-        "依赖 lodash-es@4.17.0 存在已知漏洞（GHSA-29mw-wpgm-hmr9, GHSA-35jh-r3h4-6jhm, GHSA-f23m-r3pf-42rh）",
-        "依赖 semver@7.0.0 存在已知漏洞（GHSA-c2qf-rxjj-qqgw）"
-      ],
-      "reviewed_commit": "849ed02eecfbe650726966ea68567ad79aa69f69",
-      "source": "discovered",
-      "review_status": "flagged",
-      "reviewed_at": "2026-08-16T15:15:23.499Z"
-    },
     {
       "id": "Anionex/dsh-vision-toolkit",
       "name": "dsh-vision-toolkit",
@@ -1299,10 +1140,10 @@
       "description": "DSH Web 鲸鱼娘皮肤系列(深海女仆工坊 maid-atelier)——CC BY-NC-SA 4.0",
       "repo_url": "https://github.com/Small-tailqwq/dsh-deep-whale",
       "homepage": "https://github.com/Small-tailqwq/dsh-deep-whale",
-      "stars": 1195,
+      "stars": 1202,
       "forks": 41,
       "open_issues": 25,
-      "watchers": 2,
+      "watchers": 0,
       "pushed_at": "2026-08-16T06:34:28Z",
       "archived": false,
       "language": "TypeScript",
@@ -1336,10 +1177,8 @@
         "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/chrome-art.generated.ts:9",
         "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/workspace-art.generated.ts:5",
         "存在疑似混淆内容（长 Base64 块） @ maid-atelier/src/client/workspace-art.generated.ts:6",
-        "访问第三方网络地址（如 b23.tv、pixiv.net） @ README.md",
         "访问第三方网络地址（如 w3.org） @ maid-atelier/src/client/titlebar-brand.ts",
-        "读取环境变量（可能包含敏感信息） @ maid-atelier/build/tsdown.client.ts",
-        "访问第三方网络地址（如 pixiv.net） @ maid-atelier/NOTICE"
+        "读取环境变量（可能包含敏感信息） @ maid-atelier/build/tsdown.client.ts"
       ],
       "risk_evidence": [
         {
@@ -1417,28 +1256,18 @@
           "line": 6
         },
         {
-          "explanation": "访问第三方网络地址（如 b23.tv、pixiv.net）",
-          "file": "README.md"
-        },
-        {
           "explanation": "访问第三方网络地址（如 w3.org）",
           "file": "maid-atelier/src/client/titlebar-brand.ts"
         },
         {
           "explanation": "读取环境变量（可能包含敏感信息）",
           "file": "maid-atelier/build/tsdown.client.ts"
-        },
-        {
-          "explanation": "访问第三方网络地址（如 pixiv.net）",
-          "file": "maid-atelier/NOTICE"
         }
       ],
       "privacy_risk": true,
       "privacy_notes": [
-        "访问第三方网络地址（如 b23.tv、pixiv.net）",
         "访问第三方网络地址（如 w3.org）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 pixiv.net）"
+        "读取环境变量（可能包含敏感信息）"
       ],
       "security_notes": [
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
@@ -1447,8 +1276,7 @@
       "reviewed_commit": "873f5c6d7f52aa4e4283a5ffd5598229595184da",
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T15:15:23.499Z",
-      "description_i18n_checked_at": "2026-08-16T15:31:44.939Z"
+      "reviewed_at": "2026-08-17T10:28:20.645Z"
     },
     {
       "id": "Nagi-ovo/dsh-ads",
@@ -2560,10 +2388,10 @@
       "description": "Two-phase DeepSeek Harness preset: Minimal-aligned bootstrap, then full Standard tools (Project2 98/99)",
       "repo_url": "https://github.com/xiaobright/dsh-anchored-standard",
       "homepage": "https://github.com/xiaobright/modeltest",
-      "stars": 3330,
+      "stars": 3342,
       "forks": 103,
       "open_issues": 24,
-      "watchers": 4,
+      "watchers": 0,
       "pushed_at": "2026-08-17T06:19:58Z",
       "archived": false,
       "language": "JavaScript",
@@ -2578,21 +2406,50 @@
       "kind": "code",
       "official": false,
       "compatibility": "compatible",
-      "compatibility_reason": "源码 preset/custom-bash.mjs 呈现 Cordis 插件骨架（apply(ctx)）",
+      "compatibility_reason": "源码 combo-anchored/cot-drip.mjs 呈现 Cordis 插件骨架（apply(ctx)）",
       "description_i18n": {
-        "zh": "实验性 DeepSeek Harness agent preset 集合——一个基础模式加两个变体：首轮模型请求锚定在 Minimal 条件上（真实的 Minimal 工具 schema、不注入自动上下文），会话产生持久信号后晋升到 小型 resident 目录，重型 Standard 工具按需解锁。",
-        "en": "Experimental DeepSeek Harness agent presets — one base mode plus two variants — that anchor a session's first model request on the Minimal condition (real Minimal tool schema, no auto-injected context), then promote to a small"
+        "zh": "实验性 DeepSeek Harness agent preset 集合——一个基础模式、两个实时锚定变体和一个预制 会话模式：把模型轨迹锚定在 Minimal 条件上（真实的 Minimal 工具 schema、不注入自动 上下文），会话产生持久信号后晋升到小型 resident 目录，重型 Standard 工具按需解锁。",
+        "en": "Experimental DeepSeek Harness agent presets — a base mode, two live-anchor variants, and one seeded prefab mode — that anchor a session's model trajectory on the Minimal condition"
       },
-      "risk_level": "low",
-      "risk_notes": [],
-      "risk_evidence": [],
-      "privacy_risk": false,
-      "privacy_notes": [],
-      "security_notes": [],
-      "reviewed_commit": "0a38616c1b7ce4219b6d94d95c89f34a90741616",
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ prefab/prefab-session-seed.mjs",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ prefab/instantiate.mjs:316",
+        "读取环境变量（可能包含敏感信息） @ combo-anchored/custom-bash.mjs",
+        "访问第三方网络地址（如 example.test） @ test/toolchoice-adapter.test.mjs"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "prefab/prefab-session-seed.mjs"
+        },
+        {
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "prefab/instantiate.mjs",
+          "line": 316
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "combo-anchored/custom-bash.mjs"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 example.test）",
+          "file": "test/toolchoice-adapter.test.mjs"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 example.test）"
+      ],
+      "security_notes": [
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
+      ],
+      "reviewed_commit": "25f21aefaf8ddc414da54d2e581e43740d977c6e",
       "source": "discovered",
-      "review_status": "approved",
-      "reviewed_at": "2026-08-16T15:15:23.499Z"
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T10:28:20.645Z"
     },
     {
       "id": "dsh-market/dsh-market",
@@ -4007,84 +3864,6 @@
         "存在 Base64 解码行为"
       ],
       "risk_evidence": []
-    },
-    {
-      "id": "GCWing/BitFun",
-      "name": "BitFun",
-      "author": "GCWing",
-      "description": "BitFun combines a high-performance agent runtime written in Rust with a polished desktop application. It pairs the depth of a Code Agent with open, general-purpose capabilities for work beyond software development.",
-      "repo_url": "https://github.com/GCWing/BitFun",
-      "homepage": "https://github.com/GCWing/BitFun",
-      "stars": 1761,
-      "forks": 190,
-      "open_issues": 99,
-      "watchers": 7,
-      "pushed_at": "2026-08-17T09:20:18Z",
-      "archived": false,
-      "language": "Rust",
-      "license": "MIT",
-      "topics": [
-        "agent-teams",
-        "agentic",
-        "agentic-os",
-        "agentic-runtime",
-        "ai-coding",
-        "ai-ide",
-        "ai-sdk",
-        "bitfun",
-        "computer-use-agent",
-        "cowork",
-        "dsh-plugin",
-        "openclaw",
-        "vibe-coding"
-      ],
-      "category": "plugin",
-      "kind": "code",
-      "official": false,
-      "compatibility": "compatible",
-      "compatibility_reason": "依赖 DSH/Cordis 生态包 @deepseek-ai/dsh-agent-spine-demo",
-      "description_i18n": {
-        "zh": "能写代码、能做文档、能操控桌面，并提供小应用、Rust Runtime 和可自部署的多设备互控服务器。",
-        "en": "Writes code, produces documents, and drives the desktop — with Mini Apps, a Rust runtime, and a self-hostable device-sync server."
-      },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json",
-        "依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp） @ <dependencies>",
-        "依赖 simple-git@3.27.0 存在已知漏洞（GHSA-hffm-xvc3-vprc, GHSA-jcxm-m3jx-f287, GHSA-r275-fr43-pm7q） @ <dependencies>",
-        "访问第三方网络地址（如 labs.scale.com、market.openbitfun.com、openbitfun.com、pnpm.io） @ README.md"
-      ],
-      "risk_evidence": [
-        {
-          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-          "file": "package.json"
-        },
-        {
-          "explanation": "依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp）",
-          "file": "<dependencies>"
-        },
-        {
-          "explanation": "依赖 simple-git@3.27.0 存在已知漏洞（GHSA-hffm-xvc3-vprc, GHSA-jcxm-m3jx-f287, GHSA-r275-fr43-pm7q）",
-          "file": "<dependencies>"
-        },
-        {
-          "explanation": "访问第三方网络地址（如 labs.scale.com、market.openbitfun.com、openbitfun.com、pnpm.io）",
-          "file": "README.md"
-        }
-      ],
-      "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 labs.scale.com、market.openbitfun.com、openbitfun.com、pnpm.io）"
-      ],
-      "security_notes": [
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-        "依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp）",
-        "依赖 simple-git@3.27.0 存在已知漏洞（GHSA-hffm-xvc3-vprc, GHSA-jcxm-m3jx-f287, GHSA-r275-fr43-pm7q）"
-      ],
-      "reviewed_commit": "965de28d9758507b9e30649763456865e6a13978",
-      "source": "discovered",
-      "review_status": "flagged",
-      "reviewed_at": "2026-08-16T15:15:23.499Z"
     },
     {
       "id": "ccch1mneyyy/working-activity",
@@ -7479,10 +7258,10 @@
       "description": "Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.",
       "repo_url": "https://github.com/volcengine/OpenViking",
       "homepage": "https://openviking.ai/",
-      "stars": 28807,
+      "stars": 28816,
       "forks": 2271,
       "open_issues": 455,
-      "watchers": 78,
+      "watchers": 0,
       "pushed_at": "2026-08-17T09:26:24Z",
       "archived": false,
       "language": "Python",
@@ -7504,26 +7283,15 @@
         "zh": "👋 加入我们的社区",
         "en": "👋 Join our Community"
       },
-      "risk_level": "high",
+      "risk_level": "moderate",
       "risk_notes": [
-        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ bot/bridge/src/index.ts",
-        "监听键盘输入事件 @ web-studio/src/routes/sessions/index.tsx:46",
         "依赖 @whiskeysockets/baileys@7.0.0-rc.9 存在已知漏洞（GHSA-qvv5-jq5g-4cgg） @ <dependencies>",
         "依赖 ws@8.17.1 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
-        "访问第三方网络地址（如 arxiv.org、blog.openviking.ai、byteplus.com、docs.google.com） @ README.md",
-        "读取环境变量（可能包含敏感信息） @ examples/pi-coding-agent-extension/index.ts",
-        "访问第三方网络地址（如 example.com） @ sdk/typescript/tests/node-consumer/index.ts"
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.vikingdb.cn-beijing.volces.com、example.com、third-party.example） @ examples/memory-plugin-shared/install-agent-hooks.test.mjs",
+        "访问第三方网络地址（如 api.vikingdb.cn-beijing.volces.com、example.com、third-party.example） @ examples/memory-plugin-shared/install-agent-hooks.test.mjs",
+        "读取环境变量（可能包含敏感信息） @ examples/memory-plugin-shared/install-tui.test.mjs"
       ],
       "risk_evidence": [
-        {
-          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
-          "file": "bot/bridge/src/index.ts"
-        },
-        {
-          "explanation": "监听键盘输入事件",
-          "file": "web-studio/src/routes/sessions/index.tsx",
-          "line": 46
-        },
         {
           "explanation": "依赖 @whiskeysockets/baileys@7.0.0-rc.9 存在已知漏洞（GHSA-qvv5-jq5g-4cgg）",
           "file": "<dependencies>"
@@ -7533,34 +7301,32 @@
           "file": "<dependencies>"
         },
         {
-          "explanation": "访问第三方网络地址（如 arxiv.org、blog.openviking.ai、byteplus.com、docs.google.com）",
-          "file": "README.md"
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.vikingdb.cn-beijing.volces.com、example.com、third-party.example）",
+          "file": "examples/memory-plugin-shared/install-agent-hooks.test.mjs"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.vikingdb.cn-beijing.volces.com、example.com、third-party.example）",
+          "file": "examples/memory-plugin-shared/install-agent-hooks.test.mjs"
         },
         {
           "explanation": "读取环境变量（可能包含敏感信息）",
-          "file": "examples/pi-coding-agent-extension/index.ts"
-        },
-        {
-          "explanation": "访问第三方网络地址（如 example.com）",
-          "file": "sdk/typescript/tests/node-consumer/index.ts"
+          "file": "examples/memory-plugin-shared/install-tui.test.mjs"
         }
       ],
       "privacy_risk": true,
       "privacy_notes": [
-        "访问第三方网络地址（如 arxiv.org、blog.openviking.ai、byteplus.com、docs.google.com）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 example.com）"
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.vikingdb.cn-beijing.volces.com、example.com、third-party.example）",
+        "访问第三方网络地址（如 api.vikingdb.cn-beijing.volces.com、example.com、third-party.example）",
+        "读取环境变量（可能包含敏感信息）"
       ],
       "security_notes": [
-        "监听键盘输入事件",
         "依赖 @whiskeysockets/baileys@7.0.0-rc.9 存在已知漏洞（GHSA-qvv5-jq5g-4cgg）",
         "依赖 ws@8.17.1 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
       ],
-      "reviewed_commit": "dbf3fcccefe43616e4b1c3b60dfe36c2222e2dd6",
+      "reviewed_commit": "b7aa01d227c249407971c6693f73ef71c436f439",
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-08-16T15:15:23.499Z"
+      "reviewed_at": "2026-08-17T10:28:20.645Z"
     },
     {
       "id": "cocofhu/anime-find",
@@ -8029,6 +7795,333 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-17T04:04:16.717Z"
+    },
+    {
+      "id": "tt-a1i/archify",
+      "name": "archify",
+      "author": "tt-a1i",
+      "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+      "repo_url": "https://github.com/tt-a1i/archify",
+      "homepage": "https://tt-a1i.github.io/archify/",
+      "stars": 13725,
+      "forks": 1007,
+      "open_issues": 19,
+      "watchers": 0,
+      "pushed_at": "2026-08-17T06:16:50Z",
+      "archived": false,
+      "language": "HTML",
+      "license": "MIT",
+      "topics": [
+        "agent-skills",
+        "anthropic",
+        "architecture-diagram",
+        "claude-skill",
+        "codex",
+        "dark-mode",
+        "data-flow-diagram",
+        "deepseek-harness",
+        "developer-tools",
+        "diagram-as-code",
+        "dsh-plugin",
+        "html-diagram",
+        "lifecycle-diagram",
+        "mermaid-alternative",
+        "opencode",
+        "sequence-diagram",
+        "svg",
+        "system-design",
+        "workflow-diagram"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "在对话里，把代码仓库或系统描述变成漂亮、可靠、可交互的系统地图。",
+        "en": "Turn a codebase or system description into a polished, interactive system map — directly in chat."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取环境变量（可能包含敏感信息） @ archify/renderers/shared/geometry.mjs"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "archify/renderers/shared/geometry.mjs"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "3e0f4d8382c500c286fe5d5d29ec28597ed58c7c",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T10:28:20.645Z"
+    },
+    {
+      "id": "Q00/ouroboros",
+      "name": "ouroboros",
+      "author": "Q00",
+      "description": "Agent OS: the agent gets smarter on its own. We just hold the line: the grading command and expected result never make it into the success contract we hand it. Interview-gated, staged evaluation, budgeted evolution loop. MCP server, 13 runtimes: Claude Code, Codex CLI, Gemini CLI, OpenCode, Copilot, Kiro and more.",
+      "repo_url": "https://github.com/Q00/ouroboros",
+      "homepage": "https://ouroboros.page/",
+      "stars": 5494,
+      "forks": 554,
+      "open_issues": 65,
+      "watchers": 0,
+      "pushed_at": "2026-08-17T09:16:51Z",
+      "archived": false,
+      "language": "Python",
+      "license": "MIT",
+      "topics": [
+        "agent-os",
+        "agentic-ai",
+        "ai-agent",
+        "ai-coding-agent",
+        "claude-code",
+        "cli",
+        "codex",
+        "coding-agent",
+        "deepseek",
+        "deepseek-harness",
+        "developer-tools",
+        "dsh",
+        "dsh-plugin",
+        "github-copilot",
+        "llm-evaluation",
+        "llm-orchestration",
+        "loop-engineering",
+        "mcp",
+        "opencode"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "和任何操作系统一样，Ouroboros 分成三层：一层稳定的、提供原语的 OS 层，一层承载领域工作流的应用层，还有一个人真正坐在前面的 shell。三个仓库，一个技术栈：",
+        "en": "Like any OS, Ouroboros is split into a stable OS layer of primitives, an application layer of domain workflows, and a shell that humans actually sit in front of. Three repos, one stack:"
+      },
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": [],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [],
+      "reviewed_commit": "9d58f4ab760a06aa184a6cb39d3a3c248c7b8f7e",
+      "source": "discovered",
+      "review_status": "approved",
+      "reviewed_at": "2026-08-17T10:28:20.645Z"
+    },
+    {
+      "id": "agentrq/agentrq",
+      "name": "agentrq",
+      "author": "agentrq",
+      "description": "AgentRQ: Human-in-loop realtime conversational task manager for AI Agents. Self-hosted! Control your own agents from wherever you want Mobile, Web, Desktop. Designed to work well with your own Claude subscriptions and any harness.",
+      "repo_url": "https://github.com/agentrq/agentrq",
+      "homepage": "https://agentrq.com",
+      "stars": 1076,
+      "forks": 80,
+      "open_issues": 16,
+      "watchers": 0,
+      "pushed_at": "2026-08-17T08:00:03Z",
+      "archived": false,
+      "language": "Go",
+      "license": "Apache-2.0",
+      "topics": [
+        "acp-client",
+        "acp-gateway",
+        "agentic-ai",
+        "agentic-workflow",
+        "agents",
+        "claude-code",
+        "deepseek-harness",
+        "deepseek-harness-plugin",
+        "dsh-plugin",
+        "hermes-agent",
+        "mcp",
+        "mcp-server",
+        "openclaw",
+        "opencode",
+        "supervisor",
+        "task",
+        "task-manager",
+        "task-scheduler",
+        "todo"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "> 本文是面向中文开发者的导读，帮助快速理解 AgentRQ 的定位、架构和本地运行方式。",
+        "en": "AgentRQ is a modern, high-performance platform designed for seamless collaboration between human operators and AI agents. It leverages the Model Context Protocol (MCP) to allow AI models (like Claude) to interact directly with your workspace's task management"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#1",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#1",
+        "依赖 dompurify@3.4.10 存在已知漏洞（GHSA-55q2-fjhq-7xh7, GHSA-c2j3-45gr-mqc4, GHSA-cmwh-pvxp-8882） @ <dependencies>",
+        "依赖 postcss@8.5.12 存在已知漏洞（GHSA-fxqj-rqcc-2cmp, GHSA-r28c-9q8g-f849） @ <dependencies>",
+        "依赖 @modelcontextprotocol/sdk@1.12.0 存在已知漏洞（GHSA-345p-7cg4-v4c7, GHSA-8r9q-7v3j-jr4g, GHSA-w48q-cv73-mx4w） @ <dependencies>",
+        "访问第三方网络地址（如 workspace.mcp.example） @ plugins/deepseek-harness/test/sessions.test.ts"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "依赖 dompurify@3.4.10 存在已知漏洞（GHSA-55q2-fjhq-7xh7, GHSA-c2j3-45gr-mqc4, GHSA-cmwh-pvxp-8882）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 postcss@8.5.12 存在已知漏洞（GHSA-fxqj-rqcc-2cmp, GHSA-r28c-9q8g-f849）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 @modelcontextprotocol/sdk@1.12.0 存在已知漏洞（GHSA-345p-7cg4-v4c7, GHSA-8r9q-7v3j-jr4g, GHSA-w48q-cv73-mx4w）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 workspace.mcp.example）",
+          "file": "plugins/deepseek-harness/test/sessions.test.ts"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 workspace.mcp.example）"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "依赖 dompurify@3.4.10 存在已知漏洞（GHSA-55q2-fjhq-7xh7, GHSA-c2j3-45gr-mqc4, GHSA-cmwh-pvxp-8882）",
+        "依赖 postcss@8.5.12 存在已知漏洞（GHSA-fxqj-rqcc-2cmp, GHSA-r28c-9q8g-f849）",
+        "依赖 @modelcontextprotocol/sdk@1.12.0 存在已知漏洞（GHSA-345p-7cg4-v4c7, GHSA-8r9q-7v3j-jr4g, GHSA-w48q-cv73-mx4w）"
+      ],
+      "reviewed_commit": "a386dd5913f3290b1553cf2a1e53e0bd70211b7f",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-17T10:28:20.645Z"
+    },
+    {
+      "id": "GanyuanRan/Aegis",
+      "name": "Aegis",
+      "author": "GanyuanRan",
+      "description": "Make AI coding agents architecture-aware: baseline-first, evidence-verified, drift-checked, and safe across long tasks.",
+      "repo_url": "https://github.com/GanyuanRan/Aegis",
+      "homepage": "https://github.com/GanyuanRan/Aegis",
+      "stars": 1035,
+      "forks": 47,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-17T07:02:05Z",
+      "archived": false,
+      "language": "Python",
+      "license": "MIT",
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "ai-coding",
+        "architecture-driven-development",
+        "awsome-coding-plugin",
+        "baseline-first",
+        "claude-code",
+        "codex",
+        "coding-agents",
+        "dive",
+        "dsh-plugin",
+        "evidence-driven",
+        "first-principles",
+        "opencode",
+        "software-architecture",
+        "spec-driven-development",
+        "spec-kit"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "Aegis Method Pack 让 AI 编程 agent 变得可信：少返工、更安全、说“完成”前先给证据。",
+        "en": "English is now the default GitHub README:"
+      },
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": [],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [],
+      "reviewed_commit": "169690fd01807341880def4e044de4e312e8c3cd",
+      "source": "discovered",
+      "review_status": "approved",
+      "reviewed_at": "2026-08-17T10:28:20.645Z"
+    },
+    {
+      "id": "Anil-matcha/awesome-deepseek-harness",
+      "name": "awesome-deepseek-harness",
+      "author": "Anil-matcha",
+      "description": "Curated guide to DeepSeek Harness (dsh) and its best community plugins",
+      "repo_url": "https://github.com/Anil-matcha/awesome-deepseek-harness",
+      "homepage": "https://github.com/Anil-matcha/awesome-deepseek-harness",
+      "stars": 922,
+      "forks": 192,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-08-17T09:12:50Z",
+      "archived": false,
+      "language": "unknown",
+      "license": "unknown",
+      "topics": [
+        "agent-harness",
+        "ai-agent",
+        "ai-agents",
+        "autonomous-agent",
+        "awesome",
+        "awesome-list",
+        "cli",
+        "coding-agent",
+        "cordis",
+        "deepseek",
+        "deepseek-harness",
+        "developer-tools",
+        "dsh",
+        "dsh-plugin",
+        "llm",
+        "llm-agent",
+        "open-source",
+        "plugin-ecosystem",
+        "plugins",
+        "web-ui"
+      ],
+      "category": "plugin",
+      "kind": "code",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "源码/路径引用 @deepseek-ai/dsh 或 @deepseek-ai/cordis",
+      "description_i18n": {
+        "en": "> A curated guide to DeepSeek Harness (dsh) — DeepSeek's open-source, everything-is-a-plugin coding agent — and the best community plugins built on it."
+      },
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": [],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [],
+      "reviewed_commit": "25ee043b906656c9e757f21505c8c51e6e410537",
+      "source": "discovered",
+      "review_status": "approved",
+      "reviewed_at": "2026-08-17T10:28:20.645Z"
     }
   ]
 }

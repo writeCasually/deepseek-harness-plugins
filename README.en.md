@@ -67,11 +67,14 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | --- | --- | --- |
 | [OpenViking](https://github.com/volcengine/OpenViking) | [@volcengine](https://github.com/volcengine) | 👋 Join our Community |
 | [voyager](https://github.com/Nagi-ovo/voyager) | [@Nagi-ovo](https://github.com/Nagi-ovo) | We love AI chatbots, but sometimes we wish they had just a bit more structure. |
-| [dsh-anchored-standard](https://github.com/xiaobright/dsh-anchored-standard) | [@xiaobright](https://github.com/xiaobright) | Experimental DeepSeek Harness agent presets — one base mode plus two variants — that anchor a session's first model request on the Minimal condition (real Minimal tool schema, no auto-injected context), then promote to a small |
-| [BitFun](https://github.com/GCWing/BitFun) | [@GCWing](https://github.com/GCWing) | Writes code, produces documents, and drives the desktop — with Mini Apps, a Rust runtime, and a self-hostable device-sync server. |
-| [dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI) | [@ccch1mneyyy](https://github.com/ccch1mneyyy) | dsh-TUI is an interactive terminal front door for DeepSeek Harness. It is mounted as a Cordis plugin and provides a Claude Code-style conversation, tool, session, and fullscreen terminal experience while continuing to use the |
+| [archify](https://github.com/tt-a1i/archify) | [@tt-a1i](https://github.com/tt-a1i) | Turn a codebase or system description into a polished, interactive system map — directly in chat. |
+| [ouroboros](https://github.com/Q00/ouroboros) | [@Q00](https://github.com/Q00) | Like any OS, Ouroboros is split into a stable OS layer of primitives, an application layer of domain workflows, and a shell that humans actually sit in front of. Three repos, one stack: |
+| [dsh-anchored-standard](https://github.com/xiaobright/dsh-anchored-standard) | [@xiaobright](https://github.com/xiaobright) | Experimental DeepSeek Harness agent presets — a base mode, two live-anchor variants, and one seeded prefab mode — that anchor a session's model trajectory on the Minimal condition |
 | [dsh-deep-whale](https://github.com/Small-tailqwq/dsh-deep-whale) | [@Small-tailqwq](https://github.com/Small-tailqwq) | DSH Web whale-girl skin series (Maid Atelier) - CC BY-NC-SA 4.0. |
 | [awesome-dsh-plugins](https://github.com/AdamPlatin123/awesome-dsh-plugins) | [@AdamPlatin123](https://github.com/AdamPlatin123) | A front-index repository (Radar): automatically scans and discovers DSH plugin candidates, then moves tested candidates into the downstream curated directory repositories. |
+| [agentrq](https://github.com/agentrq/agentrq) | [@agentrq](https://github.com/agentrq) | AgentRQ is a modern, high-performance platform designed for seamless collaboration between human operators and AI agents. It leverages the Model Context Protocol (MCP) to allow AI models (like Claude) to interact directly with your workspace's task management |
+| [Aegis](https://github.com/GanyuanRan/Aegis) | [@GanyuanRan](https://github.com/GanyuanRan) | English is now the default GitHub README: |
+| [awesome-deepseek-harness](https://github.com/Anil-matcha/awesome-deepseek-harness) | [@Anil-matcha](https://github.com/Anil-matcha) | > A curated guide to DeepSeek Harness (dsh) — DeepSeek's open-source, everything-is-a-plugin coding agent — and the best community plugins built on it. |
 | [dsh-market](https://github.com/dsh-market/dsh-market) | [@dsh-market](https://github.com/dsh-market) | The plugin market inside DeepSeek Harness. Open Settings → Plugin Market → browse, search, one-click install. |
 | [working-activity](https://github.com/ccch1mneyyy/working-activity) | [@ccch1mneyyy](https://github.com/ccch1mneyyy) | Lively Working-line extension for pi CLI and DSH |
 | [dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) | [@Anionex](https://github.com/Anionex) | A more powerful vision toolkit—give text-only models in DeepSeek Harness eyes: image Q&A, long-screenshot OCR, UI restoration, and GUI visual tasks in one toolkit and Skill. |
@@ -195,7 +198,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-plugin-template](https://github.com/bugmaker2/dsh-plugin-template) | [@bugmaker2](https://github.com/bugmaker2) | Template for deepseek-harness plugin development. |
 | [dsh-plugin-cc](https://github.com/cpj-dev/dsh-plugin-cc) | [@cpj-dev](https://github.com/cpj-dev) | Bridge Deepseek-harness into Claude Code for review, critique, delegation, and session import. |
 
-Includes 129 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 132 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 
