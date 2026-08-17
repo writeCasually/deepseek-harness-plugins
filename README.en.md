@@ -15,7 +15,7 @@ Directory page (GitHub Pages):
 ## About
 
 DeepSeek Harness is built around the idea that everything is a plugin. The community has produced
-many plugins, skins, distributions, and curated lists around it. This project brings those
+many plugins, skins, and distributions around it. This project brings those
 GitHub-hosted projects together so developers can quickly find plugins by name, capability, and
 usage.
 

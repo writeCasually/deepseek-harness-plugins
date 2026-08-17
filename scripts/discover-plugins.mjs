@@ -306,11 +306,10 @@ async function detectCompatibility(repo, { paths, readme, packageJsonFiles, api 
   };
 }
 
-// 分类：优先按包名语义（core/collection/distribution），否则按检测到的 DSH manifest 类型。
+// 分类：优先按包名语义（core/distribution），否则按检测到的 DSH manifest 类型。
 function categoryFor(repo, kind) {
   if (repo.full_name === 'deepseek-ai/deepseek-harness') return 'core';
   const text = [repo.name, repo.description || '', (repo.topics || []).join(' ')].join(' ');
-  if (/awesome/i.test(text)) return 'collection';
   if (/发行版|distribution/i.test(text)) return 'distribution';
   // 仅声明 dsh.profile（无可分发的 bundle/client）的仓库归类为「配置组合」。
   if (kind === 'profile') return 'profile';

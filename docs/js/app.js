@@ -5,14 +5,12 @@ const CATEGORY_LABELS = {
     core: "核心",
     plugin: "插件",
     distribution: "发行版",
-    collection: "精选列表",
     profile: "配置组合",
   },
   en: {
     core: "Core",
     plugin: "Plugin",
     distribution: "Distribution",
-    collection: "Collection",
     profile: "Profile",
   },
 };
@@ -29,7 +27,6 @@ const UI = {
     all: "全部",
     official: "官方",
     plugin: "插件",
-    collection: "精选列表",
     distribution: "发行版",
     core: "核心",
     profile: "配置组合",
@@ -80,7 +77,6 @@ const UI = {
     all: "All",
     official: "Official",
     plugin: "Plugins",
-    collection: "Collections",
     distribution: "Distributions",
     core: "Core",
     profile: "Profiles",
@@ -229,6 +225,54 @@ function evidenceLink(plugin, file, line) {
   return `${base}/blob/HEAD/${q}${frag}`;
 }
 
+// 风险条目归一化：优先用 risk_evidence；否则解析 risk_notes
+// （"说明 @ 文件:行号" 或纯说明文字），统一成 { text, file, line }。
+function riskItems(plugin) {
+  const evidence = plugin.risk_evidence || [];
+  if (evidence.length) {
+    return evidence.map((ev) => ({
+      text: String(ev.explanation || "").trim(),
+      file: ev.file || null,
+      line: ev.line || null,
+    }));
+  }
+  return (plugin.risk_notes || []).map((note) => {
+    const raw = String(note).trim();
+    const m = raw.match(/^(.*?)\s*@\s*(.+)$/);
+    if (!m) return { text: raw, file: null, line: null };
+    const loc = m[2].trim();
+    const lineMatch = loc.match(/:(\d+)$/);
+    return {
+      text: m[1].trim(),
+      file: lineMatch ? loc.slice(0, -lineMatch[0].length) : loc,
+      line: lineMatch ? Number(lineMatch[1]) : null,
+    };
+  });
+}
+
+// 渲染风险条目列表：每条 = 说明文字 + 可选的文件定位 chip。
+function riskItemMarkup(plugin, copy) {
+  const items = riskItems(plugin);
+  const body = items
+    .map((it) => {
+      const text = escapeHtml(it.text);
+      let locMarkup = "";
+      if (it.file) {
+        const link = evidenceLink(plugin, it.file, it.line);
+        const label = `${escapeHtml(it.file)}${it.line ? `:${it.line}` : ""}`;
+        locMarkup = `<span class="risk-popover__loc">${
+          link
+            ? `<a class="risk-loc" href="${escapeHtml(link)}" target="_blank" rel="noopener">${label}</a>`
+            : `<span class="risk-loc risk-loc--plain">${label}</span>`
+        }</span>`;
+      }
+      return `<li class="risk-popover__item"><span class="risk-popover__text">${text}</span>${locMarkup}</li>`;
+    })
+    .join("");
+  if (body) return body;
+  return `<li class="risk-popover__item"><span class="risk-popover__text">${escapeHtml(copy.riskTitle)}</span></li>`;
+}
+
 function renderCard(plugin) {
   const category = plugin.category || "plugin";
   const separator = state.lang === "en" ? "; " : "；";
@@ -269,24 +313,11 @@ function renderCard(plugin) {
               ? `<div class="risk-popover risk-${escapeHtml(plugin.risk_level)}" tabindex="0">
                   <span class="badge risk-${escapeHtml(plugin.risk_level)} risk-popover__trigger">${escapeHtml(copy.riskLevel[plugin.risk_level] || copy.riskLevel.moderate)}</span>
                   <div class="risk-popover__content" role="tooltip">
-                    <div class="risk-popover__title">${escapeHtml(copy.riskTitle)}</div>
-                    ${
-                      (plugin.risk_evidence && plugin.risk_evidence.length)
-                        ? plugin.risk_evidence
-                            .map((ev) => {
-                              const text = escapeHtml(ev.explanation);
-                              if (!ev.file) return `<div class="risk-popover__item">${text}</div>`;
-                              const link = evidenceLink(plugin, ev.file, ev.line);
-                              const label = `${escapeHtml(ev.file)}${ev.line ? `:${ev.line}` : ""}`;
-                              return `<div class="risk-popover__item">${text} ${
-                                link
-                                  ? `<a class="risk-loc" href="${escapeHtml(link)}" target="_blank" rel="noopener">${label}</a>`
-                                  : `<span class="risk-loc risk-loc--plain">${label}</span>`
-                              }</div>`;
-                            })
-                            .join("")
-                        : escapeHtml((plugin.risk_notes || []).join(separator))
-                    }
+                    <div class="risk-popover__head">
+                      <span class="risk-popover__level risk-level-${escapeHtml(plugin.risk_level)}">${escapeHtml(copy.riskLevel[plugin.risk_level] || copy.riskLevel.moderate)}</span>
+                      <span class="risk-popover__title">${escapeHtml(copy.riskTitle)}</span>
+                    </div>
+                    <ul class="risk-popover__list">${riskItemMarkup(plugin, copy)}</ul>
                   </div>
                 </div>`
               : ""
@@ -351,7 +382,7 @@ function render() {
 const OFFICIAL_REPO_BASE = "https://github.com/deepseek-ai/deepseek-harness/tree/master/packages";
 
 function officialHref(entry) {
-  const path = entry.path ? `packages/${entry.path}` : `packages/${entry.domain}/${entry.sub}`;
+  const path = entry.path ? entry.path : `${entry.domain}/${entry.sub}`;
   return `${OFFICIAL_REPO_BASE}/${path.replace(/^\//, "")}`;
 }
 
@@ -401,14 +432,14 @@ function setPanel(panel) {
   if (officialPanel) officialPanel.hidden = !isOfficial;
   if (communityPanel) communityPanel.hidden = isOfficial;
   document.querySelectorAll(".filter").forEach((b) => {
-    if (b.dataset.panel) {
-      // tab 入口按钮：官方 / 全部
-      b.classList.toggle("is-active", b.dataset.panel === panel);
+    if (b.dataset.panel === "official") {
+      // 官方 tab 入口按钮：仅官方 tab 激活时高亮
+      b.classList.toggle("is-active", panel === "official");
     } else if (isOfficial) {
-      // 官方 tab 激活时，社区分类按钮全部取消高亮
+      // 官方 tab 激活时，社区分类按钮（含「全部」）全部取消高亮
       b.classList.remove("is-active");
     } else {
-      // 社区面板：按当前社区分类高亮
+      // 社区面板：按当前社区分类高亮（「全部」也是社区分类之一）
       b.classList.toggle("is-active", (b.dataset.communityFilter || "all") === state.filter);
     }
   });

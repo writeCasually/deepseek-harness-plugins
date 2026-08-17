@@ -1229,7 +1229,7 @@
         "dsh-plugin",
         "awesome-list"
       ],
-      "category": "collection",
+      "category": "plugin",
       "source": "discovered",
       "review_status": "approved",
       "reviewed_at": "2026-08-14T00:00:00Z",
@@ -1268,7 +1268,7 @@
         "dsh-plugin",
         "awesome-list"
       ],
-      "category": "collection",
+      "category": "plugin",
       "source": "discovered",
       "review_status": "approved",
       "reviewed_at": "2026-08-14T00:00:00Z",
@@ -2014,7 +2014,7 @@
         "dsh-plugin",
         "plugins"
       ],
-      "category": "collection",
+      "category": "plugin",
       "official": false,
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
@@ -2473,7 +2473,7 @@
         "mcp",
         "plugins"
       ],
-      "category": "collection",
+      "category": "plugin",
       "official": false,
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
@@ -2774,7 +2774,7 @@
         "dsh-plugin",
         "plugins"
       ],
-      "category": "collection",
+      "category": "plugin",
       "official": false,
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
@@ -3132,7 +3132,7 @@
         "ui",
         "web"
       ],
-      "category": "collection",
+      "category": "plugin",
       "official": false,
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
@@ -3463,7 +3463,7 @@
         "plugin-marketplace",
         "plugins"
       ],
-      "category": "collection",
+      "category": "plugin",
       "official": false,
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
@@ -3917,7 +3917,7 @@
         "dsh",
         "dsh-plugin"
       ],
-      "category": "collection",
+      "category": "plugin",
       "official": false,
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
@@ -4837,7 +4837,7 @@
         "llm-tools",
         "plugins"
       ],
-      "category": "collection",
+      "category": "plugin",
       "official": false,
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
@@ -5305,7 +5305,7 @@
         "dsh",
         "dsh-plugin"
       ],
-      "category": "collection",
+      "category": "plugin",
       "official": false,
       "compatibility": "compatible",
       "compatibility_reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）",
@@ -5647,7 +5647,7 @@
         "plugins",
         "scaffold"
       ],
-      "category": "collection",
+      "category": "plugin",
       "kind": "dsh-bundle",
       "official": false,
       "compatibility": "compatible",
