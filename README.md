@@ -92,8 +92,8 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [engramory](https://github.com/tinqiao-oss/engramory) | [@tinqiao-oss](https://github.com/tinqiao-oss) | 一套有主见、零基础设施的、面向小规模 / 本地 / 文件式智能体记忆的协议 —— 一套强约束的策展纪律 + 一个校验器(tools/engramory_doctor.py),以常驻规则形式加载(CLAUDE.md / AGENTS.md / 宿主的规则文件)。它不是数据库、不是框架、也不是按相关性加载的 skill。记忆就是一个文件夹:一堆小小的、人能直接读的 markdown 文件,加一个每次会话都加载的索引。没有数据库、没有向量、没有服务器——就是你能打开、能读、能改、能 diff |
 | [dsh-dafeiyu](https://github.com/QCYTSN/dsh-dafeiyu) | [@QCYTSN](https://github.com/QCYTSN) | 住在 Windows 桌面上、由 DeepSeek Harness 真实工作状态驱动的 Agent 伴侣。 |
 | [dsh-launcher](https://github.com/Ruler4396/dsh-launcher) | [@Ruler4396](https://github.com/Ruler4396) | DeepSeek Harness 的 Windows 轻量启动器：开机自启 + 独立小窗口，双击即用。 |
-| [notes](https://github.com/zhaoolee/notes) | [@zhaoolee](https://github.com/zhaoolee) | 开源版锤子便签，复刻锤科美学，一键Docker私有化部署，支持skill调用，支持dsh plugin，支持多租户，一键生成公众号格式，支持导出便签为图片 |
 | [awesome-deepseek-harness](https://github.com/Dominic789654/awesome-deepseek-harness) | [@Dominic789654](https://github.com/Dominic789654) | > 面向 DeepSeek Harness（DSH） 的 插件 / Skill / MCP / Patch（Profile）层 / 编排器 / 聚合器 / UI 精选清单 —— DeepSeek 官方 agent 运行框架，核心理念 Model + Harness = Agent。 |
+| [notes](https://github.com/zhaoolee/notes) | [@zhaoolee](https://github.com/zhaoolee) | 开源版锤子便签，复刻锤科美学，一键Docker私有化部署，支持skill调用，支持dsh plugin，支持多租户，一键生成公众号格式，支持导出便签为图片 |
 | [dsh-find-plugins](https://github.com/Nagi-ovo/dsh-find-plugins) | [@Nagi-ovo](https://github.com/Nagi-ovo) | 对 DSH 说一句「有没有插件能……」，它就会从全 GitHub 的 dsh-plugin topic 里找出候选，解释差别，等你选好以后再安装和验证。 |
 | [anime-find](https://github.com/cocofhu/anime-find) | [@cocofhu](https://github.com/cocofhu) | DeepSeek Harness 搜番插件。在对话中搜索番剧，以可点击卡片展示结果，并在详情面板中查看字幕组、磁力链接和种子文件。 |
 | [dsh-pet](https://github.com/PC2005-cloud/dsh-pet) | [@PC2005-cloud](https://github.com/PC2005-cloud) | > 一只住在 DeepSeek Harness Web 界面里的桌面宠物：待机呼吸、随机动作、屏幕漫游、点击反应、可拖拽。 |
@@ -120,8 +120,8 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [awesome-deepseek-harness-plugins](https://github.com/imsai-sh/awesome-deepseek-harness-plugins) | [@imsai-sh](https://github.com/imsai-sh) | dsh1024 是 DeepSeek Harness 的 DSH 1024Store 包。一个 npm 包提供两个入口： |
 | [dsh-reasoning-effort](https://github.com/HanaAyane/dsh-reasoning-effort) | [@HanaAyane](https://github.com/HanaAyane) | 中文首页现在位于 README.md。 |
 | [tokenbank](https://github.com/wink-run/tokenbank) | [@wink-run](https://github.com/wink-run) | > 个人AI中枢 · Token 管家 > > 用的明白 · 用的节省 · 用的简单 · 越用越懂你 · 闲置赚钱 |
-| [dsh-annotation](https://github.com/omdsh-dev/dsh-annotation) | [@omdsh-dev](https://github.com/omdsh-dev) | DSH Web 选中批注插件：选文字→批注→回车随消息发送；气泡隐藏批注块（零闪烁）；回复按 Annotation N 逐条对照（可悬浮芯片）。官方 bundle，零核心改动 |
 | [hello-dsh](https://github.com/pingfanfan/hello-dsh) | [@pingfanfan](https://github.com/pingfanfan) | 从零开始，看懂 DeepSeek Harness 的「万物皆可插件」— 零基础插件开发教程（含 22 个中文技能实例）\| Zero-to-plugin tutorial for DeepSeek Harness |
+| [dsh-annotation](https://github.com/omdsh-dev/dsh-annotation) | [@omdsh-dev](https://github.com/omdsh-dev) | DSH Web 选中批注插件：选文字→批注→回车随消息发送；气泡隐藏批注块（零闪烁）；回复按 Annotation N 逐条对照（可悬浮芯片）。官方 bundle，零核心改动 |
 | [dsh-usage-stats](https://github.com/Ychris12138/dsh-usage-stats) | [@Ychris12138](https://github.com/Ychris12138) | 为 DeepSeek Harness 网页端提供多供应商账户监测与 Token 用量分析。 |
 | [awesome-DSH-plugin](https://github.com/Alex-Yanggg/awesome-DSH-plugin) | [@Alex-Yanggg](https://github.com/Alex-Yanggg) | > 面向 DeepSeek Harness（DSH）的社区精选、厂商中立 Plugin 索引——覆盖开发工具、数据工作流、媒体、运维与日常生活等场景。 |
 | [sealos-skills](https://github.com/labring/sealos-skills) | [@labring](https://github.com/labring) | 通过 AI 智能体将项目部署到 Sealos Cloud。 |
@@ -178,11 +178,11 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [dsh-plugin-marketplace](https://github.com/AwesomeHou/dsh-plugin-marketplace) | [@AwesomeHou](https://github.com/AwesomeHou) | DeepSeek Harness 插件市场：实时同步 GitHub dsh-plugin 话题（1800+ 仓库）到可搜索、分页的设置页，支持一键安装与 agent 工具（market_search / market_install）。 |
 | [agent-handoff-skill](https://github.com/WeirdSky924/agent-handoff-skill) | [@WeirdSky924](https://github.com/WeirdSky924) | 跨平台 Agent 接力 skill：在 Codex 或 Claude Code 中建立仓库级连续性记忆，让后续 agent 无需依赖历史聊天即可恢复目标、状态、决策、验证、风险与下一步行动。 |
 | [dsh-plugin-workshop](https://github.com/yyyyukari/dsh-plugin-workshop) | [@yyyyukari](https://github.com/yyyyukari) | Steam Workshop 风格的 DSH Web UI 插件浏览器：零服务器、GitHub 驱动搜索、趋势窗口、中文搜索与双语翻译、插件签名过滤，以及智能的一键安装/更新/卸载与已装插件管理。 |
+| [dsh-share](https://github.com/hellodigua/dsh-share) | [@hellodigua](https://github.com/hellodigua) | DSH 对话分享插件：分享单轮或多轮对话，可导出为图片或 Markdown。 |
 | [HoloGram](https://github.com/834063245-creator/HoloGram) | [@834063245-creator](https://github.com/834063245-creator) | HoloGram 把代码库编译成一张统一 IR 依赖图（节点=符号/函数/类/模块，边=调用/继承/读写/时序），并通过 MCP 协议向 AI Agent 暴露 34 个图查询工具。 |
 | [dsh-custom-tool](https://github.com/omdsh-dev/dsh-custom-tool) | [@omdsh-dev](https://github.com/omdsh-dev) | DeepSeek Harness 的自定义工具插件：用户在设置界面的「Custom Tool」页用 Monaco（VS Code）编辑器 + TypeScript 智能提示编写自己的 JavaScript 工具；模型也可以通过 custom_tool_create / custom_tool_remove / custom_tools_list 自主扩展和修剪同一套工具。所有工具持久化、热注册，并在下一步写入模型提示词。 |
 | [dsh-xiaoyao-skins](https://github.com/147228/dsh-xiaoyao-skins) | [@147228](https://github.com/147228) | 一套面向真实 DeepSeek Harness Web profile 的社区皮肤合集表现层插件。每套皮肤都是一个可安装、可卸载、可测试的 DSH，不替换会话、模型、工具、沙箱或插件系统； |
 | [dsh-plugin-check](https://github.com/omdsh-dev/dsh-plugin-check) | [@omdsh-dev](https://github.com/omdsh-dev) | DSH 插件健康检查工具 —— 扫描插件仓库，诊断清单协议 / patch 格式 / 构建陷阱 / hub 收录状态，输出合规报告与修复建议。只读，不修改、不构建被检查仓库。 |
-| [dsh-share](https://github.com/hellodigua/dsh-share) | [@hellodigua](https://github.com/hellodigua) | DSH 对话分享插件：分享单轮或多轮对话，可导出为图片或 Markdown。 |
 | [dsh-computer-use](https://github.com/Anionex/dsh-computer-use) | [@Anionex](https://github.com/Anionex) | 为 DeepSeek Harness 提供原生 macOS 控制能力，默认不碰你的真实光标，也不因指针动作抢占前台；Bundle 可以在键盘输入前把目标应用带到前台，保证输入可靠。 |
 | [DSH-Desktop](https://github.com/JustGenius-s/DSH-Desktop) | [@JustGenius-s](https://github.com/JustGenius-s) | 预编译安装包发布在 GitHub Releases。首次启动会自动安装 DSH 运行时（约 1-2 分钟）。 |
 | [Co-Engram](https://github.com/Co-Engram/Co-Engram) | [@Co-Engram](https://github.com/Co-Engram) | \| 差异化 \| 含义 \| \| ------------------------ \| ------------------------------------------------------------------------------------------------------------------------------------------------ \| \| 稳定 ID + 单文件布局 \| 每条记忆是一个带 YAML frontmatter 的 Markdown 文件。engram 使用 |
