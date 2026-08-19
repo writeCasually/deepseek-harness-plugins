@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-08-19T02:21:46.399Z",
+  "generated_at": "2026-08-19T03:59:58.041Z",
   "plugins": [
     {
       "id": "Anionex/dsh-vision-toolkit",
@@ -8540,6 +8540,1001 @@
       "review_status": "flagged",
       "reviewed_at": "2026-08-18T03:59:02.858Z",
       "description_i18n_checked_at": "2026-08-18T05:38:50.055Z"
+    },
+    {
+      "id": "tong-io/tongflow",
+      "name": "tongflow",
+      "author": "tong-io",
+      "description": "TongFlow — multimodal workflow studio and engine (canvas + Python plugin engine) and dsh-tongflow, the DeepSeek Harness studio plugin",
+      "repo_url": "https://github.com/tong-io/tongflow",
+      "homepage": "https://app.tongflow.com",
+      "stars": 860,
+      "forks": 112,
+      "open_issues": 7,
+      "watchers": 0,
+      "pushed_at": "2026-08-19T03:47:06Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "AGPL-3.0",
+      "topics": [
+        "3d",
+        "agent",
+        "ai",
+        "ai-tools",
+        "aigc",
+        "canvas",
+        "deepseek-harness",
+        "document",
+        "dsh-plugin",
+        "genai",
+        "generative-ai",
+        "image",
+        "link",
+        "multimodal",
+        "studio",
+        "tongflow",
+        "video",
+        "voice",
+        "workflow"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "| 工作流截图 | 输出结果 | | :--: | :--: | | 基本 — 输入文本（添加），生成图像（转换），再融合成一张（组合）。 | |",
+        "en": "| Workflow | Result | | :--: | :--: | | Basic — Type text (Add), generate images (Transform), then blend them into one (Compose). | |"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#1",
+        "依赖 drizzle-orm@0.44.5 存在已知漏洞（GHSA-gpj5-g38j-94v9） @ <dependencies>",
+        "依赖 nanoid@5.1.6 存在已知漏洞（GHSA-28wg-ghj8-5hjv） @ <dependencies>",
+        "依赖 next@15.5.19 存在已知漏洞（GHSA-4633-3j49-mh5q, GHSA-4c39-4ccg-62r3, GHSA-68g3-v927-f742） @ <dependencies>",
+        "依赖 next-intl@4.6.1 存在已知漏洞（GHSA-4c35-wcg5-mm9h, GHSA-8f24-v5vv-gm5j） @ <dependencies>",
+        "依赖 uuid@13.0.0 存在已知漏洞（GHSA-w5hq-g745-h8pq） @ <dependencies>",
+        "读取环境变量（可能包含敏感信息） @ packages/dsh-tongflow/src/client/studio/PluginsDialog.tsx"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "依赖 drizzle-orm@0.44.5 存在已知漏洞（GHSA-gpj5-g38j-94v9）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 nanoid@5.1.6 存在已知漏洞（GHSA-28wg-ghj8-5hjv）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 next@15.5.19 存在已知漏洞（GHSA-4633-3j49-mh5q, GHSA-4c39-4ccg-62r3, GHSA-68g3-v927-f742）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 next-intl@4.6.1 存在已知漏洞（GHSA-4c35-wcg5-mm9h, GHSA-8f24-v5vv-gm5j）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 uuid@13.0.0 存在已知漏洞（GHSA-w5hq-g745-h8pq）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "packages/dsh-tongflow/src/client/studio/PluginsDialog.tsx"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "依赖 drizzle-orm@0.44.5 存在已知漏洞（GHSA-gpj5-g38j-94v9）",
+        "依赖 nanoid@5.1.6 存在已知漏洞（GHSA-28wg-ghj8-5hjv）",
+        "依赖 next@15.5.19 存在已知漏洞（GHSA-4633-3j49-mh5q, GHSA-4c39-4ccg-62r3, GHSA-68g3-v927-f742）",
+        "依赖 next-intl@4.6.1 存在已知漏洞（GHSA-4c35-wcg5-mm9h, GHSA-8f24-v5vv-gm5j）",
+        "依赖 uuid@13.0.0 存在已知漏洞（GHSA-w5hq-g745-h8pq）"
+      ],
+      "reviewed_commit": "b9cb08617587650725ea2df75861d2c11db0a553",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-19T03:59:58.041Z"
+    },
+    {
+      "id": "toby-bridges/api-relay-audit",
+      "name": "api-relay-audit",
+      "author": "toby-bridges",
+      "description": "Local security audit for AI API relays and LLM proxies: detects prompt injection, model substitution, tool-call rewriting, SSE anomalies, error leakage, and Web3 wallet risks.",
+      "repo_url": "https://github.com/toby-bridges/api-relay-audit",
+      "homepage": "https://toby-bridges.github.io/api-relay-audit/",
+      "stars": 791,
+      "forks": 76,
+      "open_issues": 21,
+      "watchers": 0,
+      "pushed_at": "2026-08-15T19:22:01Z",
+      "archived": false,
+      "language": "Python",
+      "license": "AGPL-3.0",
+      "topics": [
+        "ai-agents",
+        "ai-audit",
+        "ai-security",
+        "anthropic",
+        "api-gateway",
+        "claude",
+        "dsh-plugin",
+        "llm-audit",
+        "llm-proxy",
+        "llm-security",
+        "model-substitution",
+        "openai-api",
+        "prompt-injection",
+        "python",
+        "security-audit",
+        "security-scanner",
+        "supply-chain-security",
+        "tool-call-rewriting",
+        "web3-security",
+        "web3-wallet"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "en": "Local security audit for AI API relays and LLM proxies."
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】硬编码敏感凭据（疑似硬编码密钥） @ dsh/test/plugin.test.js:28",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "访问第三方网络地址（如 explicit.example、override.example、relay.example、relay.example.com） @ dsh/test/plugin.test.js"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "硬编码敏感凭据（疑似硬编码密钥）",
+          "file": "dsh/test/plugin.test.js",
+          "line": 28
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 explicit.example、override.example、relay.example、relay.example.com）",
+          "file": "dsh/test/plugin.test.js"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 explicit.example、override.example、relay.example、relay.example.com）"
+      ],
+      "security_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
+      ],
+      "reviewed_commit": "00ce80208ea1178ac39116bf0843517a748e4dce",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-19T03:59:58.041Z"
+    },
+    {
+      "id": "mrpulor-gh/nuphus-mcp",
+      "name": "nuphus-mcp",
+      "author": "mrpulor-gh",
+      "description": "Desktop automation MCP server — computer use for any AI agent: control screen, windows, mouse/keyboard, and Chrome via Model Context Protocol (stdio)",
+      "repo_url": "https://github.com/mrpulor-gh/nuphus-mcp",
+      "homepage": "https://github.com/mrpulor-gh/nuphus-mcp",
+      "stars": 226,
+      "forks": 27,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-18T18:56:56Z",
+      "archived": false,
+      "language": "Rust",
+      "license": "MIT",
+      "topics": [
+        "ai-agent",
+        "browser-automation",
+        "chrome-automation",
+        "computer-use",
+        "computer-vision",
+        "desktop-automation",
+        "dsh-plugin",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "ocr",
+        "rust"
+      ],
+      "category": "plugin",
+      "kind": "code",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "源码/路径引用 @deepseek-ai/dsh 或 @deepseek-ai/cordis",
+      "description_i18n": {
+        "zh": "桌面自动化 MCP Server —— 为任意 AI 智能体提供\"计算机使用\"能力。看屏幕、控制窗口/键鼠、驱动 Chrome，经 Model Context Protocol（stdio）接入。",
+        "en": "Desktop automation MCP server — computer use for any AI agent. See the screen, control windows/mouse/keyboard, and drive Chrome over the Model Context Protocol (stdio). Desktop & browser automation need no API key; OCR runs locally; vision plugs into your own"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取环境变量（可能包含敏感信息） @ npm/packages/nuphus-mcp-linux-arm64/scripts/check-clean-bin.js"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "npm/packages/nuphus-mcp-linux-arm64/scripts/check-clean-bin.js"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "30f261a1689b0ca4a99ebf753afd3c59dddfdf9b",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-19T03:59:58.041Z"
+    },
+    {
+      "id": "d-dev0101/open-sea-skin",
+      "name": "open-sea-skin",
+      "author": "d-dev0101",
+      "description": "WebGPU ocean skin for DeepSeek Harness — DSH plugin, Harness-only Chrome/Edge extension, static installer, and native integration.",
+      "repo_url": "https://github.com/d-dev0101/open-sea-skin",
+      "homepage": "https://d-dev0101.github.io/open-sea-skin/",
+      "stars": 177,
+      "forks": 3,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-19T03:29:16Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "chrome-extension",
+        "deepseek",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "ocean-skin",
+        "theme",
+        "threejs",
+        "webgpu"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "为 DeepSeek Harness 加上实时 WebGPU 海洋皮肤。保留五组 Gerstner 波与 TSL 海面视觉，增加半透明玻璃界面，并提供只作用于 Harness 的浏览器扩展、无需编译 的 dist 安装脚本、可一行安装的 DSH 插件，以及真正接入 Harness",
+        "en": "A self-contained WebGPU ocean skin for DeepSeek Harness. It keeps the original five-wave Gerstner/TSL look, adds a translucent Harness theme, and is available as a one-line DSH plugin, Harness-only Chrome/Edge extension, one-command static"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#1",
+        "监听键盘输入事件 @ harness-plugin/src/client/OpenSeaQuickControls.tsx:55",
+        "使用屏幕/画面采集能力 @ scripts/capture-gallery.mjs:73",
+        "监听键盘输入事件 @ extension/vendor/addons/controls/OrbitControls.js:1",
+        "访问第三方网络地址（如 x） @ harness-plugin/src/index.ts",
+        "访问第三方网络地址（如 dsh.local） @ plugin/index.js",
+        "访问第三方网络地址（如 d-dev0101.github.io） @ package.json",
+        "读取环境变量（可能包含敏感信息） @ scripts/browser-acceptance.mjs",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fixture） @ scripts/browser-support.mjs",
+        "访问第三方网络地址（如 fixture） @ scripts/browser-support.mjs",
+        "访问第三方网络地址（如 w3.org） @ extension/vendor/three.core.js"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "harness-plugin/src/client/OpenSeaQuickControls.tsx",
+          "line": 55
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/capture-gallery.mjs",
+          "line": 73
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "extension/vendor/addons/controls/OrbitControls.js",
+          "line": 1
+        },
+        {
+          "explanation": "访问第三方网络地址（如 x）",
+          "file": "harness-plugin/src/index.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh.local）",
+          "file": "plugin/index.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 d-dev0101.github.io）",
+          "file": "package.json"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "scripts/browser-acceptance.mjs"
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fixture）",
+          "file": "scripts/browser-support.mjs"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 fixture）",
+          "file": "scripts/browser-support.mjs"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 w3.org）",
+          "file": "extension/vendor/three.core.js"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 x）",
+        "访问第三方网络地址（如 dsh.local）",
+        "访问第三方网络地址（如 d-dev0101.github.io）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fixture）",
+        "访问第三方网络地址（如 fixture）",
+        "访问第三方网络地址（如 w3.org）"
+      ],
+      "security_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "监听键盘输入事件",
+        "使用屏幕/画面采集能力"
+      ],
+      "reviewed_commit": "2437d80a96de4124c54fbe89872fa7090103f025",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-19T03:59:58.041Z"
+    },
+    {
+      "id": "V1ki/dsh-plugin-subscriptions",
+      "name": "dsh-plugin-subscriptions",
+      "author": "V1ki",
+      "description": "Use ChatGPT (Codex), Claude, and Grok (X Premium) subscriptions as DeepSeek Harness LLM providers — OAuth login in the web UI, no API keys",
+      "repo_url": "https://github.com/V1ki/dsh-plugin-subscriptions",
+      "homepage": "https://github.com/V1ki/dsh-plugin-subscriptions",
+      "stars": 127,
+      "forks": 9,
+      "open_issues": 3,
+      "watchers": 0,
+      "pushed_at": "2026-08-19T03:14:51Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "ai-agent",
+        "chatgpt",
+        "claude",
+        "codex",
+        "deepseek-harness",
+        "dsh-plugin",
+        "grok",
+        "llm",
+        "oauth",
+        "typescript"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "把你的 ChatGPT(Codex)、Claude、Grok(X Premium) 订阅当作 DeepSeek Harness 的 LLM provider 使用 —— 不需要 API key。登录在 dsh web 界面完成(设置 → 订阅);token 保存在 ~/.dsh/plugins/subscriptions/auth.json(权限 0600),过期自动刷新。",
+        "en": "Use your ChatGPT (Codex), Claude, and Grok (X Premium) subscriptions as LLM providers in DeepSeek Harness — no API keys. Login happens in the dsh web UI (Settings → Subscriptions); tokens live at ~/.dsh/plugins/subscriptions/auth.json (mode 0600) and refresh"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "存在 Base64 解码行为 @ src/tools/image-generate.ts:92",
+        "访问第三方网络地址（如 api.anthropic.com、claude.ai、platform.claude.com） @ src/providers/claude.ts",
+        "访问第三方网络地址（如 api.openai.com、auth.openai.com、chatgpt.com） @ src/providers/codex.ts",
+        "访问第三方网络地址（如 api.x.ai、auth.x.ai、cli-chat-proxy.grok.com） @ src/providers/grok.ts",
+        "访问第三方网络地址（如 chatgpt.com） @ src/tools/image-generate.ts",
+        "访问第三方网络地址（如 api.x.ai） @ src/tools/x-search.ts",
+        "访问第三方网络地址（如 auth.x.ai） @ test/models.spec.ts",
+        "访问第三方网络地址（如 api.openai.com、auth.x.ai、x.com） @ test/tools.spec.ts"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "src/tools/image-generate.ts",
+          "line": 92
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.anthropic.com、claude.ai、platform.claude.com）",
+          "file": "src/providers/claude.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.openai.com、auth.openai.com、chatgpt.com）",
+          "file": "src/providers/codex.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.x.ai、auth.x.ai、cli-chat-proxy.grok.com）",
+          "file": "src/providers/grok.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 chatgpt.com）",
+          "file": "src/tools/image-generate.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.x.ai）",
+          "file": "src/tools/x-search.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 auth.x.ai）",
+          "file": "test/models.spec.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.openai.com、auth.x.ai、x.com）",
+          "file": "test/tools.spec.ts"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 api.anthropic.com、claude.ai、platform.claude.com）",
+        "访问第三方网络地址（如 api.openai.com、auth.openai.com、chatgpt.com）",
+        "访问第三方网络地址（如 api.x.ai、auth.x.ai、cli-chat-proxy.grok.com）",
+        "访问第三方网络地址（如 chatgpt.com）",
+        "访问第三方网络地址（如 api.x.ai）",
+        "访问第三方网络地址（如 auth.x.ai）",
+        "访问第三方网络地址（如 api.openai.com、auth.x.ai、x.com）"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "存在 Base64 解码行为"
+      ],
+      "reviewed_commit": "81f0316b7d940d523259b94ca33c388806ffc133",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-19T03:59:58.041Z"
+    },
+    {
+      "id": "zh667/TokenLedger",
+      "name": "TokenLedger",
+      "author": "zh667",
+      "description": "Relay-site attributed token usage for DeepSeek Harness — zero config, no credentials",
+      "repo_url": "https://github.com/zh667/TokenLedger",
+      "homepage": "https://www.npmjs.com/package/dsh-tokenledger",
+      "stars": 102,
+      "forks": 8,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-08-17T09:36:20Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "billing",
+        "deepseek-harness",
+        "dsh-plugin",
+        "newapi",
+        "sub2api",
+        "token-usage"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "把 DeepSeek Harness 的 Token 用量算清楚，并归属到实际服务这次请求的中转站——不用配置，不用凭据。"
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】硬编码敏感凭据（疑似硬编码密钥） @ test/discovery.test.js:68",
+        "监听键盘输入事件 @ src/client.js:1575",
+        "访问第三方网络地址（如 host） @ src/adapters/detect.js",
+        "访问第三方网络地址（如 collector.example） @ src/balance.js",
+        "访问第三方网络地址（如 relay.example.com） @ src/declarative.js",
+        "访问第三方网络地址（如 api.example.com、relay.example） @ src/relay-sites.js",
+        "访问第三方网络地址（如 api.relay-one.example） @ test/apply.test.js",
+        "访问第三方网络地址（如 api.deepseek.com.evil.example、api.moonshot.ai、api.moonshot.cn、api.relay-one.example） @ test/balance.test.js",
+        "访问第三方网络地址（如 collector.example、evil.example、relay-one.example、relay.example） @ test/declarative.test.js",
+        "访问第三方网络地址（如 host、plain.example、relay.example、relay.example.com） @ test/detect.test.js",
+        "访问第三方网络地址（如 a.example、api.example.com、api.relay-one.example、corrected.example） @ test/discovery.test.js"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "硬编码敏感凭据（疑似硬编码密钥）",
+          "file": "test/discovery.test.js",
+          "line": 68
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client.js",
+          "line": 1575
+        },
+        {
+          "explanation": "访问第三方网络地址（如 host）",
+          "file": "src/adapters/detect.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 collector.example）",
+          "file": "src/balance.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 relay.example.com）",
+          "file": "src/declarative.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.example.com、relay.example）",
+          "file": "src/relay-sites.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.relay-one.example）",
+          "file": "test/apply.test.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.deepseek.com.evil.example、api.moonshot.ai、api.moonshot.cn、api.relay-one.example）",
+          "file": "test/balance.test.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 collector.example、evil.example、relay-one.example、relay.example）",
+          "file": "test/declarative.test.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 host、plain.example、relay.example、relay.example.com）",
+          "file": "test/detect.test.js"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 a.example、api.example.com、api.relay-one.example、corrected.example）",
+          "file": "test/discovery.test.js"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 host）",
+        "访问第三方网络地址（如 collector.example）",
+        "访问第三方网络地址（如 relay.example.com）",
+        "访问第三方网络地址（如 api.example.com、relay.example）",
+        "访问第三方网络地址（如 api.relay-one.example）",
+        "访问第三方网络地址（如 api.deepseek.com.evil.example、api.moonshot.ai、api.moonshot.cn、api.relay-one.example）",
+        "访问第三方网络地址（如 collector.example、evil.example、relay-one.example、relay.example）",
+        "访问第三方网络地址（如 host、plain.example、relay.example、relay.example.com）",
+        "访问第三方网络地址（如 a.example、api.example.com、api.relay-one.example、corrected.example）"
+      ],
+      "security_notes": [
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "63091bbf2ab093ae8f137d2f5310c5ba2c331f37",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-19T03:59:58.041Z"
+    },
+    {
+      "id": "toolclub/dsh-agent-team-gui",
+      "name": "dsh-agent-team-gui",
+      "author": "toolclub",
+      "description": "Persistent multi-model workflow teams for DeepSeek Harness — dynamic lead planning, bounded DAGs, per-agent model/tools, Run Center and Token insights.",
+      "repo_url": "https://github.com/toolclub/dsh-agent-team-gui",
+      "homepage": "https://github.com/toolclub/dsh-agent-team-gui#readme",
+      "stars": 84,
+      "forks": 2,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-19T02:37:45Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "agent",
+        "agent-orchestration",
+        "ai-agents",
+        "dag",
+        "deepseek-harness",
+        "deepseek-harness-plugin",
+        "dsh",
+        "dsh-plugin",
+        "dsh-plugins",
+        "multi-agent",
+        "multi-model",
+        "orchestration",
+        "react",
+        "token-usage",
+        "typescript",
+        "workflow-engine"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "为 DeepSeek Harness 提供持久、可复用的多模型 Agent 小队。",
+        "en": "Persistent, reusable multi-model Agent teams for DeepSeek Harness."
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/quality/dsh-fixture.mjs",
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "使用屏幕/画面采集能力 @ scripts/quality/browser-smoke.mjs:600",
+        "使用屏幕/画面采集能力 @ scripts/quality/browser-smoke.mjs:614",
+        "使用屏幕/画面采集能力 @ scripts/quality/capture-readme.mjs:36",
+        "使用屏幕/画面采集能力 @ scripts/quality/capture-readme.mjs:45",
+        "使用屏幕/画面采集能力 @ scripts/quality/capture-readme.mjs:213",
+        "监听键盘输入事件 @ src/client/ComposerControl.tsx:129",
+        "监听键盘输入事件 @ src/client/SettingsPage.tsx:485",
+        "读取环境变量（可能包含敏感信息） @ scripts/quality/browser-smoke.mjs"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "scripts/quality/dsh-fixture.mjs"
+        },
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/quality/browser-smoke.mjs",
+          "line": 600
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/quality/browser-smoke.mjs",
+          "line": 614
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/quality/capture-readme.mjs",
+          "line": 36
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/quality/capture-readme.mjs",
+          "line": 45
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/quality/capture-readme.mjs",
+          "line": 213
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/ComposerControl.tsx",
+          "line": 129
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/SettingsPage.tsx",
+          "line": 485
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "scripts/quality/browser-smoke.mjs"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "使用屏幕/画面采集能力",
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "3b56aa4dbe20cc128d710928d20c80404ec7fff6",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-19T03:59:58.041Z"
+    },
+    {
+      "id": "cocode-agency/cocode",
+      "name": "cocode",
+      "author": "cocode-agency",
+      "description": "Best ready-to-run DeepSeek Harness distribution: DSH desktop GUI, terminal TUI, and harness integration.",
+      "repo_url": "https://github.com/cocode-agency/cocode",
+      "homepage": "https://cocode.agency",
+      "stars": 67,
+      "forks": 5,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-19T00:19:49Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "agent",
+        "byok",
+        "cocode",
+        "coding-agent",
+        "deepseek",
+        "deepseek-harness",
+        "desktop-app",
+        "dsh",
+        "dsh-plugin",
+        "free",
+        "tui",
+        "vibe-coding"
+      ],
+      "category": "distribution",
+      "kind": "dsh-client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.client manifest",
+      "description_i18n": {
+        "zh": "开箱即用的 DeepSeek Harness 发行版。",
+        "en": "A ready-to-run DeepSeek Harness distribution."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json",
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#1",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#2",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#3",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#4",
+        "访问第三方网络地址（如 x） @ cocode-gui/packages/client/modules/src/index.ts"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#2"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#3"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#4"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 x）",
+          "file": "cocode-gui/packages/client/modules/src/index.ts"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 x）"
+      ],
+      "security_notes": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
+      ],
+      "reviewed_commit": "8f1a685db1a74fb303d8c9a896067cb02d2b2324",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-19T03:59:58.041Z"
+    },
+    {
+      "id": "shanliuling/dsh-image-gen",
+      "name": "dsh-image-gen",
+      "author": "shanliuling",
+      "description": "Generate images directly in DeepSeek Harness chats",
+      "repo_url": "https://github.com/shanliuling/dsh-image-gen",
+      "homepage": "https://github.com/shanliuling/dsh-image-gen#readme",
+      "stars": 63,
+      "forks": 1,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-19T03:56:49Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "ai-agent",
+        "cordis",
+        "deepseek",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "gemini",
+        "image-generation",
+        "openai",
+        "plugin",
+        "seedream"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "存在 Base64 解码行为 @ src/google.ts:92",
+        "存在 Base64 解码行为 @ src/openai-compatible.ts:64",
+        "访问第三方网络地址（如 api.openai.com、ark.cn-beijing.volces.com、generativelanguage.googleapis.com） @ src/shared.ts",
+        "访问第三方网络地址（如 generativelanguage.googleapis.com） @ tests/google.spec.ts",
+        "访问第三方网络地址（如 ark.example、image.example、relay.example） @ tests/openai-compatible.spec.ts"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "src/google.ts",
+          "line": 92
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "src/openai-compatible.ts",
+          "line": 64
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.openai.com、ark.cn-beijing.volces.com、generativelanguage.googleapis.com）",
+          "file": "src/shared.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 generativelanguage.googleapis.com）",
+          "file": "tests/google.spec.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 ark.example、image.example、relay.example）",
+          "file": "tests/openai-compatible.spec.ts"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 api.openai.com、ark.cn-beijing.volces.com、generativelanguage.googleapis.com）",
+        "访问第三方网络地址（如 generativelanguage.googleapis.com）",
+        "访问第三方网络地址（如 ark.example、image.example、relay.example）"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "存在 Base64 解码行为"
+      ],
+      "reviewed_commit": "b3ecdb1df388702fa8a6803f76c27fa750f208a8",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-19T03:59:58.041Z"
+    },
+    {
+      "id": "howmp/dsh-pentest",
+      "name": "dsh-pentest",
+      "author": "howmp",
+      "description": "面向 DeepSeek Harness（dsh）的渗透测试模式  @CloverSecLabs",
+      "repo_url": "https://github.com/howmp/dsh-pentest",
+      "homepage": "https://github.com/howmp/dsh-pentest",
+      "stars": 62,
+      "forks": 7,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-08-16T05:32:07Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "unknown",
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "dsh-plugins",
+        "pentest"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "DeepSeek Harness 的渗透测试模式：一条探索链路——goal → intent → fact → 派生 intent → finding—— 决策 agent（根 agent）把探索/执行委派给子 agent、把每个节点与边写进持久记录，并记录资产 （根域名 / 子域名 / IP / 服务 / App / 端点）及其父子关系。每个漏洞 finding 必须带可复现步骤。"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#1",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#2",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#3",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#4",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#5",
+        "监听键盘输入事件 @ lib/ui-pentest.client.js:6236",
+        "监听键盘输入事件 @ lib/ui-pentest.client.js:6237",
+        "监听键盘输入事件 @ lib/ui-pentest.client.js:10801",
+        "访问第三方网络地址（如 react.dev、reactflow.dev、w3.org） @ lib/ui-pentest.client.js"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#2"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#3"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#4"
+        },
+        {
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#5"
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/ui-pentest.client.js",
+          "line": 6236
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/ui-pentest.client.js",
+          "line": 6237
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/ui-pentest.client.js",
+          "line": 10801
+        },
+        {
+          "explanation": "访问第三方网络地址（如 react.dev、reactflow.dev、w3.org）",
+          "file": "lib/ui-pentest.client.js"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 react.dev、reactflow.dev、w3.org）"
+      ],
+      "security_notes": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "3815e74b33a1f36259534e55866ce74757db82bc",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-19T03:59:58.041Z"
     }
   ]
 }
