@@ -419,7 +419,7 @@ test('persists the one-time description check even when no language was found', 
   );
 });
 
-test('selects the description for the active site language with Chinese-first fallback', () => {
+test('prefers the repository About over README-extracted i18n descriptions', () => {
   const plugin = {
     id: 'owner/plugin',
     description: '默认简介',
@@ -437,15 +437,61 @@ test('selects the description for the active site language with Chinese-first fa
     },
   };
 
-  assert.equal(localizedPlugin(plugin, 'zh', translations).description, '中文简介');
-  assert.equal(localizedPlugin(plugin, 'en', translations).description, 'English description');
+  // 可用 About 优先于 README 提取的语言简介（两种语言都改选 About）。
+  assert.equal(localizedPlugin(plugin, 'zh', translations).description, '默认简介');
+  assert.equal(localizedPlugin(plugin, 'en', translations).description, '默认简介');
+  // About 缺失时回退到语言简介。
   assert.equal(
-    localizedPlugin({ ...plugin, description_i18n: { en: 'English description' } }, 'zh', translations)
+    localizedPlugin({ ...plugin, description: '', description_i18n: { en: 'English description' } }, 'zh', translations)
       .description,
-    '默认简介',
+    'English description',
   );
+  // About 缺失时英文回退到翻译 overlay。
   assert.equal(
-    localizedPlugin({ ...plugin, description_i18n: {} }, 'en', translations).description,
+    localizedPlugin({ ...plugin, description: '', description_i18n: {} }, 'en', translations).description,
     'Overlay English description',
   );
+});
+
+test('falls back to README i18n when About is a template placeholder', () => {
+  const base = {
+    id: 'owner/plugin',
+    description_i18n: { zh: '中文简介', en: 'English description' },
+  };
+  const translations = {};
+  for (const about of [
+    'AgentTeams plugin for DeepSeek Harness',
+    'dshtools for DeepSeek Harness',
+    'DeepSeek Harness plugin',
+    'A DeepSeek Harness extension',
+    'English',
+    '中文',
+  ]) {
+    assert.equal(
+      localizedPlugin({ ...base, description: about }, 'zh', translations).description,
+      '中文简介',
+      `About "${about}" should be treated as unusable`,
+    );
+  }
+});
+
+test('keeps a descriptive About even when it ends with "for DeepSeek Harness"', () => {
+  const base = {
+    id: 'owner/plugin',
+    description_i18n: { zh: 'README 提取简介', en: 'README extracted' },
+  };
+  const translations = {};
+  // 描述里含 plugin/tutorial 等字样，但紧邻 for 之前的收尾词是描述性名词，应视为可用 About。
+  for (const about of [
+    'Plugin marketplace & manager for DeepSeek Harness',
+    'Zero-to-plugin tutorial for DeepSeek Harness',
+    '从零开始，看懂 DeepSeek Harness 的教程 | 零基础教程 for DeepSeek Harness',
+    'Near-native image understanding for DeepSeek Harness',
+  ]) {
+    assert.equal(
+      localizedPlugin({ ...base, description: about }, 'zh', translations).description,
+      about,
+      `Descriptive About "${about}" should be kept verbatim`,
+    );
+  }
 });
