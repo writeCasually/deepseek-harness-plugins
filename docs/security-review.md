@@ -29,6 +29,8 @@ GitHub 上带 `dsh-plugin` 话题的仓库可以来自任何人。自动收录�
 | T8 | 审查留痕与增量复查 | 日志/条目字段 | 每次记录 `reviewed_commit`、扫描文件数/总文件数、delta 模式标记；`FORCE_REREVIEW=1` 时通过 GitHub compare API 只重扫变更文件 |
 
 > **内容扫描范围（重要）**：`scanSecurity()` / `scanSecrets()` / `scanObfuscation()` / `privacyFindings()` 只针对「agent 会运行的可执行代码文件」。DSH 插件是 Node.js 项目，经 `import()` 实际运行的只有 JS/TS 生态：`.js`/`.mjs`/`.cjs`（及编译前的源码 `.ts`/`.tsx`/`.jsx`），以及 `Dockerfile`/`Makefile` 与 `install`/`prepare` 等 Node 安装脚本。README（`.md`）、配置文件（`.json/.yml/.yaml/.toml/.ini`）、文档、锁文件，以及非 Node 脚本（`.py/.sh/.bash/.zsh/.ps1`）**均不会** 进入内容扫描，风险定位（`risk_evidence` 的 `file` 字段）因此不会指向这些文件。`package.json` 的依赖与生命周期脚本由 `analyzePackageManifest()` 单独分析（其风险位置记为 `package.json`，属可运行安装脚本范围）。
+>
+> **陈旧数据的收束清洗**：由于每日/手动运行只重建「本轮实际重审」的条目，历史条目可能残留旧版引擎生成的、指向非运行文件（如 `README.md`）的 `risk_evidence`/`risk_notes`。因此汇总阶段会对**本轮未重审**的条目统一执行 `cleanseStaleRisk()`：剔除指向非运行文件（`.md` 等，属扫描 bug 的误报）的证据与定位说明；对纯旧格式（无结构化 `risk_evidence`）的条目，把 `privacy_notes`/`security_notes` 中无位置的说明并入 `risk_notes` 并保守重算 `risk_level`，避免掩盖真实风险。这样即便一个插件长期未被重审，其公开列表里也不会出现 `.md` 等非运行文件的过时定位，同时不会因清洗而把真实风险误判为低风险。
 
 ## 判定与裁决：两级模型
 
@@ -81,6 +83,9 @@ FORCE_REREVIEW=1 LIMIT=5 node scripts/discover-plugins.mjs
 # 调大代码文件采样预算（默认 28）
 SCAN_FILE_BUDGET=40 node scripts/discover-plugins.mjs
 
+# 全覆盖重审时主动节流（毫秒/仓库），防止触发 GitHub API 限流中断（默认 800）
+REREVIEW_DELAY_MS=1200 FORCE_REREVIEW=1 node scripts/discover-plugins.mjs
+
 # 关闭 OSV 供应链检查
 OSV_CHECK=0 node scripts/discover-plugins.mjs
 
@@ -93,7 +98,8 @@ LLM_API_KEY=sk-... LLM_MODEL=deepseek-chat node scripts/discover-plugins.mjs
 | `SCAN_FILE_BUDGET` | `28` | 每个仓库最多拉取审查的代码文件数（控制 API 用量） |
 | `OSV_CHECK` | `1` | 是否查询 OSV 已知漏洞 |
 | `LLM_API_KEY` / `LLM_API_URL` / `LLM_MODEL` | 空 / DeepSeek / `deepseek-chat` | 可选 LLM 复核 |
-| `FORCE_REREVIEW` | 空 | 对已审仓库重新审查（delta 优先） |
+| `FORCE_REREVIEW` | 空 | 对已审仓库重新审查（delta 优先）；置 1 时进入「全覆盖重审」：候选池 = 搜索发现 + 全部已收录 + **review-log 中曾被判 blocked 的仓库**（重新判定，防止旧策略误伤），不再受 `LIMIT` 截断。官方（`deepseek-ai/*`）与 curated 精选始终不参与审查 |
+| `REREVIEW_DELAY_MS` | `800`（仅全覆盖模式下） | 全覆盖重审时每处理一个仓库后的主动休眠毫秒数，用于防 GitHub API 限流（不追求速度） |
 | `DRY_RUN` | 空 | 不写盘、只打印 |
 | `LIMIT` / `MAX_REPOS` | `40` | 本轮最多处理的新仓库数 |
 

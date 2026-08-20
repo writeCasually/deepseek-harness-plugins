@@ -41,6 +41,11 @@ const FORCE_REREVIEW = envFlag('FORCE_REREVIEW');
 const DRY_RUN = envFlag('DRY_RUN');
 const PER_PAGE = 100;
 
+// 全覆盖重审（FORCE_REREVIEW=1）会一次处理全部已收录 + 曾被 blocked 的仓库，
+// 远超日常 LIMIT=40 的节奏。为避免触发 GitHub API 限流导致中途中断，
+// 每处理一个仓库后主动休眠（毫秒）。默认带 token 时也给出较保守的节流。
+const REREVIEW_DELAY_MS = Number(process.env.REREVIEW_DELAY_MS || (FORCE_REREVIEW ? 800 : 0));
+
 const THIS_REPO = process.env.GITHUB_REPOSITORY || 'writeCasually/deepseek-harness-plugins';
 const NOW = new Date().toISOString();
 const API_BASE = 'https://api.github.com';
@@ -557,6 +562,148 @@ async function reviewRepo(repo, opts = {}) {
   };
 }
 
+/**
+ * 收束阶段清洗陈旧风险数据。仅用于「本轮未被重新审查」的既有条目：
+ * 这类条目的 risk_evidence/risk_notes 可能来自旧版本引擎，其中一部分会把
+ * 风险定位指向 README.md 等「非运行文件」（扫描 bug 的产物，属明确误报），
+ * 需要在汇总时清洗，使任何一次运行（即便只是普通定时刷新）都能清掉这类
+ * 历史残留，而不必等该插件被重审。
+ *
+ * 清洗规则（仅作用于未重审条目，重审条目由 toEntry 直接产出、天然干净）：
+ *   - risk_evidence：剔除指向「非运行文件」（.md/.yml/.json/.py/.sh 等）的证据；
+ *     指向可运行文件或 `<...>` 占位（OSV 依赖/llm-review）的证据保留。
+ *   - risk_notes：剔除末尾带「@ 非运行文件」定位的说明（误报）；带「@ 可运行文件」
+ *     或无定位的说明保留——无定位的说明代表旧引擎对真实代码的判断（如“读取凭据类
+ *     环境变量并发送到网络”），只是旧 schema 没记录文件位置，不应丢弃以免掩盖风险。
+ *   - 旧的 privacy_notes / security_notes 非结构化数组：汇入 risk_notes（去重），
+ *     因为这些是对代码的真实风险说明，仅缺文件位置；随后清空这两个旧字段。
+ *   - risk_level 保守重算：残留含 critical 语义（凭据/泄露/窃取/Cookie 等）→ high；
+ *     有任一说明 → moderate；全部为空 → low。
+ * @param {object} p - 规范化后的插件条目（本轮未重审）。
+ * @returns {object} 清洗后的新条目。
+ */
+export function cleanseStaleRisk(p) {
+  // 保留：无文件位置（真实风险但缺位置）、可运行文件、`<...>` 占位（OSV/llm）。
+  // 剔除：指向具体「非运行文件」（.md/.yml/.json/.py/.sh 等）的误报证据。
+  const keepEvidence = (file) => {
+    if (!file || typeof file !== 'string') return true;
+    if (file.startsWith('<') && file.endsWith('>')) return true;
+    return scanFileScore(file) !== -1;
+  };
+  const riskEvidence = (p.risk_evidence || []).filter((e) => keepEvidence(e && e.file));
+
+  // 定位提取：从 note 末尾解析「@ 文件」；无 @ 视为「无定位」。
+  const noteLoc = (note) => {
+    const at = note.indexOf(' @ ');
+    if (at === -1) return null;
+    // 只认行尾的定位，避免把说明正文里的 “@” 误判。
+    const cand = note.slice(at + 3).trim();
+    return /^[\w./-]+(:\d+)?$/.test(cand) ? cand : null;
+  };
+  // 剔除「指向非运行文件」的定位说明；无定位或指向可运行文件的说明保留。
+  const keepNote = (note) => {
+    const loc = noteLoc(note);
+    if (loc === null) return true;
+    return keepEvidence(loc);
+  };
+  const riskNotes = (p.risk_notes || []).filter(keepNote);
+
+  // 旧 schema 的 privacy_notes / security_notes 是否代表真实风险、需要并入：
+  // 只有当本条目「没有任何结构化 evidence」（纯旧格式，如 08-14 前 schema，全部风险
+  // 只存在于这两个非结构化数组）时才并入 risk_notes，避免掩盖真实风险；
+  // 若已具备 evidence 对应的定位说明（08-17 后 schema），这两个数组只是无定位的
+  // 冗余孪生说明，不并入，以免造成重复告警。
+  const legacy = [...(p.privacy_notes || []), ...(p.security_notes || [])];
+  const merged = riskEvidence.length
+    ? riskNotes
+    : [...new Set([...riskNotes, ...legacy])];
+
+  // 保守重算风险层级：含 critical 语义即 high；有任一说明即 moderate；全空才 low。
+  const CRITICAL_HINT = /凭据|密钥|泄露|窃取|Cookie|localStorage|sessionStorage|恶意|入侵|未授权/i;
+  const hasCritical = riskEvidence.some((e) => CRITICAL_HINT.test(e.explanation || '')) ||
+    merged.some((n) => CRITICAL_HINT.test(n));
+  const risk_level = hasCritical ? 'high' : merged.length ? 'moderate' : 'low';
+
+  return {
+    ...p,
+    risk_level,
+    risk_notes: merged,
+    risk_evidence: riskEvidence,
+    // 旧的非结构化风险数组已并入 risk_notes，清空以统一展示路径。
+    privacy_notes: [],
+    security_notes: [],
+  };
+}
+
+// 从既有插件条目反构一个 repo 形状对象，供 FORCE_REREVIEW 覆盖重审时
+// 喂给 reviewRepo / toEntry（这些字段即可满足审查与重建所需）。
+function entryToRepo(p) {
+  const [owner, name] = String(p.id || '').split('/');
+  return {
+    full_name: p.id,
+    name: name || p.name || '',
+    owner: { login: owner || '' },
+    html_url: p.repo_url || `https://github.com/${p.id}`,
+    homepage: p.homepage || null,
+    description: p.description || '',
+    stargazers_count: p.stars || 0,
+    forks_count: p.forks ?? 0,
+    open_issues_count: p.open_issues ?? 0,
+    subscribers_count: p.watchers ?? 0,
+    pushed_at: p.pushed_at || '',
+    archived: p.archived || false,
+    language: p.language || 'unknown',
+    license: p.license && p.license !== 'unknown' ? { spdx_id: p.license } : null,
+    topics: p.topics || [],
+    default_branch: 'main',
+    created_at: '',
+  };
+}
+
+// 拉取某个仓库的最新元数据。用于 FORCE_REREVIEW 全量复查时，把「曾被判 blocked
+// 而移出列表」的仓库（不在此前 existing.plugins 中，无缓存条目）重新纳入候选池，
+// 以便在新审查策略下重新判定，避免旧策略误伤导致这些插件永久无法复查。
+async function fetchRepoMeta(fullName) {
+  const data = await api(`/repos/${encodeURIComponent(fullName)}`, null);
+  return data && data.full_name ? data : null;
+}
+
+/**
+ * FORCE_REREVIEW 全覆盖时构建完整候选池（纯函数，便于测试）。
+ * 除搜索得出的候选外，并入：
+ *   - 所有已收录条目（排除官方 deepseek-ai/* 与 curated 精选——二者始终不参与审查）；
+ *   - review 日志中曾被判 blocked 而移出列表的仓库（经 injectable `fetchMeta`
+ *     拉取最新元数据后重审，防止旧策略误伤导致永久失去复查机会）。
+ * @param {Array} baseCandidates 已收集的搜索候选（含真实 repo 元数据）。
+ * @param {Array} existingPlugins 当前已收录条目（docs/plugins.json 的 plugins）。
+ * @param {Array} logDecisions 审查日志决策（含 {id, verdict}，可为阻塞记录）。
+ * @param {(fullName:string)=>Promise<object|null>} fetchMeta 拉取仓库元数据。
+ * @returns {Promise<Array>} 合并去重后的完整候选池（含元数据的 repo 对象）。
+ */
+export async function buildRereviewCandidates(baseCandidates, existingPlugins, logDecisions, fetchMeta) {
+  const candidates = baseCandidates.slice();
+  const seen = new Set(candidates.map((r) => r && r.full_name).filter(Boolean));
+  const push = (repoObj) => {
+    if (!repoObj || !repoObj.full_name) return;
+    if (seen.has(repoObj.full_name)) return;
+    seen.add(repoObj.full_name);
+    candidates.push(repoObj);
+  };
+  for (const p of existingPlugins || []) {
+    const isOfficial = p.official || String(p.id || '').startsWith('deepseek-ai/');
+    if (isOfficial || p.source === 'curated') continue;
+    push(entryToRepo(p));
+  }
+  for (const d of logDecisions || []) {
+    if (d.verdict !== 'blocked') continue;
+    const fullName = d.id;
+    if (!fullName || seen.has(fullName) || fullName === THIS_REPO) continue;
+    if (String(fullName).startsWith('deepseek-ai/')) continue;
+    push(await fetchMeta(fullName));
+  }
+  return candidates;
+}
+
 function normalizeEntry(p) {
   const official = p.official ?? p.id?.startsWith('deepseek-ai/') ?? false;
   const kind = p.kind ?? (official ? 'official' : 'code');
@@ -625,16 +772,35 @@ async function main() {
     if (!TOKEN) await sleep(1000);
   }
 
-  const candidates = collected.filter(
+  let candidates = collected.filter(
     (r) => !r.fork && !r.archived && r.full_name !== THIS_REPO,
   );
 
-  console.log(`发现 ${collected.length} 个仓库，本次最多处理 ${LIMIT} 个新仓库。`);
+  // FORCE_REREVIEW（“全部审查”）下，只依赖 topic:dsh-plugin 搜索池会漏掉很多需要
+  // 复查的仓库。用户只会在更新审查策略后选择全部审查，因此这里把所有需要复查的仓库
+  // 一并并入候选池，并解除 LIMIT 截断：
+  //   1) 所有已收录条目（星级靠后的risk数据可能停留在旧版本）；
+  //   2) 曾被判 blocked 而移出列表的仓库——拉最新元数据后重新判定，防止旧策略误伤。
+  // 官方仓库（deepseek-ai/*）与手动 curated 始终不参与任何审查，直接排除。
+  if (FORCE_REREVIEW) {
+    candidates = await buildRereviewCandidates(candidates, existing.plugins, logDecisions, fetchRepoMeta);
+  }
+
+  console.log(
+    `发现 ${collected.length} 个仓库，候选池 ${candidates.length} 个` +
+      `${FORCE_REREVIEW ? '（FORCE_REREVIEW 全覆盖重审）' : ''}` +
+      `，本次最多处理 ${FORCE_REREVIEW ? candidates.length : LIMIT} 个。`,
+  );
 
   let processed = 0;
+  // 全覆盖重审时不再受 LIMIT 截断：已收录插件全部重新判定，新的搜索候选仍受 LIMIT。
+  const effectiveLimit = FORCE_REREVIEW ? candidates.length : LIMIT;
   for (const repo of candidates) {
-    if (processed >= LIMIT) break;
+    if (processed >= effectiveLimit) break;
 
+    // 官方仓库始终不参与任何审查（开源即默认信任官方预设，不进入第三方发现/评审流程）。
+    if (repo.full_name.startsWith('deepseek-ai/')) continue;
+    // curated 手动精选同样不参与自动审查（人工维护、独立看护）。
     if (byId.has(repo.full_name) && byId.get(repo.full_name).source === 'curated') {
       continue;
     }
@@ -700,7 +866,10 @@ async function main() {
       byId.delete(repo.full_name);
     }
 
-    if (!TOKEN) await sleep(700);
+    // 全覆盖重审一次处理大量仓库，主动休眠节流，避免触发 GitHub API 限流中断；
+    // 无 token 的低速模式也保留原有节流。
+    const delay = REREVIEW_DELAY_MS || (!TOKEN ? 700 : 0);
+    if (delay > 0) await sleep(delay);
   }
 
   // 汇总每个插件当前可用的最新 verdict：本轮新审查优先，其次既有审查日志
@@ -713,8 +882,12 @@ async function main() {
   // 官方仓库与手动精选始终保留；未通过审查/不兼容的已收录项降级移除。
   // 关键修正：以「最新审查 verdict」为准，而不仅是条目里可能已陈旧的 review_status。
   // 此前已收录为 flagged 的插件，若最新被判为 blocked，也必须从公开列表移除。
+  //
+  // 清洗逻辑：本轮新审查产出的条目（reviewed_at === NOW）由 toEntry 保证干净，直接使用；
+  // 其余既有条目可能携带旧引擎留下的风险数据（指向 README.md 等非运行文件，或无文件位置的
+  // 旧格式说明），统一经 cleanseStaleRisk 清洗，确保即使本轮没重审到它，也不会残留过时提示。
   const approved = [...byId.values()]
-    .map(normalizeEntry)
+    .map((p) => (p.reviewed_at === NOW ? p : cleanseStaleRisk(normalizeEntry(p))))
     .filter((p) => {
       if (p.source === 'curated' || p.official) return true;
       // 最新审查为 blocked（安全阻断）时，即便旧条目仍残留 flagged 也必须移除。

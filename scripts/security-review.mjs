@@ -242,15 +242,30 @@ export function scanSecurity(text, meta = {}) {
   return base.filter((f) => !(f.id === 'websocket-exfil' && isAllowlistedHost(f.snippet)));
 }
 
+// 判定是否为测试文件（供硬编码密钥启发式降噪）。
+// 测试目录/用例文件里出现的硬编码「密钥值」绝大多数是用于验证脱敏/密钥处理的固件假值
+// （如 const SECRET = 'sk-dsh-secret-never-log'），并非真实凭据。
+const TEST_FILE_RE = /(?:^|\/)(?:__tests__|test|tests|spec|specs)(?:\/|$)|(?:\.|_)(?:test|spec)\./i;
+
+function isTestFilePath(file = '') {
+  return TEST_FILE_RE.test(file);
+}
+
 /**
- * 硬编码密钥扫描。命中即 critical；带占位符上下文的命中降级为忽略。
+ * 硬编码密钥扫描。命中即 critical；带占位符上下文、或命中测试文件里的启发式
+ * 「疑似硬编码密钥」规则（secret-generic）时降级为忽略。
  * @returns {Array<{id,severity,explanation,file,line,snippet}>}
  */
 export function scanSecrets(text, meta = {}) {
   const findings = [];
   if (!text) return findings;
   const file = meta.file || '?';
+  const testFile = isTestFilePath(file);
   for (const rule of SECRET_RULES) {
+    if (testFile && rule.id === 'secret-generic') {
+      // 测试文件中的 secret/password/token = '...' 等启发式值多为固件假值，不视为真实密钥。
+      continue;
+    }
     const re = new RegExp(rule.re.source, rule.re.flags.includes('g') ? rule.re.flags : rule.re.flags + 'g');
     let match = null;
     while ((match = re.exec(text)) !== null) {
@@ -373,8 +388,12 @@ export function scanPaths(paths = []) {
 
 // --- 隐私泄露检测（保留原有语义，增加证据与主机名透明度） ---
 const ENV_ACCESS = /process\.env|os\.environ|getenv\s*\(|environ\[/i;
+// 注：DSH_ 前缀代表 DeepSeek Harness 自身注入的配置/路径/会话环境变量命名空间
+// （如 DSH_HOME=home 目录路径、DSH_SHELL、DSH_SESSION_ID），并非凭据。真正敏感的
+// DSH_TEST_* 或 *_API_KEY 等已由其名中 SECRET/TOKEN/KEY 捕获，故不将 DSH_ 整体列入凭据类，
+// 避免 process.env.DSH_HOME 等良性用法被误判为“读取凭据类环境变量”。
 const ENV_CRED =
-  /(?:process\.env|os\.environ|getenv\s*\(\s*['"]?)[^)\n]{0,60}(?:SECRET|TOKEN|KEY|PASSWORD|PASSWD|CREDENTIAL|AWS_|OPENAI|ANTHROPIC|GITHUB|DSH_)/i;
+  /(?:process\.env|os\.environ|getenv\s*\(\s*['"]?)[^)\n]{0,60}(?:SECRET|TOKEN|KEY|PASSWORD|PASSWD|CREDENTIAL|AWS_|OPENAI|ANTHROPIC|GITHUB)/i;
 const NETWORK_SEND =
   /fetch\s*\(|axios|https?\.request\s*\(|requests\.(?:get|post|put|patch)\s*\(|sendBeacon\s*\(|XMLHttpRequest|WebSocket/i;
 const CRED_FILES =

