@@ -1,6 +1,245 @@
 {
-  "updated_at": "2026-08-20T11:21:36.540Z",
+  "updated_at": "2026-08-21T04:03:01.596Z",
   "decisions": [
+    {
+      "id": "houyanchao/chatgpt-gemini-timeline",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "11a191a064b5cbf61d0b86d5a0b68870d1a0a899",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 294,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-08-21T04:03:01.596Z"
+    },
+    {
+      "id": "liangmianya/dsh-synapse",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "监听键盘输入事件"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 dsh.local）",
+        "读取浏览器 Cookie/存储并发送到网络"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepare",
+          "severity": "warning",
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "pnpm run build"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "client.js",
+          "line": 200,
+          "snippet": "window.addEventListener('keydown', onKeyDown)"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-16）"
+      ],
+      "reviewed_commit": "13af49f3742ed17bb9882e908331296861810f55",
+      "review_mode": "full",
+      "scanned_files": 9,
+      "total_files": 18,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-08-21T04:03:01.596Z"
+    },
+    {
+      "id": "oil-oil/dsh-oil-creator",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）"
+      ],
+      "privacy_notes": [],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepare",
+          "severity": "warning",
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "npm run build"
+        },
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "@deepseek-ai/cordis"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/check-release.mjs",
+          "line": 49,
+          "snippet": "return execFileSync(\"git\", args, {"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/check-release.mjs",
+          "line": 57,
+          "snippet": "function run(root, command, args) {"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/check-release.mjs",
+          "line": 188,
+          "snippet": "output = execFileSync("
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-19）"
+      ],
+      "reviewed_commit": "03f8d09ce9a298578ba850c0fc5dc3ff44b568ec",
+      "review_mode": "full",
+      "scanned_files": 4,
+      "total_files": 129,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-08-21T04:03:01.596Z"
+    },
+    {
+      "id": "ZSeven-W/dsh-ios",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "使用动态代码执行（eval/new Function）",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容（长 Base64 块）"
+      ],
+      "privacy_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 evil.example、x）",
+        "访问第三方网络地址（如 evil.example、x）"
+      ],
+      "evidence": [
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "@deepseek-ai/cordis"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/dev-card-smoke.mjs",
+          "line": 1608,
+          "snippet": "execFileSync('pkill', ['-f', 'serve-sim'], { stdio: 'ignore', timeout: 10_000 })"
+        },
+        {
+          "rule": "eval-exec",
+          "severity": "warning",
+          "explanation": "使用动态代码执行（eval/new Function）",
+          "file": "scripts/dev-card-smoke.mjs",
+          "line": 93,
+          "snippet": "const evaluate = new Function('window', source)"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-card-smoke.mjs",
+          "line": 1543,
+          "snippet": "const png = Buffer.from("
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "scripts/dev-card-smoke.mjs",
+          "line": 1544,
+          "snippet": "'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==',"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-19）"
+      ],
+      "reviewed_commit": "e8d94c39d348e2c38b10d0b4ae24bfe005515c97",
+      "review_mode": "full",
+      "scanned_files": 5,
+      "total_files": 106,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-08-21T04:03:01.596Z"
+    },
     {
       "id": "nexu-io/open-design",
       "verdict": "blocked",
