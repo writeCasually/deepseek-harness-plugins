@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-08-21T02:35:06.723Z",
+  "generated_at": "2026-08-21T04:03:01.596Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -33,29 +33,6 @@
       "risk_level": "moderate",
       "risk_notes": [
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "使用动态代码执行（eval/new Function） @ lib/index.js:304",
-        "存在 Base64 解码行为 @ lib/index.js:101",
-        "存在 Base64 解码行为 @ lib/index.js:113",
-        "存在 Base64 解码行为 @ lib/index.js:2220",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:5391",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:5392",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:5393",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:5394",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:5400",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:5401",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:5402",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:5403",
-        "存在 Base64 解码行为 @ lib/client.js:1283",
-        "存在 Base64 解码行为 @ lib/client.js:2641",
-        "存在 Base64 解码行为 @ lib/client.js:2698",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:4454",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:4455",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:4456",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:4457",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:4463",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:4464",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:4465",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:4466",
         "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 json-schema.org） @ lib/index.js",
         "访问第三方网络地址（如 json-schema.org） @ lib/index.js",
         "读取环境变量（可能包含敏感信息） @ src/resolve.ts"
@@ -194,17 +171,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 json-schema.org）",
-        "访问第三方网络地址（如 json-schema.org）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用动态代码执行（eval/new Function）",
-        "存在 Base64 解码行为",
-        "存在编码转义字符串（疑似混淆）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "8aed144abdc158a332aa73bce42fc217d962f751",
       "source": "discovered",
       "review_status": "flagged",
@@ -240,19 +208,7 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:431",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:432",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:433",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:434",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:435",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:436",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:438",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:440",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:441",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:442",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:443",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:444"
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json"
       ],
       "risk_evidence": [
         {
@@ -322,10 +278,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在编码转义字符串（疑似混淆）"
-      ],
+      "security_notes": [],
       "reviewed_commit": "ddec603395a223deb46c75b74274c41849c6a131",
       "source": "discovered",
       "review_status": "flagged",
@@ -370,7 +323,6 @@
       "risk_notes": [
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:287",
         "读取环境变量（可能包含敏感信息） @ lib/engine.js",
         "访问第三方网络地址（如 dsh.local） @ lib/rewind-host.js"
       ],
@@ -398,15 +350,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 dsh.local）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在编码转义字符串（疑似混淆）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "b1b85f18aaaaf71d76c84613429ce04d71f69620",
       "source": "discovered",
       "review_status": "flagged",
@@ -445,8 +390,6 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "存在 Base64 解码行为 @ scripts/smoke-client.cjs:143",
-        "存在疑似混淆内容（长 Base64 块） @ scripts/smoke-client.cjs:142",
         "读取环境变量（可能包含敏感信息） @ plugins/plugin-marketplace/src/host/platform.ts",
         "访问第三方网络地址（如 oh-dsh-preview.internal） @ plugins/plugin-marketplace/src/host/preview-proxy.ts",
         "访问第三方网络地址（如 open.bigmodel.cn） @ plugins/vision/src/client/index.tsx"
@@ -476,15 +419,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 oh-dsh-preview.internal）",
-        "访问第三方网络地址（如 open.bigmodel.cn）"
-      ],
-      "security_notes": [
-        "存在 Base64 解码行为",
-        "存在疑似混淆内容（长 Base64 块）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "30cf777e9142c7b4833db9324f4f637b69ecc1ac",
       "source": "discovered",
       "review_status": "flagged",
@@ -571,9 +507,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "security_notes": [],
       "reviewed_commit": "e86f68fe66b980a0ebeed8ef7409522b0b720bed",
       "source": "discovered",
       "review_status": "flagged",
@@ -613,7 +547,6 @@
       "risk_level": "moderate",
       "risk_notes": [
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "监听键盘输入事件 @ src/client/ActivityPanel.tsx:247",
         "访问第三方网络地址（如 x） @ src/index.ts"
       ],
       "risk_evidence": [
@@ -632,13 +565,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 x）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "801954dd7be67213cf4adc1aeb6f97bd3daa12cc",
       "source": "discovered",
       "review_status": "flagged",
@@ -753,10 +681,6 @@
       "risk_notes": [
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#1",
-        "监听键盘输入事件 @ orca-link/src/client/composer-collapse.ts:381",
-        "监听键盘输入事件 @ orca-link/src/client/composer-collapse.ts:494",
-        "监听键盘输入事件 @ orca-link/src/client/composer-motion.ts:322",
-        "监听键盘输入事件 @ orca-link/src/client/window-resume.ts:33",
         "读取环境变量（可能包含敏感信息） @ orca-link/build/tsdown.client.ts",
         "访问第三方网络地址（如 w3.org） @ orca-link/src/client/icons.ts"
       ],
@@ -764,10 +688,6 @@
         {
           "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
           "file": "package.json"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1"
         },
         {
           "explanation": "监听键盘输入事件",
@@ -799,14 +719,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "0a3d03251d1e88a08de79e27fb884ed9200913ad",
       "source": "discovered",
       "review_status": "flagged",
@@ -863,9 +777,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "security_notes": [],
       "reviewed_commit": "6dafa5293583d1ab32aac12620351faff5f0b675",
       "source": "discovered",
       "review_status": "flagged",
@@ -1016,7 +928,6 @@
       "risk_level": "moderate",
       "risk_notes": [
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "监听键盘输入事件 @ docs/assets/site-pages.js:88",
         "读取环境变量（可能包含敏感信息） @ dsh-plugin/lib/index.js",
         "访问第三方网络地址（如 jayden-x-l.github.io） @ package.json",
         "访问第三方网络地址（如 worker.test） @ services/telemetry-worker/test/index.test.mjs"
@@ -1045,15 +956,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 jayden-x-l.github.io）",
-        "访问第三方网络地址（如 worker.test）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "707d02b5a03c280237bb6d602bd8f1d09accf13e",
       "source": "discovered",
       "review_status": "flagged",
@@ -1270,18 +1174,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 example.com）",
-        "访问第三方网络地址（如 x）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 registry.npmmirror.com）",
-        "访问第三方网络地址（如 registry.npmmirror.com）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 yaml@2.4.0 存在已知漏洞（GHSA-48c2-rrv3-qjmp）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "b0ae1ea03a6c04c548dd10bf58f0fe7a70a92b29",
       "source": "discovered",
       "review_status": "flagged",
@@ -1331,10 +1225,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "security_notes": [],
       "reviewed_commit": "",
       "source": "discovered",
       "review_status": "flagged",
@@ -1419,7 +1310,6 @@
       "risk_level": "high",
       "risk_notes": [
         "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ shared/toolchoice-adapter.mjs",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ prefab/instantiate.mjs:316",
         "读取环境变量（可能包含敏感信息） @ combo-anchored/custom-bash.mjs",
         "访问第三方网络地址（如 example.test） @ test/toolchoice-adapter.test.mjs"
       ],
@@ -1443,14 +1333,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 example.test）"
-      ],
-      "security_notes": [
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "25f21aefaf8ddc414da54d2e581e43740d977c6e",
       "source": "discovered",
       "review_status": "flagged",
@@ -1532,29 +1416,6 @@
       "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "risk_level": "moderate",
       "risk_notes": [
-        "存在 Base64 解码行为 @ lib/index.js:1478",
-        "存在 Base64 解码行为 @ lib/index.js:2836",
-        "存在 Base64 解码行为 @ lib/index.js:2893",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:4649",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:4650",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:4651",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:4652",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:4658",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:4659",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:4660",
-        "存在编码转义字符串（疑似混淆） @ lib/index.js:4661",
-        "存在疑似混淆内容（长 Base64 块） @ package.json:88",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:814",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:816",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:817",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:818",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:820",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:823",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:824",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:825",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:826",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:827",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:828",
         "访问第三方网络地址（如 developer.mozilla.org、en.wikipedia.org、json-schema.org、moment.github.io） @ lib/index.js",
         "读取环境变量（可能包含敏感信息） @ scripts/build.mjs"
       ],
@@ -1684,15 +1545,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 developer.mozilla.org、en.wikipedia.org、json-schema.org、moment.github.io）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "存在 Base64 解码行为",
-        "存在编码转义字符串（疑似混淆）",
-        "存在疑似混淆内容（长 Base64 块）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "f8f43b2873a3f9dd57d86d61eb401770b2bc9ca5",
       "source": "discovered",
       "review_status": "flagged",
@@ -1744,12 +1598,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "c11c322986cfbad243bd9bbda7c30228bae70ca5",
       "source": "discovered",
       "review_status": "flagged",
@@ -1788,8 +1638,7 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "监听键盘输入事件 @ src/client/components/contextModal.tsx:86"
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json"
       ],
       "risk_evidence": [
         {
@@ -1804,10 +1653,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件"
-      ],
+      "security_notes": [],
       "reviewed_commit": "35e6a8b2e87426e9b2a4896dc9aef7e0f42f6fa5",
       "source": "discovered",
       "review_status": "flagged",
@@ -1872,15 +1718,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.monsterparty.cc、monsterparty.cn）",
-        "访问第三方网络地址（如 api.monsterparty.cc、monsterparty.cn）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 monsterparty.cn）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "adece3467506c9e40e1393baca89f20caff20c2c",
       "source": "discovered",
       "review_status": "flagged",
@@ -1936,11 +1775,6 @@
       "risk_notes": [
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "监听键盘输入事件 @ lib/client.js:501",
-        "监听键盘输入事件 @ lib/client.js:577",
-        "存在疑似混淆内容（长 Base64 块） @ lib/command.mjs:47",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ lib/convert/codex.mjs:349",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ lib/convert/codex.mjs:358",
         "读取环境变量（可能包含敏感信息） @ bin/dsh-chat-import.mjs",
         "访问第三方网络地址（如 w3.org） @ lib/client.js",
         "访问第三方网络地址（如 json-schema.org） @ lib/convert/interchange.mjs"
@@ -1993,18 +1827,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 w3.org）",
-        "访问第三方网络地址（如 json-schema.org）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件",
-        "存在疑似混淆内容（长 Base64 块）",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "0fb7d9c479dd7f56edc61c8c633b883abdae3dfd",
       "source": "discovered",
       "review_status": "flagged",
@@ -2059,12 +1883,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 x）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "238d114d1e5bf7358c4cb101b36ae129e70a55fe",
       "source": "discovered",
       "review_status": "flagged",
@@ -2142,17 +1962,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dashscope.aliyuncs.com、openrouter.ai、tokendance.space、zenmux.ai）",
-        "访问第三方网络地址（如 dashscope.aliyuncs.com、openrouter.ai、tokendance.space、zenmux.ai）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 dashscope.aliyuncs.com、zenmux.ai）",
-        "访问第三方网络地址（如 openrouter.example）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "9446a41dc96bd9fc96a7cc3b3a11365e125c9bd7",
       "source": "discovered",
       "review_status": "flagged",
@@ -2213,12 +2024,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "723088a7c0d7342f077ad675c6ea72d7e3996536",
       "source": "discovered",
       "review_status": "flagged",
@@ -2316,9 +2123,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "889826fb1da6de7ff3f310e7d78f73af2a45d59e",
       "source": "discovered",
@@ -2356,10 +2161,6 @@
       "risk_level": "moderate",
       "risk_notes": [
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "使用动态代码执行（eval/new Function） @ lib/index.js:587",
-        "存在 Base64 解码行为 @ lib/index.js:384",
-        "存在 Base64 解码行为 @ lib/index.js:396",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ lib/index.js:389",
         "读取环境变量（可能包含敏感信息） @ lib/index.js"
       ],
       "risk_evidence": [
@@ -2393,15 +2194,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用动态代码执行（eval/new Function）",
-        "存在 Base64 解码行为",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "7cb95649dca9b380c9a30af96bdbef87a76a2259",
       "source": "discovered",
       "review_status": "flagged",
@@ -2438,17 +2232,6 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "存在 Base64 解码行为 @ scripts/smoke.mjs:798",
-        "存在 Base64 解码行为 @ scripts/smoke.mjs:1016",
-        "存在疑似混淆内容（长 Base64 块） @ scripts/smoke.mjs:797",
-        "存在疑似混淆内容（长 Base64 块） @ scripts/smoke.mjs:1015",
-        "监听键盘输入事件 @ .dsh-plugin/client/Editor.jsx:498",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ .dsh-plugin/client/Editor.jsx:504",
-        "监听键盘输入事件 @ .dsh-plugin/client/GalView.jsx:40",
-        "监听键盘输入事件 @ .dsh-plugin/client/GalView.jsx:71",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ .dsh-plugin/client/scene.mjs:207",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ .dsh-plugin/client/scene.mjs:392",
-        "存在疑似混淆内容（长 Base64 块） @ tests/assets.test.mjs:8",
         "读取环境变量（可能包含敏感信息） @ scripts/build-client.mjs",
         "访问第三方网络地址（如 example.com） @ tests/transcript.test.mjs"
       ],
@@ -2518,16 +2301,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 example.com）"
-      ],
-      "security_notes": [
-        "存在 Base64 解码行为",
-        "存在疑似混淆内容（长 Base64 块）",
-        "监听键盘输入事件",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "d002fe0e7051c618a2665af3c653f9838cd6aa8a",
       "source": "discovered",
       "review_status": "flagged",
@@ -2625,21 +2400,13 @@
       ],
       "risk_evidence": [
         {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1"
-        },
-        {
           "explanation": "读取环境变量（可能包含敏感信息）",
           "file": "packages/activity/working-activity/scripts/verify-registration.mjs"
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "ce9d75f2510d8ab05113b28d8f7a5f9beeafe3bb",
       "source": "discovered",
       "review_status": "flagged",
@@ -2715,15 +2482,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 api.openai.com）",
-        "访问第三方网络地址（如 api.anthropic.com）",
-        "访问第三方网络地址（如 api.minimaxi.com、evilminimaxi.com、example.com、example.test）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "package.json 的 prepack 脚本会在安装/发布时自动执行"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "dbd72ccf2ea0a8a2f18a4ed384b55d2161347c80",
       "source": "discovered",
       "review_status": "flagged",
@@ -2778,9 +2538,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 superdesign.dev）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "a02aa747ce3271eb36d51fa66b96e1245603fcc1",
       "source": "discovered",
@@ -2877,9 +2635,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "db21575b52e249f6a2eeeef0eb9ff92dc72943c8",
       "source": "discovered",
@@ -2974,8 +2730,6 @@
       "risk_level": "moderate",
       "risk_notes": [
         "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "使用动态代码执行（eval/new Function） @ src/index.ts:1454",
-        "使用动态代码执行（eval/new Function） @ src/index.ts:1506",
         "读取环境变量（可能包含敏感信息） @ src/index.ts"
       ],
       "risk_evidence": [
@@ -2999,13 +2753,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用动态代码执行（eval/new Function）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "f4ef59fb31439225abefe45d6e793235a2a9d5e0",
       "source": "discovered",
       "review_status": "flagged",
@@ -3118,12 +2867,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "3f2dc5aa43e5174cd69271729b9fc178bf8dd85a",
       "source": "discovered",
       "review_status": "flagged",
@@ -3163,7 +2908,6 @@
       "risk_level": "moderate",
       "risk_notes": [
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "存在疑似混淆内容（长 Base64 块） @ lib/client.js:3685",
         "访问第三方网络地址（如 w3.org） @ lib/client.js"
       ],
       "risk_evidence": [
@@ -3182,13 +2926,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在疑似混淆内容（长 Base64 块）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "27ebacb504f43c31c29c4b700b54f902a26da978",
       "source": "discovered",
       "review_status": "flagged",
@@ -3284,21 +3023,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 api.anysearch.com、httpbin.dev）",
-        "访问第三方网络地址（如 api.anysearch.com）",
-        "访问第三方网络地址（如 api.anysearch.test）",
-        "访问第三方网络地址（如 api.anysearch.test、example.test、first.test、result.test）",
-        "访问第三方网络地址（如 api.anysearch.test、example.test）",
-        "访问第三方网络地址（如 a.test、api.anysearch.com、api.anysearch.test、b.test）",
-        "访问第三方网络地址（如 a.test、api.anysearch.test、example.test、finance.test）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "dce7a51c74b80f8fa51e53f510a572ab6dd60f28",
       "source": "discovered",
       "review_status": "flagged",
@@ -3353,10 +3079,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "security_notes": [],
       "reviewed_commit": "815c0f556911fbc95b96d347c71d714e4debd922",
       "source": "discovered",
       "review_status": "flagged",
@@ -3407,10 +3130,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "security_notes": [],
       "reviewed_commit": "",
       "source": "discovered",
       "review_status": "flagged",
@@ -3477,15 +3197,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 api.bot.qq.com）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 js-yaml@4.1.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj, GHSA-h67p-54hq-rp68）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "5b5e9b8a374f7289bd398b266dd845137a081784",
       "source": "discovered",
       "review_status": "flagged",
@@ -3615,8 +3328,6 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "监听键盘输入事件 @ lib/client.js:603",
-        "使用动态代码执行（eval/new Function） @ scripts/smoke-client.mjs:42",
         "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x） @ lib/index.js",
         "访问第三方网络地址（如 x） @ lib/index.js",
         "读取环境变量（可能包含敏感信息） @ scripts/install.mjs",
@@ -3671,20 +3382,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
-        "访问第三方网络地址（如 x）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 198.18.x.x、api.z.ai、usage.invalid）",
-        "访问第三方网络地址（如 api.kimi.com、api.minimax.io、api.minimaxi.com、api.z.ai）",
-        "访问第三方网络地址（如 api.passionapi.com、evil.example、late-provider.example.com、openrouter.ai）",
-        "访问第三方网络地址（如 api.moonshot.cn、api.z.ai、openrouter.ai）",
-        "访问第三方网络地址（如 api.kimi.com、api.minimax.io、api.z.ai、minimax.io）"
-      ],
-      "security_notes": [
-        "监听键盘输入事件",
-        "使用动态代码执行（eval/new Function）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "a8dded77aa68c3bfd9052f29609a3229dfca0755",
       "source": "discovered",
       "review_status": "flagged",
@@ -3740,15 +3439,6 @@
       "risk_level": "high",
       "risk_notes": [
         "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/probe-provider-lab.mjs",
-        "监听键盘输入事件 @ src/client/MnemonDialog.tsx:302",
-        "存在 Base64 解码行为 @ src/client/MnemonPackSection.tsx:39",
-        "存在疑似混淆内容（长 Base64 块） @ src/client/ProviderIcon.tsx:11",
-        "存在疑似混淆内容（长 Base64 块） @ src/client/ProviderIcon.tsx:12",
-        "存在疑似混淆内容（长 Base64 块） @ src/client/ProviderIcon.tsx:13",
-        "存在疑似混淆内容（长 Base64 块） @ src/client/ProviderIcon.tsx:14",
-        "存在疑似混淆内容（长 Base64 块） @ src/client/ProviderIcon.tsx:15",
-        "存在疑似混淆内容（长 Base64 块） @ src/client/ProviderIcon.tsx:16",
-        "存在疑似混淆内容（长 Base64 块） @ src/client/ProviderIcon.tsx:17",
         "读取环境变量（可能包含敏感信息） @ scripts/verify-deterministic-build.mjs",
         "访问第三方网络地址（如 w3.org） @ src/client/MnemonLogo.tsx"
       ],
@@ -3812,16 +3502,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "监听键盘输入事件",
-        "存在 Base64 解码行为",
-        "存在疑似混淆内容（长 Base64 块）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "8cefff7c0521142f5fc2f30aca72c9627ff59265",
       "source": "discovered",
       "review_status": "flagged",
@@ -3874,13 +3556,6 @@
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#3",
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#4",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#4",
-        "使用动态代码执行（eval/new Function） @ packages/deepseek-idesign/lib/index.js:137",
-        "存在 Base64 解码行为 @ packages/deepseek-idesign/lib/index.js:1099",
-        "存在 Base64 解码行为 @ packages/deepseek-idesign/lib/index.js:1150",
-        "使用动态代码执行（eval/new Function） @ packages/deepseek-ippt/lib/index.js:137",
-        "存在 Base64 解码行为 @ packages/deepseek-ippt/lib/index.js:1099",
-        "存在 Base64 解码行为 @ packages/deepseek-ippt/lib/index.js:1150",
-        "使用屏幕/画面采集能力 @ packages/deepseek-ivideo/lib/hyperframes/commands/contrast-audit.browser.js:16",
         "依赖 @hono/node-server@1.8.0 存在已知漏洞（GHSA-92pp-h63x-v22m, GHSA-frvp-7c67-39w9, GHSA-hgxw-5xg3-69jx） @ <dependencies>",
         "依赖 adm-zip@0.5.16 存在已知漏洞（GHSA-xcpc-8h2w-3j85） @ <dependencies>",
         "依赖 hono@4.0.0 存在已知漏洞（GHSA-2234-fmw7-43wr, GHSA-26pp-8wgv-hjvm, GHSA-2gcr-mfcq-wcc3） @ <dependencies>",
@@ -3892,30 +3567,6 @@
         {
           "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
           "file": "package.json"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#2"
-        },
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#3"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#3"
-        },
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#4"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#4"
         },
         {
           "explanation": "使用动态代码执行（eval/new Function）",
@@ -3978,21 +3629,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 json-schema.org）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "使用动态代码执行（eval/new Function）",
-        "存在 Base64 解码行为",
-        "使用屏幕/画面采集能力",
-        "依赖 @hono/node-server@1.8.0 存在已知漏洞（GHSA-92pp-h63x-v22m, GHSA-frvp-7c67-39w9, GHSA-hgxw-5xg3-69jx）",
-        "依赖 adm-zip@0.5.16 存在已知漏洞（GHSA-xcpc-8h2w-3j85）",
-        "依赖 hono@4.0.0 存在已知漏洞（GHSA-2234-fmw7-43wr, GHSA-26pp-8wgv-hjvm, GHSA-2gcr-mfcq-wcc3）",
-        "依赖 postcss@8.5.8 存在已知漏洞（GHSA-6g55-p6wh-862q, GHSA-fxqj-rqcc-2cmp, GHSA-qx2v-qp2m-jg93）",
-        "依赖 sharp@0.34.5 存在已知漏洞（GHSA-f88m-g3jw-g9cj）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "d960f7af908433a06b811263f8b4d7f8f9c5c62a",
       "source": "discovered",
       "review_status": "flagged",
@@ -4046,18 +3684,6 @@
       ],
       "risk_evidence": [
         {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#3"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#4"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#5"
-        },
-        {
           "explanation": "读取环境变量（可能包含敏感信息）",
           "file": "packages/plugin-deus/lib/index.js"
         },
@@ -4071,14 +3697,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 whyihaveyou.github.io）",
-        "访问第三方网络地址（如 whyihaveyou.github.io）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "81a5c08ff1f87b0929ea76a50ab19643cf063201",
       "source": "discovered",
       "review_status": "flagged",
@@ -4131,10 +3751,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "security_notes": [],
       "reviewed_commit": "83bc8c548749d7156a03d11d875d8117e9b5d994",
       "source": "discovered",
       "review_status": "flagged",
@@ -4190,13 +3807,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 awesome-dsh-plugin.com）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "e7a27eb01606e6deccdaacccb8e0cfd992c0bcdc",
       "source": "discovered",
       "review_status": "flagged",
@@ -4235,7 +3847,6 @@
       "risk_level": "moderate",
       "risk_notes": [
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "存在编码转义字符串（疑似混淆） @ lib/tool-ZTOS4B33.js:780",
         "读取环境变量（可能包含敏感信息） @ lib/index.js",
         "访问第三方网络地址（如 dsh.internal） @ lib/routes.js",
         "访问第三方网络地址（如 w3.org） @ lib/tool-ZTOS4B33.js"
@@ -4264,15 +3875,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 dsh.internal）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在编码转义字符串（疑似混淆）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "7caa266c1036d7e3b42d4bc710350c1406b56957",
       "source": "discovered",
       "review_status": "flagged",
@@ -4313,15 +3917,10 @@
       "risk_level": "moderate",
       "risk_notes": [
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#1",
-        "使用动态代码执行（eval/new Function） @ npm/lib/client-run.js:44",
         "访问第三方网络地址（如 dshsuite.dev） @ npm/package.json",
         "读取环境变量（可能包含敏感信息） @ npm/bin/dsh-tui.js"
       ],
       "risk_evidence": [
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1"
-        },
         {
           "explanation": "使用动态代码执行（eval/new Function）",
           "file": "npm/lib/client-run.js",
@@ -4337,14 +3936,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 dshsuite.dev）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用动态代码执行（eval/new Function）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "445ff8299c169ac6fcf858a2c38c89dd0d9ef180",
       "source": "discovered",
       "review_status": "flagged",
@@ -4410,14 +4003,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 tabbit.ai、tabbit.com）",
-        "访问第三方网络地址（如 tabbit.ai、tabbit.com）",
-        "访问第三方网络地址（如 pkg.tabbit.com、tabbit.ai、tabbit.com）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "1aa3157e3ed01641b86d7ee80da059b7140a317e",
       "source": "discovered",
       "review_status": "flagged",
@@ -4506,9 +4093,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "security_notes": [],
       "reviewed_commit": "",
       "source": "discovered",
       "review_status": "flagged",
@@ -4553,9 +4138,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "security_notes": [],
       "reviewed_commit": "e597193bf34bb9655ff3a300c645bd87076db854",
       "source": "discovered",
       "review_status": "flagged",
@@ -4650,12 +4233,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "121ee7d4d9f0b7e063ff1533d8ac20c2bf63f128",
       "source": "discovered",
       "review_status": "flagged",
@@ -4709,11 +4288,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 message-edit.local）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "b78a167064ca612f1c400060d2bfc1dc9bc46436",
       "source": "discovered",
@@ -4764,9 +4339,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 147228.github.io）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "174f65d9135e932383a8f3a19fa522f16875a139",
       "source": "discovered",
@@ -4818,12 +4391,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "6c05c7ddd34696c6761168c116be781d74707e26",
       "source": "discovered",
       "review_status": "flagged",
@@ -4875,9 +4444,6 @@
       "risk_notes": [
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "使用屏幕/画面采集能力 @ lib/artifacts.js:52",
-        "使用屏幕/画面采集能力 @ lib/service.js:416",
-        "使用屏幕/画面采集能力 @ lib/types/artifacts.d.ts:9",
         "读取环境变量（可能包含敏感信息） @ lib/providers/native-helper.js"
       ],
       "risk_evidence": [
@@ -4910,14 +4476,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用屏幕/画面采集能力"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "76bfe8607f61945c1cbb84e73976e601100c13a2",
       "source": "discovered",
       "review_status": "flagged",
@@ -4975,13 +4535,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "7ba4373c0baf635f03a5f7a92931d6ba4a0ecd3d",
       "source": "discovered",
       "review_status": "flagged",
@@ -5072,9 +4627,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行"
-      ],
+      "security_notes": [],
       "reviewed_commit": "",
       "source": "discovered",
       "review_status": "flagged",
@@ -5120,9 +4673,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行"
-      ],
+      "security_notes": [],
       "reviewed_commit": "114f75999d8d477951cbd91ee4d1e0f5360d6627",
       "source": "discovered",
       "review_status": "flagged",
@@ -5153,17 +4704,6 @@
       "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
       "risk_level": "moderate",
       "risk_notes": [
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:246",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:255",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:259",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:263",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:267",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:281",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:285",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:294",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:303",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:1106",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:1171",
         "访问第三方网络地址（如 w3.org） @ src/client/index.tsx",
         "访问第三方网络地址（如 dsh.local） @ src/index.js",
         "读取环境变量（可能包含敏感信息） @ scripts/build-client.mjs"
@@ -5238,14 +4778,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 w3.org）",
-        "访问第三方网络地址（如 dsh.local）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "存在编码转义字符串（疑似混淆）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "f65bf387a4a3e3f4680dd6bb63e7f30d20455543",
       "source": "discovered",
       "review_status": "flagged",
@@ -5340,8 +4874,6 @@
       "risk_level": "moderate",
       "risk_notes": [
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "存在疑似混淆内容（长 Base64 块） @ src/admin/api.mjs:266",
-        "存在疑似混淆内容（长 Base64 块） @ src/admin/api.mjs:267",
         "依赖 axios@1.16.0 存在已知漏洞（GHSA-42h9-826w-cgv3, GHSA-7q8q-rj6j-mhjq, GHSA-f4gw-2p7v-4548） @ <dependencies>",
         "依赖 protobufjs@7.2.6 存在已知漏洞（GHSA-2pr8-phx7-x9h3, GHSA-66ff-xgx4-vchm, GHSA-685m-2w69-288q） @ <dependencies>",
         "依赖 qs@6.14.2 存在已知漏洞（GHSA-q8mj-m7cp-5q26） @ <dependencies>",
@@ -5435,27 +4967,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 api.day.app）",
-        "访问第三方网络地址（如 oapi.dingtalk.com）",
-        "访问第三方网络地址（如 open.feishu.cn）",
-        "访问第三方网络地址（如 pushplus.plus）",
-        "访问第三方网络地址（如 api.sgroup.qq.com、bots.qq.com）",
-        "访问第三方网络地址（如 sct.ftqq.com、sctapi.ftqq.com）",
-        "访问第三方网络地址（如 ...、api.chanify.net、api.pushover.net、api2.pushdeer.com）",
-        "访问第三方网络地址（如 api.telegram.org）",
-        "访问第三方网络地址（如 qyapi.weixin.qq.com）",
-        "访问第三方网络地址（如 wxpusher.zjiecode.com）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在疑似混淆内容（长 Base64 块）",
-        "依赖 axios@1.16.0 存在已知漏洞（GHSA-42h9-826w-cgv3, GHSA-7q8q-rj6j-mhjq, GHSA-f4gw-2p7v-4548）",
-        "依赖 protobufjs@7.2.6 存在已知漏洞（GHSA-2pr8-phx7-x9h3, GHSA-66ff-xgx4-vchm, GHSA-685m-2w69-288q）",
-        "依赖 qs@6.14.2 存在已知漏洞（GHSA-q8mj-m7cp-5q26）",
-        "依赖 ws@8.19.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "cc4781e9939210b2d91b63f5448ccef40708a7c2",
       "source": "discovered",
       "review_status": "flagged",
@@ -5527,15 +5040,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 api.commandcode.ai、commandcode.ai）",
-        "访问第三方网络地址（如 api.commandcode.ai）",
-        "访问第三方网络地址（如 a.com、api.commandcode.ai、example.com、new.example.com）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "d7cb4adb96af78f39b12d9692f7e638e62fe5d4a",
       "source": "discovered",
       "review_status": "flagged",
@@ -5582,8 +5088,6 @@
       "risk_notes": [
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "监听键盘输入事件 @ src/client.js:653",
-        "存在 Base64 解码行为 @ src/streaming.ts:188",
         "访问第三方网络地址（如 anibt.net、api.animes.garden、bgm.tv、dm1.xfdm.pro） @ src/client.js",
         "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dm1.xfdm.pro） @ src/config-store.ts",
         "访问第三方网络地址（如 dm1.xfdm.pro） @ src/config-store.ts",
@@ -5661,25 +5165,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 anibt.net、api.animes.garden、bgm.tv、dm1.xfdm.pro）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dm1.xfdm.pro）",
-        "访问第三方网络地址（如 dm1.xfdm.pro）",
-        "访问第三方网络地址（如 anibt.net、api.animes.garden、mikanani.me）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 anibt.example、anibt.net、api.animes.garden、garden.example）",
-        "访问第三方网络地址（如 anibt.example、anibt.net、api.animes.garden、garden.example）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 anibt.net、api.animes.garden、media.example.test、mikanani.me）",
-        "访问第三方网络地址（如 anibt.net、api.animes.garden、media.example.test、mikanani.me）",
-        "访问第三方网络地址（如 cdn.example、mikanani.me）",
-        "访问第三方网络地址（如 anibt.net、api.animes.garden、cdn.example.test、cdn.media.example.test）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件",
-        "存在 Base64 解码行为"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "c3f69a51c04f37e1ddd9ea46a739561e4bdef6ae",
       "source": "discovered",
       "review_status": "flagged",
@@ -5734,10 +5221,6 @@
       "risk_level": "moderate",
       "risk_notes": [
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#2",
-        "存在编码转义字符串（疑似混淆） @ api/src/services/tokenizer.ts:89",
-        "存在编码转义字符串（疑似混淆） @ scrapers/src/utils/tokenizer.ts:57",
-        "存在 Base64 解码行为 @ scripts/ego-bridge.mjs:83",
-        "存在 Base64 解码行为 @ scripts/pdd-refresh.mjs:55",
         "依赖 fastify@5.2.1 存在已知漏洞（GHSA-444r-cwp2-x5xf, GHSA-jx2c-rxcm-jvmq, GHSA-mg2h-6x62-wpwc） @ <dependencies>",
         "依赖 axios@1.7.7 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5） @ <dependencies>",
         "依赖 js-yaml@4.1.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj, GHSA-h67p-54hq-rp68） @ <dependencies>",
@@ -5766,10 +5249,6 @@
         "访问第三方网络地址（如 open.pinduoduo.com） @ scripts/pdd-refresh.mjs"
       ],
       "risk_evidence": [
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#2"
-        },
         {
           "explanation": "存在编码转义字符串（疑似混淆）",
           "file": "api/src/services/tokenizer.ts",
@@ -5896,39 +5375,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 ideservice.alipay.com、opendocs.alipay.com）",
-        "访问第三方网络地址（如 dashscope.aliyuncs.com、help.aliyun.com）",
-        "访问第三方网络地址（如 open.italent.cn）",
-        "访问第三方网络地址（如 open.dewu.com）",
-        "访问第三方网络地址（如 oapi.dingtalk.com、open.dingtalk.com）",
-        "访问第三方网络地址（如 op.jinritemai.com）",
-        "访问第三方网络地址（如 applink.feishu.cn、open.feishu.cn）",
-        "访问第三方网络地址（如 open.jd.com）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 gw-api.pinduoduo.com、open-api.pinduoduo.com、open.pinduoduo.com）",
-        "访问第三方网络地址（如 gw-api.pinduoduo.com、open-api.pinduoduo.com、open.pinduoduo.com）",
-        "访问第三方网络地址（如 open.sheincorp.com）",
-        "访问第三方网络地址（如 open.taobao.com）",
-        "访问第三方网络地址（如 volcengine.com）",
-        "访问第三方网络地址（如 api.volcengine.com）",
-        "访问第三方网络地址（如 weapp.eteams.cn）",
-        "访问第三方网络地址（如 api.weixin.qq.com、developers.weixin.qq.com）",
-        "访问第三方网络地址（如 pay.weixin.qq.com）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 developer.work.weixin.qq.com）",
-        "访问第三方网络地址（如 developer.work.weixin.qq.com）",
-        "访问第三方网络地址（如 open.xiaohongshu.com）",
-        "访问第三方网络地址（如 doc.youzanyun.com）",
-        "访问第三方网络地址（如 open.pinduoduo.com）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在编码转义字符串（疑似混淆）",
-        "存在 Base64 解码行为",
-        "依赖 fastify@5.2.1 存在已知漏洞（GHSA-444r-cwp2-x5xf, GHSA-jx2c-rxcm-jvmq, GHSA-mg2h-6x62-wpwc）",
-        "依赖 axios@1.7.7 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5）",
-        "依赖 js-yaml@4.1.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj, GHSA-h67p-54hq-rp68）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "f1780beb5dcda37a8ff5130ecf0e11b744830e78",
       "source": "discovered",
       "review_status": "flagged",
@@ -5975,21 +5423,6 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "监听键盘输入事件 @ lib/client.js:3333",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:95",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:126",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:957",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:959",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:961",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:963",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:966",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:967",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:968",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:970",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:972",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:973",
-        "使用屏幕/画面采集能力 @ scripts/standalone-ui-qa.mjs:174",
-        "监听键盘输入事件 @ src/client/entry.js:1947",
         "读取环境变量（可能包含敏感信息） @ lib/index.js"
       ],
       "risk_evidence": [
@@ -6074,14 +5507,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "监听键盘输入事件",
-        "存在编码转义字符串（疑似混淆）",
-        "使用屏幕/画面采集能力"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "87a4e8d43102c22f0e1f2b0cbd9af120de611310",
       "source": "discovered",
       "review_status": "flagged",
@@ -6199,14 +5626,6 @@
       ],
       "risk_evidence": [
         {
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#1"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1"
-        },
-        {
           "explanation": "依赖 dompurify@3.4.10 存在已知漏洞（GHSA-55q2-fjhq-7xh7, GHSA-c2j3-45gr-mqc4, GHSA-cmwh-pvxp-8882）",
           "file": "<dependencies>"
         },
@@ -6224,16 +5643,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 workspace.mcp.example）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 dompurify@3.4.10 存在已知漏洞（GHSA-55q2-fjhq-7xh7, GHSA-c2j3-45gr-mqc4, GHSA-cmwh-pvxp-8882）",
-        "依赖 postcss@8.5.12 存在已知漏洞（GHSA-fxqj-rqcc-2cmp, GHSA-r28c-9q8g-f849）",
-        "依赖 @modelcontextprotocol/sdk@1.12.0 存在已知漏洞（GHSA-345p-7cg4-v4c7, GHSA-8r9q-7v3j-jr4g, GHSA-w48q-cv73-mx4w）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "8779a273e0b9175671152a4b55692b9e728ff87d",
       "source": "discovered",
       "review_status": "flagged",
@@ -6293,9 +5704,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "d5bda9fb9df0f94587283954f1c155816abe9002",
       "source": "discovered",
@@ -6402,33 +5811,6 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "监听键盘输入事件 @ lib/client.js:1113",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:240",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:258",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:261",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:273",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:275",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:292",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:314",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:315",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:319",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:327",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:333",
-        "存在编码转义字符串（疑似混淆） @ src/channels/shared/harness-approval.mjs:21",
-        "存在 Base64 解码行为 @ src/channels/weixin/weixin-api.mjs:43",
-        "存在 Base64 解码行为 @ test/channels/dingtalk/dingtalk-bridge.test.mjs:160",
-        "存在 Base64 解码行为 @ test/channels/feishu/bridge.test.mjs:8",
-        "存在疑似混淆内容（长 Base64 块） @ test/channels/feishu/bridge.test.mjs:9",
-        "存在 Base64 解码行为 @ test/channels/feishu/message-utils.test.mjs:13",
-        "存在疑似混淆内容（长 Base64 块） @ test/channels/feishu/message-utils.test.mjs:14",
-        "存在 Base64 解码行为 @ test/channels/qq/bridge.test.mjs:102",
-        "存在 Base64 解码行为 @ test/channels/wecom/bridge.test.mjs:11",
-        "存在疑似混淆内容（长 Base64 块） @ test/channels/wecom/bridge.test.mjs:12",
-        "存在 Base64 解码行为 @ test/channels/weixin/weixin-bridge.test.mjs:133",
-        "存在 Base64 解码行为 @ test/image-bridge.test.mjs:6",
-        "存在疑似混淆内容（长 Base64 块） @ test/image-bridge.test.mjs:7",
-        "存在 Base64 解码行为 @ test/image-prompt.test.mjs:13",
-        "存在疑似混淆内容（长 Base64 块） @ test/image-prompt.test.mjs:14",
         "访问第三方网络地址（如 api.slack.com、w3.org） @ lib/client.js",
         "读取环境变量（可能包含敏感信息） @ plugin-src/client/build.mjs",
         "访问第三方网络地址（如 w3.org） @ plugin-src/client/channels/dingtalk/index.js",
@@ -6733,47 +6115,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 api.slack.com、w3.org）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 w3.org）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.dingtalk.com、oapi.dingtalk.com）",
-        "访问第三方网络地址（如 api.dingtalk.com、oapi.dingtalk.com）",
-        "访问第三方网络地址（如 api.dingtalk.com）",
-        "访问第三方网络地址（如 api.slack.com）",
-        "访问第三方网络地址（如 slack.com）",
-        "访问第三方网络地址（如 api.telegram.org）",
-        "访问第三方网络地址（如 ilinkai.weixin.qq.com、novac2c.cdn.weixin.qq.com）",
-        "访问第三方网络地址（如 login.dingtalk.com）",
-        "访问第三方网络地址（如 dingtalk.com、download.example.test、download.oss-cn-hangzhou.aliyuncs.com、h5.dingtalk.com）",
-        "访问第三方网络地址（如 oapi.dingtalk.com、oapi.dingtalk.com.attacker.example）",
-        "访问第三方网络地址（如 oapi.dingtalk.com）",
-        "访问第三方网络地址（如 harness.example）",
-        "访问第三方网络地址（如 open-dev.dingtalk.com）",
-        "访问第三方网络地址（如 cdn.discordapp.com、example.com）",
-        "访问第三方网络地址（如 example.com）",
-        "访问第三方网络地址（如 open.feishu.cn）",
-        "访问第三方网络地址（如 accounts.feishu.cn）",
-        "访问第三方网络地址（如 attacker.example、multimedia.nt.qq.com.cn）",
-        "访问第三方网络地址（如 q.qq.com）",
-        "访问第三方网络地址（如 example.com、files-origin.slack.com、files.slack.com、slack.com）",
-        "访问第三方网络地址（如 wecom.example）",
-        "访问第三方网络地址（如 work.weixin.qq.com）",
-        "访问第三方网络地址（如 liteapp.weixin.qq.com）",
-        "访问第三方网络地址（如 attacker.example、attacker.test、ilinkai.weixin.qq.com、liteapp.weixin.qq.com）",
-        "访问第三方网络地址（如 ilinkai.weixin.qq.com）",
-        "访问第三方网络地址（如 ilinkai.weixin.qq.com、liteapp.weixin.qq.com）",
-        "访问第三方网络地址（如 mmg.whatsapp.net）",
-        "访问第三方网络地址（如 cdn.attacker.example、files.example、files.example.test、files.slack.com）",
-        "访问第三方网络地址（如 private.example.invalid）",
-        "访问第三方网络地址（如 badge.example）"
-      ],
-      "security_notes": [
-        "监听键盘输入事件",
-        "存在编码转义字符串（疑似混淆）",
-        "存在 Base64 解码行为",
-        "存在疑似混淆内容（长 Base64 块）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "e85dfa6a797ccb3bc2a636eb22f6abd67462bad4",
       "source": "discovered",
       "review_status": "flagged",
@@ -6840,12 +6183,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 explicit.example、override.example、relay.example、relay.example.com）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "00ce80208ea1178ac39116bf0843517a748e4dce",
       "source": "discovered",
       "review_status": "flagged",
@@ -6901,9 +6240,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "30f261a1689b0ca4a99ebf753afd3c59dddfdf9b",
       "source": "discovered",
@@ -6948,9 +6285,6 @@
       "risk_level": "moderate",
       "risk_notes": [
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#1",
-        "监听键盘输入事件 @ harness-plugin/src/client/OpenSeaQuickControls.tsx:55",
-        "使用屏幕/画面采集能力 @ scripts/capture-gallery.mjs:73",
-        "监听键盘输入事件 @ extension/vendor/addons/controls/OrbitControls.js:1",
         "访问第三方网络地址（如 x） @ harness-plugin/src/index.ts",
         "访问第三方网络地址（如 dsh.local） @ plugin/index.js",
         "访问第三方网络地址（如 d-dev0101.github.io） @ package.json",
@@ -6960,10 +6294,6 @@
         "访问第三方网络地址（如 w3.org） @ extension/vendor/three.core.js"
       ],
       "risk_evidence": [
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1"
-        },
         {
           "explanation": "监听键盘输入事件",
           "file": "harness-plugin/src/client/OpenSeaQuickControls.tsx",
@@ -7009,20 +6339,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 x）",
-        "访问第三方网络地址（如 dsh.local）",
-        "访问第三方网络地址（如 d-dev0101.github.io）",
-        "读取环境变量（可能包含敏感信息）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fixture）",
-        "访问第三方网络地址（如 fixture）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件",
-        "使用屏幕/画面采集能力"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "2437d80a96de4124c54fbe89872fa7090103f025",
       "source": "discovered",
       "review_status": "flagged",
@@ -7061,7 +6379,6 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "监听键盘输入事件 @ src/client.js:1575",
         "访问第三方网络地址（如 host） @ src/adapters/detect.js",
         "访问第三方网络地址（如 collector.example） @ src/balance.js",
         "访问第三方网络地址（如 relay.example.com） @ src/declarative.js",
@@ -7121,21 +6438,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 host）",
-        "访问第三方网络地址（如 collector.example）",
-        "访问第三方网络地址（如 relay.example.com）",
-        "访问第三方网络地址（如 api.example.com、relay.example）",
-        "访问第三方网络地址（如 api.relay-one.example）",
-        "访问第三方网络地址（如 api.deepseek.com.evil.example、api.moonshot.ai、api.moonshot.cn、api.relay-one.example）",
-        "访问第三方网络地址（如 collector.example、evil.example、relay-one.example、relay.example）",
-        "访问第三方网络地址（如 host、plain.example、relay.example、relay.example.com）",
-        "访问第三方网络地址（如 a.example、api.example.com、api.relay-one.example、corrected.example）",
-        "访问第三方网络地址（如 a.example）"
-      ],
-      "security_notes": [
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "63091bbf2ab093ae8f137d2f5310c5ba2c331f37",
       "source": "discovered",
       "review_status": "flagged",
@@ -7189,13 +6493,6 @@
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "使用屏幕/画面采集能力 @ scripts/quality/browser-smoke.mjs:600",
-        "使用屏幕/画面采集能力 @ scripts/quality/browser-smoke.mjs:614",
-        "使用屏幕/画面采集能力 @ scripts/quality/capture-readme.mjs:36",
-        "使用屏幕/画面采集能力 @ scripts/quality/capture-readme.mjs:45",
-        "使用屏幕/画面采集能力 @ scripts/quality/capture-readme.mjs:213",
-        "监听键盘输入事件 @ src/client/ComposerControl.tsx:129",
-        "监听键盘输入事件 @ src/client/SettingsPage.tsx:485",
         "读取环境变量（可能包含敏感信息） @ scripts/quality/browser-smoke.mjs"
       ],
       "risk_evidence": [
@@ -7252,16 +6549,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用屏幕/画面采集能力",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "3b56aa4dbe20cc128d710928d20c80404ec7fff6",
       "source": "discovered",
       "review_status": "flagged",
@@ -7306,9 +6595,7 @@
       "risk_level": "moderate",
       "risk_notes": [
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "监听键盘输入事件 @ src/client/gallery-view.tsx:143",
-        "监听键盘输入事件 @ src/client/index.tsx:416"
+        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json"
       ],
       "risk_evidence": [
         {
@@ -7332,11 +6619,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件"
-      ],
+      "security_notes": [],
       "reviewed_commit": "57b0fdc4bf05ecaef9edc8e6d40bf286d074ca57",
       "source": "discovered",
       "review_status": "flagged",
@@ -7379,24 +6662,6 @@
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#3",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#4",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#5",
-        "存在 Base64 解码行为 @ lib/pentest.js:1308",
-        "存在 Base64 解码行为 @ lib/pentest.js:2666",
-        "存在 Base64 解码行为 @ lib/pentest.js:2723",
-        "存在编码转义字符串（疑似混淆） @ lib/pentest.js:9",
-        "存在编码转义字符串（疑似混淆） @ lib/pentest.js:11",
-        "存在编码转义字符串（疑似混淆） @ lib/pentest.js:12",
-        "存在编码转义字符串（疑似混淆） @ lib/pentest.js:13",
-        "存在编码转义字符串（疑似混淆） @ lib/pentest.js:14",
-        "存在编码转义字符串（疑似混淆） @ lib/pentest.js:15",
-        "存在 Base64 解码行为 @ packages/dsh-pentest/lib/index.js:1308",
-        "存在 Base64 解码行为 @ packages/dsh-pentest/lib/index.js:2666",
-        "存在 Base64 解码行为 @ packages/dsh-pentest/lib/index.js:2723",
-        "存在编码转义字符串（疑似混淆） @ packages/dsh-pentest/lib/index.js:9",
-        "存在编码转义字符串（疑似混淆） @ packages/dsh-pentest/lib/index.js:11",
-        "存在编码转义字符串（疑似混淆） @ packages/dsh-pentest/lib/index.js:12",
-        "存在编码转义字符串（疑似混淆） @ packages/dsh-pentest/lib/index.js:13",
-        "存在编码转义字符串（疑似混淆） @ packages/dsh-pentest/lib/index.js:14",
-        "存在编码转义字符串（疑似混淆） @ packages/dsh-pentest/lib/index.js:15",
         "访问第三方网络地址（如 json-schema.org） @ lib/pentest.js",
         "访问第三方网络地址（如 example.com） @ src/dsh-pentest/tests/tools.spec.ts"
       ],
@@ -7404,26 +6669,6 @@
         {
           "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
           "file": "package.json"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#2"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#3"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#4"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#5"
         },
         {
           "explanation": "存在 Base64 解码行为",
@@ -7525,15 +6770,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 json-schema.org）",
-        "访问第三方网络地址（如 example.com）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在 Base64 解码行为",
-        "存在编码转义字符串（疑似混淆）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "6ec87675cc88b64547bb530274696e5df3b802cc",
       "source": "discovered",
       "review_status": "flagged",
@@ -7585,9 +6823,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "65497d4719e27fe70198ad25eb00016a7f2fcb98",
       "source": "discovered",
@@ -7635,10 +6871,6 @@
         "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险 @ package.json#1",
         "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#2",
         "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险 @ package.json#4",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ apps/web/src/features/applications/components/insights-view.tsx:136",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ apps/web/src/features/applications/components/insights-view.tsx:210",
-        "存在 Base64 解码行为 @ packages/api/src/features/ai/service.ts:429",
-        "存在 Base64 解码行为 @ packages/mcp/src/tool-meta.ts:59",
         "依赖 @better-auth/oauth-provider@1.6.29 存在已知漏洞（GHSA-p2fr-6hmx-4528） @ <dependencies>",
         "访问第三方网络地址（如 example.com） @ apps/server/src/http/public-resume-pdf.test.ts",
         "读取环境变量（可能包含敏感信息） @ apps/server/src/index.ts",
@@ -7659,18 +6891,6 @@
         "访问第三方网络地址（如 example.com、rxresu.me） @ packages/mcp/src/mcp-server-card.test.ts"
       ],
       "risk_evidence": [
-        {
-          "explanation": "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
-          "file": "package.json#1"
-        },
-        {
-          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#2"
-        },
-        {
-          "explanation": "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
-          "file": "package.json#4"
-        },
         {
           "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
           "file": "apps/web/src/features/applications/components/insights-view.tsx",
@@ -7765,32 +6985,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 example.com）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 docs.rxresu.me、rxresu.me）",
-        "访问第三方网络地址（如 example.com、rxresu.me、server.internal）",
-        "访问第三方网络地址（如 schema.org）",
-        "访问第三方网络地址（如 .）",
-        "访问第三方网络地址（如 opencollective.com）",
-        "访问第三方网络地址（如 w3.org）",
-        "访问第三方网络地址（如 docs.rxresu.me）",
-        "访问第三方网络地址（如 api.openai.com）",
-        "访问第三方网络地址（如 gateway.example.com）",
-        "访问第三方网络地址（如 rxresu.me、schema.org）",
-        "访问第三方网络地址（如 rxresu.me）",
-        "访问第三方网络地址（如 amruthpillai.com）",
-        "访问第三方网络地址（如 api.openai.com、openai-compatible.example.com）",
-        "访问第三方网络地址（如 example.test）",
-        "访问第三方网络地址（如 example.com、rxresu.me）"
-      ],
-      "security_notes": [
-        "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
-        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-        "存在 Base64 解码行为",
-        "依赖 @better-auth/oauth-provider@1.6.29 存在已知漏洞（GHSA-p2fr-6hmx-4528）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "3221afda9ddfb03d6cce87927b0ce47338b4cfa8",
       "source": "discovered",
       "review_status": "flagged",
@@ -8036,28 +7232,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 api.anthropic.com、api.minimax.io、api.openai.com）",
-        "访问第三方网络地址（如 api.example.com、api.minimax.io）",
-        "访问第三方网络地址（如 api.minimax.io、api.minimaxi.com、platform.minimax.io、platform.minimaxi.com）",
-        "访问第三方网络地址（如 s3.amazonaws.com）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 mcp.example.com）",
-        "访问第三方网络地址（如 example.invalid）",
-        "访问第三方网络地址（如 example.com）",
-        "访问第三方网络地址（如 agent-plugins.org）",
-        "访问第三方网络地址（如 api.minimax.io、api.openai.com、s3.amazonaws.com）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 mem0.example.test、models.example.test、worker.example.test）",
-        "访问第三方网络地址（如 api.minimax.io、api.minimaxi.com）"
-      ],
-      "security_notes": [
-        "依赖 @hono/node-server@1.13.0 存在已知漏洞（GHSA-92pp-h63x-v22m, GHSA-frvp-7c67-39w9, GHSA-wc8c-qw6v-h7f6）",
-        "依赖 ai@4.0.0 存在已知漏洞（GHSA-rwvc-j5jr-mgvh）",
-        "依赖 hono@4.6.0 存在已知漏洞（GHSA-2234-fmw7-43wr, GHSA-26pp-8wgv-hjvm, GHSA-2gcr-mfcq-wcc3）",
-        "依赖 nanoid@5.0.0 存在已知漏洞（GHSA-28wg-ghj8-5hjv, GHSA-2v37-7h3g-55p8, GHSA-mwcw-c2x4-8c55）",
-        "依赖 yaml@2.5.0 存在已知漏洞（GHSA-48c2-rrv3-qjmp）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "65ce225d01f56b5584d833af6b1afcc119dfd323",
       "source": "discovered",
       "review_status": "flagged",
@@ -8107,19 +7283,12 @@
       "risk_notes": [
         "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ .release/scripts/github-desktop-promotion.mjs",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#1",
-        "使用屏幕/画面采集能力 @ plugins/dsh-ai-novel-writer/scripts/qualification-browser.mjs:50",
-        "使用屏幕/画面采集能力 @ plugins/dsh-ai-novel-writer/scripts/qualification-browser.mjs:242",
-        "监听键盘输入事件 @ plugins/dsh-ai-novel-writer/src/client/context-view.tsx:62",
         "读取环境变量（可能包含敏感信息） @ electron/main.ts"
       ],
       "risk_evidence": [
         {
           "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
           "file": ".release/scripts/github-desktop-promotion.mjs"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1"
         },
         {
           "explanation": "使用屏幕/画面采集能力",
@@ -8142,15 +7311,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用屏幕/画面采集能力",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "6ae77d61b0895cd0fc64b63950b3178461ad82ea",
       "source": "discovered",
       "review_status": "flagged",
@@ -8204,7 +7366,6 @@
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#3",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#3",
         "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json#4",
-        "监听键盘输入事件 @ src/agentsight/dashboard/src/i18n.tsx:2196",
         "依赖 openclaw@2026.4.14 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-275c-xpvc-jgfw, GHSA-2hfg-4fh4-qp7f） @ <dependencies>",
         "读取环境变量（可能包含敏感信息） @ src/agent-sec-core/openclaw-plugin/src/utils.ts",
         "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.com） @ src/agent-sec-core/openclaw-plugin/tests/unit/observability-test.ts",
@@ -8212,18 +7373,6 @@
         "访问第三方网络地址（如 w3.org） @ src/agentsight/dashboard/src/pages/AgentHealthPage.tsx"
       ],
       "risk_evidence": [
-        {
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#3"
-        },
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#3"
-        },
-        {
-          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-          "file": "package.json#4"
-        },
         {
           "explanation": "监听键盘输入事件",
           "file": "src/agentsight/dashboard/src/i18n.tsx",
@@ -8251,19 +7400,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.com）",
-        "访问第三方网络地址（如 example.com）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-        "监听键盘输入事件",
-        "依赖 openclaw@2026.4.14 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-275c-xpvc-jgfw, GHSA-2hfg-4fh4-qp7f）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "69bcde3813ccb7ae8e85988462cdf63274978524",
       "source": "discovered",
       "review_status": "flagged",
@@ -8305,7 +7443,6 @@
       },
       "risk_level": "high",
       "risk_notes": [
-        "【高风险，请自行审计】硬编码敏感凭据（疑似硬编码密钥） @ benchmark/lib/extension-browser.mjs:64",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#3",
         "读取环境变量（可能包含敏感信息） @ benchmark/lib/chromium.mjs"
       ],
@@ -8316,21 +7453,13 @@
           "line": 64
         },
         {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#3"
-        },
-        {
           "explanation": "读取环境变量（可能包含敏感信息）",
           "file": "benchmark/lib/chromium.mjs"
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "71a1cac63f330a966e86e480bd30478fc686014e",
       "source": "discovered",
       "review_status": "flagged",
@@ -8426,19 +7555,11 @@
         {
           "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
           "file": "package.json"
-        },
-        {
-          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#2"
         }
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "security_notes": [],
       "reviewed_commit": "f97a1b92aa78871542219bf829e8768ae6c8ec09",
       "source": "discovered",
       "review_status": "flagged",
@@ -8500,14 +7621,6 @@
       ],
       "risk_evidence": [
         {
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#3"
-        },
-        {
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#5"
-        },
-        {
           "explanation": "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
           "file": "<dependencies>"
         },
@@ -8525,15 +7638,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 1521003.xyz、ningbainb.github.io）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 host、xxx.trycloudflare.com）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "af031f42c0a223d8eb5719138ba0c676b575acec",
       "source": "discovered",
       "review_status": "flagged",
@@ -8579,10 +7685,6 @@
         "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/fixtures/litellm-gateway.mjs",
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "存在疑似混淆内容（长 Base64 块） @ scripts/blackbox-community.mjs:67",
-        "使用屏幕/画面采集能力 @ scripts/verify-codex-image-gen-e2e.mjs:372",
-        "使用屏幕/画面采集能力 @ scripts/verify-codex-image-gen-e2e.mjs:393",
-        "存在疑似混淆内容（长 Base64 块） @ scripts/verify-community.mjs:73",
         "依赖 yaml@2.8.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp） @ <dependencies>",
         "读取环境变量（可能包含敏感信息） @ examples/gateway-compat/probe/pi-probe-provider/index.mjs",
         "访问第三方网络地址（如 api.npmjs.org） @ scripts/screen-provider-packages.mjs",
@@ -8654,22 +7756,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 api.npmjs.org）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.com、example.test）",
-        "访问第三方网络地址（如 example.com、example.test）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.openai.com）",
-        "访问第三方网络地址（如 api.openai.com）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在疑似混淆内容（长 Base64 块）",
-        "使用屏幕/画面采集能力",
-        "依赖 yaml@2.8.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "7aa2958953d09983af83c178d19273feff194fb4",
       "source": "discovered",
       "review_status": "flagged",
@@ -8712,9 +7800,6 @@
       "risk_level": "moderate",
       "risk_notes": [
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
-        "监听键盘输入事件 @ src/client/index.tsx:628",
-        "监听键盘输入事件 @ src/client/editor-modal.tsx:344",
-        "监听键盘输入事件 @ src/client/editor-modal.tsx:369",
         "读取环境变量（可能包含敏感信息） @ scripts/run-tool.mjs",
         "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.invalid） @ src/editor-host.ts",
         "访问第三方网络地址（如 dsh.invalid） @ src/editor-host.ts"
@@ -8753,15 +7838,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.invalid）",
-        "访问第三方网络地址（如 dsh.invalid）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "5cfadc511f08dbc5c09f76e6943b709e846d1cae",
       "source": "discovered",
       "review_status": "flagged",
@@ -8807,25 +7885,12 @@
         "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#1",
         "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#4",
         "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#5",
-        "监听键盘输入事件 @ src/app/page.tsx:1793",
         "依赖 next@16.2.6 存在已知漏洞（GHSA-4633-3j49-mh5q, GHSA-4c39-4ccg-62r3, GHSA-68g3-v927-f742） @ <dependencies>",
         "依赖 xlsx@0.18.5 存在已知漏洞（GHSA-4r6h-8v6p-xvw6, GHSA-5pgg-2g8v-p4x9） @ <dependencies>",
         "访问第三方网络地址（如 open.bigmodel.cn、open.bigmodel.cn.） @ plugins/dsh-vision/lib/index.js",
         "读取环境变量（可能包含敏感信息） @ scripts/cetus-devtest.mjs"
       ],
       "risk_evidence": [
-        {
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1"
-        },
-        {
-          "explanation": "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#4"
-        },
-        {
-          "explanation": "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#5"
-        },
         {
           "explanation": "监听键盘输入事件",
           "file": "src/app/page.tsx",
@@ -8849,17 +7914,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 open.bigmodel.cn、open.bigmodel.cn.）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件",
-        "依赖 next@16.2.6 存在已知漏洞（GHSA-4633-3j49-mh5q, GHSA-4c39-4ccg-62r3, GHSA-68g3-v927-f742）",
-        "依赖 xlsx@0.18.5 存在已知漏洞（GHSA-4r6h-8v6p-xvw6, GHSA-5pgg-2g8v-p4x9）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "2d5ec51773f5217fe0271e0e6e3addf50fb4c593",
       "source": "discovered",
       "review_status": "flagged",
@@ -8906,9 +7962,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "49f8a80302b17bae970851979a57e79ad7bae3e0",
       "source": "discovered",
@@ -8948,8 +8002,6 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "监听键盘输入事件 @ app/src/main/assets/patched/primitives-index.js:1597",
-        "监听键盘输入事件 @ app/src/main/assets/patched/primitives-index.js:2029",
         "访问第三方网络地址（如 w3.org） @ app/src/main/assets/patched/primitives-index.js"
       ],
       "risk_evidence": [
@@ -8969,12 +8021,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "a21ad4d5af6b0f6c974f8995c9a742b761aab6a7",
       "source": "discovered",
       "review_status": "flagged",
@@ -9015,14 +8063,6 @@
       "risk_level": "moderate",
       "risk_notes": [
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
-        "存在疑似混淆内容（长 Base64 块） @ lib/client.js:61",
-        "存在疑似混淆内容（长 Base64 块） @ lib/client.js:62",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ lib/client.js:1169",
-        "存在 Base64 解码行为 @ lib/index.js:780",
-        "存在疑似混淆内容（长 Base64 块） @ src/client.ts:62",
-        "存在疑似混淆内容（长 Base64 块） @ src/client.ts:63",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ src/client.ts:1173",
-        "存在 Base64 解码行为 @ src/index.ts:802",
         "依赖 @modelcontextprotocol/sdk@1.12.0 存在已知漏洞（GHSA-345p-7cg4-v4c7, GHSA-8r9q-7v3j-jr4g, GHSA-w48q-cv73-mx4w） @ <dependencies>",
         "访问第三方网络地址（如 w3.org） @ lib/client.js",
         "读取环境变量（可能包含敏感信息） @ lib/index.js"
@@ -9086,17 +8126,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 w3.org）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "存在疑似混淆内容（长 Base64 块）",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-        "存在 Base64 解码行为",
-        "依赖 @modelcontextprotocol/sdk@1.12.0 存在已知漏洞（GHSA-345p-7cg4-v4c7, GHSA-8r9q-7v3j-jr4g, GHSA-w48q-cv73-mx4w）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "5fa5d87c68ad34337e073f82dc50767ed690eb27",
       "source": "discovered",
       "review_status": "flagged",
