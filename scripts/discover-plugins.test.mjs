@@ -216,3 +216,17 @@ test('buildRereviewCandidates: dedups same repo across sources', async () => {
   const out = await buildRereviewCandidates(base, existing, log, async () => ({ full_name: 'dup/repo' }));
   assert.equal(out.filter((r) => r.full_name === 'dup/repo').length, 1);
 });
+
+
+test('scanFileScore: bundled/minified/compact 产物被排除（不进入内容扫描）', () => {
+  const bundled = [
+    'bundle.js', 'compact.js',
+    'client.compact.js', 'host.bundle.js',
+    'dist/index.js', 'dist/bundle.js', 'build/app.min.js',
+    'dist/chunk-abc.js',
+  ];
+  for (const p of bundled) {
+    assert.equal(scanFileScore(p), -1, 'bundled artifact should be excluded: ' + p);
+  }
+  assert.ok(scanFileScore('src/plugin.js') >= 0);
+});

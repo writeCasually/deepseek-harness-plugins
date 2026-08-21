@@ -70,6 +70,9 @@ const SECURITY_RULES = [
   {
     id: 'iex-short',
     severity: 'warning',
+    // psOnly：仅 PowerShell 场景（.ps1/.psm1/.psd1 文件，或片段邻近 powershell/pwsh 上下文）才上报。
+    // 裸 iex 是极常见 token（变量/工具名/URL），在 JS/TS 里误报率极高，由 scanSecurity 按 psOnly 过滤。
+    psOnly: true,
     re: /\biex\b/i,
     explanation: '使用 PowerShell 简写 iex 动态执行（需结合上下文确认）',
   },
@@ -94,8 +97,10 @@ const SECURITY_RULES = [
   {
     id: 'eval-exec',
     severity: 'warning',
-    re: /\beval\s*\(|\bnew\s+Function\s*\(|\beval\s*\(\s*(?:atob|Buffer\.from)/i,
-    explanation: '使用动态代码执行（eval/new Function）',
+    // GLOBAL_ONLY（借鉴 agent-audit GLOBAL_ONLY_TS_CALLS）：仅独立全局 eval / window|globalThis|global|self.eval / new Function 命中；
+    // obj.eval(...)（如 redisClient.eval 的 Redis EVAL Lua）为成员方法，绝不误报为 RCE。
+    re: /(?<![\w.$])eval\s*\(|\b(?:window|globalThis|global|self)\.eval\s*\(|\bnew\s+Function\s*\(/i,
+    explanation: '使用动态代码执行（全局 eval / new Function）',
   },
   {
     id: 'os-exec',
@@ -106,8 +111,10 @@ const SECURITY_RULES = [
   {
     id: 'decode-exec',
     severity: 'critical',
-    re: /^(?=[^\n]*(?:atob|Buffer\.from|fromCharCode|decodeURIComponent|unescape))(?=[^\n]*\b(?:eval|new\s+Function|Function)\s*\()[^\n]*$/gm,
-    explanation: '解码后直接执行代码（Base64/编码字符串 -> eval）',
+    // GLOBAL_ONLY：仅独立全局 eval / window|globalThis|global|self.eval / new Function / Function 命中；
+    // obj.eval(...)（Redis EVAL 等成员方法）不误报。解码 + 执行须共存于同一行才命中。
+    re: /^(?=[^\n]*(?:atob|Buffer\.from|fromCharCode|decodeURIComponent|unescape))(?=[^\n]*(?:new\s+Function|Function|(?<![\w.$])eval)\s*\()[^\n]*$/gm,
+    explanation: '解码后直接执行代码（Base64/编码字符串 -> 全局 eval/Function）',
   },
   {
     id: 'remote-code-import',
@@ -136,8 +143,10 @@ const SECURITY_RULES = [
   {
     id: 'crypto-mining',
     severity: 'critical',
-    re: /\b(?:xmrig|moneroocean|cryptonight|stratum\+tcp|kryptex|nanominer)\b/i,
-    explanation: '包含加密货币挖矿相关代码/配置',
+    // 仅命中明确的挖矿工具名（xmrig/nanominer/kryptex/moneroocean），降低对合法文档/池配置中
+    // 通用词 cryptonight / stratum+tcp / 算力库说明 的误报。
+    re: /\b(?:xmrig|nanominer|kryptex|moneroocean)\b/i,
+    explanation: '包含加密货币挖矿相关代码/配置（明确挖矿工具名）',
   },
   {
     id: 'exfil-endpoint',
@@ -178,7 +187,7 @@ const SECRET_RULES = [
   { id: 'secret-private-key', re: /-----BEGIN (?:RSA |EC |OPENSSH |DSA |PGP )?PRIVATE KEY-----/g, label: '私钥块' },
   { id: 'secret-sk', re: /\bsk-[A-Za-z0-9]{24,}\b/g, label: 'AI API 密钥（sk-*）' },
   { id: 'secret-slack', re: /\bxox[baprs]-[A-Za-z0-9-]{10,}\b/g, label: 'Slack Token' },
-  { id: 'secret-generic', re: /\b(?:api[_-]?key|secret|password|passwd|token)\s*[:=]\s*['"][A-Za-z0-9\/+_-]{20,}['"]/gi, label: '疑似硬编码密钥' },
+  { id: 'secret-generic', re: /\b(?:api[_-]?key|secret|password|passwd|token)\s*[:=]\s*['"][A-Za-z0-9\/+_-]{24,}['"]/gi, label: '疑似硬编码密钥' },
 ];
 
 const PLACEHOLDER_RE = /\b(?:example|placeholder|your[_-]|xxx+|demo|sample|dummy|changeme|test[_-]?key)\b/i;
@@ -213,6 +222,7 @@ function scanWithRules(text, rules, meta) {
         id: rule.id,
         severity: rule.severity,
         explanation: rule.explanation,
+        confidence: typeof rule.confidence === 'number' ? rule.confidence : 1.0,
         ...evidence,
       };
       findings.push(finding);
@@ -253,14 +263,43 @@ export function scanSecurity(text, meta = {}) {
   // 确定恶意规则（remote-exec、decode-exec、destructive、exfil-endpoint 等）不受影响，任何位置均阻断。
   const devScript = isDevScriptPath(meta.file);
   return base
-    .filter((f) => !(f.id === 'websocket-exfil' && isAllowlistedHost(f.snippet)))
-    .map((f) =>
-      devScript && DEV_SCRIPT_GRAY_EXEC.has(f.id) && f.severity === 'critical'
-        ? { ...f, severity: 'warning' }
-        : f,
-    );
+    .filter((f) => !(f.id === "websocket-exfil" && isAllowlistedHost(f.snippet)))
+    // psOnly：只在其语言/上下文成立时上报（iex 需 PowerShell 场景，避免 JS/TS 里对 this.iex 等误报）。
+    .filter((f) => !(PS_ONLY_RULES.has(f.id) && !isPowerShellContext(meta.file, f.snippet)))
+    .map((f) => {
+      let out = { ...f };
+      // 网络外联类（websocket-exfil / exfil-endpoint）标注置信度梯度：
+      // URL 含动态拼接（${ / 变量 / +）→ 高置信；引号包裹的固定 URL → 硬编码（0.25，但保留告警——
+      // 已知恶意端点/白名单外 WebSocket 的硬编码 URL 本身就是信号，不丢弃，仅用于下游分级/LLM 参考）。
+      if (NETWORK_URL_CONFIDENCE_RULES.has(f.id)) {
+        const conf = networkUrlConfidence(f.snippet);
+        if (conf !== null) out.confidence = Math.min(out.confidence, conf);
+      }
+      // 开发/测试脚本中的灰区执行降级为 warning。
+      if (devScript && DEV_SCRIPT_GRAY_EXEC.has(f.id) && out.severity === "critical") {
+        out = { ...out, severity: "warning" };
+      }
+      return out;
+    });
 }
 
+// 命中片段中的网络 URL 是「硬编码字符串」还是「动态变量/拼接」（借鉴 agent-audit _compute_ssrf_confidence）：
+// 引号包裹的固定 URL → 硬编码（0.25）；URL 内含 ${ / + / 反引号 → 动态（0.9）；仅出现 url/endpoint 等变量名 → 0.85。
+function networkUrlConfidence(snippet) {
+  const s = snippet || "";
+  // 匹配引号包裹的 http(s) / ws(s) 字面量 URL。
+  const quoted = /(?:["'])((?:https?|wss?):\/\/[^"']+)(?:["'])/.exec(s);
+  if (quoted) {
+    const url = quoted[1];
+    const dynamic = /\$\{|\+|`/.test(url);
+    return dynamic ? 0.9 : 0.25;
+  }
+  if (/\$\{|\b(?:url|endpoint|host|target)\b/i.test(s)) return 0.85;
+  return null;
+}
+
+// 网络外联类规则的置信度标签（websocket-exfil / exfil-endpoint）。
+const NETWORK_URL_CONFIDENCE_RULES = new Set(["websocket-exfil", "exfil-endpoint"]);
 // 判定是否为测试文件（供硬编码密钥启发式降噪）。
 // 测试目录/用例文件里出现的硬编码「密钥值」绝大多数是用于验证脱敏/密钥处理的固件假值
 // （如 const SECRET = 'sk-dsh-secret-never-log'），并非真实凭据。
@@ -280,6 +319,17 @@ const DEV_SCRIPT_RE =
 function isDevScriptPath(file = '') {
   return DEV_SCRIPT_RE.test(file);
 }
+// 判定是否为 PowerShell 上下文：.ps1/.psm1/.psd1 文件，或片段邻近 powershell/pwsh 关键字。
+// 用于 gating iex / Invoke-Expression 简写等 token 规则，避免在 JS/TS 里把 this.iex 等误报。
+function isPowerShellContext(file = '', snippet = '') {
+  if (/\.(?:ps1|psm1|psd1)$/i.test(file)) return true;
+  if (/powershell|\bpwsh\b/i.test(snippet)) return true;
+  return false;
+}
+
+// psOnly 规则：仅在其所属语言/上下文成立时才上报（当前为 PowerShell 简写 iex）。
+const PS_ONLY_RULES = new Set(['iex-short']);
+
 
 /**
  * 硬编码密钥扫描。命中即 critical；带占位符上下文、或命中测试文件里的启发式
@@ -429,7 +479,8 @@ const ENV_CRED =
 const NETWORK_SEND =
   /fetch\s*\(|axios|https?\.request\s*\(|requests\.(?:get|post|put|patch)\s*\(|sendBeacon\s*\(|XMLHttpRequest|WebSocket/i;
 const CRED_FILES =
-  /(?:\.ssh\/|id_rsa|\.aws\/credentials|\.npmrc|\.netrc|keychain|credentials\.json|(?:^|[^A-Za-z0-9_.])\.env(?:\.[A-Za-z0-9_-]+)?\b)/i;
+  /(?:\.ssh\/|id_rsa|\.aws\/credentials|\.npmrc|\.netrc|keychain|credentials\.json)\b/i;
+const DOTENV_FILE = /(?:^|[^A-Za-z0-9_.])\.env(?:\.[A-Za-z0-9_-]+)?\b/i;
 const BROWSER_STORE = /document\.cookie|localStorage|sessionStorage/i;
 
 /**
@@ -449,6 +500,8 @@ export function privacyFindings(text, meta = {}) {
   const envCred = ENV_CRED.test(text);
   const network = NETWORK_SEND.test(text);
   const credFiles = CRED_FILES.test(text);
+  // dotenv 读取 .env 文件是 Node 插件加载配置的标准做法，仅作 warning，不与 network 组合成确定恶意。
+  const dotenvRead = !credFiles && DOTENV_FILE.test(text);
   const browserStore = BROWSER_STORE.test(text);
   const hosts = extractExternalHosts(text).slice(0, 4);
   const hostSuffix = hosts.length ? `（如 ${hosts.join('、')}）` : '';
@@ -459,6 +512,10 @@ export function privacyFindings(text, meta = {}) {
     notes.push({ severity: criticalOrWarn('critical'), explanation: '读取本地凭据文件并发送到网络，可能泄露密钥', file });
   } else if (credFiles) {
     notes.push({ severity: criticalOrWarn('warning'), explanation: '读取本地凭据文件（如 .ssh/.aws/.npmrc）', file });
+  }
+  // dotenv：.env 是标准配置加载，独立告警、不参与确定恶意判定（避免被误判为窃密外发）。
+  if (dotenvRead) {
+    notes.push({ severity: criticalOrWarn('warning'), explanation: '读取本地环境配置文件（dotenv .env）', file, index: text.search(DOTENV_FILE) });
   }
   if (envCred && network) {
     notes.push({ severity: criticalOrWarn('critical'), explanation: '读取凭据类环境变量并发送到网络，可能泄露密钥', file });

@@ -93,7 +93,12 @@ export function scanFileScore(path) {
   // 直接排除非内容路径：依赖目录、构建产物/媒体/安装器、锁文件。
   if (
     /(^|\/)node_modules\//.test(p) ||
-    /\.(?:min\.js|map|lock|sum|png|jpe?g|gif|webp|ico|svg|woff2?|ttf|eot|pdf|zip|tar\.gz|wasm|exe|msi|dmg|apk)$/.test(p) ||
+    /\.(?:min\.js|compact\.js|bundle\.js|map|lock|sum|png|jpe?g|gif|webp|ico|svg|woff2?|ttf|eot|pdf|zip|tar\.gz|wasm|exe|msi|dmg|apk)$/.test(p) ||
+    // 构建产物目录（dist/build 下的 JS/TS/MJS/CJS）与打包/压缩文件名（bundle/compact/min/chunk）不进内容扫描，
+    // 避免对 uglify/rollup/esbuild 产出的 eval/base64/fromCharCode 特征误报。
+    /(?:^|\/)(?:dist|build)\/[^\/]*\.(?:js|mjs|cjs)$/.test(p) ||
+    /(?:^|\/)(?:bundle|compact|chunk)[^\/]*\.(?:js|mjs|cjs)$/.test(p) ||
+    /\.[^\/]*\.(?:min|compact|bundle)\.(?:js|mjs|cjs)$/.test(p) ||
     /(^|\/)(?:package-lock\.json|yarn\.lock|pnpm-lock\.yaml|bun\.lockb|composer\.lock|go\.sum|Cargo\.lock)$/.test(p)
   ) {
     return -1;
