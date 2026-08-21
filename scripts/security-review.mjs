@@ -235,11 +235,30 @@ function isAllowlistedHost(text) {
  * @param {{file?: string}} meta - 附加元信息（文件名，用于证据）。
  * @returns {Array<{id,severity,explanation,file,line,snippet}>}
  */
+// 在开发/测试脚本中降级为 warning 的「灰区执行」规则：CI/构建/测试脚本里跑 git/npm/编解码、
+// 用 page.$eval 等属正常开发行为，不代表运行时风险；但仍保留提示供审计。
+const DEV_SCRIPT_GRAY_EXEC = new Set([
+  'shell-exec',
+  'spawn-shell',
+  'shell-flag',
+  'eval-exec',
+  'os-exec',
+  'iex-short',
+]);
+
 export function scanSecurity(text, meta = {}) {
   const base = scanWithRules(text, SECURITY_RULES, meta);
-  // WebSocket 外联若指向白名单域名（如 wss://api.deepseek.com）则不算可疑外联；
-  // exfil-endpoint 模式本身足够精确（特定收集端点），不做域名过滤。
-  return base.filter((f) => !(f.id === 'websocket-exfil' && isAllowlistedHost(f.snippet)));
+  // 开发/测试脚本（scripts/、test/ 等）中出现的灰区执行调用降级为 warning，
+  // 避免 CI/构建脚本里 execFileSync("git")/page.$eval 等被误判为确定恶意而硬阻断。
+  // 确定恶意规则（remote-exec、decode-exec、destructive、exfil-endpoint 等）不受影响，任何位置均阻断。
+  const devScript = isDevScriptPath(meta.file);
+  return base
+    .filter((f) => !(f.id === 'websocket-exfil' && isAllowlistedHost(f.snippet)))
+    .map((f) =>
+      devScript && DEV_SCRIPT_GRAY_EXEC.has(f.id) && f.severity === 'critical'
+        ? { ...f, severity: 'warning' }
+        : f,
+    );
 }
 
 // 判定是否为测试文件（供硬编码密钥启发式降噪）。
@@ -249,6 +268,17 @@ const TEST_FILE_RE = /(?:^|\/)(?:__tests__|test|tests|spec|specs)(?:\/|$)|(?:\.|
 
 function isTestFilePath(file = '') {
   return TEST_FILE_RE.test(file);
+}
+
+// 判定是否为开发/测试脚本路径（scripts/ 目录、测试目录、*.test.* / *.spec.* 用例）。
+// 这些文件是构建/验证/脱敏固件等开发期代码：其中的隐私访问、混淆指标通常不代表
+// 运行时风险（如 e2e 测试故意读取凭据并外发以验证泄露检测），不应参与风险定级。
+// 幂等覆盖 scripts/、test/、tests/、__tests__/、spec/、specs/ 及 .test./.spec. 后缀。
+const DEV_SCRIPT_RE =
+  /(?:^|\/)(?:__tests__|test|tests|spec|specs|scripts)(?:\/|$)|(?:\.|_)(?:test|spec)\./i;
+
+function isDevScriptPath(file = '') {
+  return DEV_SCRIPT_RE.test(file);
 }
 
 /**
@@ -295,6 +325,8 @@ export function scanObfuscation(text, meta = {}) {
   const findings = [];
   if (!text) return findings;
   const file = meta.file || '?';
+  // 开发/测试脚本中的长 Base64/转义串多是测试向量、脱敏固件或构建产物，非运行时混淆，跳过。
+  if (isDevScriptPath(file)) return findings;
   const blob = /[A-Za-z0-9+/]{80,}={0,2}/g;
   let m = null;
   while ((m = blob.exec(text)) !== null) {
@@ -408,6 +440,9 @@ export function privacyFindings(text, meta = {}) {
   const notes = [];
   if (!text) return notes;
   const file = meta.file || '?';
+  // 开发/测试脚本中的隐私行为（e2e 验证、脱敏固件等）不代表运行时风险，critical 降级为 warning。
+  const devScript = isDevScriptPath(file);
+  const criticalOrWarn = (severity) => (devScript ? 'warning' : severity);
   const env = ENV_ACCESS.test(text);
   const envCred = ENV_CRED.test(text);
   const network = NETWORK_SEND.test(text);
@@ -416,14 +451,18 @@ export function privacyFindings(text, meta = {}) {
   const hosts = extractExternalHosts(text).slice(0, 4);
   const hostSuffix = hosts.length ? `（如 ${hosts.join('、')}）` : '';
 
-  if (credFiles) {
-    notes.push({ severity: 'critical', explanation: '读取本地凭据文件（如 .ssh/.aws/.npmrc）', file });
+  // 仅为「读取本地凭据文件」不构成确定恶意（SSH/git/云插件读取 .ssh/.aws/.npmrc 属合法操作），
+  // 只有「读取 + 同文件网络外发」才升级为确定恶意（硬阻断）。
+  if (credFiles && network) {
+    notes.push({ severity: criticalOrWarn('critical'), explanation: '读取本地凭据文件并发送到网络，可能泄露密钥', file });
+  } else if (credFiles) {
+    notes.push({ severity: criticalOrWarn('warning'), explanation: '读取本地凭据文件（如 .ssh/.aws/.npmrc）', file });
   }
   if (envCred && network) {
-    notes.push({ severity: 'critical', explanation: '读取凭据类环境变量并发送到网络，可能泄露密钥', file });
+    notes.push({ severity: criticalOrWarn('critical'), explanation: '读取凭据类环境变量并发送到网络，可能泄露密钥', file });
   }
   if (browserStore && network) {
-    notes.push({ severity: 'critical', explanation: '读取浏览器 Cookie/存储并发送到网络', file });
+    notes.push({ severity: criticalOrWarn('critical'), explanation: '读取浏览器 Cookie/存储并发送到网络', file });
   }
   if (env && externalUrlHasHosts(text) && !envCred) {
     notes.push({ severity: 'warning', explanation: `读取环境变量并访问第三方地址，需确认未外发敏感信息${hostSuffix}`, file });
@@ -483,6 +522,9 @@ export function findTyposquatCandidates(pkg) {
     ...Object.keys(pkg.peerDependencies || {}),
   ];
   for (const dep of deps) {
+    // 生态/官方包（@deepseek-ai/* 等）是 DSH 插件会合法依赖的框架包，不可能是对
+    // 第三方知名包的仿冒（如 @deepseek-ai/cordis 被误判为接近 ioredis），一律跳过。
+    if (/^@[a-z0-9][\w.-]*\//.test(dep) && /deepseek|dsh|cordis/i.test(dep)) continue;
     const base = dep.includes('/') ? dep.slice(dep.indexOf('/') + 1).toLowerCase() : dep.toLowerCase();
     // 短名（<4 字符）过于歧义，跳过，避免把 ws/rss/web/api 等误报为仿冒。
     if (base.length < 4) continue;
@@ -680,9 +722,10 @@ const DEFINITE_MALICE_IDS = new Set([
 // 或命中隐私「直接窃取本地凭据文件 / 窃取浏览器 Cookie 存储」文案。
 export function isDefiniteMalice(f) {
   if (!f) return false;
-  // 隐私 finding 无 id，用文案判定：直接读取磁盘凭据文件、窃取浏览器 Cookie/存储 属确定性恶意。
+  // 隐私 finding 无 id，用文案判定：读取磁盘凭据文件「并外发」、窃取浏览器 Cookie/存储 属确定性恶意；
+  // 仅读取本地凭据文件（无外发）为灰区高风险（SSH/git/云插件合法操作）。
   if (!f.id) {
-    return /读取本地凭据文件|浏览器\s*Cookie|\blocalStorage|\bsessionStorage/.test(f.explanation || '');
+    return /读取本地凭据文件并发送到网络|浏览器\s*Cookie|\blocalStorage|\bsessionStorage/.test(f.explanation || '');
   }
   return (
     DEFINITE_MALICE_IDS.has(f.id) ||
