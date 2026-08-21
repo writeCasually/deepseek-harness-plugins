@@ -443,6 +443,8 @@ export function privacyFindings(text, meta = {}) {
   // 开发/测试脚本中的隐私行为（e2e 验证、脱敏固件等）不代表运行时风险，critical 降级为 warning。
   const devScript = isDevScriptPath(file);
   const criticalOrWarn = (severity) => (devScript ? 'warning' : severity);
+  // 隐私 note 也带位置留痕（file:line + snippet），供 evidence 追溯（与安全 finding 一致）。
+  const positioned = (note, index) => ({ ...note, ...evidenceFor(text, index, file) });
   const env = ENV_ACCESS.test(text);
   const envCred = ENV_CRED.test(text);
   const network = NETWORK_SEND.test(text);
@@ -462,22 +464,123 @@ export function privacyFindings(text, meta = {}) {
     notes.push({ severity: criticalOrWarn('critical'), explanation: '读取凭据类环境变量并发送到网络，可能泄露密钥', file });
   }
   if (browserStore && network) {
-    notes.push({ severity: criticalOrWarn('critical'), explanation: '读取浏览器 Cookie/存储并发送到网络', file });
+    // 浏览器存储读取只有「值确实进入网络请求」才升级为确定恶意（DM 文案）；
+    // 否则（仅本地状态持久化 + 调 API）按灰区 warning 处理。
+    const exfil = browserStoreExfil(text);
+    if (exfil) {
+      notes.push(positioned({ severity: criticalOrWarn('critical'), explanation: '读取浏览器 Cookie/存储并发送到网络', file }, exfil.index));
+    } else {
+      notes.push(positioned({ severity: criticalOrWarn('warning'), explanation: '读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）', file }, text.search(BROWSER_STORE)));
+    }
   }
   if (env && externalUrlHasHosts(text) && !envCred) {
-    notes.push({ severity: 'warning', explanation: `读取环境变量并访问第三方地址，需确认未外发敏感信息${hostSuffix}`, file });
+    notes.push(positioned({ severity: 'warning', explanation: `读取环境变量并访问第三方地址，需确认未外发敏感信息${hostSuffix}`, file }, text.search(ENV_ACCESS)));
   } else if (env && !envCred) {
-    notes.push({ severity: 'warning', explanation: '读取环境变量（可能包含敏感信息）', file });
+    notes.push(positioned({ severity: 'warning', explanation: '读取环境变量（可能包含敏感信息）', file }, text.search(ENV_ACCESS)));
   }
   if (externalUrlHasHosts(text)) {
-    notes.push({ severity: 'warning', explanation: `访问第三方网络地址${hostSuffix}`, file });
+    notes.push(positioned({ severity: 'warning', explanation: `访问第三方网络地址${hostSuffix}`, file }, hostIndex(text)));
   }
   return notes;
 }
 
+
+// 定位第一个非白名单外部主机 URL 的出现位置（供「访问第三方网络地址」note 留痕）。
+function hostIndex(text) {
+  const m = text.match(/https?:\/\/([a-z0-9.-]+)/i);
+  return m ? m.index : 0;
+}
 function externalUrlHasHosts(text) {
   return extractExternalHosts(text).length > 0;
 }
+
+// 浏览器存储「真外发」判定：仅当读取的浏览器存储值被赋值给变量、
+// 且该变量出现在同一文件某处网络发送调用（fetch/axios/XHR/WebSocket）的参数中，
+// 才认为存在「读取浏览器 Cookie/存储并发送到网络」的确定性外发行为。
+// 否则（如 localStorage 仅用于存 UI 状态 + 相对路径 fetch 调自己 API）属正常 DSH 客户端操作，
+// 只作灰区 warning，不升级为确定恶意。
+const BROWSER_STORE_READ_RE =
+  /(?:const|let|var)\s+([A-Za-z_$][\w$]*)\s*=\s*(?:document\.cookie|localStorage\.getItem\s*\([^)]*\)|localStorage\[[^]]*\]|sessionStorage\.getItem\s*\([^)]*\)|sessionStorage\[[^]]*\])/g;
+
+export function browserStoreExfil(text = '') {
+  if (!text) return null;
+  // 收集被赋值的浏览器存储读取变量名
+  const readVars = new Set();
+  const readPositions = [];
+  let m = null;
+  const re = new RegExp(BROWSER_STORE_READ_RE.source, BROWSER_STORE_READ_RE.flags.replace(/g/g, '') + 'g');
+  while ((m = re.exec(text)) !== null) {
+    if (m[1]) readVars.add(m[1]);
+    readPositions.push(m.index);
+  }
+  if (readVars.size === 0) return null;
+  // 网络发送调用：对每个命中，提取「完整参数区域」（括号配对、跨行），
+  // 只有读取变量以词边界形式出现在参数区域内部，才判定该值进入了请求。
+  const sendRe =
+    /fetch\s*\(|axios(?:\.\w+)?\s*\(|new\s+XMLHttpRequest|WebSocket\s*\(|sendBeacon\s*\(/gi;
+  let s = null;
+  const usedVars = new Set();
+  while ((s = sendRe.exec(text)) !== null) {
+    const open = text.indexOf('(', s.index);
+    if (open === -1 || open - s.index > 120) continue;
+    const close = matchingParen(text, open);
+    if (close === -1) continue;
+    const args = text.slice(open + 1, close);
+    // 只有请求目标是「外部绝对 URL」（http/https 且非白名单）才存在真正的数据外发；
+    // 相对路径（fetch('/api/..') 调自己后端）属正常 DSH 客户端操作，不算外发。
+    if (!callTargetIsExternal(args)) continue;
+    for (const v of readVars) {
+      if (new RegExp('\\b' + v + '\\b').test(args)) usedVars.add(v);
+    }
+  }
+  if (usedVars.size === 0) return null;
+  return { index: readPositions[0] ?? 0, vars: [...usedVars] };
+}
+
+// 从 start 处开始，用括号配对提取匹配的右括号位置（跳过字符串/注释内的括号，限制扫描深度）。
+function matchingParen(text, start, maxLen = 2000) {
+  const end = Math.min(text.length, start + maxLen);
+  let depth = 0;
+  let inStr = null; // null | ' | "
+  let inLineComment = false;
+  for (let pos = start; pos < end; pos += 1) {
+    const ch = text[pos];
+    const next = text[pos + 1];
+    if (inLineComment) {
+      if (ch === '\n') inLineComment = false;
+      continue;
+    }
+    if (inStr) {
+      if (ch === '\\') { pos += 1; continue; }
+      if (ch === inStr) inStr = null;
+      continue;
+    }
+    if (ch === '/' && next === '/') { inLineComment = true; pos += 1; continue; }
+    if (ch === "'" || ch === '"' || ch === '`') { inStr = ch; continue; }
+    if (ch === '(') depth += 1;
+    else if (ch === ')') {
+      depth -= 1;
+      if (depth === 0) return pos;
+    }
+  }
+  return -1; // 未找到配平（超深或语法奇异），保守返回 -1
+}
+
+
+// 提取网络调用参数区域中的第一个字符串字面量作为请求目标，判断是否为「外部绝对 URL」。
+// - 相对路径（/api/...）、协议相对（//...）或无 URL（如 WebSocket 变量）不算外部外发；
+// - 绝对 http(s) URL 若命中外联白名单（github.com 等文档/基础设施域）也不算可疑外发。
+function callTargetIsExternal(args = '') {
+  const m = args.match(/(['"`])(https?:\/\/[^'"`]+)\1/);
+  if (!m) return false;
+  const url = m[2];
+  const host = url.replace(/^https?:\/\//i, '').split(/[/?#]/)[0].toLowerCase();
+  if (!host) return false;
+  const root = host.startsWith('www.') ? host.slice(4) : host;
+  const allowlisted = EXTERNAL_URL_ALLOWLIST.some((h) => root === h || root.endsWith('.' + h));
+  return !allowlisted;
+}
+
 
 // --- 包生命周期脚本与供应链分析 ---
 const POPULAR_PACKAGES = [

