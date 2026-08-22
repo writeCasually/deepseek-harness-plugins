@@ -233,7 +233,7 @@ function riskItems(plugin) {
       text: String(ev.explanation || "").trim(),
       file: ev.file || null,
       line: ev.line || null,
-      confidence: ev.confidence || null, // 透出置信度（0-1），供前端分级展示
+      confidence: ev.confidence ?? null, // 透出置信度（0-1），供前端分级展示；?? 保留 0 极值
     }));
   }
   return (plugin.risk_notes || []).map((note) => {
