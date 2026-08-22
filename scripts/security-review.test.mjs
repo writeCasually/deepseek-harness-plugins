@@ -675,3 +675,45 @@ test('classifyRiskLevel: risk_evidence 透出 confidence（有则带，无则缺
   });
   assert.ok(noConf.risk_evidence.every((e) => e.confidence === undefined), '无 confidence 时不伪造该字段');
 });
+
+
+// --- 方向2: LLM 复核消费 confidence（排序 + 标注） ---
+test('llmReview: 结构化 findings 按置信度降序渲染，低置信标注疑似误报、definite 标注确定恶意', async () => {
+  let capturedBody = null;
+  const dossier = {
+    repo: 'a/b',
+    verdict: 'flagged',
+    externalHosts: [],
+    packageSummary: [],
+    samples: [],
+    findings: [
+      { severity: 'critical', id: 'websocket-exfil', explanation: 'WebSocket 外联', file: 'w.js', line: 3, confidence: 0.25 },
+      { severity: 'warning', id: 'base64', explanation: 'Base64 解码', file: 'b.js', line: 7, confidence: 0.8 },
+      { severity: 'critical', id: 'remote-exec', explanation: 'curl|sh', file: 's.sh', line: 1, confidence: 0.95 },
+      { severity: 'warning', id: 'eval-exec', explanation: '动态执行', file: 'e.js', line: 9 },
+    ],
+  };
+  const res = await llmReview(dossier, {
+    apiKey: 'x',
+    fetchImpl: async (url, opts) => {
+      capturedBody = JSON.parse(opts.body);
+      return {
+        ok: true,
+        json: async () => ({ choices: [{ message: { content: JSON.stringify({ escalation: 'none', additionalFindings: [], rationale: 'x' }) } }] }),
+      };
+    },
+  });
+  assert.equal(res.status, 'ok');
+  const prompt = capturedBody.messages[1].content;
+  // 高置信 remote-exec(0.95) 应排最前
+  const iRemote = prompt.indexOf('remote-exec');
+  const iWs = prompt.indexOf('websocket-exfil');
+  assert.ok(iRemote !== -1 && iWs !== -1 && iRemote < iWs, '高置信 finding 应排前面');
+  // 低置信 websocket-exfil(0.25) 标疑似误报
+  assert.match(prompt, /websocket-exfil.*疑似误报/s, '低置信应标注疑似误报');
+  // definite-malice remote-exec 标注确定恶意
+  assert.match(prompt, /remote-exec.*确定恶意/s, 'definite-malice 应标注确定恶意');
+  // 渲染包含置信度数值
+  assert.match(prompt, /conf:0\.95/, '应渲染高置信数值');
+  assert.match(prompt, /conf:0\.25/, '应渲染低置信数值');
+});

@@ -233,6 +233,7 @@ function riskItems(plugin) {
       text: String(ev.explanation || "").trim(),
       file: ev.file || null,
       line: ev.line || null,
+      confidence: ev.confidence || null, // 透出置信度（0-1），供前端分级展示
     }));
   }
   return (plugin.risk_notes || []).map((note) => {
@@ -255,6 +256,13 @@ function riskItemMarkup(plugin, copy) {
   const body = items
     .map((it) => {
       const text = escapeHtml(it.text);
+      // 置信度 chip：风险点带 confidence 时展示（低置信弱提示，高置信警示）。
+      let confMarkup = "";
+      if (typeof it.confidence === "number") {
+        const pct = Math.round(it.confidence * 100);
+        const cls = it.confidence < 0.5 ? "risk-conf risk-conf--low" : "risk-conf";
+        confMarkup = `<span class="${cls}">${pct}%</span>`;
+      }
       let locMarkup = "";
       if (it.file) {
         const link = evidenceLink(plugin, it.file, it.line);
@@ -265,7 +273,7 @@ function riskItemMarkup(plugin, copy) {
             : `<span class="risk-loc risk-loc--plain">${label}</span>`
         }</span>`;
       }
-      return `<li class="risk-popover__item"><span class="risk-popover__text">${text}</span>${locMarkup}</li>`;
+      return `<li class="risk-popover__item"><span class="risk-popover__text">${text}</span>${confMarkup}${locMarkup}</li>`;
     })
     .join("");
   if (body) return body;

@@ -1020,20 +1020,42 @@ function sampleSnippets(findings, limit = 12) {
     .map((f) => `${f.file || '?'}:${f.line || 0} [${f.severity} ${f.id}] ${f.explanation} :: ${String(f.snippet || '').slice(0, 120)}`);
 }
 
+/**
+ * 构建 LLM 复核 prompt。确定性 findings 若带 confidence 字段：
+ *   - 按置信度降序排列（高置信优先，让 LLM 先看最可靠的信号，省 token 且更准）；
+ *   - 低置信（<0.30，如硬编码 URL 网络外联）标注“疑似误报”，提示 LLM 勿过度升级；
+ *   - definite-malice 标注“确定恶意”，LLM 复核只做深挖补充、不做降级。
+ */
 function buildPrompt(dossier) {
   const d = dossier || {};
+  // 结构化确定性发现（对象数组，含 severity/id/explanation/file/line/confidence）。
+  const rawFindings = Array.isArray(d.findings) ? d.findings : [];
+  // 老传入方式兼容：字符串数组直接使用（无排序/标注）。
+  const structured = rawFindings.map((f) => (typeof f === 'string' ? { raw: f } : f));
+  // 置信度排序：高置信优先；无 confidence 视为 1.0 排前；字符串 fallback 排中间。
+  const rank = (f) => (typeof f.confidence === 'number' ? f.confidence : f.raw !== undefined ? 0.5 : 1.0);
+  const sorted = [...structured].sort((a, b) => rank(b) - rank(a));
+  const renderFinding = (f) => {
+    if (f.raw !== undefined) return `- ${f.raw}`;
+    const loc = f.file ? ` @${f.file}:${f.line || 0}` : '';
+    const conf = typeof f.confidence === 'number' ? ` (conf:${f.confidence.toFixed(2)})` : '';
+    const tag = typeof f.confidence === 'number' && f.confidence < 0.30 ? ' [疑似误报，请勿过度升级]' : '';
+    const dm = f.id && isDefiniteMalice(f) ? ' [确定恶意]' : '';
+    return `- ${f.severity || ''} [${f.id || ''}] ${f.explanation || ''}${loc}${conf}${tag}${dm}`;
+  };
   return [
     '你是第三方插件安全审查员。以下是一个 DeepSeek Harness 插件仓库的确定性扫描结果与代码样本。',
     '你的任务是发现确定性规则未覆盖的恶意行为（如：混淆后的窃密、隐蔽数据外发、隐藏的远程控制、供应链投毒迹象），',
     '不要报告良性用法（读取环境变量属于正常插件行为，除非它与外发结合）。',
+    '带 [确定恶意] 标记的发现是硬阻断证据，只需深挖补充、不要降级；带 [疑似误报] 标记的低置信发现不要过度升级。',
     '',
     `仓库：${d.repo || '?'}`,
     `当前裁决：${d.verdict || 'approved'}`,
     `外部主机：${(d.externalHosts || []).slice(0, 10).join(', ') || '无'}`,
     `包脚本/依赖摘要：${(d.packageSummary || []).slice(0, 20).join(' | ') || '无'}`,
     '',
-    '确定性发现：',
-    ...(d.findings || []).slice(0, 15).map((f) => `- ${f}`),
+    '确定性发现（按置信度降序）：',
+    ...sorted.slice(0, 15).map(renderFinding),
     '',
     '代码样本：',
     ...(d.samples || []).slice(0, 12).map((s) => `- ${s}`),
@@ -1042,7 +1064,6 @@ function buildPrompt(dossier) {
     '{"escalation":"none|warning|critical","additionalFindings":[{"severity":"critical|warning|info","title":"简述","evidence":"局部的代码/文件证据","rationale":"为什么值得怀疑"}],"rationale":"一句话总结"}',
   ].join('\n');
 }
-
 /**
  * 可选的 LLM 深度复核。未配置 LLM_API_KEY / 调用失败时返回 status 标记，绝不抛异常。
  * @param {object} dossier - 审查材料汇总。

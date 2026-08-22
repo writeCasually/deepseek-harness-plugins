@@ -518,9 +518,16 @@ async function reviewRepo(repo, opts = {}) {
   const llm = await llmReview({
     repo: repo.full_name,
     verdict: composeVerdict({ findings: uniqueFindings, privacyNotes }).verdict,
-    findings: uniqueFindings.map(
-      (f) => `${f.severity} [${f.id}] ${f.explanation} @${f.file}:${f.line || 0}`,
-    ),
+    // 传结构化 findings（含 confidence），buildPrompt 会按置信度降序排列、
+    // 低置信（<0.30）标注“疑似误报”、definite-malice 标注“确定恶意”。只投喂精简字段。
+    findings: uniqueFindings.map((f) => ({
+      severity: f.severity || '',
+      id: f.id || '',
+      explanation: f.explanation || '',
+      file: f.file || '',
+      line: Number(f.line) > 0 ? f.line : 0,
+      confidence: typeof f.confidence === 'number' ? f.confidence : undefined,
+    })),
     externalHosts: [...externalHosts].slice(0, 10),
     packageSummary: uniqueFindings
       .filter((f) => f.id.startsWith('lifecycle') || f.id === 'typosquat' || f.id === 'osv-vuln')

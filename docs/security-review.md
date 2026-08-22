@@ -24,7 +24,7 @@ GitHub 上带 `dsh-plugin` 话题的仓库可以来自任何人。自动收录�
 | T3 | 混淆度量 | warning finding | `scanObfuscation()`：长 Base64 块、八进制/十六进制/Unicode 转义串、`String.fromCharCode` |
 | T4 | 包生命周期与供应链 | warning/critical | `analyzePackageManifest()`：`preinstall/install/postinstall/…` 脚本中的远程执行/破坏性命令/动态执行；依赖名仿冒（typosquat，与知名包编辑距离 ≤2）；`analyzeDependencies()`：OSV API 批量查询直接依赖的已知漏洞（失败容忍） |
 | T5 | 同文件隐私关联 | critical/warning | `privacyFindings()`：凭据类环境变量 + 网络发送 → critical；浏览器 Cookie/存储 + 网络发送 → critical；本地凭据文件读取 → critical；仅读环境变量 / 访问第三方地址 → warning（附主机名） |
-| T6 | 可选 LLM 深度复核 | critical/warning 追加 | `llmReview()`：配置 `LLM_API_KEY` 后，把确定性结论 + 代码样本交给模型做第二轮语义审查；**只升不降**，失败即跳过 |
+| T6 | 可选 LLM 深度复核 | critical/warning 追加 | `llmReview()`：配置 `LLM_API_KEY` 后，把确定性结论 + 代码样本交给模型做第二轮语义审查；**只升不降**，失败即跳过。v1.2+：确定性 findings 按 `confidence` 降序投喂（高置信优先），低置信（<0.30）标注「疑似误报」、确定恶意标注「确定恶意」，引导 LLM 深挖高置信项、不把低置信项过度升级 |
 | T7 | 信任信号（信息性） | 仅入日志 | `trustNotesFor()`：仓库创建不足 30 天、未声明许可证（不参与裁决） |
 | T8 | 审查留痕与增量复查 | 日志/条目字段 | 每次记录 `reviewed_commit`、扫描文件数/总文件数、delta 模式标记；`FORCE_REREVIEW=1` 时通过 GitHub compare API 只重扫变更文件 |
 
@@ -46,11 +46,12 @@ GitHub 上带 `dsh-plugin` 话题的仓库可以来自任何人。自动收录�
 **判定顺序：**
 - 任一**确定恶意** critical → `blocked`：立即移出公开列表，不写入 `plugins.json`；其证据记入 `review-log`。
 - 其他 **critical（灰区高风险）** → `flagged` 收录，条目 `risk_level=high` + `risk_notes` + `risk_evidence`（含「请自行审计」提示）。
+- **灰区 critical 但明确低置信（`confidence` < 0.30）** → 降级为 warning 级处理：`flagged` 收录、`risk_level=moderate`（不升至 high），标注「低置信，疑似误报」——避免把硬编码 URL 外联等宽泛启发命中误伤整仓。
 - 任一 **warning** → `flagged` 收录，`risk_level=moderate`。
 - 全部干净 → `approved`，`risk_level=low`。
 - `composeVerdict()` / `classifyRiskLevel()` 统一汇总；workflow 的 `worst_verdict` 门禁消费裁决结果。
 
-> **风险位置（`risk_evidence`）**：`docs/plugins.json` 每条插件的 `risk_evidence` 为结构化数组 `[{explanation, file, line?}]`，记录每个风险点的代码位置，前端/README 据此内联「文件:行号」并链到 GitHub 相应行列，便于使用者快速定位审计。位置降级规则：有真实行号（line>0）记 `文件:行`；否则只记文件路径；连文件也拿不到的（如 OSV 依赖漏洞）只保留说明文本。高风险（`risk_level=high`）插件会一并纳入 warning 级的位置。（`risk_notes` 为含定位的易读文本，`risk_evidence` 为结构化数据。）
+> **风险位置（`risk_evidence`）**：`docs/plugins.json` 每条插件的 `risk_evidence` 为结构化数组 `[{explanation, file, line?, confidence?}]`，记录每个风险点的代码位置，前端/README 据此内联「文件:行号」并链到 GitHub 相应行列，便于使用者快速定位审计。位置降级规则：有真实行号（line>0）记 `文件:行`；否则只记文件路径；连文件也拿不到的（如 OSV 依赖漏洞）只保留说明文本。v1.2+：每条证据可带 `confidence`（0-1，仅当 finding 显式携带时透出），前端据此渲染置信度 chip（低置信弱提示、高置信警示），使用者可区分「疑似误报的宽泛命中」与「高置信风险点」。高风险（`risk_level=high`）插件会一并纳入 warning 级的位置。（`risk_notes` 为含定位的易读文本，`risk_evidence` 为结构化数据。）
 
 > **行为变更说明**：
 > - **schema v3 → v4**：此前所有 critical（含灰区）一律 `blocked` 不收录；现仅「确定恶意」阻断，「灰区高风险」改用 `risk_level=high` + `risk_notes` 收录展示，并新增 `risk_evidence` 记录风险代码位置（`docs/plugins.json` 新增 `risk_level`/`risk_notes`/`risk_evidence` 字段）。

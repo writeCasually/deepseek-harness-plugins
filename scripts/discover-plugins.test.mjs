@@ -230,3 +230,26 @@ test('scanFileScore: bundled/minified/compact 产物被排除（不进入内容�
   }
   assert.ok(scanFileScore('src/plugin.js') >= 0);
 });
+
+
+// --- 方向1: risk_evidence 透出 confidence 且清洗后保留 ---
+test('cleanseStaleRisk: 保留 risk_evidence 的 confidence 字段（透出到 plugins.json）', () => {
+  const stale = {
+    id: 'c/d',
+    risk_level: 'high',
+    risk_notes: ['websocket 外联 @ src/w.js'],
+    risk_evidence: [
+      { explanation: '硬编码 URL 网络外联', file: 'src/w.js', confidence: 0.25 },
+      { explanation: '远程执行', file: 'src/e.js', confidence: 0.95 },
+      { explanation: 'README 误报', file: 'README.md', confidence: 0.9 }, // 非运行文件应被剔除
+    ],
+  };
+  const out = cleanseStaleRisk(stale);
+  const kept = out.risk_evidence.find((e) => e.file === 'src/w.js');
+  assert.ok(kept, 'src/w.js 证据应保留');
+  assert.equal(kept.confidence, 0.25, 'confidence 字段应随证据保留');
+  const keptHigh = out.risk_evidence.find((e) => e.file === 'src/e.js');
+  assert.equal(keptHigh.confidence, 0.95);
+  // README 指向证据被剔除（既有规则），不影响 confidence 保留。
+  assert.ok(!out.risk_evidence.some((e) => e.file === 'README.md'), 'README 证据应被剔除');
+});

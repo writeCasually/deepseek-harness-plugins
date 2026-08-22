@@ -558,6 +558,24 @@ main {
   overflow-wrap: anywhere;
 }
 
+/* 置信度 chip（confidence 透出）：低置信弱提示，高置信警示色 */
+.risk-conf {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  line-height: 1.4;
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+}
+.risk-conf--low {
+  background: rgba(148, 163, 184, 0.15);
+  color: #9ca3af;
+}
+
 .risk-popover__loc {
   align-self: flex-start;
   max-width: 100%;
