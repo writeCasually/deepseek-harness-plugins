@@ -622,3 +622,56 @@ test('隐私: 静态敏感凭据文件（.aws/credentials 等）+ 网络发送�
   const notes = privacyFindings(text, { file: 'src/steal.js' });
   assert.ok(notes.some((n) => /读取本地凭据文件并发送到网络/.test(n.explanation) && n.severity === 'critical'), '高敏静态凭据文件 + 外发仍为确定恶意');
 });
+
+
+// ============================================================================
+// 置信度双门裁决 + risk_evidence 透出 confidence（借鉴 agent-audit tier 思想）
+// ============================================================================
+
+test('composeVerdict: 灰区 critical + 明确低置信(<0.30) 降级为 warning 级（不升 high）', () => {
+  const low = composeVerdict({ findings: [{ id: 'eval-exec', severity: 'critical', confidence: 0.25 }] });
+  assert.equal(low.verdict, 'flagged');        // 仍收录展示
+  assert.equal(low.highRiskReasons.length, 0);  // 不再列为高风险
+  assert.ok(low.flaggedReasons.length > 0);
+});
+
+test('composeVerdict: 灰区 critical 高置信/无 confidence 保持原语义（flagged+high）', () => {
+  const withConf = composeVerdict({ findings: [{ id: 'eval-exec', severity: 'critical', confidence: 0.95 }] });
+  assert.equal(withConf.verdict, 'flagged');
+  assert.ok(withConf.highRiskReasons.length > 0);
+  // 无 confidence（历史数据/隐私 note）视为 1.0，语义不变。
+  const noConf = composeVerdict({ findings: [{ id: 'eval-exec', severity: 'critical' }] });
+  assert.equal(noConf.verdict, 'flagged');
+  assert.ok(noConf.highRiskReasons.length > 0);
+});
+
+test('composeVerdict: definite-malice 低置信仍 blocked（硬底线不受置信度影响）', () => {
+  const dm = composeVerdict({ findings: [{ id: 'remote-exec', severity: 'critical', confidence: 0.25 }] });
+  assert.equal(dm.verdict, 'blocked');
+});
+
+test('classifyRiskLevel: 灰区 critical 低置信(<0.30) 降为 moderate；高置信保持 high', () => {
+  const low = classifyRiskLevel({
+    findings: [{ id: 'eval-exec', severity: 'critical', confidence: 0.25, explanation: 'x', file: 'a.js', line: 1 }],
+    privacyNotes: [],
+  });
+  assert.equal(low.risk_level, 'moderate');
+  const high = classifyRiskLevel({
+    findings: [{ id: 'eval-exec', severity: 'critical', confidence: 0.9, explanation: 'y', file: 'b.js', line: 2 }],
+    privacyNotes: [],
+  });
+  assert.equal(high.risk_level, 'high');
+});
+
+test('classifyRiskLevel: risk_evidence 透出 confidence（有则带，无则缺省）', () => {
+  const withConf = classifyRiskLevel({
+    findings: [{ id: 'eval-exec', severity: 'critical', confidence: 0.9, explanation: 'z', file: 'c.js', line: 3 }],
+    privacyNotes: [],
+  });
+  assert.ok(withConf.risk_evidence.some((e) => e.file === 'c.js' && e.confidence === 0.9), '应透出 confidence');
+  const noConf = classifyRiskLevel({
+    findings: [{ id: 'eval-exec', severity: 'critical', explanation: 'w', file: 'd.js', line: 4 }],
+    privacyNotes: [],
+  });
+  assert.ok(noConf.risk_evidence.every((e) => e.confidence === undefined), '无 confidence 时不伪造该字段');
+});

@@ -893,22 +893,32 @@ export function isDefiniteMalice(f) {
   );
 }
 
+
+// 置信度取值：无 confidence 字段（历史数据/隐私 note）视为 1.0，保持既有裁决语义。
+const confidenceOf = (f) => (typeof f?.confidence === 'number' ? f.confidence : 1.0);
+// 低置信阈值：灰区 critical 明确低于此值（如硬编码 URL 网络外联标注 0.25）时降级为 warning 级处理。
+// 对齐 agent-audit 的 0.30 INFO 阈值思想，但只作用于灰区（definite-malice 永远 blocked）。
+const LOW_CONFIDENCE = 0.30;
 /**
  * 汇总每个插件的风险层级（供收录展示，区别于 verdict 的合并门禁）：
  *   - definite-malice critical（隐私或安全）-> 'high'（但此类最终 blocked，不会收录展示）
  *   - 其它 critical（灰区高风险，如凭据类环境变量外发、动态执行、屏幕采集、硬编码密钥）-> 'high'
+ *   - 灰区 critical 但明确低置信（confidence < 0.30）-> 降级为 warning 级（risk_level=moderate），不误升 high
  *   - 有 warning 提示 -> 'moderate'
  *   - 干净 -> 'low'
- * 同时返回 risk_evidence：结构化风险位置 [{explanation, file, line}]，供 UI/README 内联「文件:行号」定位；
- * 拿不到行号时降级为文件路径，连文件都没有时（如 OSV 依赖漏洞）记依赖名/label。
- * @param {Array<{severity,id,explanation,file?,line?}>} findings
+ * 同时返回 risk_evidence：结构化风险位置 [{explanation, file, line?, confidence?}]，供 UI/README 内联「文件:行号」定位；
+ * 拿不到行号时降级为文件路径，连文件都没有时（如 OSV 依赖漏洞）记依赖名/label。confidence 有值时透出，供前端展示置信度。
+ * @param {Array<{severity,id,explanation,file?,line?,confidence?}>} findings
  * @param {Array<{severity,explanation,file?}>} privacyNotes
- * @returns {{ risk_level: 'low'|'moderate'|'high', risk_notes: string[], risk_evidence: Array<{explanation,file,line?}> }}
+ * @returns {{ risk_level: 'low'|'moderate'|'high', risk_notes: string[], risk_evidence: Array<{explanation,file,line?,confidence?}> }}
  */
 export function classifyRiskLevel({ findings = [], privacyNotes = [] } = {}) {
   const all = [...findings, ...privacyNotes];
-  const critical = all.filter((f) => f.severity === 'critical');
-  const warnings = all.filter((f) => f.severity === 'warning');
+  // 灰区 critical 中置信度明确低于 0.30 的宽泛启发命中（如硬编码 URL 的网络外联），视为疑似误报，
+  // 降级为 warning 级处理；definite-malice 不受影响（归 critical）。
+  const critical = all.filter((f) => f.severity === 'critical' && (isDefiniteMalice(f) || confidenceOf(f) >= LOW_CONFIDENCE));
+  const lowConfCritical = all.filter((f) => f.severity === 'critical' && !isDefiniteMalice(f) && confidenceOf(f) < LOW_CONFIDENCE);
+  const warnings = [...all.filter((f) => f.severity === 'warning'), ...lowConfCritical];
 
   // 位置降级策略：line>0 则记录 文件:行；缺行或 line=0 但带文件则记文件；两者皆无则记解释文本/label。
   function locOf(f) {
@@ -925,6 +935,8 @@ export function classifyRiskLevel({ findings = [], privacyNotes = [] } = {}) {
     const entry = { explanation };
     if (f.file) entry.file = f.file;
     if (Number(f.line) > 0) entry.line = f.line;
+    // 透出置信度（若 finding 带 confidence）供前端分级展示。
+    if (typeof f.confidence === 'number') entry.confidence = f.confidence;
     evidenceMap.set(key, entry);
   }
 
@@ -947,7 +959,8 @@ export function classifyRiskLevel({ findings = [], privacyNotes = [] } = {}) {
   if (warnings.length) {
     for (const f of warnings) {
       const loc = locOf(f);
-      notes.push(`${f.explanation}${loc ? ` @ ${loc}` : ''}`);
+      const lowTag = f.severity === 'critical' ? '（低置信，疑似误报）' : '';
+      notes.push(`${f.explanation}${lowTag}${loc ? ` @ ${loc}` : ''}`);
       pushEvidence(f, f.explanation);
     }
     return {
@@ -958,13 +971,21 @@ export function classifyRiskLevel({ findings = [], privacyNotes = [] } = {}) {
   }
   return { risk_level: 'low', risk_notes: [], risk_evidence: [] };
 }
-
-/** 汇总裁决：任一确定恶意 critical -> blocked（硬排除）；其它 critical/warning 归入 flagged 供收录展示。 */
+/** 汇总裁决：任一确定恶意 critical -> blocked（硬排除）；其它 critical/warning 归入 flagged 供收录展示。
+ * 置信度双门（借鉴 agent-audit tier 思想）：灰区 critical 若明确低置信（confidence < 0.30，
+ * 如硬编码 URL 的网络外联标注 0.25），降级为 warning 级处理，不把整仓升为 high/收录高风险；
+ * definite-malice（确定恶意）不受置信度影响，永远 blocked。无 confidence 字段（如隐私 note / 旧数据）视为 1.0，语义不变。 */
 export function composeVerdict({ findings = [], privacyNotes = [] }) {
   const all = [...findings, ...privacyNotes];
   const definiteCritical = all.filter((f) => f.severity === 'critical' && isDefiniteMalice(f));
-  const highRisk = all.filter((f) => f.severity === 'critical' && !isDefiniteMalice(f));
-  const warnings = all.filter((f) => f.severity === 'warning');
+  // 灰区 critical：明确低置信（<0.30）的宽泛启发命中视为「疑似误报」，降级为 warning 级处理。
+  const highRisk = all.filter(
+    (f) => f.severity === 'critical' && !isDefiniteMalice(f) && confidenceOf(f) >= LOW_CONFIDENCE,
+  );
+  const lowConfCritical = all.filter(
+    (f) => f.severity === 'critical' && !isDefiniteMalice(f) && confidenceOf(f) < LOW_CONFIDENCE,
+  );
+  const warnings = [...all.filter((f) => f.severity === 'warning'), ...lowConfCritical];
   const notes = (list) => [...new Set(list.map((f) => f.explanation))];
   if (definiteCritical.length) {
     return {
@@ -992,7 +1013,6 @@ export function composeVerdict({ findings = [], privacyNotes = [] }) {
   }
   return { verdict: 'approved', blockedReasons: [], flaggedReasons: [], highRiskReasons: [] };
 }
-
 // --- 可选 LLM 深度复核（OpenAI 兼容 chat/completions） ---
 function sampleSnippets(findings, limit = 12) {
   return (findings || [])
