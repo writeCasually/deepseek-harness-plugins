@@ -1,6 +1,119 @@
 {
-  "updated_at": "2026-08-21T11:31:24.959Z",
+  "updated_at": "2026-08-22T03:57:20.652Z",
   "decisions": [
+    {
+      "id": "ruvnet/ruflo",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "5234333c3462640ab348363ba4a142945fd2bc47",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 5605,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-08-22T03:57:20.652Z"
+    },
+    {
+      "id": "Molunerfinn/PicGo",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "e21e92c0d3f082b3e15c1adaee09807e7a06f96f",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 478,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-08-22T03:57:20.652Z"
+    },
+    {
+      "id": "nocobase/nocobase",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "7f4a4508c4050ba910a439aeea0491931ab93c9f",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 26551,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-08-22T03:57:20.652Z"
+    },
+    {
+      "id": "EverMind-AI/SkillCorpus",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "code",
+        "reason": "依赖 DSH/Cordis 生态包 @deepseek-ai/cordis"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.openai.com）",
+        "访问第三方网络地址（如 api.openai.com）"
+      ],
+      "evidence": [],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-11）"
+      ],
+      "reviewed_commit": "f098ca6e47e8bc203a8cdb58b1b128218123447d",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 223,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-08-22T03:57:20.652Z"
+    },
     {
       "id": "nexu-io/open-design",
       "verdict": "blocked",
@@ -59754,75 +59867,6 @@
       ],
       "privacy_notes": [
         "访问第三方网络地址"
-      ],
-      "reviewed_at": "2026-08-16T04:01:02.723Z"
-    },
-    {
-      "id": "ningbainb/deepseek-harness-desktop",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
-      },
-      "findings": [],
-      "privacy_notes": [
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "访问第三方网络地址",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥"
-      ],
-      "reviewed_at": "2026-08-16T04:01:02.723Z"
-    },
-    {
-      "id": "anysearch-team/anysearch-dsh",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
-      },
-      "findings": [
-        "存在疑似混淆内容"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址",
-        "读取环境变量（可能包含敏感信息）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥"
-      ],
-      "reviewed_at": "2026-08-16T04:01:02.723Z"
-    },
-    {
-      "id": "PC2005-cloud/dsh-pet",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
-      },
-      "findings": [
-        "使用动态代码或子进程执行"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址"
-      ],
-      "reviewed_at": "2026-08-16T04:01:02.723Z"
-    },
-    {
-      "id": "mishibeikejie/zat-dsh-engine",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "reason": "检测到 DSH 插件标记（cordis/.dsh-plugin/dsh.bundle 等）"
-      },
-      "findings": [
-        "可能把数据发送到第三方收集端点",
-        "使用动态代码或子进程执行"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥"
       ],
       "reviewed_at": "2026-08-16T04:01:02.723Z"
     }
