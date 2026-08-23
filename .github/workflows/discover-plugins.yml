@@ -64,6 +64,8 @@ jobs:
           date="$(date -u +%F)"
           branch="discover/${date}"
           title="更新 dsh-plugin 插件汇总 (${date})"
+          repo="${GITHUB_REPOSITORY}"
+          owner="${GITHUB_REPOSITORY_OWNER}"
 
           git checkout -B "$branch"
           git add docs/plugins.json data/review-log.json README.md
@@ -79,13 +81,28 @@ jobs:
             git push --set-upstream origin "$branch"
           fi
 
-          existing="$(gh pr list --head "$branch" --json number --jq '.[0].number')"
-          if [ -n "$existing" ]; then
-            pr_number="$existing"
-          else
-            gh pr create --base main --head "$branch" --title "$title" --body "Pending merge verdict..."
-            pr_number="$(gh pr list --head "$branch" --json number --jq '.[0].number')"
-          fi
+          # GitHub API 偶发瞬断（如 GraphQL 网关 "Something went wrong ... D00D:..."），
+          # 一次失败就 abort 会让每天的数据合并功亏一篑。统一处理：
+          #   1) 优先走 REST 端点（gh pr list / gh pr merge 内部走 GraphQL，改用 gh api REST）；
+          #   2) 剩余 REST 调用也包一层退避重试（最多 5 次，指数退避）。
+          gh_retry() {
+            local max=5 attempt=0 delay=5
+            until "$@"; do
+              attempt=$((attempt + 1))
+              if [ "$attempt" -ge "$max" ]; then
+                echo "[gh] 重试 ${attempt}/${max} 次后仍失败: $*" >&2
+                return 1
+              fi
+              echo "[gh] 命令失败，${delay}s 后重试(${attempt}/${max}): $*" >&2
+              sleep "$delay"
+              delay=$((delay * 2))
+            done
+          }
+
+          # 按 head 分支查询 open PR（REST，替代走 GraphQL 的 gh pr list；head 需 URL 编码）。
+          list_pr() {
+            gh api "repos/${repo}/pulls?state=open&head=${owner}:${branch//\//%2F}" --jq '.[0].number // empty'
+          }
 
           # 读取本轮静态审查的最严重 verdict：
           #   clean/approved -> 全部通过，立即 squash 合并并 dispatch Pages
@@ -105,9 +122,44 @@ jobs:
           else
             note="本轮新审查全部通过静态安全审查：\`${worst}\`。已自动合并。"
           fi
-          # 在合并前更新 PR 描述，避免 edit 已合并/关闭的 PR。
-          gh pr edit "$pr_number" --title "$title" --body "自动检索 GitHub \`dsh-plugin\` 话题并完成静态安全审查后生成。${note}"
-          # 与 refresh-live-data 一致：立即 squash 合并（不走 auto-merge 开关，无需仓库另开设置）。
-          gh pr merge "$pr_number" --squash --delete-branch
+
+          # 复用同分支已存在的 PR，或创建新 PR（gh pr create 走 REST；失败容忍，以查询结果为准）。
+          pr_number="$(gh_retry list_pr)"
+          if [ -z "$pr_number" ]; then
+            gh pr create --base main --head "$branch" --title "$title" --body "Pending merge verdict..." >/dev/null || \
+              echo "[warn] gh pr create 未成功（可能已存在同分支 PR），改以查询结果为准。"
+            pr_number="$(gh_retry list_pr)"
+          fi
+          if [ -z "$pr_number" ]; then
+            echo "ERROR: 无法创建或定位 PR（branch=${branch}）" >&2
+            exit 1
+          fi
+          echo "PR: https://github.com/${repo}/pull/${pr_number}"
+
+          # 合并前更新 PR 标题/描述（REST PATCH，避免 edit 已合并/关闭的 PR）。
+          gh_retry gh api -X PATCH "repos/${repo}/pulls/${pr_number}" \
+            -f "title=${title}" \
+            -f "body=自动检索 GitHub \`dsh-plugin\` 话题并完成静态安全审查后生成。${note}" >/dev/null
+
+          # 立即 squash 合并（REST PUT，规避 gh pr merge 的 GraphQL 突变偶发失败）。
+          if gh_retry gh api -X PUT "repos/${repo}/pulls/${pr_number}/merge" \
+            -f "merge_method=squash" \
+            -f "commit_title=chore: 更新 dsh-plugin 插件汇总 (${date}) (#${pr_number})" >/dev/null; then
+            echo "PR #${pr_number} 已 squash 合并。"
+          else
+            # 极端情况：合并实际成功但响应在传输层丢失，查询状态后容忍。
+            merged="$(gh api "repos/${repo}/pulls/${pr_number}" --jq '.merged' 2>/dev/null || true)"
+            if [ "$merged" = "true" ]; then
+              echo "[warn] 合并请求响应丢失，但确认 PR #${pr_number} 已合并。"
+            else
+              echo "ERROR: PR #${pr_number} 合并失败（当前状态: $(gh api "repos/${repo}/pulls/${pr_number}" --jq '.state' 2>/dev/null || echo unknown)）" >&2
+              exit 1
+            fi
+          fi
+
+          # 删除已合并分支（仓库若开启自动删除则已不存在，忽略 404/422）。
+          gh api -X DELETE "repos/${repo}/git/refs/heads/${branch}" >/dev/null 2>&1 || \
+            echo "[warn] 分支 ${branch} 删除失败或已不存在（不影响合并结果）。"
+
           # GITHUB_TOKEN 的 push 不递归触发其它 workflow 的 push 事件，故合并后主动 dispatch Pages。
           gh workflow run deploy-pages.yml || echo "[warn] dispatch deploy-pages 失败,数据已合并到 main,下次手动触发即可。"
