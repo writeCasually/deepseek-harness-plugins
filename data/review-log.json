@@ -1,6 +1,247 @@
 {
-  "updated_at": "2026-08-23T05:43:53.708Z",
+  "updated_at": "2026-08-24T04:06:41.232Z",
   "decisions": [
+    {
+      "id": "ZSeven-W/dsh-android",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "使用动态代码执行（全局 eval / new Function）",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "存在 Base64 解码行为",
+        "使用屏幕/画面采集能力",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "使用屏幕/画面采集能力",
+        "存在 Base64 解码行为",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "监听键盘输入事件"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 x）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 evil.example）"
+      ],
+      "evidence": [
+        {
+          "rule": "eval-exec",
+          "severity": "warning",
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "scripts/_smoke-harness.mjs",
+          "line": 143,
+          "snippet": "const evaluate = new Function('window', source)"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-adb-smoke.mjs",
+          "line": 40,
+          "snippet": "const TINY_PNG = Buffer.from(TINY_PNG_B64, 'base64')"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-adb-smoke.mjs",
+          "line": 83,
+          "snippet": "const png = Buffer.from(${JSON.stringify(TINY_PNG_B64)}, 'base64')"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-adb-smoke.mjs",
+          "line": 386,
+          "snippet": "const script = `const png = Buffer.from(${JSON.stringify(TINY_PNG_B64)}, 'base64')\\n`"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/dev-adb-smoke.mjs",
+          "line": 551,
+          "snippet": "const shot = await host.screenshot(FAKE_DEVICE.serial)"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/dev-emulator-smoke.mjs",
+          "line": 116,
+          "snippet": "const shot = await host.screenshot(serial)"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-routes-static-smoke.mjs",
+          "line": 37,
+          "snippet": "const TINY_PNG = Buffer.from(TINY_PNG_B64, 'base64')"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/dev-routes-static-smoke.mjs",
+          "line": 120,
+          "snippet": "async screenshot(serial) {"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-tools-smoke.mjs",
+          "line": 35,
+          "snippet": "const PNG = Buffer.from(${JSON.stringify(TINY_PNG_B64)}, 'base64')"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-uitree-smoke.mjs",
+          "line": 514,
+          "snippet": "return { png: Buffer.from(TINY_PNG_B64, 'base64'), width: 1, height: 1 }"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/dev-uitree-smoke.mjs",
+          "line": 513,
+          "snippet": "async screenshot() {"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-vision-smoke.mjs",
+          "line": 35,
+          "snippet": "const TINY_PNG = Buffer.from(TINY_PNG_B64, 'base64')"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/dev-vision-smoke.mjs",
+          "line": 143,
+          "snippet": "async screenshot() { return { png: TINY_PNG, width: 1, height: 1 } },"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "src/android-host.ts",
+          "line": 415,
+          "snippet": "async screenshot(serial: string): Promise<{ png: Buffer; width?: number; height?: number }> {"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/android-device-menu.tsx",
+          "line": 118,
+          "snippet": "document.addEventListener('keydown', onKeyDown, true)"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-21）"
+      ],
+      "reviewed_commit": "8c1d19a0019f2fbf65265ac8a09225d0b2fdf8c4",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 94,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-08-24T04:06:41.232Z"
+    },
+    {
+      "id": "pengyue-polaron/deepseek-harness-genui",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "监听键盘输入事件"
+      ],
+      "privacy_notes": [],
+      "evidence": [
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/index.tsx",
+          "line": 294,
+          "snippet": "document.addEventListener('keydown', keydown)"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/index.tsx",
+          "line": 326,
+          "snippet": "document.addEventListener('keydown', keydown)"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 1161,
+          "snippet": "document.addEventListener(\"keydown\", keydown);"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 1192,
+          "snippet": "document.addEventListener(\"keydown\", keydown);"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-14）"
+      ],
+      "reviewed_commit": "59fa47b01281bf34dd1234f153ae60d2dc30a759",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 116,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-08-24T04:06:41.232Z"
+    },
     {
       "id": "yjh051108/dsh-routing-suite",
       "verdict": "approved",
@@ -63099,100 +63340,6 @@
       "review_mode": "full",
       "scanned_files": 28,
       "total_files": 873,
-      "osv": {
-        "status": "ok",
-        "findings": 1
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-18T03:59:02.858Z"
-    },
-    {
-      "id": "chuspeeism/dashi-taskboard",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "3e2509208ed5d23ddeb493c8d3301207f9a806db",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 249,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
-      },
-      "reviewed_at": "2026-08-18T03:59:02.858Z"
-    },
-    {
-      "id": "alvinunreal/openpets",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "code",
-        "reason": "存在 Cordis/DSH 落地标记（cordis.patch.yml/.dsh-plugin/dsh.client 等）"
-      },
-      "findings": [
-        "监听键盘输入事件",
-        "监听键盘输入事件",
-        "依赖 sharp@0.34.5 存在已知漏洞（GHSA-f88m-g3jw-g9cj）"
-      ],
-      "privacy_notes": [
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 api.minimax.io、api.minimaxi.com）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 openpets.dev）",
-        "访问第三方网络地址（如 openpets.dev）",
-        "访问第三方网络地址（如 api.dictionaryapi.dev、translate.googleapis.com）",
-        "访问第三方网络地址（如 fnf.higgsfield.ai）",
-        "访问第三方网络地址（如 api.spotify.com、lrclib.net）",
-        "访问第三方网络地址（如 googleapis.com）"
-      ],
-      "evidence": [
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "apps/desktop/src/renderer/src/main.tsx",
-          "line": 1714,
-          "snippet": "window.addEventListener(\"keydown\", handleKeyDown);"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "apps/desktop/src/renderer/src/main.tsx",
-          "line": 3761,
-          "snippet": "window.addEventListener(\"keydown\", handleKeyDown);"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 sharp@0.34.5 存在已知漏洞（GHSA-f88m-g3jw-g9cj）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "sharp@0.34.5"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "8a16df13b0d11ee6855331e2ed2d149d962df831",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 624,
       "osv": {
         "status": "ok",
         "findings": 1

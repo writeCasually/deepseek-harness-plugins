@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-08-24T02:35:19.683Z",
+  "generated_at": "2026-08-24T04:06:41.232Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -14030,23 +14030,12 @@
       "risk_level": "moderate",
       "risk_notes": [
         "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json",
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json#1",
-        "存在 Base64 解码行为 @ electron/main.js:114",
-        "存在 Base64 解码行为 @ electron/main.js:1567",
-        "使用屏幕/画面采集能力 @ electron/main.js:97",
-        "使用屏幕/画面采集能力 @ electron/main.js:332",
-        "使用屏幕/画面采集能力 @ electron/main.js:1478",
-        "存在疑似混淆内容（长 Base64 块） @ server/src/app/models/index.js:122",
-        "读取环境变量（可能包含敏感信息） @ electron/main.js:65"
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json#1"
       ],
       "risk_evidence": [
         {
           "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
           "file": "package.json"
-        },
-        {
-          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-          "file": "package.json#1"
         },
         {
           "explanation": "存在 Base64 解码行为",
@@ -14090,15 +14079,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-        "存在 Base64 解码行为",
-        "使用屏幕/画面采集能力",
-        "存在疑似混淆内容（长 Base64 块）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "f695819b6e809ac4747b8d6f75883eba894cf343",
       "source": "discovered",
       "review_status": "flagged",
@@ -14138,11 +14120,8 @@
         "zh": "完美复刻任意网页。 本仓是测量核心。产品是 Skill：一套 agent harness，一句话 clone 走完整页、带分数的复刻。",
         "en": "Pixel-perfect clones of any webpage. This repo is the measured core. The product is the skill: an agent harness that turns one clone into a full-page, scored replica."
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "读取环境变量（可能包含敏感信息） @ plugin/index.js:18",
-        "访问第三方网络地址（如 vitejs.dev） @ templates/base-project/vite.config.js:4"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "读取环境变量（可能包含敏感信息）",
@@ -14156,10 +14135,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 vitejs.dev）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "c846c37937a70497d37d082c26c85aa1289a9fa5",
       "source": "discovered",
@@ -14212,12 +14188,7 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ plugins/dsh-invoice-downloader/scripts/prepare-engine.mjs:97",
-        "监听键盘输入事件 @ templates/index_app.js:502",
-        "监听键盘输入事件 @ templates/index_app.js:722",
-        "读取环境变量（可能包含敏感信息） @ plugins/dsh-invoice-downloader/src/activate.ts:46",
-        "访问第三方网络地址（如 bigmodel.cn） @ templates/index_app.js:64"
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json"
       ],
       "risk_evidence": [
         {
@@ -14254,15 +14225,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 bigmodel.cn）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "f0b1652753539aecaa643b4f82960d6d13473b19",
       "source": "discovered",
       "review_status": "flagged",
@@ -14303,9 +14267,7 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
-        "使用屏幕/画面采集能力 @ scripts/record-demo.mjs:114",
-        "读取环境变量（可能包含敏感信息） @ lib/cli.js:104"
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json"
       ],
       "risk_evidence": [
         {
@@ -14325,17 +14287,260 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "使用屏幕/画面采集能力"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "5acea430d6af01f8a180a6b3f6232ca02951bb3b",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-23T05:43:53.708Z"
+    },
+    {
+      "id": "ZSeven-W/dsh-android",
+      "name": "dsh-android",
+      "author": "ZSeven-W",
+      "description": "DeepSeek Harness plugin for Android — build, run, and interact with a live emulator or USB device stream inside a conversation, driven entirely through adb.",
+      "repo_url": "https://github.com/ZSeven-W/dsh-android",
+      "homepage": "https://github.com/ZSeven-W/dsh-android",
+      "stars": 104,
+      "forks": 7,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-21T23:26:27Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "DSH Android 把一台真实的 Android 设备交给 agent，同时把画面交给你。agent 可以在模拟器或 USB 手机上开流、构建并安装 Gradle 工程、按 resource-id/文本或 OCR 驱动界面、读取 logcat、检查进程与内存；与此同时设备画面实时渲染在侧边栏面板里，你可以直接在视频上点击、拖拽、旋转，并按下 返回 / 主页 / 多任务。没有 image block，也没有录屏文件：可视字节只通过 DSH webserver 提供的签名短时 URL 抵达界面。",
+        "en": "DSH Android gives the agent a real Android device inside the conversation — and gives you the pixels. The agent can start a stream on an emulator or a USB-connected phone, build and install a Gradle project, drive the UI by resource-id/text or by OCR, read"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "使用动态代码执行（全局 eval / new Function） @ scripts/_smoke-harness.mjs:143",
+        "存在 Base64 解码行为 @ scripts/dev-adb-smoke.mjs:40",
+        "存在 Base64 解码行为 @ scripts/dev-adb-smoke.mjs:83",
+        "存在 Base64 解码行为 @ scripts/dev-adb-smoke.mjs:386",
+        "使用屏幕/画面采集能力 @ scripts/dev-adb-smoke.mjs:551",
+        "使用屏幕/画面采集能力 @ scripts/dev-emulator-smoke.mjs:116",
+        "存在 Base64 解码行为 @ scripts/dev-routes-static-smoke.mjs:37",
+        "使用屏幕/画面采集能力 @ scripts/dev-routes-static-smoke.mjs:120",
+        "存在 Base64 解码行为 @ scripts/dev-tools-smoke.mjs:35",
+        "存在 Base64 解码行为 @ scripts/dev-uitree-smoke.mjs:514",
+        "使用屏幕/画面采集能力 @ scripts/dev-uitree-smoke.mjs:513",
+        "存在 Base64 解码行为 @ scripts/dev-vision-smoke.mjs:35",
+        "使用屏幕/画面采集能力 @ scripts/dev-vision-smoke.mjs:143",
+        "使用屏幕/画面采集能力 @ src/android-host.ts:415",
+        "监听键盘输入事件 @ src/client/android-device-menu.tsx:118",
+        "访问第三方网络地址（如 x） @ scripts/_smoke-harness.mjs:80",
+        "读取环境变量（可能包含敏感信息） @ scripts/dev-logs-smoke.mjs:33",
+        "访问第三方网络地址（如 evil.example） @ scripts/dev-routes-static-smoke.mjs:165"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "scripts/_smoke-harness.mjs",
+          "line": 143,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-adb-smoke.mjs",
+          "line": 40,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-adb-smoke.mjs",
+          "line": 83,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-adb-smoke.mjs",
+          "line": 386,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/dev-adb-smoke.mjs",
+          "line": 551,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/dev-emulator-smoke.mjs",
+          "line": 116,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-routes-static-smoke.mjs",
+          "line": 37,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/dev-routes-static-smoke.mjs",
+          "line": 120,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-tools-smoke.mjs",
+          "line": 35,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-uitree-smoke.mjs",
+          "line": 514,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/dev-uitree-smoke.mjs",
+          "line": 513,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/dev-vision-smoke.mjs",
+          "line": 35,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/dev-vision-smoke.mjs",
+          "line": 143,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "src/android-host.ts",
+          "line": 415,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/android-device-menu.tsx",
+          "line": 118,
+          "confidence": 1
+        },
+        {
+          "explanation": "访问第三方网络地址（如 x）",
+          "file": "scripts/_smoke-harness.mjs",
+          "line": 80
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "scripts/dev-logs-smoke.mjs",
+          "line": 33
+        },
+        {
+          "explanation": "访问第三方网络地址（如 evil.example）",
+          "file": "scripts/dev-routes-static-smoke.mjs",
+          "line": 165
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 x）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 evil.example）"
+      ],
+      "security_notes": [
+        "使用动态代码执行（全局 eval / new Function）",
+        "存在 Base64 解码行为",
+        "使用屏幕/画面采集能力",
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "8c1d19a0019f2fbf65265ac8a09225d0b2fdf8c4",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-24T04:06:41.232Z"
+    },
+    {
+      "id": "pengyue-polaron/deepseek-harness-genui",
+      "name": "deepseek-harness-genui",
+      "author": "pengyue-polaron",
+      "description": "Task-specific React apps for DeepSeek Harness with state carried into the next Agent turn",
+      "repo_url": "https://github.com/pengyue-polaron/deepseek-harness-genui",
+      "homepage": "https://github.com/pengyue-polaron/deepseek-harness-genui",
+      "stars": 94,
+      "forks": 8,
+      "open_issues": 3,
+      "watchers": 0,
+      "pushed_at": "2026-08-19T09:59:54Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "generative-ui",
+        "genui",
+        "mcp",
+        "react"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "有些任务用文字来回描述很别扭。DeepSeek Harness GenUI 让 Agent 可以为当前任务生成一个聚焦界面，用来讲清复杂关系，或收集难以用一段话表达的用户选择。",
+        "en": "Some tasks are awkward in text. DeepSeek Harness GenUI lets an Agent create a focused interface for the current task: something that explains a difficult relationship or collects a complex user response."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "监听键盘输入事件 @ src/client/index.tsx:294",
+        "监听键盘输入事件 @ src/client/index.tsx:326",
+        "监听键盘输入事件 @ lib/client.js:1161",
+        "监听键盘输入事件 @ lib/client.js:1192"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/index.tsx",
+          "line": 294,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/index.tsx",
+          "line": 326,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 1161,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 1192,
+          "confidence": 1
+        }
+      ],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "59fa47b01281bf34dd1234f153ae60d2dc30a759",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-24T04:06:41.232Z"
     }
   ]
 }
