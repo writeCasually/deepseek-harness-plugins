@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-08-26T02:37:33.106Z",
+  "generated_at": "2026-08-26T04:04:18.409Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -14546,28 +14546,9 @@
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1",
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#2",
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#3",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ dsh-community-fabric/scripts/verify-docs.mjs:133",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ dsh-community-market/scripts/verify-docs.mjs:97",
-        "依赖 pnpm@11.7.0 存在已知漏洞（GHSA-qrv3-253h-g69c） @ <dependencies>",
-        "读取环境变量（可能包含敏感信息） @ dsh-plugin-desktop/src/main.ts:451",
-        "访问第三方网络地址（如 catalog.example、json-schema.org、plugins.example.org、user） @ dsh-community-market/scripts/verify-docs.mjs:126",
-        "访问第三方网络地址（如 deepseek1024.com） @ dsh-community-market/src/adapters/dsh-1024store.ts:8",
-        "访问第三方网络地址（如 api.dshfind.com） @ dsh-community-market/src/adapters/dshfind.ts:8",
-        "访问第三方网络地址（如 deepseek1024.com、dshfind.com） @ dsh-community-market/src/catalog/service.ts:36"
+        "依赖 pnpm@11.7.0 存在已知漏洞（GHSA-qrv3-253h-g69c） @ <dependencies>"
       ],
       "risk_evidence": [
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#1"
-        },
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#2"
-        },
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#3"
-        },
         {
           "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
           "file": "dsh-community-fabric/scripts/verify-docs.mjs",
@@ -14611,18 +14592,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 catalog.example、json-schema.org、plugins.example.org、user）",
-        "访问第三方网络地址（如 deepseek1024.com）",
-        "访问第三方网络地址（如 api.dshfind.com）",
-        "访问第三方网络地址（如 deepseek1024.com、dshfind.com）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "依赖 pnpm@11.7.0 存在已知漏洞（GHSA-qrv3-253h-g69c）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "efc72d4fa8da2d8ef1e11fcf7d40bf2fe3ab409a",
       "source": "discovered",
       "review_status": "flagged",
@@ -14660,15 +14631,8 @@
         "zh": "这里只放一类设计文档。Agent Note（Agent 决策记录）记录一个影响本仓库的决策或提案——变更背后的 why 与 放弃了什么，即代码和普通文档承载不了的部分。本文件定义 Agent Note 的存放位置、写作时机与文件内格式。",
         "en": "&nbsp;"
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "存在 Base64 解码行为 @ market/telemetry-view/src/index.js:34",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ market/shell/packages/dsh-web-tryon/src/index.ts:216",
-        "访问第三方网络地址（如 dsh-market.com） @ market/telemetry-view/src/index.js:17",
-        "访问第三方网络地址（如 challenges.cloudflare.com、dsh-market.com、rfc-editor.org） @ market/worker/src/index.js:49",
-        "读取环境变量（可能包含敏感信息） @ packages/dsh-doctor/src/index.ts:62",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-market.com） @ packages/dsh-market/lib/index.js:68"
-      ],
+      "risk_level": "high",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "存在 Base64 解码行为",
@@ -14703,16 +14667,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
-        "访问第三方网络地址（如 dsh-market.com）",
-        "访问第三方网络地址（如 challenges.cloudflare.com、dsh-market.com、rfc-editor.org）",
-        "读取环境变量（可能包含敏感信息）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-market.com）"
-      ],
-      "security_notes": [
-        "存在 Base64 解码行为"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "720a71f30610d3c7f91cd1a7ca87f9166ca5c15f",
       "source": "discovered",
       "review_status": "flagged",
@@ -14751,21 +14707,12 @@
         "zh": "- Memory as File, File as Memory：以带 frontmatter 和 wikilink 的 Markdown 作为记忆节点，用户和 Agent 都能直接查看、编辑、移动和备份。",
         "en": "- Memory as File, File as Memory: Markdown files with frontmatter and wikilinks serve as memory nodes that both users and agents can inspect, edit, move, and back up directly."
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#1",
-        "监听键盘输入事件 @ github-pages/src/main.js:438",
-        "依赖 dompurify@3.2.6 存在已知漏洞（GHSA-39q2-94rc-95cp, GHSA-55q2-fjhq-7xh7, GHSA-76mc-f452-cxcm） @ <dependencies>",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ github-pages/src/main.js:57",
-        "访问第三方网络地址（如 contextlab.alibaba-inc.com） @ skills/dingtalk-message/package.json:6",
-        "访问第三方网络地址（如 reme.agentscope.io） @ packages/typescript/src/dsh/client/status-page.tsx:507",
-        "读取环境变量（可能包含敏感信息） @ packages/typescript/src/dsh/config.ts:72"
+        "依赖 dompurify@3.2.6 存在已知漏洞（GHSA-39q2-94rc-95cp, GHSA-55q2-fjhq-7xh7, GHSA-76mc-f452-cxcm） @ <dependencies>"
       ],
       "risk_evidence": [
-        {
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#1"
-        },
         {
           "explanation": "监听键盘输入事件",
           "file": "github-pages/src/main.js",
@@ -14798,17 +14745,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
-        "访问第三方网络地址（如 contextlab.alibaba-inc.com）",
-        "访问第三方网络地址（如 reme.agentscope.io）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "监听键盘输入事件",
-        "依赖 dompurify@3.2.6 存在已知漏洞（GHSA-39q2-94rc-95cp, GHSA-55q2-fjhq-7xh7, GHSA-76mc-f452-cxcm）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "626c850ccb2c25be92a9ce575886a85f54e8683a",
       "source": "discovered",
       "review_status": "flagged",
@@ -14860,11 +14798,9 @@
         "zh": "DeepSec 是由 VibeGuard 进化而来的 AI 安全平台，将 Shield（AI 代码安全审计）与 Spear（授权渗透测试引擎）统一到一套 CLI、一个 TUI 终端工作台和一组 IDE 插件中。",
         "en": "DeepSec is an AI security platform evolved from VibeGuard. It unifies Shield (AI code security audit) and Spear (authorized penetration testing engine) into a single CLI, a TUI terminal workbench, and a set of IDE plugins."
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
-        "读取环境变量（可能包含敏感信息） @ dsh-plugins/deepsec-shield/lib/cli.js:36",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ src/cli.ts",
-        "访问第三方网络地址（如 crates.io、dashboard.example.com、guard.example.com、index.golang.org） @ src/cli.ts:2343"
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ src/cli.ts"
       ],
       "risk_evidence": [
         {
@@ -14883,11 +14819,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "访问第三方网络地址（如 crates.io、dashboard.example.com、guard.example.com、index.golang.org）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "fff031fc01fb36b95348214c8ee359f6ede8aa8b",
       "source": "discovered",
@@ -14931,22 +14863,9 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1",
-        "监听键盘输入事件 @ packages/dsh-plugin/src/client/index.tsx:624",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ packages/dsh-plugin/src/client/file-activity.ts:81",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ packages/knowledge/oh-story/skills/story-long-scan/scripts/cdp-utils.js:88",
-        "读取环境变量（可能包含敏感信息） @ packages/knowledge/oh-story/skills/story-long-scan/scripts/cdp-utils.js:28",
-        "访问第三方网络地址（如 ciweimao.com） @ packages/knowledge/oh-story/skills/story-long-scan/scripts/ciweimao-rank-scraper.js:22",
-        "访问第三方网络地址（如 fanqienovel.com） @ packages/knowledge/oh-story/skills/story-long-scan/scripts/fanqie-rank-scraper.js:248",
-        "访问第三方网络地址（如 jjwxc.net） @ packages/knowledge/oh-story/skills/story-long-scan/scripts/jjwxc-rank-scraper.js:29",
-        "访问第三方网络地址（如 m.qidian.com、qidian.com） @ packages/knowledge/oh-story/skills/story-long-scan/scripts/qidian-rank-scraper.js:34",
-        "访问第三方网络地址（如 qimao.com） @ packages/knowledge/oh-story/skills/story-long-scan/scripts/qimao-rank-scraper.js:24"
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1"
       ],
       "risk_evidence": [
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#1"
-        },
         {
           "explanation": "监听键盘输入事件",
           "file": "packages/dsh-plugin/src/client/index.tsx",
@@ -14996,20 +14915,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 ciweimao.com）",
-        "访问第三方网络地址（如 fanqienovel.com）",
-        "访问第三方网络地址（如 jjwxc.net）",
-        "访问第三方网络地址（如 m.qidian.com、qidian.com）",
-        "访问第三方网络地址（如 qimao.com）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "监听键盘输入事件",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "09a9362214d9f1e81dc76fc88017bbdb65e78850",
       "source": "discovered",
       "review_status": "flagged",
@@ -15047,10 +14954,8 @@
         "zh": "> 让 DeepSeek Harness 直接创建、编辑、检查和交付表格、文档、幻灯片、多维表格与画布。",
         "en": "> Give DeepSeek Harness the ability to create, edit, inspect, and deliver spreadsheets, documents, presentations, databases, and canvases."
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
-        "监听键盘输入事件 @ src/client/components/review-panel.tsx:57",
-        "读取环境变量（可能包含敏感信息） @ src/gateway-app/main.ts:5",
         "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ scripts/verify-public-runtime-dependencies.mjs"
       ],
       "risk_evidence": [
@@ -15071,17 +14976,253 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）"
-      ],
-      "security_notes": [
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "105cab9053153d338236d54b2ea94d59a56a17f7",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-25T04:01:02.743Z"
+    },
+    {
+      "id": "chainbase-labs/Agentkey",
+      "name": "Agentkey",
+      "author": "chainbase-labs",
+      "description": "Connect your AI agent to the world — Web search, Social media, Crypto & On-chain data. One plugin, zero extra config.",
+      "repo_url": "https://github.com/chainbase-labs/Agentkey",
+      "homepage": "https://agentkey.app",
+      "stars": 600,
+      "forks": 64,
+      "open_issues": 4,
+      "watchers": 0,
+      "pushed_at": "2026-08-24T16:55:44Z",
+      "archived": false,
+      "language": "Shell",
+      "license": "Apache-2.0",
+      "topics": [
+        "dsh-plugin",
+        "gemini-cli-extension"
+      ],
+      "category": "plugin",
+      "kind": "code",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "源码/路径引用 @deepseek-ai/dsh 或 @deepseek-ai/cordis",
+      "description_i18n": {
+        "zh": "| 你对 Agent 说 | 没装会怎样 | 装了 AgentKey 后 | | ----------------------------------------------------- | ----------------------- | ---------------------------------- | | 🐦 马斯克最近在推特上在说什么 | 看不了，搜不到完整推文 | 一次拉全相关推文，帮你总结结论 |",
+        "en": "| You ask your agent to... | Without AgentKey | With AgentKey | | ------------------------------------------------------ | ----------------------------- | ---------------------------------------------- | | 🐦 What has Musk been saying on Twitter lately? |"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址（如 agentkey.app） @ package.json:7"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "访问第三方网络地址（如 agentkey.app）",
+          "file": "package.json",
+          "line": 7
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 agentkey.app）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "8e93c67a3362a8ec088896a71e3ef228af868932",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-26T04:04:18.409Z"
+    },
+    {
+      "id": "Minglink/dsh-infinite-gen-2",
+      "name": "dsh-infinite-gen-2",
+      "author": "Minglink",
+      "description": "DeepSeek 专用破甲插件「无限二代」dsh-infinite-gen-2 — armor-breaking plugin for DeepSeek稳定化破甲提示词，求 Star 收藏 ⭐",
+      "repo_url": "https://github.com/Minglink/dsh-infinite-gen-2",
+      "homepage": "https://deepseek.stream/plugins/dsh-infinite-gen-2",
+      "stars": 307,
+      "forks": 19,
+      "open_issues": 3,
+      "watchers": 0,
+      "pushed_at": "2026-08-25T16:17:46Z",
+      "archived": false,
+      "language": "PowerShell",
+      "license": "MIT",
+      "topics": [
+        "armor-breaking",
+        "deepseek",
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "> ## 💬 DeepSeek 破甲交流群 2 群 > > ### 👉 QQ 群号：971281629"
+      },
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": [],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [],
+      "reviewed_commit": "c72d2d178021d51547d08d70d33393324e3d58fa",
+      "source": "discovered",
+      "review_status": "approved",
+      "reviewed_at": "2026-08-26T04:04:18.409Z"
+    },
+    {
+      "id": "GraySilver/dsh-evolve-modes",
+      "name": "dsh-evolve-modes",
+      "author": "GraySilver",
+      "description": "让 Agent 的工作方式可组合、可审查、可持续改进，最终实现 Agent Self Evoling。 DeepSeek Harness Web plugin with composable task controls and isolated, human-reviewed self-evolution.",
+      "repo_url": "https://github.com/GraySilver/dsh-evolve-modes",
+      "homepage": "https://www.npmjs.com/package/@graysilver/dsh-evolve-modes",
+      "stars": 111,
+      "forks": 5,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-08-18T03:28:15Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "acceptance-review",
+        "agent-review",
+        "ai-agents",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "plan-mode",
+        "prompt-engineering"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "> 让 Agent 的工作方式可组合、可审查、可持续改进，最终实现 Agent Self Evoling。",
+        "en": "> Make every agent turn intentional."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "存在 Base64 解码行为 @ lib/client.js:3",
+        "访问第三方网络地址（如 json-schema.org） @ lib/client.js:64"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/client.js",
+          "line": 3,
+          "confidence": 1
+        },
+        {
+          "explanation": "访问第三方网络地址（如 json-schema.org）",
+          "file": "lib/client.js",
+          "line": 64
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 json-schema.org）"
+      ],
+      "security_notes": [
+        "存在 Base64 解码行为"
+      ],
+      "reviewed_commit": "d1f717c8e7e6deae21e6f8e22c728c8572999cc9",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-26T04:04:18.409Z"
+    },
+    {
+      "id": "PerryLink/dsh-auto-review",
+      "name": "dsh-auto-review",
+      "author": "PerryLink",
+      "description": "Second-model AI auto-review for DeepSeek Harness approval requests: a read-only reviewer subagent returns structured allow/deny verdicts with reasons, fail-closed by default, fully auditable from the session log (approval/asked -> autoReview/verdict -> approval/decided).",
+      "repo_url": "https://github.com/PerryLink/dsh-auto-review",
+      "homepage": "https://www.npmjs.com/package/dsh-auto-review",
+      "stars": 110,
+      "forks": 1,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-23T05:48:23Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "topics": [
+        "ai-safety",
+        "approval",
+        "auto-review",
+        "cordis",
+        "deepseek",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "llm",
+        "sandbox",
+        "second-model",
+        "subagent"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "DeepSeek Harness 的第二模型 AI 审批 —— 一个只读审查子代理在审批链上做出允许/拒绝决策，默认失败关闭。",
+        "en": "Second-model AI approval for DeepSeek Harness — a read-only reviewer subagent decides allow/deny on the approval chain, fail-closed by default."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
+        "子进程以 shell 模式启动（spawn(...,{shell:true})） @ scripts/smoke-package.mjs:79",
+        "使用动态代码执行（全局 eval / new Function） @ src/eval/report.ts:111",
+        "依赖 yaml@2.8.2 存在已知漏洞（GHSA-48c2-rrv3-qjmp） @ <dependencies>",
+        "读取环境变量（可能包含敏感信息） @ src/eval/cli.ts:279"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "子进程以 shell 模式启动（spawn(...,{shell:true})）",
+          "file": "scripts/smoke-package.mjs",
+          "line": 79,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "src/eval/report.ts",
+          "line": 111,
+          "confidence": 1
+        },
+        {
+          "explanation": "依赖 yaml@2.8.2 存在已知漏洞（GHSA-48c2-rrv3-qjmp）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "src/eval/cli.ts",
+          "line": 279
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "子进程以 shell 模式启动（spawn(...,{shell:true})）",
+        "使用动态代码执行（全局 eval / new Function）",
+        "依赖 yaml@2.8.2 存在已知漏洞（GHSA-48c2-rrv3-qjmp）"
+      ],
+      "reviewed_commit": "fb1031196c0041e759bc81abc76f7667fef09fd1",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-26T04:04:18.409Z"
     }
   ]
 }
