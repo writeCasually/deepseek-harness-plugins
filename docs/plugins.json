@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-08-27T11:08:46.553Z",
+  "generated_at": "2026-08-27T14:14:24.288Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -15011,10 +15011,8 @@
         "zh": "| 你对 Agent 说 | 没装会怎样 | 装了 AgentKey 后 | | ----------------------------------------------------- | ----------------------- | ---------------------------------- | | 🐦 马斯克最近在推特上在说什么 | 看不了，搜不到完整推文 | 一次拉全相关推文，帮你总结结论 |",
         "en": "| You ask your agent to... | Without AgentKey | With AgentKey | | ------------------------------------------------------ | ----------------------------- | ---------------------------------------------- | | 🐦 What has Musk been saying on Twitter lately? |"
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "访问第三方网络地址（如 agentkey.app） @ package.json:7"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "访问第三方网络地址（如 agentkey.app）",
@@ -15023,9 +15021,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 agentkey.app）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "8e93c67a3362a8ec088896a71e3ef228af868932",
       "source": "discovered",
@@ -15107,11 +15103,8 @@
         "zh": "> 让 Agent 的工作方式可组合、可审查、可持续改进，最终实现 Agent Self Evoling。",
         "en": "> Make every agent turn intentional."
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "存在 Base64 解码行为 @ lib/client.js:3",
-        "访问第三方网络地址（如 json-schema.org） @ lib/client.js:64"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "存在 Base64 解码行为",
@@ -15126,12 +15119,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 json-schema.org）"
-      ],
-      "security_notes": [
-        "存在 Base64 解码行为"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "d1f717c8e7e6deae21e6f8e22c728c8572999cc9",
       "source": "discovered",
       "review_status": "flagged",
@@ -15178,10 +15167,7 @@
       "risk_level": "moderate",
       "risk_notes": [
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
-        "子进程以 shell 模式启动（spawn(...,{shell:true})） @ scripts/smoke-package.mjs:79",
-        "使用动态代码执行（全局 eval / new Function） @ src/eval/report.ts:111",
-        "依赖 yaml@2.8.2 存在已知漏洞（GHSA-48c2-rrv3-qjmp） @ <dependencies>",
-        "读取环境变量（可能包含敏感信息） @ src/eval/cli.ts:279"
+        "依赖 yaml@2.8.2 存在已知漏洞（GHSA-48c2-rrv3-qjmp） @ <dependencies>"
       ],
       "risk_evidence": [
         {
@@ -15211,19 +15197,75 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "子进程以 shell 模式启动（spawn(...,{shell:true})）",
-        "使用动态代码执行（全局 eval / new Function）",
-        "依赖 yaml@2.8.2 存在已知漏洞（GHSA-48c2-rrv3-qjmp）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "fb1031196c0041e759bc81abc76f7667fef09fd1",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-26T04:04:18.409Z"
+    },
+    {
+      "id": "e2mcc/dsh-popout-sidebar",
+      "name": "dsh-popout-sidebar",
+      "author": "e2mcc",
+      "description": "A sidebar can pop out a separate browser tab (drag it to another monitor)",
+      "repo_url": "https://github.com/e2mcc/dsh-popout-sidebar",
+      "homepage": "https://github.com/e2mcc/dsh-popout-sidebar",
+      "stars": 124,
+      "forks": 1,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-08-20T16:51:38Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "可弹出式侧边栏：侧边栏展示产物与文件树，支持多种文件预览形式；并可弹出为独立浏览器标签页（可拖至另一显示器上更大更清晰的观看）；兼容其他 sidebar 插件，可以同时显示。"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "使用动态代码执行（全局 eval / new Function） @ src/index.js:15",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ src/client.js:451",
+        "访问第三方网络地址（如 w3.org） @ src/host/page.js:237"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "src/index.js",
+          "line": 15,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+          "file": "src/client.js",
+          "line": 451
+        },
+        {
+          "explanation": "访问第三方网络地址（如 w3.org）",
+          "file": "src/host/page.js",
+          "line": 237
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "访问第三方网络地址（如 w3.org）"
+      ],
+      "security_notes": [
+        "使用动态代码执行（全局 eval / new Function）"
+      ],
+      "reviewed_commit": "e9a8458cb65c0a863ba5c86bf4ad272b1e0e3162",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-27T14:14:24.288Z"
     }
   ]
 }
