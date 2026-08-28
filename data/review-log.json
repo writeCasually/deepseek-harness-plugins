@@ -1,6 +1,89 @@
 {
-  "updated_at": "2026-08-27T14:14:24.288Z",
+  "updated_at": "2026-08-28T15:24:44.705Z",
   "decisions": [
+    {
+      "id": "liguobao/deepseek-harness-remote",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "依赖 markdown-it@14.1.0 存在已知漏洞（GHSA-38c4-r59v-3vqw, GHSA-6v5v-wf23-fmfq）",
+        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
+      ],
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 dsh.r2049.cn）",
+        "访问第三方网络地址（如 remote.example.com）"
+      ],
+      "evidence": [
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "packages/crypto/src/index.ts",
+          "line": 58,
+          "snippet": "return Uint8Array.from(atob(padded), char => char.charCodeAt(0))"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "packages/crypto/src/index.ts",
+          "line": 60,
+          "snippet": "return new Uint8Array(Buffer.from(padded, 'base64'))"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "packages/crypto/src/index.ts",
+          "line": 47,
+          "snippet": "const binary = Array.from(bytes, byte => String.fromCharCode(byte)).join('')"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 markdown-it@14.1.0 存在已知漏洞（GHSA-38c4-r59v-3vqw, GHSA-6v5v-wf23-fmfq）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "markdown-it@14.1.0"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "ws@8.18.0"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-14）",
+        "未声明开源许可证"
+      ],
+      "reviewed_commit": "d498952dff79a8b3d7eca2a16bfa8344fd12f43f",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 236,
+      "osv": {
+        "status": "ok",
+        "findings": 2
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-08-28T15:24:44.705Z"
+    },
     {
       "id": "platonai/Browser4",
       "verdict": "skip",
@@ -63249,51 +63332,6 @@
       },
       "llm_review": {
         "status": "skipped"
-      },
-      "reviewed_at": "2026-08-19T03:59:58.041Z"
-    },
-    {
-      "id": "mindscale-noah/MindMemOS",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "code",
-        "reason": "依赖 DSH/Cordis 生态包 @deepseek-ai/cordis"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        }
-      ],
-      "trust_notes": [
-        "未声明开源许可证"
-      ],
-      "reviewed_commit": "0c2fdb1ed41d09c7446f809d00bc11821e96cb24",
-      "review_mode": "full",
-      "scanned_files": 7,
-      "total_files": 636,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
       },
       "reviewed_at": "2026-08-19T03:59:58.041Z"
     }
