@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-08-28T06:53:12.591Z",
+  "generated_at": "2026-08-28T15:24:44.705Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -15230,12 +15230,8 @@
       "description_i18n": {
         "zh": "可弹出式侧边栏：侧边栏展示产物与文件树，支持多种文件预览形式；并可弹出为独立浏览器标签页（可拖至另一显示器上更大更清晰的观看）；兼容其他 sidebar 插件，可以同时显示。"
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "使用动态代码执行（全局 eval / new Function） @ src/index.js:15",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ src/client.js:451",
-        "访问第三方网络地址（如 w3.org） @ src/host/page.js:237"
-      ],
+      "risk_level": "high",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "使用动态代码执行（全局 eval / new Function）",
@@ -15255,18 +15251,110 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "使用动态代码执行（全局 eval / new Function）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "e9a8458cb65c0a863ba5c86bf4ad272b1e0e3162",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-27T14:14:24.288Z",
       "description_i18n_checked_at": "2026-08-27T22:55:38.264Z"
+    },
+    {
+      "id": "liguobao/deepseek-harness-remote",
+      "name": "deepseek-harness-remote",
+      "author": "liguobao",
+      "description": "基于 DeepSeek Harness 插件机制的多端远程访问方案，让桌面端与 Android 端安全连接并操作远程 Harness。（A multi-device remote access solution built on the DeepSeek Harness plugin system, enabling desktop and Android clients to securely connect to and operate a remote Harness.）",
+      "repo_url": "https://github.com/liguobao/deepseek-harness-remote",
+      "homepage": "https://dsh.r2049.cn/",
+      "stars": 119,
+      "forks": 11,
+      "open_issues": 5,
+      "watchers": 0,
+      "pushed_at": "2026-08-28T10:07:35Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "unknown",
+      "topics": [
+        "deepseek",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "从手机、电脑、浏览器继续使用你的 DeepSeek Harness 实例。",
+        "en": "Continue using your DeepSeek Harness instance from a phone, computer, or browser."
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ examples/mock-host/index.ts",
+        "存在 Base64 解码行为 @ packages/crypto/src/index.ts:58",
+        "存在 Base64 解码行为 @ packages/crypto/src/index.ts:60",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ packages/crypto/src/index.ts:47",
+        "依赖 markdown-it@14.1.0 存在已知漏洞（GHSA-38c4-r59v-3vqw, GHSA-6v5v-wf23-fmfq） @ <dependencies>",
+        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
+        "访问第三方网络地址（如 dsh.r2049.cn） @ apps/vscode/package.json:12",
+        "访问第三方网络地址（如 remote.example.com） @ apps/android/src/locales/en-US.ts:64"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "examples/mock-host/index.ts"
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "packages/crypto/src/index.ts",
+          "line": 58,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "packages/crypto/src/index.ts",
+          "line": 60,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "packages/crypto/src/index.ts",
+          "line": 47
+        },
+        {
+          "explanation": "依赖 markdown-it@14.1.0 存在已知漏洞（GHSA-38c4-r59v-3vqw, GHSA-6v5v-wf23-fmfq）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh.r2049.cn）",
+          "file": "apps/vscode/package.json",
+          "line": 12
+        },
+        {
+          "explanation": "访问第三方网络地址（如 remote.example.com）",
+          "file": "apps/android/src/locales/en-US.ts",
+          "line": 64
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 dsh.r2049.cn）",
+        "访问第三方网络地址（如 remote.example.com）"
+      ],
+      "security_notes": [
+        "存在 Base64 解码行为",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "依赖 markdown-it@14.1.0 存在已知漏洞（GHSA-38c4-r59v-3vqw, GHSA-6v5v-wf23-fmfq）",
+        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
+      ],
+      "reviewed_commit": "d498952dff79a8b3d7eca2a16bfa8344fd12f43f",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-28T15:24:44.705Z"
     }
   ]
 }
