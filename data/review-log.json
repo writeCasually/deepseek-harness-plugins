@@ -1,6 +1,65 @@
 {
-  "updated_at": "2026-08-28T15:24:44.705Z",
+  "updated_at": "2026-08-29T10:07:26.255Z",
   "decisions": [
+    {
+      "id": "AdamPlatin123/dsh-plugin-radar",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "ac886d8e67b16c3f70f93c044c963a33f5fc5cdf",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 351,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-08-29T10:07:26.255Z"
+    },
+    {
+      "id": "seriousz158/dsh-memory",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-19）"
+      ],
+      "reviewed_commit": "2a994f7279b0ca396163a36fe31e9293dc5abd03",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 92,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-08-29T10:07:26.255Z"
+    },
     {
       "id": "liguobao/deepseek-harness-remote",
       "verdict": "flagged",
@@ -63192,148 +63251,6 @@
         "error": ""
       },
       "reviewed_at": "2026-08-20T03:59:47.526Z"
-    },
-    {
-      "id": "MemTensor/MemOS",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 preact 与知名包 react 名称高度相似（编辑距离 1），存在仿冒风险",
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-        "依赖 @accomplish/shared 与知名包 sharp 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 uuid@10.0.0 存在已知漏洞（GHSA-w5hq-g745-h8pq）",
-        "依赖 yaml@2.6.0 存在已知漏洞（GHSA-48c2-rrv3-qjmp）",
-        "依赖 @modelcontextprotocol/sdk@1.0.0 存在已知漏洞（GHSA-w48q-cv73-mx4w）"
-      ],
-      "privacy_notes": [
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "访问第三方网络地址（如 memos-dashboard.openmem.net）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-postinstall",
-          "severity": "warning",
-          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-          "file": "package.json#1",
-          "line": 0,
-          "snippet": "node scripts/postinstall.cjs"
-        },
-        {
-          "rule": "lifecycle-postinstall",
-          "severity": "warning",
-          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-          "file": "package.json#2",
-          "line": 0,
-          "snippet": "node scripts/postinstall.cjs"
-        },
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#2",
-          "line": 0,
-          "snippet": "npm run check:hermes-version && npm run build:package"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 preact 与知名包 react 名称高度相似（编辑距离 1），存在仿冒风险",
-          "file": "package.json#2",
-          "line": 0,
-          "snippet": "preact"
-        },
-        {
-          "rule": "lifecycle-postinstall",
-          "severity": "warning",
-          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-          "file": "package.json#3",
-          "line": 0,
-          "snippet": "electron-rebuild && npm --prefix skills/dev-browser install && npm --prefix skills/file-permission install && npm --prefix skills/ask-user-question install"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @accomplish/shared 与知名包 sharp 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#3",
-          "line": 0,
-          "snippet": "@accomplish/shared"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 uuid@10.0.0 存在已知漏洞（GHSA-w5hq-g745-h8pq）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "uuid@10.0.0"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 yaml@2.6.0 存在已知漏洞（GHSA-48c2-rrv3-qjmp）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "yaml@2.6.0"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 @modelcontextprotocol/sdk@1.0.0 存在已知漏洞（GHSA-w48q-cv73-mx4w）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "@modelcontextprotocol/sdk@1.0.0"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "85532420387cf038424db3193732ee6b84c5fe27",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 1994,
-      "osv": {
-        "status": "ok",
-        "findings": 3
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-19T03:59:58.041Z"
-    },
-    {
-      "id": "TencentCloudBase/CloudBase-AI-Toolkit",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "6bcc3dc6f509b5a7cadb3f7ab4d847151c04d488",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 1370,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
-      },
-      "reviewed_at": "2026-08-19T03:59:58.041Z"
     }
   ]
 }
