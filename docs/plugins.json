@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-08-29T03:08:36.532Z",
+  "generated_at": "2026-08-29T10:07:26.255Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -15290,13 +15290,8 @@
       "risk_level": "high",
       "risk_notes": [
         "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ examples/mock-host/index.ts",
-        "存在 Base64 解码行为 @ packages/crypto/src/index.ts:58",
-        "存在 Base64 解码行为 @ packages/crypto/src/index.ts:60",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ packages/crypto/src/index.ts:47",
         "依赖 markdown-it@14.1.0 存在已知漏洞（GHSA-38c4-r59v-3vqw, GHSA-6v5v-wf23-fmfq） @ <dependencies>",
-        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
-        "访问第三方网络地址（如 dsh.r2049.cn） @ apps/vscode/package.json:12",
-        "访问第三方网络地址（如 remote.example.com） @ apps/android/src/locales/en-US.ts:64"
+        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>"
       ],
       "risk_evidence": [
         {
@@ -15340,21 +15335,62 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 dsh.r2049.cn）",
-        "访问第三方网络地址（如 remote.example.com）"
-      ],
-      "security_notes": [
-        "存在 Base64 解码行为",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-        "依赖 markdown-it@14.1.0 存在已知漏洞（GHSA-38c4-r59v-3vqw, GHSA-6v5v-wf23-fmfq）",
-        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "d498952dff79a8b3d7eca2a16bfa8344fd12f43f",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-28T15:24:44.705Z"
+    },
+    {
+      "id": "seriousz158/dsh-memory",
+      "name": "dsh-memory",
+      "author": "seriousz158",
+      "description": "",
+      "repo_url": "https://github.com/seriousz158/dsh-memory",
+      "homepage": "https://github.com/seriousz158/dsh-memory",
+      "stars": 128,
+      "forks": 2,
+      "open_issues": 5,
+      "watchers": 0,
+      "pushed_at": "2026-08-26T07:24:45Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "deepseek-harness",
+        "dsh-bundle",
+        "dsh-plugin",
+        "memory"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "en": "dsh-memory is a local, Git-backed long-term-memory plugin for DeepSeek Harness (DSH)."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取环境变量（可能包含敏感信息） @ packages/dsh-git-memory/lib/index.js:30"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "packages/dsh-git-memory/lib/index.js",
+          "line": 30
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "2a994f7279b0ca396163a36fe31e9293dc5abd03",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-29T10:07:26.255Z"
     }
   ]
 }
