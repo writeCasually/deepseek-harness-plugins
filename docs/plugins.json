@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-08-30T06:33:06.637Z",
+  "generated_at": "2026-08-30T09:16:10.486Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -15371,10 +15371,8 @@
       "description_i18n": {
         "en": "dsh-memory is a local, Git-backed long-term-memory plugin for DeepSeek Harness (DSH)."
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "读取环境变量（可能包含敏感信息） @ packages/dsh-git-memory/lib/index.js:30"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "读取环境变量（可能包含敏感信息）",
@@ -15383,15 +15381,218 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "2a994f7279b0ca396163a36fe31e9293dc5abd03",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-29T10:07:26.255Z",
       "description_i18n_checked_at": "2026-08-29T11:36:29.268Z"
+    },
+    {
+      "id": "1692775560/dsh-Mimir-Academic-research",
+      "name": "dsh-Mimir-Academic-research",
+      "author": "1692775560",
+      "description": "Mimir — 一站式科研工作台插件：LaTeX 论文边写边编译、arXiv 文献管理、实验追踪、指标图表、GPU 服务器 SSH 任务编排，管理科研全周期。An open-source research workbench plugin for the whole research cycle.",
+      "repo_url": "https://github.com/1692775560/dsh-Mimir-Academic-research",
+      "homepage": "https://mimir.smartlarkai.com",
+      "stars": 127,
+      "forks": 7,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-08-28T12:51:25Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "arxiv",
+        "bibtex",
+        "deepseek",
+        "deepseek-harness",
+        "dsh-plugin",
+        "experiment-tracking",
+        "gpu-cluster",
+        "latex",
+        "paper-writing",
+        "research",
+        "research-tools",
+        "ssh"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "Mimir 是单个 npm 包（dsh-mimir），装进 dsh 即可获得：",
+        "en": "Mimir is a single npm package (dsh-mimir) that plugs into dsh and gives you:"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "存在 Base64 解码行为 @ packages/mimir/src/services/image-gen.ts:139",
+        "访问第三方网络地址（如 research.local） @ packages/mimir/src/index.ts:387",
+        "访问第三方网络地址（如 arxiv.org） @ packages/mimir/src/bibtex.ts:184",
+        "访问第三方网络地址（如 api.openai.com） @ packages/mimir/src/services/image-gen.ts:21"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "packages/mimir/src/services/image-gen.ts",
+          "line": 139,
+          "confidence": 1
+        },
+        {
+          "explanation": "访问第三方网络地址（如 research.local）",
+          "file": "packages/mimir/src/index.ts",
+          "line": 387
+        },
+        {
+          "explanation": "访问第三方网络地址（如 arxiv.org）",
+          "file": "packages/mimir/src/bibtex.ts",
+          "line": 184
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.openai.com）",
+          "file": "packages/mimir/src/services/image-gen.ts",
+          "line": 21
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 research.local）",
+        "访问第三方网络地址（如 arxiv.org）",
+        "访问第三方网络地址（如 api.openai.com）"
+      ],
+      "security_notes": [
+        "存在 Base64 解码行为"
+      ],
+      "reviewed_commit": "bcbcf6a38b98fbdcbeed6439e5c56c96758fd7fe",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-30T09:16:10.486Z"
+    },
+    {
+      "id": "chokwinlee/deepseek-harness-desktop",
+      "name": "deepseek-harness-desktop",
+      "author": "chokwinlee",
+      "description": "Compact DeepSeek Harness desktop host with a native SwiftUI iPhone Remote source preview.",
+      "repo_url": "https://github.com/chokwinlee/deepseek-harness-desktop",
+      "homepage": "https://github.com/chokwinlee/deepseek-harness-desktop",
+      "stars": 126,
+      "forks": 1,
+      "open_issues": 13,
+      "watchers": 0,
+      "pushed_at": "2026-08-28T18:05:38Z",
+      "archived": false,
+      "language": "Kotlin",
+      "license": "MIT",
+      "topics": [
+        "ai-agents",
+        "coding-agent",
+        "cross-platform",
+        "deepseek",
+        "deepseek-harness",
+        "desktop",
+        "desktop-app",
+        "dsh",
+        "dsh-plugin",
+        "electron",
+        "ios",
+        "lightweight",
+        "macos",
+        "remote-development",
+        "swiftui",
+        "tailscale",
+        "tauri",
+        "windows"
+      ],
+      "category": "plugin",
+      "kind": "dsh-client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.client manifest",
+      "description_i18n": {
+        "zh": "- 多模态会话 所选服务商与模型声明支持图片输入后，可以直接粘贴或附加图片，并沿用 Harness 的标准会话流程。图片消息会保留在会话历史中。",
+        "en": "- Multimodal sessions — paste or attach images and send them through the normal Harness conversation flow when the selected provider and model declare image input support. Image messages remain visible in session history."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "监听键盘输入事件 @ src/remote.js:1163",
+        "监听键盘输入事件 @ src/updater.js:497",
+        "监听键盘输入事件 @ src/usage-meter.js:657",
+        "读取环境变量（可能包含敏感信息） @ src/main.ts:96",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 remote.invalid） @ scripts/lan-remote-proxy.mjs:81",
+        "访问第三方网络地址（如 remote.invalid） @ scripts/lan-remote-proxy.mjs:216",
+        "访问第三方网络地址（如 login.tailscale.com、tailscale.com） @ src/remote.js:1229",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ src/updater.js:237",
+        "访问第三方网络地址（如 openrouter.ai） @ src/usage-meter.js:13"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/remote.js",
+          "line": 1163,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/updater.js",
+          "line": 497,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/usage-meter.js",
+          "line": 657,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "src/main.ts",
+          "line": 96
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 remote.invalid）",
+          "file": "scripts/lan-remote-proxy.mjs",
+          "line": 81
+        },
+        {
+          "explanation": "访问第三方网络地址（如 remote.invalid）",
+          "file": "scripts/lan-remote-proxy.mjs",
+          "line": 216
+        },
+        {
+          "explanation": "访问第三方网络地址（如 login.tailscale.com、tailscale.com）",
+          "file": "src/remote.js",
+          "line": 1229
+        },
+        {
+          "explanation": "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+          "file": "src/updater.js",
+          "line": 237
+        },
+        {
+          "explanation": "访问第三方网络地址（如 openrouter.ai）",
+          "file": "src/usage-meter.js",
+          "line": 13
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 remote.invalid）",
+        "访问第三方网络地址（如 remote.invalid）",
+        "访问第三方网络地址（如 login.tailscale.com、tailscale.com）",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "访问第三方网络地址（如 openrouter.ai）"
+      ],
+      "security_notes": [
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "fbe6f2b920a331bc5221e5ed146cb680c22bd97e",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-30T09:16:10.486Z"
     }
   ]
 }
