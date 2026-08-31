@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-08-31T01:20:40.472Z",
+  "generated_at": "2026-08-31T09:47:40.716Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -15427,13 +15427,8 @@
         "zh": "Mimir 是单个 npm 包（dsh-mimir），装进 dsh 即可获得：",
         "en": "Mimir is a single npm package (dsh-mimir) that plugs into dsh and gives you:"
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "存在 Base64 解码行为 @ packages/mimir/src/services/image-gen.ts:139",
-        "访问第三方网络地址（如 research.local） @ packages/mimir/src/index.ts:387",
-        "访问第三方网络地址（如 arxiv.org） @ packages/mimir/src/bibtex.ts:184",
-        "访问第三方网络地址（如 api.openai.com） @ packages/mimir/src/services/image-gen.ts:21"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "存在 Base64 解码行为",
@@ -15458,14 +15453,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 research.local）",
-        "访问第三方网络地址（如 arxiv.org）",
-        "访问第三方网络地址（如 api.openai.com）"
-      ],
-      "security_notes": [
-        "存在 Base64 解码行为"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "bcbcf6a38b98fbdcbeed6439e5c56c96758fd7fe",
       "source": "discovered",
       "review_status": "flagged",
@@ -15515,18 +15504,8 @@
         "zh": "- 多模态会话 所选服务商与模型声明支持图片输入后，可以直接粘贴或附加图片，并沿用 Harness 的标准会话流程。图片消息会保留在会话历史中。",
         "en": "- Multimodal sessions — paste or attach images and send them through the normal Harness conversation flow when the selected provider and model declare image input support. Image messages remain visible in session history."
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "监听键盘输入事件 @ src/remote.js:1163",
-        "监听键盘输入事件 @ src/updater.js:497",
-        "监听键盘输入事件 @ src/usage-meter.js:657",
-        "读取环境变量（可能包含敏感信息） @ src/main.ts:96",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 remote.invalid） @ scripts/lan-remote-proxy.mjs:81",
-        "访问第三方网络地址（如 remote.invalid） @ scripts/lan-remote-proxy.mjs:216",
-        "访问第三方网络地址（如 login.tailscale.com、tailscale.com） @ src/remote.js:1229",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ src/updater.js:237",
-        "访问第三方网络地址（如 openrouter.ai） @ src/usage-meter.js:13"
-      ],
+      "risk_level": "high",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "监听键盘输入事件",
@@ -15578,21 +15557,451 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 remote.invalid）",
-        "访问第三方网络地址（如 remote.invalid）",
-        "访问第三方网络地址（如 login.tailscale.com、tailscale.com）",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
-        "访问第三方网络地址（如 openrouter.ai）"
-      ],
-      "security_notes": [
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "fbe6f2b920a331bc5221e5ed146cb680c22bd97e",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-30T09:16:10.486Z"
+    },
+    {
+      "id": "wecode-ai/Wegent",
+      "name": "Wegent",
+      "author": "wecode-ai",
+      "description": "Plan, build, and deliver with an open-source, self-hostable AI workspace for coding, collaboration, and automation.",
+      "repo_url": "https://github.com/wecode-ai/Wegent",
+      "homepage": "https://wecode-ai.github.io/wegent-docs",
+      "stars": 763,
+      "forks": 130,
+      "open_issues": 71,
+      "watchers": 0,
+      "pushed_at": "2026-08-31T09:42:30Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "topics": [
+        "agent",
+        "ai",
+        "chatbot",
+        "claude-code",
+        "codex",
+        "dsh-plugin",
+        "wework"
+      ],
+      "category": "plugin",
+      "kind": "code",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 Cordis/DSH 落地标记（cordis.patch.yml/.dsh-plugin/dsh.client 等）",
+      "description_i18n": {
+        "zh": "> 一套跨越本地桌面、云端智能体与远程工作机的开源 AI 工作系统。",
+        "en": "@wegent/dsh-app-wework is Wework's DSH UI host. Wework no longer runs a separate frontend plugin runtime; Core DSH owns plugin discovery, dependencies, lifecycle, and UI registration."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json#3",
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#3",
+        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#3",
+        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
+        "依赖 @opentelemetry/core@2.2.0 存在已知漏洞（GHSA-8988-4f7v-96qf） @ <dependencies>",
+        "依赖 dompurify@3.2.4 存在已知漏洞（GHSA-39q2-94rc-95cp, GHSA-55q2-fjhq-7xh7, GHSA-76mc-f452-cxcm） @ <dependencies>",
+        "依赖 jspdf@3.0.4 存在已知漏洞（GHSA-67pg-wm7f-q7fj, GHSA-7x6v-j9x4-qf24, GHSA-95fx-jjr5-f39c） @ <dependencies>",
+        "依赖 mermaid@11.4.0 存在已知漏洞（GHSA-2v8p-3f2j-5mp7, GHSA-6m6c-36f7-fhxh, GHSA-6x64-9x62-f2gx） @ <dependencies>",
+        "依赖 next@15.1.9 存在已知漏洞（GHSA-36qx-fr4f-26g5, GHSA-3g8h-86w9-wvmq, GHSA-3h52-269p-cp9r） @ <dependencies>",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 weibo.com） @ deps/browser/relay-server/src/cli.ts:13",
+        "访问第三方网络地址（如 weibo.com） @ deps/browser/relay-server/src/cli.ts:217"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+          "file": "package.json#3"
+        },
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json#3"
+        },
+        {
+          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#3"
+        },
+        {
+          "explanation": "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 @opentelemetry/core@2.2.0 存在已知漏洞（GHSA-8988-4f7v-96qf）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 dompurify@3.2.4 存在已知漏洞（GHSA-39q2-94rc-95cp, GHSA-55q2-fjhq-7xh7, GHSA-76mc-f452-cxcm）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 jspdf@3.0.4 存在已知漏洞（GHSA-67pg-wm7f-q7fj, GHSA-7x6v-j9x4-qf24, GHSA-95fx-jjr5-f39c）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 mermaid@11.4.0 存在已知漏洞（GHSA-2v8p-3f2j-5mp7, GHSA-6m6c-36f7-fhxh, GHSA-6x64-9x62-f2gx）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 next@15.1.9 存在已知漏洞（GHSA-36qx-fr4f-26g5, GHSA-3g8h-86w9-wvmq, GHSA-3h52-269p-cp9r）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 weibo.com）",
+          "file": "deps/browser/relay-server/src/cli.ts",
+          "line": 13
+        },
+        {
+          "explanation": "访问第三方网络地址（如 weibo.com）",
+          "file": "deps/browser/relay-server/src/cli.ts",
+          "line": 217
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 weibo.com）",
+        "访问第三方网络地址（如 weibo.com）"
+      ],
+      "security_notes": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+        "依赖 @opentelemetry/core@2.2.0 存在已知漏洞（GHSA-8988-4f7v-96qf）",
+        "依赖 dompurify@3.2.4 存在已知漏洞（GHSA-39q2-94rc-95cp, GHSA-55q2-fjhq-7xh7, GHSA-76mc-f452-cxcm）",
+        "依赖 jspdf@3.0.4 存在已知漏洞（GHSA-67pg-wm7f-q7fj, GHSA-7x6v-j9x4-qf24, GHSA-95fx-jjr5-f39c）",
+        "依赖 mermaid@11.4.0 存在已知漏洞（GHSA-2v8p-3f2j-5mp7, GHSA-6m6c-36f7-fhxh, GHSA-6x64-9x62-f2gx）",
+        "依赖 next@15.1.9 存在已知漏洞（GHSA-36qx-fr4f-26g5, GHSA-3g8h-86w9-wvmq, GHSA-3h52-269p-cp9r）"
+      ],
+      "reviewed_commit": "61d65cad65650e7eba36f9a5b73abec8c5e8c602",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-31T09:47:40.716Z"
+    },
+    {
+      "id": "SeaOf0/dsh-redteam-model",
+      "name": "dsh-redteam-model",
+      "author": "SeaOf0",
+      "description": "基于dsh web实现的多种模式，目的是服务于redteam进行授权的安全研究，覆盖渗透测试、红队评估、代码审计等范围领域，请勿用于非法行为。（允许二开，赋予模块各位自己的业务逻辑，方法论只有自己熟练的才好用，好的方法论=好的生态）",
+      "repo_url": "https://github.com/SeaOf0/dsh-redteam-model",
+      "homepage": "https://github.com/SeaOf0/dsh-redteam-model",
+      "stars": 140,
+      "forks": 20,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-29T08:11:27Z",
+      "archived": false,
+      "language": "Python",
+      "license": "MIT",
+      "topics": [
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "> 空了，闲聊。一个老安全人员的关注点：AI环境下，知识点很多知识面也很广，如果一味的给AI投递knowledge，你问它它能答得出来，但是你让它去完成一个任务而没有去给它规定这个任务如何去完成如何高效的去完成如何才能命中你需要的点，尽管它掌握着大量的知识但没有这个\"workflow\"去引导去把控，那么也许能得到你想要的结果，但是往往非常的浪费token，甚至有时候没有对某些方面的栅栏，它可能陷入死胡同，这就是为什么我们要去不断的设计完善workflow，把自身的经验写成skill或者agent"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
+        "存在 Base64 解码行为 @ plugins/dsh-webshell-mgr/lib/index.js:131",
+        "使用屏幕/画面采集能力 @ plugins/dsh-webshell-mgr/lib/index.js:148",
+        "读取环境变量（可能包含敏感信息） @ lib/index.js:71",
+        "访问第三方网络地址（如 x） @ plugins/dsh-attack-atlas/lib/index.js:1215",
+        "访问第三方网络地址（如 fofa.info、x） @ plugins/dsh-hunter/lib/index.js:235",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x） @ plugins/dsh-redteam-results/lib/index.js:41",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 host） @ plugins/dsh-scanner-tools/lib/index.js:134",
+        "访问第三方网络地址（如 host） @ plugins/dsh-scanner-tools/lib/index.js:273"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "plugins/dsh-webshell-mgr/lib/index.js",
+          "line": 131,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "plugins/dsh-webshell-mgr/lib/index.js",
+          "line": 148,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "lib/index.js",
+          "line": 71
+        },
+        {
+          "explanation": "访问第三方网络地址（如 x）",
+          "file": "plugins/dsh-attack-atlas/lib/index.js",
+          "line": 1215
+        },
+        {
+          "explanation": "访问第三方网络地址（如 fofa.info、x）",
+          "file": "plugins/dsh-hunter/lib/index.js",
+          "line": 235
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
+          "file": "plugins/dsh-redteam-results/lib/index.js",
+          "line": 41
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 host）",
+          "file": "plugins/dsh-scanner-tools/lib/index.js",
+          "line": 134
+        },
+        {
+          "explanation": "访问第三方网络地址（如 host）",
+          "file": "plugins/dsh-scanner-tools/lib/index.js",
+          "line": 273
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 x）",
+        "访问第三方网络地址（如 fofa.info、x）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 host）",
+        "访问第三方网络地址（如 host）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "存在 Base64 解码行为",
+        "使用屏幕/画面采集能力"
+      ],
+      "reviewed_commit": "fdae3e964c6cdb7760970488c2841488a9ffcba8",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-31T09:47:40.716Z"
+    },
+    {
+      "id": "liguobao/ds-harness-remote",
+      "name": "ds-harness-remote",
+      "author": "liguobao",
+      "description": "一个基于 DeepSeek Harness 插件机制构建的多端远程访问方案，通过安全、低延迟、端到端加密的 P2P 优先网络，支持从 PC、Android 和 Web 随时访问并操作远程 Harness。 (A multi-device remote access solution built on the DeepSeek Harness plugin system, enabling PC, Android, and Web clients to securely access and operate a remote Harness over a low-latency, end-to-end encrypted, P2P-first network.)",
+      "repo_url": "https://github.com/liguobao/ds-harness-remote",
+      "homepage": "https://dsh.r2049.cn/",
+      "stars": 138,
+      "forks": 12,
+      "open_issues": 6,
+      "watchers": 0,
+      "pushed_at": "2026-08-31T09:31:01Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "unknown",
+      "topics": [
+        "deepseek",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "从手机、电脑、浏览器继续使用你的 DeepSeek Harness 实例。",
+        "en": "Continue using your DeepSeek Harness instance from a phone, computer, or browser."
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ examples/mock-host/index.ts",
+        "存在 Base64 解码行为 @ packages/crypto/src/index.ts:58",
+        "存在 Base64 解码行为 @ packages/crypto/src/index.ts:60",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ packages/crypto/src/index.ts:47",
+        "依赖 markdown-it@14.1.0 存在已知漏洞（GHSA-38c4-r59v-3vqw, GHSA-6v5v-wf23-fmfq） @ <dependencies>",
+        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
+        "访问第三方网络地址（如 dsh.r2049.cn） @ apps/vscode/package.json:12",
+        "访问第三方网络地址（如 remote.example.com） @ apps/android/src/locales/en-US.ts:64"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "examples/mock-host/index.ts"
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "packages/crypto/src/index.ts",
+          "line": 58,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "packages/crypto/src/index.ts",
+          "line": 60,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "packages/crypto/src/index.ts",
+          "line": 47
+        },
+        {
+          "explanation": "依赖 markdown-it@14.1.0 存在已知漏洞（GHSA-38c4-r59v-3vqw, GHSA-6v5v-wf23-fmfq）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh.r2049.cn）",
+          "file": "apps/vscode/package.json",
+          "line": 12
+        },
+        {
+          "explanation": "访问第三方网络地址（如 remote.example.com）",
+          "file": "apps/android/src/locales/en-US.ts",
+          "line": 64
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 dsh.r2049.cn）",
+        "访问第三方网络地址（如 remote.example.com）"
+      ],
+      "security_notes": [
+        "存在 Base64 解码行为",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "依赖 markdown-it@14.1.0 存在已知漏洞（GHSA-38c4-r59v-3vqw, GHSA-6v5v-wf23-fmfq）",
+        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
+      ],
+      "reviewed_commit": "f2f1c7aec7743c75fcdcd900c59a5277a195cbd0",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-31T09:47:40.716Z"
+    },
+    {
+      "id": "theBigGavin/marketingdashboard",
+      "name": "marketingdashboard",
+      "author": "theBigGavin",
+      "description": "面向金融与产业研究的一屏式实时行情大屏：A股/港股/美股指数、大宗商品、美债收益率、板块热点、主力资金流、7×24 快讯、产业链自选股、AI 大模型 Token 追踪。A real-time market research cockpit on a single screen: CN/HK/US indices, commodities, treasury yields, sector hotspots, capital flows, 7×24 news, industry-chain watchlists and AI token usage trends. ",
+      "repo_url": "https://github.com/theBigGavin/marketingdashboard",
+      "homepage": "https://mrd.hermes.cc.cd/",
+      "stars": 133,
+      "forks": 27,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-08-30T15:37:13Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "a-share",
+        "dashboard",
+        "data-visualization",
+        "dsh-plugin",
+        "finance",
+        "fintech",
+        "react",
+        "selfhosted",
+        "stock-market",
+        "trade",
+        "vite"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "Market Research Cockpit — 面向金融与产业研究的一屏式实时行情大屏",
+        "en": "A one-screen real-time market dashboard for financial & industry research"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "监听键盘输入事件 @ src/components/dash/ChainEditorDialog.tsx:27",
+        "依赖 react-router@7.6.1 存在已知漏洞（GHSA-2j2x-hqr9-3h42, GHSA-2w69-qvjg-hvjx, GHSA-337j-9hxr-rhxg） @ <dependencies>",
+        "读取本地环境配置文件（dotenv .env） @ server/index.cjs",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 hermes.cc.cd） @ server/index.cjs:30",
+        "访问第三方网络地址（如 hermes.cc.cd） @ server/index.cjs:272",
+        "访问第三方网络地址（如 home.treasury.gov） @ scripts/update-treasury-archive.cjs:20",
+        "读取环境变量（可能包含敏感信息） @ server/lib/fetch-any.cjs:16",
+        "访问第三方网络地址（如 proxy.finance.qq.com） @ server/lib/qq-rank.cjs:9",
+        "访问第三方网络地址（如 ifzq.gtimg.cn、qt.gtimg.cn、web.ifzq.gtimg.cn） @ server/lib/tencent-urls.cjs:8",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ src/ProLanding.tsx:7"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/components/dash/ChainEditorDialog.tsx",
+          "line": 27,
+          "confidence": 1
+        },
+        {
+          "explanation": "依赖 react-router@7.6.1 存在已知漏洞（GHSA-2j2x-hqr9-3h42, GHSA-2w69-qvjg-hvjx, GHSA-337j-9hxr-rhxg）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "读取本地环境配置文件（dotenv .env）",
+          "file": "server/index.cjs"
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 hermes.cc.cd）",
+          "file": "server/index.cjs",
+          "line": 30
+        },
+        {
+          "explanation": "访问第三方网络地址（如 hermes.cc.cd）",
+          "file": "server/index.cjs",
+          "line": 272
+        },
+        {
+          "explanation": "访问第三方网络地址（如 home.treasury.gov）",
+          "file": "scripts/update-treasury-archive.cjs",
+          "line": 20
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "server/lib/fetch-any.cjs",
+          "line": 16
+        },
+        {
+          "explanation": "访问第三方网络地址（如 proxy.finance.qq.com）",
+          "file": "server/lib/qq-rank.cjs",
+          "line": 9
+        },
+        {
+          "explanation": "访问第三方网络地址（如 ifzq.gtimg.cn、qt.gtimg.cn、web.ifzq.gtimg.cn）",
+          "file": "server/lib/tencent-urls.cjs",
+          "line": 8
+        },
+        {
+          "explanation": "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+          "file": "src/ProLanding.tsx",
+          "line": 7
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取本地环境配置文件（dotenv .env）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 hermes.cc.cd）",
+        "访问第三方网络地址（如 hermes.cc.cd）",
+        "访问第三方网络地址（如 home.treasury.gov）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 proxy.finance.qq.com）",
+        "访问第三方网络地址（如 ifzq.gtimg.cn、qt.gtimg.cn、web.ifzq.gtimg.cn）",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）"
+      ],
+      "security_notes": [
+        "监听键盘输入事件",
+        "依赖 react-router@7.6.1 存在已知漏洞（GHSA-2j2x-hqr9-3h42, GHSA-2w69-qvjg-hvjx, GHSA-337j-9hxr-rhxg）"
+      ],
+      "reviewed_commit": "5b8056e2aa56ced08a12fbc116712540af74f942",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-08-31T09:47:40.716Z"
     }
   ]
 }
