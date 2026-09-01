@@ -79,6 +79,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) | [@zhu1090093659](https://github.com/zhu1090093659) | Plugin and skin collection for DeepSeek Harness (DSH) Web UI - task board, git graph, right-side panel, remote mobile UI, pet, live token stats, and skin center. |
 | [dsh-web](https://github.com/zhu1090093659/dsh-web) | [@zhu1090093659](https://github.com/zhu1090093659) | DeepSeek Harness（DSH）Web 插件聚合生态包 · 一切皆插件，创意工坊分发 |
 | [ouroboros](https://github.com/Q00/ouroboros) | [@Q00](https://github.com/Q00) | Agent OS: the agent gets smarter on its own. We just hold the line: the grading command and expected result never make it into the success contract we hand it. Interview-gated, staged evaluation, budgeted evolution loop. MCP server, 13 runtimes: Claude Code, Codex CLI, Gemini CLI, OpenCode, Copilot, Kiro and more. |
+| [loopx](https://github.com/huangruiteng/loopx) | [@huangruiteng](https://github.com/huangruiteng) | Long-horizon agent control plane for durable, governed work across Codex, Claude Code, and other harnesses. |
 | [petdex](https://github.com/crafter-station/petdex) | [@crafter-station](https://github.com/crafter-station) | A public gallery of animated pets for Codex, Claude Code, DeepSeek Harness, Hermes, OpenCode, Gemini CLI, and more. |
 | [dsh-anchored-standard](https://github.com/xiaobright/dsh-anchored-standard) | [@xiaobright](https://github.com/xiaobright) | Two-phase DeepSeek Harness preset: Minimal-aligned bootstrap, then full Standard tools (Project2 98/99) |
 | [mirage](https://github.com/strukto-ai/mirage) | [@strukto-ai](https://github.com/strukto-ai) | The World's First Unified Virtual Filesystem For AI Agents |
@@ -105,6 +106,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-vision-toolkit](https://github.com/Anionex/dsh-vision-toolkit) | [@Anionex](https://github.com/Anionex) | \[dsh]为纯文本模型设计更强大的视觉工具箱：安装免费使用、粘贴图片直接识别、多张图片问答、截图到前端UI 还原等｜DeepSeek Harness-native integration for agent-vision-toolkit: image Q&A, long-screenshot OCR, UI restoration, grounding, pixel diff, Artifacts, and Web UI. |
 | [api-relay-audit](https://github.com/toby-bridges/api-relay-audit) | [@toby-bridges](https://github.com/toby-bridges) | Local security audit for AI API relays and LLM proxies: detects prompt injection, model substitution, tool-call rewriting, SSE anomalies, error leakage, and Web3 wallet risks. |
 | [Wegent](https://github.com/wecode-ai/Wegent) | [@wecode-ai](https://github.com/wecode-ai) | Plan, build, and deliver with an open-source, self-hostable AI workspace for coding, collaboration, and automation. |
+| [dsh-infinite-gen-3](https://github.com/Minglink/dsh-infinite-gen-3) | [@Minglink](https://github.com/Minglink) | DeepSeek 专用破甲插件「无限三代」dsh-infinite-gen-3 — armor-breaking plugin for DeepSeek，破甲版：稳定化破甲，求 Star 收藏 ⭐ |
 | [dsh-infinite-gen-2](https://github.com/Minglink/dsh-infinite-gen-2) | [@Minglink](https://github.com/Minglink) | DeepSeek 专用破甲插件「无限二代」dsh-infinite-gen-2 — armor-breaking plugin for DeepSeek稳定化破甲提示词，求 Star 收藏 ⭐ |
 | [dsh-handbook](https://github.com/Electricitysheep/dsh-handbook) | [@Electricitysheep](https://github.com/Electricitysheep) | DeepSeek Harness (dsh) 从 0 到 1 深度手册：安装/插件开发/性能调优/实测案例/同模型多 Agent 实测对比（中文 + 英文 PDF） |
 | [treg](https://github.com/superdesigndev/treg) | [@superdesigndev](https://github.com/superdesigndev) | OpenRouter for agent tools. Join community here: https://discord.gg/6mQYYfFMAn |
@@ -165,6 +167,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-evolve-modes](https://github.com/GraySilver/dsh-evolve-modes) | [@GraySilver](https://github.com/GraySilver) | 让 Agent 的工作方式可组合、可审查、可持续改进，最终实现 Agent Self Evoling。 DeepSeek Harness Web plugin with composable task controls and isolated, human-reviewed self-evolution. |
 | [dsh-launcher](https://github.com/Ruler4396/dsh-launcher) | [@Ruler4396](https://github.com/Ruler4396) | DeepSeek Harness 的 Windows 轻量启动器：开机自启 + 独立小窗口，双击即用。 |
 | [TokenLedger](https://github.com/zh667/TokenLedger) | [@zh667](https://github.com/zh667) | Relay-site attributed token usage for DeepSeek Harness — zero config, no credentials |
+| [Blue-Whale-Harness](https://github.com/leenkcool/Blue-Whale-Harness) | [@leenkcool](https://github.com/leenkcool) | 🐋 DeepSeek Harness 插件总目录 · The catalog of DSH plugins：1958 个仓库 / 1819 个真插件（Skills · MCP · Tools · UI · Orchestration），中英文搜索、分类筛选、STAR 排序 → leenkcool.github.io |
 | [dsh-data-agent](https://github.com/omdsh-dev/dsh-data-agent) | [@omdsh-dev](https://github.com/omdsh-dev) | Connect DSH to your database for conversational data analysis and actionable business insights. |
 | [dsh-mobile](https://github.com/saya-ch/dsh-mobile) | [@saya-ch](https://github.com/saya-ch) | DeepSeek Harness 移动端适配与安全局域网访问插件，支持 Android App 和手机浏览器。 |
 | [dsh-popout-sidebar](https://github.com/e2mcc/dsh-popout-sidebar) | [@e2mcc](https://github.com/e2mcc) | A sidebar can pop out a separate browser tab (drag it to another monitor) |
@@ -193,6 +196,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-undo-savepoint](https://github.com/lire1131/dsh-undo-savepoint) | [@lire1131](https://github.com/lire1131) | DSH crash-rescue plugin: undo config & plugin-code changes, secret-safe snapshots, one-click SAFE MODE, plus offline CLI/GUI that work even when DSH won't boot. |
 | [gal-view](https://github.com/Ayase34/gal-view) | [@Ayase34](https://github.com/Ayase34) | 把dsh会话界面切换成galgame游戏界面的插件 |
 | [dsh-gitbash-preset](https://github.com/liceses/dsh-gitbash-preset) | [@liceses](https://github.com/liceses) | DeepSeek Harness 插件：一键安装「极简模式 (Git Bash)」agent preset —— 把 DSH 自带极简模式中的 bash 调用映射到 Git for Windows 的 bash（MSYS），让 Windows 上的极简模式真正可用。 |
+| [seektty](https://github.com/Hilbert-beinghappy/seektty) | [@Hilbert-beinghappy](https://github.com/Hilbert-beinghappy) | 面向 DeepSeek Harness 的 Claude Code 风格终端界面，支持 Windows、macOS 与 Linux，兼容透明终端、VS Code 主题和自定义配色。 |
 | [dsh-usage-stats](https://github.com/Ychris12138/dsh-usage-stats) | [@Ychris12138](https://github.com/Ychris12138) | Provider balances, subscription quotas, and token-usage analytics for the DeepSeek Harness Web GUI (dsh web). |
 | [marketingdashboard](https://github.com/theBigGavin/marketingdashboard) | [@theBigGavin](https://github.com/theBigGavin) | 面向金融与产业研究的一屏式实时行情大屏：A股/港股/美股指数、大宗商品、美债收益率、板块热点、主力资金流、7×24 快讯、产业链自选股、AI 大模型 Token 追踪。A real-time market research cockpit on a single screen: CN/HK/US indices, commodities, treasury yields, sector hotspots, capital flows, 7×24 news, industry-chain watchlists and AI token usage trends.  |
 | [dsh-commandcode-provider](https://github.com/Mars-Sea/dsh-commandcode-provider) | [@Mars-Sea](https://github.com/Mars-Sea) | Unofficial DeepSeek Harness LLM provider plugin for Command Code: live model catalog, reasoning-effort support, Models-page card. Ported from pi-commandcode-provider (MIT). |
@@ -255,7 +259,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-custom-tool](https://github.com/omdsh-dev/dsh-custom-tool) | [@omdsh-dev](https://github.com/omdsh-dev) | Create and manage sandboxed JavaScript tools for DeepSeek Harness with a Monaco editor and model-driven tool lifecycle. |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-Includes 189 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 193 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 
