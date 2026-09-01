@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-01T06:12:33.204Z",
+  "generated_at": "2026-09-01T08:41:06.975Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -15607,23 +15607,9 @@
         "依赖 dompurify@3.2.4 存在已知漏洞（GHSA-39q2-94rc-95cp, GHSA-55q2-fjhq-7xh7, GHSA-76mc-f452-cxcm） @ <dependencies>",
         "依赖 jspdf@3.0.4 存在已知漏洞（GHSA-67pg-wm7f-q7fj, GHSA-7x6v-j9x4-qf24, GHSA-95fx-jjr5-f39c） @ <dependencies>",
         "依赖 mermaid@11.4.0 存在已知漏洞（GHSA-2v8p-3f2j-5mp7, GHSA-6m6c-36f7-fhxh, GHSA-6x64-9x62-f2gx） @ <dependencies>",
-        "依赖 next@15.1.9 存在已知漏洞（GHSA-36qx-fr4f-26g5, GHSA-3g8h-86w9-wvmq, GHSA-3h52-269p-cp9r） @ <dependencies>",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 weibo.com） @ deps/browser/relay-server/src/cli.ts:13",
-        "访问第三方网络地址（如 weibo.com） @ deps/browser/relay-server/src/cli.ts:217"
+        "依赖 next@15.1.9 存在已知漏洞（GHSA-36qx-fr4f-26g5, GHSA-3g8h-86w9-wvmq, GHSA-3h52-269p-cp9r） @ <dependencies>"
       ],
       "risk_evidence": [
-        {
-          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-          "file": "package.json#3"
-        },
-        {
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#3"
-        },
-        {
-          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#3"
-        },
         {
           "explanation": "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
           "file": "<dependencies>"
@@ -15660,21 +15646,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 weibo.com）",
-        "访问第三方网络地址（如 weibo.com）"
-      ],
-      "security_notes": [
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
-        "依赖 @opentelemetry/core@2.2.0 存在已知漏洞（GHSA-8988-4f7v-96qf）",
-        "依赖 dompurify@3.2.4 存在已知漏洞（GHSA-39q2-94rc-95cp, GHSA-55q2-fjhq-7xh7, GHSA-76mc-f452-cxcm）",
-        "依赖 jspdf@3.0.4 存在已知漏洞（GHSA-67pg-wm7f-q7fj, GHSA-7x6v-j9x4-qf24, GHSA-95fx-jjr5-f39c）",
-        "依赖 mermaid@11.4.0 存在已知漏洞（GHSA-2v8p-3f2j-5mp7, GHSA-6m6c-36f7-fhxh, GHSA-6x64-9x62-f2gx）",
-        "依赖 next@15.1.9 存在已知漏洞（GHSA-36qx-fr4f-26g5, GHSA-3g8h-86w9-wvmq, GHSA-3h52-269p-cp9r）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "61d65cad65650e7eba36f9a5b73abec8c5e8c602",
       "source": "discovered",
       "review_status": "flagged",
@@ -15708,15 +15681,7 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
-        "存在 Base64 解码行为 @ plugins/dsh-webshell-mgr/lib/index.js:131",
-        "使用屏幕/画面采集能力 @ plugins/dsh-webshell-mgr/lib/index.js:148",
-        "读取环境变量（可能包含敏感信息） @ lib/index.js:71",
-        "访问第三方网络地址（如 x） @ plugins/dsh-attack-atlas/lib/index.js:1215",
-        "访问第三方网络地址（如 fofa.info、x） @ plugins/dsh-hunter/lib/index.js:235",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x） @ plugins/dsh-redteam-results/lib/index.js:41",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 host） @ plugins/dsh-scanner-tools/lib/index.js:134",
-        "访问第三方网络地址（如 host） @ plugins/dsh-scanner-tools/lib/index.js:273"
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json"
       ],
       "risk_evidence": [
         {
@@ -15767,19 +15732,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 x）",
-        "访问第三方网络地址（如 fofa.info、x）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 host）",
-        "访问第三方网络地址（如 host）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "存在 Base64 解码行为",
-        "使用屏幕/画面采集能力"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "fdae3e964c6cdb7760970488c2841488a9ffcba8",
       "source": "discovered",
       "review_status": "flagged",
@@ -15817,13 +15771,8 @@
       "risk_level": "high",
       "risk_notes": [
         "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ examples/mock-host/index.ts",
-        "存在 Base64 解码行为 @ packages/crypto/src/index.ts:58",
-        "存在 Base64 解码行为 @ packages/crypto/src/index.ts:60",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ packages/crypto/src/index.ts:47",
         "依赖 markdown-it@14.1.0 存在已知漏洞（GHSA-38c4-r59v-3vqw, GHSA-6v5v-wf23-fmfq） @ <dependencies>",
-        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
-        "访问第三方网络地址（如 dsh.r2049.cn） @ apps/vscode/package.json:12",
-        "访问第三方网络地址（如 remote.example.com） @ apps/android/src/locales/en-US.ts:64"
+        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>"
       ],
       "risk_evidence": [
         {
@@ -15867,17 +15816,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 dsh.r2049.cn）",
-        "访问第三方网络地址（如 remote.example.com）"
-      ],
-      "security_notes": [
-        "存在 Base64 解码行为",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-        "依赖 markdown-it@14.1.0 存在已知漏洞（GHSA-38c4-r59v-3vqw, GHSA-6v5v-wf23-fmfq）",
-        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "f2f1c7aec7743c75fcdcd900c59a5277a195cbd0",
       "source": "discovered",
       "review_status": "flagged",
@@ -15920,18 +15860,10 @@
         "zh": "Market Research Cockpit — 面向金融与产业研究的一屏式实时行情大屏",
         "en": "A one-screen real-time market dashboard for financial & industry research"
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
-        "监听键盘输入事件 @ src/components/dash/ChainEditorDialog.tsx:27",
         "依赖 react-router@7.6.1 存在已知漏洞（GHSA-2j2x-hqr9-3h42, GHSA-2w69-qvjg-hvjx, GHSA-337j-9hxr-rhxg） @ <dependencies>",
-        "读取本地环境配置文件（dotenv .env） @ server/index.cjs",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 hermes.cc.cd） @ server/index.cjs:30",
-        "访问第三方网络地址（如 hermes.cc.cd） @ server/index.cjs:272",
-        "访问第三方网络地址（如 home.treasury.gov） @ scripts/update-treasury-archive.cjs:20",
-        "读取环境变量（可能包含敏感信息） @ server/lib/fetch-any.cjs:16",
-        "访问第三方网络地址（如 proxy.finance.qq.com） @ server/lib/qq-rank.cjs:9",
-        "访问第三方网络地址（如 ifzq.gtimg.cn、qt.gtimg.cn、web.ifzq.gtimg.cn） @ server/lib/tencent-urls.cjs:8",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ src/ProLanding.tsx:7"
+        "读取本地环境配置文件（dotenv .env） @ server/index.cjs"
       ],
       "risk_evidence": [
         {
@@ -15985,24 +15917,295 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取本地环境配置文件（dotenv .env）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 hermes.cc.cd）",
-        "访问第三方网络地址（如 hermes.cc.cd）",
-        "访问第三方网络地址（如 home.treasury.gov）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 proxy.finance.qq.com）",
-        "访问第三方网络地址（如 ifzq.gtimg.cn、qt.gtimg.cn、web.ifzq.gtimg.cn）",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）"
-      ],
-      "security_notes": [
-        "监听键盘输入事件",
-        "依赖 react-router@7.6.1 存在已知漏洞（GHSA-2j2x-hqr9-3h42, GHSA-2w69-qvjg-hvjx, GHSA-337j-9hxr-rhxg）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "5b8056e2aa56ced08a12fbc116712540af74f942",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-08-31T09:47:40.716Z"
+    },
+    {
+      "id": "huangruiteng/loopx",
+      "name": "loopx",
+      "author": "huangruiteng",
+      "description": "Long-horizon agent control plane for durable, governed work across Codex, Claude Code, and other harnesses.",
+      "repo_url": "https://github.com/huangruiteng/loopx",
+      "homepage": "https://my.feishu.cn/wiki/CaL5wMk9ui17ngkWzeUcMlAYnZg",
+      "stars": 5366,
+      "forks": 480,
+      "open_issues": 54,
+      "watchers": 0,
+      "pushed_at": "2026-09-01T06:58:00Z",
+      "archived": false,
+      "language": "Python",
+      "license": "Apache-2.0",
+      "topics": [
+        "agent-control-plane",
+        "agent-harness",
+        "agent-ops",
+        "ai-agents",
+        "codex",
+        "dsh-plugin",
+        "long-horizon",
+        "long-running-agents",
+        "loop-engineering",
+        "loopx",
+        "workflow-automation"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "- 开发者手册 - 从控制面基础到项目接入和开发者贡献的双语学习路径。简体中文 · English - 快速开始 - 安装、连接项目并运行第一个受治理的 Loop。指南 - 文档站 - 完整参考与运维文档。LoopX Docs",
+        "en": "- Developer Book - the curated bilingual path from control-plane foundations to project onboarding and developer contributions. 中文版 · English - Getting started - install, connect a project, and run your first governed loop. Guide - Docs - the full reference"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#4",
+        "读取环境变量（可能包含敏感信息） @ packages/dsh-loopx-plugin/src/cli.ts:84"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#4"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "packages/dsh-loopx-plugin/src/cli.ts",
+          "line": 84
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行"
+      ],
+      "reviewed_commit": "d453ef0c2773eb93403b8f04110975ccc6e67d8b",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-01T08:41:06.975Z"
+    },
+    {
+      "id": "Minglink/dsh-infinite-gen-3",
+      "name": "dsh-infinite-gen-3",
+      "author": "Minglink",
+      "description": "DeepSeek 专用破甲插件「无限三代」dsh-infinite-gen-3 — armor-breaking plugin for DeepSeek，破甲版：稳定化破甲，求 Star 收藏 ⭐",
+      "repo_url": "https://github.com/Minglink/dsh-infinite-gen-3",
+      "homepage": "https://deepseek.stream/plugins/dsh-infinite-gen-3",
+      "stars": 760,
+      "forks": 41,
+      "open_issues": 5,
+      "watchers": 0,
+      "pushed_at": "2026-08-31T10:35:32Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "armor-breaking",
+        "deepseek",
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "> ## 💬 DeepSeek 破甲交流群 5 群 > > ### 👉 QQ 群号：137482123"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/run_bank_live.mjs",
+        "访问第三方网络地址（如 target） @ scripts/scorer_semantics_test.mjs:9"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "scripts/run_bank_live.mjs"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 target）",
+          "file": "scripts/scorer_semantics_test.mjs",
+          "line": 9
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 target）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "fb783ecaa1b8cd573684f86a76d3f102bd6c1dd0",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-01T08:41:06.975Z"
+    },
+    {
+      "id": "leenkcool/Blue-Whale-Harness",
+      "name": "Blue-Whale-Harness",
+      "author": "leenkcool",
+      "description": "🐋 DeepSeek Harness 插件总目录 · The catalog of DSH plugins：1958 个仓库 / 1819 个真插件（Skills · MCP · Tools · UI · Orchestration），中英文搜索、分类筛选、STAR 排序 → leenkcool.github.io",
+      "repo_url": "https://github.com/leenkcool/Blue-Whale-Harness",
+      "homepage": "https://leenkcool.github.io",
+      "stars": 188,
+      "forks": 70,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-09-01T00:09:43Z",
+      "archived": false,
+      "language": "HTML",
+      "license": "Apache-2.0",
+      "topics": [
+        "agents",
+        "awesome",
+        "awesome-list",
+        "catalog",
+        "deepseek",
+        "deepseek-ai",
+        "deepseek-harness",
+        "deepseek-harness-plugin",
+        "deepseek-harness-plugins",
+        "directory",
+        "dsh",
+        "dsh-plugin",
+        "dsh-plugins",
+        "harness",
+        "harness-ai",
+        "mcp",
+        "plugin-catalog",
+        "plugin-marketplace",
+        "plugins",
+        "skills"
+      ],
+      "category": "plugin",
+      "kind": "code",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "源码/路径引用 @deepseek-ai/dsh 或 @deepseek-ai/cordis",
+      "description_i18n": {
+        "zh": "> DeepSeek Harness（DSH）插件总目录 — 收录 GitHub 上散落各处的 DSH 插件、Skill、MCP Server 与周边工具，逐个校验「是否为真插件」，并做成可搜索、可筛选、可导出的在线总表。"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "使用动态代码执行（全局 eval / new Function） @ catalog/risk-scan.mjs:7",
+        "访问第三方网络地址（如 api.mymemory.translated.net、translate.googleapis.com） @ catalog/analyze.mjs:131",
+        "访问第三方网络地址（如 leenkcool.github.io、t.me） @ catalog/build-readme.mjs:21",
+        "访问第三方网络地址（如 leenkcool.github.io） @ catalog/generate.mjs:39",
+        "读取本地环境配置文件（dotenv .env） @ catalog/risk-scan.mjs"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "catalog/risk-scan.mjs",
+          "line": 7,
+          "confidence": 1
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.mymemory.translated.net、translate.googleapis.com）",
+          "file": "catalog/analyze.mjs",
+          "line": 131
+        },
+        {
+          "explanation": "访问第三方网络地址（如 leenkcool.github.io、t.me）",
+          "file": "catalog/build-readme.mjs",
+          "line": 21
+        },
+        {
+          "explanation": "访问第三方网络地址（如 leenkcool.github.io）",
+          "file": "catalog/generate.mjs",
+          "line": 39
+        },
+        {
+          "explanation": "读取本地环境配置文件（dotenv .env）",
+          "file": "catalog/risk-scan.mjs"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 api.mymemory.translated.net、translate.googleapis.com）",
+        "访问第三方网络地址（如 leenkcool.github.io、t.me）",
+        "访问第三方网络地址（如 leenkcool.github.io）",
+        "读取本地环境配置文件（dotenv .env）"
+      ],
+      "security_notes": [
+        "使用动态代码执行（全局 eval / new Function）"
+      ],
+      "reviewed_commit": "6b98bf5392699823fa98b341829b5b21a8f13afa",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-01T08:41:06.975Z"
+    },
+    {
+      "id": "Hilbert-beinghappy/seektty",
+      "name": "seektty",
+      "author": "Hilbert-beinghappy",
+      "description": "面向 DeepSeek Harness 的 Claude Code 风格终端界面，支持 Windows、macOS 与 Linux，兼容透明终端、VS Code 主题和自定义配色。",
+      "repo_url": "https://github.com/Hilbert-beinghappy/seektty",
+      "homepage": "https://github.com/Hilbert-beinghappy/seektty",
+      "stars": 136,
+      "forks": 9,
+      "open_issues": 6,
+      "watchers": 0,
+      "pushed_at": "2026-09-01T04:30:23Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "agentic-ai",
+        "ai-agent",
+        "claude-code-style",
+        "cli",
+        "coding-agent",
+        "cross-platform",
+        "deepseek",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "linux",
+        "macos",
+        "seektty",
+        "syntax-highlighting",
+        "terminal-ui",
+        "transparent-terminal",
+        "tui",
+        "typescript",
+        "vscode-theme",
+        "windows"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "进入项目目录运行 deepseek，即可在一个终端工作台中使用 DeepSeek Harness 原生的 Agent、Session、模型、权限、Settings、Profile、插件与持久化服务。SeekTTY 只负责终端界面；运行状态始终由 Harness 持有。",
+        "en": "Run deepseek from a project directory to use the native Agent, Session, model, permission, Settings, Profile, plugin, and persistence services of DeepSeek Harness in one terminal workspace. SeekTTY is the terminal surface; Harness remains the owner of runtime"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取环境变量（可能包含敏感信息） @ lib/bin.js:146"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "lib/bin.js",
+          "line": 146
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "c0d620909d3500421df6f147f30a5c563daffbb6",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-01T08:41:06.975Z"
     }
   ]
 }
