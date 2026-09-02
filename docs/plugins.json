@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-02T05:42:24.635Z",
+  "generated_at": "2026-09-02T07:56:13.914Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -15963,14 +15963,9 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#4",
-        "读取环境变量（可能包含敏感信息） @ packages/dsh-loopx-plugin/src/cli.ts:84"
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#4"
       ],
       "risk_evidence": [
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#4"
-        },
         {
           "explanation": "读取环境变量（可能包含敏感信息）",
           "file": "packages/dsh-loopx-plugin/src/cli.ts",
@@ -15978,12 +15973,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "d453ef0c2773eb93403b8f04110975ccc6e67d8b",
       "source": "discovered",
       "review_status": "flagged",
@@ -16018,10 +16009,9 @@
       "description_i18n": {
         "zh": "> ## 💬 DeepSeek 破甲交流群 5 群 > > ### 👉 QQ 群号：137482123"
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/run_bank_live.mjs",
-        "访问第三方网络地址（如 target） @ scripts/scorer_semantics_test.mjs:9"
+        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/run_bank_live.mjs"
       ],
       "risk_evidence": [
         {
@@ -16035,10 +16025,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 target）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "fb783ecaa1b8cd573684f86a76d3f102bd6c1dd0",
       "source": "discovered",
@@ -16093,10 +16080,6 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "使用动态代码执行（全局 eval / new Function） @ catalog/risk-scan.mjs:7",
-        "访问第三方网络地址（如 api.mymemory.translated.net、translate.googleapis.com） @ catalog/analyze.mjs:131",
-        "访问第三方网络地址（如 leenkcool.github.io、t.me） @ catalog/build-readme.mjs:21",
-        "访问第三方网络地址（如 leenkcool.github.io） @ catalog/generate.mjs:39",
         "读取本地环境配置文件（dotenv .env） @ catalog/risk-scan.mjs"
       ],
       "risk_evidence": [
@@ -16127,15 +16110,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 api.mymemory.translated.net、translate.googleapis.com）",
-        "访问第三方网络地址（如 leenkcool.github.io、t.me）",
-        "访问第三方网络地址（如 leenkcool.github.io）",
-        "读取本地环境配置文件（dotenv .env）"
-      ],
-      "security_notes": [
-        "使用动态代码执行（全局 eval / new Function）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "6b98bf5392699823fa98b341829b5b21a8f13afa",
       "source": "discovered",
       "review_status": "flagged",
@@ -16188,10 +16164,8 @@
         "zh": "进入项目目录运行 deepseek，即可在一个终端工作台中使用 DeepSeek Harness 原生的 Agent、Session、模型、权限、Settings、Profile、插件与持久化服务。SeekTTY 只负责终端界面；运行状态始终由 Harness 持有。",
         "en": "Run deepseek from a project directory to use the native Agent, Session, model, permission, Settings, Profile, plugin, and persistence services of DeepSeek Harness in one terminal workspace. SeekTTY is the terminal surface; Harness remains the owner of runtime"
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "读取环境变量（可能包含敏感信息） @ lib/bin.js:146"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "读取环境变量（可能包含敏感信息）",
@@ -16200,9 +16174,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "c0d620909d3500421df6f147f30a5c563daffbb6",
       "source": "discovered",

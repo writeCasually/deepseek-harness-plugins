@@ -1,6 +1,134 @@
 {
-  "updated_at": "2026-09-01T08:41:06.975Z",
+  "updated_at": "2026-09-02T07:56:13.914Z",
   "decisions": [
+    {
+      "id": "anbeime/skill",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "1708651e99cb2f11fca85717b70108256707c00e",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 1006,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-09-02T07:56:13.914Z"
+    },
+    {
+      "id": "wenbin-wb/dsh-bridge",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "子进程以 shell 模式启动（spawn(...,{shell:true})）",
+        "子进程以 shell 模式启动（spawn(...,{shell:true})）",
+        "可能把数据发送到第三方收集端点",
+        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
+      ],
+      "privacy_notes": [
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "访问第三方网络地址（如 bot.q.qq.com、open.feishu.cn、t.me、tunnel.yourdomain.com）",
+        "访问第三方网络地址（如 applink.feishu.cn）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 ...、registry.npmmirror.com、w3.org）",
+        "访问第三方网络地址（如 ...、registry.npmmirror.com、w3.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "npm run build:lark && npm run build:client"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "client/index.js",
+          "line": 3591,
+          "snippet": "document.addEventListener('keydown', handleKeydown);"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "client/index.js",
+          "line": 3922,
+          "snippet": "manualInput.addEventListener('keydown', (e) => {"
+        },
+        {
+          "rule": "spawn-shell",
+          "severity": "critical",
+          "explanation": "子进程以 shell 模式启动（spawn(...,{shell:true})）",
+          "file": "lib/index.js",
+          "line": 604,
+          "snippet": "cp = spawn('dsh --version', {"
+        },
+        {
+          "rule": "spawn-shell",
+          "severity": "critical",
+          "explanation": "子进程以 shell 模式启动（spawn(...,{shell:true})）",
+          "file": "lib/index.js",
+          "line": 1006,
+          "snippet": "cp = spawn(task.cmd, task.args, {"
+        },
+        {
+          "rule": "exfil-endpoint",
+          "severity": "critical",
+          "explanation": "可能把数据发送到第三方收集端点",
+          "file": "lib/index.js",
+          "line": 1641,
+          "snippet": "logger.info('dsh-bridge: auto-starting cloudflared tunnel...');"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "ws@8.18.0"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-18）"
+      ],
+      "reviewed_commit": "f96a93c84ae31115bef13a07960ee5a6204cec31",
+      "review_mode": "full",
+      "scanned_files": 4,
+      "total_files": 117,
+      "osv": {
+        "status": "ok",
+        "findings": 1
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-02T07:56:13.914Z"
+    },
     {
       "id": "huangruiteng/loopx",
       "verdict": "flagged",
@@ -62950,100 +63078,6 @@
       "total_files": 0,
       "osv": {
         "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "bugmaker2/dsh-plugin-template",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行"
-      ],
-      "privacy_notes": [],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepare",
-          "severity": "warning",
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "pnpm run build"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "114f75999d8d477951cbd91ee4d1e0f5360d6627",
-      "review_mode": "full",
-      "scanned_files": 5,
-      "total_files": 13,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "hellodigua/dsh-share",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "存在 Base64 解码行为"
-      ],
-      "privacy_notes": [
-        "读取浏览器 Cookie/存储并发送到网络",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 w3.org）",
-        "访问第三方网络地址（如 w3.org）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "pnpm run build"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/client.js",
-          "line": 1657,
-          "snippet": "var binaryString = window.atob(canvas.toDataURL(options.type ? options.type : void 0, options.quality ? options.quality : void 0).split(\",\")[1]);"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "c109330b755c793cbc701a4e6a972d620a6667da",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 74,
-      "osv": {
-        "status": "ok",
         "findings": 0
       },
       "llm_review": {
