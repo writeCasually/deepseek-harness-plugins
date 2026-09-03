@@ -1,6 +1,118 @@
 {
-  "updated_at": "2026-09-02T07:56:13.914Z",
+  "updated_at": "2026-09-03T08:05:00.131Z",
   "decisions": [
+    {
+      "id": "plastic-labs/honcho",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "2ad56a4d715b015d744ea86f05a287069d264898",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 1009,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-09-03T08:05:00.131Z"
+    },
+    {
+      "id": "Tiger3807861189/GLM-5.3-Flash-J-Space-Capability-Realization-Report",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "20659e439ba0e7f5844beac5cf6f36fc1d1cae07",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 4,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-09-03T08:05:00.131Z"
+    },
+    {
+      "id": "skymecode/deepseek-harness-for-vscode",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "code",
+        "reason": "依赖 DSH/Cordis 生态包 @deepseek-ai/dsh"
+      },
+      "findings": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+        "监听键盘输入事件",
+        "监听键盘输入事件"
+      ],
+      "privacy_notes": [],
+      "evidence": [
+        {
+          "rule": "lifecycle-postinstall",
+          "severity": "warning",
+          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "npm run patch:dsh"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "src/webview/chat/main.ts",
+          "line": 198,
+          "snippet": "elements.prompt.addEventListener('keydown', (event) => {"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "src/webview/chat/main.ts",
+          "line": 259,
+          "snippet": "document.addEventListener('keydown', (event) => {"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-13）"
+      ],
+      "reviewed_commit": "b8391943eec62dc1c22ffaf4dacccfe012461d22",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 196,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-03T08:05:00.131Z"
+    },
     {
       "id": "anbeime/skill",
       "verdict": "skip",
@@ -62956,126 +63068,6 @@
       "review_mode": "full",
       "scanned_files": 12,
       "total_files": 90,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "omdsh-dev/dsh-plugin-check",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "npm run build"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "7ba4373c0baf635f03a5f7a92931d6ba4a0ecd3d",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 50,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "AwesomeHou/dsh-plugin-marketplace",
-      "verdict": "approved",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 0,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "whitelonng/dshcode",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "code",
-        "reason": "依赖 DSH/Cordis 生态包 @deepseek-ai/dsh-tool-session-query"
-      },
-      "findings": [
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行"
-      ],
-      "privacy_notes": [],
-      "evidence": [
-        {
-          "rule": "lifecycle-postinstall",
-          "severity": "warning",
-          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "node scripts/install-lefthook.mjs && node scripts/link-community-skins.mjs"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 0,
       "osv": {
         "status": "skipped",
         "findings": 0

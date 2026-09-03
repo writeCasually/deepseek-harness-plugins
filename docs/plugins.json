@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-03T05:44:30.299Z",
+  "generated_at": "2026-09-03T08:05:00.131Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -16180,6 +16180,77 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-01T08:41:06.975Z"
+    },
+    {
+      "id": "skymecode/deepseek-harness-for-vscode",
+      "name": "deepseek-harness-for-vscode",
+      "author": "skymecode",
+      "description": "deepseek-harness for vscode .A native VS Code coding-agent extension for DeepSeek Harness. Streamlined workbench with session   management, streaming Markdown, slash commands, plugin center, and zero-deployment runtime — no WebUI   served, no Harness setup",
+      "repo_url": "https://github.com/skymecode/deepseek-harness-for-vscode",
+      "homepage": "https://marketplace.visualstudio.com/items?itemName=skymecode.deepseek-harness-for-vscode",
+      "stars": 144,
+      "forks": 5,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-09-02T15:13:53Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "deepseek",
+        "deepseek-harness",
+        "deepseek-harness-plugin",
+        "dsh-plugin",
+        "dsh-plugin-market",
+        "dsh-plugins",
+        "vscode",
+        "vscode-extension",
+        "vscode-extensions",
+        "vscode-plugin"
+      ],
+      "category": "plugin",
+      "kind": "code",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "依赖 DSH/Cordis 生态包 @deepseek-ai/dsh",
+      "description_i18n": {
+        "zh": "在 VS Code 中原生运行 DeepSeek Harness 的 AI 编码助手扩展。无需克隆上游仓库、安装 Node/npm 或手动部署 Harness；安装匹配平台的 VSIX 即可使用。",
+        "en": "A native VS Code coding-agent extension powered by DeepSeek Harness. Install the platform-specific VSIX and start working—there is no upstream repository to clone, no Node/npm setup, and no local Harness deployment to manage."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json",
+        "监听键盘输入事件 @ src/webview/chat/main.ts:198",
+        "监听键盘输入事件 @ src/webview/chat/main.ts:259"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/webview/chat/main.ts",
+          "line": 198,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/webview/chat/main.ts",
+          "line": 259,
+          "confidence": 1
+        }
+      ],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "b8391943eec62dc1c22ffaf4dacccfe012461d22",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-03T08:05:00.131Z"
     }
   ]
 }
