@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-04T05:46:44.482Z",
+  "generated_at": "2026-09-04T08:00:02.316Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -16219,9 +16219,7 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json",
-        "监听键盘输入事件 @ src/webview/chat/main.ts:198",
-        "监听键盘输入事件 @ src/webview/chat/main.ts:259"
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json"
       ],
       "risk_evidence": [
         {
@@ -16243,14 +16241,220 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-        "监听键盘输入事件"
-      ],
+      "security_notes": [],
       "reviewed_commit": "b8391943eec62dc1c22ffaf4dacccfe012461d22",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-03T08:05:00.131Z"
+    },
+    {
+      "id": "inclusionAI/Avernet",
+      "name": "Avernet",
+      "author": "inclusionAI",
+      "description": "Distributed agent coordination platform where agents live, connect, coordinate, execute, and evolve together.",
+      "repo_url": "https://github.com/inclusionAI/Avernet",
+      "homepage": "https://github.com/inclusionAI/Avernet",
+      "stars": 533,
+      "forks": 54,
+      "open_issues": 140,
+      "watchers": 0,
+      "pushed_at": "2026-09-04T07:54:25Z",
+      "archived": false,
+      "language": "Python",
+      "license": "Apache-2.0",
+      "topics": [
+        "agent-coordination",
+        "agent-infrastructure",
+        "agent-orgnaization",
+        "dsh-plugin",
+        "multi-agent"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "Avernet 为跨应用、跨运行时和跨人机协作工作流的 持久化、协同式异构 Agent 系统 提供运行基础设施。",
+        "en": "Avernet provides the infrastructure needed to run persistent, coordinated, and heterogeneous agent systems across applications, runtimes, and human-agent workflows."
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ src/evolverun/taskguard/src/index.ts",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1",
+        "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj） @ <dependencies>",
+        "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
+        "依赖 openclaw@2026.3.28 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-25wv-8phj-8p7r, GHSA-275c-xpvc-jgfw） @ <dependencies>",
+        "依赖 ws@8.20.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
+        "读取环境变量（可能包含敏感信息） @ src/evolverun/evolvetrace/server/index.ts:41",
+        "访问第三方网络地址（如 api.dingtalk.com） @ src/evolverun/taskguard/src/index.ts:635"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "src/evolverun/taskguard/src/index.ts"
+        },
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 openclaw@2026.3.28 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-25wv-8phj-8p7r, GHSA-275c-xpvc-jgfw）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 ws@8.20.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "src/evolverun/evolvetrace/server/index.ts",
+          "line": 41
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.dingtalk.com）",
+          "file": "src/evolverun/taskguard/src/index.ts",
+          "line": 635
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 api.dingtalk.com）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）",
+        "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+        "依赖 openclaw@2026.3.28 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-25wv-8phj-8p7r, GHSA-275c-xpvc-jgfw）",
+        "依赖 ws@8.20.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
+      ],
+      "reviewed_commit": "16b8bb5ffd51171d3dd2eacbe2ef94d36f3b7f78",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-04T08:00:02.316Z"
+    },
+    {
+      "id": "pax-beehive/dsh-hub-cli",
+      "name": "dsh-hub-cli",
+      "author": "pax-beehive",
+      "description": "Open-source CLI, schemas, resolver, and DSH agent tools for DSH Plugin Hub",
+      "repo_url": "https://github.com/pax-beehive/dsh-hub-cli",
+      "homepage": "https://dshpluginhub.ai",
+      "stars": 168,
+      "forks": 5,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-09-02T06:12:40Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "ai-agent",
+        "cli",
+        "deepseek-harness",
+        "developer-tools",
+        "dsh-plugin",
+        "plugin-manager",
+        "typescript"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "把你的整套 DeepSeek Harness 配置打包成一个带版本、可复现的 Profile，分享给任何人。",
+        "en": "Share your entire DeepSeek Harness setup as one versioned, reproducible Profile."
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ packages/cli/src/index.ts",
+        "读取环境变量（可能包含敏感信息） @ packages/dsh-plugin/index.js:13",
+        "访问第三方网络地址（如 dshpluginhub.ai） @ packages/cli/package.json:6",
+        "访问第三方网络地址（如 api.dshpluginhub.ai） @ packages/cli/src/api-client.ts:16",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.workos.com） @ packages/cli/src/auth.ts:29",
+        "访问第三方网络地址（如 api.workos.com） @ packages/cli/src/auth.ts:6",
+        "读取本地环境配置文件（dotenv .env） @ packages/cli/src/telemetry.ts",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dshpluginhub.ai） @ packages/cli/src/telemetry.ts:62",
+        "访问第三方网络地址（如 api.dshpluginhub.ai、collector.example、hub.test） @ packages/cli/tests/cli.test.ts:105"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "packages/cli/src/index.ts"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "packages/dsh-plugin/index.js",
+          "line": 13
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dshpluginhub.ai）",
+          "file": "packages/cli/package.json",
+          "line": 6
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.dshpluginhub.ai）",
+          "file": "packages/cli/src/api-client.ts",
+          "line": 16
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.workos.com）",
+          "file": "packages/cli/src/auth.ts",
+          "line": 29
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.workos.com）",
+          "file": "packages/cli/src/auth.ts",
+          "line": 6
+        },
+        {
+          "explanation": "读取本地环境配置文件（dotenv .env）",
+          "file": "packages/cli/src/telemetry.ts"
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dshpluginhub.ai）",
+          "file": "packages/cli/src/telemetry.ts",
+          "line": 62
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.dshpluginhub.ai、collector.example、hub.test）",
+          "file": "packages/cli/tests/cli.test.ts",
+          "line": 105
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 dshpluginhub.ai）",
+        "访问第三方网络地址（如 api.dshpluginhub.ai）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.workos.com）",
+        "访问第三方网络地址（如 api.workos.com）",
+        "读取本地环境配置文件（dotenv .env）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dshpluginhub.ai）",
+        "访问第三方网络地址（如 api.dshpluginhub.ai、collector.example、hub.test）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "7147202dfcd32dc18ba39db21e8fe1181ad6c996",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-04T08:00:02.316Z"
     }
   ]
 }
