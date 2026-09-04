@@ -127,6 +127,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [Awesome-DeepSeek-Harness-Plugins](https://github.com/Zhiyuan-Fan/Awesome-DeepSeek-Harness-Plugins) | [@Zhiyuan-Fan](https://github.com/Zhiyuan-Fan) | Curated DeepSeek Harness (DSH) plugins, extensions, tools, skills, clients, runtimes, integrations, and verified references — English and Chinese. |
 | [hol-guard](https://github.com/hashgraph-online/hol-guard) | [@hashgraph-online](https://github.com/hashgraph-online) | Open-source antivirus for AI agents: block risky tools, secret access, prompt injection, malicious packages, MCP servers, plugins, and skills at runtime. |
 | [dsh-pet](https://github.com/PC2005-cloud/dsh-pet) | [@PC2005-cloud](https://github.com/PC2005-cloud) | DSH 桌面宠物：一行命令装好即用的透明动画小桌宠，支持多开、大小位置随心配置；还内置 DIY 素材链，能用 AI 视频自造专属宠物 |
+| [Avernet](https://github.com/inclusionAI/Avernet) | [@inclusionAI](https://github.com/inclusionAI) | Distributed agent coordination platform where agents live, connect, coordinate, execute, and evolve together. |
 | [superdesign-skill](https://github.com/superdesigndev/superdesign-skill) | [@superdesigndev](https://github.com/superdesigndev) | The design skill for Claude Code, Cursor and any coding agent. Stop shipping AI-slop UI: turn it into shippable, tasteful frontend. Install: npx skills add superdesigndev/superdesign-skill. Powered by superdesign.dev |
 | [dsh-at-file](https://github.com/FSMargoo/dsh-at-file) | [@FSMargoo](https://github.com/FSMargoo) | Codex-style @file mentions for DeepSeek Harness: search workspace files in the composer and attach their path to prompts. |
 | [SkillCorpus](https://github.com/EverMind-AI/SkillCorpus) | [@EverMind-AI](https://github.com/EverMind-AI) | Open-source infrastructure that turns scattered SKILL.md files into curated, retrieval-ready agent-skill corpora—with retrieval and evaluation tooling included. |
@@ -179,6 +180,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-find-plugins](https://github.com/Nagi-ovo/dsh-find-plugins) | [@Nagi-ovo](https://github.com/Nagi-ovo) | Ask DSH, "is there a plugin for this?" It searches the GitHub dsh-plugin topic, explains the best matches, waits for your choice, then installs and verifies the selected plugin. |
 | [dsh-memory](https://github.com/seriousz158/dsh-memory) | [@seriousz158](https://github.com/seriousz158) | dsh-memory is a local, Git-backed long-term-memory plugin for DeepSeek Harness (DSH). |
 | [dsh-remote-web-gateway](https://github.com/summer1238/dsh-remote-web-gateway) | [@summer1238](https://github.com/summer1238) | 手机平板远程 DeepSeek Harness：扫码即可继续使用电脑上的 DSH，无需远程桌面 / SSH / 公网 IP，支持一次性配对、Github授权加密登录，独立设备授权与随时撤销，实现远程连接很简单，但安全才是我们所想要的。 |
+| [dsh-hub-cli](https://github.com/pax-beehive/dsh-hub-cli) | [@pax-beehive](https://github.com/pax-beehive) | Open-source CLI, schemas, resolver, and DSH agent tools for DSH Plugin Hub |
 | [deepseek-harness-desktop](https://github.com/chokwinlee/deepseek-harness-desktop) | [@chokwinlee](https://github.com/chokwinlee) | Compact DeepSeek Harness desktop host with a native SwiftUI iPhone Remote source preview. |
 | [dsh-agent-team-gui](https://github.com/toolclub/dsh-agent-team-gui) | [@toolclub](https://github.com/toolclub) | Persistent multi-model workflow teams for DeepSeek Harness — dynamic lead planning, bounded DAGs, per-agent model/tools, Run Center and Token insights. |
 | [anime-find](https://github.com/cocofhu/anime-find) | [@cocofhu](https://github.com/cocofhu) | DeepSeek Harness 搜番插件：对话内多源搜索番剧，卡片展示 Bangumi 评分与详情，支持复制磁力。 |
@@ -260,7 +262,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-custom-tool](https://github.com/omdsh-dev/dsh-custom-tool) | [@omdsh-dev](https://github.com/omdsh-dev) | Create and manage sandboxed JavaScript tools for DeepSeek Harness with a Monaco editor and model-driven tool lifecycle. |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-Includes 194 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 196 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 

@@ -1,6 +1,231 @@
 {
-  "updated_at": "2026-09-03T08:05:00.131Z",
+  "updated_at": "2026-09-04T08:00:02.316Z",
   "decisions": [
+    {
+      "id": "OpenPetsHQ/openpets",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "code",
+        "reason": "存在 Cordis/DSH 落地标记（cordis.patch.yml/.dsh-plugin/dsh.client 等）"
+      },
+      "findings": [
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "依赖 sharp@0.34.5 存在已知漏洞（GHSA-f88m-g3jw-g9cj）"
+      ],
+      "privacy_notes": [
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 api.openai.com）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 openpets.dev）",
+        "访问第三方网络地址（如 openpets.dev）",
+        "读取本地凭据文件并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 api.dictionaryapi.dev、translate.googleapis.com）",
+        "访问第三方网络地址（如 fnf.higgsfield.ai）",
+        "访问第三方网络地址（如 api.spotify.com、lrclib.net）",
+        "访问第三方网络地址（如 googleapis.com）"
+      ],
+      "evidence": [
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "apps/desktop/src/renderer/src/main.tsx",
+          "line": 2925,
+          "snippet": "window.addEventListener(\"keydown\", handleKeyDown);"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "apps/desktop/src/renderer/src/main.tsx",
+          "line": 5163,
+          "snippet": "window.addEventListener(\"keydown\", handleKeyDown);"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 sharp@0.34.5 存在已知漏洞（GHSA-f88m-g3jw-g9cj）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "sharp@0.34.5"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "39ba8c539b4a628bcfbc94cdbb2ce4e2bdb9f10b",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 745,
+      "osv": {
+        "status": "ok",
+        "findings": 1
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-04T08:00:02.316Z"
+    },
+    {
+      "id": "inclusionAI/Avernet",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）",
+        "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+        "依赖 openclaw@2026.3.28 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-25wv-8phj-8p7r, GHSA-275c-xpvc-jgfw）",
+        "依赖 ws@8.20.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 api.dingtalk.com）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "npm run verify"
+        },
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#1",
+          "line": 0,
+          "snippet": "npm run build"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "js-yaml@4.2.0"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "ws@8.18.3"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 openclaw@2026.3.28 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-25wv-8phj-8p7r, GHSA-275c-xpvc-jgfw）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "openclaw@2026.3.28"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 ws@8.20.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "ws@8.20.0"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "16b8bb5ffd51171d3dd2eacbe2ef94d36f3b7f78",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 10947,
+      "osv": {
+        "status": "ok",
+        "findings": 4
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-04T08:00:02.316Z"
+    },
+    {
+      "id": "pax-beehive/dsh-hub-cli",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 dshpluginhub.ai）",
+        "访问第三方网络地址（如 api.dshpluginhub.ai）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.workos.com）",
+        "访问第三方网络地址（如 api.workos.com）",
+        "读取本地环境配置文件（dotenv .env）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dshpluginhub.ai）",
+        "访问第三方网络地址（如 api.dshpluginhub.ai、collector.example、hub.test）"
+      ],
+      "evidence": [],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-25）"
+      ],
+      "reviewed_commit": "7147202dfcd32dc18ba39db21e8fe1181ad6c996",
+      "review_mode": "full",
+      "scanned_files": 26,
+      "total_files": 83,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-04T08:00:02.316Z"
+    },
+    {
+      "id": "Clarklevis1995/dsh-mobile",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "5e4b6325baca9cadebf25803e815385f84e33504",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 519,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-09-04T08:00:02.316Z"
+    },
     {
       "id": "plastic-labs/honcho",
       "verdict": "skip",
@@ -62808,268 +63033,6 @@
       "total_files": 81,
       "osv": {
         "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Awu12277/dsh-stock-watch",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "使用动态代码执行（eval/new Function）",
-        "使用动态代码执行（eval/new Function）",
-        "使用动态代码执行（eval/new Function）",
-        "使用动态代码执行（eval/new Function）",
-        "使用动态代码执行（eval/new Function）"
-      ],
-      "privacy_notes": [
-        "读取浏览器 Cookie/存储并发送到网络",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 web.ifzq.gtimg.cn、x）",
-        "访问第三方网络地址（如 web.ifzq.gtimg.cn、x）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "scripts/probe-fan-docked.mjs",
-          "line": 44,
-          "snippet": "const pillCenter = () => page.$eval(\".sk-pill\", (el) => { const r = el.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; });"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "scripts/probe-fan-repro.mjs",
-          "line": 19,
-          "snippet": "const pillCenter = () => page.$eval(\".sk-pill\", (el) => { const r = el.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; });"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "scripts/probe-fan.mjs",
-          "line": 78,
-          "snippet": "const b = await page.$eval(\".sk-pill\", (el) => { const r = el.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; });"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "scripts/probe-fan.mjs",
-          "line": 137,
-          "snippet": "const pillBox = await page.$eval(\".sk-pill\", (el) => { const r = el.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; });"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "scripts/probe-zoom.mjs",
-          "line": 121,
-          "snippet": "return page.$eval(\".sk-pill\", (el) => {"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "0bd76f3f72b647249b2168fc50ae4955c6c86575",
-      "review_mode": "full",
-      "scanned_files": 9,
-      "total_files": 23,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "JustGenius-s/DSH-Desktop",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "code",
-        "reason": "源码/路径引用 @deepseek-ai/dsh 或 @deepseek-ai/cordis"
-      },
-      "findings": [
-        "存在疑似混淆内容（长 Base64 块）",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "package.json",
-          "line": 80,
-          "snippet": "\"packageManager\": \"pnpm@10.30.3+sha512.c961d1e0a2d8e354ecaa5166b822516668b7f44cb5bd95122d590dd81922f606f5473b6d23ec4a5be05e7fcd18e8488d47d978bbe981872f1145d06e9"
-        },
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "scripts/collect-runtime.mjs",
-          "line": 53,
-          "snippet": "const extracted = join(target, `node-${version}-${distId}`)"
-        },
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "scripts/collect-runtime.mjs",
-          "line": 66,
-          "snippet": "writeFileSync(tgz, await download(`https://registry.npmjs.org/pnpm/-/pnpm-${version}.tgz`))"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "e51f4d3a6f509ec74ce76e4378c2be9b6f64027c",
-      "review_mode": "full",
-      "scanned_files": 3,
-      "total_files": 30,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Anionex/dsh-computer-use",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用屏幕/画面采集能力",
-        "使用屏幕/画面采集能力",
-        "使用屏幕/画面采集能力"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "pnpm run build"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "lib/artifacts.js",
-          "line": 52,
-          "snippet": "export async function describeScreenshot(path, width, height, maxBytes, sourceTool) {"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "lib/service.js",
-          "line": 416,
-          "snippet": ": await describeScreenshot(backend.screenshot.path, backend.screenshot.width, backend.screenshot.height, this.config.maxScreenshotBytes, sourceTool);"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "lib/types/artifacts.d.ts",
-          "line": 9,
-          "snippet": "export declare function describeScreenshot(path: string, width: number, height: number, maxBytes: number, sourceTool: ComputerArtifact['sourceTool']): Promise<C"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "76bfe8607f61945c1cbb84e73976e601100c13a2",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 155,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "cpj-dev/dsh-plugin-cc",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "code",
-        "reason": "源码/路径引用 @deepseek-ai/dsh 或 @deepseek-ai/cordis"
-      },
-      "findings": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
-      "privacy_notes": [
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "plugins/dsh/scripts/lib/process.mjs",
-          "line": 58,
-          "snippet": "const out = execFileSync(\"pgrep\", [\"-P\", String(pid)], { encoding: \"utf8\" });"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "0f7db060b77e10445a119c357af3518f380c2903",
-      "review_mode": "full",
-      "scanned_files": 12,
-      "total_files": 90,
-      "osv": {
-        "status": "skipped",
         "findings": 0
       },
       "llm_review": {
