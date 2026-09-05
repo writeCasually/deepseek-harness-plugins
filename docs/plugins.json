@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-05T05:37:25.484Z",
+  "generated_at": "2026-09-05T07:41:38.574Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -16286,9 +16286,7 @@
         "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj） @ <dependencies>",
         "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
         "依赖 openclaw@2026.3.28 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-25wv-8phj-8p7r, GHSA-275c-xpvc-jgfw） @ <dependencies>",
-        "依赖 ws@8.20.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
-        "读取环境变量（可能包含敏感信息） @ src/evolverun/evolvetrace/server/index.ts:41",
-        "访问第三方网络地址（如 api.dingtalk.com） @ src/evolverun/taskguard/src/index.ts:635"
+        "依赖 ws@8.20.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>"
       ],
       "risk_evidence": [
         {
@@ -16298,10 +16296,6 @@
         {
           "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
           "file": "package.json"
-        },
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#1"
         },
         {
           "explanation": "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）",
@@ -16331,18 +16325,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 api.dingtalk.com）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）",
-        "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
-        "依赖 openclaw@2026.3.28 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-25wv-8phj-8p7r, GHSA-275c-xpvc-jgfw）",
-        "依赖 ws@8.20.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "16b8bb5ffd51171d3dd2eacbe2ef94d36f3b7f78",
       "source": "discovered",
       "review_status": "flagged",
@@ -16384,14 +16368,7 @@
       "risk_level": "high",
       "risk_notes": [
         "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ packages/cli/src/index.ts",
-        "读取环境变量（可能包含敏感信息） @ packages/dsh-plugin/index.js:13",
-        "访问第三方网络地址（如 dshpluginhub.ai） @ packages/cli/package.json:6",
-        "访问第三方网络地址（如 api.dshpluginhub.ai） @ packages/cli/src/api-client.ts:16",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.workos.com） @ packages/cli/src/auth.ts:29",
-        "访问第三方网络地址（如 api.workos.com） @ packages/cli/src/auth.ts:6",
-        "读取本地环境配置文件（dotenv .env） @ packages/cli/src/telemetry.ts",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dshpluginhub.ai） @ packages/cli/src/telemetry.ts:62",
-        "访问第三方网络地址（如 api.dshpluginhub.ai、collector.example、hub.test） @ packages/cli/tests/cli.test.ts:105"
+        "读取本地环境配置文件（dotenv .env） @ packages/cli/src/telemetry.ts"
       ],
       "risk_evidence": [
         {
@@ -16439,22 +16416,242 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 dshpluginhub.ai）",
-        "访问第三方网络地址（如 api.dshpluginhub.ai）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.workos.com）",
-        "访问第三方网络地址（如 api.workos.com）",
-        "读取本地环境配置文件（dotenv .env）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dshpluginhub.ai）",
-        "访问第三方网络地址（如 api.dshpluginhub.ai、collector.example、hub.test）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "7147202dfcd32dc18ba39db21e8fe1181ad6c996",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-04T08:00:02.316Z"
+    },
+    {
+      "id": "chenxiachan/thoughtdag",
+      "name": "thoughtdag",
+      "author": "chenxiachan",
+      "description": "Your thinking deserves a map: an infinite canvas where LLM conversations grow into an editable thought graph. Wires are the context.",
+      "repo_url": "https://github.com/chenxiachan/thoughtdag",
+      "homepage": "https://chenxiachan.github.io/thoughtdag/",
+      "stars": 342,
+      "forks": 31,
+      "open_issues": 4,
+      "watchers": 0,
+      "pushed_at": "2026-09-05T05:36:44Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "agentic-search",
+        "ai-tools",
+        "context-engineering",
+        "cordis-plugin",
+        "dag",
+        "deepseek-harness-plugin",
+        "dsh-plugin",
+        "human-in-the-loop",
+        "infinite-canvas",
+        "knowledge-graph",
+        "llm",
+        "local-first",
+        "mcp",
+        "note-taking",
+        "ollama",
+        "pkm",
+        "react-flow",
+        "research-tool",
+        "self-hosted"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "找到相关对话。决定模型下一步看到什么。",
+        "en": "Find the conversations. Decide what the model sees next."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#3",
+        "存在 Base64 解码行为 @ dsh/lib/index.js:500",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ desktop/scripts/prepare-payload.mjs:70",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ desktop/scripts/prepare-payload.mjs:76",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ dsh/scripts/build.mjs:26",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/test-layout.mjs:22",
+        "监听键盘输入事件 @ src/App.tsx:792",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ src/components/ContentNode.tsx:80",
+        "读取环境变量（可能包含敏感信息） @ cli/src/main.ts:80",
+        "读取本地环境配置文件（dotenv .env） @ desktop/main.js",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.local） @ dsh/lib/index.js:328",
+        "访问第三方网络地址（如 dsh.local） @ dsh/lib/index.js:644"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#3"
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "dsh/lib/index.js",
+          "line": 500,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "desktop/scripts/prepare-payload.mjs",
+          "line": 70,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "desktop/scripts/prepare-payload.mjs",
+          "line": 76,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "dsh/scripts/build.mjs",
+          "line": 26,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/test-layout.mjs",
+          "line": 22,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/App.tsx",
+          "line": 792,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "src/components/ContentNode.tsx",
+          "line": 80
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "cli/src/main.ts",
+          "line": 80
+        },
+        {
+          "explanation": "读取本地环境配置文件（dotenv .env）",
+          "file": "desktop/main.js"
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.local）",
+          "file": "dsh/lib/index.js",
+          "line": 328
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh.local）",
+          "file": "dsh/lib/index.js",
+          "line": 644
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取本地环境配置文件（dotenv .env）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.local）",
+        "访问第三方网络地址（如 dsh.local）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "存在 Base64 解码行为",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "监听键盘输入事件",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
+      ],
+      "reviewed_commit": "eb5501ffabd6fdf0cad7bcb22a98e37b24fad8e4",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-05T07:41:38.574Z"
+    },
+    {
+      "id": "LivXue/dsh-plugin-shop",
+      "name": "dsh-plugin-shop",
+      "author": "LivXue",
+      "description": "The most comprehensive DeepSeek Harness plugin market — refreshed daily, sourced across the Internet, reviewed before publishing.",
+      "repo_url": "https://github.com/LivXue/dsh-plugin-shop",
+      "homepage": "https://github.com/LivXue/dsh-plugin-shop",
+      "stars": 151,
+      "forks": 2,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-09-05T06:24:28Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "topics": [
+        "agent",
+        "deepseek",
+        "deepseek-harness",
+        "deepseek-harness-plugin",
+        "dsh",
+        "dsh-plugin",
+        "harness"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "DeepSeek Harness 的插件商店 —— 从一份可浏览、 可用 git 审计的目录中发现、安装、启停和更新 dsh 插件。",
+        "en": "The plugin shop for DeepSeek Harness — discover, install, enable and update dsh plugins from a browsable, git-auditable catalog."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 yaml@2.5.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp） @ <dependencies>",
+        "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj） @ <dependencies>",
+        "读取环境变量（可能包含敏感信息） @ packages/dsh-plugin-shop/src/host/index.ts:106",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ packages/dsh-plugin-shop/src/host/catalog.ts",
+        "访问第三方网络地址（如 livxue.github.io、registry.npmmirror.com） @ packages/dsh-plugin-shop/src/host/catalog.ts:452"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 yaml@2.5.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "packages/dsh-plugin-shop/src/host/index.ts",
+          "line": 106
+        },
+        {
+          "explanation": "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+          "file": "packages/dsh-plugin-shop/src/host/catalog.ts"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 livxue.github.io、registry.npmmirror.com）",
+          "file": "packages/dsh-plugin-shop/src/host/catalog.ts",
+          "line": 452
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "访问第三方网络地址（如 livxue.github.io、registry.npmmirror.com）"
+      ],
+      "security_notes": [
+        "依赖 yaml@2.5.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp）",
+        "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）"
+      ],
+      "reviewed_commit": "e8d1242cd3822684375681b9bac8eea610afdae6",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-05T07:41:38.574Z"
     }
   ]
 }
