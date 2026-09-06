@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-06T05:50:19.556Z",
+  "generated_at": "2026-09-06T07:55:45.349Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -16472,27 +16472,9 @@
       "risk_notes": [
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1",
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#3",
-        "存在 Base64 解码行为 @ dsh/lib/index.js:500",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ desktop/scripts/prepare-payload.mjs:70",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ desktop/scripts/prepare-payload.mjs:76",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ dsh/scripts/build.mjs:26",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/test-layout.mjs:22",
-        "监听键盘输入事件 @ src/App.tsx:792",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ src/components/ContentNode.tsx:80",
-        "读取环境变量（可能包含敏感信息） @ cli/src/main.ts:80",
-        "读取本地环境配置文件（dotenv .env） @ desktop/main.js",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.local） @ dsh/lib/index.js:328",
-        "访问第三方网络地址（如 dsh.local） @ dsh/lib/index.js:644"
+        "读取本地环境配置文件（dotenv .env） @ desktop/main.js"
       ],
       "risk_evidence": [
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#1"
-        },
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#3"
-        },
         {
           "explanation": "存在 Base64 解码行为",
           "file": "dsh/lib/index.js",
@@ -16555,19 +16537,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取本地环境配置文件（dotenv .env）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.local）",
-        "访问第三方网络地址（如 dsh.local）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "存在 Base64 解码行为",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "监听键盘输入事件",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "eb5501ffabd6fdf0cad7bcb22a98e37b24fad8e4",
       "source": "discovered",
       "review_status": "flagged",
@@ -16606,13 +16577,11 @@
         "zh": "DeepSeek Harness 的插件商店 —— 从一份可浏览、 可用 git 审计的目录中发现、安装、启停和更新 dsh 插件。",
         "en": "The plugin shop for DeepSeek Harness — discover, install, enable and update dsh plugins from a browsable, git-auditable catalog."
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
         "依赖 yaml@2.5.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp） @ <dependencies>",
         "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj） @ <dependencies>",
-        "读取环境变量（可能包含敏感信息） @ packages/dsh-plugin-shop/src/host/index.ts:106",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ packages/dsh-plugin-shop/src/host/catalog.ts",
-        "访问第三方网络地址（如 livxue.github.io、registry.npmmirror.com） @ packages/dsh-plugin-shop/src/host/catalog.ts:452"
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ packages/dsh-plugin-shop/src/host/catalog.ts"
       ],
       "risk_evidence": [
         {
@@ -16639,15 +16608,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "访问第三方网络地址（如 livxue.github.io、registry.npmmirror.com）"
-      ],
-      "security_notes": [
-        "依赖 yaml@2.5.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp）",
-        "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "e8d1242cd3822684375681b9bac8eea610afdae6",
       "source": "discovered",
       "review_status": "flagged",
