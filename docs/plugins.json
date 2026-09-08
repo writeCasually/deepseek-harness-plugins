@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-08T01:07:38.478Z",
+  "generated_at": "2026-09-08T08:06:51.257Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -16614,6 +16614,83 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-05T07:41:38.574Z"
+    },
+    {
+      "id": "GCWing/OpenBitFun",
+      "name": "OpenBitFun",
+      "author": "GCWing",
+      "description": "OpenBitFun combines a high-performance agent runtime written in Rust with a polished desktop application. It pairs the depth of a Code Agent with open, general-purpose capabilities for work beyond software development.",
+      "repo_url": "https://github.com/GCWing/OpenBitFun",
+      "homepage": "openbitfun.com",
+      "stars": 2099,
+      "forks": 221,
+      "open_issues": 85,
+      "watchers": 0,
+      "pushed_at": "2026-09-08T07:44:46Z",
+      "archived": false,
+      "language": "Rust",
+      "license": "MIT",
+      "topics": [
+        "agent-teams",
+        "agentic",
+        "agentic-os",
+        "agentic-runtime",
+        "ai-coding",
+        "ai-ide",
+        "ai-sdk",
+        "bitfun",
+        "computer-use-agent",
+        "cowork",
+        "dsh-plugin",
+        "openclaw",
+        "vibe-coding"
+      ],
+      "category": "plugin",
+      "kind": "code",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 Cordis/DSH 落地标记（cordis.patch.yml/.dsh-plugin/dsh.client 等）",
+      "description_i18n": {
+        "zh": "Built to keep going.",
+        "en": "OpenBitFun is an open-source desktop workspace for AI agents. It brings together a fast, reliable Rust Agent Runtime, a powerful, flexible Agent Harness, and a polished desktop experience to make working with agents straightforward."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#5",
+        "依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp） @ <dependencies>",
+        "依赖 simple-git@3.27.0 存在已知漏洞（GHSA-hffm-xvc3-vprc, GHSA-jcxm-m3jx-f287, GHSA-r275-fr43-pm7q） @ <dependencies>"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#5"
+        },
+        {
+          "explanation": "依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 simple-git@3.27.0 存在已知漏洞（GHSA-hffm-xvc3-vprc, GHSA-jcxm-m3jx-f287, GHSA-r275-fr43-pm7q）",
+          "file": "<dependencies>"
+        }
+      ],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp）",
+        "依赖 simple-git@3.27.0 存在已知漏洞（GHSA-hffm-xvc3-vprc, GHSA-jcxm-m3jx-f287, GHSA-r275-fr43-pm7q）"
+      ],
+      "reviewed_commit": "21bc8c5f0104bd3a3cae56afeb5f41598d423124",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-08T08:06:51.257Z"
     }
   ]
 }
