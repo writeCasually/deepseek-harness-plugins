@@ -114,6 +114,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-handbook](https://github.com/Electricitysheep/dsh-handbook) | [@Electricitysheep](https://github.com/Electricitysheep) | DeepSeek Harness (dsh) 从 0 到 1 深度手册：安装/插件开发/性能调优/实测案例/同模型多 Agent 实测对比（中文 + 英文 PDF） |
 | [dshcode](https://github.com/whitelonng/dshcode) | [@whitelonng](https://github.com/whitelonng) | Community desktop companion for DeepSeek Harness — one-click Electron app for macOS and Windows |
 | [AI-Novel-Writer](https://github.com/EthanYoQ/AI-Novel-Writer) | [@EthanYoQ](https://github.com/EthanYoQ) | 本地优先 AI 小说创作工作台，提供 Windows/macOS 桌面版与 DeepSeek Harness 插件开发预览，支持角色、大纲、章节蓝图、审稿修稿和本地模型。 |
+| [Openwrite](https://github.com/LiPu-jpg/Openwrite) | [@LiPu-jpg](https://github.com/LiPu-jpg) | dsh-Openwrite：OpenWrite 的 DeepSeek Harness 小说创作插件，含统一创作 Agent、90 个小说工具、原生工作台与标准审稿 DAG |
 | [working-activity](https://github.com/ccch1mneyyy/working-activity) | [@ccch1mneyyy](https://github.com/ccch1mneyyy) | Lively Working-line extension for pi CLI and DSH |
 | [Agentkey](https://github.com/chainbase-labs/Agentkey) | [@chainbase-labs](https://github.com/chainbase-labs) | Connect your AI agent to the world — Web search, Social media, Crypto & On-chain data. One plugin, zero extra config. |
 | [SkillCorpus](https://github.com/EverMind-AI/SkillCorpus) | [@EverMind-AI](https://github.com/EverMind-AI) | Open-source infrastructure that turns scattered SKILL.md files into curated, retrieval-ready agent-skill corpora—with retrieval and evaluation tooling included. |
@@ -185,6 +186,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-memory](https://github.com/seriousz158/dsh-memory) | [@seriousz158](https://github.com/seriousz158) | dsh-memory is a local, Git-backed long-term-memory plugin for DeepSeek Harness (DSH). |
 | [dsh-oil-creator](https://github.com/oil-oil/dsh-oil-creator) | [@oil-oil](https://github.com/oil-oil) | AI-assisted local creator workbench for DeepSeek Harness |
 | [dsh-liang-skin](https://github.com/kingOfSoySauce/dsh-liang-skin) | [@kingOfSoySauce](https://github.com/kingOfSoySauce) | DeepSeek Harness 滑动变阻器皮肤 |
+| [jingyun-dsh](https://github.com/jingyunstudio/jingyun-dsh) | [@jingyunstudio](https://github.com/jingyunstudio) | 基于 Jingyun Studio + DeepSeek Harness (DSH) 打造的一站式 AI 商业化桌面客户端 |
 | [dsh-find-plugins](https://github.com/Nagi-ovo/dsh-find-plugins) | [@Nagi-ovo](https://github.com/Nagi-ovo) | Ask DSH, "is there a plugin for this?" It searches the GitHub dsh-plugin topic, explains the best matches, waits for your choice, then installs and verifies the selected plugin. |
 | [dsh-agent-team-gui](https://github.com/toolclub/dsh-agent-team-gui) | [@toolclub](https://github.com/toolclub) | Persistent multi-model workflow teams for DeepSeek Harness — dynamic lead planning, bounded DAGs, per-agent model/tools, Run Center and Token insights. |
 | [deepseek-harness-remote](https://github.com/liguobao/deepseek-harness-remote) | [@liguobao](https://github.com/liguobao) | 基于 DeepSeek Harness 插件机制的多端远程访问方案，让桌面端与 Android 端安全连接并操作远程 Harness。（A multi-device remote access solution built on the DeepSeek Harness plugin system, enabling desktop and Android clients to securely connect to and operate a remote Harness.） |
@@ -265,7 +267,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-custom-tool](https://github.com/omdsh-dev/dsh-custom-tool) | [@omdsh-dev](https://github.com/omdsh-dev) | Create and manage sandboxed JavaScript tools for DeepSeek Harness with a Monaco editor and model-driven tool lifecycle. |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-Includes 199 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 201 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 
