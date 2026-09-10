@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-10T05:53:08.199Z",
+  "generated_at": "2026-09-10T08:10:20.717Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -16712,16 +16712,13 @@
       "description_i18n": {
         "zh": "0.2.2 标准插件包兼容 dsh 0.1.2-rc.1。可下载版本、三平台验收结果和 SHA-256 以 GitHub Release 附件为准；验收方法见 发布验收。不追随 dsh alpha。"
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
         "依赖 fflate@0.8.2 存在已知漏洞（GHSA-px8p-9vwx-vf98） @ <dependencies>",
         "依赖 tar@7.5.7 存在已知漏洞（GHSA-23hp-3jrh-7fpw, GHSA-83g3-92jg-28cx, GHSA-8x88-c5mf-7j5w） @ <dependencies>",
-        "读取环境变量（可能包含敏感信息） @ packages/openwrite-bridge/src/index.ts:55",
         "读取本地环境配置文件（dotenv .env） @ packages/openwrite-bridge/scripts/managed-runtime.test.mjs",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ packages/openwrite-bridge/scripts/managed-runtime.test.mjs",
-        "访问第三方网络地址（如 proxy.example、user） @ packages/openwrite-bridge/scripts/managed-runtime.test.mjs:61",
-        "访问第三方网络地址（如 json-schema.org、openwrite.dev） @ packages/openwrite-bridge/src/contracts-generated.ts:3"
+        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ packages/openwrite-bridge/scripts/managed-runtime.test.mjs"
       ],
       "risk_evidence": [
         {
@@ -16761,18 +16758,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取本地环境配置文件（dotenv .env）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 proxy.example、user）",
-        "访问第三方网络地址（如 json-schema.org、openwrite.dev）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 fflate@0.8.2 存在已知漏洞（GHSA-px8p-9vwx-vf98）",
-        "依赖 tar@7.5.7 存在已知漏洞（GHSA-23hp-3jrh-7fpw, GHSA-83g3-92jg-28cx, GHSA-8x88-c5mf-7j5w）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "f1a6229c4e8011aa93893f88828a68ffd3a34a63",
       "source": "discovered",
       "review_status": "flagged",
@@ -16813,15 +16800,11 @@
       "description_i18n": {
         "zh": "让每一个 AI 创业者都拥有自己的商业闭环"
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
         "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
         "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
-        "依赖 yaml@2.5.0 存在已知漏洞（GHSA-48c2-rrv3-qjmp） @ <dependencies>",
-        "读取环境变量（可能包含敏感信息） @ packages/jingyun-dsh/src/index.ts:17",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ packages/jingyun-dsh/src/client/components/CustomLoginSettingBtn.tsx:148",
-        "访问第三方网络地址（如 w3.org） @ packages/jingyun-dsh/src/client/pages/ConnectorPanel.tsx:21",
-        "访问第三方网络地址（如 work.weixin.qq.com） @ packages/jingyun-dsh/src/client/pages/WecomModal.tsx:11"
+        "依赖 yaml@2.5.0 存在已知漏洞（GHSA-48c2-rrv3-qjmp） @ <dependencies>"
       ],
       "risk_evidence": [
         {
@@ -16858,22 +16841,69 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
-        "访问第三方网络地址（如 w3.org）",
-        "访问第三方网络地址（如 work.weixin.qq.com）"
-      ],
-      "security_notes": [
-        "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
-        "依赖 yaml@2.5.0 存在已知漏洞（GHSA-48c2-rrv3-qjmp）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "82a8a97f60f4c593d749cc954188f5f5c172b28c",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-09T08:10:56.631Z",
       "description_i18n_checked_at": "2026-09-09T09:37:37.074Z"
+    },
+    {
+      "id": "Minglink/dsh-infinite-gen-4",
+      "name": "dsh-infinite-gen-4",
+      "author": "Minglink",
+      "description": "DeepSeek v4.1 flash 网络安全红队工具（无限四代） — jailbreak prompts and test suite for DeepSeek    求 Star 收藏 ⭐欢迎大家提交项目的改进",
+      "repo_url": "https://github.com/Minglink/dsh-infinite-gen-4",
+      "homepage": "https://deepseek.stream/plugins/dsh-infinite-gen-4",
+      "stars": 1226,
+      "forks": 79,
+      "open_issues": 7,
+      "watchers": 0,
+      "pushed_at": "2026-09-09T17:16:13Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "armor-breaking",
+        "deepseek",
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "> 🌐 插件生态市场：DeepSeek Harness Hub - DeepSeek 官方与开源生态市场 | 插件发现与一键安装"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/run_bank_live.mjs",
+        "访问第三方网络地址（如 target） @ scripts/scorer_semantics_test.mjs:9"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "scripts/run_bank_live.mjs"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 target）",
+          "file": "scripts/scorer_semantics_test.mjs",
+          "line": 9
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 target）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "b0a7bfedd45be9f97dbd0ab49e844ed2f0074f5f",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-10T08:10:20.717Z"
     }
   ]
 }

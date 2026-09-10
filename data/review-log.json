@@ -1,6 +1,40 @@
 {
-  "updated_at": "2026-09-09T08:10:56.631Z",
+  "updated_at": "2026-09-10T08:10:20.717Z",
   "decisions": [
+    {
+      "id": "Minglink/dsh-infinite-gen-4",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 target）"
+      ],
+      "evidence": [],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-15）"
+      ],
+      "reviewed_commit": "b0a7bfedd45be9f97dbd0ab49e844ed2f0074f5f",
+      "review_mode": "full",
+      "scanned_files": 9,
+      "total_files": 28,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-10T08:10:20.717Z"
+    },
     {
       "id": "LiPu-jpg/Openwrite",
       "verdict": "flagged",
@@ -63175,51 +63209,6 @@
       "total_files": 0,
       "osv": {
         "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Noob-stupid/dsh-plugin-hub",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "存在 Base64 解码行为"
-      ],
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 ghfast.top、ghproxy.net、gitee.com、mirror.ghproxy.com）",
-        "访问第三方网络地址（如 ghfast.top、ghproxy.net、gitee.com、mirror.ghproxy.com）",
-        "读取浏览器 Cookie/存储并发送到网络",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/index.js",
-          "line": 1245,
-          "snippet": "if (data && typeof data.content === 'string') return Buffer.from(data.content, 'base64').toString('utf8')"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "dfadc150625f76f97a8415faddf9e99877c1c92a",
-      "review_mode": "full",
-      "scanned_files": 9,
-      "total_files": 19,
-      "osv": {
-        "status": "skipped",
         "findings": 0
       },
       "llm_review": {
