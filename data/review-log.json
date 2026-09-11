@@ -1,6 +1,107 @@
 {
-  "updated_at": "2026-09-10T08:10:20.717Z",
+  "updated_at": "2026-09-11T08:05:06.274Z",
   "decisions": [
+    {
+      "id": "reactive-resume/app",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "code",
+        "reason": "存在 Cordis/DSH 落地标记（cordis.patch.yml/.dsh-plugin/dsh.client 等）"
+      },
+      "findings": [
+        "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
+        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+        "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 rxresu.me）"
+      ],
+      "evidence": [
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
+          "file": "package.json#1",
+          "line": 0,
+          "snippet": "@orpc/server"
+        },
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#2",
+          "line": 0,
+          "snippet": "@codemirror/commands"
+        },
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
+          "file": "package.json#4",
+          "line": 0,
+          "snippet": "@orpc/server"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "0a4608bf9d1dcafcbeba97b6217d5557b9f10221",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 1775,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-11T08:05:06.274Z"
+    },
+    {
+      "id": "gitroomhq/postiz-agent",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 mcp.postiz.com）",
+        "访问第三方网络地址（如 mcp.postiz.com）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 api.postiz.com、platform.postiz.com）",
+        "访问第三方网络地址（如 agent-media.ai、cli-auth.postiz.com、postiz.com）",
+        "访问第三方网络地址（如 postiz.com）",
+        "访问第三方网络地址（如 api.postiz.com）",
+        "读取本地凭据文件并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 api.postiz.com、cli-auth.postiz.com）",
+        "访问第三方网络地址（如 mcp.postiz.com、postiz.example.com）"
+      ],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "51293500c1b1fb447205100cb09b2999085323ac",
+      "review_mode": "full",
+      "scanned_files": 16,
+      "total_files": 61,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-11T08:05:06.274Z"
+    },
     {
       "id": "Minglink/dsh-infinite-gen-4",
       "verdict": "flagged",
@@ -63141,75 +63242,6 @@
       "osv": {
         "status": "ok",
         "findings": 1
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "lire1131/dsh-undo-plugin",
-      "verdict": "approved",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 0,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "HuanLinOTO/dsh-plugin-mineru",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
-      "privacy_notes": [],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "cordis"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 0,
-      "osv": {
-        "status": "ok",
-        "findings": 0
       },
       "llm_review": {
         "status": "skipped",
