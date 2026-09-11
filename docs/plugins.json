@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-11T05:52:08.946Z",
+  "generated_at": "2026-09-11T08:05:06.274Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -16839,10 +16839,9 @@
       "description_i18n": {
         "zh": "> 🌐 插件生态市场：DeepSeek Harness Hub - DeepSeek 官方与开源生态市场 | 插件发现与一键安装"
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/run_bank_live.mjs",
-        "访问第三方网络地址（如 target） @ scripts/scorer_semantics_test.mjs:9"
+        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/run_bank_live.mjs"
       ],
       "risk_evidence": [
         {
@@ -16856,16 +16855,94 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 target）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "b0a7bfedd45be9f97dbd0ab49e844ed2f0074f5f",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-10T08:10:20.717Z",
       "description_i18n_checked_at": "2026-09-10T12:11:29.950Z"
+    },
+    {
+      "id": "reactive-resume/app",
+      "name": "app",
+      "author": "reactive-resume",
+      "description": "A one-of-a-kind resume builder that keeps your privacy in mind. Completely secure, customizable, portable, open-source and free forever. Try it out today!",
+      "repo_url": "https://github.com/reactive-resume/app",
+      "homepage": "https://rxresu.me",
+      "stars": 42456,
+      "forks": 4705,
+      "open_issues": 56,
+      "watchers": 0,
+      "pushed_at": "2026-09-11T07:51:58Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "agent-skills",
+        "ai",
+        "dsh-plugin",
+        "hacktoberfest",
+        "javascript",
+        "mcp-server",
+        "react",
+        "resume-builder",
+        "self-hosted",
+        "typescript"
+      ],
+      "category": "plugin",
+      "kind": "code",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 Cordis/DSH 落地标记（cordis.patch.yml/.dsh-plugin/dsh.client 等）",
+      "description_i18n": {
+        "en": "Resume Building"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险 @ package.json#1",
+        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#2",
+        "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险 @ package.json#4",
+        "读取环境变量（可能包含敏感信息） @ apps/server/src/index.ts:22",
+        "访问第三方网络地址（如 rxresu.me） @ apps/web/src/routes/_home/index.tsx:53"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#2"
+        },
+        {
+          "explanation": "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
+          "file": "package.json#4"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "apps/server/src/index.ts",
+          "line": 22
+        },
+        {
+          "explanation": "访问第三方网络地址（如 rxresu.me）",
+          "file": "apps/web/src/routes/_home/index.tsx",
+          "line": 53
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 rxresu.me）"
+      ],
+      "security_notes": [
+        "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
+        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险"
+      ],
+      "reviewed_commit": "0a4608bf9d1dcafcbeba97b6217d5557b9f10221",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-11T08:05:06.274Z"
     }
   ]
 }
