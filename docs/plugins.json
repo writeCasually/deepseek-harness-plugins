@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-12T05:40:10.631Z",
+  "generated_at": "2026-09-12T07:56:49.809Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -16902,23 +16902,9 @@
       "risk_notes": [
         "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险 @ package.json#1",
         "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#2",
-        "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险 @ package.json#4",
-        "读取环境变量（可能包含敏感信息） @ apps/server/src/index.ts:22",
-        "访问第三方网络地址（如 rxresu.me） @ apps/web/src/routes/_home/index.tsx:53"
+        "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险 @ package.json#4"
       ],
       "risk_evidence": [
-        {
-          "explanation": "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
-          "file": "package.json#1"
-        },
-        {
-          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#2"
-        },
-        {
-          "explanation": "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
-          "file": "package.json#4"
-        },
         {
           "explanation": "读取环境变量（可能包含敏感信息）",
           "file": "apps/server/src/index.ts",
@@ -16931,19 +16917,197 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 rxresu.me）"
-      ],
-      "security_notes": [
-        "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
-        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "0a4608bf9d1dcafcbeba97b6217d5557b9f10221",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-11T08:05:06.274Z",
       "description_i18n_checked_at": "2026-09-11T12:10:04.807Z"
+    },
+    {
+      "id": "agentic-os-org/ANOLISA",
+      "name": "ANOLISA",
+      "author": "agentic-os-org",
+      "description": "ANOLISA (Agentic Nexus Operating Layer & Interface System Architecture) | Agentic OS with runtime, security, observability, and Tokenless response compression for lower token usage and cost.",
+      "repo_url": "https://github.com/agentic-os-org/ANOLISA",
+      "homepage": "https://agentic-os.sh/",
+      "stars": 605,
+      "forks": 104,
+      "open_issues": 109,
+      "watchers": 0,
+      "pushed_at": "2026-09-12T05:00:53Z",
+      "archived": false,
+      "language": "Rust",
+      "license": "Apache-2.0",
+      "topics": [
+        "agent-infrastructure",
+        "agent-memory",
+        "agent-runtime",
+        "agent-security",
+        "agentic-ai",
+        "agentic-os",
+        "ai-agents",
+        "context-engineering",
+        "developer-tools",
+        "dsh-plugin",
+        "linux",
+        "observability",
+        "runtime-security",
+        "rust",
+        "sandbox",
+        "skill",
+        "token-optimization"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "Agent 入口 上下文效率 运行与安全",
+        "en": "Agent entry Context efficiency Runtime &amp; security"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#3",
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json#4",
+        "依赖 openclaw@2026.4.14 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-275c-xpvc-jgfw, GHSA-2hfg-4fh4-qp7f） @ <dependencies>",
+        "读取环境变量（可能包含敏感信息） @ src/copilot-shell/packages/cli/index.ts:17",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ src/copilot-shell/packages/core/src/index.ts"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json#3"
+        },
+        {
+          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+          "file": "package.json#4"
+        },
+        {
+          "explanation": "依赖 openclaw@2026.4.14 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-275c-xpvc-jgfw, GHSA-2hfg-4fh4-qp7f）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "src/copilot-shell/packages/cli/index.ts",
+          "line": 17
+        },
+        {
+          "explanation": "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+          "file": "src/copilot-shell/packages/core/src/index.ts"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+        "依赖 openclaw@2026.4.14 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-275c-xpvc-jgfw, GHSA-2hfg-4fh4-qp7f）"
+      ],
+      "reviewed_commit": "0e48816aa660fc4fe2b980929682fbc11334c737",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-12T07:56:49.809Z"
+    },
+    {
+      "id": "FuRongJun-1999/dsh-memory",
+      "name": "dsh-memory",
+      "author": "FuRongJun-1999",
+      "description": "白箱AGI架构探索：元认知（自我认知循环）、持续学习（知识飞轮）、世界模型（条件空间+语义时空图）、自我改进（自举纪律）、零LLM白箱管线与可审计信任护栏。",
+      "repo_url": "https://github.com/FuRongJun-1999/dsh-memory",
+      "homepage": "https://github.com/FuRongJun-1999/dsh-memory",
+      "stars": 168,
+      "forks": 11,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-09-12T07:49:29Z",
+      "archived": false,
+      "language": "Python",
+      "license": "MIT",
+      "topics": [
+        "agent-safety",
+        "agentic-ai",
+        "agi",
+        "ai-agent-framework",
+        "deepseek",
+        "dsh-plugin",
+        "explainable-ai",
+        "guardrails",
+        "knowledge-graph",
+        "mcp",
+        "multi-agent",
+        "persistent-memory",
+        "rag",
+        "spatiotemporal-graph-neural-network"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "灵枢（Lingshu / AEIS）× DeepSeek Harness —— 白箱智能 + AGI 级长期记忆插件（v0.4.5）"
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ src/lib/roleplay_web.ts",
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
+        "监听键盘输入事件 @ src/lib/roleplay_web.ts:417",
+        "读取环境变量（可能包含敏感信息） @ src/bridge.ts:163",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ src/lib/roleplay_web.ts:184",
+        "访问第三方网络地址（如 x） @ src/lib/roleplay_web.ts:630"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "src/lib/roleplay_web.ts"
+        },
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/lib/roleplay_web.ts",
+          "line": 417,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "src/bridge.ts",
+          "line": 163
+        },
+        {
+          "explanation": "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+          "file": "src/lib/roleplay_web.ts",
+          "line": 184
+        },
+        {
+          "explanation": "访问第三方网络地址（如 x）",
+          "file": "src/lib/roleplay_web.ts",
+          "line": 630
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "访问第三方网络地址（如 x）"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "ce55c048c6e8de51f29a4c6870a28016a919fdbe",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-12T07:56:49.809Z"
     }
   ]
 }

@@ -1,6 +1,123 @@
 {
-  "updated_at": "2026-09-11T08:05:06.274Z",
+  "updated_at": "2026-09-12T07:56:49.809Z",
   "decisions": [
+    {
+      "id": "agentic-os-org/ANOLISA",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+        "依赖 openclaw@2026.4.14 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-275c-xpvc-jgfw, GHSA-2hfg-4fh4-qp7f）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepare",
+          "severity": "warning",
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json#3",
+          "line": 0,
+          "snippet": "tsc"
+        },
+        {
+          "rule": "lifecycle-postinstall",
+          "severity": "warning",
+          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+          "file": "package.json#4",
+          "line": 0,
+          "snippet": "node scripts/postinstall.js"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 openclaw@2026.4.14 存在已知漏洞（GHSA-24vr-rprv-67rf, GHSA-275c-xpvc-jgfw, GHSA-2hfg-4fh4-qp7f）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "openclaw@2026.4.14"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "0e48816aa660fc4fe2b980929682fbc11334c737",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 5758,
+      "osv": {
+        "status": "ok",
+        "findings": 1
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-12T07:56:49.809Z"
+    },
+    {
+      "id": "FuRongJun-1999/dsh-memory",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "监听键盘输入事件"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "访问第三方网络地址（如 x）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepare",
+          "severity": "warning",
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "npm run build"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "src/lib/roleplay_web.ts",
+          "line": 417,
+          "snippet": "input.addEventListener('keydown', function (e) {"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-14）"
+      ],
+      "reviewed_commit": "ce55c048c6e8de51f29a4c6870a28016a919fdbe",
+      "review_mode": "full",
+      "scanned_files": 21,
+      "total_files": 1401,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-12T07:56:49.809Z"
+    },
     {
       "id": "reactive-resume/app",
       "verdict": "flagged",
@@ -63103,145 +63220,6 @@
       "osv": {
         "status": "skipped",
         "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "openma-ai/deepseek-harness-tui",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用动态代码执行（eval/new Function）"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址（如 dshsuite.dev）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "npm/lib/client-run.js",
-          "line": 44,
-          "snippet": "const factory = new Function("
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "445ff8299c169ac6fcf858a2c38c89dd0d9ef180",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 192,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "zuorn/Tydora",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在 Base64 解码行为",
-        "子进程以 shell 模式启动（spawn(...,{shell:true})）",
-        "子进程以 shell 模式启动（spawn(...,{shell:true})）",
-        "依赖 mermaid@11.16.0 存在已知漏洞（GHSA-2v8p-3f2j-5mp7, GHSA-3rrr-jr9j-h3q3, GHSA-6x64-9x62-f2gx）"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-postinstall",
-          "severity": "warning",
-          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "patch-package"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@codemirror/commands"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "src/export/index.ts",
-          "line": 57,
-          "snippet": "const bin = atob(base64);"
-        },
-        {
-          "rule": "spawn-shell",
-          "severity": "critical",
-          "explanation": "子进程以 shell 模式启动（spawn(...,{shell:true})）",
-          "file": "scripts/deploy-edgeone.mjs",
-          "line": 43,
-          "snippet": "const build = spawnSync(\"npm\", [\"run\", \"docs:build\"], { cwd: root, stdio: \"inherit\", shell: true });"
-        },
-        {
-          "rule": "spawn-shell",
-          "severity": "critical",
-          "explanation": "子进程以 shell 模式启动（spawn(...,{shell:true})）",
-          "file": "scripts/deploy-edgeone.mjs",
-          "line": 50,
-          "snippet": "const deploy = spawnSync(\"edgeone\", deployArgs, { cwd: root, stdio: \"inherit\", shell: true });"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 mermaid@11.16.0 存在已知漏洞（GHSA-2v8p-3f2j-5mp7, GHSA-3rrr-jr9j-h3q3, GHSA-6x64-9x62-f2gx）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "mermaid@11.16.0"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "5b5ed33f49dafc382c7afe024d1211ffe9c8cf10",
-      "review_mode": "full",
-      "scanned_files": 19,
-      "total_files": 426,
-      "osv": {
-        "status": "ok",
-        "findings": 1
       },
       "llm_review": {
         "status": "skipped",
