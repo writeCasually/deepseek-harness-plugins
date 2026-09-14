@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-14T06:08:12.090Z",
+  "generated_at": "2026-09-14T08:58:03.050Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -17121,23 +17121,9 @@
       "risk_notes": [
         "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险 @ package.json#1",
         "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#2",
-        "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险 @ package.json#4",
-        "读取环境变量（可能包含敏感信息） @ apps/server/src/index.ts:22",
-        "访问第三方网络地址（如 rxresu.me） @ apps/web/src/routes/_home/index.tsx:53"
+        "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险 @ package.json#4"
       ],
       "risk_evidence": [
-        {
-          "explanation": "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
-          "file": "package.json#1"
-        },
-        {
-          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#2"
-        },
-        {
-          "explanation": "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
-          "file": "package.json#4"
-        },
         {
           "explanation": "读取环境变量（可能包含敏感信息）",
           "file": "apps/server/src/index.ts",
@@ -17150,14 +17136,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 rxresu.me）"
-      ],
-      "security_notes": [
-        "依赖 @orpc/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
-        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "fd3494ccac6ef4c47d01614a8a5dcdea08df85eb",
       "source": "discovered",
       "review_status": "flagged",
@@ -17204,11 +17184,8 @@
       "description_i18n": {
         "en": "A DeepSeek Harness plugin that gives the agent a browser with an identity."
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 abrahamjuliot.github.io、whoer.net） @ tests/smoke/probe.js:9",
-        "访问第三方网络地址（如 abrahamjuliot.github.io、whoer.net） @ tests/smoke/probe.js:42"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 abrahamjuliot.github.io、whoer.net）",
@@ -17222,16 +17199,87 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 abrahamjuliot.github.io、whoer.net）",
-        "访问第三方网络地址（如 abrahamjuliot.github.io、whoer.net）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "d032210ba3f5747686fb151fc79d2bc9a89c2ea4",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-13T08:20:44.102Z",
       "description_i18n_checked_at": "2026-09-13T12:41:24.650Z"
+    },
+    {
+      "id": "DDDMUC/dsh-free-search",
+      "name": "dsh-free-search",
+      "author": "DDDMUC",
+      "description": "Free web search provider for DeepSeek Harness - DuckDuckGo backend, no API key needed",
+      "repo_url": "https://github.com/DDDMUC/dsh-free-search",
+      "homepage": "https://github.com/DDDMUC/dsh-free-search",
+      "stars": 178,
+      "forks": 13,
+      "open_issues": 4,
+      "watchers": 0,
+      "pushed_at": "2026-09-13T14:49:05Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "bing",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "duckduckgo",
+        "web-search"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "DeepSeek Harness 免费搜索插件 —— 无需 API key，零成本，多引擎可切换。 一个给 DeepSeek Harness (dsh) 添加多引擎搜索 provider 的插件，注册进 ctx.web seam。内置 web_search 工具自动选用，支持网页设置页切换引擎、配置 API key、一键测试所有引擎、弹出式命令切换引擎。"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ lib/index.js:165",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.anysearch.com、api.bilibili.com、api.exa.ai、api.firecrawl.dev） @ lib/index.js:1631",
+        "访问第三方网络地址（如 api.anysearch.com、api.bilibili.com、api.exa.ai、api.firecrawl.dev） @ lib/index.js:8",
+        "访问第三方网络地址（如 anysearch.com、app.tavily.com、bing.com、dashboard.exa.ai） @ lib/client.js:221"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/index.js",
+          "line": 165
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.anysearch.com、api.bilibili.com、api.exa.ai、api.firecrawl.dev）",
+          "file": "lib/index.js",
+          "line": 1631
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.anysearch.com、api.bilibili.com、api.exa.ai、api.firecrawl.dev）",
+          "file": "lib/index.js",
+          "line": 8
+        },
+        {
+          "explanation": "访问第三方网络地址（如 anysearch.com、app.tavily.com、bing.com、dashboard.exa.ai）",
+          "file": "lib/client.js",
+          "line": 221
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.anysearch.com、api.bilibili.com、api.exa.ai、api.firecrawl.dev）",
+        "访问第三方网络地址（如 api.anysearch.com、api.bilibili.com、api.exa.ai、api.firecrawl.dev）",
+        "访问第三方网络地址（如 anysearch.com、app.tavily.com、bing.com、dashboard.exa.ai）"
+      ],
+      "security_notes": [
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
+      ],
+      "reviewed_commit": "447cb7973b6a1ef8d2cb449f24d3080c74278c8b",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-14T08:58:03.050Z"
     }
   ]
 }

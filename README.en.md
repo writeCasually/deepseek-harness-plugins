@@ -196,6 +196,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-oil-creator](https://github.com/oil-oil/dsh-oil-creator) | [@oil-oil](https://github.com/oil-oil) | AI-assisted local creator workbench for DeepSeek Harness |
 | [dsh-memory](https://github.com/FuRongJun-1999/dsh-memory) | [@FuRongJun-1999](https://github.com/FuRongJun-1999) | 白箱AGI架构探索：元认知（自我认知循环）、持续学习（知识飞轮）、世界模型（条件空间+语义时空图）、自我改进（自举纪律）、零LLM白箱管线与可审计信任护栏。 |
 | [dsh-memory](https://github.com/seriousz158/dsh-memory) | [@seriousz158](https://github.com/seriousz158) | dsh-memory is a local, Git-backed long-term-memory plugin for DeepSeek Harness (DSH). |
+| [dsh-free-search](https://github.com/DDDMUC/dsh-free-search) | [@DDDMUC](https://github.com/DDDMUC) | Free web search provider for DeepSeek Harness - DuckDuckGo backend, no API key needed |
 | [dsh-agent-team-gui](https://github.com/toolclub/dsh-agent-team-gui) | [@toolclub](https://github.com/toolclub) | Persistent multi-model workflow teams for DeepSeek Harness — dynamic lead planning, bounded DAGs, per-agent model/tools, Run Center and Token insights. |
 | [dsh-find-plugins](https://github.com/Nagi-ovo/dsh-find-plugins) | [@Nagi-ovo](https://github.com/Nagi-ovo) | Ask DSH, "is there a plugin for this?" It searches the GitHub dsh-plugin topic, explains the best matches, waits for your choice, then installs and verifies the selected plugin. |
 | [gal-view](https://github.com/Ayase34/gal-view) | [@Ayase34](https://github.com/Ayase34) | 把dsh会话界面切换成galgame游戏界面的插件 |
@@ -272,7 +273,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-xiaoyao-skins](https://github.com/147228/dsh-xiaoyao-skins) | [@147228](https://github.com/147228) | 夕小瑶 × DeepSeek Harness Web 皮肤合集、安装器与社区创作工具链 |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-Includes 206 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 207 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 
