@@ -1,6 +1,133 @@
 {
-  "updated_at": "2026-09-14T08:58:03.050Z",
+  "updated_at": "2026-09-15T08:42:45.471Z",
   "decisions": [
+    {
+      "id": "h4dex/opc-nexus",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "0040c2521b4e974cfaef031c06ecafdce5ad0d17",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 8065,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-09-15T08:42:45.471Z"
+    },
+    {
+      "id": "sopaco/terrain",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "56ae46f2a8eedb03bd7b4eb63f4f5683e0ce153f",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 532,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-09-15T08:42:45.471Z"
+    },
+    {
+      "id": "See-Sol-Lab/DeepSeekGUI",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+        "存在 Base64 解码行为",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-2883-xcg3-v3hh, GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 deepseekgui-browser-pane-close.invalid）",
+        "访问第三方网络地址（如 deepseekgui-browser-pane-close.invalid）",
+        "读取本地环境配置文件（dotenv .env）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-postinstall",
+          "severity": "warning",
+          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "node scripts/install-lefthook.mjs"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "packages/api/workbench-inspector/src/index.ts",
+          "line": 61,
+          "snippet": "&& verify(null, Buffer.from(`${home}\\0${sessionId}`), publicKey, Buffer.from(signature, 'base64'))"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "packages/api/workspace-files/src/index.ts",
+          "line": 95,
+          "snippet": "const NUL = String.fromCharCode(0)"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-2883-xcg3-v3hh, GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "js-yaml@4.2.0"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-17）"
+      ],
+      "reviewed_commit": "f8fae741698467d001e73dab9f46355ead23a716",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 10649,
+      "osv": {
+        "status": "ok",
+        "findings": 1
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-15T08:42:45.471Z"
+    },
     {
       "id": "Tiger3807861189/J-Space-Cognition-Suite",
       "verdict": "skip",
@@ -62898,200 +63025,6 @@
       "total_files": 130,
       "osv": {
         "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "834063245-creator/HoloGram",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 install 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址（如 x）",
-        "读取浏览器 Cookie/存储并发送到网络",
-        "访问第三方网络地址（如 ...）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-install",
-          "severity": "warning",
-          "explanation": "package.json 的 install 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "node scripts/install.mjs"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src-ui/src/main.ts",
-          "line": 521,
-          "snippet": "window.addEventListener("
-        },
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "dsh-bundle/scripts/ci-verify.mjs",
-          "line": 33,
-          "snippet": "const packJson = execFileSync('npm', ['pack', '--dry-run', '--json', '--ignore-scripts'], {"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "0d9cf17ab8ff4fa4706b04d0e03dfb609538bf35",
-      "review_mode": "full",
-      "scanned_files": 14,
-      "total_files": 965,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "omdsh-dev/dsh-custom-tool",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用动态代码执行（eval/new Function）",
-        "存在 Base64 解码行为",
-        "存在 Base64 解码行为",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "lib/index.js",
-          "line": 587,
-          "snippet": "schema.callback = new Function(\"return \" + schema.callback)();"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/index.js",
-          "line": 384,
-          "snippet": "return Buffer.from(source).toString(\"base64\");"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/index.js",
-          "line": 396,
-          "snippet": "return Uint8Array.from(atob(source), (c) => c.charCodeAt(0));"
-        },
-        {
-          "rule": "char-code",
-          "severity": "warning",
-          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-          "file": "lib/index.js",
-          "line": 389,
-          "snippet": "binary += String.fromCharCode(bytes[i]);"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "7cb95649dca9b380c9a30af96bdbef87a76a2259",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 115,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "william-jin-cmu/dsh-vision",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "code",
-        "reason": "依赖 DSH/Cordis 生态包 @deepseek-ai/dsh-system-prompt"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
-      "privacy_notes": [
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "访问第三方网络地址（如 open.bigmodel.cn、open.bigmodel.cn.）",
-        "访问第三方网络地址（如 a.test）",
-        "访问第三方网络地址（如 a.test、example.test）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "72978aa176df8e01a685bf270a1b1d016660c492",
-      "review_mode": "full",
-      "scanned_files": 9,
-      "total_files": 17,
-      "osv": {
-        "status": "ok",
         "findings": 0
       },
       "llm_review": {
