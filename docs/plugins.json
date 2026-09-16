@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-16T01:20:57.858Z",
+  "generated_at": "2026-09-16T08:37:12.729Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -17316,12 +17316,7 @@
       "risk_notes": [
         "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ apps/deepseekgui/picker-plugin/lib/index.js",
         "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json",
-        "存在 Base64 解码行为 @ packages/api/workbench-inspector/src/index.ts:61",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ packages/api/workspace-files/src/index.ts:95",
         "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-2883-xcg3-v3hh, GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj） @ <dependencies>",
-        "读取环境变量（可能包含敏感信息） @ apps/deepseekgui/browser-plugin/src/index.ts:88",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 deepseekgui-browser-pane-close.invalid） @ apps/deepseekgui/src/main.ts:272",
-        "访问第三方网络地址（如 deepseekgui-browser-pane-close.invalid） @ apps/deepseekgui/src/main.ts:1220",
         "读取本地环境配置文件（dotenv .env） @ packages/boot/app-boot/src/index.ts"
       ],
       "risk_evidence": [
@@ -17369,23 +17364,103 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 deepseekgui-browser-pane-close.invalid）",
-        "访问第三方网络地址（如 deepseekgui-browser-pane-close.invalid）",
-        "读取本地环境配置文件（dotenv .env）"
-      ],
-      "security_notes": [
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-        "存在 Base64 解码行为",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-        "依赖 js-yaml@4.2.0 存在已知漏洞（GHSA-2883-xcg3-v3hh, GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "f8fae741698467d001e73dab9f46355ead23a716",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-15T08:42:45.471Z"
+    },
+    {
+      "id": "acryldev/acryl",
+      "name": "acryl",
+      "author": "acryldev",
+      "description": "ACRYL - Agent Context Relay Yielding Lifecycles. One persistent workspace, one canonical context, any coding agent.",
+      "repo_url": "https://github.com/acryldev/acryl",
+      "homepage": "https://acryl.dev",
+      "stars": 237,
+      "forks": 32,
+      "open_issues": 48,
+      "watchers": 0,
+      "pushed_at": "2026-09-16T03:44:33Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "acryl",
+        "agent-context-relay",
+        "agentic",
+        "agentic-ai",
+        "agentic-coding",
+        "agentic-development-environment",
+        "agentic-workflow",
+        "agentic-workflows",
+        "ai",
+        "ai-agent",
+        "ai-agents",
+        "ai-coding",
+        "ai-tools",
+        "coding-agent",
+        "cordis",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "pi",
+        "typescript"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "本仓库现在以英文 README.md 作为默认项目入口；README.en.md 保留英文兼容路径。",
+        "en": "ACRYL has three surfaces that share the same project model, but they are deliberately separate installs. Installing one does not silently install or start the others."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#2",
+        "依赖 adm-zip@0.6.0 存在已知漏洞（GHSA-vwc7-r8mq-g2x9） @ <dependencies>",
+        "依赖 pnpm@11.8.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-vq4v-j7r6-jq4m, GHSA-vx52-2968-3vc6） @ <dependencies>",
+        "读取环境变量（可能包含敏感信息） @ apps/acryl-cli/lib-publish/index.js:402"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#2"
+        },
+        {
+          "explanation": "依赖 adm-zip@0.6.0 存在已知漏洞（GHSA-vwc7-r8mq-g2x9）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 pnpm@11.8.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-vq4v-j7r6-jq4m, GHSA-vx52-2968-3vc6）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "apps/acryl-cli/lib-publish/index.js",
+          "line": 402
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "依赖 adm-zip@0.6.0 存在已知漏洞（GHSA-vwc7-r8mq-g2x9）",
+        "依赖 pnpm@11.8.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-vq4v-j7r6-jq4m, GHSA-vx52-2968-3vc6）"
+      ],
+      "reviewed_commit": "9384352d38faaef5ae695f5431b582d8ec846017",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-16T08:37:12.729Z"
     }
   ]
 }

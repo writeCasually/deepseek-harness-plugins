@@ -1,6 +1,77 @@
 {
-  "updated_at": "2026-09-15T08:42:45.471Z",
+  "updated_at": "2026-09-16T08:37:12.729Z",
   "decisions": [
+    {
+      "id": "acryldev/acryl",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "依赖 adm-zip@0.6.0 存在已知漏洞（GHSA-vwc7-r8mq-g2x9）",
+        "依赖 pnpm@11.8.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-vq4v-j7r6-jq4m, GHSA-vx52-2968-3vc6）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#1",
+          "line": 0,
+          "snippet": "pnpm run check"
+        },
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#2",
+          "line": 0,
+          "snippet": "pnpm run check"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 adm-zip@0.6.0 存在已知漏洞（GHSA-vwc7-r8mq-g2x9）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "adm-zip@0.6.0"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 pnpm@11.8.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-vq4v-j7r6-jq4m, GHSA-vx52-2968-3vc6）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "pnpm@11.8.0"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-08-25）"
+      ],
+      "reviewed_commit": "9384352d38faaef5ae695f5431b582d8ec846017",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 1061,
+      "osv": {
+        "status": "ok",
+        "findings": 2
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-16T08:37:12.729Z"
+    },
     {
       "id": "h4dex/opc-nexus",
       "verdict": "skip",
@@ -62754,275 +62825,6 @@
       "review_mode": "full",
       "scanned_files": 1,
       "total_files": 17,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "whiteguo233/dsh-openbiliclaw",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）"
-      ],
-      "privacy_notes": [
-        "读取浏览器 Cookie/存储并发送到网络",
-        "访问第三方网络地址（如 bilibili.com、example.com）",
-        "访问第三方网络地址（如 bilibili.com）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/client.js",
-          "line": 1325,
-          "snippet": "const BRAND_ICON = \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAABGOElEQVR42uW9WZBl13UltvY5974hMyuz5sJYmAoTAQIgQEycpxZJBamBTTZN/0ihcFsR6g"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/types/client/OpenBiliClawPanel.js",
-          "line": 223,
-          "snippet": "return (_jsxs(\"div\", { className: css.panel, \"data-dark\": dark, children: [_jsxs(\"div\", { className: css.header, children: [_jsxs(\"div\", { className: css.brand,"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/types/client/brandIcon.js",
-          "line": 8,
-          "snippet": "'iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAABGOElEQVR42uW9WZBl13UltvY5974hMyuz5sJYmAoTAQIgQEyc' +"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/types/client/brandIcon.js",
-          "line": 9,
-          "snippet": "'pxZJBamBTTZN/0ihcFsR6g+HpAh/2BEd7Z92hNsfdli2m91iWB2MVsstNaWGKJISCc4jQAwkRmIuADVPWUO+zPfePXv748zn' +"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/types/client/brandIcon.js",
-          "line": 10,
-          "snippet": "'3vcyC6yWPlwRiUJVZb533xn2sPbaa9P0Dz4vuOS/yP0mwH+BV///3y+3nuDk/y/Nr+qSPyMAiNt1AUAEUhqiCCANBYLRCooU' +"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/types/client/brandIcon.js",
-          "line": 11,
-          "snippet": "'RAhC/geleDH7ZyX2Y9vXJ3SeKOn6+Y6fEfds/vuJirek5HNI/qFE7FfyvEoIUASm5BmkYz2Q7J//XCBAAIZACFAQKGGwCMAM' +"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/types/client/brandIcon.js",
-          "line": 12,
-          "snippet": "'EgNhU6wNzVyCf7gD0LF/pCtIbwDoGqQqiFKo6hqo+/bD+43xB4WSzen4pctzIcXup4tP5L78z1C+6dkhQP59836x+wFF+SEn' +"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/types/client/brandIcon.js",
-          "line": 13,
-          "snippet": "'QIM6Dok7QFJejHShKH422OdWIkAzQWMmIBEwG5CZANMJYJr2c8s/5AFITyMR0B+CekOgqlENFgFhYDqFNFM0E/ch3ELHJSJI' +"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/types/client/brandIcon.js",
-          "line": 14,
-          "snippet": "'WJi4WUQEIbHrWV5I//8irctPyDdUIJknCvvt/o5JQCCQ/36Rzs+n3HMwddsqchtMIIj/ZOH5JB5E/5ndd4G8NZC4nwRorUG9' +"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/types/client/brandIcon.js",
-          "line": 15,
-          "snippet": "'CrrqAwQ0G2sgYyCTdch0A8Tc3oO/twOQbIQQgQaLUIMFqP4iIAIer8OMzicblWwi4gb760ygxGL7BbQbR8mmUGbanXtxD0KS' +"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/types/client/brandIcon.js",
-          "line": 16,
-          "snippet": "'3DK/2EThAInbOP99ouzfq2TzIQLlX8Y/B9nNj28tIFLWW7C4n6HMpcTnpOR5kmUj+xyKKGw4CYVnsgaHgfEUmEwhzlJQbwEY' +"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/types/client/brandIcon.js",
-          "line": 17,
-          "snippet": "'LMFM1yHjNWC8DviD8Pd6APwi9gfQC9ugBtuA6QRmfS0/6URx85zZl/Skh5MfzakUbkCyjY63FyLWHMcVtGdLUXYY/AEiUMst' +"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/types/client/brandIcon.js",
-          "line": 18,
-          "snippet": "'C9lb2nnGO/7ev44Uwa0E99N2/dRlpv0aiNjDJ/41COQ/U+JiBAIWQDbWQYqgtQKWd6HZWAc2LtiD8BbNQfVWTL4QQS1uR7W4' +"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/types/client/brandIcon.js",
-          "line": 19,
-          "snippet": "'ApgGZnTBuzDYsIacJReQCBQELB2ro9x1YIGI/bKLSJ2xZfSzyUFwCymU3KAQhIo7PARhdwXd65PAbqS76f6AxHBEgmVgSg6T' +"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/types/client/dialogue.js",
-          "line": 143,
-          "snippet": "return (_jsxs(\"div\", { className: css.dialogueCard, \"data-card-state\": state, children: [_jsx(\"div\", { className: css.dialogueKicker, children: \"\\u963FB \\u7684\\"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/types/client/dialogue.js",
-          "line": 245,
-          "snippet": "return (_jsxs(_Fragment, { children: [_jsxs(\"div\", { className: css.toolbar, children: [_jsx(\"span\", { className: css.hint, children: \"\\u82CF\\u683C\\u62C9\\u5E95\\"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/types/client/dialogue.js",
-          "line": 261,
-          "snippet": "? _jsx(EmptyState, { text: \"\\u8FD8\\u6CA1\\u6709\\u5BF9\\u8BDD\\u3002\\u804A\\u804A\\u4F60\\u6700\\u8FD1\\u5728\\u770B\\u4EC0\\u4E48\\u3001\\u5BF9\\u4EC0\\u4E48\\u597D\\u5947\\uFF0C"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/types/client/dialogue.js",
-          "line": 262,
-          "snippet": ": null, handledCardCount > 0 ? _jsxs(\"div\", { className: css.hint, style: { textAlign: 'center' }, children: [\"\\u5DF2\\u5904\\u7406 \", handledCardCount, \" \\u5F20\\"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/types/client/dialogue.js",
-          "line": 264,
-          "snippet": "return (_jsxs(\"div\", { className: css.questionCard, children: [_jsx(\"div\", { className: css.dialogueKicker, children: \"\\u6709\\u70B9\\u7591\\u60D1\" }), _jsx(\"div\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/types/client/dialogue.js",
-          "line": 267,
-          "snippet": "return (_jsxs(\"div\", { className: css.turn, children: [quote !== null ? (_jsxs(\"div\", { className: css.replyQuote, children: [_jsx(\"span\", { children: \"\\u56DE\\u"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/types/client/dialogue.js",
-          "line": 268,
-          "snippet": "})] }), context !== null ? (_jsxs(\"div\", { className: css.contextBar, role: \"status\", children: [_jsxs(\"div\", { className: css.contextBarHead, children: [_jsx(\""
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/types/client/library.js",
-          "line": 203,
-          "snippet": "return (_jsxs(\"div\", { className: css.card, children: [_jsx(Thumb, { url: item.cover_url, title: item.title, kind: \"video\", platform: item.source_platform }), _"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/types/client/library.js",
-          "line": 342,
-          "snippet": "? _jsx(EmptyState, { text: \"\\u672C\\u5730\\u6761\\u76EE\\u5DF2\\u5168\\u90E8\\u540C\\u6B65\\u5230 B \\u7AD9\\uFF1B\\u5DF2\\u540C\\u6B65\\u6761\\u76EE\\u5DF2\\u4ECE\\u4FA7\\u680F\\u9"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/types/client/library.js",
-          "line": 470,
-          "snippet": "? _jsx(EmptyState, { text: \"\\u8FD9\\u4E2A\\u5206\\u7C7B\\u8FD8\\u6CA1\\u6709\\u8BB0\\u5F55\\u3002\" })"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/types/client/library.js",
-          "line": 476,
-          "snippet": "} }) })] })] }, item.item_key))), hasMore ? (_jsx(\"button\", { type: \"button\", className: css.loadMore, disabled: loadingMore, onClick: () => void loadMore(), ch"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "ac13101186e4e35780a1f1e4a68029ae903bf39b",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 130,
       "osv": {
         "status": "skipped",
         "findings": 0
