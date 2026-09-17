@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-17T06:03:38.094Z",
+  "generated_at": "2026-09-17T08:41:22.588Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -17422,18 +17422,9 @@
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1",
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#2",
         "依赖 adm-zip@0.6.0 存在已知漏洞（GHSA-vwc7-r8mq-g2x9） @ <dependencies>",
-        "依赖 pnpm@11.8.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-vq4v-j7r6-jq4m, GHSA-vx52-2968-3vc6） @ <dependencies>",
-        "读取环境变量（可能包含敏感信息） @ apps/acryl-cli/lib-publish/index.js:402"
+        "依赖 pnpm@11.8.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-vq4v-j7r6-jq4m, GHSA-vx52-2968-3vc6） @ <dependencies>"
       ],
       "risk_evidence": [
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#1"
-        },
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#2"
-        },
         {
           "explanation": "依赖 adm-zip@0.6.0 存在已知漏洞（GHSA-vwc7-r8mq-g2x9）",
           "file": "<dependencies>"
@@ -17449,18 +17440,66 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 adm-zip@0.6.0 存在已知漏洞（GHSA-vwc7-r8mq-g2x9）",
-        "依赖 pnpm@11.8.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-vq4v-j7r6-jq4m, GHSA-vx52-2968-3vc6）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "9384352d38faaef5ae695f5431b582d8ec846017",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-16T08:37:12.729Z"
+    },
+    {
+      "id": "dsh-tauri/deepseek-harness-desktop",
+      "name": "deepseek-harness-desktop",
+      "author": "dsh-tauri",
+      "description": "DeepSeek Harness Tauri 桌面版 | Only 5mb installer, zero environment setup, preset plugins, Windows / macOS / Linux.",
+      "repo_url": "https://github.com/dsh-tauri/deepseek-harness-desktop",
+      "homepage": "https://dshtauri.mintlify.site",
+      "stars": 2189,
+      "forks": 137,
+      "open_issues": 21,
+      "watchers": 0,
+      "pushed_at": "2026-09-17T06:22:31Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "deepseek",
+        "deepseek-harness",
+        "desktop",
+        "dsh",
+        "dsh-desktop",
+        "dsh-plugin",
+        "tauri"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "首次启动引导中提供的插件，按需勾选安装：",
+        "en": "- ⚡️ Zero setup — First launch needs no Node runtime or Harness core; uses the local environment by default and does not modify your existing system environment."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取环境变量（可能包含敏感信息） @ archive/dsh-tauri/src/host/storage/index.ts:23"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "archive/dsh-tauri/src/host/storage/index.ts",
+          "line": 23
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "7dcc24039263adb594373fd61807c118a98c12b5",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-17T08:41:22.588Z"
     }
   ]
 }

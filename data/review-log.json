@@ -1,6 +1,133 @@
 {
-  "updated_at": "2026-09-16T08:37:12.729Z",
+  "updated_at": "2026-09-17T08:41:22.588Z",
   "decisions": [
+    {
+      "id": "dsh-tauri/deepseek-harness-desktop",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "7dcc24039263adb594373fd61807c118a98c12b5",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 1133,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-17T08:41:22.588Z"
+    },
+    {
+      "id": "xing-shuyin/pi-web-ui",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "code",
+        "reason": "依赖 DSH/Cordis 生态包 @deepseek-ai/dsh-sdk-jsonrpc-server"
+      },
+      "findings": [
+        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "子进程以 shell 模式启动（spawn(...,{shell:true})）",
+        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+        "依赖 @xmldom/xmldom@0.9.8 存在已知漏洞（GHSA-27p8-2357-5qqv, GHSA-2v35-w6hq-6mfw, GHSA-3px3-54cx-rmw9）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#4",
+          "line": 0,
+          "snippet": "@codemirror/commands"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "plugins/db-client/client/entry.mjs",
+          "line": 418,
+          "snippet": "root.addEventListener(\"keydown\", (ev) => {"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "plugins/db-client/client/entry.mjs",
+          "line": 780,
+          "snippet": "input.addEventListener(\"keydown\", (ev) => {"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "plugins/db-client/client/entry.mjs",
+          "line": 911,
+          "snippet": "docFilterInput.addEventListener(\"keydown\", (ev) => {"
+        },
+        {
+          "rule": "spawn-shell",
+          "severity": "critical",
+          "explanation": "子进程以 shell 模式启动（spawn(...,{shell:true})）",
+          "file": "plugins/db-client/index.mjs",
+          "line": 932,
+          "snippet": "// 才走 shell，且命令拼成单个字符串自行加引号——spawn(cmd, [...args],"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "ws@8.18.0"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 @xmldom/xmldom@0.9.8 存在已知漏洞（GHSA-27p8-2357-5qqv, GHSA-2v35-w6hq-6mfw, GHSA-3px3-54cx-rmw9）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "@xmldom/xmldom@0.9.8"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "210b3fee663692196a85ebc47af033bd880ed7c3",
+      "review_mode": "full",
+      "scanned_files": 4,
+      "total_files": 688,
+      "osv": {
+        "status": "ok",
+        "findings": 2
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-17T08:41:22.588Z"
+    },
     {
       "id": "acryldev/acryl",
       "verdict": "flagged",
@@ -62745,88 +62872,6 @@
       "total_files": 1061,
       "osv": {
         "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Chinesezjc/dsh-interconnect",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
-      "privacy_notes": [],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "build.mjs",
-          "line": 51,
-          "snippet": "// `tsc` emits them separately from the same sources into `lib/types`."
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "32ca0ec0441983f7eded7c6d2bfbecfda02087b0",
-      "review_mode": "full",
-      "scanned_files": 8,
-      "total_files": 21,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "WeirdSky924/agent-handoff-skill",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "code",
-        "reason": "存在 Cordis/DSH 落地标记（cordis.patch.yml/.dsh-plugin/dsh.client 等）"
-      },
-      "findings": [],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [],
-      "trust_notes": [
-        "未声明开源许可证"
-      ],
-      "reviewed_commit": "889826fb1da6de7ff3f310e7d78f73af2a45d59e",
-      "review_mode": "full",
-      "scanned_files": 1,
-      "total_files": 17,
-      "osv": {
-        "status": "skipped",
         "findings": 0
       },
       "llm_review": {
