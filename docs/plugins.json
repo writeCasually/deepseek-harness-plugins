@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-19T01:07:35.360Z",
+  "generated_at": "2026-09-19T08:05:14.900Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -17496,6 +17496,104 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-17T08:41:22.588Z"
+    },
+    {
+      "id": "dataelement/dsh-desktop",
+      "name": "dsh-desktop",
+      "author": "dataelement",
+      "description": "DSHDesktop：DeepSeek Harness Desktop / DeepSeek Harness 桌面版",
+      "repo_url": "https://github.com/dataelement/dsh-desktop",
+      "homepage": "https://dshdesktop.com",
+      "stars": 7557,
+      "forks": 323,
+      "open_issues": 122,
+      "watchers": 0,
+      "pushed_at": "2026-09-18T13:50:02Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "agent",
+        "apps",
+        "deepseek",
+        "deepseek-harness",
+        "deepseek-harness-desktop",
+        "desktop",
+        "dsh-plugin",
+        "dsh-plugin-desktop",
+        "dshdesktop",
+        "harness"
+      ],
+      "category": "plugin",
+      "kind": "dsh-client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.client manifest",
+      "description_i18n": {
+        "zh": "我们提供稳定版和预览版：稳定版可在官网下载，推荐日常使用；预览版可在 GitHub Releases 中选择标记为 Pre-release 的版本。",
+        "en": "We offer stable and preview releases: download the stable release, recommended for everyday use, from our official website. To try a preview release, choose a version marked Pre-release on GitHub Releases."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json",
+        "监听键盘输入事件 @ src/preload/index.ts:1174",
+        "依赖 fflate@0.8.2 存在已知漏洞（GHSA-px8p-9vwx-vf98） @ <dependencies>",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ packages/dsh-desktop-market-installer/index.js",
+        "读取环境变量（可能包含敏感信息） @ packages/ppt-runtime/core/lib/index.js:3669",
+        "访问第三方网络地址（如 dshdesktop.com） @ src/main/desktop-service/index.ts:25",
+        "访问第三方网络地址（如 w3.org） @ packages/ppt-runtime/core/lib/bin.js:1044"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/preload/index.ts",
+          "line": 1174,
+          "confidence": 1
+        },
+        {
+          "explanation": "依赖 fflate@0.8.2 存在已知漏洞（GHSA-px8p-9vwx-vf98）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+          "file": "packages/dsh-desktop-market-installer/index.js"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "packages/ppt-runtime/core/lib/index.js",
+          "line": 3669
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dshdesktop.com）",
+          "file": "src/main/desktop-service/index.ts",
+          "line": 25
+        },
+        {
+          "explanation": "访问第三方网络地址（如 w3.org）",
+          "file": "packages/ppt-runtime/core/lib/bin.js",
+          "line": 1044
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 dshdesktop.com）",
+        "访问第三方网络地址（如 w3.org）"
+      ],
+      "security_notes": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+        "监听键盘输入事件",
+        "依赖 fflate@0.8.2 存在已知漏洞（GHSA-px8p-9vwx-vf98）"
+      ],
+      "reviewed_commit": "faef07b3131cd044a2610c6045d4eaa7d066627e",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-19T08:05:14.900Z"
     }
   ]
 }
