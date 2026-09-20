@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-20T06:06:42.546Z",
+  "generated_at": "2026-09-20T08:37:21.908Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -17533,15 +17533,11 @@
         "zh": "我们提供稳定版和预览版：稳定版可在官网下载，推荐日常使用；预览版可在 GitHub Releases 中选择标记为 Pre-release 的版本。",
         "en": "We offer stable and preview releases: download the stable release, recommended for everyday use, from our official website. To try a preview release, choose a version marked Pre-release on GitHub Releases."
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
         "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json",
-        "监听键盘输入事件 @ src/preload/index.ts:1174",
         "依赖 fflate@0.8.2 存在已知漏洞（GHSA-px8p-9vwx-vf98） @ <dependencies>",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ packages/dsh-desktop-market-installer/index.js",
-        "读取环境变量（可能包含敏感信息） @ packages/ppt-runtime/core/lib/index.js:3669",
-        "访问第三方网络地址（如 dshdesktop.com） @ src/main/desktop-service/index.ts:25",
-        "访问第三方网络地址（如 w3.org） @ packages/ppt-runtime/core/lib/bin.js:1044"
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ packages/dsh-desktop-market-installer/index.js"
       ],
       "risk_evidence": [
         {
@@ -17579,21 +17575,359 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 dshdesktop.com）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-        "监听键盘输入事件",
-        "依赖 fflate@0.8.2 存在已知漏洞（GHSA-px8p-9vwx-vf98）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "faef07b3131cd044a2610c6045d4eaa7d066627e",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-19T08:05:14.900Z"
+    },
+    {
+      "id": "loopx-project/loopx",
+      "name": "loopx",
+      "author": "loopx-project",
+      "description": "Long-horizon agent control plane for durable, governed work across Codex, Claude Code, and other harnesses.",
+      "repo_url": "https://github.com/loopx-project/loopx",
+      "homepage": "https://loopx-project.github.io/loopx/",
+      "stars": 5908,
+      "forks": 560,
+      "open_issues": 115,
+      "watchers": 0,
+      "pushed_at": "2026-09-20T08:23:48Z",
+      "archived": false,
+      "language": "Python",
+      "license": "Apache-2.0",
+      "topics": [
+        "agent-control-plane",
+        "agent-harness",
+        "agent-ops",
+        "ai-agents",
+        "codex",
+        "dsh-plugin",
+        "long-horizon",
+        "long-horizon-agents",
+        "loop-engineering",
+        "loopx",
+        "workflow-automation"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "- 开发者手册 - 从控制面基础到项目接入和开发者贡献的双语学习路径。简体中文 · English - 快速开始 - 安装、连接项目并运行第一个受治理的 Loop。指南 - 文档站 - 完整参考与运维文档。LoopX Docs",
+        "en": "- Developer Book - the curated bilingual path from control-plane foundations to project onboarding and developer contributions. 中文版 · English - Getting started - install, connect a project, and run your first governed loop. Guide - Docs - the full reference"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#5",
+        "读取环境变量（可能包含敏感信息） @ examples/dsh-loopx-demo/src/cli.js:3"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#5"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "examples/dsh-loopx-demo/src/cli.js",
+          "line": 3
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行"
+      ],
+      "reviewed_commit": "4eb6ea9eed3a2e374933b233b62bd46419046263",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-20T08:37:21.908Z"
+    },
+    {
+      "id": "ranxianglei/billion-context",
+      "name": "billion-context",
+      "author": "ranxianglei",
+      "description": "基本稳定可用 100K tokens is enough. Universal context-compression proxy for ALL AI coding agents,10w上下文足矣",
+      "repo_url": "https://github.com/ranxianglei/billion-context",
+      "homepage": "https://github.com/ranxianglei/billion-context",
+      "stars": 210,
+      "forks": 26,
+      "open_issues": 9,
+      "watchers": 0,
+      "pushed_at": "2026-09-20T08:32:32Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "AI 编程助手的 通用上下文压缩代理",
+        "en": "Universal context-compression proxy for AI coding agents"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 host） @ src/cli.ts:224",
+        "访问第三方网络地址（如 host） @ src/cli.ts:97",
+        "读取环境变量（可能包含敏感信息） @ scripts/update-codex-models-snapshot.mjs:24",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 models.dev） @ scripts/update-registry-snapshot.mjs:26",
+        "访问第三方网络地址（如 models.dev） @ scripts/update-registry-snapshot.mjs:24",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ src/agent/dsh-native.ts:24"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 host）",
+          "file": "src/cli.ts",
+          "line": 224
+        },
+        {
+          "explanation": "访问第三方网络地址（如 host）",
+          "file": "src/cli.ts",
+          "line": 97
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "scripts/update-codex-models-snapshot.mjs",
+          "line": 24
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 models.dev）",
+          "file": "scripts/update-registry-snapshot.mjs",
+          "line": 26
+        },
+        {
+          "explanation": "访问第三方网络地址（如 models.dev）",
+          "file": "scripts/update-registry-snapshot.mjs",
+          "line": 24
+        },
+        {
+          "explanation": "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+          "file": "src/agent/dsh-native.ts",
+          "line": 24
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 host）",
+        "访问第三方网络地址（如 host）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 models.dev）",
+        "访问第三方网络地址（如 models.dev）",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "d08dafc815600ce718a1679bce4d16e1b8b32368",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-20T08:37:21.908Z"
+    },
+    {
+      "id": "VDERR/echocat-skill-panel-3.0",
+      "name": "echocat-skill-panel-3.0",
+      "author": "VDERR",
+      "description": "DSH 技能调用审计 + 应用内 skill 管理器",
+      "repo_url": "https://github.com/VDERR/echocat-skill-panel-3.0",
+      "homepage": "https://github.com/VDERR/echocat-skill-panel-3.0",
+      "stars": 201,
+      "forks": 6,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-09-18T01:45:33Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "cordis",
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "v3.0.0 · DSH Desktop Beta 的 cordis 插件：统计每轮对话用到了哪些 skill，并让你在应用里直接装卸它们。"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "监听键盘输入事件 @ src/client/install.js:454",
+        "存在 Base64 解码行为 @ src/install.js:1311",
+        "监听键盘输入事件 @ lib/client.js:1876",
+        "监听键盘输入事件 @ lib/client.js:3542",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:795",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:935",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:937",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:938",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:939",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:971",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:993",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:994",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:998",
+        "监听键盘输入事件 @ src/client/panel.js:1033",
+        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:56",
+        "使用动态代码执行（全局 eval / new Function） @ test/client-css.mjs:52",
+        "使用动态代码执行（全局 eval / new Function） @ tools/build-client.mjs:155",
+        "读取环境变量（可能包含敏感信息） @ src/index.js:222",
+        "访问第三方网络地址（如 example.com、gitlab.com） @ test/install.mjs:257",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ lib/client.js:2744",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x） @ test/client-bundle.mjs:26",
+        "访问第三方网络地址（如 x） @ test/client-bundle.mjs:650",
+        "访问第三方网络地址（如 dsh.internal） @ test/http.mjs:74"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/install.js",
+          "line": 454,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "src/install.js",
+          "line": 1311,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 1876,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 3542,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 795
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 935
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 937
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 938
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 939
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 971
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 993
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 994
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 998
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/panel.js",
+          "line": 1033,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "test/client-bundle.mjs",
+          "line": 56,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "test/client-css.mjs",
+          "line": 52,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "tools/build-client.mjs",
+          "line": 155,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "src/index.js",
+          "line": 222
+        },
+        {
+          "explanation": "访问第三方网络地址（如 example.com、gitlab.com）",
+          "file": "test/install.mjs",
+          "line": 257
+        },
+        {
+          "explanation": "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+          "file": "lib/client.js",
+          "line": 2744
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
+          "file": "test/client-bundle.mjs",
+          "line": 26
+        },
+        {
+          "explanation": "访问第三方网络地址（如 x）",
+          "file": "test/client-bundle.mjs",
+          "line": 650
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh.internal）",
+          "file": "test/http.mjs",
+          "line": 74
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 example.com、gitlab.com）",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
+        "访问第三方网络地址（如 x）",
+        "访问第三方网络地址（如 dsh.internal）"
+      ],
+      "security_notes": [
+        "监听键盘输入事件",
+        "存在 Base64 解码行为",
+        "存在编码转义字符串（疑似混淆）",
+        "使用动态代码执行（全局 eval / new Function）"
+      ],
+      "reviewed_commit": "5c50a0e65e3bbb09eb99766abf8df9c2a9b7c14c",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-20T08:37:21.908Z"
     }
   ]
 }
