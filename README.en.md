@@ -82,6 +82,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-desktop](https://github.com/dataelement/dsh-desktop) | [@dataelement](https://github.com/dataelement) | DSHDesktop：DeepSeek Harness Desktop / DeepSeek Harness 桌面版 |
 | [dsh-routing-suite](https://github.com/yjh051108/dsh-routing-suite) | [@yjh051108](https://github.com/yjh051108) | dsh-routing-suite — injector + router-standard kit: install the runtime injector first, then the task-aware reasoning-mode router preset (measured P1-P23). |
 | [ouroboros](https://github.com/Q00/ouroboros) | [@Q00](https://github.com/Q00) | Agent OS: the agent gets smarter on its own. We just hold the line: the grading command and expected result never make it into the success contract we hand it. Interview-gated, staged evaluation, budgeted evolution loop. MCP server, 13 runtimes: Claude Code, Codex CLI, Gemini CLI, OpenCode, Copilot, Kiro and more. |
+| [loopx](https://github.com/loopx-project/loopx) | [@loopx-project](https://github.com/loopx-project) | Long-horizon agent control plane for durable, governed work across Codex, Claude Code, and other harnesses. |
 | [loopx](https://github.com/huangruiteng/loopx) | [@huangruiteng](https://github.com/huangruiteng) | Long-horizon agent control plane for durable, governed work across Codex, Claude Code, and other harnesses. |
 | [BrowserSkill](https://github.com/Tencent/BrowserSkill) | [@Tencent](https://github.com/Tencent) | Let AI agents use your real, logged-in browser without interrupting your work. CLI + extension for browser automation across any shell-capable AI agent. |
 | [petdex](https://github.com/crafter-station/petdex) | [@crafter-station](https://github.com/crafter-station) | A public gallery of animated pets for Codex, Claude Code, DeepSeek Harness, Hermes, OpenCode, Gemini CLI, and more. |
@@ -186,12 +187,14 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-memory](https://github.com/FuRongJun-1999/dsh-memory) | [@FuRongJun-1999](https://github.com/FuRongJun-1999) | 白箱AGI架构探索：元认知（自我认知循环）、持续学习（知识飞轮）、世界模型（条件空间+语义时空图）、自我改进（自举纪律）、零LLM白箱管线与可审计信任护栏。 |
 | [dsh-popout-sidebar](https://github.com/e2mcc/dsh-popout-sidebar) | [@e2mcc](https://github.com/e2mcc) | A sidebar can pop out a separate browser tab (drag it to another monitor) |
 | [dsh-free-search](https://github.com/DDDMUC/dsh-free-search) | [@DDDMUC](https://github.com/DDDMUC) | Free web search provider for DeepSeek Harness - DuckDuckGo backend, no API key needed |
+| [billion-context](https://github.com/ranxianglei/billion-context) | [@ranxianglei](https://github.com/ranxianglei) | 基本稳定可用 100K tokens is enough. Universal context-compression proxy for ALL AI coding agents,10w上下文足矣 |
 | [deepseek-harness-remote](https://github.com/liguobao/deepseek-harness-remote) | [@liguobao](https://github.com/liguobao) | 基于 DeepSeek Harness 插件机制的多端远程访问方案，让桌面端与 Android 端安全连接并操作远程 Harness。（A multi-device remote access solution built on the DeepSeek Harness plugin system, enabling desktop and Android clients to securely connect to and operate a remote Harness.） |
 | [ds-harness-remote](https://github.com/liguobao/ds-harness-remote) | [@liguobao](https://github.com/liguobao) | 一个基于 DeepSeek Harness 插件机制构建的多端远程访问方案，通过安全、低延迟、端到端加密的 P2P 优先网络，支持从 PC、Android 和 Web 随时访问并操作远程 Harness。 (A multi-device remote access solution built on the DeepSeek Harness plugin system, enabling PC, Android, and Web clients to securely access and operate a remote Harness over a low-latency, end-to-end encrypted, P2P-first network.) |
 | [dsh-launcher](https://github.com/Ruler4396/dsh-launcher) | [@Ruler4396](https://github.com/Ruler4396) | DeepSeek Harness 的 Windows 轻量启动器：开机自启 + 独立小窗口，双击即用。 |
 | [dsh-liang-skin](https://github.com/kingOfSoySauce/dsh-liang-skin) | [@kingOfSoySauce](https://github.com/kingOfSoySauce) | DeepSeek Harness 滑动变阻器皮肤 |
 | [DeepSeekGUI](https://github.com/See-Sol-Lab/DeepSeekGUI) | [@See-Sol-Lab](https://github.com/See-Sol-Lab) | 基于 DeepSeek Harness（DSH）的稳定桌面端，集成Git、内置浏览器与记忆功能 \| DeepSeek Harness desktop GUI with local workspaces, Git, browser and memory. |
 | [TokenLedger](https://github.com/zh667/TokenLedger) | [@zh667](https://github.com/zh667) | Relay-site attributed token usage for DeepSeek Harness — zero config, no credentials |
+| [echocat-skill-panel-3.0](https://github.com/VDERR/echocat-skill-panel-3.0) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [pi2dsh](https://github.com/weijiafu14/pi2dsh) | [@weijiafu14](https://github.com/weijiafu14) | Bridge the Pi and DeepSeek Harness ecosystems: one Pi Host ABI runs unmodified Pi extensions as native DSH plugins. 打通 Pi 与 DSH 生态。 |
 | [dsh-evolve-modes](https://github.com/GraySilver/dsh-evolve-modes) | [@GraySilver](https://github.com/GraySilver) | 让 Agent 的工作方式可组合、可审查、可持续改进，最终实现 Agent Self Evoling。 DeepSeek Harness Web plugin with composable task controls and isolated, human-reviewed self-evolution. |
 | [seektty](https://github.com/Hilbert-beinghappy/seektty) | [@Hilbert-beinghappy](https://github.com/Hilbert-beinghappy) | 面向 DeepSeek Harness 的 Claude Code 风格终端界面，支持 Windows、macOS 与 Linux，兼容透明终端、VS Code 主题和自定义配色。 |
@@ -277,7 +280,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 | [awesome-dsh-plugin](https://github.com/Anil-matcha/awesome-dsh-plugin) | [@Anil-matcha](https://github.com/Anil-matcha) | A curated list of plugins for DeepSeek Harness (dsh) - DeepSeek Harness plugin ecosystem |
 
-Includes 211 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 214 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 
