@@ -122,6 +122,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [Openwrite](https://github.com/LiPu-jpg/Openwrite) | [@LiPu-jpg](https://github.com/LiPu-jpg) | dsh-Openwrite：OpenWrite 的 DeepSeek Harness 小说创作插件，含统一创作 Agent、90 个小说工具、原生工作台与标准审稿 DAG |
 | [dshcode](https://github.com/whitelonng/dshcode) | [@whitelonng](https://github.com/whitelonng) | Community desktop companion for DeepSeek Harness — one-click Electron app for macOS and Windows |
 | [dsh-browser](https://github.com/Lum1104/dsh-browser) | [@Lum1104](https://github.com/Lum1104) | dsh plugin: Chrome sidebar extension that lets DeepSeek Harness operate your browser directly, no vision capabilities required. 一款 Chrome 侧边栏扩展程序，可让 DeepSeek Harness 直接操控您的浏览器，无需视觉能力。 |
+| [dsh-browser](https://github.com/omdsh-dev/dsh-browser) | [@omdsh-dev](https://github.com/omdsh-dev) | Chrome sidebar extension that lets DeepSeek Harness operate your browser directly, no vision capabilities required. 一款 Chrome 侧边栏扩展程序，可让 DeepSeek Harness 直接操控您的浏览器，无需视觉能力。 |
 | [dsh-pet](https://github.com/PC2005-cloud/dsh-pet) | [@PC2005-cloud](https://github.com/PC2005-cloud) | DSH 桌面宠物：一行命令装好即用的透明动画小桌宠，支持多开、大小位置随心配置；还内置 DIY 素材链，能用 AI 视频自造专属宠物 |
 | [Minke](https://github.com/lencx/Minke) | [@lencx](https://github.com/lencx) | 🐳 DeepSeek Harness Desktop |
 | [SkillCorpus](https://github.com/EverMind-AI/SkillCorpus) | [@EverMind-AI](https://github.com/EverMind-AI) | Open-source infrastructure that turns scattered SKILL.md files into curated, retrieval-ready agent-skill corpora—with retrieval and evaluation tooling included. |
@@ -197,6 +198,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [TokenLedger](https://github.com/zh667/TokenLedger) | [@zh667](https://github.com/zh667) | Relay-site attributed token usage for DeepSeek Harness — zero config, no credentials |
 | [pi2dsh](https://github.com/weijiafu14/pi2dsh) | [@weijiafu14](https://github.com/weijiafu14) | Bridge the Pi and DeepSeek Harness ecosystems: one Pi Host ABI runs unmodified Pi extensions as native DSH plugins. 打通 Pi 与 DSH 生态。 |
 | [echocat-skill-panel-3.0](https://github.com/VDERR/echocat-skill-panel-3.0) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
+| [echocat-skill-panel](https://github.com/VDERR/echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-evolve-modes](https://github.com/GraySilver/dsh-evolve-modes) | [@GraySilver](https://github.com/GraySilver) | 让 Agent 的工作方式可组合、可审查、可持续改进，最终实现 Agent Self Evoling。 DeepSeek Harness Web plugin with composable task controls and isolated, human-reviewed self-evolution. |
 | [seektty](https://github.com/Hilbert-beinghappy/seektty) | [@Hilbert-beinghappy](https://github.com/Hilbert-beinghappy) | 面向 DeepSeek Harness 的 Claude Code 风格终端界面，支持 Windows、macOS 与 Linux，兼容透明终端、VS Code 主题和自定义配色。 |
 | [dsh-data-agent](https://github.com/omdsh-dev/dsh-data-agent) | [@omdsh-dev](https://github.com/omdsh-dev) | Connect DSH to your database for conversational data analysis and actionable business insights. |
@@ -280,7 +282,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 | [awesome-dsh-plugin](https://github.com/Anil-matcha/awesome-dsh-plugin) | [@Anil-matcha](https://github.com/Anil-matcha) | A curated list of plugins for DeepSeek Harness (dsh) - DeepSeek Harness plugin ecosystem |
 
-Includes 214 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 216 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 
