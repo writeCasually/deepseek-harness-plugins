@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-21T06:12:46.745Z",
+  "generated_at": "2026-09-21T08:59:23.425Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -17621,14 +17621,9 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#5",
-        "读取环境变量（可能包含敏感信息） @ examples/dsh-loopx-demo/src/cli.js:3"
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#5"
       ],
       "risk_evidence": [
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#5"
-        },
         {
           "explanation": "读取环境变量（可能包含敏感信息）",
           "file": "examples/dsh-loopx-demo/src/cli.js",
@@ -17636,12 +17631,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "4eb6ea9eed3a2e374933b233b62bd46419046263",
       "source": "discovered",
       "review_status": "flagged",
@@ -17674,15 +17665,8 @@
         "zh": "AI 编程助手的 通用上下文压缩代理",
         "en": "Universal context-compression proxy for AI coding agents"
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 host） @ src/cli.ts:224",
-        "访问第三方网络地址（如 host） @ src/cli.ts:97",
-        "读取环境变量（可能包含敏感信息） @ scripts/update-codex-models-snapshot.mjs:24",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 models.dev） @ scripts/update-registry-snapshot.mjs:26",
-        "访问第三方网络地址（如 models.dev） @ scripts/update-registry-snapshot.mjs:24",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ src/agent/dsh-native.ts:24"
-      ],
+      "risk_level": "high",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 host）",
@@ -17716,14 +17700,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 host）",
-        "访问第三方网络地址（如 host）",
-        "读取环境变量（可能包含敏感信息）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 models.dev）",
-        "访问第三方网络地址（如 models.dev）",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "d08dafc815600ce718a1679bce4d16e1b8b32368",
       "source": "discovered",
@@ -17758,32 +17735,8 @@
       "description_i18n": {
         "zh": "v3.0.0 · DSH Desktop Beta 的 cordis 插件：统计每轮对话用到了哪些 skill，并让你在应用里直接装卸它们。"
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "监听键盘输入事件 @ src/client/install.js:454",
-        "存在 Base64 解码行为 @ src/install.js:1311",
-        "监听键盘输入事件 @ lib/client.js:1876",
-        "监听键盘输入事件 @ lib/client.js:3542",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:795",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:935",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:937",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:938",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:939",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:971",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:993",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:994",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:998",
-        "监听键盘输入事件 @ src/client/panel.js:1033",
-        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:56",
-        "使用动态代码执行（全局 eval / new Function） @ test/client-css.mjs:52",
-        "使用动态代码执行（全局 eval / new Function） @ tools/build-client.mjs:155",
-        "读取环境变量（可能包含敏感信息） @ src/index.js:222",
-        "访问第三方网络地址（如 example.com、gitlab.com） @ test/install.mjs:257",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ lib/client.js:2744",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x） @ test/client-bundle.mjs:26",
-        "访问第三方网络地址（如 x） @ test/client-bundle.mjs:650",
-        "访问第三方网络地址（如 dsh.internal） @ test/http.mjs:74"
-      ],
+      "risk_level": "high",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "监听键盘输入事件",
@@ -17910,25 +17863,332 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 example.com、gitlab.com）",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
-        "访问第三方网络地址（如 x）",
-        "访问第三方网络地址（如 dsh.internal）"
-      ],
-      "security_notes": [
-        "监听键盘输入事件",
-        "存在 Base64 解码行为",
-        "存在编码转义字符串（疑似混淆）",
-        "使用动态代码执行（全局 eval / new Function）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "5c50a0e65e3bbb09eb99766abf8df9c2a9b7c14c",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-20T08:37:21.908Z",
       "description_i18n_checked_at": "2026-09-20T12:14:46.712Z"
+    },
+    {
+      "id": "omdsh-dev/dsh-browser",
+      "name": "dsh-browser",
+      "author": "omdsh-dev",
+      "description": "Chrome sidebar extension that lets DeepSeek Harness operate your browser directly, no vision capabilities required. 一款 Chrome 侧边栏扩展程序，可让 DeepSeek Harness 直接操控您的浏览器，无需视觉能力。",
+      "repo_url": "https://github.com/omdsh-dev/dsh-browser",
+      "homepage": "https://github.com/omdsh-dev/dsh-browser",
+      "stars": 706,
+      "forks": 51,
+      "open_issues": 14,
+      "watchers": 0,
+      "pushed_at": "2026-09-20T09:06:43Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "browser-automation",
+        "chrome-extension",
+        "coding-agent",
+        "cordis",
+        "deepseek",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "把 DeepSeek Harness 连接到你正在使用的 Chrome 或 Firefox 标签页。模型可以读取页面内容、操作控件、导航和管理标签页，同时保留登录态、会话和 Cookie。侧边栏提供对话界面。",
+        "en": "Connect DeepSeek Harness to the Chrome or Firefox tabs you are already using. The model can read page content, operate controls, navigate, and manage tabs while preserving your login state, session, and cookies. A side panel or sidebar provides the"
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】硬编码敏感凭据（疑似硬编码密钥） @ benchmark/lib/extension-browser.mjs:64",
+        "读取环境变量（可能包含敏感信息） @ benchmark/lib/chromium.mjs:20"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "硬编码敏感凭据（疑似硬编码密钥）",
+          "file": "benchmark/lib/extension-browser.mjs",
+          "line": 64
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "benchmark/lib/chromium.mjs",
+          "line": 20
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "883515ff7d68c837b0be6d42563ecc4129d3d77c",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-21T08:59:23.425Z"
+    },
+    {
+      "id": "VDERR/echocat-skill-panel",
+      "name": "echocat-skill-panel",
+      "author": "VDERR",
+      "description": "DSH 技能调用审计 + 应用内 skill 管理器",
+      "repo_url": "https://github.com/VDERR/echocat-skill-panel",
+      "homepage": "https://github.com/VDERR/echocat-skill-panel",
+      "stars": 201,
+      "forks": 6,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-09-21T06:17:59Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "cordis",
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "v4.2.0 · DSH Desktop Beta 的 cordis 插件：统计每轮对话用到了哪些 skill，并让你在应用里直接装卸、更新它们。"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "监听键盘输入事件 @ src/client/install.js:712",
+        "存在 Base64 解码行为 @ src/install.js:1832",
+        "监听键盘输入事件 @ lib/client.js:5741",
+        "监听键盘输入事件 @ lib/client.js:8033",
+        "存在疑似混淆内容（长 Base64 块） @ lib/client.js:3811",
+        "存在疑似混淆内容（长 Base64 块） @ lib/client.js:3813",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:168",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:699",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:700",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:701",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:702",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:704",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:706",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:708",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:709",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:1398",
+        "存在疑似混淆内容（长 Base64 块） @ src/client/logo.js:12",
+        "存在疑似混淆内容（长 Base64 块） @ src/client/logo.js:14",
+        "监听键盘输入事件 @ src/client/panel.js:1657",
+        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:85",
+        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:1190",
+        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:1198",
+        "使用动态代码执行（全局 eval / new Function） @ test/client-css.mjs:57",
+        "使用动态代码执行（全局 eval / new Function） @ test/client-css.mjs:69",
+        "使用动态代码执行（全局 eval / new Function） @ test/ui-polish.mjs:56",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.internal） @ src/index.js:262",
+        "访问第三方网络地址（如 dsh.internal） @ src/index.js:1119",
+        "读取环境变量（可能包含敏感信息） @ src/install.js:177",
+        "访问第三方网络地址（如 example.com、gitlab.com） @ test/install.mjs:270",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ lib/client.js:6622",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x） @ test/client-bundle.mjs:26",
+        "访问第三方网络地址（如 x） @ test/client-bundle.mjs:400"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/install.js",
+          "line": 712,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "src/install.js",
+          "line": 1832,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 5741,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 8033,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/client.js",
+          "line": 3811
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/client.js",
+          "line": 3813
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 168
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 699
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 700
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 701
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 702
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 704
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 706
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 708
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 709
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 1398
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "src/client/logo.js",
+          "line": 12
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "src/client/logo.js",
+          "line": 14
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/panel.js",
+          "line": 1657,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "test/client-bundle.mjs",
+          "line": 85,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "test/client-bundle.mjs",
+          "line": 1190,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "test/client-bundle.mjs",
+          "line": 1198,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "test/client-css.mjs",
+          "line": 57,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "test/client-css.mjs",
+          "line": 69,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "test/ui-polish.mjs",
+          "line": 56,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.internal）",
+          "file": "src/index.js",
+          "line": 262
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh.internal）",
+          "file": "src/index.js",
+          "line": 1119
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "src/install.js",
+          "line": 177
+        },
+        {
+          "explanation": "访问第三方网络地址（如 example.com、gitlab.com）",
+          "file": "test/install.mjs",
+          "line": 270
+        },
+        {
+          "explanation": "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+          "file": "lib/client.js",
+          "line": 6622
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
+          "file": "test/client-bundle.mjs",
+          "line": 26
+        },
+        {
+          "explanation": "访问第三方网络地址（如 x）",
+          "file": "test/client-bundle.mjs",
+          "line": 400
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.internal）",
+        "访问第三方网络地址（如 dsh.internal）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 example.com、gitlab.com）",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
+        "访问第三方网络地址（如 x）"
+      ],
+      "security_notes": [
+        "监听键盘输入事件",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在编码转义字符串（疑似混淆）",
+        "使用动态代码执行（全局 eval / new Function）"
+      ],
+      "reviewed_commit": "ad0fdacb8dd6ac360eb81033ffbbe57adf7f4cd9",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-21T08:59:23.425Z"
     }
   ]
 }
