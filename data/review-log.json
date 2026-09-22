@@ -1,6 +1,32 @@
 {
-  "updated_at": "2026-09-21T08:59:23.425Z",
+  "updated_at": "2026-09-22T08:34:34.792Z",
   "decisions": [
+    {
+      "id": "yyh-001/DSH-X",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "d7436fc5e550b0c8b7feab855443838b566d028e",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 75,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-09-22T08:34:34.792Z"
+    },
     {
       "id": "lingfengQAQ/webnovel-writer",
       "verdict": "skip",
@@ -63031,70 +63057,6 @@
       "osv": {
         "status": "skipped",
         "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "vlln/plugin-registry",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 yaml@2.4.0 存在已知漏洞（GHSA-48c2-rrv3-qjmp）"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 example.com）",
-        "访问第三方网络地址（如 x）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 registry.npmmirror.com）",
-        "访问第三方网络地址（如 registry.npmmirror.com）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "npm run build"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "cordis"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 yaml@2.4.0 存在已知漏洞（GHSA-48c2-rrv3-qjmp）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "yaml@2.4.0"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "b0ae1ea03a6c04c548dd10bf58f0fe7a70a92b29",
-      "review_mode": "full",
-      "scanned_files": 23,
-      "total_files": 72,
-      "osv": {
-        "status": "ok",
-        "findings": 1
       },
       "llm_review": {
         "status": "skipped",

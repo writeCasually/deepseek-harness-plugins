@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-22T06:05:06.933Z",
+  "generated_at": "2026-09-22T08:34:34.792Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -17906,10 +17906,7 @@
         "en": "Connect DeepSeek Harness to the Chrome or Firefox tabs you are already using. The model can read page content, operate controls, navigate, and manage tabs while preserving your login state, session, and cookies. A side panel or sidebar provides the"
       },
       "risk_level": "high",
-      "risk_notes": [
-        "【高风险，请自行审计】硬编码敏感凭据（疑似硬编码密钥） @ benchmark/lib/extension-browser.mjs:64",
-        "读取环境变量（可能包含敏感信息） @ benchmark/lib/chromium.mjs:20"
-      ],
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "硬编码敏感凭据（疑似硬编码密钥）",
@@ -17923,9 +17920,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "883515ff7d68c837b0be6d42563ecc4129d3d77c",
       "source": "discovered",
@@ -17960,41 +17955,8 @@
       "description_i18n": {
         "zh": "v4.2.0 · DSH Desktop Beta 的 cordis 插件：统计每轮对话用到了哪些 skill，并让你在应用里直接装卸、更新它们。"
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "监听键盘输入事件 @ src/client/install.js:712",
-        "存在 Base64 解码行为 @ src/install.js:1832",
-        "监听键盘输入事件 @ lib/client.js:5741",
-        "监听键盘输入事件 @ lib/client.js:8033",
-        "存在疑似混淆内容（长 Base64 块） @ lib/client.js:3811",
-        "存在疑似混淆内容（长 Base64 块） @ lib/client.js:3813",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:168",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:699",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:700",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:701",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:702",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:704",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:706",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:708",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:709",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:1398",
-        "存在疑似混淆内容（长 Base64 块） @ src/client/logo.js:12",
-        "存在疑似混淆内容（长 Base64 块） @ src/client/logo.js:14",
-        "监听键盘输入事件 @ src/client/panel.js:1657",
-        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:85",
-        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:1190",
-        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:1198",
-        "使用动态代码执行（全局 eval / new Function） @ test/client-css.mjs:57",
-        "使用动态代码执行（全局 eval / new Function） @ test/client-css.mjs:69",
-        "使用动态代码执行（全局 eval / new Function） @ test/ui-polish.mjs:56",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.internal） @ src/index.js:262",
-        "访问第三方网络地址（如 dsh.internal） @ src/index.js:1119",
-        "读取环境变量（可能包含敏感信息） @ src/install.js:177",
-        "访问第三方网络地址（如 example.com、gitlab.com） @ test/install.mjs:270",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ lib/client.js:6622",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x） @ test/client-bundle.mjs:26",
-        "访问第三方网络地址（如 x） @ test/client-bundle.mjs:400"
-      ],
+      "risk_level": "high",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "监听键盘输入事件",
@@ -18169,22 +18131,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.internal）",
-        "访问第三方网络地址（如 dsh.internal）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 example.com、gitlab.com）",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
-        "访问第三方网络地址（如 x）"
-      ],
-      "security_notes": [
-        "监听键盘输入事件",
-        "存在 Base64 解码行为",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在编码转义字符串（疑似混淆）",
-        "使用动态代码执行（全局 eval / new Function）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "ad0fdacb8dd6ac360eb81033ffbbe57adf7f4cd9",
       "source": "discovered",
       "review_status": "flagged",
