@@ -199,7 +199,9 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [TokenLedger](https://github.com/zh667/TokenLedger) | [@zh667](https://github.com/zh667) | Relay-site attributed token usage for DeepSeek Harness — zero config, no credentials |
 | [echocat-skill-panel-3.0](https://github.com/VDERR/echocat-skill-panel-3.0) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [echocat-skill-panel](https://github.com/VDERR/echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
+| [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-evolve-modes](https://github.com/GraySilver/dsh-evolve-modes) | [@GraySilver](https://github.com/GraySilver) | 让 Agent 的工作方式可组合、可审查、可持续改进，最终实现 Agent Self Evoling。 DeepSeek Harness Web plugin with composable task controls and isolated, human-reviewed self-evolution. |
+| [dsh-trading](https://github.com/zhu1090093659/dsh-trading) | [@zhu1090093659](https://github.com/zhu1090093659) | Agent-native trading terminal built on DeepSeek Harness. Crypto, US, CN and HK in one three-column GUI, 19+ hot-swappable connectors, dry-run by default with human approval on every live order. BYOK, no data redistribution. |
 | [dsh-data-agent](https://github.com/omdsh-dev/dsh-data-agent) | [@omdsh-dev](https://github.com/omdsh-dev) | Connect DSH to your database for conversational data analysis and actionable business insights. |
 | [seektty](https://github.com/Hilbert-beinghappy/seektty) | [@Hilbert-beinghappy](https://github.com/Hilbert-beinghappy) | 面向 DeepSeek Harness 的 Claude Code 风格终端界面，支持 Windows、macOS 与 Linux，兼容透明终端、VS Code 主题和自定义配色。 |
 | [Blue-Whale-Harness](https://github.com/leenkcool/Blue-Whale-Harness) | [@leenkcool](https://github.com/leenkcool) | 🐋 DeepSeek Harness 插件总目录 · The catalog of DSH plugins：1958 个仓库 / 1819 个真插件（Skills · MCP · Tools · UI · Orchestration），中英文搜索、分类筛选、STAR 排序 → leenkcool.github.io |
@@ -282,7 +284,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 | [awesome-dsh-plugin](https://github.com/Anil-matcha/awesome-dsh-plugin) | [@Anil-matcha](https://github.com/Anil-matcha) | A curated list of plugins for DeepSeek Harness (dsh) - DeepSeek Harness plugin ecosystem |
 
-Includes 216 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 218 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 
