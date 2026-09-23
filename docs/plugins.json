@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-23T01:26:11.180Z",
+  "generated_at": "2026-09-23T08:36:52.249Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -18138,6 +18138,375 @@
       "review_status": "flagged",
       "reviewed_at": "2026-09-21T08:59:23.425Z",
       "description_i18n_checked_at": "2026-09-21T13:58:26.380Z"
+    },
+    {
+      "id": "VDERR/dsh-echocat-skill-panel",
+      "name": "dsh-echocat-skill-panel",
+      "author": "VDERR",
+      "description": "DSH 技能调用审计 + 应用内 skill 管理器",
+      "repo_url": "https://github.com/VDERR/dsh-echocat-skill-panel",
+      "homepage": "https://github.com/VDERR/dsh-echocat-skill-panel",
+      "stars": 201,
+      "forks": 6,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-09-22T17:54:05Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "cordis",
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "> 5.0.0 改名版：包名与仓库名改为 dsh-echocat-skill-panel，功能与 4.4 完全一致。详见 5.0.0 更新说明。"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "监听键盘输入事件 @ src/client/install.js:714",
+        "存在 Base64 解码行为 @ src/install.js:1832",
+        "监听键盘输入事件 @ lib/client.js:6579",
+        "监听键盘输入事件 @ lib/client.js:7263",
+        "监听键盘输入事件 @ lib/client.js:8991",
+        "存在疑似混淆内容（长 Base64 块） @ lib/client.js:4647",
+        "存在疑似混淆内容（长 Base64 块） @ lib/client.js:4649",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:31",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:32",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:33",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:34",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:35",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:36",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:68",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:73",
+        "监听键盘输入事件 @ src/client/background-panel.js:49",
+        "存在疑似混淆内容（长 Base64 块） @ src/client/logo.js:12",
+        "存在疑似混淆内容（长 Base64 块） @ src/client/logo.js:14",
+        "监听键盘输入事件 @ src/client/panel.js:1670",
+        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:85",
+        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:1190",
+        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:1198",
+        "使用动态代码执行（全局 eval / new Function） @ test/client-css.mjs:57",
+        "使用动态代码执行（全局 eval / new Function） @ test/client-css.mjs:69",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.internal） @ src/index.js:262",
+        "访问第三方网络地址（如 dsh.internal） @ src/index.js:1119",
+        "读取环境变量（可能包含敏感信息） @ src/install.js:177",
+        "访问第三方网络地址（如 example.com、gitlab.com） @ test/install.mjs:270",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ lib/client.js:7580",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.invalid） @ test/background-settings.mjs:5",
+        "访问第三方网络地址（如 example.invalid） @ test/background-settings.mjs:12",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x） @ test/client-bundle.mjs:26",
+        "访问第三方网络地址（如 x） @ test/client-bundle.mjs:400"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/install.js",
+          "line": 714,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "src/install.js",
+          "line": 1832,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 6579,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 7263,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 8991,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/client.js",
+          "line": 4647
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/client.js",
+          "line": 4649
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 31
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 32
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 33
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 34
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 35
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 36
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 68
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 73
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/background-panel.js",
+          "line": 49,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "src/client/logo.js",
+          "line": 12
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "src/client/logo.js",
+          "line": 14
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/panel.js",
+          "line": 1670,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "test/client-bundle.mjs",
+          "line": 85,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "test/client-bundle.mjs",
+          "line": 1190,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "test/client-bundle.mjs",
+          "line": 1198,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "test/client-css.mjs",
+          "line": 57,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "test/client-css.mjs",
+          "line": 69,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.internal）",
+          "file": "src/index.js",
+          "line": 262
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh.internal）",
+          "file": "src/index.js",
+          "line": 1119
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "src/install.js",
+          "line": 177
+        },
+        {
+          "explanation": "访问第三方网络地址（如 example.com、gitlab.com）",
+          "file": "test/install.mjs",
+          "line": 270
+        },
+        {
+          "explanation": "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+          "file": "lib/client.js",
+          "line": 7580
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.invalid）",
+          "file": "test/background-settings.mjs",
+          "line": 5
+        },
+        {
+          "explanation": "访问第三方网络地址（如 example.invalid）",
+          "file": "test/background-settings.mjs",
+          "line": 12
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
+          "file": "test/client-bundle.mjs",
+          "line": 26
+        },
+        {
+          "explanation": "访问第三方网络地址（如 x）",
+          "file": "test/client-bundle.mjs",
+          "line": 400
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.internal）",
+        "访问第三方网络地址（如 dsh.internal）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 example.com、gitlab.com）",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.invalid）",
+        "访问第三方网络地址（如 example.invalid）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
+        "访问第三方网络地址（如 x）"
+      ],
+      "security_notes": [
+        "监听键盘输入事件",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在编码转义字符串（疑似混淆）",
+        "使用动态代码执行（全局 eval / new Function）"
+      ],
+      "reviewed_commit": "e89e08cd7c2babfeb0b8b1143e9061f93337be4d",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-23T08:36:52.249Z"
+    },
+    {
+      "id": "zhu1090093659/dsh-trading",
+      "name": "dsh-trading",
+      "author": "zhu1090093659",
+      "description": "Agent-native trading terminal built on DeepSeek Harness. Crypto, US, CN and HK in one three-column GUI, 19+ hot-swappable connectors, dry-run by default with human approval on every live order. BYOK, no data redistribution.",
+      "repo_url": "https://github.com/zhu1090093659/dsh-trading",
+      "homepage": "https://dsh-trading.win",
+      "stars": 199,
+      "forks": 21,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-09-19T01:54:00Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "NOASSERTION",
+      "topics": [
+        "agent-native",
+        "ai-agent",
+        "cryptocurrency",
+        "dsh",
+        "dsh-plugin",
+        "dsh-plugin-desktop",
+        "trading-terminal"
+      ],
+      "category": "distribution",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "DSH Trading（dsh-trading） 是基于 DeepSeek Harness（DSH）的 AI 交易终端，覆盖加密货币、美股、A 股和港股。在一个模块化工作区内整合市场行情、技术分析、AI 辅助投研与人工审批下单。订单默认 dry-run 模拟，实盘交易必须显式开启并经过审批。",
+        "en": "DSH Trading (dsh-trading) is an AI trading terminal built on DeepSeek Harness (DSH) for cryptocurrency, US equities, China A-shares and Hong Kong stocks. It brings market data, technical analysis, AI-assisted investment research and human-approved order"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ .agents/skills/company-analysis/references/wind-mcp-skill/scripts/cli.mjs",
+        "访问第三方网络地址（如 aifinmarket.wind.com.cn、mcp.wind.com.cn） @ .agents/skills/company-analysis/references/wind-mcp-skill/scripts/cli.mjs:14",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 aka.ms） @ desktop/src/main.cjs:78",
+        "访问第三方网络地址（如 aka.ms） @ desktop/src/main.cjs:298",
+        "读取环境变量（可能包含敏感信息） @ packages/base/src/index.ts:113",
+        "访问第三方网络地址（如 dsh.local、finance.chatwithai.icu） @ packages/client-ui-special-indicators/src/index.ts:5",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.local） @ packages/client-ui-trading/src/index.ts:218",
+        "访问第三方网络地址（如 dsh.local） @ packages/client-ui-trading/src/index.ts:250"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": ".agents/skills/company-analysis/references/wind-mcp-skill/scripts/cli.mjs"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 aifinmarket.wind.com.cn、mcp.wind.com.cn）",
+          "file": ".agents/skills/company-analysis/references/wind-mcp-skill/scripts/cli.mjs",
+          "line": 14
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 aka.ms）",
+          "file": "desktop/src/main.cjs",
+          "line": 78
+        },
+        {
+          "explanation": "访问第三方网络地址（如 aka.ms）",
+          "file": "desktop/src/main.cjs",
+          "line": 298
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "packages/base/src/index.ts",
+          "line": 113
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh.local、finance.chatwithai.icu）",
+          "file": "packages/client-ui-special-indicators/src/index.ts",
+          "line": 5
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.local）",
+          "file": "packages/client-ui-trading/src/index.ts",
+          "line": 218
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh.local）",
+          "file": "packages/client-ui-trading/src/index.ts",
+          "line": 250
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 aifinmarket.wind.com.cn、mcp.wind.com.cn）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 aka.ms）",
+        "访问第三方网络地址（如 aka.ms）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 dsh.local、finance.chatwithai.icu）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.local）",
+        "访问第三方网络地址（如 dsh.local）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "9f251c95b73005ecbda7706e0fd6dec77142708b",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-23T08:36:52.249Z"
     }
   ]
 }
