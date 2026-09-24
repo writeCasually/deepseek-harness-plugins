@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-24T06:05:35.832Z",
+  "generated_at": "2026-09-24T08:29:31.317Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -18167,42 +18167,8 @@
       "description_i18n": {
         "zh": "> 5.0.0 改名版：包名与仓库名改为 dsh-echocat-skill-panel，功能与 4.4 完全一致。详见 5.0.0 更新说明。"
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "监听键盘输入事件 @ src/client/install.js:714",
-        "存在 Base64 解码行为 @ src/install.js:1832",
-        "监听键盘输入事件 @ lib/client.js:6579",
-        "监听键盘输入事件 @ lib/client.js:7263",
-        "监听键盘输入事件 @ lib/client.js:8991",
-        "存在疑似混淆内容（长 Base64 块） @ lib/client.js:4647",
-        "存在疑似混淆内容（长 Base64 块） @ lib/client.js:4649",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:31",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:32",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:33",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:34",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:35",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:36",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:68",
-        "存在编码转义字符串（疑似混淆） @ lib/client.js:73",
-        "监听键盘输入事件 @ src/client/background-panel.js:49",
-        "存在疑似混淆内容（长 Base64 块） @ src/client/logo.js:12",
-        "存在疑似混淆内容（长 Base64 块） @ src/client/logo.js:14",
-        "监听键盘输入事件 @ src/client/panel.js:1670",
-        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:85",
-        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:1190",
-        "使用动态代码执行（全局 eval / new Function） @ test/client-bundle.mjs:1198",
-        "使用动态代码执行（全局 eval / new Function） @ test/client-css.mjs:57",
-        "使用动态代码执行（全局 eval / new Function） @ test/client-css.mjs:69",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.internal） @ src/index.js:262",
-        "访问第三方网络地址（如 dsh.internal） @ src/index.js:1119",
-        "读取环境变量（可能包含敏感信息） @ src/install.js:177",
-        "访问第三方网络地址（如 example.com、gitlab.com） @ test/install.mjs:270",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ lib/client.js:7580",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.invalid） @ test/background-settings.mjs:5",
-        "访问第三方网络地址（如 example.invalid） @ test/background-settings.mjs:12",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x） @ test/client-bundle.mjs:26",
-        "访问第三方网络地址（如 x） @ test/client-bundle.mjs:400"
-      ],
+      "risk_level": "high",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "监听键盘输入事件",
@@ -18383,24 +18349,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.internal）",
-        "访问第三方网络地址（如 dsh.internal）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 example.com、gitlab.com）",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.invalid）",
-        "访问第三方网络地址（如 example.invalid）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
-        "访问第三方网络地址（如 x）"
-      ],
-      "security_notes": [
-        "监听键盘输入事件",
-        "存在 Base64 解码行为",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在编码转义字符串（疑似混淆）",
-        "使用动态代码执行（全局 eval / new Function）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "e89e08cd7c2babfeb0b8b1143e9061f93337be4d",
       "source": "discovered",
       "review_status": "flagged",
@@ -18440,16 +18390,9 @@
         "zh": "DSH Trading（dsh-trading） 是基于 DeepSeek Harness（DSH）的 AI 交易终端，覆盖加密货币、美股、A 股和港股。在一个模块化工作区内整合市场行情、技术分析、AI 辅助投研与人工审批下单。订单默认 dry-run 模拟，实盘交易必须显式开启并经过审批。",
         "en": "DSH Trading (dsh-trading) is an AI trading terminal built on DeepSeek Harness (DSH) for cryptocurrency, US equities, China A-shares and Hong Kong stocks. It brings market data, technical analysis, AI-assisted investment research and human-approved order"
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ .agents/skills/company-analysis/references/wind-mcp-skill/scripts/cli.mjs",
-        "访问第三方网络地址（如 aifinmarket.wind.com.cn、mcp.wind.com.cn） @ .agents/skills/company-analysis/references/wind-mcp-skill/scripts/cli.mjs:14",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 aka.ms） @ desktop/src/main.cjs:78",
-        "访问第三方网络地址（如 aka.ms） @ desktop/src/main.cjs:298",
-        "读取环境变量（可能包含敏感信息） @ packages/base/src/index.ts:113",
-        "访问第三方网络地址（如 dsh.local、finance.chatwithai.icu） @ packages/client-ui-special-indicators/src/index.ts:5",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.local） @ packages/client-ui-trading/src/index.ts:218",
-        "访问第三方网络地址（如 dsh.local） @ packages/client-ui-trading/src/index.ts:250"
+        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ .agents/skills/company-analysis/references/wind-mcp-skill/scripts/cli.mjs"
       ],
       "risk_evidence": [
         {
@@ -18493,21 +18436,165 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 aifinmarket.wind.com.cn、mcp.wind.com.cn）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 aka.ms）",
-        "访问第三方网络地址（如 aka.ms）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 dsh.local、finance.chatwithai.icu）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.local）",
-        "访问第三方网络地址（如 dsh.local）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "9f251c95b73005ecbda7706e0fd6dec77142708b",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-23T08:36:52.249Z"
+    },
+    {
+      "id": "dream-num/univer-workspace",
+      "name": "univer-workspace",
+      "author": "dream-num",
+      "description": "An open-source Office workspace where people and AI agents create, collaborate, and review together.",
+      "repo_url": "https://github.com/dream-num/univer-workspace",
+      "homepage": "https://univer.ai",
+      "stars": 583,
+      "forks": 38,
+      "open_issues": 6,
+      "watchers": 0,
+      "pushed_at": "2026-09-24T08:25:56Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "topics": [
+        "board",
+        "docx",
+        "dsh-plugin",
+        "excel",
+        "local-first",
+        "notion-database",
+        "office",
+        "pptx",
+        "self-hosted",
+        "xlsx"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "一个让人类与 AI Agent 共同创作、协作和审阅的开源 Office 工作空间。",
+        "en": "An open-source Office workspace where people and AI agents create, collaborate, and review together."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取环境变量（可能包含敏感信息） @ apps/agent/desktop/src/main.cjs:182"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "apps/agent/desktop/src/main.cjs",
+          "line": 182
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "7a1d4d8d86784dfb0a30f293e27ea61c4063c130",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-24T08:29:31.317Z"
+    },
+    {
+      "id": "Miaotofu01/Study-Mate",
+      "name": "Study-Mate",
+      "author": "Miaotofu01",
+      "description": "你的AI学习搭档：定路线、讲知识、做项目，边学边做，学透一门科目",
+      "repo_url": "https://github.com/Miaotofu01/Study-Mate",
+      "homepage": "https://github.com/Miaotofu01/Study-Mate",
+      "stars": 251,
+      "forks": 14,
+      "open_issues": 4,
+      "watchers": 0,
+      "pushed_at": "2026-09-24T08:11:16Z",
+      "archived": false,
+      "language": "Python",
+      "license": "MIT",
+      "topics": [
+        "ai-tutor",
+        "dsh-plugin",
+        "education",
+        "learning-agents",
+        "self-directed-learning",
+        "self-study",
+        "self-study-learning",
+        "self-study-tools",
+        "spaced-repetition"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "本项目原先是vibe出来给自己用的一个小项目，没想到有这么多人喜欢。但是vibe出来的东西有很多的问题，包括但不限于「文档过于臃肿且充满AI味、可读性极差」、「海量且无用的防御性代码」、「混乱的功能模块」。"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "存在 Base64 解码行为 @ scripts/tests/browser/shot.mjs:90",
+        "读取环境变量（可能包含敏感信息） @ bin/studymate.mjs:71",
+        "读取本地凭据文件并发送到网络，可能泄露密钥 @ scripts/release/release.mjs",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/release/release.mjs",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ scripts/release/release.test.mjs",
+        "访问第三方网络地址（如 example.invalid） @ scripts/release/release.test.mjs:159",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ scripts/tests/browser/shot.mjs:72"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/tests/browser/shot.mjs",
+          "line": 90,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "bin/studymate.mjs",
+          "line": 71
+        },
+        {
+          "explanation": "读取本地凭据文件并发送到网络，可能泄露密钥",
+          "file": "scripts/release/release.mjs"
+        },
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "scripts/release/release.mjs"
+        },
+        {
+          "explanation": "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+          "file": "scripts/release/release.test.mjs"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 example.invalid）",
+          "file": "scripts/release/release.test.mjs",
+          "line": 159
+        },
+        {
+          "explanation": "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+          "file": "scripts/tests/browser/shot.mjs",
+          "line": 72
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取本地凭据文件并发送到网络，可能泄露密钥",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "访问第三方网络地址（如 example.invalid）",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）"
+      ],
+      "security_notes": [
+        "存在 Base64 解码行为"
+      ],
+      "reviewed_commit": "d8274f957503ffeded121ed89db8e371cd94287a",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-24T08:29:31.317Z"
     }
   ]
 }
