@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-25T01:24:45.783Z",
+  "generated_at": "2026-09-25T08:51:17.836Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -18479,10 +18479,8 @@
         "zh": "一个让人类与 AI Agent 共同创作、协作和审阅的开源 Office 工作空间。",
         "en": "An open-source Office workspace where people and AI agents create, collaborate, and review together."
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "读取环境变量（可能包含敏感信息） @ apps/agent/desktop/src/main.cjs:182"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "读取环境变量（可能包含敏感信息）",
@@ -18491,9 +18489,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "7a1d4d8d86784dfb0a30f293e27ea61c4063c130",
       "source": "discovered",
@@ -18534,15 +18530,11 @@
       "description_i18n": {
         "zh": "本项目原先是vibe出来给自己用的一个小项目，没想到有这么多人喜欢。但是vibe出来的东西有很多的问题，包括但不限于「文档过于臃肿且充满AI味、可读性极差」、「海量且无用的防御性代码」、「混乱的功能模块」。"
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
-        "存在 Base64 解码行为 @ scripts/tests/browser/shot.mjs:90",
-        "读取环境变量（可能包含敏感信息） @ bin/studymate.mjs:71",
         "读取本地凭据文件并发送到网络，可能泄露密钥 @ scripts/release/release.mjs",
         "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/release/release.mjs",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ scripts/release/release.test.mjs",
-        "访问第三方网络地址（如 example.invalid） @ scripts/release/release.test.mjs:159",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ scripts/tests/browser/shot.mjs:72"
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ scripts/release/release.test.mjs"
       ],
       "risk_evidence": [
         {
@@ -18580,17 +18572,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取本地凭据文件并发送到网络，可能泄露密钥",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "访问第三方网络地址（如 example.invalid）",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）"
-      ],
-      "security_notes": [
-        "存在 Base64 解码行为"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "d8274f957503ffeded121ed89db8e371cd94287a",
       "source": "discovered",
       "review_status": "flagged",
