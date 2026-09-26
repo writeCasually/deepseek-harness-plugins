@@ -1,6 +1,181 @@
 {
-  "updated_at": "2026-09-25T08:51:17.836Z",
+  "updated_at": "2026-09-26T08:37:36.146Z",
   "decisions": [
+    {
+      "id": "anywhere-labs/Agents-Anywhere",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+        "存在 Base64 解码行为",
+        "监听键盘输入事件",
+        "存在编码转义字符串（疑似混淆）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 example.com）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 docs.astral.sh）",
+        "访问第三方网络地址（如 docs.astral.sh）",
+        "访问第三方网络地址（如 agents-anywhere.com）",
+        "访问第三方网络地址（如 web.agents-anywhere.com）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#1",
+          "line": 0,
+          "snippet": "yarn build"
+        },
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#2",
+          "line": 0,
+          "snippet": "@codemirror/commands"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "desktop-workbench/electron/backend/index.ts",
+          "line": 104,
+          "snippet": "const parsed: unknown = JSON.parse(Buffer.from(encoded, \"base64\").toString(\"utf8\"));"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "dsh-bridge-next/src/client/features/onboarding/entry.tsx",
+          "line": 93,
+          "snippet": "document.addEventListener('keydown', onKeyDown)"
+        },
+        {
+          "rule": "hex-encoded",
+          "severity": "warning",
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "dsh-bridge-next/src/client/features/onboarding/entry.tsx",
+          "line": 17,
+          "snippet": "{ label: '加入内测交流群', url: 'https://github.com/anywhere-labs/Agents-Anywhere#%E4%BA%A4%E6%B5%81%E4%B8%8E%E5%8F%8D%E9%A6%88', icon: MessageCircle },"
+        }
+      ],
+      "trust_notes": [
+        "未声明开源许可证"
+      ],
+      "reviewed_commit": "3b71979f7ac8c28bff43a8b5f89f0e1df25c602f",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 3283,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-26T08:37:36.146Z"
+    },
+    {
+      "id": "corrinehu/dsh-workbuddy-connect",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取本地环境配置文件（dotenv .env）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 codebuddy.cn、copilot.tencent.com、workbuddy.ai）",
+        "访问第三方网络地址（如 codebuddy.cn、copilot.tencent.com、workbuddy.ai）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "npm run build"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/variants-D_oxWP_K.js",
+          "line": 3571,
+          "snippet": "const token = execFileSync(\"wmic\", ["
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/variants-D_oxWP_K.js",
+          "line": 3584,
+          "snippet": "const out = execFileSync(\"ps\", ["
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/variants-D_oxWP_K.js",
+          "line": 1515,
+          "snippet": "inner = JSON.parse(Buffer.from(wrapped[\"envelope\"], \"base64\").toString(\"utf8\"));"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/variants-D_oxWP_K.js",
+          "line": 1544,
+          "snippet": "decoded = Buffer.from(value, \"base64\");"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/variants-D_oxWP_K.js",
+          "line": 1664,
+          "snippet": "decoded = Buffer.from(secret, \"base64\");"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "09c3ffe3d84aa22cd7171fe5705d2b965e786134",
+      "review_mode": "full",
+      "scanned_files": 9,
+      "total_files": 94,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-26T08:37:36.146Z"
+    },
     {
       "id": "dream-num/univer-workspace",
       "verdict": "flagged",
@@ -62811,405 +62986,6 @@
       "review_mode": "full",
       "scanned_files": 28,
       "total_files": 81,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "omdsh-dev/dsh-open-in-vscode",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用动态代码执行（eval/new Function）",
-        "存在 Base64 解码行为",
-        "存在 Base64 解码行为",
-        "存在 Base64 解码行为",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在 Base64 解码行为",
-        "存在 Base64 解码行为",
-        "存在 Base64 解码行为",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）"
-      ],
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 json-schema.org）",
-        "访问第三方网络地址（如 json-schema.org）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "lib/index.js",
-          "line": 304,
-          "snippet": "schema.callback = new Function(\"return \" + schema.callback)();"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/index.js",
-          "line": 101,
-          "snippet": "return Buffer.from(source).toString(\"base64\");"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/index.js",
-          "line": 113,
-          "snippet": "return Uint8Array.from(atob(source), (c) => c.charCodeAt(0));"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/index.js",
-          "line": 2220,
-          "snippet": "const binaryString = atob(base643);"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 5391,
-          "snippet": "string: { unit: \"\\u062D\\u0631\\u0641\", verb: \"\\u0623\\u0646 \\u064A\\u062D\\u0648\\u064A\" },"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 5392,
-          "snippet": "file: { unit: \"\\u0628\\u0627\\u064A\\u062A\", verb: \"\\u0623\\u0646 \\u064A\\u062D\\u0648\\u064A\" },"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 5393,
-          "snippet": "array: { unit: \"\\u0639\\u0646\\u0635\\u0631\", verb: \"\\u0623\\u0646 \\u064A\\u062D\\u0648\\u064A\" },"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 5394,
-          "snippet": "set: { unit: \"\\u0639\\u0646\\u0635\\u0631\", verb: \"\\u0623\\u0646 \\u064A\\u062D\\u0648\\u064A\" }"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 5400,
-          "snippet": "regex: \"\\u0645\\u062F\\u062E\\u0644\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 5401,
-          "snippet": "email: \"\\u0628\\u0631\\u064A\\u062F \\u0625\\u0644\\u0643\\u062A\\u0631\\u0648\\u0646\\u064A\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 5402,
-          "snippet": "url: \"\\u0631\\u0627\\u0628\\u0637\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 5403,
-          "snippet": "emoji: \"\\u0625\\u064A\\u0645\\u0648\\u062C\\u064A\","
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/client.js",
-          "line": 1283,
-          "snippet": "const binaryString = atob(base643);"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/client.js",
-          "line": 2641,
-          "snippet": "atob(data);"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/client.js",
-          "line": 2698,
-          "snippet": "const parsedHeader = JSON.parse(atob(header));"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 4454,
-          "snippet": "string: { unit: \"\\u062D\\u0631\\u0641\", verb: \"\\u0623\\u0646 \\u064A\\u062D\\u0648\\u064A\" },"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 4455,
-          "snippet": "file: { unit: \"\\u0628\\u0627\\u064A\\u062A\", verb: \"\\u0623\\u0646 \\u064A\\u062D\\u0648\\u064A\" },"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 4456,
-          "snippet": "array: { unit: \"\\u0639\\u0646\\u0635\\u0631\", verb: \"\\u0623\\u0646 \\u064A\\u062D\\u0648\\u064A\" },"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 4457,
-          "snippet": "set: { unit: \"\\u0639\\u0646\\u0635\\u0631\", verb: \"\\u0623\\u0646 \\u064A\\u062D\\u0648\\u064A\" }"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 4463,
-          "snippet": "regex: \"\\u0645\\u062F\\u062E\\u0644\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 4464,
-          "snippet": "email: \"\\u0628\\u0631\\u064A\\u062F \\u0625\\u0644\\u0643\\u062A\\u0631\\u0648\\u0646\\u064A\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 4465,
-          "snippet": "url: \"\\u0631\\u0627\\u0628\\u0637\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 4466,
-          "snippet": "emoji: \"\\u0625\\u064A\\u0645\\u0648\\u062C\\u064A\","
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "8aed144abdc158a332aa73bce42fc217d962f751",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 54,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "omdsh-dev/dsh-notification",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）"
-      ],
-      "privacy_notes": [],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 431,
-          "snippet": "\"settings.title\": \"\\u4EFB\\u52A1\\u5B8C\\u6210\\u901A\\u77E5\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 432,
-          "snippet": "\"settings.subtitle\": \"\\u5F53 DSH \\u5B8C\\u6210\\u4E00\\u6B21\\u64CD\\u4F5C\\u65F6\\uFF0C\\u901A\\u8FC7\\u6D4F\\u89C8\\u5668\\u7CFB\\u7EDF\\u901A\\u77E5\\u63D0\\u9192\\u4F60\\uFF1B\\"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 433,
-          "snippet": "\"settings.enabled\": \"\\u542F\\u7528\\u901A\\u77E5\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 434,
-          "snippet": "\"settings.enabledDesc\": \"\\u5173\\u95ED\\u540E\\u4E0D\\u4F1A\\u5F39\\u51FA\\u4EFB\\u4F55\\u901A\\u77E5\\uFF0C\\u89C4\\u5219\\u4E0E\\u504F\\u597D\\u8BBE\\u7F6E\\u4ECD\\u4F1A\\u4FDD\\u7"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 435,
-          "snippet": "\"settings.permission.title\": \"\\u6D4F\\u89C8\\u5668\\u6743\\u9650\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 436,
-          "snippet": "\"settings.permission.desc\": \"\\u901A\\u77E5\\u9700\\u8981\\u6D4F\\u89C8\\u5668\\u6388\\u6743\\u3002\\u70B9\\u51FB\\u4E0B\\u65B9\\u6309\\u94AE\\u6388\\u6743\\uFF0C\\u7136\\u540E\\u53D"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 438,
-          "snippet": "\"settings.permission.denied\": \"\\u5DF2\\u62D2\\u7EDD\\uFF08\\u8BF7\\u5728\\u6D4F\\u89C8\\u5668\\u5730\\u5740\\u680F\\u7684\\u7AD9\\u70B9\\u8BBE\\u7F6E\\u4E2D\\u91CD\\u65B0\\u5F00\\u5"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 440,
-          "snippet": "\"settings.permission.defaultHint\": \"\\u901A\\u77E5\\u6743\\u9650\\u5C1A\\u672A\\u6388\\u4E88\\uFF1A\\u8BF7\\u5148\\u70B9\\u51FB\\u300C\\u8BF7\\u6C42\\u901A\\u77E5\\u6743\\u9650\\u30"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 441,
-          "snippet": "\"settings.permission.deniedHint\": \"\\u901A\\u77E5\\u6743\\u9650\\u5DF2\\u88AB\\u62D2\\u7EDD\\uFF1A\\u8BF7\\u5728\\u6D4F\\u89C8\\u5668\\u5730\\u5740\\u680F\\u5DE6\\u4FA7\\u7684\\u7AD"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 442,
-          "snippet": "\"settings.permission.request\": \"\\u8BF7\\u6C42\\u901A\\u77E5\\u6743\\u9650\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 443,
-          "snippet": "\"settings.permission.test\": \"\\u53D1\\u9001\\u6D4B\\u8BD5\\u901A\\u77E5\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 444,
-          "snippet": "\"settings.permission.testSent\": \"\\u6D4B\\u8BD5\\u901A\\u77E5\\u8BF7\\u6C42\\u5DF2\\u53D1\\u9001\\u3002\\u5982\\u679C\\u6CA1\\u6709\\u770B\\u5230\\u901A\\u77E5\\uFF0C\\u8BF7\\u68C0\\"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "ddec603395a223deb46c75b74274c41849c6a131",
-      "review_mode": "delta",
-      "scanned_files": 13,
-      "total_files": 58,
       "osv": {
         "status": "ok",
         "findings": 0
