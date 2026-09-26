@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-26T06:05:32.899Z",
+  "generated_at": "2026-09-26T08:37:36.146Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -18579,6 +18579,137 @@
       "review_status": "flagged",
       "reviewed_at": "2026-09-24T08:29:31.317Z",
       "description_i18n_checked_at": "2026-09-24T12:41:22.353Z"
+    },
+    {
+      "id": "anywhere-labs/Agents-Anywhere",
+      "name": "Agents-Anywhere",
+      "author": "anywhere-labs",
+      "description": "跨设备的开源Agent工作台",
+      "repo_url": "https://github.com/anywhere-labs/Agents-Anywhere",
+      "homepage": "https://agents-anywhere.com",
+      "stars": 1210,
+      "forks": 129,
+      "open_issues": 77,
+      "watchers": 0,
+      "pushed_at": "2026-09-25T20:22:23Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "unknown",
+      "topics": [
+        "acp",
+        "agentclientprotocol",
+        "agents",
+        "claudecode",
+        "codex",
+        "codex-app",
+        "dsh",
+        "dsh-plugin",
+        "dsh-plugins",
+        "llm",
+        "opencode",
+        "remote",
+        "remote-control"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "在工作设备上安装桌面客户端，再通过手机、平板或 Web 访问。Linux 和无图形界面的服务器可使用 Connector CLI 接入。各客户端均可连接 Cloud 或自托管服务。",
+        "en": "Install the desktop client on your work machine, then access it from your phone, tablet or Web. Use the Connector CLI to connect Linux and headless servers. Each client can connect to Cloud or a self-hosted service."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1",
+        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#2",
+        "存在 Base64 解码行为 @ desktop-workbench/electron/backend/index.ts:104",
+        "监听键盘输入事件 @ dsh-bridge-next/src/client/features/onboarding/entry.tsx:93",
+        "存在编码转义字符串（疑似混淆） @ dsh-bridge-next/src/client/features/onboarding/entry.tsx:17",
+        "读取环境变量（可能包含敏感信息） @ _deprecated/desktop/electron/main.cjs:34",
+        "访问第三方网络地址（如 example.com） @ _deprecated/desktop/src/main.tsx:330",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 docs.astral.sh） @ desktop-next/electron/main.cjs:13",
+        "访问第三方网络地址（如 docs.astral.sh） @ desktop-next/electron/main.cjs:1141",
+        "访问第三方网络地址（如 agents-anywhere.com） @ dsh-bridge-next/src/client/features/onboarding/entry.tsx:16",
+        "访问第三方网络地址（如 web.agents-anywhere.com） @ dsh-bridge-next/src/contracts/index.ts:9"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#2"
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "desktop-workbench/electron/backend/index.ts",
+          "line": 104,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "dsh-bridge-next/src/client/features/onboarding/entry.tsx",
+          "line": 93,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "dsh-bridge-next/src/client/features/onboarding/entry.tsx",
+          "line": 17
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "_deprecated/desktop/electron/main.cjs",
+          "line": 34
+        },
+        {
+          "explanation": "访问第三方网络地址（如 example.com）",
+          "file": "_deprecated/desktop/src/main.tsx",
+          "line": 330
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 docs.astral.sh）",
+          "file": "desktop-next/electron/main.cjs",
+          "line": 13
+        },
+        {
+          "explanation": "访问第三方网络地址（如 docs.astral.sh）",
+          "file": "desktop-next/electron/main.cjs",
+          "line": 1141
+        },
+        {
+          "explanation": "访问第三方网络地址（如 agents-anywhere.com）",
+          "file": "dsh-bridge-next/src/client/features/onboarding/entry.tsx",
+          "line": 16
+        },
+        {
+          "explanation": "访问第三方网络地址（如 web.agents-anywhere.com）",
+          "file": "dsh-bridge-next/src/contracts/index.ts",
+          "line": 9
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 example.com）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 docs.astral.sh）",
+        "访问第三方网络地址（如 docs.astral.sh）",
+        "访问第三方网络地址（如 agents-anywhere.com）",
+        "访问第三方网络地址（如 web.agents-anywhere.com）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+        "存在 Base64 解码行为",
+        "监听键盘输入事件",
+        "存在编码转义字符串（疑似混淆）"
+      ],
+      "reviewed_commit": "3b71979f7ac8c28bff43a8b5f89f0e1df25c602f",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-26T08:37:36.146Z"
     }
   ]
 }
