@@ -1,6 +1,98 @@
 {
-  "updated_at": "2026-09-26T08:37:36.146Z",
+  "updated_at": "2026-09-27T09:17:34.250Z",
   "decisions": [
+    {
+      "id": "zouyuxuan122/dsh-our-free-model",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "使用动态代码执行（全局 eval / new Function）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 my.example、ok.example）",
+        "访问第三方网络地址（如 evil.example）",
+        "访问第三方网络地址（如 opencode.ai）"
+      ],
+      "evidence": [
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/catalog-test.mjs",
+          "line": 169,
+          "snippet": "return execFileSync('git', ['log', '-1', '--format=%H', '--', 'package.json', ...(pkg.files ?? [])], { cwd: repo, encoding: 'utf8' }).trim() || null"
+        },
+        {
+          "rule": "eval-exec",
+          "severity": "warning",
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "scripts/client-lint.mjs",
+          "line": 38,
+          "snippet": "new Function('window', 'document', 'navigator', source)(globalThis.window, globalThis.document, { language: 'zh-CN' })"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-09-24）"
+      ],
+      "reviewed_commit": "13dc267fb0694f835292ad4512a0170e00997c75",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 75,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-27T09:17:34.250Z"
+    },
+    {
+      "id": "Devin-AXIS/jev-dsh-decision",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "访问第三方网络地址（如 api.typesafe.ai）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.typesafe.ai）"
+      ],
+      "evidence": [],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-09-20）",
+        "未声明开源许可证"
+      ],
+      "reviewed_commit": "adc88caa9bf174d367e79a5f254c7936bcef088e",
+      "review_mode": "full",
+      "scanned_files": 8,
+      "total_files": 15,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-09-27T09:17:34.250Z"
+    },
     {
       "id": "anywhere-labs/Agents-Anywhere",
       "verdict": "flagged",
@@ -62877,117 +62969,6 @@
       "total_files": 332,
       "osv": {
         "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "bruc3van/dsh-desktop",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "code",
-        "reason": "依赖 DSH/Cordis 生态包 @deepseek-ai/cordis-plugin-group"
-      },
-      "findings": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.internal、host、https、x）",
-        "访问第三方网络地址（如 dsh.internal、host、https、x）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "scripts/check-auto-fallback.mjs",
-          "line": 67,
-          "snippet": "const listing = execFileSync("
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-12）"
-      ],
-      "reviewed_commit": "0d05376abf90bd5f420ca57e4020462a9f00ea0f",
-      "review_mode": "full",
-      "scanned_files": 5,
-      "total_files": 89,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "shengsheng90/DSH-taskboard",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件",
-        "监听键盘输入事件"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 w3.org）",
-        "读取浏览器 Cookie/存储并发送到网络",
-        "访问第三方网络地址（如 taskboard.invalid）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/client/index.tsx",
-          "line": 417,
-          "snippet": "document.addEventListener('keydown', onKey)"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/client/popover.tsx",
-          "line": 57,
-          "snippet": "document.addEventListener('keydown', onKeyDown, true)"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）"
-      ],
-      "reviewed_commit": "b3b0928172fa3f82a3802089cecb82e403b15ebc",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 81,
-      "osv": {
-        "status": "ok",
         "findings": 0
       },
       "llm_review": {

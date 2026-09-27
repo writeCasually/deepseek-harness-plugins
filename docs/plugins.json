@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-27T06:32:45.290Z",
+  "generated_at": "2026-09-27T09:17:34.250Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -18622,26 +18622,9 @@
       "risk_level": "moderate",
       "risk_notes": [
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1",
-        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#2",
-        "存在 Base64 解码行为 @ desktop-workbench/electron/backend/index.ts:104",
-        "监听键盘输入事件 @ dsh-bridge-next/src/client/features/onboarding/entry.tsx:93",
-        "存在编码转义字符串（疑似混淆） @ dsh-bridge-next/src/client/features/onboarding/entry.tsx:17",
-        "读取环境变量（可能包含敏感信息） @ _deprecated/desktop/electron/main.cjs:34",
-        "访问第三方网络地址（如 example.com） @ _deprecated/desktop/src/main.tsx:330",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 docs.astral.sh） @ desktop-next/electron/main.cjs:13",
-        "访问第三方网络地址（如 docs.astral.sh） @ desktop-next/electron/main.cjs:1141",
-        "访问第三方网络地址（如 agents-anywhere.com） @ dsh-bridge-next/src/client/features/onboarding/entry.tsx:16",
-        "访问第三方网络地址（如 web.agents-anywhere.com） @ dsh-bridge-next/src/contracts/index.ts:9"
+        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json#2"
       ],
       "risk_evidence": [
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#1"
-        },
-        {
-          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#2"
-        },
         {
           "explanation": "存在 Base64 解码行为",
           "file": "desktop-workbench/electron/backend/index.ts",
@@ -18691,25 +18674,187 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 example.com）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 docs.astral.sh）",
-        "访问第三方网络地址（如 docs.astral.sh）",
-        "访问第三方网络地址（如 agents-anywhere.com）",
-        "访问第三方网络地址（如 web.agents-anywhere.com）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在 Base64 解码行为",
-        "监听键盘输入事件",
-        "存在编码转义字符串（疑似混淆）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "3b71979f7ac8c28bff43a8b5f89f0e1df25c602f",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-09-26T08:37:36.146Z"
+    },
+    {
+      "id": "zouyuxuan122/dsh-our-free-model",
+      "name": "dsh-our-free-model",
+      "author": "zouyuxuan122",
+      "description": "在 dsh 里装上这个插件即可，无需登录、注册或填 API Key，就能使用包括 Muse Spark 1.3、MiMo V2.6 在内的前沿模型——完全免费，不限量。 All you do is install this plugin in dsh: no login, no sign-up, no API key — the frontier models are just there, Muse Spark 1.3 and MiMo V2.6 among them. Completely free, with no usage cap.",
+      "repo_url": "https://github.com/zouyuxuan122/dsh-our-free-model",
+      "homepage": "https://github.com/zouyuxuan122/dsh-our-free-model",
+      "stars": 259,
+      "forks": 15,
+      "open_issues": 4,
+      "watchers": 0,
+      "pushed_at": "2026-09-27T05:28:33Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "ai-agents",
+        "deepseek",
+        "deepseek-harness",
+        "developer-tools",
+        "dsh",
+        "dsh-plugin",
+        "free-model",
+        "llm",
+        "model-provider",
+        "openai-compatible"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "> 你只需在 dsh 里装上这个插件，无需登录、注册、填 API Key 或任何其它操作， > 就能用上包括 Muse Spark 1.3、MiMo V2.6 在内的前沿模型——完全免费，不限量。",
+        "en": "> All you do is install this plugin in dsh — no login, no sign-up, no API key, no other > step of any kind. The frontier models are simply there, Muse Spark 1.3 and MiMo V2.6 > among them. Completely free, with no usage cap."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/catalog-test.mjs:169",
+        "使用动态代码执行（全局 eval / new Function） @ scripts/client-lint.mjs:38",
+        "读取环境变量（可能包含敏感信息） @ scripts/effort-test.mjs:29",
+        "访问第三方网络地址（如 my.example、ok.example） @ scripts/feed-test.mjs:20",
+        "访问第三方网络地址（如 evil.example） @ scripts/host-selftest.mjs:233",
+        "访问第三方网络地址（如 opencode.ai） @ scripts/probes/availability-matrix.mjs:6"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/catalog-test.mjs",
+          "line": 169,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "scripts/client-lint.mjs",
+          "line": 38,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "scripts/effort-test.mjs",
+          "line": 29
+        },
+        {
+          "explanation": "访问第三方网络地址（如 my.example、ok.example）",
+          "file": "scripts/feed-test.mjs",
+          "line": 20
+        },
+        {
+          "explanation": "访问第三方网络地址（如 evil.example）",
+          "file": "scripts/host-selftest.mjs",
+          "line": 233
+        },
+        {
+          "explanation": "访问第三方网络地址（如 opencode.ai）",
+          "file": "scripts/probes/availability-matrix.mjs",
+          "line": 6
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 my.example、ok.example）",
+        "访问第三方网络地址（如 evil.example）",
+        "访问第三方网络地址（如 opencode.ai）"
+      ],
+      "security_notes": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "使用动态代码执行（全局 eval / new Function）"
+      ],
+      "reviewed_commit": "13dc267fb0694f835292ad4512a0170e00997c75",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-27T09:17:34.250Z"
+    },
+    {
+      "id": "Devin-AXIS/jev-dsh-decision",
+      "name": "jev-dsh-decision",
+      "author": "Devin-AXIS",
+      "description": "Jev DSH 决策引擎｜面向 Agent Harness 的结构化决策插件。原生支持 DeepSeek Harness，通过 iPolloWork 支持 OpenCode、Codex Harness。",
+      "repo_url": "https://github.com/Devin-AXIS/jev-dsh-decision",
+      "homepage": "https://github.com/Devin-AXIS/jev-dsh-decision",
+      "stars": 218,
+      "forks": 71,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-09-20T04:59:32Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "unknown",
+      "topics": [
+        "agent-harness",
+        "ai-agents",
+        "apollo-plugin",
+        "codex",
+        "codex-harness-plugin",
+        "codex-plugin",
+        "decision-engine",
+        "deepseek-harness",
+        "deepseek-harness-plugin",
+        "deepseek-plugin",
+        "dpc-plugin",
+        "dsh",
+        "dsh-plugin",
+        "ipollowork",
+        "ipollowork-plugin",
+        "jev",
+        "opencode",
+        "opencode-plugin",
+        "plugin",
+        "typesafe-ai"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "为 Agent Harness 提供结构化决策能力。"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址（如 api.typesafe.ai） @ service/jev.mjs:4",
+        "读取环境变量（可能包含敏感信息） @ tests/dsh.test.mjs:12",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.typesafe.ai） @ tests/work.test.ts:8"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "访问第三方网络地址（如 api.typesafe.ai）",
+          "file": "service/jev.mjs",
+          "line": 4
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "tests/dsh.test.mjs",
+          "line": 12
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.typesafe.ai）",
+          "file": "tests/work.test.ts",
+          "line": 8
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 api.typesafe.ai）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.typesafe.ai）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "adc88caa9bf174d367e79a5f254c7936bcef088e",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-09-27T09:17:34.250Z"
     }
   ]
 }
