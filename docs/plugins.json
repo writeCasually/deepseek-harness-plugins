@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-09-28T01:34:12.371Z",
+  "generated_at": "2026-09-28T09:49:41.623Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -18717,15 +18717,8 @@
         "zh": "> 你只需在 dsh 里装上这个插件，无需登录、注册、填 API Key 或任何其它操作， > 就能用上包括 Muse Spark 1.3、MiMo V2.6 在内的前沿模型——完全免费，不限量。",
         "en": "> All you do is install this plugin in dsh — no login, no sign-up, no API key, no other > step of any kind. The frontier models are simply there, Muse Spark 1.3 and MiMo V2.6 > among them. Completely free, with no usage cap."
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/catalog-test.mjs:169",
-        "使用动态代码执行（全局 eval / new Function） @ scripts/client-lint.mjs:38",
-        "读取环境变量（可能包含敏感信息） @ scripts/effort-test.mjs:29",
-        "访问第三方网络地址（如 my.example、ok.example） @ scripts/feed-test.mjs:20",
-        "访问第三方网络地址（如 evil.example） @ scripts/host-selftest.mjs:233",
-        "访问第三方网络地址（如 opencode.ai） @ scripts/probes/availability-matrix.mjs:6"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
@@ -18761,16 +18754,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 my.example、ok.example）",
-        "访问第三方网络地址（如 evil.example）",
-        "访问第三方网络地址（如 opencode.ai）"
-      ],
-      "security_notes": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "使用动态代码执行（全局 eval / new Function）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "13dc267fb0694f835292ad4512a0170e00997c75",
       "source": "discovered",
       "review_status": "flagged",
@@ -18821,12 +18806,8 @@
       "description_i18n": {
         "zh": "为 Agent Harness 提供结构化决策能力。"
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "访问第三方网络地址（如 api.typesafe.ai） @ service/jev.mjs:4",
-        "读取环境变量（可能包含敏感信息） @ tests/dsh.test.mjs:12",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.typesafe.ai） @ tests/work.test.ts:8"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "访问第三方网络地址（如 api.typesafe.ai）",
@@ -18845,11 +18826,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 api.typesafe.ai）",
-        "读取环境变量（可能包含敏感信息）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.typesafe.ai）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "adc88caa9bf174d367e79a5f254c7936bcef088e",
       "source": "discovered",

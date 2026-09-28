@@ -1,6 +1,32 @@
 {
-  "updated_at": "2026-09-27T09:17:34.250Z",
+  "updated_at": "2026-09-28T09:49:41.623Z",
   "decisions": [
+    {
+      "id": "voyager-crew/voyager",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "73a3644f46e64e958b7392140698b57430da5c05",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 1687,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-09-28T09:49:41.623Z"
+    },
     {
       "id": "zouyuxuan122/dsh-our-free-model",
       "verdict": "flagged",
@@ -62945,37 +62971,6 @@
       },
       "llm_review": {
         "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Vladimir-Human/ru-marketplace-mcp",
-      "verdict": "approved",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-07-26）"
-      ],
-      "reviewed_commit": "25821269d37c899c7a89caec23196d2de97a0412",
-      "review_mode": "full",
-      "scanned_files": 2,
-      "total_files": 332,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }
