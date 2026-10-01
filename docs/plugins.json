@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-01T07:08:25.007Z",
+  "generated_at": "2026-10-01T10:10:56.564Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
