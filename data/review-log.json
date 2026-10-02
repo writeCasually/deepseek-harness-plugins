@@ -1,6 +1,85 @@
 {
-  "updated_at": "2026-10-01T10:10:56.564Z",
+  "updated_at": "2026-10-02T09:48:34.177Z",
   "decisions": [
+    {
+      "id": "kenryu42/cc-safety-net",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "使用 PowerShell 动态表达式执行",
+        "使用系统/子进程执行外部命令",
+        "存在 Base64 解码行为",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
+      ],
+      "privacy_notes": [
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepare",
+          "severity": "warning",
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "lefthook install"
+        },
+        {
+          "rule": "invoke-expression",
+          "severity": "critical",
+          "explanation": "使用 PowerShell 动态表达式执行",
+          "file": "dist/amp/cc-safety-net/index.ts",
+          "line": 43,
+          "snippet": "`?e.trim().split(/\\s+/).filter(Boolean):e.split(t).filter(Boolean)}function xr(e){if(!e)return!0;return e.provenance===\"unknown\"?!/[$`]/.test(_(e)):e.provenance"
+        },
+        {
+          "rule": "os-exec",
+          "severity": "warning",
+          "explanation": "使用系统/子进程执行外部命令",
+          "file": "dist/amp/cc-safety-net/index.ts",
+          "line": 9,
+          "snippet": "`||s===\"\\r\")t+=s,r=!1,n.escaped=!1;continue}if(s===\"#\"&&!n.inSingle&&!n.inDouble&&o){r=!0;continue}if(t+=s,!n.inSingle&&!n.inDouble&&!n.escaped)o=/[\\s;&|()<>]/."
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "dist/amp/cc-safety-net/index.ts",
+          "line": 47,
+          "snippet": "`||s===\"\\r\"))return null;if(e.startsWith(n,i))return i}return null}function tA(e,t){for(let n=t-1;n>=0;n--){let r=e[n];if(!r||/\\s/.test(r))continue;return/[\\w$\\"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "dist/amp/cc-safety-net/index.ts",
+          "line": 34,
+          "snippet": "}#`.includes(r)}function Uo(e,t,n){let r=\"\",o=!1;for(let i=t+1;i<e.length;i++){let s=e[i];if(!s)break;if(o){let a=Wv(e,i);if(!a)return null;r+=a.value,i=a.endIn"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "698846d4540896da285a906015c468a4e5eb95ca",
+      "review_mode": "full",
+      "scanned_files": 1,
+      "total_files": 684,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-02T09:48:34.177Z"
+    },
     {
       "id": "voyager-crew/voyager",
       "verdict": "skip",
@@ -62945,32 +63024,6 @@
         "verdict": "none",
         "rationale": "未配置 LLM_API_KEY",
         "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "wess09/DeepSeekHarnessDesktop",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "5f282defdda49b8a63cbc56458005d508943ba95",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 29,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }
