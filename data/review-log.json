@@ -1,6 +1,38 @@
 {
-  "updated_at": "2026-10-03T09:11:35.202Z",
+  "updated_at": "2026-10-04T09:50:24.155Z",
   "decisions": [
+    {
+      "id": "DSH-EAC/EAC-Desktop",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.client manifest"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "9bc1a2ea296eec0485b8737bd1f0285cf9f0ea25",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 435,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-04T09:50:24.155Z"
+    },
     {
       "id": "kenryu42/cc-safety-net",
       "verdict": "blocked",
@@ -62819,205 +62851,6 @@
       "osv": {
         "status": "skipped",
         "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "ZSeven-W/dsh-crew",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "使用动态代码执行（eval/new Function）",
-        "存在 Base64 解码行为",
-        "存在 Base64 解码行为",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "依赖 @modelcontextprotocol/sdk@1.17.5 存在已知漏洞（GHSA-345p-7cg4-v4c7, GHSA-8r9q-7v3j-jr4g, GHSA-w48q-cv73-mx4w）"
-      ],
-      "privacy_notes": [
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 json-schema.org、mathiasbynens.be、safaribooksonline.com、stackoverflow.com）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "npm run smoke:mcp"
-        },
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "lib/server.mjs",
-          "line": 14290,
-          "snippet": "const comm = execSync(`ps -o comm= -p ${process.ppid}`, { encoding: \"utf8\" }).trim().toLowerCase();"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "lib/server.mjs",
-          "line": 2231,
-          "snippet": "var makeValidate = new Function("
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/server.mjs",
-          "line": 7259,
-          "snippet": "const decoded = JSON.parse(atob(base64));"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/server.mjs",
-          "line": 10591,
-          "snippet": "atob(val);"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/server.mjs",
-          "line": 10331,
-          "snippet": "* See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/ba"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/server.mjs",
-          "line": 10342,
-          "snippet": "* See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/ba"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/server.mjs",
-          "line": 10578,
-          "snippet": "* See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/ba"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/server.mjs",
-          "line": 10619,
-          "snippet": "* See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/ba"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/server.mjs",
-          "line": 10640,
-          "snippet": "* See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/ba"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/server.mjs",
-          "line": 10723,
-          "snippet": "* See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/ba"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/server.mjs",
-          "line": 10754,
-          "snippet": "* See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/ba"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/server.mjs",
-          "line": 10770,
-          "snippet": "* See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/ba"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/server.mjs",
-          "line": 10786,
-          "snippet": "* See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/ba"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/server.mjs",
-          "line": 10795,
-          "snippet": "* See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/ba"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/server.mjs",
-          "line": 10890,
-          "snippet": "* See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/ba"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "lib/server.mjs",
-          "line": 11178,
-          "snippet": "* See [MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/47339c03c143bb4ec01a26e721a1b8fe66634ebe/docs/specification/draft/ba"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 @modelcontextprotocol/sdk@1.17.5 存在已知漏洞（GHSA-345p-7cg4-v4c7, GHSA-8r9q-7v3j-jr4g, GHSA-w48q-cv73-mx4w）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "@modelcontextprotocol/sdk@1.17.5"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-16）"
-      ],
-      "reviewed_commit": "bf955c76f7b14e5ab434bb8a8c4cb5f72b6d65e1",
-      "review_mode": "delta",
-      "scanned_files": 1,
-      "total_files": 59,
-      "osv": {
-        "status": "ok",
-        "findings": 1
       },
       "llm_review": {
         "status": "skipped",
