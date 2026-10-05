@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-05T01:52:15.706Z",
+  "generated_at": "2026-10-05T10:29:48.168Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -18745,8 +18745,7 @@
       "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.client manifest",
       "risk_level": "high",
       "risk_notes": [
-        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ dsh-desktop/assets/plugins/dsh-eac-core-bridge/index.js",
-        "读取环境变量（可能包含敏感信息） @ dsh-desktop/assets/plugins/dsh-easy-setup/lib/index.js:53"
+        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ dsh-desktop/assets/plugins/dsh-eac-core-bridge/index.js"
       ],
       "risk_evidence": [
         {
@@ -18760,10 +18759,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "读取环境变量（可能包含敏感信息）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "9bc1a2ea296eec0485b8737bd1f0285cf9f0ea25",
       "source": "discovered",
@@ -18771,6 +18767,220 @@
       "reviewed_at": "2026-10-04T09:50:24.155Z",
       "description_i18n": {},
       "description_i18n_checked_at": "2026-10-04T13:08:59.124Z"
+    },
+    {
+      "id": "Ebony-Vinyl/dsh-our-free-model",
+      "name": "dsh-our-free-model",
+      "author": "Ebony-Vinyl",
+      "description": "在 dsh 里装上这个插件即可，无需登录、注册或填 API Key，就能使用包括 DeepSeek V4.1 Flash、Kimi K3 在内的前沿模型——完全免费，不限量。 All you do is install this plugin in dsh: no login, no sign-up, no API key — the frontier models are just there, DeepSeek V4.1 Flash and Kimi K3 among them. Completely free, with no usage cap.",
+      "repo_url": "https://github.com/Ebony-Vinyl/dsh-our-free-model",
+      "homepage": "https://github.com/Ebony-Vinyl/dsh-our-free-model",
+      "stars": 1412,
+      "forks": 44,
+      "open_issues": 13,
+      "watchers": 0,
+      "pushed_at": "2026-10-05T08:31:22Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "ai-agents",
+        "deepseek",
+        "deepseek-harness",
+        "developer-tools",
+        "dsh",
+        "dsh-plugin",
+        "free-model",
+        "llm",
+        "model-provider",
+        "openai-compatible"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "> 你只需在 dsh 里装上这个插件，无需登录、注册、填 API Key 或任何其它操作， > 就能用上包括 DeepSeek V4.1 Flash、Kimi K3 在内的前沿模型——完全免费，不限量。",
+        "en": "> All you do is install this plugin in dsh — no login, no sign-up, no API key, no other > step of any kind. The frontier models are simply there, DeepSeek V4.1 Flash and > Kimi K3 among them. Completely free, with no usage cap."
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】硬编码敏感凭据（疑似硬编码密钥） @ scripts/offline-test.mjs:152",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/catalog-test.mjs:179",
+        "使用动态代码执行（全局 eval / new Function） @ scripts/client-lint.mjs:38",
+        "使用动态代码执行（全局 eval / new Function） @ scripts/heatmap-test.mjs:21",
+        "读取环境变量（可能包含敏感信息） @ scripts/effort-test.mjs:29",
+        "访问第三方网络地址（如 example.com、ofm、outlet.example.com） @ scripts/egress-test.mjs:201",
+        "访问第三方网络地址（如 lan.example、my.example、ok.example、user） @ scripts/feed-test.mjs:20",
+        "访问第三方网络地址（如 evil.example） @ scripts/host-selftest.mjs:255",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 outlet.example.com） @ scripts/offline-test.mjs:48",
+        "访问第三方网络地址（如 outlet.example.com） @ scripts/offline-test.mjs:45"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "硬编码敏感凭据（疑似硬编码密钥）",
+          "file": "scripts/offline-test.mjs",
+          "line": 152
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/catalog-test.mjs",
+          "line": 179,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "scripts/client-lint.mjs",
+          "line": 38,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "scripts/heatmap-test.mjs",
+          "line": 21,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "scripts/effort-test.mjs",
+          "line": 29
+        },
+        {
+          "explanation": "访问第三方网络地址（如 example.com、ofm、outlet.example.com）",
+          "file": "scripts/egress-test.mjs",
+          "line": 201
+        },
+        {
+          "explanation": "访问第三方网络地址（如 lan.example、my.example、ok.example、user）",
+          "file": "scripts/feed-test.mjs",
+          "line": 20
+        },
+        {
+          "explanation": "访问第三方网络地址（如 evil.example）",
+          "file": "scripts/host-selftest.mjs",
+          "line": 255
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 outlet.example.com）",
+          "file": "scripts/offline-test.mjs",
+          "line": 48
+        },
+        {
+          "explanation": "访问第三方网络地址（如 outlet.example.com）",
+          "file": "scripts/offline-test.mjs",
+          "line": 45
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 example.com、ofm、outlet.example.com）",
+        "访问第三方网络地址（如 lan.example、my.example、ok.example、user）",
+        "访问第三方网络地址（如 evil.example）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 outlet.example.com）",
+        "访问第三方网络地址（如 outlet.example.com）"
+      ],
+      "security_notes": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "使用动态代码执行（全局 eval / new Function）"
+      ],
+      "reviewed_commit": "b4a2249b88452710dc792470fa7ef79e949274d3",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-05T10:29:48.168Z"
+    },
+    {
+      "id": "aerovato/operator-memory",
+      "name": "operator-memory",
+      "author": "aerovato",
+      "description": "The self-improving context engine for coding agents.",
+      "repo_url": "https://github.com/aerovato/operator-memory",
+      "homepage": "https://github.com/aerovato/operator-memory",
+      "stars": 296,
+      "forks": 10,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-10-05T09:16:00Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "BSD-3-Clause",
+      "topics": [
+        "agent",
+        "agent-memory",
+        "agent-skill",
+        "agentic-workflow",
+        "ai",
+        "chatgpt",
+        "claude",
+        "claude-code",
+        "claude-code-plugin",
+        "claude-skills",
+        "codex",
+        "codex-skill",
+        "dsh-plugin",
+        "memory",
+        "openai",
+        "opencode",
+        "pi"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "Operator Memory 给你的智能体一个大脑，用于记录他们的全部工作。智能体在工作时，会自动在这个大脑中记录 —— 规格、决策、规范、研究、经验教训。每个新会话都带着上一个会话学到的一切开始。",
+        "en": "Operator Memory gives your agent a brain for documenting all their work. As the agent works, it automatically documents within this brain — specs, decisions, standards, research, lessons. Every new session starts knowing everything the last one learned."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#2",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#4",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#5",
+        "读取环境变量（可能包含敏感信息） @ packages/helper/src/index.ts:40"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#2"
+        },
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#4"
+        },
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#5"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "packages/helper/src/index.ts",
+          "line": 40
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行"
+      ],
+      "reviewed_commit": "75f325638236fd87689ae56edd5717db89f803e3",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-05T10:29:48.168Z"
     }
   ]
 }

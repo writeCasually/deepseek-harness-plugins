@@ -1,6 +1,160 @@
 {
-  "updated_at": "2026-10-04T09:50:24.155Z",
+  "updated_at": "2026-10-05T10:29:48.168Z",
   "decisions": [
+    {
+      "id": "Ebony-Vinyl/dsh-our-free-model",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "使用动态代码执行（全局 eval / new Function）",
+        "使用动态代码执行（全局 eval / new Function）",
+        "硬编码敏感凭据（疑似硬编码密钥）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 example.com、ofm、outlet.example.com）",
+        "访问第三方网络地址（如 lan.example、my.example、ok.example、user）",
+        "访问第三方网络地址（如 evil.example）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 outlet.example.com）",
+        "访问第三方网络地址（如 outlet.example.com）"
+      ],
+      "evidence": [
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/catalog-test.mjs",
+          "line": 179,
+          "snippet": "return execFileSync('git', ['log', '-1', '--format=%H', '--', 'package.json', ...(pkg.files ?? [])], { cwd: repo, encoding: 'utf8' }).trim() || null"
+        },
+        {
+          "rule": "eval-exec",
+          "severity": "warning",
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "scripts/client-lint.mjs",
+          "line": 38,
+          "snippet": "new Function('window', 'document', 'navigator', source)(globalThis.window, globalThis.document, { language: 'zh-CN' })"
+        },
+        {
+          "rule": "eval-exec",
+          "severity": "warning",
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "scripts/heatmap-test.mjs",
+          "line": 21,
+          "snippet": "new Function('window', 'Date', source)(window, ClockDate)"
+        },
+        {
+          "rule": "secret-generic",
+          "severity": "critical",
+          "explanation": "硬编码敏感凭据（疑似硬编码密钥）",
+          "file": "scripts/offline-test.mjs",
+          "line": 152,
+          "snippet": "const token = 'ofm-subscription-token-0123456789abcdef'"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-09-24）"
+      ],
+      "reviewed_commit": "b4a2249b88452710dc792470fa7ef79e949274d3",
+      "review_mode": "full",
+      "scanned_files": 17,
+      "total_files": 109,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-05T10:29:48.168Z"
+    },
+    {
+      "id": "aerovato/operator-memory",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepare",
+          "severity": "warning",
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "git rev-parse --git-dir >/dev/null 2>&1 && git config core.hooksPath .githooks || true"
+        },
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#1",
+          "line": 0,
+          "snippet": "bun run build"
+        },
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#2",
+          "line": 0,
+          "snippet": "bun run build"
+        },
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#4",
+          "line": 0,
+          "snippet": "bun run build"
+        },
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#5",
+          "line": 0,
+          "snippet": "bun run build"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "75f325638236fd87689ae56edd5717db89f803e3",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 212,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-05T10:29:48.168Z"
+    },
     {
       "id": "DSH-EAC/EAC-Desktop",
       "verdict": "flagged",
@@ -62720,143 +62874,6 @@
       },
       "llm_review": {
         "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "RevolutionLA/dsh-dream-skin",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在 Base64 解码行为",
-        "存在 Base64 解码行为",
-        "存在 Base64 解码行为",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
-      ],
-      "privacy_notes": [
-        "读取浏览器 Cookie/存储并发送到网络",
-        "访问第三方网络地址（如 example.com）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 x）",
-        "访问第三方网络地址（如 example.com、x）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/client.js",
-          "line": 2001,
-          "snippet": "const json = decodeURIComponent(escape(atob(raw)));"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "tests/client.persistence.test.cjs",
-          "line": 68,
-          "snippet": "atob: (s) => Buffer.from(s, 'base64').toString('binary'),"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "tests/client.smoke.test.cjs",
-          "line": 44,
-          "snippet": "const atob = (s) => Buffer.from(s, 'base64').toString('binary');"
-        },
-        {
-          "rule": "char-code",
-          "severity": "warning",
-          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-          "file": "tests/client.smoke.test.cjs",
-          "line": 45,
-          "snippet": "const unescapeB = (s) => s.replace(/%([0-9A-Fa-f]{2})/g, (_, h) => String.fromCharCode(parseInt(h, 16)));"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-15）"
-      ],
-      "reviewed_commit": "7334b77169cc3ffbfc7f052c7c883ae33b2f9446",
-      "review_mode": "delta",
-      "scanned_files": 7,
-      "total_files": 47,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "awesome-dsh-plugin/dsh-find-plugin",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址（如 awesome-dsh-plugin.com）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "npm run build"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）"
-      ],
-      "reviewed_commit": "e7a27eb01606e6deccdaacccb8e0cfd992c0bcdc",
-      "review_mode": "full",
-      "scanned_files": 10,
-      "total_files": 21,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }
