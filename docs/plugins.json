@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-06T01:44:12.662Z",
+  "generated_at": "2026-10-06T10:21:20.030Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -18805,18 +18805,7 @@
         "en": "> All you do is install this plugin in dsh — no login, no sign-up, no API key, no other > step of any kind. The frontier models are simply there, DeepSeek V4.1 Flash and > Kimi K3 among them. Completely free, with no usage cap."
       },
       "risk_level": "high",
-      "risk_notes": [
-        "【高风险，请自行审计】硬编码敏感凭据（疑似硬编码密钥） @ scripts/offline-test.mjs:152",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/catalog-test.mjs:179",
-        "使用动态代码执行（全局 eval / new Function） @ scripts/client-lint.mjs:38",
-        "使用动态代码执行（全局 eval / new Function） @ scripts/heatmap-test.mjs:21",
-        "读取环境变量（可能包含敏感信息） @ scripts/effort-test.mjs:29",
-        "访问第三方网络地址（如 example.com、ofm、outlet.example.com） @ scripts/egress-test.mjs:201",
-        "访问第三方网络地址（如 lan.example、my.example、ok.example、user） @ scripts/feed-test.mjs:20",
-        "访问第三方网络地址（如 evil.example） @ scripts/host-selftest.mjs:255",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 outlet.example.com） @ scripts/offline-test.mjs:48",
-        "访问第三方网络地址（如 outlet.example.com） @ scripts/offline-test.mjs:45"
-      ],
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "硬编码敏感凭据（疑似硬编码密钥）",
@@ -18873,18 +18862,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 example.com、ofm、outlet.example.com）",
-        "访问第三方网络地址（如 lan.example、my.example、ok.example、user）",
-        "访问第三方网络地址（如 evil.example）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 outlet.example.com）",
-        "访问第三方网络地址（如 outlet.example.com）"
-      ],
-      "security_notes": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "使用动态代码执行（全局 eval / new Function）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "b4a2249b88452710dc792470fa7ef79e949274d3",
       "source": "discovered",
       "review_status": "flagged",
@@ -18939,29 +18918,12 @@
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1",
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#2",
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#4",
-        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#5",
-        "读取环境变量（可能包含敏感信息） @ packages/helper/src/index.ts:40"
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#5"
       ],
       "risk_evidence": [
         {
           "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
           "file": "package.json"
-        },
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#1"
-        },
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#2"
-        },
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#4"
-        },
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#5"
         },
         {
           "explanation": "读取环境变量（可能包含敏感信息）",
@@ -18970,13 +18932,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "package.json 的 prepack 脚本会在安装/发布时自动执行"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "75f325638236fd87689ae56edd5717db89f803e3",
       "source": "discovered",
       "review_status": "flagged",
