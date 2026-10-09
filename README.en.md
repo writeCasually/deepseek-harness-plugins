@@ -202,6 +202,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [Polaris](https://github.com/ZJU-REAL/Polaris) | [@ZJU-REAL](https://github.com/ZJU-REAL) | Toward Autonomous Scientific Discovery |
 | [dsh-damage-pulse](https://github.com/wssfk12138/dsh-damage-pulse) | [@wssfk12138](https://github.com/wssfk12138) | DeepSeek Harness token balance monitor with game-style damage pulse animations |
 | [dsh-liang-skin](https://github.com/kingOfSoySauce/dsh-liang-skin) | [@kingOfSoySauce](https://github.com/kingOfSoySauce) | DeepSeek Harness 滑动变阻器皮肤 |
+| [movo](https://github.com/himovo/movo) | [@himovo](https://github.com/himovo) | Turn DeepSeek Harness into a self-hosted enterprise Agent platform with knowledge, deep research, content generation, vibe coding, browser automation, governance, and admin controls. |
 | [dsh-auto-review](https://github.com/PerryLink/dsh-auto-review) | [@PerryLink](https://github.com/PerryLink) | Second-model AI auto-review for DeepSeek Harness approval requests: a read-only reviewer subagent returns structured allow/deny verdicts with reasons, fail-closed by default, fully auditable from the session log (approval/asked -> autoReview/verdict -> approval/decided). |
 | [dsh-trading](https://github.com/zhu1090093659/dsh-trading) | [@zhu1090093659](https://github.com/zhu1090093659) | Agent-native trading terminal built on DeepSeek Harness. Crypto, US, CN and HK in one three-column GUI, 19+ hot-swappable connectors, dry-run by default with human approval on every live order. BYOK, no data redistribution. |
 | [notes](https://github.com/zhaoolee/notes) | [@zhaoolee](https://github.com/zhaoolee) | 开源版锤子便签，复刻锤科美学，一键Docker私有化部署，支持skill调用，支持dsh plugin，支持多租户，一键生成公众号格式，支持导出便签为图片 |
@@ -290,7 +291,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-antibrow](https://github.com/antibrow/dsh-antibrow) | [@antibrow](https://github.com/antibrow) | DeepSeek Harness plugin: give your agent a browser with a persistent identity - engine-level fingerprint spoofing, unlimited free local profiles, Android device emulation, passkeys that survive, and residential proxy egress. |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-Includes 224 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 225 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 

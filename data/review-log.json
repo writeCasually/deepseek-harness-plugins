@@ -1,6 +1,117 @@
 {
-  "updated_at": "2026-10-08T10:37:44.375Z",
+  "updated_at": "2026-10-09T10:36:37.556Z",
   "decisions": [
+    {
+      "id": "hanliang97/MatrixMedia",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "f63df956c113d63d07f0a12e877ee63e04602d9b",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 419,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-10-09T10:36:37.556Z"
+    },
+    {
+      "id": "himovo/movo",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+        "依赖 axios@1.7.9 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5）",
+        "依赖 pdfjs-dist@5.6.205 存在已知漏洞（GHSA-hq66-cqwq-w95j）",
+        "依赖 axios@1.6.0 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5）",
+        "依赖 fabric@6.9.1 存在已知漏洞（GHSA-hfvx-25r5-qc3w, GHSA-w22m-hvvm-xmwx）"
+      ],
+      "privacy_notes": [],
+      "evidence": [
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "@codemirror/commands"
+        },
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json#1",
+          "line": 0,
+          "snippet": "@codemirror/commands"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 axios@1.7.9 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "axios@1.7.9"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 pdfjs-dist@5.6.205 存在已知漏洞（GHSA-hq66-cqwq-w95j）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "pdfjs-dist@5.6.205"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 axios@1.6.0 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "axios@1.6.0"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 fabric@6.9.1 存在已知漏洞（GHSA-hfvx-25r5-qc3w, GHSA-w22m-hvvm-xmwx）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "fabric@6.9.1"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "3915ab9550b7c737cc2483c6fd9d89144bd2c809",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 2382,
+      "osv": {
+        "status": "ok",
+        "findings": 4
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-09T10:36:37.556Z"
+    },
     {
       "id": "Ebony-Vinyl/dsh-our-free-model",
       "verdict": "flagged",
@@ -62605,275 +62716,6 @@
         "verdict": "none",
         "rationale": "未配置 LLM_API_KEY",
         "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "titanwings/dsh-automation",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "存在 Base64 解码行为",
-        "存在 Base64 解码行为",
-        "存在 Base64 解码行为",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址（如 developer.mozilla.org、en.wikipedia.org、json-schema.org、moment.github.io）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/index.js",
-          "line": 1478,
-          "snippet": "const binaryString = atob(base643);"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/index.js",
-          "line": 2836,
-          "snippet": "atob(data);"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "lib/index.js",
-          "line": 2893,
-          "snippet": "const parsedHeader = JSON.parse(atob(header));"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 4649,
-          "snippet": "string: { unit: \"\\u062D\\u0631\\u0641\", verb: \"\\u0623\\u0646 \\u064A\\u062D\\u0648\\u064A\" },"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 4650,
-          "snippet": "file: { unit: \"\\u0628\\u0627\\u064A\\u062A\", verb: \"\\u0623\\u0646 \\u064A\\u062D\\u0648\\u064A\" },"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 4651,
-          "snippet": "array: { unit: \"\\u0639\\u0646\\u0635\\u0631\", verb: \"\\u0623\\u0646 \\u064A\\u062D\\u0648\\u064A\" },"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 4652,
-          "snippet": "set: { unit: \"\\u0639\\u0646\\u0635\\u0631\", verb: \"\\u0623\\u0646 \\u064A\\u062D\\u0648\\u064A\" }"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 4658,
-          "snippet": "regex: \"\\u0645\\u062F\\u062E\\u0644\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 4659,
-          "snippet": "email: \"\\u0628\\u0631\\u064A\\u062F \\u0625\\u0644\\u0643\\u062A\\u0631\\u0648\\u0646\\u064A\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 4660,
-          "snippet": "url: \"\\u0631\\u0627\\u0628\\u0637\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/index.js",
-          "line": 4661,
-          "snippet": "emoji: \"\\u0625\\u064A\\u0645\\u0648\\u062C\\u064A\","
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "package.json",
-          "line": 88,
-          "snippet": "\"packageManager\": \"pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 814,
-          "snippet": "\"header.eyebrow\": \"\\u81EA\\u4E3B\\u7F16\\u7801\\u4EFB\\u52A1\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 816,
-          "snippet": "\"header.subtitle\": \"\\u4E3A\\u5F53\\u524D\\u5DE5\\u4F5C\\u533A\\u5B89\\u6392\\u72EC\\u7ACB\\u3001\\u53EF\\u5BA1\\u8BA1\\u7684 Agent \\u8FD0\\u884C\\u3002\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 817,
-          "snippet": "\"header.create\": \"\\u65B0\\u5EFA\\u81EA\\u52A8\\u5316\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 818,
-          "snippet": "\"header.closeCreate\": \"\\u6536\\u8D77\\u8868\\u5355\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 820,
-          "snippet": "\"scope.folder\": \"\\u5DE5\\u4F5C\\u76EE\\u5F55\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 823,
-          "snippet": "\"stats.next\": \"\\u4E0B\\u6B21\\u8FD0\\u884C\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 824,
-          "snippet": "\"stats.attention\": \"\\u9700\\u8981\\u5173\\u6CE8\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 825,
-          "snippet": "\"stats.noneScheduled\": \"\\u6682\\u65E0\\u8BA1\\u5212\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 826,
-          "snippet": "\"stats.noAttention\": \"\\u4E00\\u5207\\u6B63\\u5E38\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 827,
-          "snippet": "\"section.automations\": \"\\u5DE5\\u4F5C\\u533A\\u81EA\\u52A8\\u5316\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 828,
-          "snippet": "\"section.automationsHint\": \"\\u6BCF\\u6B21\\u89E6\\u53D1\\u90FD\\u4F1A\\u521B\\u5EFA\\u4E00\\u4E2A\\u5168\\u65B0\\u7684 DSH Session\\uFF0C\\u5E76\\u4FDD\\u7559\\u72EC\\u7ACB\\u5BA1"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-13）"
-      ],
-      "reviewed_commit": "f8f43b2873a3f9dd57d86d61eb401770b2bc9ca5",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 68,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "kuangre123/codex-switch",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "79f867516dd7d4afcf8768881809195a70c46344",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 20,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }
