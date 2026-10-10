@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-10T06:58:50.072Z",
+  "generated_at": "2026-10-10T09:53:08.005Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -18844,10 +18844,6 @@
           "file": "package.json"
         },
         {
-          "explanation": "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1"
-        },
-        {
           "explanation": "依赖 axios@1.7.9 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5）",
           "file": "<dependencies>"
         },
@@ -18866,13 +18862,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "依赖 @codemirror/commands 与知名包 commander 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 axios@1.7.9 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5）",
-        "依赖 pdfjs-dist@5.6.205 存在已知漏洞（GHSA-hq66-cqwq-w95j）",
-        "依赖 axios@1.6.0 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5）",
-        "依赖 fabric@6.9.1 存在已知漏洞（GHSA-hfvx-25r5-qc3w, GHSA-w22m-hvvm-xmwx）"
-      ],
+      "security_notes": [],
       "reviewed_commit": "3915ab9550b7c737cc2483c6fd9d89144bd2c809",
       "source": "discovered",
       "review_status": "flagged",
