@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-12T07:16:53.728Z",
+  "generated_at": "2026-10-12T10:53:48.483Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -18908,8 +18908,7 @@
       },
       "risk_level": "high",
       "risk_notes": [
-        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ dsh-desktop/assets/plugins/dsh-eac-core-bridge/index.js",
-        "读取环境变量（可能包含敏感信息） @ dsh-desktop/assets/plugins/dsh-easy-setup/lib/index.js:53"
+        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ dsh-desktop/assets/plugins/dsh-eac-core-bridge/index.js"
       ],
       "risk_evidence": [
         {
@@ -18923,10 +18922,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "读取环境变量（可能包含敏感信息）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "76ebe91a475b9279d362a5b63f327087b46d2039",
       "source": "discovered",
@@ -18963,16 +18959,8 @@
         "zh": "DeepSeek Bot（简称 DS Bot）是一个基于 DeepSeek Harness（简称 dsh）的 bot 插件，插件将 dsh 改造为 bot 形式。你可以与自己创建的 bot 交流、工作。",
         "en": "DeepSeek Bot (DS Bot) is a bot plugin for DeepSeek Harness (DSH). It turns DSH into bots. You create your own bots, then talk and work with them."
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ ds-bot/scripts/lint.mjs:12",
-        "监听键盘输入事件 @ ds-bot/src/client/bot-settings.js:137",
-        "监听键盘输入事件 @ ds-bot/src/client/cells.js:60",
-        "监听键盘输入事件 @ ds-bot/src/client/composer.js:106",
-        "读取环境变量（可能包含敏感信息） @ ds-bot/index.js:42",
-        "访问第三方网络地址（如 bing.com） @ ds-bot/src/client/bot-browsers.js:23",
-        "访问第三方网络地址（如 w3.org） @ ds-bot/src/client/characters.js:125"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
@@ -19015,15 +19003,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 bing.com）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "d56c5850847b828dbc93e232fefcb81a94f80c89",
       "source": "discovered",
       "review_status": "flagged",
@@ -19058,41 +19039,9 @@
         "zh": "解决 Windows 下 DSH 反复使用 PowerShell 报错造成的 token、时间和模型注意力浪费。本插件的三个主要功能：",
         "en": "Reduce the tokens, time and model attention wasted on repeated PowerShell errors in Windows DSH. The plugin provides three main capabilities:"
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/linux-x64/release.stderr.bin），可能为伪装的可执行文件 @ vendor/fastctx/tests/compat/v0_1_1/raw/linux-x64/release.stderr.bin",
-        "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/linux-x64/source-built.stderr.bin），可能为伪装的可执行文件 @ vendor/fastctx/tests/compat/v0_1_1/raw/linux-x64/source-built.stderr.bin",
-        "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/macos-arm64/release.stderr.bin），可能为伪装的可执行文件 @ vendor/fastctx/tests/compat/v0_1_1/raw/macos-arm64/release.stderr.bin",
-        "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/macos-arm64/source-built.stderr.bin），可能为伪装的可执行文件 @ vendor/fastctx/tests/compat/v0_1_1/raw/macos-arm64/source-built.stderr.bin",
-        "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/macos-x64/release.stderr.bin），可能为伪装的可执行文件 @ vendor/fastctx/tests/compat/v0_1_1/raw/macos-x64/release.stderr.bin",
-        "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/macos-x64/source-built.stderr.bin），可能为伪装的可执行文件 @ vendor/fastctx/tests/compat/v0_1_1/raw/macos-x64/source-built.stderr.bin",
-        "读取环境变量（可能包含敏感信息） @ bin/dsh-ops.mjs:591"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
-        {
-          "explanation": "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/linux-x64/release.stderr.bin），可能为伪装的可执行文件",
-          "file": "vendor/fastctx/tests/compat/v0_1_1/raw/linux-x64/release.stderr.bin"
-        },
-        {
-          "explanation": "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/linux-x64/source-built.stderr.bin），可能为伪装的可执行文件",
-          "file": "vendor/fastctx/tests/compat/v0_1_1/raw/linux-x64/source-built.stderr.bin"
-        },
-        {
-          "explanation": "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/macos-arm64/release.stderr.bin），可能为伪装的可执行文件",
-          "file": "vendor/fastctx/tests/compat/v0_1_1/raw/macos-arm64/release.stderr.bin"
-        },
-        {
-          "explanation": "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/macos-arm64/source-built.stderr.bin），可能为伪装的可执行文件",
-          "file": "vendor/fastctx/tests/compat/v0_1_1/raw/macos-arm64/source-built.stderr.bin"
-        },
-        {
-          "explanation": "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/macos-x64/release.stderr.bin），可能为伪装的可执行文件",
-          "file": "vendor/fastctx/tests/compat/v0_1_1/raw/macos-x64/release.stderr.bin"
-        },
-        {
-          "explanation": "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/macos-x64/source-built.stderr.bin），可能为伪装的可执行文件",
-          "file": "vendor/fastctx/tests/compat/v0_1_1/raw/macos-x64/source-built.stderr.bin"
-        },
         {
           "explanation": "读取环境变量（可能包含敏感信息）",
           "file": "bin/dsh-ops.mjs",
@@ -19100,21 +19049,115 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/linux-x64/release.stderr.bin），可能为伪装的可执行文件",
-        "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/linux-x64/source-built.stderr.bin），可能为伪装的可执行文件",
-        "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/macos-arm64/release.stderr.bin），可能为伪装的可执行文件",
-        "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/macos-arm64/source-built.stderr.bin），可能为伪装的可执行文件",
-        "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/macos-x64/release.stderr.bin），可能为伪装的可执行文件",
-        "存在双重扩展名文件（vendor/fastctx/tests/compat/v0_1_1/raw/macos-x64/source-built.stderr.bin），可能为伪装的可执行文件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "755daa7e290ce17515039c87643932db571223ff",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-10-11T10:02:49.361Z"
+    },
+    {
+      "id": "Fei2411/DeepSeek-Bot",
+      "name": "DeepSeek-Bot",
+      "author": "Fei2411",
+      "description": "A team of long-lived bots for DeepSeek Harness, with main bots, bot-to-bot messages and group chats.",
+      "repo_url": "https://github.com/Fei2411/DeepSeek-Bot",
+      "homepage": "https://github.com/Fei2411/DeepSeek-Bot",
+      "stars": 1202,
+      "forks": 112,
+      "open_issues": 28,
+      "watchers": 0,
+      "pushed_at": "2026-10-12T08:55:19Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "Apache-2.0",
+      "topics": [
+        "bot",
+        "deepseek-harness",
+        "dsh-plugin",
+        "multi-agent"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "DeepSeek Bot（简称 DS Bot）是一个基于 DeepSeek Harness（简称 dsh）的 bot 插件，插件将 dsh 改造为 bot 形式。你可以与自己创建的 bot 交流、工作。",
+        "en": "DeepSeek Bot (DS Bot) is a bot plugin for DeepSeek Harness (DSH). It turns DSH into bots. You create your own bots, then talk and work with them."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ ds-bot/scripts/lint.mjs:12",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ ds-bot/src/client/at-menu.js:67",
+        "监听键盘输入事件 @ ds-bot/src/client/bot-settings.js:137",
+        "监听键盘输入事件 @ ds-bot/src/client/cells.js:60",
+        "监听键盘输入事件 @ ds-bot/src/client/composer.js:120",
+        "读取环境变量（可能包含敏感信息） @ ds-bot/index.js:42",
+        "访问第三方网络地址（如 bing.com） @ ds-bot/src/client/bot-browsers.js:23",
+        "访问第三方网络地址（如 w3.org） @ ds-bot/src/client/characters.js:125"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "ds-bot/scripts/lint.mjs",
+          "line": 12,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "ds-bot/src/client/at-menu.js",
+          "line": 67
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "ds-bot/src/client/bot-settings.js",
+          "line": 137,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "ds-bot/src/client/cells.js",
+          "line": 60,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "ds-bot/src/client/composer.js",
+          "line": 120,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "ds-bot/index.js",
+          "line": 42
+        },
+        {
+          "explanation": "访问第三方网络地址（如 bing.com）",
+          "file": "ds-bot/src/client/bot-browsers.js",
+          "line": 23
+        },
+        {
+          "explanation": "访问第三方网络地址（如 w3.org）",
+          "file": "ds-bot/src/client/characters.js",
+          "line": 125
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 bing.com）",
+        "访问第三方网络地址（如 w3.org）"
+      ],
+      "security_notes": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "38501b13392920d17b52d094b626549933f2f7be",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-12T10:53:48.483Z"
     }
   ]
 }
