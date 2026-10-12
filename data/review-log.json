@@ -1,6 +1,299 @@
 {
-  "updated_at": "2026-10-11T10:02:49.361Z",
+  "updated_at": "2026-10-12T10:53:48.483Z",
   "decisions": [
+    {
+      "id": "QingYunA/answer-me-with-html",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "解码后直接执行代码（Base64/编码字符串 -> 全局 eval/Function）",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "监听键盘输入事件",
+        "使用屏幕/画面采集能力"
+      ],
+      "privacy_notes": [
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取本地凭据文件并发送到网络，可能泄露密钥",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 apache.org、api.elevenlabs.io、w3.org）",
+        "访问第三方网络地址（如 apache.org、api.elevenlabs.io、w3.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "site/src/main.js",
+          "line": 191,
+          "snippet": "t.addEventListener('keydown', (e) => {"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "site/src/main.js",
+          "line": 226,
+          "snippet": "addEventListener('keydown', (e) => { if (!box.hidden && e.key === 'Escape') closeBox(); });"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "site/src/main.js",
+          "line": 227,
+          "snippet": "box.addEventListener('keydown', (e) => { if (e.key === 'Tab') { e.preventDefault(); $('.lightbox-close', box).focus(); } });"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/release.mjs",
+          "line": 28,
+          "snippet": "}"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/smoke-install.mjs",
+          "line": 15,
+          "snippet": "const sh = (cmd, args, opts = {}) => execFileSync(cmd, args, { encoding: 'utf8', env, stdio: ['pipe', 'pipe', 'pipe'], ...opts });"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/smoke-install.mjs",
+          "line": 74,
+          "snippet": "try { return strip(execFileSync('bash', ['-c', cmd], { encoding: 'utf8', env: e, stdio: ['pipe', 'pipe', 'pipe'] })); }"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/smoke-install.mjs",
+          "line": 89,
+          "snippet": "const page = execFileSync(process.execPath, [am, 'render', '-', '--no-open'], { encoding: 'utf8', env: { ...env, HOME: h, AM_HOME: join(h, '.answer-me-with-html"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/snapshot.mjs",
+          "line": 92,
+          "snippet": "mkdirSync(out, { recursive: true });"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/snapshot.mjs",
+          "line": 100,
+          "snippet": "try {"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/snapshot.mjs",
+          "line": 110,
+          "snippet": "} finally {"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "site/src/playground.js",
+          "line": 490,
+          "snippet": "ta.addEventListener('keydown', (e) => {"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "site/src/playground.js",
+          "line": 509,
+          "snippet": "tab.addEventListener('keydown', (e) => {"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "site/src/playground.js",
+          "line": 747,
+          "snippet": "b.addEventListener('keydown', (e) => {"
+        },
+        {
+          "rule": "decode-exec",
+          "severity": "critical",
+          "explanation": "解码后直接执行代码（Base64/编码字符串 -> 全局 eval/Function）",
+          "file": "skills/answer-me-with-html/scripts/am.mjs",
+          "line": 27,
+          "snippet": "temml_default = runInThisContext('(function () {\\nvar temml=function(){\"use strict\";class e{constructor(t,r){let n,s=\" \"+t;const o=r&&r.loc;if(o&&o.start<=o.end"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "skills/answer-me-with-html/scripts/am.mjs",
+          "line": 768,
+          "snippet": "var VIDEO_JS = \"(() => {\\n  const D = JSON.parse(document.getElementById('amv-data').textContent);\\n  const W = 1920;\\n  const H = 1080;\\n  const T = 0.9;     /"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "skills/answer-me-with-html/scripts/am.mjs",
+          "line": 769,
+          "snippet": "var VIDEO_EXPORT_JS = \"// The export engine for the path that has no ffmpeg: the player page drives its own render(t), rasterizes the stage\\n// into a canvas, e"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "skills/answer-me-with-html/scripts/am.mjs",
+          "line": 8800,
+          "snippet": "if (!ffmpeg.stdin.write(Buffer.from(data, \"base64\"))) {"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "skills/answer-me-with-html/scripts/am.mjs",
+          "line": 38,
+          "snippet": "var RUNTIME_JS = \"(() => {\\n// How a formula reads in a quote. MathML has no plain text, so src/math.js writes the formula as the draft wrote it, delimiters inc"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "skills/answer-me-with-html/scripts/am.mjs",
+          "line": 8798,
+          "snippet": "const data = await screenshot();"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-10-02）"
+      ],
+      "reviewed_commit": "4da5ae89ac435683110aa1b8707d9d4170184c55",
+      "review_mode": "full",
+      "scanned_files": 17,
+      "total_files": 261,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-12T10:53:48.483Z"
+    },
+    {
+      "id": "Fei2411/DeepSeek-Bot",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "监听键盘输入事件"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 bing.com）",
+        "访问第三方网络地址（如 w3.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "ds-bot/scripts/lint.mjs",
+          "line": 12,
+          "snippet": "const common = execFileSync('git', ['-C', plugin, 'rev-parse', '--path-format=absolute', '--git-common-dir'], { encoding: 'utf8' }).trim()"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "ds-bot/src/client/at-menu.js",
+          "line": 67,
+          "snippet": "for (const byte of new TextEncoder().encode(JSON.stringify(sessionId))) binary += String.fromCharCode(byte)"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "ds-bot/src/client/bot-settings.js",
+          "line": 137,
+          "snippet": "window.addEventListener('keydown', onKey, true)"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "ds-bot/src/client/cells.js",
+          "line": 60,
+          "snippet": "window.addEventListener('keydown', onKey, true)"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "ds-bot/src/client/composer.js",
+          "line": 120,
+          "snippet": "window.addEventListener('keydown', onKey, true)"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-10-07）"
+      ],
+      "reviewed_commit": "38501b13392920d17b52d094b626549933f2f7be",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 195,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-12T10:53:48.483Z"
+    },
     {
       "id": "Ebony-Vinyl/EAC-Desktop",
       "verdict": "flagged",
@@ -62654,115 +62947,6 @@
       "total_files": 105,
       "osv": {
         "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "LayneChai/superpowers-dsh",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
-      "privacy_notes": [
-        "读取浏览器 Cookie/存储并发送到网络",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 primeradiant.com）"
-      ],
-      "evidence": [
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "skills/writing-skills/render-graphs.js",
-          "line": 72,
-          "snippet": "return execFileSync('dot', ['-Tsvg'], {"
-        },
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "skills/writing-skills/render-graphs.js",
-          "line": 113,
-          "snippet": "execFileSync('dot', ['-V'], { stdio: 'ignore' });"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）",
-        "未声明开源许可证"
-      ],
-      "reviewed_commit": "0b660254ab93b592e9810b493ccd63ecdf1a4663",
-      "review_mode": "full",
-      "scanned_files": 6,
-      "total_files": 55,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Jayden-X-L/forkprobe",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 jayden-x-l.github.io）",
-        "访问第三方网络地址（如 worker.test）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "docs/assets/site-pages.js",
-          "line": 88,
-          "snippet": "button.addEventListener('keydown', (event) => {"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "707d02b5a03c280237bb6d602bd8f1d09accf13e",
-      "review_mode": "full",
-      "scanned_files": 9,
-      "total_files": 62,
-      "osv": {
-        "status": "skipped",
         "findings": 0
       },
       "llm_review": {
