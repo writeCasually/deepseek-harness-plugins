@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-13T01:16:24.886Z",
+  "generated_at": "2026-10-13T10:39:02.741Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -19086,17 +19086,8 @@
         "zh": "DeepSeek Bot（简称 DS Bot）是一个基于 DeepSeek Harness（简称 dsh）的 bot 插件，插件将 dsh 改造为 bot 形式。你可以与自己创建的 bot 交流、工作。",
         "en": "DeepSeek Bot (DS Bot) is a bot plugin for DeepSeek Harness (DSH). It turns DSH into bots. You create your own bots, then talk and work with them."
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ ds-bot/scripts/lint.mjs:12",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ ds-bot/src/client/at-menu.js:67",
-        "监听键盘输入事件 @ ds-bot/src/client/bot-settings.js:137",
-        "监听键盘输入事件 @ ds-bot/src/client/cells.js:60",
-        "监听键盘输入事件 @ ds-bot/src/client/composer.js:120",
-        "读取环境变量（可能包含敏感信息） @ ds-bot/index.js:42",
-        "访问第三方网络地址（如 bing.com） @ ds-bot/src/client/bot-browsers.js:23",
-        "访问第三方网络地址（如 w3.org） @ ds-bot/src/client/characters.js:125"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
@@ -19144,16 +19135,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 bing.com）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "38501b13392920d17b52d094b626549933f2f7be",
       "source": "discovered",
       "review_status": "flagged",
