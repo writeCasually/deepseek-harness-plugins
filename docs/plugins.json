@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-16T05:46:16.113Z",
+  "generated_at": "2026-10-16T08:13:09.307Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -19141,6 +19141,63 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-10-12T10:53:48.483Z"
+    },
+    {
+      "id": "beiyege-01/dsh-voice-ai-girlfriend",
+      "name": "dsh-voice-ai-girlfriend",
+      "author": "beiyege-01",
+      "description": "语音 AI 女友（Voice AI girlfriend for DeepSeek Harness）：Whisper 语音输入 + Qwen3-TTS 声音克隆 + 句子级流式朗读 + 数字人动画窗。插话/排队双模式，说话即打断。",
+      "repo_url": "https://github.com/beiyege-01/dsh-voice-ai-girlfriend",
+      "homepage": "https://github.com/beiyege-01/dsh-voice-ai-girlfriend",
+      "stars": 401,
+      "forks": 108,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-09-13T16:36:44Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "NOASSERTION",
+      "topics": [
+        "ai-girlfriend",
+        "companion",
+        "deepseek-harness",
+        "digital-human",
+        "dsh",
+        "dsh-plugin",
+        "speech-to-speech",
+        "tts",
+        "voice-assistant",
+        "voice-clone",
+        "whisper"
+      ],
+      "category": "plugin",
+      "kind": "dsh-client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.client manifest",
+      "description_i18n": {
+        "zh": "> \"你好呀，我是小雅。从今往后，DeepSeek Harness 不只是你的编程搭子——它开口说话了。\""
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ dsh-plugin/src/client/PersonaToggle.tsx:10"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+          "file": "dsh-plugin/src/client/PersonaToggle.tsx",
+          "line": 10
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "480bbabada7335735cad591eaa55f32fe54a4214",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-16T08:13:09.307Z"
     }
   ]
 }
