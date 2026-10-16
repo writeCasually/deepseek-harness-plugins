@@ -1,6 +1,179 @@
 {
-  "updated_at": "2026-10-15T08:20:13.412Z",
+  "updated_at": "2026-10-16T08:13:09.307Z",
   "decisions": [
+    {
+      "id": "beiyege-01/dsh-voice-ai-girlfriend",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.client manifest"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）"
+      ],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "480bbabada7335735cad591eaa55f32fe54a4214",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 103,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-16T08:13:09.307Z"
+    },
+    {
+      "id": "sixtysevenlf/dsh-blender-plugin",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
+      ],
+      "privacy_notes": [
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "cordis"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/index.js",
+          "line": 461,
+          "snippet": "for (const line of execFileSync('ps', ['-ax', '-o', 'pid=,command='], { encoding: 'utf8', timeout: 5000 }).split('\\n')) {"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/index.js",
+          "line": 179,
+          "snippet": "value.text += String.fromCharCode(10) + note;"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/index.js",
+          "line": 822,
+          "snippet": "return t.slice(0, head) + String.fromCharCode(10) + '…[中间省略 ' + String(t.length - head - tail) + ' 字符]…' + String.fromCharCode(10) + t.slice(-tail);"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/index.js",
+          "line": 962,
+          "snippet": "const NLx = String.fromCharCode(10);"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/index.js",
+          "line": 1064,
+          "snippet": "const NLx = String.fromCharCode(10);"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/index.js",
+          "line": 1152,
+          "snippet": "].join(String.fromCharCode(10));"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/index.js",
+          "line": 1304,
+          "snippet": "out2.text += String.fromCharCode(10) + '⚠ frame_looks_empty：' + String(w.why || '画面里几乎只剩底色')"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/index.js",
+          "line": 1305,
+          "snippet": "+ (w.scene_bbox ? (String.fromCharCode(10) + '  场景 bbox：center=' + JSON.stringify(w.scene_bbox.center) + ' span=' + String(w.scene_bbox.span) + ' objects=' + St"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/index.js",
+          "line": 1306,
+          "snippet": "+ (w.suggest ? (String.fromCharCode(10) + '  建议照这组再出一次：from=' + JSON.stringify(w.suggest.from) + ' look_at=' + JSON.stringify(w.suggest.look_at)) : String.fromC"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/index.js",
+          "line": 1316,
+          "snippet": "out2.text += String.fromCharCode(10) + '⚠ 图片未回传：' + String(img2.why || '未知原因');"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/index.js",
+          "line": 1332,
+          "snippet": "out.text += String.fromCharCode(10) + '⚠ 图片未回传：' + String(img.why || '未知原因');"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "8a268b326b57a43b29badc09a18570487ace49e6",
+      "review_mode": "full",
+      "scanned_files": 1,
+      "total_files": 159,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-16T08:13:09.307Z"
+    },
     {
       "id": "Ayuilos/Miffan",
       "verdict": "skip",
@@ -62717,97 +62890,6 @@
       "osv": {
         "status": "ok",
         "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "liyupi/dsh-kun-like-pet",
-      "verdict": "approved",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "code",
-        "reason": "源码 scripts/validate.mjs 呈现 Cordis 插件骨架（apply(ctx)）"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）"
-      ],
-      "reviewed_commit": "87bb6e1762618dd7727d285ffeeadd86a3799425",
-      "review_mode": "full",
-      "scanned_files": 5,
-      "total_files": 17,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "labring/sealos-skills",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "依赖 yaml@2.4.2 存在已知漏洞（GHSA-48c2-rrv3-qjmp）"
-      ],
-      "privacy_notes": [],
-      "evidence": [
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "scripts/test-sealos-deploy-template-fast-path.mjs",
-          "line": 60,
-          "snippet": "execFileSync(process.execPath, ["
-        },
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "scripts/test-sealos-deploy-template-fast-path.mjs",
-          "line": 73,
-          "snippet": "execFileSync(process.execPath, ["
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 yaml@2.4.2 存在已知漏洞（GHSA-48c2-rrv3-qjmp）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "yaml@2.4.2"
-        }
-      ],
-      "trust_notes": [
-        "未声明开源许可证"
-      ],
-      "reviewed_commit": "f6876f7df876eac3617ddc15f95f43dcb8c33e31",
-      "review_mode": "full",
-      "scanned_files": 5,
-      "total_files": 439,
-      "osv": {
-        "status": "ok",
-        "findings": 1
       },
       "llm_review": {
         "status": "skipped",
