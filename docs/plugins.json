@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-17T01:15:26.113Z",
+  "generated_at": "2026-10-17T07:49:46.838Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -19178,10 +19178,8 @@
       "description_i18n": {
         "zh": "> \"你好呀，我是小雅。从今往后，DeepSeek Harness 不只是你的编程搭子——它开口说话了。\""
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ dsh-plugin/src/client/PersonaToggle.tsx:10"
-      ],
+      "risk_level": "high",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
@@ -19190,9 +19188,7 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）"
-      ],
+      "privacy_notes": [],
       "security_notes": [],
       "reviewed_commit": "480bbabada7335735cad591eaa55f32fe54a4214",
       "source": "discovered",
