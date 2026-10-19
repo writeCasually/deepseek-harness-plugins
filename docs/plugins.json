@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-19T01:07:21.158Z",
+  "generated_at": "2026-10-19T08:56:03.282Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -19195,6 +19195,174 @@
       "review_status": "flagged",
       "reviewed_at": "2026-10-16T08:13:09.307Z",
       "description_i18n_checked_at": "2026-10-16T12:18:30.912Z"
+    },
+    {
+      "id": "FishBottle7/opencode2dsh",
+      "name": "opencode2dsh",
+      "author": "FishBottle7",
+      "description": "DSH plugin — free OpenCode Zen models for DeepSeek Harness (DSH). Free LLM API, no API key needed. 在 DSH 中使用 OpenCode Zen 免费模型，无需 API key",
+      "repo_url": "https://github.com/FishBottle7/opencode2dsh",
+      "homepage": "https://www.npmjs.com/package/@opencode2dsh/dsh-plugin",
+      "stars": 274,
+      "forks": 51,
+      "open_issues": 6,
+      "watchers": 0,
+      "pushed_at": "2026-10-19T08:47:29Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "cordis",
+        "cordis-plugin",
+        "deepseek",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "free-api",
+        "free-llm",
+        "free-llm-access",
+        "free-models",
+        "llm",
+        "llm-agents",
+        "llm-provider",
+        "nodejs",
+        "opencode-zen",
+        "typescript"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "在 DSH（DeepSeek Harness）里原生使用 OpenCode Zen 的免费匿名模型。",
+        "en": "Free OpenCode Zen models, natively inside DSH (DeepSeek Harness)."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1",
+        "依赖 undici@8.10.1 存在已知漏洞（GHSA-2gqq-gqf2-x968, GHSA-2jfj-6hjv-fm6j, GHSA-3wwx-pv8p-q78v） @ <dependencies>",
+        "访问第三方网络地址（如 models.dev、opencode.ai） @ packages/plugin/src/adapter/catalog.ts:13",
+        "读取环境变量（可能包含敏感信息） @ packages/plugin/src/adapter/messages.ts:124",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ packages/plugin/src/adapter/zen-adapter.ts:530",
+        "访问第三方网络地址（如 opencode.ai） @ packages/plugin/src/adapter/zen-adapter.ts:299",
+        "访问第三方网络地址（如 host） @ packages/plugin/src/client/locales.ts:43",
+        "访问第三方网络地址（如 h、opencode.ai） @ packages/plugin/src/config.ts:64",
+        "访问第三方网络地址（如 h） @ packages/plugin/src/ip-pool-settings/namespace.ts:84",
+        "访问第三方网络地址（如 http、ip-api.com） @ packages/plugin/src/pool/admission.ts:71"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "依赖 undici@8.10.1 存在已知漏洞（GHSA-2gqq-gqf2-x968, GHSA-2jfj-6hjv-fm6j, GHSA-3wwx-pv8p-q78v）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 models.dev、opencode.ai）",
+          "file": "packages/plugin/src/adapter/catalog.ts",
+          "line": 13
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "packages/plugin/src/adapter/messages.ts",
+          "line": 124
+        },
+        {
+          "explanation": "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+          "file": "packages/plugin/src/adapter/zen-adapter.ts",
+          "line": 530
+        },
+        {
+          "explanation": "访问第三方网络地址（如 opencode.ai）",
+          "file": "packages/plugin/src/adapter/zen-adapter.ts",
+          "line": 299
+        },
+        {
+          "explanation": "访问第三方网络地址（如 host）",
+          "file": "packages/plugin/src/client/locales.ts",
+          "line": 43
+        },
+        {
+          "explanation": "访问第三方网络地址（如 h、opencode.ai）",
+          "file": "packages/plugin/src/config.ts",
+          "line": 64
+        },
+        {
+          "explanation": "访问第三方网络地址（如 h）",
+          "file": "packages/plugin/src/ip-pool-settings/namespace.ts",
+          "line": 84
+        },
+        {
+          "explanation": "访问第三方网络地址（如 http、ip-api.com）",
+          "file": "packages/plugin/src/pool/admission.ts",
+          "line": 71
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 models.dev、opencode.ai）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "访问第三方网络地址（如 opencode.ai）",
+        "访问第三方网络地址（如 host）",
+        "访问第三方网络地址（如 h、opencode.ai）",
+        "访问第三方网络地址（如 h）",
+        "访问第三方网络地址（如 http、ip-api.com）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "依赖 undici@8.10.1 存在已知漏洞（GHSA-2gqq-gqf2-x968, GHSA-2jfj-6hjv-fm6j, GHSA-3wwx-pv8p-q78v）"
+      ],
+      "reviewed_commit": "6dc88018fa17038e5af42d1310c2730d53b2702d",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-19T08:56:03.282Z"
+    },
+    {
+      "id": "dhicoc/dsh-reverse-skill",
+      "name": "dsh-reverse-skill",
+      "author": "dhicoc",
+      "description": "Complete reverse-skill (88 SKILL.md) as a DeepSeek Harness (dsh) Cordis plugin — reverse engineering, authorized pentesting and security research skill pack.",
+      "repo_url": "https://github.com/dhicoc/dsh-reverse-skill",
+      "homepage": "https://github.com/dhicoc/dsh-reverse-skill",
+      "stars": 266,
+      "forks": 30,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-10-08T09:10:26Z",
+      "archived": false,
+      "language": "PowerShell",
+      "license": "MIT",
+      "topics": [
+        "ctf",
+        "deepseek-harness",
+        "dsh-plugin",
+        "pentest",
+        "reverse-engineering",
+        "security"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "> 安装：请从 GitHub 安装，不要从 npm 安装。",
+        "en": "A Claude Code skill for SRC / bug-bounty / pentest workflows. Loads automatically when you mention things like bug bounty, hackerone, waf bypass, or 任意账号, and walks Claude through a five-phase hunt: intake → recon → enum → hunt → report."
+      },
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": [],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [],
+      "reviewed_commit": "f1b61cf3deec370198ae81a23b8512338002d073",
+      "source": "discovered",
+      "review_status": "approved",
+      "reviewed_at": "2026-10-19T08:56:03.282Z"
     }
   ]
 }
