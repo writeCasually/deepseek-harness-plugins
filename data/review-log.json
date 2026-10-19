@@ -1,6 +1,93 @@
 {
-  "updated_at": "2026-10-18T08:03:52.176Z",
+  "updated_at": "2026-10-19T08:56:03.282Z",
   "decisions": [
+    {
+      "id": "FishBottle7/opencode2dsh",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "依赖 undici@8.10.1 存在已知漏洞（GHSA-2gqq-gqf2-x968, GHSA-2jfj-6hjv-fm6j, GHSA-3wwx-pv8p-q78v）"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 models.dev、opencode.ai）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "访问第三方网络地址（如 opencode.ai）",
+        "访问第三方网络地址（如 host）",
+        "访问第三方网络地址（如 h、opencode.ai）",
+        "访问第三方网络地址（如 h）",
+        "访问第三方网络地址（如 http、ip-api.com）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#1",
+          "line": 0,
+          "snippet": "node -e \"require('fs').rmSync('lib',{recursive:true,force:true})\" && npm run build && npm run build:client && node ../../scripts/prepare-package.mjs"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 undici@8.10.1 存在已知漏洞（GHSA-2gqq-gqf2-x968, GHSA-2jfj-6hjv-fm6j, GHSA-3wwx-pv8p-q78v）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "undici@8.10.1"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "6dc88018fa17038e5af42d1310c2730d53b2702d",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 126,
+      "osv": {
+        "status": "ok",
+        "findings": 1
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-19T08:56:03.282Z"
+    },
+    {
+      "id": "dhicoc/dsh-reverse-skill",
+      "verdict": "approved",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "f1b61cf3deec370198ae81a23b8512338002d073",
+      "review_mode": "full",
+      "scanned_files": 5,
+      "total_files": 539,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-19T08:56:03.282Z"
+    },
     {
       "id": "beiyege-01/dsh-voice-ai-girlfriend",
       "verdict": "flagged",
@@ -62778,118 +62865,6 @@
       "osv": {
         "status": "ok",
         "findings": 1
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "oil-oil/dsh-vision",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dashscope.aliyuncs.com、openrouter.ai、tokendance.space、zenmux.ai）",
-        "访问第三方网络地址（如 dashscope.aliyuncs.com、openrouter.ai、tokendance.space、zenmux.ai）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 dashscope.aliyuncs.com、zenmux.ai）",
-        "访问第三方网络地址（如 openrouter.example）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "pnpm build"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）"
-      ],
-      "reviewed_commit": "9446a41dc96bd9fc96a7cc3b3a11365e125c9bd7",
-      "review_mode": "full",
-      "scanned_files": 25,
-      "total_files": 37,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Mars-Sea/dsh-commandcode-provider",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址（如 api.commandcode.ai、commandcode.ai）",
-        "访问第三方网络地址（如 api.commandcode.ai）",
-        "访问第三方网络地址（如 a.com、api.commandcode.ai、example.com、new.example.com）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepare",
-          "severity": "warning",
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "tsdown"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）"
-      ],
-      "reviewed_commit": "d7cb4adb96af78f39b12d9692f7e638e62fe5d4a",
-      "review_mode": "delta",
-      "scanned_files": 19,
-      "total_files": 36,
-      "osv": {
-        "status": "ok",
-        "findings": 0
       },
       "llm_review": {
         "status": "skipped",
