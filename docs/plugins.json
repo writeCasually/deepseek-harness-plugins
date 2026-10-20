@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-20T01:43:22.229Z",
+  "generated_at": "2026-10-20T08:34:53.507Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -19238,24 +19238,12 @@
         "zh": "在 DSH（DeepSeek Harness）里原生使用 OpenCode Zen 的免费匿名模型。",
         "en": "Free OpenCode Zen models, natively inside DSH (DeepSeek Harness)."
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#1",
-        "依赖 undici@8.10.1 存在已知漏洞（GHSA-2gqq-gqf2-x968, GHSA-2jfj-6hjv-fm6j, GHSA-3wwx-pv8p-q78v） @ <dependencies>",
-        "访问第三方网络地址（如 models.dev、opencode.ai） @ packages/plugin/src/adapter/catalog.ts:13",
-        "读取环境变量（可能包含敏感信息） @ packages/plugin/src/adapter/messages.ts:124",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ packages/plugin/src/adapter/zen-adapter.ts:530",
-        "访问第三方网络地址（如 opencode.ai） @ packages/plugin/src/adapter/zen-adapter.ts:299",
-        "访问第三方网络地址（如 host） @ packages/plugin/src/client/locales.ts:43",
-        "访问第三方网络地址（如 h、opencode.ai） @ packages/plugin/src/config.ts:64",
-        "访问第三方网络地址（如 h） @ packages/plugin/src/ip-pool-settings/namespace.ts:84",
-        "访问第三方网络地址（如 http、ip-api.com） @ packages/plugin/src/pool/admission.ts:71"
+        "依赖 undici@8.10.1 存在已知漏洞（GHSA-2gqq-gqf2-x968, GHSA-2jfj-6hjv-fm6j, GHSA-3wwx-pv8p-q78v） @ <dependencies>"
       ],
       "risk_evidence": [
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#1"
-        },
         {
           "explanation": "依赖 undici@8.10.1 存在已知漏洞（GHSA-2gqq-gqf2-x968, GHSA-2jfj-6hjv-fm6j, GHSA-3wwx-pv8p-q78v）",
           "file": "<dependencies>"
@@ -19302,20 +19290,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 models.dev、opencode.ai）",
-        "读取环境变量（可能包含敏感信息）",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
-        "访问第三方网络地址（如 opencode.ai）",
-        "访问第三方网络地址（如 host）",
-        "访问第三方网络地址（如 h、opencode.ai）",
-        "访问第三方网络地址（如 h）",
-        "访问第三方网络地址（如 http、ip-api.com）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 undici@8.10.1 存在已知漏洞（GHSA-2gqq-gqf2-x968, GHSA-2jfj-6hjv-fm6j, GHSA-3wwx-pv8p-q78v）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "6dc88018fa17038e5af42d1310c2730d53b2702d",
       "source": "discovered",
       "review_status": "flagged",
@@ -19363,6 +19339,122 @@
       "source": "discovered",
       "review_status": "approved",
       "reviewed_at": "2026-10-19T08:56:03.282Z"
+    },
+    {
+      "id": "dshplugin/dsh-plugin-hub",
+      "name": "dsh-plugin-hub",
+      "author": "dshplugin",
+      "description": "DeepSeek Harness 社区内置插件市场（dsh-plugin）— 搜索插件、下载并安装 10000+ 人工精选社区插件，每日更新、完全免费。内置在 Harness「设置 → 插件中心」，无需离开应用即可浏览、搜索、安装各类 AI 插件。",
+      "repo_url": "https://github.com/dshplugin/dsh-plugin-hub",
+      "homepage": "https://dsh-plugin.org",
+      "stars": 275,
+      "forks": 22,
+      "open_issues": 8,
+      "watchers": 0,
+      "pushed_at": "2026-10-20T05:36:17Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "agent",
+        "ai",
+        "cli",
+        "community-plugins",
+        "deepseek",
+        "deepseek-harness",
+        "dsh-plugin",
+        "dsh-plugin-org",
+        "harness",
+        "open-source",
+        "plugin-hub",
+        "plugin-marketplace",
+        "plugins",
+        "typescript"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "DeepSeek Harness Plugin（DSH）插件市场与插件大全，收录 4,597 个插件、全部人工精选验证、每日更新，免费浏览、搜索并按分类发现、下载与安装 DSH 插件，人工验证、来源可溯。",
+        "en": "4,597 DeepSeek Harness (DSH) plugins indexed, all hand-verified, in one community hub, updated daily. Browse, search, download and install by category — free, human-verified, traceable."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
+        "访问第三方网络地址（如 dsh-plugin.org） @ lib/index.js:3",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-plugin.org） @ lib/http/install.js:19",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.dsh-plugin.org、dsh-plugin.org） @ lib/http/catalog.js:60",
+        "访问第三方网络地址（如 api.dsh-plugin.org、dsh-plugin.org） @ lib/http/catalog.js:3",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ lib/http/diagnostics.js",
+        "读取环境变量（可能包含敏感信息） @ lib/http/shared.js:79",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-plugin.org、host） @ lib/services/probe.js:42",
+        "访问第三方网络地址（如 dsh-plugin.org、host） @ lib/services/probe.js:3"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh-plugin.org）",
+          "file": "lib/index.js",
+          "line": 3
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-plugin.org）",
+          "file": "lib/http/install.js",
+          "line": 19
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.dsh-plugin.org、dsh-plugin.org）",
+          "file": "lib/http/catalog.js",
+          "line": 60
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.dsh-plugin.org、dsh-plugin.org）",
+          "file": "lib/http/catalog.js",
+          "line": 3
+        },
+        {
+          "explanation": "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+          "file": "lib/http/diagnostics.js"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "lib/http/shared.js",
+          "line": 79
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-plugin.org、host）",
+          "file": "lib/services/probe.js",
+          "line": 42
+        },
+        {
+          "explanation": "访问第三方网络地址（如 dsh-plugin.org、host）",
+          "file": "lib/services/probe.js",
+          "line": 3
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 dsh-plugin.org）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-plugin.org）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.dsh-plugin.org、dsh-plugin.org）",
+        "访问第三方网络地址（如 api.dsh-plugin.org、dsh-plugin.org）",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-plugin.org、host）",
+        "访问第三方网络地址（如 dsh-plugin.org、host）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行"
+      ],
+      "reviewed_commit": "dfd56ec530b217f1ee7675f470b3a5ff780a2e85",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-20T08:34:53.507Z"
     }
   ]
 }
