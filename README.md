@@ -191,6 +191,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [deepseek-harness-desktop](https://github.com/chokwinlee/deepseek-harness-desktop) | [@chokwinlee](https://github.com/chokwinlee) | Compact DeepSeek Harness desktop host with a native SwiftUI iPhone Remote source preview. |
 | [opencode2dsh](https://github.com/FishBottle7/opencode2dsh) | [@FishBottle7](https://github.com/FishBottle7) | DSH plugin — free OpenCode Zen models for DeepSeek Harness (DSH). Free LLM API, no API key needed. 在 DSH 中使用 OpenCode Zen 免费模型，无需 API key |
 | [pilot-harness](https://github.com/op7418/pilot-harness) | [@op7418](https://github.com/op7418) | Pilot Harness — a CodePilot-inspired desktop client and plugin suite for DeepSeek Harness on macOS, Windows, and Linux. |
+| [dsh-plugin-hub](https://github.com/dshplugin/dsh-plugin-hub) | [@dshplugin](https://github.com/dshplugin) | DeepSeek Harness 社区内置插件市场（dsh-plugin）— 搜索插件、下载并安装 10000+ 人工精选社区插件，每日更新、完全免费。内置在 Harness「设置 → 插件中心」，无需离开应用即可浏览、搜索、安装各类 AI 插件。 |
 | [Perfect-Web-Clone](https://github.com/ericshang98/Perfect-Web-Clone) | [@ericshang98](https://github.com/ericshang98) | Pixel-perfect clones of any webpage. Paste a URL, get a measured Vite + React replica. |
 | [dsh-damage-pulse](https://github.com/wssfk12138/dsh-damage-pulse) | [@wssfk12138](https://github.com/wssfk12138) | DeepSeek Harness token balance monitor with game-style damage pulse animations |
 | [dsh-trading](https://github.com/zhu1090093659/dsh-trading) | [@zhu1090093659](https://github.com/zhu1090093659) | Agent-native trading terminal built on DeepSeek Harness. Crypto, US, CN and HK in one three-column GUI, 19+ hot-swappable connectors, dry-run by default with human approval on every live order. BYOK, no data redistribution. |
@@ -285,7 +286,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [dsh-antibrow](https://github.com/antibrow/dsh-antibrow) | [@antibrow](https://github.com/antibrow) | DeepSeek Harness plugin: give your agent a browser with a persistent identity - engine-level fingerprint spoofing, unlimited free local profiles, Android device emulation, passkeys that survive, and residential proxy egress. |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-共收录 231 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
+共收录 232 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
 
 <!-- PLUGINS_END -->
 

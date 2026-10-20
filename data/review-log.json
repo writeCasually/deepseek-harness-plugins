@@ -1,6 +1,81 @@
 {
-  "updated_at": "2026-10-19T08:56:03.282Z",
+  "updated_at": "2026-10-20T08:34:53.507Z",
   "decisions": [
+    {
+      "id": "dshplugin/dsh-plugin-hub",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 dsh-plugin.org）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-plugin.org）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.dsh-plugin.org、dsh-plugin.org）",
+        "访问第三方网络地址（如 api.dsh-plugin.org、dsh-plugin.org）",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-plugin.org、host）",
+        "访问第三方网络地址（如 dsh-plugin.org、host）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "npm run build"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "dfd56ec530b217f1ee7675f470b3a5ff780a2e85",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 269,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-20T08:34:53.507Z"
+    },
+    {
+      "id": "daha1216/dsh-adult-tension",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "021173d81a3cf174f5d78c48e5995f89e20b5858",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 1486,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-10-20T08:34:53.507Z"
+    },
     {
       "id": "FishBottle7/opencode2dsh",
       "verdict": "flagged",
@@ -62765,106 +62840,6 @@
       "osv": {
         "status": "ok",
         "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Alex-Yanggg/awesome-DSH-plugin",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "3b44fe8ffddbf19ccebd459829e5a8ae2cbb0fa6",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 11,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "mishibeikejie/zat-dsh-engine",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "可能把数据发送到第三方收集端点",
-        "可能把数据发送到第三方收集端点",
-        "依赖 js-yaml@4.1.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj, GHSA-h67p-54hq-rp68）"
-      ],
-      "privacy_notes": [
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "读取浏览器 Cookie/存储并发送到网络",
-        "访问第三方网络地址（如 147228.github.io、agent-vision.anionex.me、agentrq.com、aidea-labs.com）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "exfil-endpoint",
-          "severity": "critical",
-          "explanation": "可能把数据发送到第三方收集端点",
-          "file": "lib/index.js",
-          "line": 21991,
-          "snippet": "return /pastebin|paste\\.ee|termbin|0x0\\.st|hastebin|requestbin|webhook|ngrok|serveo|localtunnel|trycloudflare|duckdns|nip\\.io/i.test(h);"
-        },
-        {
-          "rule": "exfil-endpoint",
-          "severity": "critical",
-          "explanation": "可能把数据发送到第三方收集端点",
-          "file": "lib/index.js",
-          "line": 22028,
-          "snippet": "if (/discord(?:app)?\\.com\\/api\\/webhooks|api\\.telegram\\.org\\/bot|pastebin\\.com|paste\\.ee|termbin\\.com|0x0\\.st|hastebin\\.com|webhook\\.site|requestbin\\.com/i.test"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 js-yaml@4.1.0 存在已知漏洞（GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj, GHSA-h67p-54hq-rp68）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "js-yaml@4.1.0"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）"
-      ],
-      "reviewed_commit": "b3b7ce6969fc806df1edb4170073ddd50c6927c0",
-      "review_mode": "full",
-      "scanned_files": 1,
-      "total_files": 44,
-      "osv": {
-        "status": "ok",
-        "findings": 1
       },
       "llm_review": {
         "status": "skipped",
