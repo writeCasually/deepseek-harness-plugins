@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-21T05:57:08.225Z",
+  "generated_at": "2026-10-21T08:36:37.073Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -19380,17 +19380,10 @@
         "zh": "DeepSeek Harness Plugin（DSH）插件市场与插件大全，收录 4,597 个插件、全部人工精选验证、每日更新，免费浏览、搜索并按分类发现、下载与安装 DSH 插件，人工验证、来源可溯。",
         "en": "4,597 DeepSeek Harness (DSH) plugins indexed, all hand-verified, in one community hub, updated daily. Browse, search, download and install by category — free, human-verified, traceable."
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
-        "访问第三方网络地址（如 dsh-plugin.org） @ lib/index.js:3",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-plugin.org） @ lib/http/install.js:19",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.dsh-plugin.org、dsh-plugin.org） @ lib/http/catalog.js:60",
-        "访问第三方网络地址（如 api.dsh-plugin.org、dsh-plugin.org） @ lib/http/catalog.js:3",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ lib/http/diagnostics.js",
-        "读取环境变量（可能包含敏感信息） @ lib/http/shared.js:79",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-plugin.org、host） @ lib/services/probe.js:42",
-        "访问第三方网络地址（如 dsh-plugin.org、host） @ lib/services/probe.js:3"
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ lib/http/diagnostics.js"
       ],
       "risk_evidence": [
         {
@@ -19438,23 +19431,168 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 dsh-plugin.org）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-plugin.org）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.dsh-plugin.org、dsh-plugin.org）",
-        "访问第三方网络地址（如 api.dsh-plugin.org、dsh-plugin.org）",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取环境变量（可能包含敏感信息）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh-plugin.org、host）",
-        "访问第三方网络地址（如 dsh-plugin.org、host）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "dfd56ec530b217f1ee7675f470b3a5ff780a2e85",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-10-20T08:34:53.507Z"
+    },
+    {
+      "id": "iflytek/skillhub",
+      "name": "skillhub",
+      "author": "iflytek",
+      "description": "Self-hosted, open-source agent skill registry for enterprises. Publish & version skill packages, govern with RBAC and audit logs, deploy   on-premise with Docker or Kubernetes.",
+      "repo_url": "https://github.com/iflytek/skillhub",
+      "homepage": "https://skill.xfyun.cn",
+      "stars": 5254,
+      "forks": 810,
+      "open_issues": 36,
+      "watchers": 0,
+      "pushed_at": "2026-10-21T08:33:18Z",
+      "archived": false,
+      "language": "Java",
+      "license": "Apache-2.0",
+      "topics": [
+        "agent-framework",
+        "ai-agent",
+        "ai-governance",
+        "ai-infrastructure",
+        "ai-orchestration",
+        "audit-log",
+        "dsh-plugin",
+        "enterprise-ai",
+        "iflytek-astron",
+        "openclaw",
+        "openclaw-skills",
+        "rbac",
+        "skill",
+        "skill-hub",
+        "skill-management",
+        "skill-manager",
+        "skill-registry",
+        "skills",
+        "version-control"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "优秀的 Skill 在分享中产生更大价值。如果你有一个在真实工作或生活场景中反复打磨、确实好用的 Skill，欢迎分享给 SkillHub 社区，与大家一起丰富开放、实用的 Skill 生态。无论是日常生活、 办公协作、学习研究、旅行活动、内容创作、数据分析还是软件开发，都可以成为有价值的分享。",
+        "en": "A native DSH plugin for anonymous skill browsing, conversation search and installation, and local upgrade/removal. Open 技能中心 (Skill Center) in the DSH sidebar. The installation core is bundled; a separate SkillHub CLI installation is unnecessary."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 fflate@0.8.2 存在已知漏洞（GHSA-px8p-9vwx-vf98） @ <dependencies>"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 fflate@0.8.2 存在已知漏洞（GHSA-px8p-9vwx-vf98）",
+          "file": "<dependencies>"
+        }
+      ],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [
+        "依赖 fflate@0.8.2 存在已知漏洞（GHSA-px8p-9vwx-vf98）"
+      ],
+      "reviewed_commit": "a7a272a37bef2a83d5b697efc942cb5179247f69",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-21T08:36:37.073Z"
+    },
+    {
+      "id": "ADWMC/helm-d",
+      "name": "helm-d",
+      "author": "ADWMC",
+      "description": "DeepSeek Harness 破甲一体化安全分析插件：Android · Web · Native · Protocol · Malware · AI-Security 全领域聚合（9 bundle + 1 preset）",
+      "repo_url": "https://github.com/ADWMC/helm-d",
+      "homepage": "https://github.com/ADWMC/helm-d",
+      "stars": 304,
+      "forks": 46,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-10-20T13:23:29Z",
+      "archived": false,
+      "language": "Python",
+      "license": "MIT",
+      "topics": [
+        "cordis",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "frida",
+        "jailbreak",
+        "llm-jailbreak",
+        "reverse-engineering",
+        "security"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "DeepSeek Harness 破甲安全分析插件",
+        "en": "Armor-piercing all-in-one security-analysis plugin for DeepSeek Harness"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#1",
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#2",
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#3",
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#4",
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#5",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ packages/helmd/scripts/gen-preset.mjs:100",
+        "读取环境变量（可能包含敏感信息） @ packages/helmd/scripts/android/hooks/okhttp3-hook.js:539"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json#2"
+        },
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json#3"
+        },
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json#4"
+        },
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json#5"
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "packages/helmd/scripts/gen-preset.mjs",
+          "line": 100,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "packages/helmd/scripts/android/hooks/okhttp3-hook.js",
+          "line": 539
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）"
+      ],
+      "reviewed_commit": "3c82d9d7c9fedab4575061bfcf9ea6d8ded8dd39",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-21T08:36:37.073Z"
     }
   ]
 }
