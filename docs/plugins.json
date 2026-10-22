@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-22T01:26:29.478Z",
+  "generated_at": "2026-10-22T08:38:57.489Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -19495,9 +19495,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "依赖 fflate@0.8.2 存在已知漏洞（GHSA-px8p-9vwx-vf98）"
-      ],
+      "security_notes": [],
       "reviewed_commit": "a7a272a37bef2a83d5b697efc942cb5179247f69",
       "source": "discovered",
       "review_status": "flagged",
@@ -19544,31 +19542,9 @@
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#2",
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#3",
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#4",
-        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#5",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ packages/helmd/scripts/gen-preset.mjs:100",
-        "读取环境变量（可能包含敏感信息） @ packages/helmd/scripts/android/hooks/okhttp3-hook.js:539"
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#5"
       ],
       "risk_evidence": [
-        {
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#1"
-        },
-        {
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#2"
-        },
-        {
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#3"
-        },
-        {
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#4"
-        },
-        {
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#5"
-        },
         {
           "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
           "file": "packages/helmd/scripts/gen-preset.mjs",
@@ -19582,17 +19558,1026 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "3c82d9d7c9fedab4575061bfcf9ea6d8ded8dd39",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-10-21T08:36:37.073Z"
+    },
+    {
+      "id": "vb2250158/RabiRoute",
+      "name": "RabiRoute",
+      "author": "vb2250158",
+      "description": "",
+      "repo_url": "https://github.com/vb2250158/RabiRoute",
+      "homepage": "https://github.com/vb2250158/RabiRoute",
+      "stars": 492,
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-10-21T13:42:29Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "code",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 Cordis/DSH 落地标记（cordis.patch.yml/.dsh-plugin/dsh.client 等）",
+      "description_i18n": {
+        "zh": "让 Agent 连接我们的一切。",
+        "en": "apps/ contains RabiRoute clients that can be built, accepted, and released independently. They may use the Manager, Relay, or shared SDKs, but they do not own the final PC-side Route, persona, Agent-session, or Action-Gate state."
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】读取凭据类环境变量并发送到网络，可能泄露密钥 @ plugin-adapters/remote-agent-rabiroute/index.mjs",
+        "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "存在 Base64 解码行为 @ plugin-adapters/remote-agent-rabiroute/index.mjs:252",
+        "存在 Base64 解码行为 @ plugin-adapters/remote-agent-rabiroute/index.mjs:299",
+        "存在 Base64 解码行为 @ apps/rabi-agent/lib/computer-service.mjs:81",
+        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
+        "依赖 @modelcontextprotocol/sdk@1.30.1 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-46jr-4wx8-v453, GHSA-6prh-2h8m-c8cw） @ <dependencies>",
+        "读取环境变量（可能包含敏感信息） @ plugin-adapters/xiaoai-rabiroute/index.mjs:3"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "plugin-adapters/remote-agent-rabiroute/index.mjs"
+        },
+        {
+          "explanation": "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "plugin-adapters/remote-agent-rabiroute/index.mjs",
+          "line": 252,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "plugin-adapters/remote-agent-rabiroute/index.mjs",
+          "line": 299,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "apps/rabi-agent/lib/computer-service.mjs",
+          "line": 81,
+          "confidence": 1
+        },
+        {
+          "explanation": "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 @modelcontextprotocol/sdk@1.30.1 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-46jr-4wx8-v453, GHSA-6prh-2h8m-c8cw）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "plugin-adapters/xiaoai-rabiroute/index.mjs",
+          "line": 3
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "security_notes": [
+        "依赖 cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "存在 Base64 解码行为",
+        "依赖 ws@8.18.0 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+        "依赖 @modelcontextprotocol/sdk@1.30.1 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-46jr-4wx8-v453, GHSA-6prh-2h8m-c8cw）"
+      ],
+      "reviewed_commit": "6788b062d55129465a48e9387577db8cbb7207c1",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-22T08:38:57.489Z"
+    },
+    {
+      "id": "MichengAI/dsh-skills-manager",
+      "name": "dsh-skills-manager",
+      "author": "MichengAI",
+      "description": "DSH Skills Manager — 在 DeepSeek Harness 中统一加载并安全管理本机 Agent Skills · Load and safely manage local Agent Skills in DSH",
+      "repo_url": "https://github.com/MichengAI/dsh-skills-manager",
+      "homepage": "https://dsh-codex-desktop.micheng.dev",
+      "stars": 291,
+      "forks": 16,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-10-21T15:48:59Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "Apache-2.0",
+      "topics": [
+        "deepseek",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "dsh-plugins"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "统一管理本机与项目技能，从 GitHub 安装、预览更新并备份回退",
+        "en": "Manage local and project skills, install from GitHub, preview updates and restore backups"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:411",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:420",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:442",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:452",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:453",
+        "存在编码转义字符串（疑似混淆） @ lib/index.js:466",
+        "存在 Base64 解码行为 @ lib/catalog-skill.js:134",
+        "存在编码转义字符串（疑似混淆） @ lib/catalog-skill.js:24",
+        "存在编码转义字符串（疑似混淆） @ lib/catalog-skill.js:35",
+        "存在编码转义字符串（疑似混淆） @ lib/catalog-skill.js:39",
+        "存在编码转义字符串（疑似混淆） @ lib/catalog-skill.js:45",
+        "存在编码转义字符串（疑似混淆） @ lib/catalog-skill.js:57",
+        "存在编码转义字符串（疑似混淆） @ lib/catalog-skill.js:64",
+        "存在编码转义字符串（疑似混淆） @ lib/catalog-skill.js:75",
+        "存在编码转义字符串（疑似混淆） @ lib/catalog-skill.js:77",
+        "存在编码转义字符串（疑似混淆） @ lib/catalog-skill.js:79",
+        "存在编码转义字符串（疑似混淆） @ lib/catalog-skill.js:81",
+        "存在编码转义字符串（疑似混淆） @ lib/catalog-skill.js:96",
+        "存在编码转义字符串（疑似混淆） @ lib/catalog-skill.js:98",
+        "存在编码转义字符串（疑似混淆） @ lib/clawhub-catalog.js:32",
+        "存在编码转义字符串（疑似混淆） @ lib/clawhub-catalog.js:38",
+        "存在编码转义字符串（疑似混淆） @ lib/clawhub-catalog.js:62",
+        "存在编码转义字符串（疑似混淆） @ lib/clawhub-catalog.js:64",
+        "存在编码转义字符串（疑似混淆） @ lib/clawhub-catalog.js:68",
+        "存在编码转义字符串（疑似混淆） @ lib/clawhub-catalog.js:80",
+        "存在编码转义字符串（疑似混淆） @ lib/clawhub-catalog.js:87",
+        "存在编码转义字符串（疑似混淆） @ lib/clawhub-catalog.js:96",
+        "存在编码转义字符串（疑似混淆） @ lib/clawhub-catalog.js:99",
+        "存在编码转义字符串（疑似混淆） @ lib/clawhub-catalog.js:105",
+        "存在编码转义字符串（疑似混淆） @ lib/clawhub-catalog.js:109",
+        "存在编码转义字符串（疑似混淆） @ lib/clawhub-catalog.js:112",
+        "监听键盘输入事件 @ lib/client.js:25",
+        "监听键盘输入事件 @ lib/client.js:45",
+        "存在疑似混淆内容（长 Base64 块） @ lib/client.js:45",
+        "存在编码转义字符串（疑似混淆） @ lib/client.js:4",
+        "存在 Base64 解码行为 @ lib/core.js:2518",
+        "存在编码转义字符串（疑似混淆） @ lib/core.js:45",
+        "存在编码转义字符串（疑似混淆） @ lib/core.js:374",
+        "存在编码转义字符串（疑似混淆） @ lib/core.js:445",
+        "存在编码转义字符串（疑似混淆） @ lib/core.js:448",
+        "存在编码转义字符串（疑似混淆） @ lib/core.js:452",
+        "存在编码转义字符串（疑似混淆） @ lib/core.js:457",
+        "存在编码转义字符串（疑似混淆） @ lib/core.js:468",
+        "存在编码转义字符串（疑似混淆） @ lib/core.js:511",
+        "存在编码转义字符串（疑似混淆） @ lib/core.js:525",
+        "存在编码转义字符串（疑似混淆） @ lib/core.js:536",
+        "存在编码转义字符串（疑似混淆） @ lib/core.js:565",
+        "存在编码转义字符串（疑似混淆） @ lib/core.js:601",
+        "存在编码转义字符串（疑似混淆） @ lib/plugin-updater.js:124",
+        "存在编码转义字符串（疑似混淆） @ lib/plugin-updater.js:199",
+        "存在编码转义字符串（疑似混淆） @ lib/plugin-updater.js:230",
+        "存在编码转义字符串（疑似混淆） @ lib/plugin-updater.js:265",
+        "存在编码转义字符串（疑似混淆） @ lib/plugin-updater.js:372",
+        "存在编码转义字符串（疑似混淆） @ lib/plugin-updater.js:389",
+        "存在编码转义字符串（疑似混淆） @ lib/plugin-updater.js:398",
+        "存在编码转义字符串（疑似混淆） @ lib/plugin-updater.js:407",
+        "存在编码转义字符串（疑似混淆） @ lib/plugin-updater.js:430",
+        "存在编码转义字符串（疑似混淆） @ lib/plugin-updater.js:439",
+        "存在编码转义字符串（疑似混淆） @ lib/plugin-updater.js:452",
+        "存在 Base64 解码行为 @ lib/repositories.js:770",
+        "存在编码转义字符串（疑似混淆） @ lib/repositories.js:15",
+        "存在编码转义字符串（疑似混淆） @ lib/repositories.js:18",
+        "存在编码转义字符串（疑似混淆） @ lib/repositories.js:23",
+        "存在编码转义字符串（疑似混淆） @ lib/repositories.js:25",
+        "存在编码转义字符串（疑似混淆） @ lib/repositories.js:27",
+        "存在编码转义字符串（疑似混淆） @ lib/repositories.js:29",
+        "存在编码转义字符串（疑似混淆） @ lib/repositories.js:34",
+        "存在编码转义字符串（疑似混淆） @ lib/repositories.js:36",
+        "存在编码转义字符串（疑似混淆） @ lib/repositories.js:37",
+        "存在编码转义字符串（疑似混淆） @ lib/repositories.js:38",
+        "存在编码转义字符串（疑似混淆） @ lib/repositories.js:41",
+        "存在编码转义字符串（疑似混淆） @ lib/repositories.js:43",
+        "存在编码转义字符串（疑似混淆） @ lib/repository-updates.js:9",
+        "存在编码转义字符串（疑似混淆） @ lib/repository-updates.js:11",
+        "存在编码转义字符串（疑似混淆） @ lib/repository-updates.js:18",
+        "存在编码转义字符串（疑似混淆） @ lib/repository-updates.js:31",
+        "存在编码转义字符串（疑似混淆） @ lib/repository-updates.js:37",
+        "存在编码转义字符串（疑似混淆） @ lib/repository-updates.js:46",
+        "存在编码转义字符串（疑似混淆） @ lib/repository-updates.js:51",
+        "存在编码转义字符串（疑似混淆） @ lib/repository-updates.js:63",
+        "存在编码转义字符串（疑似混淆） @ lib/repository-updates.js:65",
+        "存在编码转义字符串（疑似混淆） @ lib/repository-updates.js:68",
+        "存在编码转义字符串（疑似混淆） @ lib/repository-updates.js:84",
+        "存在编码转义字符串（疑似混淆） @ lib/repository-updates.js:90",
+        "存在编码转义字符串（疑似混淆） @ lib/skills-sh-catalog.js:17",
+        "存在编码转义字符串（疑似混淆） @ lib/skills-sh-catalog.js:29",
+        "存在编码转义字符串（疑似混淆） @ lib/skills-sh-catalog.js:32",
+        "存在编码转义字符串（疑似混淆） @ lib/skills-sh-catalog.js:37",
+        "存在编码转义字符串（疑似混淆） @ lib/skills-sh-catalog.js:49",
+        "存在编码转义字符串（疑似混淆） @ lib/skills-sh-catalog.js:56",
+        "存在编码转义字符串（疑似混淆） @ lib/skills-sh-catalog.js:66",
+        "存在编码转义字符串（疑似混淆） @ lib/skills-sh-catalog.js:69",
+        "存在 Base64 解码行为 @ src/catalog-skill.ts:152",
+        "监听键盘输入事件 @ src/client.ts:404",
+        "存在疑似混淆内容（长 Base64 块） @ src/client.ts:278",
+        "存在疑似混淆内容（长 Base64 块） @ src/client.ts:279",
+        "存在疑似混淆内容（长 Base64 块） @ src/client.ts:280",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ src/client.ts:215",
+        "存在 Base64 解码行为 @ src/core.ts:2988",
+        "访问第三方网络地址（如 clawhub.ai、skills.sh） @ lib/catalog-skill.js:25",
+        "访问第三方网络地址（如 clawhub.ai） @ lib/clawhub-catalog.js:34",
+        "访问第三方网络地址（如 w3.org） @ lib/client.js:17",
+        "读取环境变量（可能包含敏感信息） @ lib/core.js:101",
+        "访问第三方网络地址（如 skills.sh） @ lib/skills-sh-catalog.js:1",
+        "访问第三方网络地址（如 host） @ src/api-base.ts:4"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 411
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 420
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 442
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 452
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 453
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/index.js",
+          "line": 466
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/catalog-skill.js",
+          "line": 134,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/catalog-skill.js",
+          "line": 24
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/catalog-skill.js",
+          "line": 35
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/catalog-skill.js",
+          "line": 39
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/catalog-skill.js",
+          "line": 45
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/catalog-skill.js",
+          "line": 57
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/catalog-skill.js",
+          "line": 64
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/catalog-skill.js",
+          "line": 75
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/catalog-skill.js",
+          "line": 77
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/catalog-skill.js",
+          "line": 79
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/catalog-skill.js",
+          "line": 81
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/catalog-skill.js",
+          "line": 96
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/catalog-skill.js",
+          "line": 98
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/clawhub-catalog.js",
+          "line": 32
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/clawhub-catalog.js",
+          "line": 38
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/clawhub-catalog.js",
+          "line": 62
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/clawhub-catalog.js",
+          "line": 64
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/clawhub-catalog.js",
+          "line": 68
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/clawhub-catalog.js",
+          "line": 80
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/clawhub-catalog.js",
+          "line": 87
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/clawhub-catalog.js",
+          "line": 96
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/clawhub-catalog.js",
+          "line": 99
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/clawhub-catalog.js",
+          "line": 105
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/clawhub-catalog.js",
+          "line": 109
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/clawhub-catalog.js",
+          "line": 112
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 25,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 45,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/client.js",
+          "line": 45
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/client.js",
+          "line": 4
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/core.js",
+          "line": 2518,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/core.js",
+          "line": 45
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/core.js",
+          "line": 374
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/core.js",
+          "line": 445
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/core.js",
+          "line": 448
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/core.js",
+          "line": 452
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/core.js",
+          "line": 457
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/core.js",
+          "line": 468
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/core.js",
+          "line": 511
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/core.js",
+          "line": 525
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/core.js",
+          "line": 536
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/core.js",
+          "line": 565
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/core.js",
+          "line": 601
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/plugin-updater.js",
+          "line": 124
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/plugin-updater.js",
+          "line": 199
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/plugin-updater.js",
+          "line": 230
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/plugin-updater.js",
+          "line": 265
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/plugin-updater.js",
+          "line": 372
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/plugin-updater.js",
+          "line": 389
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/plugin-updater.js",
+          "line": 398
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/plugin-updater.js",
+          "line": 407
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/plugin-updater.js",
+          "line": 430
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/plugin-updater.js",
+          "line": 439
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/plugin-updater.js",
+          "line": 452
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/repositories.js",
+          "line": 770,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repositories.js",
+          "line": 15
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repositories.js",
+          "line": 18
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repositories.js",
+          "line": 23
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repositories.js",
+          "line": 25
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repositories.js",
+          "line": 27
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repositories.js",
+          "line": 29
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repositories.js",
+          "line": 34
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repositories.js",
+          "line": 36
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repositories.js",
+          "line": 37
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repositories.js",
+          "line": 38
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repositories.js",
+          "line": 41
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repositories.js",
+          "line": 43
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repository-updates.js",
+          "line": 9
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repository-updates.js",
+          "line": 11
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repository-updates.js",
+          "line": 18
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repository-updates.js",
+          "line": 31
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repository-updates.js",
+          "line": 37
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repository-updates.js",
+          "line": 46
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repository-updates.js",
+          "line": 51
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repository-updates.js",
+          "line": 63
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repository-updates.js",
+          "line": 65
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repository-updates.js",
+          "line": 68
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repository-updates.js",
+          "line": 84
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/repository-updates.js",
+          "line": 90
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/skills-sh-catalog.js",
+          "line": 17
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/skills-sh-catalog.js",
+          "line": 29
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/skills-sh-catalog.js",
+          "line": 32
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/skills-sh-catalog.js",
+          "line": 37
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/skills-sh-catalog.js",
+          "line": 49
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/skills-sh-catalog.js",
+          "line": 56
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/skills-sh-catalog.js",
+          "line": 66
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "lib/skills-sh-catalog.js",
+          "line": 69
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "src/catalog-skill.ts",
+          "line": 152,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client.ts",
+          "line": 404,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "src/client.ts",
+          "line": 278
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "src/client.ts",
+          "line": 279
+        },
+        {
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "src/client.ts",
+          "line": 280
+        },
+        {
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "src/client.ts",
+          "line": 215
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "src/core.ts",
+          "line": 2988,
+          "confidence": 1
+        },
+        {
+          "explanation": "访问第三方网络地址（如 clawhub.ai、skills.sh）",
+          "file": "lib/catalog-skill.js",
+          "line": 25
+        },
+        {
+          "explanation": "访问第三方网络地址（如 clawhub.ai）",
+          "file": "lib/clawhub-catalog.js",
+          "line": 34
+        },
+        {
+          "explanation": "访问第三方网络地址（如 w3.org）",
+          "file": "lib/client.js",
+          "line": 17
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "lib/core.js",
+          "line": 101
+        },
+        {
+          "explanation": "访问第三方网络地址（如 skills.sh）",
+          "file": "lib/skills-sh-catalog.js",
+          "line": 1
+        },
+        {
+          "explanation": "访问第三方网络地址（如 host）",
+          "file": "src/api-base.ts",
+          "line": 4
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 clawhub.ai、skills.sh）",
+        "访问第三方网络地址（如 clawhub.ai）",
+        "访问第三方网络地址（如 w3.org）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 skills.sh）",
+        "访问第三方网络地址（如 host）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "存在编码转义字符串（疑似混淆）",
+        "存在 Base64 解码行为",
+        "监听键盘输入事件",
+        "存在疑似混淆内容（长 Base64 块）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
+      ],
+      "reviewed_commit": "b4d385b10ee49c6e09d244863a06c9d3a9b43a9d",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-22T08:38:57.489Z"
+    },
+    {
+      "id": "xcisxc29/dsh-wechat",
+      "name": "dsh-wechat",
+      "author": "xcisxc29",
+      "description": "WeChat channel for DeepSeek Harness",
+      "repo_url": "https://github.com/xcisxc29/dsh-wechat",
+      "homepage": "https://github.com/xcisxc29/dsh-wechat",
+      "stars": 290,
+      "forks": 20,
+      "open_issues": 17,
+      "watchers": 0,
+      "pushed_at": "2026-10-20T15:06:12Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "ai-agent",
+        "automation",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "remote-control",
+        "wechat",
+        "wechat-bot"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "用微信遥控 DeepSeek Harness：手机上聊天，电脑上的 DSH 干活。",
+        "en": "Control DeepSeek Harness from WeChat: chat on your phone, and the DSH agent on your computer does the work."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
+        "存在 Base64 解码行为 @ packages/core/src/crypto.ts:67",
+        "读取环境变量（可能包含敏感信息） @ packages/bundle/src/cli.ts:556",
+        "访问第三方网络地址（如 ilinkai.weixin.qq.com、novac2c.cdn.weixin.qq.com） @ packages/core/src/constants.ts:15"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "packages/core/src/crypto.ts",
+          "line": 67,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "packages/bundle/src/cli.ts",
+          "line": 556
+        },
+        {
+          "explanation": "访问第三方网络地址（如 ilinkai.weixin.qq.com、novac2c.cdn.weixin.qq.com）",
+          "file": "packages/core/src/constants.ts",
+          "line": 15
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 ilinkai.weixin.qq.com、novac2c.cdn.weixin.qq.com）"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "存在 Base64 解码行为"
+      ],
+      "reviewed_commit": "e0e8cb3d4c4376b15c598d4843b52b44ce8dac38",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-22T08:38:57.489Z"
+    },
+    {
+      "id": "yyh-001/dsh-meme",
+      "name": "dsh-meme",
+      "author": "yyh-001",
+      "description": "DeepSeek Harness 表情包插件：输入框一键发图、文字 token 斗图、情绪主动发图、AI 自动学图，图库市场一键安装。 · Meme/sticker plugin for DeepSeek Harness: one-click picker in the composer, text-token memes, mood-driven sending, AI learns your images, marketplace packs.",
+      "repo_url": "https://github.com/yyh-001/dsh-meme",
+      "homepage": "https://yyh-001.github.io/dsh-meme/",
+      "stars": 287,
+      "forks": 7,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-10-21T05:38:38Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin",
+        "meme",
+        "qq-bot",
+        "selfloom",
+        "semantic-search"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "- 一键发图：输入框旁点 😊，搜索、按图库或情绪筛选，点一张就发送。",
+        "en": "- Click to send: open 😊 beside the composer, search or filter by pack and mood, then pick an image."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "存在 Base64 解码行为 @ index.js:1712",
+        "存在 Base64 解码行为 @ index.js:1734",
+        "存在 Base64 解码行为 @ index.js:1764",
+        "监听键盘输入事件 @ client.js:208",
+        "存在编码转义字符串（疑似混淆） @ client.js:2275",
+        "使用屏幕/画面采集能力 @ promo/2026-10-13/capture-styleframe.cjs:8",
+        "访问第三方网络地址（如 cdn.jsdmirror.com、gh-proxy.com、ghfast.top、ghproxy.net） @ index.js:217",
+        "访问第三方网络地址（如 yyh-001.github.io） @ package.json:8",
+        "读取环境变量（可能包含敏感信息） @ memes.js:22",
+        "访问第三方网络地址（如 cdn.jsdmirror.com、example.com、gh-proxy.com、ghfast.top） @ test/client-remote-dir.test.mjs:74",
+        "访问第三方网络地址（如 cdn.jsdmirror.com、example.com） @ test/client-render.test.mjs:50",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 evil.example.com） @ test/host-loopback.test.mjs:22",
+        "访问第三方网络地址（如 evil.example.com） @ test/host-loopback.test.mjs:101"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "index.js",
+          "line": 1712,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "index.js",
+          "line": 1734,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "index.js",
+          "line": 1764,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "client.js",
+          "line": 208,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "client.js",
+          "line": 2275
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "promo/2026-10-13/capture-styleframe.cjs",
+          "line": 8,
+          "confidence": 1
+        },
+        {
+          "explanation": "访问第三方网络地址（如 cdn.jsdmirror.com、gh-proxy.com、ghfast.top、ghproxy.net）",
+          "file": "index.js",
+          "line": 217
+        },
+        {
+          "explanation": "访问第三方网络地址（如 yyh-001.github.io）",
+          "file": "package.json",
+          "line": 8
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "memes.js",
+          "line": 22
+        },
+        {
+          "explanation": "访问第三方网络地址（如 cdn.jsdmirror.com、example.com、gh-proxy.com、ghfast.top）",
+          "file": "test/client-remote-dir.test.mjs",
+          "line": 74
+        },
+        {
+          "explanation": "访问第三方网络地址（如 cdn.jsdmirror.com、example.com）",
+          "file": "test/client-render.test.mjs",
+          "line": 50
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 evil.example.com）",
+          "file": "test/host-loopback.test.mjs",
+          "line": 22
+        },
+        {
+          "explanation": "访问第三方网络地址（如 evil.example.com）",
+          "file": "test/host-loopback.test.mjs",
+          "line": 101
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 cdn.jsdmirror.com、gh-proxy.com、ghfast.top、ghproxy.net）",
+        "访问第三方网络地址（如 yyh-001.github.io）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 cdn.jsdmirror.com、example.com、gh-proxy.com、ghfast.top）",
+        "访问第三方网络地址（如 cdn.jsdmirror.com、example.com）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 evil.example.com）",
+        "访问第三方网络地址（如 evil.example.com）"
+      ],
+      "security_notes": [
+        "存在 Base64 解码行为",
+        "监听键盘输入事件",
+        "存在编码转义字符串（疑似混淆）",
+        "使用屏幕/画面采集能力"
+      ],
+      "reviewed_commit": "79b87d6ecd3499efd8aba31c665ee5867541e516",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-22T08:38:57.489Z"
     }
   ]
 }
