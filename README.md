@@ -108,6 +108,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [deepseek-design](https://github.com/Devin-AXIS/deepseek-design) | [@Devin-AXIS](https://github.com/Devin-AXIS) | DeepSeek Harness 可编辑设计系统：AI 生成、可视化编辑、模板市场与 PPT｜Native Design & PPT Studio for DeepSeek Harness. |
 | [awesome-dsh-plugins](https://github.com/AdamPlatin123/awesome-dsh-plugins) | [@AdamPlatin123](https://github.com/AdamPlatin123) | 前部索引仓库（Radar）：自动扫描发现所有 dsh 插件候选，经测试合格的移入后序精选目录仓库。 |
 | [Aegis](https://github.com/GanyuanRan/Aegis) | [@GanyuanRan](https://github.com/GanyuanRan) | Make AI coding agents architecture-aware: baseline-first, evidence-verified, drift-checked, and safe across long tasks. |
+| [powercontext](https://github.com/oceanbase/powercontext) | [@oceanbase](https://github.com/oceanbase) | Not only memory but a full story |
 | [awesome-deepseek-harness](https://github.com/0xsline/awesome-deepseek-harness) | [@0xsline](https://github.com/0xsline) | DeepSeek Harness (DSH) ecosystem: curated plugins, tools, and infrastructure from dsh-external/hub and the public dsh-plugin topic. |
 | [mem9](https://github.com/mem9-ai/mem9) | [@mem9-ai](https://github.com/mem9-ai) | Unlimited memory for OpenClaw |
 | [agentrq](https://github.com/agentrq/agentrq) | [@agentrq](https://github.com/agentrq) | AgentRQ: Human-in-loop realtime conversational task manager for AI Agents. Self-hosted! Control your own agents from wherever you want Mobile, Web, Desktop. Designed to work well with your own Claude subscriptions and any harness. |
@@ -292,7 +293,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [echocat-skill-panel](https://github.com/VDERR/echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 
-共收录 238 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
+共收录 239 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
 
 <!-- PLUGINS_END -->
 
