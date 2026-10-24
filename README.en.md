@@ -193,6 +193,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [whale-girl](https://github.com/vlln/whale-girl) | [@vlln](https://github.com/vlln) | DSH Web GUI 桌面宠物插件（QQ 宠物形态）：右下角悬浮、可拖拽/投喂/玩耍的积累型伙伴。 |
 | [harmony-next.skills](https://github.com/linhay/harmony-next.skills) | [@linhay](https://github.com/linhay) | 🚀 Expert guidance for HarmonyOS NEXT (API 12+) development. Covers IDE operations, performance tuning, architecture (HAP/HAR/HSP), and automation testing. |
 | [movo](https://github.com/himovo/movo) | [@himovo](https://github.com/himovo) | Turn DeepSeek Harness into a self-hosted enterprise Agent platform with knowledge, deep research, content generation, vibe coding, browser automation, governance, and admin controls. |
+| [dsh-model-router](https://github.com/Alice-Marx/dsh-model-router) | [@Alice-Marx](https://github.com/Alice-Marx) | Want release notes only? Click Watch → Custom → Releases (you do not need Watching all activity). |
 | [opencode2dsh](https://github.com/FishBottle7/opencode2dsh) | [@FishBottle7](https://github.com/FishBottle7) | DSH plugin — free OpenCode Zen models for DeepSeek Harness (DSH). Free LLM API, no API key needed. 在 DSH 中使用 OpenCode Zen 免费模型，无需 API key |
 | [nuphus-mcp](https://github.com/mrpulor-gh/nuphus-mcp) | [@mrpulor-gh](https://github.com/mrpulor-gh) | Desktop automation MCP server — computer use for any AI agent: control screen, windows, mouse/keyboard, and Chrome via Model Context Protocol (stdio) |
 | [oh-dsh](https://github.com/hust-open-atom-club/oh-dsh) | [@hust-open-atom-club](https://github.com/hust-open-atom-club) |  一套 DSH runtime，Desktop、Web 与 TUI 三种开发体验。 |
@@ -305,7 +306,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [echocat-skill-panel](https://github.com/VDERR/echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 
-Includes 239 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 240 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 
