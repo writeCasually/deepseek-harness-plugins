@@ -1,6 +1,48 @@
 {
-  "updated_at": "2026-10-23T08:34:48.335Z",
+  "updated_at": "2026-10-24T08:09:55.657Z",
   "decisions": [
+    {
+      "id": "Alice-Marx/dsh-model-router",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 livebench.ai）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "node scripts/prepack.mjs"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "72b08abda709d54351bef0a63f79f9a136f449ae",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 326,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-24T08:09:55.657Z"
+    },
     {
       "id": "oceanbase/powercontext",
       "verdict": "flagged",
@@ -63065,69 +63107,6 @@
       "total_files": 31,
       "osv": {
         "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Anionex/dsh-turn-rewind",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在编码转义字符串（疑似混淆）"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 dsh.local）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "pnpm run build"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 287,
-          "snippet": "return ((0, jsx_runtime_1.jsxs)(\"div\", { className: \"dcl-rewind-tail\", children: [(0, jsx_runtime_1.jsx)(dsh_client_ui_primitives_1.Tooltip, { label: \"\\u6062\\u5"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-13）"
-      ],
-      "reviewed_commit": "b1b85f18aaaaf71d76c84613429ce04d71f69620",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 60,
-      "osv": {
-        "status": "skipped",
         "findings": 0
       },
       "llm_review": {

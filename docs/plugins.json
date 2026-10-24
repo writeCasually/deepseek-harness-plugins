@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-24T01:30:23.205Z",
+  "generated_at": "2026-10-24T08:09:55.657Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -20452,22 +20452,12 @@
         "zh": "让上下文跟着工作走 —— 跨越会话、跨 Agent、跨人。",
         "en": "Context that stays with the work — across sessions, agents, and people."
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json#2",
-        "子进程以 shell 模式启动（spawn(...,{shell:true})） @ integrations/dsh/plugins/powercontext/scripts/prepare.mjs:37",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ desktop/scripts/icons.mjs:33",
-        "监听键盘输入事件 @ desktop/ui/src/app/App.tsx:80",
-        "监听键盘输入事件 @ desktop/ui/src/app/TopBar.tsx:68",
-        "访问第三方网络地址（如 apache.org） @ desktop/ui/src/main.tsx:8",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ integrations/dsh/plugins/powercontext/lib/index.js",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 apache.org） @ integrations/dsh/plugins/powercontext/lib/index.js:3325"
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ integrations/dsh/plugins/powercontext/lib/index.js"
       ],
       "risk_evidence": [
-        {
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#2"
-        },
         {
           "explanation": "子进程以 shell 模式启动（spawn(...,{shell:true})）",
           "file": "integrations/dsh/plugins/powercontext/scripts/prepare.mjs",
@@ -20508,21 +20498,67 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 apache.org）",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 apache.org）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "子进程以 shell 模式启动（spawn(...,{shell:true})）",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "464cd152fd4f6e656608a6ace074fa2151529f4d",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-10-23T08:34:48.335Z"
+    },
+    {
+      "id": "Alice-Marx/dsh-model-router",
+      "name": "dsh-model-router",
+      "author": "Alice-Marx",
+      "description": "Model Router and GALGame plugin for DeepSeek Harness",
+      "repo_url": "https://github.com/Alice-Marx/dsh-model-router",
+      "homepage": "https://github.com/Alice-Marx/dsh-model-router",
+      "stars": 352,
+      "forks": 15,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-10-23T18:35:31Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "想跟进版本更新？点右上角 Watch → Custom → 勾选 Releases（不必 Watching 全部活动）。",
+        "en": "Want release notes only? Click Watch → Custom → Releases (you do not need Watching all activity)."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
+        "访问第三方网络地址（如 livebench.ai） @ .dsh-plugin/index.mjs:97"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 livebench.ai）",
+          "file": ".dsh-plugin/index.mjs",
+          "line": 97
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 livebench.ai）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行"
+      ],
+      "reviewed_commit": "72b08abda709d54351bef0a63f79f9a136f449ae",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-24T08:09:55.657Z"
     }
   ]
 }
