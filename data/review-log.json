@@ -1,6 +1,125 @@
 {
-  "updated_at": "2026-10-24T08:09:55.657Z",
+  "updated_at": "2026-10-25T08:27:15.432Z",
   "decisions": [
+    {
+      "id": "Nwflower/dsh-claude-style",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "监听键盘输入事件"
+      ],
+      "privacy_notes": [],
+      "evidence": [
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "packages/client/src/features/account/rows.ts",
+          "line": 263,
+          "snippet": "banRow.addEventListener('keydown', e => {"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "d492d1dc6f782bf43b737cf47058c358bdfefd58",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 894,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-25T08:27:15.432Z"
+    },
+    {
+      "id": "Fisfzy/dsh-ego-browser",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "存在疑似混淆内容（长 Base64 块）"
+      ],
+      "privacy_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.internal、example.com）",
+        "访问第三方网络地址（如 dsh.internal、example.com）"
+      ],
+      "evidence": [
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/index.js",
+          "line": 5386,
+          "snippet": "const out = execFileSync(binPath, [\"--version\"], {"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "lib/index.js",
+          "line": 2694,
+          "snippet": "tools: \"工具清单: ego_status, ego_space_open, ego_space_close, ego_snapshot, ego_navigate, ego_click(+double), ego_fill, ego_js, ego_cdp, ego_screenshot(+selector),"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "lib/index.js",
+          "line": 2696,
+          "snippet": "observe: \"ego_snapshot: 整页语义树(带[ref]/loc供点击); ego_page_info: url/标题/视口/滚动/对话框/人机验证; ego_read_element: 读单元素文本/HTML/值/属性/可见性/计数; ego_screenshot(+selector): 整页或元素截"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "lib/index.js",
+          "line": 4284,
+          "snippet": "* page.snapshot(), page.evaluate(), page.waitForTimeout(), page.screenshot(),"
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/index.js",
+          "line": 2705,
+          "snippet": "script: \"ego_cli / ego_script: 原样运行任意 ego-browser nodejs heredoc脚本(page/browser/taskSpaces/site/fetch/cdp预载)。ego_script额外返回 duration/timedOut。注意 page 是本 runtime"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "cb4c3f12ab3a070ae2a2c031e20f1fa7c279a956",
+      "review_mode": "full",
+      "scanned_files": 1,
+      "total_files": 144,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-25T08:27:15.432Z"
+    },
     {
       "id": "Alice-Marx/dsh-model-router",
       "verdict": "flagged",
@@ -62976,135 +63095,6 @@
       "review_mode": "full",
       "scanned_files": 13,
       "total_files": 42,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Ychris12138/dsh-usage-stats",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "监听键盘输入事件",
-        "使用动态代码执行（eval/new Function）"
-      ],
-      "privacy_notes": [
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
-        "访问第三方网络地址（如 x）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 198.18.x.x、api.z.ai、usage.invalid）",
-        "访问第三方网络地址（如 api.kimi.com、api.minimax.io、api.minimaxi.com、api.z.ai）",
-        "访问第三方网络地址（如 api.passionapi.com、evil.example、late-provider.example.com、openrouter.ai）",
-        "访问第三方网络地址（如 api.moonshot.cn、api.z.ai、openrouter.ai）",
-        "访问第三方网络地址（如 api.kimi.com、api.minimax.io、api.z.ai、minimax.io）"
-      ],
-      "evidence": [
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "lib/client.js",
-          "line": 603,
-          "snippet": "document.addEventListener(\"keydown\", onKeyDown, true);"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "scripts/smoke-client.mjs",
-          "line": 42,
-          "snippet": "new Function(source)(); // executes the window.__ModuleLoader__.load call"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）"
-      ],
-      "reviewed_commit": "a8dded77aa68c3bfd9052f29609a3229dfca0755",
-      "review_mode": "full",
-      "scanned_files": 19,
-      "total_files": 33,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "shanliuling/dsh-image-gen",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件",
-        "监听键盘输入事件"
-      ],
-      "privacy_notes": [],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepare",
-          "severity": "warning",
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "pnpm run build"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/client/gallery-view.tsx",
-          "line": 143,
-          "snippet": "window.addEventListener('keydown', onKeyDown)"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/client/index.tsx",
-          "line": 416,
-          "snippet": "window.addEventListener('keydown', onKeyDown)"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-17）"
-      ],
-      "reviewed_commit": "57b0fdc4bf05ecaef9edc8e6d40bf286d074ca57",
-      "review_mode": "delta",
-      "scanned_files": 5,
-      "total_files": 31,
       "osv": {
         "status": "ok",
         "findings": 0
