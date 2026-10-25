@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-25T05:58:59.146Z",
+  "generated_at": "2026-10-25T08:27:15.432Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -20534,8 +20534,7 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
-        "访问第三方网络地址（如 livebench.ai） @ .dsh-plugin/index.mjs:97"
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json"
       ],
       "risk_evidence": [
         {
@@ -20549,16 +20548,78 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 livebench.ai）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "72b08abda709d54351bef0a63f79f9a136f449ae",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-10-24T08:09:55.657Z"
+    },
+    {
+      "id": "Nwflower/dsh-claude-style",
+      "name": "dsh-claude-style",
+      "author": "Nwflower",
+      "description": "Claude Code Desktop theme for DeepSeek Harness｜ 为 DeepSeek Harness 复刻 Claude Code Desktop 风格与交互体验的主题插件",
+      "repo_url": "https://github.com/Nwflower/dsh-claude-style",
+      "homepage": "https://www.npmjs.com/package/dsh-claude-style",
+      "stars": 317,
+      "forks": 35,
+      "open_issues": 5,
+      "watchers": 0,
+      "pushed_at": "2026-10-25T08:22:20Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "NOASSERTION",
+      "topics": [
+        "anthropic",
+        "claude",
+        "claude-code",
+        "claude-desktop",
+        "cordis",
+        "dark-mode",
+        "deepseek-harness",
+        "desktop-theme",
+        "dsh",
+        "dsh-plugin",
+        "dsh-plugins",
+        "dsh-theme",
+        "dsh-web-ui",
+        "light-theme",
+        "skin",
+        "theme",
+        "ui-theme",
+        "web-ui"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "为 DeepSeek Harness 复刻 Claude Code Desktop 风格与交互体验的主题插件。",
+        "en": "A theme plugin that brings the look and feel of Claude Code Desktop to the DeepSeek Harness Web GUI."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "监听键盘输入事件 @ packages/client/src/features/account/rows.ts:263"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "packages/client/src/features/account/rows.ts",
+          "line": 263,
+          "confidence": 1
+        }
+      ],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "d492d1dc6f782bf43b737cf47058c358bdfefd58",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-25T08:27:15.432Z"
     }
   ]
 }
