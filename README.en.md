@@ -95,6 +95,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-ops](https://github.com/T-Auto/dsh-ops) | [@T-Auto](https://github.com/T-Auto) | Bash, PowerShell 7, and Rust-based tools for dsh on Windows to cut token usage. / 为windows的dsh提供bash、powershell7及rust的高性能tools来减少token消耗 |
 | [petdex](https://github.com/crafter-station/petdex) | [@crafter-station](https://github.com/crafter-station) | A public gallery of animated pets for Codex, Claude Code, DeepSeek Harness, Hermes, OpenCode, Gemini CLI, and more. |
 | [dsh-pet](https://github.com/PC2005-cloud/dsh-pet) | [@PC2005-cloud](https://github.com/PC2005-cloud) | DSH 桌面宠物：一行命令装好即用的透明动画小桌宠，支持多开、大小位置随心配置；还内置 DIY 素材链，能用 AI 视频自造专属宠物 |
+| [DS-Bot](https://github.com/Fei2411/DS-Bot) | [@Fei2411](https://github.com/Fei2411) | A team of long-lived bots for DeepSeek Harness, with main bots, bot-to-bot messages and group chats. |
 | [DeepSeek-Bot](https://github.com/FeiZhuLulu/DeepSeek-Bot) | [@FeiZhuLulu](https://github.com/FeiZhuLulu) | A team of long-lived bots for DeepSeek Harness, with main bots, bot-to-bot messages and group chats. |
 | [DeepSeek-Bot](https://github.com/Fei2411/DeepSeek-Bot) | [@Fei2411](https://github.com/Fei2411) | A team of long-lived bots for DeepSeek Harness, with main bots, bot-to-bot messages and group chats. |
 | [dsh-anchored-standard](https://github.com/xiaobright/dsh-anchored-standard) | [@xiaobright](https://github.com/xiaobright) | Two-phase DeepSeek Harness preset: Minimal-aligned bootstrap, then full Standard tools (Project2 98/99) |
@@ -199,6 +200,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-plugin-hub](https://github.com/dshplugin/dsh-plugin-hub) | [@dshplugin](https://github.com/dshplugin) | DeepSeek Harness 社区内置插件市场（dsh-plugin）— 搜索插件、下载并安装 10000+ 人工精选社区插件，每日更新、完全免费。内置在 Harness「设置 → 插件中心」，无需离开应用即可浏览、搜索、安装各类 AI 插件。 |
 | [dsh-skills-manager](https://github.com/MichengAI/dsh-skills-manager) | [@MichengAI](https://github.com/MichengAI) | DSH Skills Manager — 在 DeepSeek Harness 中统一加载并安全管理本机 Agent Skills · Load and safely manage local Agent Skills in DSH |
 | [dsh-claude-style](https://github.com/Nwflower/dsh-claude-style) | [@Nwflower](https://github.com/Nwflower) | Claude Code Desktop theme for DeepSeek Harness｜ 为 DeepSeek Harness 复刻 Claude Code Desktop 风格与交互体验的主题插件 |
+| [fujiang-dsh](https://github.com/c3cvld7aag/fujiang-dsh) | [@c3cvld7aag](https://github.com/c3cvld7aag) | 富江DSH完美破甲｜富江破甲 DSH 本地插件，内置提示词规则，支持 Windows 一键安装、环境自动准备与一键卸载，全中文使用说明。 |
 | [awesome-deepseek-harness](https://github.com/libukai/awesome-deepseek-harness) | [@libukai](https://github.com/libukai) | DeepSeek Harness 终极指南：快速入门、资源推荐、精选插件与实用工具 ｜The Ultimate Guide to DeepSeek Harness: QuickStart, Resources, Plugins&Toolkit |
 | [nuphus-mcp](https://github.com/mrpulor-gh/nuphus-mcp) | [@mrpulor-gh](https://github.com/mrpulor-gh) | Desktop automation MCP server — computer use for any AI agent: control screen, windows, mouse/keyboard, and Chrome via Model Context Protocol (stdio) |
 | [dsh-wechat](https://github.com/xcisxc29/dsh-wechat) | [@xcisxc29](https://github.com/xcisxc29) | WeChat channel for DeepSeek Harness |
@@ -306,7 +308,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [echocat-skill-panel](https://github.com/VDERR/echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 
-Includes 240 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 242 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 

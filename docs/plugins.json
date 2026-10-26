@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-26T06:02:24.451Z",
+  "generated_at": "2026-10-26T08:58:34.974Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -20553,10 +20553,8 @@
         "zh": "为 DeepSeek Harness 复刻 Claude Code Desktop 风格与交互体验的主题插件。",
         "en": "A theme plugin that brings the look and feel of Claude Code Desktop to the DeepSeek Harness Web GUI."
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "监听键盘输入事件 @ packages/client/src/features/account/rows.ts:263"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "监听键盘输入事件",
@@ -20567,13 +20565,205 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "监听键盘输入事件"
-      ],
+      "security_notes": [],
       "reviewed_commit": "d492d1dc6f782bf43b737cf47058c358bdfefd58",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-10-25T08:27:15.432Z"
+    },
+    {
+      "id": "Fei2411/DS-Bot",
+      "name": "DS-Bot",
+      "author": "Fei2411",
+      "description": "A team of long-lived bots for DeepSeek Harness, with main bots, bot-to-bot messages and group chats.",
+      "repo_url": "https://github.com/Fei2411/DS-Bot",
+      "homepage": "https://github.com/Fei2411/DS-Bot",
+      "stars": 4038,
+      "forks": 376,
+      "open_issues": 112,
+      "watchers": 0,
+      "pushed_at": "2026-10-25T16:51:19Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "Apache-2.0",
+      "topics": [
+        "bot",
+        "deepseek-harness",
+        "dsh-plugin",
+        "multi-agent"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "DS Bot 是一个基于 DeepSeek Harness（简称 dsh）的 bot 插件，插件将 dsh 改造为 bot 形式。你可以与自己创建的 bot 交流、工作。",
+        "en": "DS Bot is a bot plugin for DeepSeek Harness (DSH). It turns DSH into bots. You create your own bots, then talk and work with them."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ .agents/skills/issue-triage/scripts/snapshot.mjs:14",
+        "存在 Base64 解码行为 @ app/scripts/check-packed.mjs:244",
+        "存在 Base64 解码行为 @ app/scripts/icon.mjs:91",
+        "存在 Base64 解码行为 @ app/scripts/shot.mjs:70",
+        "依赖 pnpm@11.7.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-qrv3-253h-g69c, GHSA-vq4v-j7r6-jq4m） @ <dependencies>",
+        "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
+        "访问第三方网络地址（如 x） @ app/engine/index.js:9",
+        "读取环境变量（可能包含敏感信息） @ app/src/main.mjs:56",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 feed） @ app/scripts/check-update.mjs:112",
+        "访问第三方网络地址（如 feed） @ app/scripts/check-update.mjs:37",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 w3.org） @ app/scripts/icon.mjs:110",
+        "访问第三方网络地址（如 w3.org） @ app/scripts/icon.mjs:42"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": ".agents/skills/issue-triage/scripts/snapshot.mjs",
+          "line": 14,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "app/scripts/check-packed.mjs",
+          "line": 244,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "app/scripts/icon.mjs",
+          "line": 91,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "app/scripts/shot.mjs",
+          "line": 70,
+          "confidence": 1
+        },
+        {
+          "explanation": "依赖 pnpm@11.7.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-qrv3-253h-g69c, GHSA-vq4v-j7r6-jq4m）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 x）",
+          "file": "app/engine/index.js",
+          "line": 9
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "app/src/main.mjs",
+          "line": 56
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 feed）",
+          "file": "app/scripts/check-update.mjs",
+          "line": 112
+        },
+        {
+          "explanation": "访问第三方网络地址（如 feed）",
+          "file": "app/scripts/check-update.mjs",
+          "line": 37
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 w3.org）",
+          "file": "app/scripts/icon.mjs",
+          "line": 110
+        },
+        {
+          "explanation": "访问第三方网络地址（如 w3.org）",
+          "file": "app/scripts/icon.mjs",
+          "line": 42
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 x）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 feed）",
+        "访问第三方网络地址（如 feed）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 w3.org）",
+        "访问第三方网络地址（如 w3.org）"
+      ],
+      "security_notes": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "存在 Base64 解码行为",
+        "依赖 pnpm@11.7.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-qrv3-253h-g69c, GHSA-vq4v-j7r6-jq4m）",
+        "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
+      ],
+      "reviewed_commit": "de55888a93983fc51c94f7d22bc94b4f8293205d",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-26T08:58:34.974Z"
+    },
+    {
+      "id": "c3cvld7aag/fujiang-dsh",
+      "name": "fujiang-dsh",
+      "author": "c3cvld7aag",
+      "description": "富江DSH完美破甲｜富江破甲 DSH 本地插件，内置提示词规则，支持 Windows 一键安装、环境自动准备与一键卸载，全中文使用说明。",
+      "repo_url": "https://github.com/c3cvld7aag/fujiang-dsh",
+      "homepage": "https://github.com/c3cvld7aag/fujiang-dsh",
+      "stars": 330,
+      "forks": 105,
+      "open_issues": 3,
+      "watchers": 0,
+      "pushed_at": "2026-10-03T16:29:47Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "NOASSERTION",
+      "topics": [
+        "custom-prompt",
+        "dsh",
+        "dsh-plugin",
+        "fujiang",
+        "fujiang-pojia",
+        "windows"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "富江破甲是一个用于 DSH 的本地插件，内置提示词规则，提供 Windows 一键注入和一键卸载。插件加载后，会在对话输入框上方显示「富江破甲已激活」。"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "读取环境变量（可能包含敏感信息） @ scripts/lib/patcher.js:17",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/run_bank_live.mjs",
+        "访问第三方网络地址（如 target） @ scripts/scorer_semantics_test.mjs:9"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "scripts/lib/patcher.js",
+          "line": 17
+        },
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "scripts/run_bank_live.mjs"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 target）",
+          "file": "scripts/scorer_semantics_test.mjs",
+          "line": 9
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 target）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "ab86ddcd169f0f13bc74923b6ed95eda55224931",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-10-26T08:58:34.974Z"
     }
   ]
 }
