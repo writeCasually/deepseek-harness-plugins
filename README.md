@@ -188,6 +188,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [dsh-skills-manager](https://github.com/MichengAI/dsh-skills-manager) | [@MichengAI](https://github.com/MichengAI) | DSH Skills Manager — 在 DeepSeek Harness 中统一加载并安全管理本机 Agent Skills · Load and safely manage local Agent Skills in DSH |
 | [opencode2dsh](https://github.com/FishBottle7/opencode2dsh) | [@FishBottle7](https://github.com/FishBottle7) | DSH plugin — free OpenCode Zen models for DeepSeek Harness (DSH). Free LLM API, no API key needed. 在 DSH 中使用 OpenCode Zen 免费模型，无需 API key |
 | [dsh-claude-style](https://github.com/Nwflower/dsh-claude-style) | [@Nwflower](https://github.com/Nwflower) | Claude Code Desktop theme for DeepSeek Harness｜ 为 DeepSeek Harness 复刻 Claude Code Desktop 风格与交互体验的主题插件 |
+| [DeepSeekBot](https://github.com/BotHarness/DeepSeekBot) | [@BotHarness](https://github.com/BotHarness) | Open-source GrokBot alternative built on DeepSeek Harness. Build your personal bot team: multiple personal agents with persistent memory, identities and permissions, extensible through DSH plugins.｜基于 DeepSeek Harness 的开源 GrokBot 平替：有长期记忆的个人 AI Bot 团队，支持多 Bot 协作、身份权限与插件生态扩展。MIT. |
 | [fujiang-dsh](https://github.com/c3cvld7aag/fujiang-dsh) | [@c3cvld7aag](https://github.com/c3cvld7aag) | 富江DSH完美破甲｜富江破甲 DSH 本地插件，内置提示词规则，支持 Windows 一键安装、环境自动准备与一键卸载，全中文使用说明。 |
 | [dsh-wechat](https://github.com/xcisxc29/dsh-wechat) | [@xcisxc29](https://github.com/xcisxc29) | WeChat channel for DeepSeek Harness |
 | [dshfind](https://github.com/hikariming/dshfind) | [@hikariming](https://github.com/hikariming) | DSH (DeepSeek Harness) 原理学习、插件市场与最佳实践 · Learn DSH principles, plugin marketplace & best practices |
@@ -200,16 +201,19 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [dsh-liang-skin](https://github.com/kingOfSoySauce/dsh-liang-skin) | [@kingOfSoySauce](https://github.com/kingOfSoySauce) | DeepSeek Harness 滑动变阻器皮肤 |
 | [notes](https://github.com/zhaoolee/notes) | [@zhaoolee](https://github.com/zhaoolee) | 开源版锤子便签，复刻锤科美学，一键Docker私有化部署，支持skill调用，支持dsh plugin，支持多租户，一键生成公众号格式，支持导出便签为图片 |
 | [acryl](https://github.com/acryldev/acryl) | [@acryldev](https://github.com/acryldev) | ACRYL - Agent Context Relay Yielding Lifecycles. One persistent workspace, one canonical context, any coding agent. |
+| [dsh-meow-memory](https://github.com/Phant0Meow/dsh-meow-memory) | [@Phant0Meow](https://github.com/Phant0Meow) | Cross-session memory plugin for DeepSeek Harness: seven-layer SQLite store (soul/user/project/fact/lesson/topic/rules), BM25 retrieval, per-window dream consolidation. 跨会话七层长期记忆插件。 |
 | [dsh-reverse-skill](https://github.com/dhicoc/dsh-reverse-skill) | [@dhicoc](https://github.com/dhicoc) | Complete reverse-skill (88 SKILL.md) as a DeepSeek Harness (dsh) Cordis plugin — reverse engineering, authorized pentesting and security research skill pack. |
 | [dsh-dream-skin](https://github.com/RevolutionLA/dsh-dream-skin) | [@RevolutionLA](https://github.com/RevolutionLA) | DeepSeek Harness 换肤 / 壁纸 / 主题包插件 (dsh-plugin) — 8 套 Mirage 主题、每用户强调色、壁纸2.0、主题包导入导出/分享链接、收藏与随机，纯原生 token 系统实现。 |
 | [deepseek-harness-desktop](https://github.com/chokwinlee/deepseek-harness-desktop) | [@chokwinlee](https://github.com/chokwinlee) | Compact DeepSeek Harness desktop host with a native SwiftUI iPhone Remote source preview. |
 | [dsh-agent-team-gui](https://github.com/toolclub/dsh-agent-team-gui) | [@toolclub](https://github.com/toolclub) | Persistent multi-model workflow teams for DeepSeek Harness — dynamic lead planning, bounded DAGs, per-agent model/tools, Run Center and Token insights. |
 | [dsh-trading](https://github.com/zhu1090093659/dsh-trading) | [@zhu1090093659](https://github.com/zhu1090093659) | Agent-native trading terminal built on DeepSeek Harness. Crypto, US, CN and HK in one three-column GUI, 19+ hot-swappable connectors, dry-run by default with human approval on every live order. BYOK, no data redistribution. |
+| [dsh-fish-memory](https://github.com/Yuuyuko-uu/dsh-fish-memory) | [@Yuuyuko-uu](https://github.com/Yuuyuko-uu) | 🐋 DSH 鱼的记忆：给会话一份会淡忘的长期记忆，每条都带时间。名字里的「鱼」来自 DeepSeek 的鲸鱼。 |
 | [dsh-qqbot](https://github.com/tencent-connect/dsh-qqbot) | [@tencent-connect](https://github.com/tencent-connect) | 让 QQ Bot 接入 DeepSeek Harness（dsh）的官方插件 |
 | [pilot-harness](https://github.com/op7418/pilot-harness) | [@op7418](https://github.com/op7418) | Pilot Harness — a CodePilot-inspired desktop client and plugin suite for DeepSeek Harness on macOS, Windows, and Linux. |
 | [dsh-hub-cli](https://github.com/pax-beehive/dsh-hub-cli) | [@pax-beehive](https://github.com/pax-beehive) | Open-source CLI, schemas, resolver, and DSH agent tools for DSH Plugin Hub |
 | [dsh-damage-pulse](https://github.com/wssfk12138/dsh-damage-pulse) | [@wssfk12138](https://github.com/wssfk12138) | DeepSeek Harness token balance monitor with game-style damage pulse animations |
 | [Perfect-Web-Clone](https://github.com/ericshang98/Perfect-Web-Clone) | [@ericshang98](https://github.com/ericshang98) | Pixel-perfect clones of any webpage. Paste a URL, get a measured Vite + React replica. |
+| [workdsh](https://github.com/techflag/workdsh) | [@techflag](https://github.com/techflag) | A WorkBuddy-style desktop workspace powered by the DSH plugin ecosystem. WorkDSH manages projects, assets, experts, skills and connectors locally on desktop. All features are extensible via DeepSeek Harness plugins. Local-first, open ecosystem. |
 | [DeepSeekGUI](https://github.com/See-Sol-Lab/DeepSeekGUI) | [@See-Sol-Lab](https://github.com/See-Sol-Lab) | 基于 DeepSeek Harness（DSH）的稳定桌面端，集成Git、内置浏览器与记忆功能 \| DeepSeek Harness desktop GUI with local workspaces, Git, browser and memory. |
 | [Polaris](https://github.com/ZJU-REAL/Polaris) | [@ZJU-REAL](https://github.com/ZJU-REAL) | Toward Autonomous Scientific Discovery |
 | [jev-dsh-decision](https://github.com/Devin-AXIS/jev-dsh-decision) | [@Devin-AXIS](https://github.com/Devin-AXIS) | Jev DSH 决策引擎｜面向 Agent Harness 的结构化决策插件。原生支持 DeepSeek Harness，通过 iPolloWork 支持 OpenCode、Codex Harness。 |
@@ -296,7 +300,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [echocat-skill-panel](https://github.com/VDERR/echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 
-共收录 242 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
+共收录 246 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
 
 <!-- PLUGINS_END -->
 

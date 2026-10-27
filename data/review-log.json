@@ -1,6 +1,939 @@
 {
-  "updated_at": "2026-10-26T08:58:34.974Z",
+  "updated_at": "2026-10-27T09:02:20.430Z",
   "decisions": [
+    {
+      "id": "kingcharleslzy-ai/dsh-purge",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）"
+      ],
+      "privacy_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
+        "访问第三方网络地址（如 x）",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#2",
+          "line": 0,
+          "snippet": "npm run check:build"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 2744,
+          "snippet": "const packed = await skills.importArchive(dshHome, Buffer.from(body.data, \"base64\"), body.name || \"skill.zip\");"
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 2,
+          "snippet": "\"zr5nMefv8/VnyW3eVceHceaDHzCQ8giqpBmBa/ZikaKIE6H/+abwU+LyNqRLUBn3mHUdrJc3/DlKZc2ceiG3HP15LEZvFUo5\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 3,
+          "snippet": "\"DhQ02YEWvCPycc8fgkWNNASNnwGIOFCELBEX92Tw7fzu373T8QMgcv7JYpESlGtbpTbJ/cS513a7CU/uOgLZny1chcrVhoh2\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 4,
+          "snippet": "\"FrkU7pPYbH1pc9sYcA9fkcMUAKDQAYPrYcawTxDaPntzfyZ/tB2aYFynGgjmP2TqGThhTAMaLLkyJZhNZGqrEMlVqaMMR7o3\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 5,
+          "snippet": "\"DvNzeW9nyq5mh3qJvgNejGhv637X5EDdEhSdG/2zpLxSZw+CEAzS2x88wbh/YyaFXYiBm47Rw6VV1J57/TAB/pb42QbIljEU\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 6,
+          "snippet": "\"LLUYuqC2I1UW+EJmdOzi76w4Npfc3VspL9MBRwfZ3xy/3hqP8ak2HKkXRfHg4htzrHjHnV44rPZM4+RfEW54ms0GcV7UhJ6c\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 7,
+          "snippet": "\"FARHGAcj93X8HTdovv1XB9swEEWAUpVbHpgdXTMOsxOVH61yoRrbzW1DUKGMkjLDRnMqi5Jkd12SSDT8RXe5ro5GTKJKl3OZ\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 8,
+          "snippet": "\"uAQWTP6a8sSiGF9uLuzBU2myRH/pva0zStrT7Y6i0iQESGaUm+E+A1nR8OhxYhT42uZLI2Ooaz6PDR4DPTsxfSjIxQiYPnEy\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 9,
+          "snippet": "\"XV54ybvlMusXU3X1Wi4oCNBu8q59AzhKaRiFKx6eZAi5udHvA9D6U+FBog7qYocjI1kyLQD0Y59BuWWgAr6248RCgXcEEcBK\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 10,
+          "snippet": "\"Utpy1Cg0XbLpacbj6mcyJbxoaz0yOiQ+vtkh2NkcN/K1QG4l9PtijDKjW26clouVIgNMblLlyLG2ZkVZ/CR7SmM6ckPqTk9F\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 11,
+          "snippet": "\"AyklmHcs0MmkwUg8Z8BNX6CqDCCdrdZTJ+pFlAlOJYEcbeSfcI4k0VJ2rhmjrXM4IdBtHbMK/i0yVUyisdm6KT0CdX2FsgJ1\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 12,
+          "snippet": "\"L34vPOsJ63hjWaXT8EKu+QFxxAhp8hzrZb5opknuUy/9EF9oVYpM4jO+oUhj6yplFsuG8bolpLx4Tkia7tP/kRbox2y5vTgz\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 13,
+          "snippet": "\"7bRHnmaznTA8c7kaCSQ63tx091yK1Gc93TxW0yZoLBH0863oXAaqVmjzzA/4zYp8ThQpOhtbg5h8/m3+HQ5oifRs9X734DD8\","
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/core.js",
+          "line": 91,
+          "snippet": "return execFileSync(bin, args, HIDDEN_EXEC).trim();"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/core.js",
+          "line": 990,
+          "snippet": "const needle = 'execFileSync(\"git\", [';"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/core.js",
+          "line": 1159,
+          "snippet": "execFileSync(\"schtasks\", [\"/Query\", \"/TN\", \"DSH Doctor Supervisor\"], {"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-10-16）"
+      ],
+      "reviewed_commit": "27919a326b6615b1968661a3e749760cec3a2e07",
+      "review_mode": "full",
+      "scanned_files": 21,
+      "total_files": 385,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-27T09:02:20.430Z"
+    },
+    {
+      "id": "BotHarness/DeepSeekBot",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "code",
+        "reason": "依赖 DSH/Cordis 生态包 @deepseek-ai/dsh"
+      },
+      "findings": [
+        "依赖 astro@7.3.1 存在已知漏洞（GHSA-98hj-9722-w3j8, GHSA-mpr7-6m5w-76rw）"
+      ],
+      "privacy_notes": [],
+      "evidence": [
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 astro@7.3.1 存在已知漏洞（GHSA-98hj-9722-w3j8, GHSA-mpr7-6m5w-76rw）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "astro@7.3.1"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "43bf7b4a000566ff97316e61e48cb54979d2f582",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 14116,
+      "osv": {
+        "status": "ok",
+        "findings": 1
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-27T09:02:20.430Z"
+    },
+    {
+      "id": "Phant0Meow/dsh-meow-memory",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "使用动态代码执行（全局 eval / new Function）",
+        "监听键盘输入事件"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 w3.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepare",
+          "severity": "warning",
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "node build.mjs"
+        },
+        {
+          "rule": "eval-exec",
+          "severity": "warning",
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "scripts/verify-client.mjs",
+          "line": 10,
+          "snippet": "new Function(s.replace(/^window\\.__ModuleLoader__\\.load\\(\\{/, 'void (0); ({'))"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "src/client-dream-skip.ts",
+          "line": 320,
+          "snippet": "document.addEventListener('keydown', escapeCloseHandler, true)"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "7e53a81af5fb3b6671ef29e89b8f4b251f89f930",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 118,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-27T09:02:20.430Z"
+    },
+    {
+      "id": "WSK-build/DSHBox",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "存在双重扩展名文件（app/src/main/assets/runtime-online/dpkg/var/lib/dpkg/alternatives/builtins.7.gz.bin），可能为伪装的可执行文件",
+        "存在双重扩展名文件（libs/zstd-jni-1.5.7-15-classes.jar），可能为伪装的可执行文件",
+        "监听键盘输入事件",
+        "存在 Base64 解码行为",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "存在 Base64 解码行为",
+        "存在编码转义字符串（疑似混淆）",
+        "存在编码转义字符串（疑似混淆）",
+        "存在编码转义字符串（疑似混淆）"
+      ],
+      "privacy_notes": [
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "读取本地凭据文件并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 attacker.test、example.test、user）",
+        "访问第三方网络地址（如 fixture.test、other.test）",
+        "访问第三方网络地址（如 fixture.test）",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）"
+      ],
+      "evidence": [
+        {
+          "rule": "suspicious-extension",
+          "severity": "warning",
+          "explanation": "存在双重扩展名文件（app/src/main/assets/runtime-online/dpkg/var/lib/dpkg/alternatives/builtins.7.gz.bin），可能为伪装的可执行文件",
+          "file": "app/src/main/assets/runtime-online/dpkg/var/lib/dpkg/alternatives/builtins.7.gz.bin",
+          "line": 0,
+          "snippet": "app/src/main/assets/runtime-online/dpkg/var/lib/dpkg/alternatives/builtins.7.gz.bin"
+        },
+        {
+          "rule": "suspicious-extension",
+          "severity": "warning",
+          "explanation": "存在双重扩展名文件（libs/zstd-jni-1.5.7-15-classes.jar），可能为伪装的可执行文件",
+          "file": "libs/zstd-jni-1.5.7-15-classes.jar",
+          "line": 0,
+          "snippet": "libs/zstd-jni-1.5.7-15-classes.jar"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "website/assets/js/main.js",
+          "line": 757,
+          "snippet": "window.addEventListener(\"keydown\", function (event) {"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "browser/browser-bridge/src/main/assets/browser/lib/browser-cli.cjs",
+          "line": 1876,
+          "snippet": "if (frame.payloadEncoding === 'base64' && (!/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(frame.payload) || Buffer.from(frame.payload,"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "browser/browser-bridge/src/test/js/browser-cli.test.cjs",
+          "line": 19,
+          "snippet": "const help = execFileSync(process.execPath, ['-e', 'require(process.argv[1]).main([\"--help\"])', cliPath], { encoding: 'utf8', timeout: 5000 });"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "plugin-manager/dshbox-plugins/assets/plugins/browser-use/plugin/lib/client.js",
+          "line": 701,
+          "snippet": "if (frame.payloadEncoding === 'base64' && (!/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(frame.payload) || Buffer.from(frame.payload,"
+        },
+        {
+          "rule": "hex-encoded",
+          "severity": "warning",
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "plugin-manager/dshbox-plugins/assets/plugins/browser-use/plugin/lib/selection-feedback.js",
+          "line": 382,
+          "snippet": "return value.replace(/[\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f-\\u009f]/g, ' ').slice(0, maxLength)"
+        },
+        {
+          "rule": "hex-encoded",
+          "severity": "warning",
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "plugin-manager/dshbox-plugins/assets/plugins/browser-use/plugin/lib/serve-client.js",
+          "line": 106,
+          "snippet": "if (data.message !== undefined && (typeof data.message !== 'string' || data.message.length > 256 || /[\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f]/.test(data.m"
+        },
+        {
+          "rule": "hex-encoded",
+          "severity": "warning",
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "plugin-manager/dshbox-plugins/assets/plugins/browser-use/plugin/lib/serve-client.js",
+          "line": 131,
+          "snippet": "typeof line === 'string' && line.length <= 1024 && !/[\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f]/.test(line))"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "95f4e1688c03ef73d08795ea65504c0b061aa20b",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 1168,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-27T09:02:20.430Z"
+    },
+    {
+      "id": "XDTrees/dsh-xdpool",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
+      ],
+      "privacy_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 agnes-ai.com、ai-gateway.vercel.sh、ai.azure.com、ai.google.dev）",
+        "访问第三方网络地址（如 agnes-ai.com、ai-gateway.vercel.sh、ai.azure.com、ai.google.dev）"
+      ],
+      "evidence": [
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/index.js",
+          "line": 2819,
+          "snippet": "stdout = execFileSync(\"powershell\", ["
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/index.js",
+          "line": 2855,
+          "snippet": "listingBuf = execFileSync(\"reg\", ["
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/index.js",
+          "line": 2876,
+          "snippet": "valueBuf = execFileSync(\"reg\", ["
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 2650,
+          "snippet": "envelope = JSON.parse(Buffer.from(field.envelope, \"base64\").toString(\"utf8\"));"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 2665,
+          "snippet": "const decipher = createDecipheriv(\"aes-256-gcm\", key, Buffer.from(nonce, \"base64\"), { authTagLength: 16 });"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 2667,
+          "snippet": "decipher.setAuthTag(Buffer.from(authTag, \"base64\"));"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/index.js",
+          "line": 2922,
+          "snippet": "const drive = String.fromCharCode(code) + \":\\\\\";"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "6e4854f5372fd39d5c12553b79b1064b8821c182",
+      "review_mode": "full",
+      "scanned_files": 1,
+      "total_files": 179,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-27T09:02:20.430Z"
+    },
+    {
+      "id": "WSL043/dsh-codex-subscription",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "存在 Base64 解码行为",
+        "建立 WebSocket 外联连接",
+        "存在 Base64 解码行为"
+      ],
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "访问第三方网络地址（如 api.openai.com、auth.openai.com、chatgpt.com）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 chatgpt.com、d-project.com、denso-wave.com、w3.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 3733,
+          "snippet": "const data = Buffer.from(encoded, \"base64\");"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 5132,
+          "snippet": "const bytes = Buffer.concat(assembly.chunks.map((chunk) => Buffer.from(chunk, \"base64\")));"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 6803,
+          "snippet": "data: new Uint8Array(Buffer.from(match[2], \"base64\"))"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": ".github/scripts/run-official-cli.mjs",
+          "line": 11,
+          "snippet": "try { execFileSync('taskkill.exe', ['/PID', String(child.pid), '/T', '/F'], { stdio: 'inherit' }) }"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/client.js",
+          "line": 1301,
+          "snippet": "decoded = atob(value);"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/client.js",
+          "line": 4188,
+          "snippet": "const bytes = Uint8Array.from(atob(image.src.slice(image.src.indexOf(\",\") + 1)), (c) => c.charCodeAt(0));"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 1858,
+          "snippet": "document.addEventListener(\"keydown\", key, true);"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 9809,
+          "snippet": "window.addEventListener(\"keydown\", onKeyDown, true);"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "lib/client.js",
+          "line": 10098,
+          "snippet": "document.addEventListener(\"keydown\", onKeyDown);"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "lib/client.js",
+          "line": 5234,
+          "snippet": "if (!type || !canvas.current?.captureStream) {"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "lib/client.js",
+          "line": 5240,
+          "snippet": "const recorder = new MediaRecorder(canvas.current.captureStream(30), {"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/client.js",
+          "line": 4379,
+          "snippet": "for (let i = 0; i < data.length; i += 8192) raw += String.fromCharCode(...data.subarray(i, i + 8192));"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/client.js",
+          "line": 17286,
+          "snippet": "Promise.resolve().then(() => navigator.clipboard.writeText(lines.map(formatLogLine).join(String.fromCharCode(10)))).then(() => setLogCopied(true)).catch(() => s"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/client.js",
+          "line": 17417,
+          "snippet": "String.fromCharCode(10)"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/ci-change-plan.mjs",
+          "line": 11,
+          "snippet": "return execFileSync('git', args, { encoding: 'utf8' }).trim()"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/experiments/upstream-offload.mjs",
+          "line": 13,
+          "snippet": "const bytes=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII=','base64')"
+        },
+        {
+          "rule": "websocket-exfil",
+          "severity": "critical",
+          "explanation": "建立 WebSocket 外联连接",
+          "file": "scripts/phone-acceptance/lib.mjs",
+          "line": 79,
+          "snippet": "const ws = new WebSocket(`ws://127.0.0.1:${port}/phone`)"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/phone-acceptance/lib.mjs",
+          "line": 127,
+          "snippet": "void handle(JSON.parse(Buffer.concat(entry.parts.map(part => Buffer.from(part, 'base64'))).toString('utf8')))"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "be4a78aa5090f2e4ad68c35dc3f97beb4d78ce45",
+      "review_mode": "full",
+      "scanned_files": 15,
+      "total_files": 537,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-27T09:02:20.430Z"
+    },
+    {
+      "id": "Yuuyuko-uu/dsh-fish-memory",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/index.js",
+          "line": 3831,
+          "snippet": "diag('注入 ' + selected.length + ' 条：' + (注入文本 || '（空）').split(String.fromCharCode(10)).join(' ⏎ ').slice(0, 400))"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "lib/client.js",
+          "line": 135,
+          "snippet": "const 更新命令 = ['dsh plugin --profile web remove dsh-fish-memory', 'dsh plugin --profile web add dsh-fish-memory'].join(String.fromCharCode(10))"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "e1e7f11824dfaefc4336afa64c69b3392eb0e2c4",
+      "review_mode": "full",
+      "scanned_files": 13,
+      "total_files": 23,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-27T09:02:20.430Z"
+    },
+    {
+      "id": "techflag/workdsh",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "存在编码转义字符串（疑似混淆）",
+        "使用屏幕/画面采集能力",
+        "依赖 electron@43.3.0 存在已知漏洞（GHSA-2p8c-gr87-2676, GHSA-3qxv-5xgr-q7w9, GHSA-98mx-cjp9-gchm）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "hex-encoded",
+          "severity": "warning",
+          "explanation": "存在编码转义字符串（疑似混淆）",
+          "file": "packages/plugins/audit/src/index.ts",
+          "line": 48,
+          "snippet": "if (key.length > 128 || value.length > 1024 || /[\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f]/.test(value)) {"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "packages/providers/browser-session/src/index.ts",
+          "line": 100,
+          "snippet": "const jpeg = await page.screenshot({ type: 'jpeg', quality: 65, animations: 'disabled', timeout: 10_000 });"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 electron@43.3.0 存在已知漏洞（GHSA-2p8c-gr87-2676, GHSA-3qxv-5xgr-q7w9, GHSA-98mx-cjp9-gchm）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "electron@43.3.0"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "e58137020fb4f5f863f551d8ae4234e6c3d355ea",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 1644,
+      "osv": {
+        "status": "ok",
+        "findings": 1
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-27T09:02:20.430Z"
+    },
+    {
+      "id": "kingOfSoySauce/dsh-skin-market",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "监听键盘输入事件",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "依赖 ajv@8.17.1 存在已知漏洞（GHSA-2g4f-4pwh-qvx6）",
+        "依赖 yaml@2.8.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp）"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 kingofsoysauce.github.io）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取本地环境配置文件（dotenv .env）",
+        "读取本地凭据文件并发送到网络，可能泄露密钥"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "npm run check"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "site/main.tsx",
+          "line": 236,
+          "snippet": "window.addEventListener('keydown', handleGalleryKeys, true)"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "site/main.tsx",
+          "line": 70,
+          "snippet": "<span className=\"feed-card-media\"><PreviewMedia skin={skin} src={getCatalogListScreenshot(skin)} fallbackSources={getCatalogScreenshotUrls(skin)} alt={`${skin.n"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "site/main.tsx",
+          "line": 332,
+          "snippet": "<div className=\"avatar\"><PreviewMedia key={`${selected.id}:${getCatalogListScreenshot(selected) ?? 'missing'}:avatar`} skin={selected} src={getCatalogListScreen"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "lib/catalog-order.js",
+          "line": 65,
+          "snippet": "export function getCatalogListScreenshot(entry) {"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "lib/media-preview.js",
+          "line": 65,
+          "snippet": "if ((kind === 'list' || kind === 'avatar' || kind === 'recommendation' || kind === 'card') && source === getCatalogListScreenshot(entry))"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "lib/media-preview.js",
+          "line": 71,
+          "snippet": "return generatedMediaFor(entry, getCatalogListScreenshot(entry), 'list');"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 ajv@8.17.1 存在已知漏洞（GHSA-2g4f-4pwh-qvx6）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "ajv@8.17.1"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 yaml@2.8.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "yaml@2.8.1"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "17b0450062ba3028d0dad402883f40782019567c",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 3263,
+      "osv": {
+        "status": "ok",
+        "findings": 2
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-27T09:02:20.430Z"
+    },
     {
       "id": "Fei2411/DS-Bot",
       "verdict": "flagged",
@@ -62462,700 +63395,6 @@
       },
       "llm_review": {
         "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Ayase34/gal-view",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "存在 Base64 解码行为",
-        "存在 Base64 解码行为",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "监听键盘输入事件",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-        "监听键盘输入事件",
-        "监听键盘输入事件",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-        "存在疑似混淆内容（长 Base64 块）"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 example.com）"
-      ],
-      "evidence": [
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "scripts/smoke.mjs",
-          "line": 798,
-          "snippet": "const bytes = Uint8Array.from(atob(PNG_B64), c => c.charCodeAt(0))"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "scripts/smoke.mjs",
-          "line": 1016,
-          "snippet": "await chooser.setFiles({ name: 'auto.png', mimeType: 'image/png', buffer: Buffer.from(PNG_B64_MAIN, 'base64') })"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "scripts/smoke.mjs",
-          "line": 797,
-          "snippet": "const PNG_B64 = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "scripts/smoke.mjs",
-          "line": 1015,
-          "snippet": "const PNG_B64_MAIN = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": ".dsh-plugin/client/Editor.jsx",
-          "line": 498,
-          "snippet": "window.addEventListener('keydown', onKey)"
-        },
-        {
-          "rule": "char-code",
-          "severity": "warning",
-          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-          "file": ".dsh-plugin/client/Editor.jsx",
-          "line": 504,
-          "snippet": "const letter = String.fromCharCode(65 + (scene.elements.filter(el => el.type === 'character').length % 26))"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": ".dsh-plugin/client/GalView.jsx",
-          "line": 40,
-          "snippet": "window.addEventListener('keydown', onKey)"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": ".dsh-plugin/client/GalView.jsx",
-          "line": 71,
-          "snippet": "window.addEventListener('keydown', onKey)"
-        },
-        {
-          "rule": "char-code",
-          "severity": "warning",
-          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-          "file": ".dsh-plugin/client/scene.mjs",
-          "line": 207,
-          "snippet": "const letter = String.fromCharCode(65 + index) // A, B, C, ..."
-        },
-        {
-          "rule": "char-code",
-          "severity": "warning",
-          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-          "file": ".dsh-plugin/client/scene.mjs",
-          "line": 392,
-          "snippet": "return String.fromCharCode(65 + (count % 26))"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "tests/assets.test.mjs",
-          "line": 8,
-          "snippet": "const PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）"
-      ],
-      "reviewed_commit": "d002fe0e7051c618a2665af3c653f9838cd6aa8a",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 38,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "toolclub/dsh-agent-team-gui",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用屏幕/画面采集能力",
-        "使用屏幕/画面采集能力",
-        "使用屏幕/画面采集能力",
-        "使用屏幕/画面采集能力",
-        "使用屏幕/画面采集能力",
-        "监听键盘输入事件",
-        "监听键盘输入事件"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepare",
-          "severity": "warning",
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "pnpm run build"
-        },
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "pnpm run build"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "scripts/quality/browser-smoke.mjs",
-          "line": 600,
-          "snippet": "await page.screenshot({ path: resolve(directory, 'browser-smoke-narrow.png'), fullPage: true })"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "scripts/quality/browser-smoke.mjs",
-          "line": 614,
-          "snippet": "await page.screenshot({ path: resolve(directory, 'browser-smoke-failure.png'), fullPage: true })"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "scripts/quality/capture-readme.mjs",
-          "line": 36,
-          "snippet": "async function screenshot(name, target = page) {"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "scripts/quality/capture-readme.mjs",
-          "line": 45,
-          "snippet": "await target.screenshot({ path, animations: 'disabled' })"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "scripts/quality/capture-readme.mjs",
-          "line": 213,
-          "snippet": "await screenshot('v0.5-composer-mode.png')"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/client/ComposerControl.tsx",
-          "line": 129,
-          "snippet": "document.addEventListener('keydown', onKey)"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/client/SettingsPage.tsx",
-          "line": 485,
-          "snippet": "document.addEventListener('keydown', guardEscape, true)"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-15）"
-      ],
-      "reviewed_commit": "3b56aa4dbe20cc128d710928d20c80404ec7fff6",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 96,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Vladimir-Human/humanizer-ru",
-      "verdict": "approved",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "e5f4eba5d0c5e5e1bdc59c5aec23fa69d1b401ea",
-      "review_mode": "full",
-      "scanned_files": 1,
-      "total_files": 484,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "elysia395/dsh-wallpaper-engine",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
-      "privacy_notes": [
-        "读取浏览器 Cookie/存储并发送到网络",
-        "访问第三方网络地址（如 w3.org）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 x）",
-        "访问第三方网络地址（如 x）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepare",
-          "severity": "warning",
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "node scripts/prepare.mjs"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "lib/client.js",
-          "line": 1049,
-          "snippet": "window.addEventListener(\"keydown\", onKey, true);"
-        },
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "lib/index.js",
-          "line": 62,
-          "snippet": "const out = execFileSync("
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-16）",
-        "未声明开源许可证"
-      ],
-      "reviewed_commit": "48194e0af4dcf0ceb3650abf5430b372691f3459",
-      "review_mode": "delta",
-      "scanned_files": 2,
-      "total_files": 25,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "taxueseek/argo",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "49f8a80302b17bae970851979a57e79ad7bae3e0",
-      "review_mode": "full",
-      "scanned_files": 3,
-      "total_files": 240,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "lire1131/dsh-undo-savepoint",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "监听键盘输入事件"
-      ],
-      "privacy_notes": [
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dsh.local）",
-        "访问第三方网络地址（如 dsh.local）",
-        "读取浏览器 Cookie/存储并发送到网络",
-        "访问第三方网络地址（如 w3.org）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "lib/client.js",
-          "line": 858,
-          "snippet": "window.addEventListener(\"keydown\", onKeyDown, true);"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）"
-      ],
-      "reviewed_commit": "d42d93ba6c96c2c9ca8cc49497b132e3f22b9360",
-      "review_mode": "full",
-      "scanned_files": 7,
-      "total_files": 33,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "omdsh-dev/dsh-data-agent",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在编码转义字符串（疑似混淆）"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 dsh.internal）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/tool-ZTOS4B33.js",
-          "line": 780,
-          "snippet": "const CONTROL_ESCAPE = /[\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f-\\u009f]/gu;"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-11）"
-      ],
-      "reviewed_commit": "7caa266c1036d7e3b42d4bc710350c1406b56957",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 135,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Sanqi-normal/dsh-webui-market-plugin",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用动态代码执行（eval/new Function）",
-        "使用动态代码执行（eval/new Function）",
-        "使用动态代码执行（eval/new Function）"
-      ],
-      "privacy_notes": [
-        "读取浏览器 Cookie/存储并发送到网络",
-        "访问第三方网络地址（如 awesome-dsh-plugin.com）",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 awesome-dsh-plugin.com、raw.gitmirror.com）",
-        "访问第三方网络地址（如 awesome-dsh-plugin.com、raw.gitmirror.com）",
-        "读取环境变量（可能包含敏感信息）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 evil.example、mirror.example.com、registry.example.com）",
-        "访问第三方网络地址（如 evil.example、mirror.example.com、registry.example.com）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "tests/client.test.mjs",
-          "line": 30,
-          "snippet": "const factory = new Function('require', src + '\\n;return typeof module !== \"undefined\" ? module.exports : undefined')"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "tests/client.test.mjs",
-          "line": 129,
-          "snippet": "new Function('require', src + '\\n;return typeof module !== \"undefined\" ? module.exports : undefined')((spec) => {"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "tests/client.test.mjs",
-          "line": 208,
-          "snippet": "new Function('require', src + '\\n;return typeof module !== \"undefined\" ? module.exports : undefined')((spec) => {"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-13）"
-      ],
-      "reviewed_commit": "44cd1ababaeeda11519042ab876c598f5961774d",
-      "review_mode": "full",
-      "scanned_files": 8,
-      "total_files": 20,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "orziz/odai",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "package.json 的 postpack 脚本会在安装/发布时自动执行",
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "package.json 的 postpack 脚本会在安装/发布时自动执行",
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "package.json 的 postpack 脚本会在安装/发布时自动执行",
-        "依赖 yaml@2.8.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp）"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "访问第三方网络地址（如 example.com）",
-        "访问第三方网络地址（如 api.example.com）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "npm run verify:version && node ../scripts/validate-odai-skill.mjs && npm run prepare:skill-bundle"
-        },
-        {
-          "rule": "lifecycle-postpack",
-          "severity": "warning",
-          "explanation": "package.json 的 postpack 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "npm run clean:skill-bundle"
-        },
-        {
-          "rule": "lifecycle-prepare",
-          "severity": "warning",
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#1",
-          "line": 0,
-          "snippet": "npm run prepare:artifact"
-        },
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#1",
-          "line": 0,
-          "snippet": "npm run verify:version && node ../../scripts/validate-odai-skill.mjs"
-        },
-        {
-          "rule": "lifecycle-postpack",
-          "severity": "warning",
-          "explanation": "package.json 的 postpack 脚本会在安装/发布时自动执行",
-          "file": "package.json#1",
-          "line": 0,
-          "snippet": "npm run clean:artifact"
-        },
-        {
-          "rule": "lifecycle-prepare",
-          "severity": "warning",
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#2",
-          "line": 0,
-          "snippet": "npm run prepare:artifact"
-        },
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#2",
-          "line": 0,
-          "snippet": "npm run verify:version && node ../../scripts/validate-odai-skill.mjs"
-        },
-        {
-          "rule": "lifecycle-postpack",
-          "severity": "warning",
-          "explanation": "package.json 的 postpack 脚本会在安装/发布时自动执行",
-          "file": "package.json#2",
-          "line": 0,
-          "snippet": "npm run clean:artifact"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 yaml@2.8.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "yaml@2.8.1"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "39c07bb8ee16af9c0346d748aafeb2908460d1ef",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 301,
-      "osv": {
-        "status": "ok",
-        "findings": 1
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }
