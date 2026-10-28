@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-28T06:48:22.709Z",
+  "generated_at": "2026-10-28T09:42:23.586Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -20796,9 +20796,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "依赖 astro@7.3.1 存在已知漏洞（GHSA-98hj-9722-w3j8, GHSA-mpr7-6m5w-76rw）"
-      ],
+      "security_notes": [],
       "reviewed_commit": "43bf7b4a000566ff97316e61e48cb54979d2f582",
       "source": "discovered",
       "review_status": "flagged",
@@ -20837,10 +20835,7 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
-        "使用动态代码执行（全局 eval / new Function） @ scripts/verify-client.mjs:10",
-        "监听键盘输入事件 @ src/client-dream-skip.ts:320",
-        "访问第三方网络地址（如 w3.org） @ src/client.ts:329"
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json"
       ],
       "risk_evidence": [
         {
@@ -20866,14 +20861,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "使用动态代码执行（全局 eval / new Function）",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "7e53a81af5fb3b6671ef29e89b8f4b251f89f930",
       "source": "discovered",
       "review_status": "flagged",
@@ -20910,12 +20899,8 @@
       "description_i18n": {
         "zh": "给 DSH 里的会话一份会淡忘的长期记忆 —— 每条都带时间。"
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ lib/index.js:3831",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ lib/client.js:135",
-        "读取环境变量（可能包含敏感信息） @ lib/index.js:38"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
@@ -20934,12 +20919,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "e1e7f11824dfaefc4336afa64c69b3392eb0e2c4",
       "source": "discovered",
       "review_status": "flagged",
@@ -20989,10 +20970,7 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "存在编码转义字符串（疑似混淆） @ packages/plugins/audit/src/index.ts:48",
-        "使用屏幕/画面采集能力 @ packages/providers/browser-session/src/index.ts:100",
-        "依赖 electron@43.3.0 存在已知漏洞（GHSA-2p8c-gr87-2676, GHSA-3qxv-5xgr-q7w9, GHSA-98mx-cjp9-gchm） @ <dependencies>",
-        "读取环境变量（可能包含敏感信息） @ apps/web/scripts/desktop/patches/upstream/apps/desktop/src/main.ts:57"
+        "依赖 electron@43.3.0 存在已知漏洞（GHSA-2p8c-gr87-2676, GHSA-3qxv-5xgr-q7w9, GHSA-98mx-cjp9-gchm） @ <dependencies>"
       ],
       "risk_evidence": [
         {
@@ -21017,14 +20995,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "存在编码转义字符串（疑似混淆）",
-        "使用屏幕/画面采集能力",
-        "依赖 electron@43.3.0 存在已知漏洞（GHSA-2p8c-gr87-2676, GHSA-3qxv-5xgr-q7w9, GHSA-98mx-cjp9-gchm）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "e58137020fb4f5f863f551d8ae4234e6c3d355ea",
       "source": "discovered",
       "review_status": "flagged",
