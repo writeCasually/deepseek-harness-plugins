@@ -1,6 +1,37 @@
 {
-  "updated_at": "2026-10-28T09:42:23.586Z",
+  "updated_at": "2026-10-29T10:00:47.218Z",
   "decisions": [
+    {
+      "id": "zhuyansen/new-term-radar",
+      "verdict": "approved",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "code",
+        "reason": "源码/路径引用 @deepseek-ai/dsh 或 @deepseek-ai/cordis"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-10-12）"
+      ],
+      "reviewed_commit": "3cf6515c4076cb2800819473062d9b36d563d0fe",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 74,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-29T10:00:47.218Z"
+    },
     {
       "id": "kingcharleslzy-ai/dsh-purge",
       "verdict": "blocked",
@@ -63369,32 +63400,6 @@
         "verdict": "none",
         "rationale": "未配置 LLM_API_KEY",
         "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Sikao-Engine/KimiX",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "1a665d02dd2b676851e54cf92b89cb33558b4b51",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 909,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }

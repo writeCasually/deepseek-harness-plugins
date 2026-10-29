@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-10-29T06:58:01.349Z",
+  "generated_at": "2026-10-29T10:00:47.218Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -21001,6 +21001,56 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-10-27T09:02:20.430Z"
+    },
+    {
+      "id": "zhuyansen/new-term-radar",
+      "name": "new-term-radar",
+      "author": "zhuyansen",
+      "description": "Daily radar for new AI terms: names of new models, products and repos, caught on X, Hugging Face, GitHub and sitemaps before keyword tools list them.",
+      "repo_url": "https://github.com/zhuyansen/new-term-radar",
+      "homepage": "https://github.com/zhuyansen/new-term-radar",
+      "stars": 1940,
+      "forks": 604,
+      "open_issues": 2,
+      "watchers": 0,
+      "pushed_at": "2026-10-28T11:48:20Z",
+      "archived": false,
+      "language": "Python",
+      "license": "MIT",
+      "topics": [
+        "agent-skills",
+        "ai",
+        "aisa",
+        "claude-code",
+        "claude-skills",
+        "deepseek-harness",
+        "dsh-plugin",
+        "google-trends",
+        "keyword-research",
+        "mcp",
+        "mcp-server",
+        "seo",
+        "trends"
+      ],
+      "category": "plugin",
+      "kind": "code",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "源码/路径引用 @deepseek-ai/dsh 或 @deepseek-ai/cordis",
+      "description_i18n": {
+        "zh": "AI 圈马上要被搜的新名字，出现当天就抓到，赶在关键词工具收录之前。",
+        "en": "Catch the names AI people are about to search for, the day they appear, before keyword tools list them."
+      },
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": [],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [],
+      "reviewed_commit": "3cf6515c4076cb2800819473062d9b36d563d0fe",
+      "source": "discovered",
+      "review_status": "approved",
+      "reviewed_at": "2026-10-29T10:00:47.218Z"
     }
   ]
 }
