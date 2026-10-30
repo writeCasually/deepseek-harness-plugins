@@ -109,6 +109,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [new-term-radar](https://github.com/zhuyansen/new-term-radar) | [@zhuyansen](https://github.com/zhuyansen) | Daily radar for new AI terms: names of new models, products and repos, caught on X, Hugging Face, GitHub and sitemaps before keyword tools list them. |
 | [deepseek-design](https://github.com/Devin-AXIS/deepseek-design) | [@Devin-AXIS](https://github.com/Devin-AXIS) | DeepSeek Harness 可编辑设计系统：AI 生成、可视化编辑、模板市场与 PPT｜Native Design & PPT Studio for DeepSeek Harness. |
 | [awesome-dsh-plugins](https://github.com/AdamPlatin123/awesome-dsh-plugins) | [@AdamPlatin123](https://github.com/AdamPlatin123) | 前部索引仓库（Radar）：自动扫描发现所有 dsh 插件候选，经测试合格的移入后序精选目录仓库。 |
+| [dsh-Go](https://github.com/ccch1mneyyy/dsh-Go) | [@ccch1mneyyy](https://github.com/ccch1mneyyy) | dsh-go — DeepSeek Harness 装进口袋：手机本机运行，也能遥控你的电脑。 |
 | [Aegis](https://github.com/GanyuanRan/Aegis) | [@GanyuanRan](https://github.com/GanyuanRan) | Make AI coding agents architecture-aware: baseline-first, evidence-verified, drift-checked, and safe across long tasks. |
 | [powercontext](https://github.com/oceanbase/powercontext) | [@oceanbase](https://github.com/oceanbase) | Not only memory but a full story |
 | [awesome-deepseek-harness](https://github.com/0xsline/awesome-deepseek-harness) | [@0xsline](https://github.com/0xsline) | DeepSeek Harness (DSH) ecosystem: curated plugins, tools, and infrastructure from dsh-external/hub and the public dsh-plugin topic. |
@@ -153,6 +154,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [oh-story-dsh](https://github.com/zenstory-ai/oh-story-dsh) | [@zenstory-ai](https://github.com/zenstory-ai) | A DSH plugin for novel writing and short-drama production, powered by Oh Story and Drama Skills. |
 | [anolisa](https://github.com/alibaba/anolisa) | [@alibaba](https://github.com/alibaba) | ANOLISA (Agentic Nexus Operating Layer & Interface System Architecture) \| Agentic OS with runtime, security, observability, and Tokenless response compression for lower token usage and cost. |
 | [ANOLISA](https://github.com/agentic-os-org/ANOLISA) | [@agentic-os-org](https://github.com/agentic-os-org) | ANOLISA (Agentic Nexus Operating Layer & Interface System Architecture) \| Agentic OS with runtime, security, observability, and Tokenless response compression for lower token usage and cost. |
+| [dsh-startup-screen](https://github.com/6shenhonghong9/dsh-startup-screen) | [@6shenhonghong9](https://github.com/6shenhonghong9) | DeepSeek Harness 的启动界面与启动动画插件。 |
 | [dsh-univer-office](https://github.com/dream-num/dsh-univer-office) | [@dream-num](https://github.com/dream-num) | Preview, create, edit office spreadsheets, docs & slides inside DeepSeek Harness. Power by Univer. |
 | [sandbase-harness](https://github.com/sandbaseai/sandbase-harness) | [@sandbaseai](https://github.com/sandbaseai) | Local-first AI agent runtime with sandboxed sessions, MCP tools, memory, credentials, audit/replay, and a built-in console. Run OpenAI, Anthropic, MiniMax, DeepSeek V4, and OpenAI-compatible models on your infrastructure. |
 | [dsh-synapse](https://github.com/liangmianya/dsh-synapse) | [@liangmianya](https://github.com/liangmianya) | A visual, non-linear conversation workspace plugin for DeepSeek Harness ; A canvas-based session explorer and branching workspace for DeepSeek Harness. |
@@ -301,7 +303,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [echocat-skill-panel](https://github.com/VDERR/echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 
-共收录 247 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
+共收录 249 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
 
 <!-- PLUGINS_END -->
 
