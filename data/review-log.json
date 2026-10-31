@@ -1,6 +1,339 @@
 {
-  "updated_at": "2026-10-30T10:04:09.112Z",
+  "updated_at": "2026-10-31T09:41:13.688Z",
   "decisions": [
+    {
+      "id": "Yu-tao-Li/dsh-computer-use-win",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "存在 Base64 解码行为",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "存在 Base64 解码行为",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "监听键盘输入事件",
+        "监听键盘输入事件",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+        "存在 Base64 解码行为",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "存在 Base64 解码行为"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 w3.org）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 bing.com、example.com、w3.org）",
+        "访问第三方网络地址（如 bing.com、example.com、w3.org）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.com、fixture.test、other.test）",
+        "访问第三方网络地址（如 example.com、fixture.test、other.test）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fixture）",
+        "访问第三方网络地址（如 fixture）",
+        "访问第三方网络地址（如 fixture.invalid）",
+        "读取本地环境配置文件（dotenv .env）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 w3.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "mcp/browser-bidi.mjs",
+          "line": 463,
+          "snippet": "const png = Buffer.from(data, 'base64');"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "mcp/browser-bidi.mjs",
+          "line": 377,
+          "snippet": "if (action === 'snapshot' && args.includeScreenshot) result.screenshot = await this.screenshot(tab, args.maxWidth);"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "mcp/browser-bidi.mjs",
+          "line": 382,
+          "snippet": "if (action === 'screenshot') return { meta: { ok: true, channel: 'browser', backend: 'bidi', action, tab: this.describe(tab) }, screenshot: await this.screensho"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "mcp/browser-bidi.mjs",
+          "line": 461,
+          "snippet": "async screenshot(tab, maxWidth = 1600) {"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "mcp/browser.mjs",
+          "line": 1808,
+          "snippet": "const png = Buffer.from(data, 'base64');"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "mcp/browser.mjs",
+          "line": 1558,
+          "snippet": "try { result.screenshot = await this.screenshot(tab, args.maxWidth); } catch (error) { result.meta.captureError = error.message; }"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "mcp/browser.mjs",
+          "line": 1567,
+          "snippet": "return { meta: { ok: true, action, channel: 'browser', tab: this.describeTab(tab) }, screenshot: await this.screenshot(tab, args.maxWidth) };"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "mcp/browser.mjs",
+          "line": 1795,
+          "snippet": "async screenshot(tab, maxWidth = 1600) {"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "mcp/client.js",
+          "line": 299,
+          "snippet": "window.addEventListener('scroll',close,true);window.addEventListener('resize',close);window.addEventListener('keydown',key,true);window.addEventListener('pointe"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "mcp/client.js",
+          "line": 408,
+          "snippet": "window.addEventListener('keydown',keydown,true);window.addEventListener('blur',cancel);"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "mcp/client.js",
+          "line": 77,
+          "snippet": "if(!key&&event.keyCode>=65&&event.keyCode<=90)key=String.fromCharCode(event.keyCode);"
+        },
+        {
+          "rule": "char-code",
+          "severity": "warning",
+          "explanation": "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
+          "file": "mcp/client.js",
+          "line": 78,
+          "snippet": "if(!key&&event.keyCode>=48&&event.keyCode<=57)key=String.fromCharCode(event.keyCode);"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "test/browser-lane.mjs",
+          "line": 142,
+          "snippet": "const png = Buffer.from(r.images[0].data, 'base64');"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "test/browser-signin.mjs",
+          "line": 48,
+          "snippet": "const browsersOn = dir => Number(execFileSync('powershell.exe', ['-NoProfile', '-Command',"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "test/browser-visible.mjs",
+          "line": 56,
+          "snippet": "const png=Buffer.from(base64,'base64'),w=png.readUInt32BE(16),h=png.readUInt32BE(20),bpp=png[25]===6?4:3,parts=[];"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "6fb642129595a6357588c70812974951db304662",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 144,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-31T09:41:13.688Z"
+    },
+    {
+      "id": "Ebony-Vinyl/EAC-design-world",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "监听键盘输入事件",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "依赖 @modelcontextprotocol/sdk@1.25.2 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-345p-7cg4-v4c7, GHSA-46jr-4wx8-v453）",
+        "依赖 remotion@4.0.0 存在已知漏洞（GHSA-2jqp-f4gr-44fr, GHSA-g6pc-6676-c23j）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
+        "访问第三方网络地址（如 your-product.com）",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）"
+      ],
+      "evidence": [
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "ui/main.jsx",
+          "line": 169,
+          "snippet": "window.addEventListener('keydown', onKeyDown);"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/demo-film.mjs",
+          "line": 51,
+          "snippet": "await page.locator('.brand-mark').screenshot({ path: join(root, 'brand.png') });"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/demo-film.mjs",
+          "line": 55,
+          "snippet": "await page.screenshot({ path: join(root, `${image}.png`) });"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/generate-library-previews.mjs",
+          "line": 28,
+          "snippet": "await page.screenshot({ path: output, type: 'jpeg', quality: 78, timeout: 7000 });"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/harness-qa.mjs",
+          "line": 53,
+          "snippet": "if (process.argv.includes('--screenshot')) await page.screenshot({ path: join(directory, `${action}.png`), timeout: 5000 });"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/import-shotcraft.mjs",
+          "line": 55,
+          "snippet": "const data = JSON.parse(execFileSync(ffprobe, ['-v', 'error', '-select_streams', 'v:0',"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/import-shotcraft.mjs",
+          "line": 105,
+          "snippet": "const revision = execFileSync('git', ['-C', sourceRoot, 'rev-parse', 'HEAD'], { encoding: 'utf8', windowsHide: true }).trim();"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/pack-npm-runtime.mjs",
+          "line": 119,
+          "snippet": "const [packed] = JSON.parse(execFileSync(process.execPath, ["
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/prepare-release.mjs",
+          "line": 25,
+          "snippet": "const commit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8', windowsHide: true }).trim();"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/prepare-release.mjs",
+          "line": 26,
+          "snippet": "assert.equal(execFileSync('git', ['status', '--porcelain'], { cwd: root, encoding: 'utf8', windowsHide: true }).trim(), '', 'Commit the release source before pa"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/prepare-release.mjs",
+          "line": 58,
+          "snippet": "function archive(directory, name, prefix) {"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 @modelcontextprotocol/sdk@1.25.2 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-345p-7cg4-v4c7, GHSA-46jr-4wx8-v453）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "@modelcontextprotocol/sdk@1.25.2"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 remotion@4.0.0 存在已知漏洞（GHSA-2jqp-f4gr-44fr, GHSA-g6pc-6676-c23j）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "remotion@4.0.0"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-10-17）"
+      ],
+      "reviewed_commit": "8b3a2167bbd9ffe29974b0b183ce014f48e8332d",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 7665,
+      "osv": {
+        "status": "ok",
+        "findings": 2
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-10-31T09:41:13.688Z"
+    },
     {
       "id": "ccch1mneyyy/dsh-Go",
       "verdict": "flagged",
@@ -63330,58 +63663,6 @@
         "verdict": "none",
         "rationale": "未配置 LLM_API_KEY",
         "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "SkillNerds/xskill",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "eb4b9b63a6f532449973a789e0fcb3da82dd9343",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 630,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Inference1/clarify-intent-and-establish-shared-understanding",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "0cc6ff528afe47d5d0dcdded7dcf12afaabfa3ac",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 5,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }
