@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-01T07:25:38.536Z",
+  "generated_at": "2026-11-01T10:29:50.631Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -21236,32 +21236,7 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "存在 Base64 解码行为 @ mcp/browser-bidi.mjs:463",
-        "使用屏幕/画面采集能力 @ mcp/browser-bidi.mjs:377",
-        "使用屏幕/画面采集能力 @ mcp/browser-bidi.mjs:382",
-        "使用屏幕/画面采集能力 @ mcp/browser-bidi.mjs:461",
-        "存在 Base64 解码行为 @ mcp/browser.mjs:1808",
-        "使用屏幕/画面采集能力 @ mcp/browser.mjs:1558",
-        "使用屏幕/画面采集能力 @ mcp/browser.mjs:1567",
-        "使用屏幕/画面采集能力 @ mcp/browser.mjs:1795",
-        "监听键盘输入事件 @ mcp/client.js:299",
-        "监听键盘输入事件 @ mcp/client.js:408",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ mcp/client.js:77",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码） @ mcp/client.js:78",
-        "存在 Base64 解码行为 @ test/browser-lane.mjs:142",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ test/browser-signin.mjs:48",
-        "存在 Base64 解码行为 @ test/browser-visible.mjs:56",
-        "访问第三方网络地址（如 w3.org） @ assets/diagrams/diagram.js:13",
-        "读取环境变量（可能包含敏感信息） @ assets/diagrams/render.mjs:15",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 bing.com、example.com、w3.org） @ mcp/browser.mjs:14",
-        "访问第三方网络地址（如 bing.com、example.com、w3.org） @ mcp/browser.mjs:137",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.com、fixture.test、other.test） @ test/browser-bidi.mjs:63",
-        "访问第三方网络地址（如 example.com、fixture.test、other.test） @ test/browser-bidi.mjs:164",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fixture） @ test/browser-lane.mjs:68",
-        "访问第三方网络地址（如 fixture） @ test/browser-lane.mjs:52",
-        "访问第三方网络地址（如 fixture.invalid） @ test/browser-namespace.mjs:13",
-        "读取本地环境配置文件（dotenv .env） @ test/browser-visible.mjs",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 w3.org） @ test/browser-visible.mjs:45"
+        "读取本地环境配置文件（dotenv .env） @ test/browser-visible.mjs"
       ],
       "risk_evidence": [
         {
@@ -21408,26 +21383,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 w3.org）",
-        "读取环境变量（可能包含敏感信息）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 bing.com、example.com、w3.org）",
-        "访问第三方网络地址（如 bing.com、example.com、w3.org）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.com、fixture.test、other.test）",
-        "访问第三方网络地址（如 example.com、fixture.test、other.test）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fixture）",
-        "访问第三方网络地址（如 fixture）",
-        "访问第三方网络地址（如 fixture.invalid）",
-        "读取本地环境配置文件（dotenv .env）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 w3.org）"
-      ],
-      "security_notes": [
-        "存在 Base64 解码行为",
-        "使用屏幕/画面采集能力",
-        "监听键盘输入事件",
-        "使用 String.fromCharCode 构造字符串（常见于混淆代码）",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "6fb642129595a6357588c70812974951db304662",
       "source": "discovered",
       "review_status": "flagged",
@@ -21479,24 +21436,10 @@
         "zh": "15 种 MG 动态设计风格，每种一支 10 秒成片，全部由 Claude Opus 5.5 写代码做出来。",
         "en": "A Claude Code / Claude Agent Skills skill that generates single-file HTML horizontal-swipe decks with an \"editorial magazine × electronic ink\" aesthetic — picture Monocle with code stitched in."
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
-        "监听键盘输入事件 @ ui/main.jsx:169",
-        "使用屏幕/画面采集能力 @ scripts/demo-film.mjs:51",
-        "使用屏幕/画面采集能力 @ scripts/demo-film.mjs:55",
-        "使用屏幕/画面采集能力 @ scripts/generate-library-previews.mjs:28",
-        "使用屏幕/画面采集能力 @ scripts/harness-qa.mjs:53",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/import-shotcraft.mjs:55",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/import-shotcraft.mjs:105",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/pack-npm-runtime.mjs:119",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/prepare-release.mjs:25",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/prepare-release.mjs:26",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/prepare-release.mjs:58",
         "依赖 @modelcontextprotocol/sdk@1.25.2 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-345p-7cg4-v4c7, GHSA-46jr-4wx8-v453） @ <dependencies>",
         "依赖 remotion@4.0.0 存在已知漏洞（GHSA-2jqp-f4gr-44fr, GHSA-g6pc-6676-c23j） @ <dependencies>",
-        "读取环境变量（可能包含敏感信息） @ src/media/index.mjs:79",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发） @ ui/main.jsx:583",
-        "访问第三方网络地址（如 your-product.com） @ ui/main.jsx:530",
         "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ scripts/prepare-release.mjs"
       ],
       "risk_evidence": [
@@ -21595,23 +21538,142 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取浏览器 Cookie/存储（未发现值进入请求，需自行确认不外发）",
-        "访问第三方网络地址（如 your-product.com）",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）"
-      ],
-      "security_notes": [
-        "监听键盘输入事件",
-        "使用屏幕/画面采集能力",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "依赖 @modelcontextprotocol/sdk@1.25.2 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-345p-7cg4-v4c7, GHSA-46jr-4wx8-v453）",
-        "依赖 remotion@4.0.0 存在已知漏洞（GHSA-2jqp-f4gr-44fr, GHSA-g6pc-6676-c23j）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "8b3a2167bbd9ffe29974b0b183ce014f48e8332d",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-10-31T09:41:13.688Z"
+    },
+    {
+      "id": "JimLiu/baoyu-design",
+      "name": "baoyu-design",
+      "author": "JimLiu",
+      "description": "Run Claude Design locally as an Agent Skill — Cursor, Codex, DeepSeek Harness & more. Produce polished UI mockups, prototypes, decks & wireframes as self-contained HTML, without claude.ai/design. Best with Opus or Claude.",
+      "repo_url": "https://github.com/JimLiu/baoyu-design",
+      "homepage": "https://github.com/JimLiu/baoyu-design",
+      "stars": 5710,
+      "forks": 432,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-11-01T09:40:52Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "NOASSERTION",
+      "topics": [
+        "agent-skills",
+        "claude",
+        "claude-code",
+        "claude-design",
+        "cursor",
+        "design",
+        "dsh-plugin",
+        "dsh-plugins",
+        "prototyping",
+        "ui-design"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "在你自己的本地 Agent 上运行 Claude Design —— Cursor、Claude Code、Claude Desktop，或任何能读写文件的编码 Agent。",
+        "en": "Run Claude Design on your own local agent — Cursor, Claude Code, Claude Desktop, or any file‑capable coding agent."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "使用屏幕/画面采集能力 @ archive/baoyu-design/agents/gen-pptx/src/browser/entry.ts:16",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ .github/scripts/dsh-plugin-index.mjs:149",
+        "使用动态代码执行（全局 eval / new Function） @ archive/baoyu-design/agents/gen-pptx/src/browser/capture-editable.ts:37",
+        "使用动态代码执行（全局 eval / new Function） @ archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts:11",
+        "使用屏幕/画面采集能力 @ archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts:2",
+        "使用屏幕/画面采集能力 @ archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts:8",
+        "依赖 playwright@1.49.0 存在已知漏洞（GHSA-7mvr-c777-76hp） @ <dependencies>",
+        "读取环境变量（可能包含敏感信息） @ dsh-plugins/dsh-claude-dashboard/lib/index.js:45",
+        "访问第三方网络地址（如 jimliu.github.io） @ .github/scripts/dsh-plugin-index.mjs:4",
+        "访问第三方网络地址（如 w3.org） @ archive/baoyu-design/agents/gen-pptx/src/browser/capture-editable.ts:204",
+        "访问第三方网络地址（如 fonts.googleapis.com） @ archive/baoyu-design/agents/gen-pptx/src/browser/setup.ts:87"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/entry.ts",
+          "line": 16,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": ".github/scripts/dsh-plugin-index.mjs",
+          "line": 149,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/capture-editable.ts",
+          "line": 37,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts",
+          "line": 11,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts",
+          "line": 2,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts",
+          "line": 8,
+          "confidence": 1
+        },
+        {
+          "explanation": "依赖 playwright@1.49.0 存在已知漏洞（GHSA-7mvr-c777-76hp）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "dsh-plugins/dsh-claude-dashboard/lib/index.js",
+          "line": 45
+        },
+        {
+          "explanation": "访问第三方网络地址（如 jimliu.github.io）",
+          "file": ".github/scripts/dsh-plugin-index.mjs",
+          "line": 4
+        },
+        {
+          "explanation": "访问第三方网络地址（如 w3.org）",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/capture-editable.ts",
+          "line": 204
+        },
+        {
+          "explanation": "访问第三方网络地址（如 fonts.googleapis.com）",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/setup.ts",
+          "line": 87
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 jimliu.github.io）",
+        "访问第三方网络地址（如 w3.org）",
+        "访问第三方网络地址（如 fonts.googleapis.com）"
+      ],
+      "security_notes": [
+        "使用屏幕/画面采集能力",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "使用动态代码执行（全局 eval / new Function）",
+        "依赖 playwright@1.49.0 存在已知漏洞（GHSA-7mvr-c777-76hp）"
+      ],
+      "reviewed_commit": "0c257e5e9def6723fdc69a95ec59fc8c414a8282",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-11-01T10:29:50.631Z"
     }
   ]
 }
