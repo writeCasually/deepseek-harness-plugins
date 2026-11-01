@@ -1,6 +1,290 @@
 {
-  "updated_at": "2026-10-31T09:41:13.688Z",
+  "updated_at": "2026-11-01T10:29:50.631Z",
   "decisions": [
+    {
+      "id": "DayuanJiang/next-ai-draw-io",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "子进程以 shell 模式启动（spawn(...,{shell:true})）",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "依赖 nanoid@5.0.0 存在已知漏洞（GHSA-28wg-ghj8-5hjv, GHSA-2v37-7h3g-55p8, GHSA-mwcw-c2x4-8c55）",
+        "依赖 next@16.0.7 存在已知漏洞（GHSA-2464-fhr4-w9xw, GHSA-267c-6grr-h53f, GHSA-26hh-7cqf-hhc6）",
+        "依赖 zod@4.1.12 存在已知漏洞（GHSA-mrhx-c7xc-m3w5）",
+        "依赖 @modelcontextprotocol/sdk@1.31.0 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-46jr-4wx8-v453, GHSA-6prh-2h8m-c8cw）",
+        "依赖 zod@4.0.0 存在已知漏洞（GHSA-mrhx-c7xc-m3w5）"
+      ],
+      "privacy_notes": [
+        "读取本地环境配置文件（dotenv .env）",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepare",
+          "severity": "warning",
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "husky"
+        },
+        {
+          "rule": "spawn-shell",
+          "severity": "critical",
+          "explanation": "子进程以 shell 模式启动（spawn(...,{shell:true})）",
+          "file": "packages/mcp-server/src/index.ts",
+          "line": 439,
+          "snippet": "spawn(`start \"\" \"${url}\"`, {"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "packages/mcp-server/src/index.ts",
+          "line": 1534,
+          "snippet": "const png = Buffer.from(base64, \"base64\")"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "packages/mcp-server/src/index.ts",
+          "line": 1546,
+          "snippet": "svgContent = Buffer.from(base64, \"base64\").toString(\"utf-8\")"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "packages/mcp-server/src/index.ts",
+          "line": 657,
+          "snippet": "const shot = await captureScreenshot("
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "packages/mcp-server/src/index.ts",
+          "line": 940,
+          "snippet": "const shot = await captureScreenshot("
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "packages/mcp-server/src/index.ts",
+          "line": 1227,
+          "snippet": "async function captureScreenshot("
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 nanoid@5.0.0 存在已知漏洞（GHSA-28wg-ghj8-5hjv, GHSA-2v37-7h3g-55p8, GHSA-mwcw-c2x4-8c55）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "nanoid@5.0.0"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 next@16.0.7 存在已知漏洞（GHSA-2464-fhr4-w9xw, GHSA-267c-6grr-h53f, GHSA-26hh-7cqf-hhc6）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "next@16.0.7"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 zod@4.1.12 存在已知漏洞（GHSA-mrhx-c7xc-m3w5）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "zod@4.1.12"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 @modelcontextprotocol/sdk@1.31.0 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-46jr-4wx8-v453, GHSA-6prh-2h8m-c8cw）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "@modelcontextprotocol/sdk@1.31.0"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 zod@4.0.0 存在已知漏洞（GHSA-mrhx-c7xc-m3w5）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "zod@4.0.0"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "c9dc5f5cc62e7e5a327a62b39027d80033e1548c",
+      "review_mode": "full",
+      "scanned_files": 4,
+      "total_files": 588,
+      "osv": {
+        "status": "ok",
+        "findings": 5
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-01T10:29:50.631Z"
+    },
+    {
+      "id": "JimLiu/baoyu-design",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "使用屏幕/画面采集能力",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "使用动态代码执行（全局 eval / new Function）",
+        "使用动态代码执行（全局 eval / new Function）",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "依赖 playwright@1.49.0 存在已知漏洞（GHSA-7mvr-c777-76hp）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 jimliu.github.io）",
+        "访问第三方网络地址（如 w3.org）",
+        "访问第三方网络地址（如 fonts.googleapis.com）"
+      ],
+      "evidence": [
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/entry.ts",
+          "line": 16,
+          "snippet": "captureScreenshot(spec: SlideSpec): Promise<void>;"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": ".github/scripts/dsh-plugin-index.mjs",
+          "line": 149,
+          "snippet": "fs.writeFileSync(file, bytes);"
+        },
+        {
+          "rule": "eval-exec",
+          "severity": "warning",
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/capture-editable.ts",
+          "line": 37,
+          "snippet": "new Function(spec.showJs)();"
+        },
+        {
+          "rule": "eval-exec",
+          "severity": "warning",
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts",
+          "line": 11,
+          "snippet": "new Function(spec.showJs)();"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts",
+          "line": 2,
+          "snippet": "// actual pixel grab is done Node-side via Playwright page.screenshot(). (←Nt)"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts",
+          "line": 8,
+          "snippet": "export async function captureScreenshot(spec: SlideSpec): Promise<void> {"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 playwright@1.49.0 存在已知漏洞（GHSA-7mvr-c777-76hp）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "playwright@1.49.0"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "0c257e5e9def6723fdc69a95ec59fc8c414a8282",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 480,
+      "osv": {
+        "status": "ok",
+        "findings": 1
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-01T10:29:50.631Z"
+    },
+    {
+      "id": "yexi-by/dsh-unrestricted",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync）"
+      ],
+      "privacy_notes": [
+        "读取本地环境配置文件（dotenv .env）",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "tools/dump-prompts.mjs",
+          "line": 112,
+          "snippet": "commit = execSync('git rev-parse HEAD', { cwd: repo, encoding: 'utf8' }).trim()"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "35e3e7d9bced275361a6a938d1899647a919c8a3",
+      "review_mode": "full",
+      "scanned_files": 13,
+      "total_files": 59,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-01T10:29:50.631Z"
+    },
     {
       "id": "Yu-tao-Li/dsh-computer-use-win",
       "verdict": "flagged",
@@ -63441,222 +63725,6 @@
       "osv": {
         "status": "ok",
         "findings": 2
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "pulseaiclub/phi",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "c138b4bdbb5b1ab6bb343128dc6fc19f8d180746",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 351,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "kingOfSoySauce/dsh-liang-skin",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）",
-        "存在编码转义字符串（疑似混淆）"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址（如 w3.org）",
-        "访问第三方网络地址（如 dsh.local）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 246,
-          "snippet": ") button[aria-label=\"\\u65B0\\u5EFA\\u4F1A\\u8BDD\"] svg[viewBox=\"0 0 182 24\"] > rect[width=\"52\"] {"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 255,
-          "snippet": ") button[aria-label=\"\\u65B0\\u5EFA\\u4F1A\\u8BDD\"] svg[viewBox=\"0 0 182 24\"] > g[clip-path*=\"badge\"] path {"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 259,
-          "snippet": "body[data-liang-skin=\"on\"][data-liang-stage=\"5\"] button[aria-label=\"\\u65B0\\u5EFA\\u4F1A\\u8BDD\"] svg[viewBox=\"0 0 182 24\"] > rect[width=\"52\"] {"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 263,
-          "snippet": "body[data-liang-skin=\"on\"][data-liang-stage=\"5\"] button[aria-label=\"\\u65B0\\u5EFA\\u4F1A\\u8BDD\"] svg[viewBox=\"0 0 182 24\"] > g[clip-path*=\"badge\"] path {"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 267,
-          "snippet": "body[data-liang-skin=\"on\"][data-liang-stage=\"5\"] [aria-label^=\"\\u9009\\u62E9\\u6A21\\u578B\"] > span:nth-of-type(2) {"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 281,
-          "snippet": "body[data-liang-skin=\"on\"][data-liang-stage=\"5\"] button[aria-label=\"\\u53D1\\u9001\\u6D88\\u606F\"] {"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 285,
-          "snippet": "body[data-liang-skin=\"on\"][data-liang-stage=\"5\"] button[aria-label=\"\\u53D1\\u9001\\u6D88\\u606F\"]:disabled {"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 294,
-          "snippet": ") button[aria-label=\"\\u53D1\\u9001\\u6D88\\u606F\"] {"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 303,
-          "snippet": ") button[aria-label=\"\\u53D1\\u9001\\u6D88\\u606F\"]:disabled {"
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 1106,
-          "snippet": "\"aria-label\": bindEffort ? \"\\u601D\\u8003\\u7B49\\u7EA7\" : \"\\u76AE\\u80A4\\u8FDB\\u5EA6\","
-        },
-        {
-          "rule": "hex-encoded",
-          "severity": "warning",
-          "explanation": "存在编码转义字符串（疑似混淆）",
-          "file": "lib/client.js",
-          "line": 1171,
-          "snippet": "customButton.setAttribute(\"aria-label\", \"\\u6ED1\\u52A8\\u53D8\\u7956\");"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）",
-        "未声明开源许可证"
-      ],
-      "reviewed_commit": "f65bf387a4a3e3f4680dd6bb63e7f30d20455543",
-      "review_mode": "full",
-      "scanned_files": 9,
-      "total_files": 76,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "zh667/TokenLedger",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "监听键盘输入事件"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址（如 host）",
-        "访问第三方网络地址（如 collector.example）",
-        "访问第三方网络地址（如 relay.example.com）",
-        "访问第三方网络地址（如 api.example.com、relay.example）",
-        "访问第三方网络地址（如 api.relay-one.example）",
-        "访问第三方网络地址（如 api.deepseek.com.evil.example、api.moonshot.ai、api.moonshot.cn、api.relay-one.example）",
-        "访问第三方网络地址（如 collector.example、evil.example、relay-one.example、relay.example）",
-        "访问第三方网络地址（如 host、plain.example、relay.example、relay.example.com）",
-        "访问第三方网络地址（如 a.example、api.example.com、api.relay-one.example、corrected.example）",
-        "访问第三方网络地址（如 a.example）"
-      ],
-      "evidence": [
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/client.js",
-          "line": 1575,
-          "snippet": "window.addEventListener(\"keydown\", onKey);"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）"
-      ],
-      "reviewed_commit": "63091bbf2ab093ae8f137d2f5310c5ba2c331f37",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 51,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
       },
       "llm_review": {
         "status": "skipped",
