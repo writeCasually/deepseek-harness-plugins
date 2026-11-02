@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-02T07:36:06.747Z",
+  "generated_at": "2026-11-02T11:12:33.749Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -21583,17 +21583,7 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "使用屏幕/画面采集能力 @ archive/baoyu-design/agents/gen-pptx/src/browser/entry.ts:16",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ .github/scripts/dsh-plugin-index.mjs:149",
-        "使用动态代码执行（全局 eval / new Function） @ archive/baoyu-design/agents/gen-pptx/src/browser/capture-editable.ts:37",
-        "使用动态代码执行（全局 eval / new Function） @ archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts:11",
-        "使用屏幕/画面采集能力 @ archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts:2",
-        "使用屏幕/画面采集能力 @ archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts:8",
-        "依赖 playwright@1.49.0 存在已知漏洞（GHSA-7mvr-c777-76hp） @ <dependencies>",
-        "读取环境变量（可能包含敏感信息） @ dsh-plugins/dsh-claude-dashboard/lib/index.js:45",
-        "访问第三方网络地址（如 jimliu.github.io） @ .github/scripts/dsh-plugin-index.mjs:4",
-        "访问第三方网络地址（如 w3.org） @ archive/baoyu-design/agents/gen-pptx/src/browser/capture-editable.ts:204",
-        "访问第三方网络地址（如 fonts.googleapis.com） @ archive/baoyu-design/agents/gen-pptx/src/browser/setup.ts:87"
+        "依赖 playwright@1.49.0 存在已知漏洞（GHSA-7mvr-c777-76hp） @ <dependencies>"
       ],
       "risk_evidence": [
         {
@@ -21658,18 +21648,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 jimliu.github.io）",
-        "访问第三方网络地址（如 w3.org）",
-        "访问第三方网络地址（如 fonts.googleapis.com）"
-      ],
-      "security_notes": [
-        "使用屏幕/画面采集能力",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "使用动态代码执行（全局 eval / new Function）",
-        "依赖 playwright@1.49.0 存在已知漏洞（GHSA-7mvr-c777-76hp）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "0c257e5e9def6723fdc69a95ec59fc8c414a8282",
       "source": "discovered",
       "review_status": "flagged",
