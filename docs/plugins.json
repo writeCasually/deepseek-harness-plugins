@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-03T02:52:11.212Z",
+  "generated_at": "2026-11-03T10:55:06.215Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -21654,6 +21654,45 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-11-01T10:29:50.631Z"
+    },
+    {
+      "id": "alchaincyf/nuwa-skill",
+      "name": "nuwa-skill",
+      "author": "alchaincyf",
+      "description": "你想蒸馏的下一个员工，何必是同事。蒸馏任何人的思维方式——心智模型、决策启发式、表达DNA。Distill how anyone thinks.",
+      "repo_url": "https://github.com/alchaincyf/nuwa-skill",
+      "homepage": "https://github.com/alchaincyf/nuwa-skill",
+      "stars": 37312,
+      "forks": 4824,
+      "open_issues": 28,
+      "watchers": 0,
+      "pushed_at": "2026-11-03T08:51:23Z",
+      "archived": false,
+      "language": "Python",
+      "license": "MIT",
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "动画由 huashu-motion 制作，女娲形象与每一种画风都由代码绘制",
+        "en": "> \"The next person you want to distill doesn't have to be a colleague.\""
+      },
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": [],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [],
+      "reviewed_commit": "5bb9b659b7750e2ae775308bf2af706e37cbae30",
+      "source": "discovered",
+      "review_status": "approved",
+      "reviewed_at": "2026-11-03T10:55:06.215Z"
     }
   ]
 }
