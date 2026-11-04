@@ -1,6 +1,339 @@
 {
-  "updated_at": "2026-11-03T10:55:06.215Z",
+  "updated_at": "2026-11-04T10:58:05.390Z",
   "decisions": [
+    {
+      "id": "alchaincyf/huashu-design",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "存在 Base64 解码行为",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "使用屏幕/画面采集能力",
+        "监听键盘输入事件"
+      ],
+      "privacy_notes": [
+        "读取本地环境配置文件（dotenv .env）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 openspeech.bytedance.com）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 example.com）"
+      ],
+      "evidence": [
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/cloud/tts-doubao.mjs",
+          "line": 95,
+          "snippet": "const out = execFileSync('ffprobe', ["
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/cloud/tts-doubao.mjs",
+          "line": 171,
+          "snippet": "if (json.data) chunks.push(Buffer.from(json.data, 'base64'));"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/gen_deck_thumbs.mjs",
+          "line": 49,
+          "snippet": "const buf = await page.screenshot({ type: 'png', clip: { x: 0, y: 0, width: W, height: H } });"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/gen_deck_thumbs.mjs",
+          "line": 52,
+          "snippet": "await page.screenshot({ path: out, type: 'jpeg', quality, clip: { x: 0, y: 0, width: W, height: H } });"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/narrate-pipeline.mjs",
+          "line": 128,
+          "snippet": "const out = execFileSync('ffprobe', ["
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/narrate-pipeline.mjs",
+          "line": 147,
+          "snippet": "const out = execFileSync('node', [TTS_SCRIPT, ...args], {"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/narrate-pipeline.mjs",
+          "line": 157,
+          "snippet": "const out = execFileSync('node', [TTS_SCRIPT, ...args.filter((a) => a !== '--timestamps')], {"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/render-video-seek.js",
+          "line": 110,
+          "snippet": "await page.screenshot({"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "assets/deck_stage.js",
+          "line": 229,
+          "snippet": "document.addEventListener('keydown', (e) => {"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "b2460b031c33ff32d2bf3b97263527daa231e4de",
+      "review_mode": "full",
+      "scanned_files": 21,
+      "total_files": 440,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-04T10:58:05.390Z"
+    },
+    {
+      "id": "HunYiSage/dsh-purge",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-postinstall",
+          "severity": "warning",
+          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "node scripts/ensure-profile-bundle.mjs"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 2786,
+          "snippet": "const packed = await skills.importArchive(dshHome, Buffer.from(body.data, \"base64\"), body.name || \"skill.zip\");"
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 2,
+          "snippet": "\"vGK8aCmbnUCj68dyiGwj8Z8EvkNwbf1YUKw1NBRfUNVIS4g4Dn++aUULO0ZumF/ov1Cw87awMKAu079m0Sr0IvAfFYMw3xud\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 3,
+          "snippet": "\"f18lR5UUkzjQrnuOzK/9pnHYuEda5sguSSLi6XQC9L2ZPyjdMjZLs+i1zIjAwSavlg9DYZYqQcfxmrj/ypuOwzSXhUeG5l61\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 4,
+          "snippet": "\"pjziWa54irMRoRT8UhL6GnugYhkRKwsW+Tt7yk392V+PyVbW4w+GWkujV5ExIa97GqYwvKUev9WCraptjoPJV3T3gzZwIMVb\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 5,
+          "snippet": "\"J4/hdwN/kHuZLmWlpuDo6v+kZfD3fkBKolgBBmv2/aHRt6K6+ofjpZo9TnbuJa4PYYrSwS5EC7HFFKap3YoB31DgjjHD9Y0g\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 6,
+          "snippet": "\"4A33KV5BbcziExoQz+KmN6hCI7TnAqmrEN9kB/kvygRVbBgWdo4YZuasbvm6jsnQe+8PvKKKA8CKapTByVfmhV4ACZ0RmjEZ\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 7,
+          "snippet": "\"Rus68KTbBoSY81MjBFwjt3UNTGoVpSZHFyb+s5VU2aTcl1OwQbFIfYe58oGYOCUQrGvS2Y7HkwNPqS9K0DGRkqgYnupn5WGe\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 8,
+          "snippet": "\"/rABmB8Fzb/AHLnagQHUV6sFzAYx/n4tZQSaXpbS7axVCbqEN91NTL+UwuvC9DLNLljNZ1sAz6RPZ62WOtCsFZobJmi6cgYT\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 9,
+          "snippet": "\"HSaN21DYALc69c6DdCp9MHRME/Rm8uJQajp405ZSRdBa9F6x3+Z4gGzclX2dxlt0Z/JT83+wfqbJgK6U6C46U2TxGSApTh+D\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 10,
+          "snippet": "\"SfbSlwe8TjiTVjIBcYFTzZ3Q/Tc5TddcfgLPYRjU4C3lJ0pF7pamRVF+AprmuEqy5gJhQDnm32rnKrO2y/T85EyCHNUwENBv\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 11,
+          "snippet": "\"SRKtCgoMuKApau/M3TLiujZ71+b3e5yeaDaNrARAHn76+zRi+YY6RXBxfQ4G2KNIVKj/cy8fq/MzwJMdMkOg55qCBAXzBu3p\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 12,
+          "snippet": "\"bC1EVVx2azE4lI+s+qnH/UVSEMMj9lcf0qQC4aC+hNk2NW7Ui+OQfYUqmS0nwutq27VIpXEhmveDgYzz1Yod1CGxahYve+Zz\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 13,
+          "snippet": "\"dB664+Xrb6ADK4g45CdhBFvFo4qW/qb9M5Mk6s53AK3gHuC4wEW1sJ38j/hng4hyX8Nw8vB+/5Aa85zl6/aAJUSpH7QePL/p\","
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/core.js",
+          "line": 161,
+          "snippet": "return execFileSync(bin, args, HIDDEN_EXEC).trim();"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/core.js",
+          "line": 1080,
+          "snippet": "const needle = 'execFileSync(\"git\", [';"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/core.js",
+          "line": 1249,
+          "snippet": "execFileSync(\"schtasks\", [\"/Query\", \"/TN\", \"DSH Doctor Supervisor\"], {"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "4c3369a945701598275dcabbe958b7b815570ed5",
+      "review_mode": "full",
+      "scanned_files": 12,
+      "total_files": 103,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-04T10:58:05.390Z"
+    },
+    {
+      "id": "alchaincyf/huashu-excel",
+      "verdict": "approved",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "2492fabbafc8498496edd70f7e2354016a8dd06e",
+      "review_mode": "full",
+      "scanned_files": 1,
+      "total_files": 25,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-04T10:58:05.390Z"
+    },
     {
       "id": "alchaincyf/nuwa-skill",
       "verdict": "approved",
@@ -63392,147 +63725,6 @@
       "total_files": 239,
       "osv": {
         "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "hyqibot/A-share-Ai",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "ac3bb61e486327c9f6e76f208ec8eeeb6b35e1c1",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 28,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Han-1413141/dsh-cost-meter",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "使用 PowerShell 简写 iex 动态执行（需结合上下文确认）",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
-      "privacy_notes": [
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "访问第三方网络地址（如 opencode.ai）",
-        "读取浏览器 Cookie/存储并发送到网络",
-        "访问第三方网络地址（如 example.com、w3.org）",
-        "访问第三方网络地址（如 api.anthropic.com、api.commandcode.ai、api.moonshot.cn、api.siliconflow.cn）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 ai.google.dev、alibabacloud.com、docs.x.ai、opencode.ai）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "evidence": [
-        {
-          "rule": "iex-short",
-          "severity": "warning",
-          "explanation": "使用 PowerShell 简写 iex 动态执行（需结合上下文确认）",
-          "file": "scripts/release.mjs",
-          "line": 107,
-          "snippet": "const upgrade = `\\n## 升级\\n\\n已安装用户在任意终端重跑一行即可(重跑即为更新):\\n\\n\\`\\`\\`powershell\\nirm https://raw.githubusercontent.com/Han-1413141/dsh-cost-meter/${TAG}/install.ps1 |"
-        },
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "scripts/release.mjs",
-          "line": 24,
-          "snippet": "const run = (cmd, opts = {}) => execSync(cmd, { cwd: repoRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], ...opts })"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-13）"
-      ],
-      "reviewed_commit": "d48cb7f5e99db682310c95cfd0de026f5fb0e53c",
-      "review_mode": "full",
-      "scanned_files": 13,
-      "total_files": 140,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "bradeGithub/DSH-Plugins-Marketplace",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "使用 PowerShell 动态表达式执行",
-        "使用 PowerShell 简写 iex 动态执行（需结合上下文确认）"
-      ],
-      "privacy_notes": [
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 registry.npmmirror.com、x）"
-      ],
-      "evidence": [
-        {
-          "rule": "invoke-expression",
-          "severity": "critical",
-          "explanation": "使用 PowerShell 动态表达式执行",
-          "file": "lib/index.js",
-          "line": 2409,
-          "snippet": "/\\bInvoke-WebRequest\\b[^\\r\\n]*\\|\\s*Invoke-Expression\\b/i,"
-        },
-        {
-          "rule": "iex-short",
-          "severity": "warning",
-          "explanation": "使用 PowerShell 简写 iex 动态执行（需结合上下文确认）",
-          "file": "lib/index.js",
-          "line": 2408,
-          "snippet": "/\\b(?:iwr|irm)\\b[^\\r\\n|]*\\|\\s*(?:iex)\\b/i,"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-13）"
-      ],
-      "reviewed_commit": "0e2a284a729cd9b6b7a60bc80e04bfe7ae1cc32f",
-      "review_mode": "full",
-      "scanned_files": 1,
-      "total_files": 97,
-      "osv": {
-        "status": "skipped",
         "findings": 0
       },
       "llm_review": {
