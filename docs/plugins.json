@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-04T01:15:30.937Z",
+  "generated_at": "2026-11-04T10:58:05.390Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -21693,6 +21693,197 @@
       "source": "discovered",
       "review_status": "approved",
       "reviewed_at": "2026-11-03T10:55:06.215Z"
+    },
+    {
+      "id": "alchaincyf/huashu-design",
+      "name": "huashu-design",
+      "author": "alchaincyf",
+      "description": "Huashu Design 3.0 · 在 agent 里打一句话，拿回能交付的设计：网页 / App 原型 / 可编辑 PPTX / 动画 / 信息图 · 六个候选挑三个方向 · 84 种带样张的风格库 · 越用越懂你的外观账本与设计体检 · HTML-native design skill for Claude Code, Codex, Cursor & any agent",
+      "repo_url": "https://github.com/alchaincyf/huashu-design",
+      "homepage": "https://github.com/alchaincyf/huashu-design",
+      "stars": 28639,
+      "forks": 3099,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-11-04T03:28:47Z",
+      "archived": false,
+      "language": "HTML",
+      "license": "MIT",
+      "topics": [
+        "agent-skills",
+        "ai-design",
+        "claude-code",
+        "claude-skills",
+        "codex",
+        "cursor",
+        "deepseek-harness",
+        "design",
+        "dsh-plugin",
+        "html",
+        "pptx",
+        "prototype"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "> 「打字。回车。一份能交付的设计。」 > \"Type. Hit enter. A finished design lands in your lap.\"",
+        "en": "> \"Type. Hit enter. A finished design lands in your lap.\" > 「打字。回车。一份能交付的设计。」"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/cloud/tts-doubao.mjs:95",
+        "存在 Base64 解码行为 @ scripts/cloud/tts-doubao.mjs:171",
+        "使用屏幕/画面采集能力 @ scripts/gen_deck_thumbs.mjs:49",
+        "使用屏幕/画面采集能力 @ scripts/gen_deck_thumbs.mjs:52",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/narrate-pipeline.mjs:128",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/narrate-pipeline.mjs:147",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/narrate-pipeline.mjs:157",
+        "使用屏幕/画面采集能力 @ scripts/render-video-seek.js:110",
+        "监听键盘输入事件 @ assets/deck_stage.js:229",
+        "读取本地环境配置文件（dotenv .env） @ scripts/cloud/tts-doubao.mjs",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/cloud/tts-doubao.mjs",
+        "访问第三方网络地址（如 openspeech.bytedance.com） @ scripts/cloud/tts-doubao.mjs:29",
+        "读取环境变量（可能包含敏感信息） @ scripts/html2pptx.js:919",
+        "访问第三方网络地址（如 example.com） @ assets/browser_window.jsx:7"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/cloud/tts-doubao.mjs",
+          "line": 95,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/cloud/tts-doubao.mjs",
+          "line": 171,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/gen_deck_thumbs.mjs",
+          "line": 49,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/gen_deck_thumbs.mjs",
+          "line": 52,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/narrate-pipeline.mjs",
+          "line": 128,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/narrate-pipeline.mjs",
+          "line": 147,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/narrate-pipeline.mjs",
+          "line": 157,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "scripts/render-video-seek.js",
+          "line": 110,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "assets/deck_stage.js",
+          "line": 229,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取本地环境配置文件（dotenv .env）",
+          "file": "scripts/cloud/tts-doubao.mjs"
+        },
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "scripts/cloud/tts-doubao.mjs"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 openspeech.bytedance.com）",
+          "file": "scripts/cloud/tts-doubao.mjs",
+          "line": 29
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "scripts/html2pptx.js",
+          "line": 919
+        },
+        {
+          "explanation": "访问第三方网络地址（如 example.com）",
+          "file": "assets/browser_window.jsx",
+          "line": 7
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取本地环境配置文件（dotenv .env）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 openspeech.bytedance.com）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 example.com）"
+      ],
+      "security_notes": [
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "存在 Base64 解码行为",
+        "使用屏幕/画面采集能力",
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "b2460b031c33ff32d2bf3b97263527daa231e4de",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-11-04T10:58:05.390Z"
+    },
+    {
+      "id": "alchaincyf/huashu-excel",
+      "name": "huashu-excel",
+      "author": "alchaincyf",
+      "description": "数据分析与 Excel 全流程 skill：体检脏表、清洗、对齐需求、分析、对账、交付。让 AI 算出来的数字经得起追问。跨 agent 通用，依赖仅 openpyxl。",
+      "repo_url": "https://github.com/alchaincyf/huashu-excel",
+      "homepage": "https://github.com/alchaincyf/huashu-excel",
+      "stars": 456,
+      "forks": 69,
+      "open_issues": 3,
+      "watchers": 0,
+      "pushed_at": "2026-11-04T03:28:44Z",
+      "archived": false,
+      "language": "Python",
+      "license": "MIT",
+      "topics": [
+        "deepseek-harness",
+        "dsh-plugin"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "> 「给我一份Excel，给你交一份专业报告。」 > 一个真正懂数据分析的skill。"
+      },
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": [],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [],
+      "reviewed_commit": "2492fabbafc8498496edd70f7e2354016a8dd06e",
+      "source": "discovered",
+      "review_status": "approved",
+      "reviewed_at": "2026-11-04T10:58:05.390Z"
     }
   ]
 }
