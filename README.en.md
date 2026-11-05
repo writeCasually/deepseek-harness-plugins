@@ -204,6 +204,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-claude-style](https://github.com/Nwflower/dsh-claude-style) | [@Nwflower](https://github.com/Nwflower) | Claude Code Desktop theme for DeepSeek Harness｜ 为 DeepSeek Harness 复刻 Claude Code Desktop 风格与交互体验的主题插件 |
 | [dsh-commandcode-provider](https://github.com/Mars-Sea/dsh-commandcode-provider) | [@Mars-Sea](https://github.com/Mars-Sea) | Unofficial DeepSeek Harness LLM provider plugin for Command Code: live model catalog, reasoning-effort support, Models-page card. Ported from pi-commandcode-provider (MIT). |
 | [huashu-excel](https://github.com/alchaincyf/huashu-excel) | [@alchaincyf](https://github.com/alchaincyf) | 数据分析与 Excel 全流程 skill：体检脏表、清洗、对齐需求、分析、对账、交付。让 AI 算出来的数字经得起追问。跨 agent 通用，依赖仅 openpyxl。 |
+| [dsh-guizang-design](https://github.com/op7418/dsh-guizang-design) | [@op7418](https://github.com/op7418) | 歸藏设计 · DeepSeek Harness 插件：网页 PPT、图文卡片、网页排版、去 AI 味四个 skill，一套设计系统；作品库、内容生产工作流、语气档案 |
 | [dsh-plugin-hub](https://github.com/dshplugin/dsh-plugin-hub) | [@dshplugin](https://github.com/dshplugin) | DeepSeek Harness 社区内置插件市场（dsh-plugin）— 搜索插件、下载并安装 10000+ 人工精选社区插件，每日更新、完全免费。内置在 Harness「设置 → 插件中心」，无需离开应用即可浏览、搜索、安装各类 AI 插件。 |
 | [marketingdashboard](https://github.com/theBigGavin/marketingdashboard) | [@theBigGavin](https://github.com/theBigGavin) | 面向金融与产业研究的一屏式实时行情大屏：A股/港股/美股指数、大宗商品、美债收益率、板块热点、主力资金流、7×24 快讯、产业链自选股、AI 大模型 Token 追踪。A real-time market research cockpit on a single screen: CN/HK/US indices, commodities, treasury yields, sector hotspots, capital flows, 7×24 news, industry-chain watchlists and AI token usage trends.  |
 | [EAC-design-world](https://github.com/Ebony-Vinyl/EAC-design-world) | [@Ebony-Vinyl](https://github.com/Ebony-Vinyl) | DeepSeek Harness 本地视频制作与设计插件：多轨剪辑、模板与设计体系、原生预览画布和真实文件导出 |
@@ -320,7 +321,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-Includes 254 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 255 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 

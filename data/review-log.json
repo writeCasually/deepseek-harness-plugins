@@ -1,6 +1,108 @@
 {
-  "updated_at": "2026-11-04T10:58:05.390Z",
+  "updated_at": "2026-11-05T10:58:38.773Z",
   "decisions": [
+    {
+      "id": "op7418/dsh-guizang-design",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "监听键盘输入事件",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "监听键盘输入事件"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 x）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fonts.googleapis.com）",
+        "访问第三方网络地址（如 fonts.googleapis.com）",
+        "访问第三方网络地址（如 fonts.googleapis.com、fonts.gstatic.com、images.unsplash.com）"
+      ],
+      "evidence": [
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "lib/thumbs.js",
+          "line": 46,
+          "snippet": "await page.screenshot({ path: outFile, type: 'jpeg', quality: 82 })"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "skills/guizang-page-skill/scripts/export.mjs",
+          "line": 113,
+          "snippet": "await page.screenshot({ path: resolve(opt.png), fullPage: true, captureBeyondViewport: true });"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "skills/guizang-page-skill/scripts/render.mjs",
+          "line": 860,
+          "snippet": "brandCss = execFileSync(process.execPath, [resolve(scriptDir, 'gz-theme.mjs'), 'brand', brand, '--family', family], { encoding: 'utf-8' }).trim();"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "skills/guizang-page-skill/scripts/render.mjs",
+          "line": 932,
+          "snippet": "document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && open) setOpen(false); });"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "skills/guizang-social-card-skill/scripts/render.mjs",
+          "line": 73,
+          "snippet": "await el.screenshot({ path: file })"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "skills/guizang-social-card-skill/scripts/render.mjs",
+          "line": 81,
+          "snippet": "await pair.screenshot({ path: join(outDir, 'wechat-cover-pair-preview.png') })"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "gallery/app.js",
+          "line": 314,
+          "snippet": "addEventListener('keydown', (e) => { if (e.key === 'Escape' && !viewer.hidden && !document.fullscreenElement) closeViewer() })"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-10-30）"
+      ],
+      "reviewed_commit": "e275f1e4d4a81bd4875c251d33c643c242a8a8fd",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 199,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-05T10:58:38.773Z"
+    },
     {
       "id": "alchaincyf/huashu-design",
       "verdict": "flagged",
@@ -63605,124 +63707,6 @@
       "review_mode": "delta",
       "scanned_files": 12,
       "total_files": 192,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "omdsh-dev/dsh-mnemon",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "监听键盘输入事件",
-        "存在 Base64 解码行为",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）",
-        "存在疑似混淆内容（长 Base64 块）"
-      ],
-      "privacy_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "evidence": [
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/client/MnemonDialog.tsx",
-          "line": 302,
-          "snippet": "window.addEventListener('keydown', onKey)"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "src/client/MnemonPackSection.tsx",
-          "line": 39,
-          "snippet": "const binary = atob(base64)"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "src/client/ProviderIcon.tsx",
-          "line": 11,
-          "snippet": "openviking: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAA"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "src/client/ProviderIcon.tsx",
-          "line": 12,
-          "snippet": "honcho: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjUwIiBoZWlnaHQ9IjY1MCIgdmlld0JveD0iMCAwIDY1MCA2NTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "src/client/ProviderIcon.tsx",
-          "line": 13,
-          "snippet": "mem0: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJub25lIj48cmVjdCB3aWR0aD0iMTAwIiB"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "src/client/ProviderIcon.tsx",
-          "line": 14,
-          "snippet": "hindsight: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAAA2CAYAAABkxd/2AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AA"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "src/client/ProviderIcon.tsx",
-          "line": 15,
-          "snippet": "retaindb: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3Z"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "src/client/ProviderIcon.tsx",
-          "line": 16,
-          "snippet": "byterover: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNiAzNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "src/client/ProviderIcon.tsx",
-          "line": 17,
-          "snippet": "supermemory: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCAyNCIgZmlsbD0ibm9uZSI+CiAgPHBhdGggZD0iTTI5LjMz"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-10）"
-      ],
-      "reviewed_commit": "8cefff7c0521142f5fc2f30aca72c9627ff59265",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 239,
       "osv": {
         "status": "ok",
         "findings": 0
