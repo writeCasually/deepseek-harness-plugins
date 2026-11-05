@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-05T01:25:37.431Z",
+  "generated_at": "2026-11-05T10:58:38.773Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -21639,22 +21639,10 @@
         "zh": "> 「打字。回车。一份能交付的设计。」 > \"Type. Hit enter. A finished design lands in your lap.\"",
         "en": "> \"Type. Hit enter. A finished design lands in your lap.\" > 「打字。回车。一份能交付的设计。」"
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/cloud/tts-doubao.mjs:95",
-        "存在 Base64 解码行为 @ scripts/cloud/tts-doubao.mjs:171",
-        "使用屏幕/画面采集能力 @ scripts/gen_deck_thumbs.mjs:49",
-        "使用屏幕/画面采集能力 @ scripts/gen_deck_thumbs.mjs:52",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/narrate-pipeline.mjs:128",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/narrate-pipeline.mjs:147",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/narrate-pipeline.mjs:157",
-        "使用屏幕/画面采集能力 @ scripts/render-video-seek.js:110",
-        "监听键盘输入事件 @ assets/deck_stage.js:229",
         "读取本地环境配置文件（dotenv .env） @ scripts/cloud/tts-doubao.mjs",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/cloud/tts-doubao.mjs",
-        "访问第三方网络地址（如 openspeech.bytedance.com） @ scripts/cloud/tts-doubao.mjs:29",
-        "读取环境变量（可能包含敏感信息） @ scripts/html2pptx.js:919",
-        "访问第三方网络地址（如 example.com） @ assets/browser_window.jsx:7"
+        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/cloud/tts-doubao.mjs"
       ],
       "risk_evidence": [
         {
@@ -21736,19 +21724,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取本地环境配置文件（dotenv .env）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 openspeech.bytedance.com）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 example.com）"
-      ],
-      "security_notes": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "存在 Base64 解码行为",
-        "使用屏幕/画面采集能力",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "b2460b031c33ff32d2bf3b97263527daa231e4de",
       "source": "discovered",
       "review_status": "flagged",
@@ -21792,6 +21769,138 @@
       "review_status": "approved",
       "reviewed_at": "2026-11-04T10:58:05.390Z",
       "description_i18n_checked_at": "2026-11-04T12:55:17.570Z"
+    },
+    {
+      "id": "op7418/dsh-guizang-design",
+      "name": "dsh-guizang-design",
+      "author": "op7418",
+      "description": "歸藏设计 · DeepSeek Harness 插件：网页 PPT、图文卡片、网页排版、去 AI 味四个 skill，一套设计系统；作品库、内容生产工作流、语气档案",
+      "repo_url": "https://github.com/op7418/dsh-guizang-design",
+      "homepage": "https://github.com/op7418/dsh-guizang-design",
+      "stars": 454,
+      "forks": 31,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-11-05T07:44:48Z",
+      "archived": false,
+      "language": "HTML",
+      "license": "AGPL-3.0",
+      "topics": [
+        "deepseek-harness",
+        "design-system",
+        "dsh-plugin",
+        "skills"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "DeepSeek Harness（dsh）插件。把歸藏的内容生产 skill 装进 dsh：网页 PPT、图文卡片、网页排版、去 AI 味，外加一个学你写作语气的语气档案。前三个共用同一套设计系统，同一篇内容做成 PPT、卡片和网页，主题、字体和版式是一家人。",
+        "en": "A DeepSeek Harness (dsh) plugin that installs Guizang's content skills — web slide decks, social cards, typeset web pages and Chinese de-AI editing — plus a writing-voice profile. The first three share one design system, so a deck, a card set and a web page"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "使用屏幕/画面采集能力 @ lib/thumbs.js:46",
+        "使用屏幕/画面采集能力 @ skills/guizang-page-skill/scripts/export.mjs:113",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ skills/guizang-page-skill/scripts/render.mjs:860",
+        "监听键盘输入事件 @ skills/guizang-page-skill/scripts/render.mjs:932",
+        "使用屏幕/画面采集能力 @ skills/guizang-social-card-skill/scripts/render.mjs:73",
+        "使用屏幕/画面采集能力 @ skills/guizang-social-card-skill/scripts/render.mjs:81",
+        "监听键盘输入事件 @ gallery/app.js:314",
+        "访问第三方网络地址（如 x） @ lib/index.js:131",
+        "读取环境变量（可能包含敏感信息） @ lib/history.js:9",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fonts.googleapis.com） @ skills/guizang-page-skill/scripts/gz-fonts.mjs:14",
+        "访问第三方网络地址（如 fonts.googleapis.com） @ skills/guizang-page-skill/scripts/gz-fonts.mjs:17",
+        "访问第三方网络地址（如 fonts.googleapis.com、fonts.gstatic.com、images.unsplash.com） @ skills/guizang-page-skill/scripts/render.mjs:786"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "lib/thumbs.js",
+          "line": 46,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "skills/guizang-page-skill/scripts/export.mjs",
+          "line": 113,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "skills/guizang-page-skill/scripts/render.mjs",
+          "line": 860,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "skills/guizang-page-skill/scripts/render.mjs",
+          "line": 932,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "skills/guizang-social-card-skill/scripts/render.mjs",
+          "line": 73,
+          "confidence": 1
+        },
+        {
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "skills/guizang-social-card-skill/scripts/render.mjs",
+          "line": 81,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "gallery/app.js",
+          "line": 314,
+          "confidence": 1
+        },
+        {
+          "explanation": "访问第三方网络地址（如 x）",
+          "file": "lib/index.js",
+          "line": 131
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "lib/history.js",
+          "line": 9
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fonts.googleapis.com）",
+          "file": "skills/guizang-page-skill/scripts/gz-fonts.mjs",
+          "line": 14
+        },
+        {
+          "explanation": "访问第三方网络地址（如 fonts.googleapis.com）",
+          "file": "skills/guizang-page-skill/scripts/gz-fonts.mjs",
+          "line": 17
+        },
+        {
+          "explanation": "访问第三方网络地址（如 fonts.googleapis.com、fonts.gstatic.com、images.unsplash.com）",
+          "file": "skills/guizang-page-skill/scripts/render.mjs",
+          "line": 786
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 x）",
+        "读取环境变量（可能包含敏感信息）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fonts.googleapis.com）",
+        "访问第三方网络地址（如 fonts.googleapis.com）",
+        "访问第三方网络地址（如 fonts.googleapis.com、fonts.gstatic.com、images.unsplash.com）"
+      ],
+      "security_notes": [
+        "使用屏幕/画面采集能力",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "e275f1e4d4a81bd4875c251d33c643c242a8a8fd",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-11-05T10:58:38.773Z"
     }
   ]
 }
