@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-06T01:29:48.123Z",
+  "generated_at": "2026-11-06T10:56:05.021Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -21800,21 +21800,8 @@
         "zh": "DeepSeek Harness（dsh）插件。把歸藏的内容生产 skill 装进 dsh：网页 PPT、图文卡片、网页排版、去 AI 味，外加一个学你写作语气的语气档案。前三个共用同一套设计系统，同一篇内容做成 PPT、卡片和网页，主题、字体和版式是一家人。",
         "en": "A DeepSeek Harness (dsh) plugin that installs Guizang's content skills — web slide decks, social cards, typeset web pages and Chinese de-AI editing — plus a writing-voice profile. The first three share one design system, so a deck, a card set and a web page"
       },
-      "risk_level": "moderate",
-      "risk_notes": [
-        "使用屏幕/画面采集能力 @ lib/thumbs.js:46",
-        "使用屏幕/画面采集能力 @ skills/guizang-page-skill/scripts/export.mjs:113",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ skills/guizang-page-skill/scripts/render.mjs:860",
-        "监听键盘输入事件 @ skills/guizang-page-skill/scripts/render.mjs:932",
-        "使用屏幕/画面采集能力 @ skills/guizang-social-card-skill/scripts/render.mjs:73",
-        "使用屏幕/画面采集能力 @ skills/guizang-social-card-skill/scripts/render.mjs:81",
-        "监听键盘输入事件 @ gallery/app.js:314",
-        "访问第三方网络地址（如 x） @ lib/index.js:131",
-        "读取环境变量（可能包含敏感信息） @ lib/history.js:9",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fonts.googleapis.com） @ skills/guizang-page-skill/scripts/gz-fonts.mjs:14",
-        "访问第三方网络地址（如 fonts.googleapis.com） @ skills/guizang-page-skill/scripts/gz-fonts.mjs:17",
-        "访问第三方网络地址（如 fonts.googleapis.com、fonts.gstatic.com、images.unsplash.com） @ skills/guizang-page-skill/scripts/render.mjs:786"
-      ],
+      "risk_level": "low",
+      "risk_notes": [],
       "risk_evidence": [
         {
           "explanation": "使用屏幕/画面采集能力",
@@ -21885,22 +21872,164 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 x）",
-        "读取环境变量（可能包含敏感信息）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fonts.googleapis.com）",
-        "访问第三方网络地址（如 fonts.googleapis.com）",
-        "访问第三方网络地址（如 fonts.googleapis.com、fonts.gstatic.com、images.unsplash.com）"
-      ],
-      "security_notes": [
-        "使用屏幕/画面采集能力",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "e275f1e4d4a81bd4875c251d33c643c242a8a8fd",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-11-05T10:58:38.773Z"
+    },
+    {
+      "id": "yikart/AiToEarn",
+      "name": "AiToEarn",
+      "author": "yikart",
+      "description": "Let's use AI to Earn!",
+      "repo_url": "https://github.com/yikart/AiToEarn",
+      "homepage": "https://aitoearn.ai/",
+      "stars": 27348,
+      "forks": 4536,
+      "open_issues": 5,
+      "watchers": 0,
+      "pushed_at": "2026-11-06T06:21:03Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "MIT",
+      "topics": [
+        "agent-skills",
+        "auto-publish",
+        "codex-skills",
+        "douyin",
+        "douyin-api",
+        "dsh-plugin",
+        "electron-app",
+        "electron-react",
+        "kuaishou",
+        "kwai",
+        "mcp",
+        "mcp-server",
+        "published",
+        "shipinhao",
+        "tool",
+        "xiaohongshu"
+      ],
+      "category": "plugin",
+      "kind": "code",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 Cordis/DSH 落地标记（cordis.patch.yml/.dsh-plugin/dsh.client 等）",
+      "description_i18n": {
+        "zh": "除了 MCP 工具，AiToEarn 还配套一套开箱即用的 插件与技能包，覆盖「创作 → 剪辑 → 发布 → 变现」全链路，无需手写复杂提示词。",
+        "en": "Beyond the MCP server, AiToEarn ships a ready-to-use plugin and skill bundle covering the full pipeline: creation → editing → publishing → monetization — no complex prompting required."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 ioredis 与知名包 redis 名称高度相似（编辑距离 2），存在仿冒风险 @ package.json",
+        "依赖 gaxios 与知名包 axios 名称高度相似（编辑距离 1），存在仿冒风险 @ package.json#1",
+        "依赖 @modelcontextprotocol/sdk@1.27.1 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-46jr-4wx8-v453, GHSA-6prh-2h8m-c8cw） @ <dependencies>",
+        "依赖 @nestjs/microservices@11.1.24 存在已知漏洞（GHSA-96h4-vgxj-gvm2, GHSA-m8vh-jmq9-5rjg） @ <dependencies>",
+        "依赖 axios@1.13.6 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5） @ <dependencies>",
+        "依赖 image-size@2.0.2 存在已知漏洞（GHSA-5p2g-fcmc-qvqq, GHSA-w3rx-r6r6-pgpr） @ <dependencies>",
+        "依赖 js-yaml@4.1.1 存在已知漏洞（GHSA-2883-xcg3-v3hh, GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj） @ <dependencies>",
+        "依赖 lodash@4.17.23 存在已知漏洞（GHSA-f23m-r3pf-42rh, GHSA-r5fr-rjxr-66jc） @ <dependencies>",
+        "依赖 nanoid@5.1.7 存在已知漏洞（GHSA-28wg-ghj8-5hjv, GHSA-xwg4-73v4-xw9w） @ <dependencies>",
+        "依赖 sharp@0.34.5 存在已知漏洞（GHSA-f88m-g3jw-g9cj, GHSA-rgj7-g3m4-5g8c, GHSA-wq5f-xc86-pv6w） @ <dependencies>",
+        "依赖 uuid@11.1.0 存在已知漏洞（GHSA-w5hq-g745-h8pq） @ <dependencies>",
+        "依赖 zod@4.3.6 存在已知漏洞（GHSA-mrhx-c7xc-m3w5） @ <dependencies>",
+        "依赖 axios@1.16.1 存在已知漏洞（GHSA-3pq3-5fj3-cg6v, GHSA-42h9-826w-cgv3, GHSA-44g4-m2mj-wpvx） @ <dependencies>",
+        "依赖 fast-xml-parser@5.3.4 存在已知漏洞（GHSA-8gc5-j5rx-235r, GHSA-fj3w-jwp8-x2g3, GHSA-gh4j-gqv2-49f6） @ <dependencies>",
+        "依赖 mongoose@8.23.0 存在已知漏洞（GHSA-664h-wqgq-64gw） @ <dependencies>",
+        "依赖 qs@6.15.0 存在已知漏洞（GHSA-4mjr-xmp4-gh2g, GHSA-6pq8-jhm2-2vcw, GHSA-q8mj-m7cp-5q26） @ <dependencies>"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 ioredis 与知名包 redis 名称高度相似（编辑距离 2），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "依赖 gaxios 与知名包 axios 名称高度相似（编辑距离 1），存在仿冒风险",
+          "file": "package.json#1"
+        },
+        {
+          "explanation": "依赖 @modelcontextprotocol/sdk@1.27.1 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-46jr-4wx8-v453, GHSA-6prh-2h8m-c8cw）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 @nestjs/microservices@11.1.24 存在已知漏洞（GHSA-96h4-vgxj-gvm2, GHSA-m8vh-jmq9-5rjg）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 axios@1.13.6 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 image-size@2.0.2 存在已知漏洞（GHSA-5p2g-fcmc-qvqq, GHSA-w3rx-r6r6-pgpr）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 js-yaml@4.1.1 存在已知漏洞（GHSA-2883-xcg3-v3hh, GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 lodash@4.17.23 存在已知漏洞（GHSA-f23m-r3pf-42rh, GHSA-r5fr-rjxr-66jc）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 nanoid@5.1.7 存在已知漏洞（GHSA-28wg-ghj8-5hjv, GHSA-xwg4-73v4-xw9w）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 sharp@0.34.5 存在已知漏洞（GHSA-f88m-g3jw-g9cj, GHSA-rgj7-g3m4-5g8c, GHSA-wq5f-xc86-pv6w）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 uuid@11.1.0 存在已知漏洞（GHSA-w5hq-g745-h8pq）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 zod@4.3.6 存在已知漏洞（GHSA-mrhx-c7xc-m3w5）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 axios@1.16.1 存在已知漏洞（GHSA-3pq3-5fj3-cg6v, GHSA-42h9-826w-cgv3, GHSA-44g4-m2mj-wpvx）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 fast-xml-parser@5.3.4 存在已知漏洞（GHSA-8gc5-j5rx-235r, GHSA-fj3w-jwp8-x2g3, GHSA-gh4j-gqv2-49f6）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 mongoose@8.23.0 存在已知漏洞（GHSA-664h-wqgq-64gw）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 qs@6.15.0 存在已知漏洞（GHSA-4mjr-xmp4-gh2g, GHSA-6pq8-jhm2-2vcw, GHSA-q8mj-m7cp-5q26）",
+          "file": "<dependencies>"
+        }
+      ],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [
+        "依赖 ioredis 与知名包 redis 名称高度相似（编辑距离 2），存在仿冒风险",
+        "依赖 gaxios 与知名包 axios 名称高度相似（编辑距离 1），存在仿冒风险",
+        "依赖 @modelcontextprotocol/sdk@1.27.1 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-46jr-4wx8-v453, GHSA-6prh-2h8m-c8cw）",
+        "依赖 @nestjs/microservices@11.1.24 存在已知漏洞（GHSA-96h4-vgxj-gvm2, GHSA-m8vh-jmq9-5rjg）",
+        "依赖 axios@1.13.6 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5）",
+        "依赖 image-size@2.0.2 存在已知漏洞（GHSA-5p2g-fcmc-qvqq, GHSA-w3rx-r6r6-pgpr）",
+        "依赖 js-yaml@4.1.1 存在已知漏洞（GHSA-2883-xcg3-v3hh, GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）",
+        "依赖 lodash@4.17.23 存在已知漏洞（GHSA-f23m-r3pf-42rh, GHSA-r5fr-rjxr-66jc）",
+        "依赖 nanoid@5.1.7 存在已知漏洞（GHSA-28wg-ghj8-5hjv, GHSA-xwg4-73v4-xw9w）",
+        "依赖 sharp@0.34.5 存在已知漏洞（GHSA-f88m-g3jw-g9cj, GHSA-rgj7-g3m4-5g8c, GHSA-wq5f-xc86-pv6w）",
+        "依赖 uuid@11.1.0 存在已知漏洞（GHSA-w5hq-g745-h8pq）",
+        "依赖 zod@4.3.6 存在已知漏洞（GHSA-mrhx-c7xc-m3w5）",
+        "依赖 axios@1.16.1 存在已知漏洞（GHSA-3pq3-5fj3-cg6v, GHSA-42h9-826w-cgv3, GHSA-44g4-m2mj-wpvx）",
+        "依赖 fast-xml-parser@5.3.4 存在已知漏洞（GHSA-8gc5-j5rx-235r, GHSA-fj3w-jwp8-x2g3, GHSA-gh4j-gqv2-49f6）",
+        "依赖 mongoose@8.23.0 存在已知漏洞（GHSA-664h-wqgq-64gw）",
+        "依赖 qs@6.15.0 存在已知漏洞（GHSA-4mjr-xmp4-gh2g, GHSA-6pq8-jhm2-2vcw, GHSA-q8mj-m7cp-5q26）"
+      ],
+      "reviewed_commit": "91349049697b17298eff590a762c131bbcb42e71",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-11-06T10:56:05.021Z"
     }
   ]
 }
