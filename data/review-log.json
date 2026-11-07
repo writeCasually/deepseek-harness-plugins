@@ -1,6 +1,67 @@
 {
-  "updated_at": "2026-11-06T10:56:05.021Z",
+  "updated_at": "2026-11-07T10:14:38.544Z",
   "decisions": [
+    {
+      "id": "dataelement/bisheng",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "62f5893912a171265769f004fe79a96cfb009fee",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 9335,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-11-07T10:14:38.544Z"
+    },
+    {
+      "id": "aureth-labs/dsh-aurabot-qq",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "访问第三方网络地址（如 wttr.in）",
+        "访问第三方网络地址（如 api.bilibili.com、bilibili.com）",
+        "访问第三方网络地址（如 bilibili.com）"
+      ],
+      "evidence": [],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-10-24）"
+      ],
+      "reviewed_commit": "a41519c0da82916ae3b374f4df71a09975883e45",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 249,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-07T10:14:38.544Z"
+    },
     {
       "id": "yikart/AiToEarn",
       "verdict": "flagged",
@@ -63610,58 +63671,6 @@
       "review_mode": "full",
       "scanned_files": 0,
       "total_files": 73,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "liebaojun/MakoCode",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "6a1a1cd69c9217f35727945ae1bb9d007740c542",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 255,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "humblebanana/open-record-replay",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "8eff3fa6217810a809b4f1e32ff5273416d36d63",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 39,
       "osv": {
         "status": "disabled",
         "findings": 0
