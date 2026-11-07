@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-07T07:01:35.424Z",
+  "generated_at": "2026-11-07T10:14:38.544Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -21946,10 +21946,6 @@
           "file": "package.json"
         },
         {
-          "explanation": "依赖 gaxios 与知名包 axios 名称高度相似（编辑距离 1），存在仿冒风险",
-          "file": "package.json#1"
-        },
-        {
           "explanation": "依赖 @modelcontextprotocol/sdk@1.27.1 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-46jr-4wx8-v453, GHSA-6prh-2h8m-c8cw）",
           "file": "<dependencies>"
         },
@@ -22008,28 +22004,78 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "依赖 ioredis 与知名包 redis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 gaxios 与知名包 axios 名称高度相似（编辑距离 1），存在仿冒风险",
-        "依赖 @modelcontextprotocol/sdk@1.27.1 存在已知漏洞（GHSA-22jm-h49p-29qw, GHSA-46jr-4wx8-v453, GHSA-6prh-2h8m-c8cw）",
-        "依赖 @nestjs/microservices@11.1.24 存在已知漏洞（GHSA-96h4-vgxj-gvm2, GHSA-m8vh-jmq9-5rjg）",
-        "依赖 axios@1.13.6 存在已知漏洞（GHSA-35jp-ww65-95wh, GHSA-3g43-6gmg-66jw, GHSA-3p68-rc4w-qgx5）",
-        "依赖 image-size@2.0.2 存在已知漏洞（GHSA-5p2g-fcmc-qvqq, GHSA-w3rx-r6r6-pgpr）",
-        "依赖 js-yaml@4.1.1 存在已知漏洞（GHSA-2883-xcg3-v3hh, GHSA-52cp-r559-cp3m, GHSA-5p4m-2wfm-xmqj）",
-        "依赖 lodash@4.17.23 存在已知漏洞（GHSA-f23m-r3pf-42rh, GHSA-r5fr-rjxr-66jc）",
-        "依赖 nanoid@5.1.7 存在已知漏洞（GHSA-28wg-ghj8-5hjv, GHSA-xwg4-73v4-xw9w）",
-        "依赖 sharp@0.34.5 存在已知漏洞（GHSA-f88m-g3jw-g9cj, GHSA-rgj7-g3m4-5g8c, GHSA-wq5f-xc86-pv6w）",
-        "依赖 uuid@11.1.0 存在已知漏洞（GHSA-w5hq-g745-h8pq）",
-        "依赖 zod@4.3.6 存在已知漏洞（GHSA-mrhx-c7xc-m3w5）",
-        "依赖 axios@1.16.1 存在已知漏洞（GHSA-3pq3-5fj3-cg6v, GHSA-42h9-826w-cgv3, GHSA-44g4-m2mj-wpvx）",
-        "依赖 fast-xml-parser@5.3.4 存在已知漏洞（GHSA-8gc5-j5rx-235r, GHSA-fj3w-jwp8-x2g3, GHSA-gh4j-gqv2-49f6）",
-        "依赖 mongoose@8.23.0 存在已知漏洞（GHSA-664h-wqgq-64gw）",
-        "依赖 qs@6.15.0 存在已知漏洞（GHSA-4mjr-xmp4-gh2g, GHSA-6pq8-jhm2-2vcw, GHSA-q8mj-m7cp-5q26）"
-      ],
+      "security_notes": [],
       "reviewed_commit": "91349049697b17298eff590a762c131bbcb42e71",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-11-06T10:56:05.021Z"
+    },
+    {
+      "id": "aureth-labs/dsh-aurabot-qq",
+      "name": "dsh-aurabot-qq",
+      "author": "aureth-labs",
+      "description": "让 DeepSeek Harness 里的 AI 以「大肥鱼」住进 QQ：会聊天、发表情、发语音、记事、发空间、刷 B 站、唱歌。功能都是模块，能开关、能自己写，还能从模块市场装更多（SnowLuma / OneBot v11）。",
+      "repo_url": "https://github.com/aureth-labs/dsh-aurabot-qq",
+      "homepage": "https://github.com/aureth-labs/dsh-aurabot-qq",
+      "stars": 460,
+      "forks": 69,
+      "open_issues": 54,
+      "watchers": 0,
+      "pushed_at": "2026-11-07T05:19:24Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "chatbot",
+        "deepseek",
+        "dsh-plugin",
+        "onebot",
+        "plugin-system",
+        "qq"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "🫧 像“人”一样聊天 群里停顿时她会等一段、看完整段再回；被叫必回，没人叫按话题插话；会引用、会发表情、会发语音，不想接话也可以不接。",
+        "en": "🫧 Chats like a person In groups she waits for a pause and reads the whole stretch before replying; she always answers when called, joins by topic otherwise, can quote, use stickers, send voice — or stay quiet."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址（如 wttr.in） @ test/fixtures/weather/index.mjs:2",
+        "访问第三方网络地址（如 api.bilibili.com、bilibili.com） @ src/bili/api.js:70",
+        "访问第三方网络地址（如 bilibili.com） @ src/bili/danmaku.js:16"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "访问第三方网络地址（如 wttr.in）",
+          "file": "test/fixtures/weather/index.mjs",
+          "line": 2
+        },
+        {
+          "explanation": "访问第三方网络地址（如 api.bilibili.com、bilibili.com）",
+          "file": "src/bili/api.js",
+          "line": 70
+        },
+        {
+          "explanation": "访问第三方网络地址（如 bilibili.com）",
+          "file": "src/bili/danmaku.js",
+          "line": 16
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 wttr.in）",
+        "访问第三方网络地址（如 api.bilibili.com、bilibili.com）",
+        "访问第三方网络地址（如 bilibili.com）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "a41519c0da82916ae3b374f4df71a09975883e45",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-11-07T10:14:38.544Z"
     }
   ]
 }
