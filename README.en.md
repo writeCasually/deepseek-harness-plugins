@@ -180,6 +180,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-cost-meter](https://github.com/Han-1413141/dsh-cost-meter) | [@Han-1413141](https://github.com/Han-1413141) | DeepSeek Harness session cost meter plugin: session/daily cost, budget, history, OpenCode Go quota, official & custom-provider balance, Codex-like token heatmap, peak/off-peak pricing with pre-switch popup & system-notification alerts, official price sync, 90+ model pricing catalog, Coding Plan quota queries (7 vendors), bilingual zh/en UI |
 | [sandbase-harness](https://github.com/sandbaseai/sandbase-harness) | [@sandbaseai](https://github.com/sandbaseai) | Local-first AI agent runtime with sandboxed sessions, MCP tools, memory, credentials, audit/replay, and a built-in console. Run OpenAI, Anthropic, MiniMax, DeepSeek V4, and OpenAI-compatible models on your infrastructure. |
 | [dsh-memory](https://github.com/FuRongJun-1999/dsh-memory) | [@FuRongJun-1999](https://github.com/FuRongJun-1999) | 白箱AGI架构探索：元认知（自我认知循环）、持续学习（知识飞轮）、世界模型（条件空间+语义时空图）、自我改进（自举纪律）、零LLM白箱管线与可审计信任护栏。 |
+| [EAC-Pack](https://github.com/Ebony-Vinyl/EAC-Pack) | [@Ebony-Vinyl](https://github.com/Ebony-Vinyl) | Embracing All Creation (Plugin Suite) — Dedicated to the Harmonious Coexistence of Hundreds of DSH Plugins / 揽尽万象（插件整合包） —— 致力于让数百个DSH插件和谐共存 |
 | [Avernet](https://github.com/inclusionAI/Avernet) | [@inclusionAI](https://github.com/inclusionAI) | Distributed agent coordination platform where agents live, connect, coordinate, execute, and evolve together. |
 | [dsh-guizang-design](https://github.com/op7418/dsh-guizang-design) | [@op7418](https://github.com/op7418) | 歸藏设计 · DeepSeek Harness 插件：网页 PPT、图文卡片、网页排版、去 AI 味四个 skill，一套设计系统；作品库、内容生产工作流、语气档案 |
 | [dsh-computer-use-win](https://github.com/Yu-tao-Li/dsh-computer-use-win) | [@Yu-tao-Li](https://github.com/Yu-tao-Li) | DeepSeek Harness的Windows电脑操控插件 / Windows computer use for DeepSeek Harness |
@@ -207,6 +208,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [deepseek-harness-desktop-app](https://github.com/vibeinging/deepseek-harness-desktop-app) | [@vibeinging](https://github.com/vibeinging) | DeepSeek Harness Desktop App: a local AI desktop workspace for DSH Sessions, projects, files, web research, plugins, and Office artifacts. |
 | [dsh-desktop](https://github.com/vibeinging/dsh-desktop) | [@vibeinging](https://github.com/vibeinging) | DeepSeek Harness Desktop App: a local AI desktop workspace for DSH Sessions, projects, files, web research, plugins, and Office artifacts. |
 | [dsh-aurabot-qq](https://github.com/aureth-labs/dsh-aurabot-qq) | [@aureth-labs](https://github.com/aureth-labs) | 让 DeepSeek Harness 里的 AI 以「大肥鱼」住进 QQ：会聊天、发表情、发语音、记事、发空间、刷 B 站、唱歌。功能都是模块，能开关、能自己写，还能从模块市场装更多（SnowLuma / OneBot v11）。 |
+| [dsh-see-now](https://github.com/SAOS-3624/dsh-see-now) | [@SAOS-3624](https://github.com/SAOS-3624) | 让 AI 实时看见你的屏幕：按变化量筛选帧、多帧拼进一张图，静止画面几乎不花 token |
 | [dsh-commandcode-provider](https://github.com/Mars-Sea/dsh-commandcode-provider) | [@Mars-Sea](https://github.com/Mars-Sea) | Unofficial DeepSeek Harness LLM provider plugin for Command Code: live model catalog, reasoning-effort support, Models-page card. Ported from pi-commandcode-provider (MIT). |
 | [huashu-excel](https://github.com/alchaincyf/huashu-excel) | [@alchaincyf](https://github.com/alchaincyf) | 数据分析与 Excel 全流程 skill：体检脏表、清洗、对齐需求、分析、对账、交付。让 AI 算出来的数字经得起追问。跨 agent 通用，依赖仅 openpyxl。 |
 | [marketingdashboard](https://github.com/theBigGavin/marketingdashboard) | [@theBigGavin](https://github.com/theBigGavin) | 面向金融与产业研究的一屏式实时行情大屏：A股/港股/美股指数、大宗商品、美债收益率、板块热点、主力资金流、7×24 快讯、产业链自选股、AI 大模型 Token 追踪。A real-time market research cockpit on a single screen: CN/HK/US indices, commodities, treasury yields, sector hotspots, capital flows, 7×24 news, industry-chain watchlists and AI token usage trends.  |
@@ -323,7 +325,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-Includes 257 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 259 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 

@@ -1,6 +1,303 @@
 {
-  "updated_at": "2026-11-07T10:14:38.544Z",
+  "updated_at": "2026-11-08T10:25:45.770Z",
   "decisions": [
+    {
+      "id": "Ebony-Vinyl/EAC-Pack",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "监听键盘输入事件"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 gh-proxy.example.com）",
+        "访问第三方网络地址（如 w3.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "node suite/scripts/verify-package.mjs"
+        },
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#2",
+          "line": 0,
+          "snippet": "node scripts/verify-package.mjs"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/fetch-assets.mjs",
+          "line": 214,
+          "snippet": "execFileSync('curl', ['-fL', '--ssl-no-revoke', '--retry', '3', '-o', dest, url], { stdio: 'pipe' });"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/fetch-assets.mjs",
+          "line": 232,
+          "snippet": "return execFileSync('tar', ['-xOzf', path.basename(tgz), inner], {"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/fetch-assets.mjs",
+          "line": 257,
+          "snippet": "execFileSync('powershell', ['-NoProfile', '-NonInteractive', '-Command', script], { stdio: 'pipe' });"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/pack-delivery.mjs",
+          "line": 13,
+          "snippet": "? path.join(path.dirname(execFileSync('where.exe', ['npm.cmd'], { encoding: 'utf8' }).trim().split(/\\r?\\n/)[0]), 'node_modules/npm/bin/npm-cli.js')"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/pack-delivery.mjs",
+          "line": 14,
+          "snippet": ": fs.realpathSync(execFileSync('which', ['npm'], { encoding: 'utf8' }).trim()))"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/pack-delivery.mjs",
+          "line": 15,
+          "snippet": "return execFileSync(process.execPath, [command, ...args], { cwd, encoding: 'utf8', windowsHide: true, maxBuffer: 16 * 1024 * 1024 })"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/publish-channel.mjs",
+          "line": 31,
+          "snippet": "const gh = (args, opts = {}) =>"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/publish-channel.mjs",
+          "line": 147,
+          "snippet": "const paths = [rel(CHANNEL_FILE), rel(path.join(CHANNEL, 'SHA256SUMS'))];"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/publish-channel.mjs",
+          "line": 148,
+          "snippet": "const staged = execFileSync('git', ['diff', '--cached', '--name-only', '--', ...paths], { cwd: ROOT, encoding: 'utf8' }).trim();"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/repack/ensure-bundles.mjs",
+          "line": 20,
+          "snippet": "const pkg = JSON.parse(execFileSync('tar', ['-xOf', tgz, 'package/package.json'], { encoding: 'utf8', windowsHide: true }))"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/repack/ensure-bundles.mjs",
+          "line": 24,
+          "snippet": "const names = execFileSync('tar', ['-tzf', tgz], { encoding: 'utf8', windowsHide: true }).trim().split(/\\r?\\n/)"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/repack/ensure-bundles.mjs",
+          "line": 26,
+          "snippet": "const listing = execFileSync('tar', ['-tvzf', tgz], { encoding: 'utf8', windowsHide: true })"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/repack/fetch-eac-src.mjs",
+          "line": 49,
+          "snippet": "const run = (args, opts = {}) => execFileSync('git', args, { encoding: 'utf8', ...opts });"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/repack/kernel-compat.mjs",
+          "line": 181,
+          "snippet": "// 单个 tgz 可能含大量文件，用系统 tar 一次展开比逐条 -xO 快得多。"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/repack/repack.mjs",
+          "line": 153,
+          "snippet": "const sh = (cmd, opts = {}) =>"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/repack/repack.mjs",
+          "line": 311,
+          "snippet": "const head = execSync(`git -C ${q(cloneDir)} rev-parse HEAD`, { encoding: 'utf8' }).trim();"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/repack/resource-bundle.mjs",
+          "line": 5,
+          "snippet": "const pkg = JSON.parse(execFileSync('tar', ['-xOf', file, 'package/package.json'], { encoding: 'utf8', windowsHide: true, maxBuffer: 1024 * 1024 }))"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/repack/resource-bundle.mjs",
+          "line": 13,
+          "snippet": "execFileSync('tar', ['-xOf', file, `package/${p.replace(/^\\.\\//, '')}`], { stdio: 'pipe', windowsHide: true, maxBuffer: 1024 * 1024 })"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/repack/source-patches.mjs",
+          "line": 92,
+          "snippet": "execFileSync("
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/repack/verify.mjs",
+          "line": 87,
+          "snippet": "pkg = JSON.parse(execSync(`tar -xOzf ${JSON.stringify(e.file)} package/package.json`, { encoding: 'utf8', cwd: DIST }));"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "suite/client.js",
+          "line": 1077,
+          "snippet": "window.addEventListener('keydown', onKey)"
+        }
+      ],
+      "trust_notes": [
+        "未声明开源许可证"
+      ],
+      "reviewed_commit": "2541eb5755087783e7cb9980cbecd53b64a46fac",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 147,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-08T10:25:45.770Z"
+    },
+    {
+      "id": "SAOS-3624/dsh-see-now",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "node scripts/sync-window.mjs"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/guard-publish.mjs",
+          "line": 17,
+          "snippet": "return execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-11-01）"
+      ],
+      "reviewed_commit": "8a5490885d23feec8aff6b035af95465d172c1f2",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 154,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-08T10:25:45.770Z"
+    },
     {
       "id": "dataelement/bisheng",
       "verdict": "skip",
@@ -63486,197 +63783,6 @@
         "verdict": "none",
         "rationale": "未配置 LLM_API_KEY",
         "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "zhaoolee/notes",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在 Base64 解码行为",
-        "使用屏幕/画面采集能力",
-        "使用屏幕/画面采集能力",
-        "监听键盘输入事件",
-        "监听键盘输入事件",
-        "监听键盘输入事件",
-        "监听键盘输入事件",
-        "监听键盘输入事件",
-        "监听键盘输入事件",
-        "监听键盘输入事件",
-        "监听键盘输入事件",
-        "依赖 multer@2.1.1 存在已知漏洞（GHSA-3p4h-7m6x-2hcm, GHSA-72gw-mp4g-v24j）"
-      ],
-      "privacy_notes": [
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 archive.local、notes.fangyuanxiaozhan.com）",
-        "访问第三方网络地址（如 notes.fangyuanxiaozhan.com）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#1",
-          "line": 0,
-          "snippet": "npm run build"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "server/index.ts",
-          "line": 925,
-          "snippet": "buffer: Buffer.from(match[2], \"base64\"),"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "server/index.ts",
-          "line": 2909,
-          "snippet": "return await noteSheet.screenshot({"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "server/index.ts",
-          "line": 2935,
-          "snippet": "await page.screenshot({"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "scripts/benchmark-input-latency.mjs",
-          "line": 230,
-          "snippet": "document.addEventListener("
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/App.tsx",
-          "line": 756,
-          "snippet": "document.addEventListener(\"keydown\", handleKeyDown);"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/App.tsx",
-          "line": 789,
-          "snippet": "document.addEventListener(\"keydown\", handleKeyDown);"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/App.tsx",
-          "line": 817,
-          "snippet": "document.addEventListener(\"keydown\", handleKeyDown);"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/components/AiReviewDialog.tsx",
-          "line": 137,
-          "snippet": "document.addEventListener(\"keydown\", handleKeyDown);"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/components/ChangePasswordDialog.tsx",
-          "line": 84,
-          "snippet": "document.addEventListener(\"keydown\", handleKeyDown);"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/components/EditorPanel.tsx",
-          "line": 247,
-          "snippet": "window.addEventListener(\"keydown\", handlePreviewKeyDown);"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/components/ImageCropDialog.tsx",
-          "line": 98,
-          "snippet": "window.addEventListener(\"keydown\", handleKeyDown);"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 multer@2.1.1 存在已知漏洞（GHSA-3p4h-7m6x-2hcm, GHSA-72gw-mp4g-v24j）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "multer@2.1.1"
-        }
-      ],
-      "trust_notes": [
-        "未声明开源许可证"
-      ],
-      "reviewed_commit": "58dc452f12052a70b794d2c88b9e236620a7604a",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 340,
-      "osv": {
-        "status": "ok",
-        "findings": 1
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "yzlnew/infra-skills",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "f3a8d7d4e898e350282b18ed6ee5fd8affea95cf",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 73,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }
