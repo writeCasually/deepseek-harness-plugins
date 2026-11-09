@@ -1,6 +1,114 @@
 {
-  "updated_at": "2026-11-08T10:25:45.770Z",
+  "updated_at": "2026-11-09T11:36:47.900Z",
   "decisions": [
+    {
+      "id": "tw93/Mole",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [],
+      "privacy_notes": [
+        "访问第三方网络地址（如 mole.fit）"
+      ],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "6f2c0ce56c69f2e036a233101febf78f15a63afc",
+      "review_mode": "full",
+      "scanned_files": 3,
+      "total_files": 366,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-09T11:36:47.900Z"
+    },
+    {
+      "id": "woniuniuniu/dsh-media-desk",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "监听键盘输入事件",
+        "存在 Base64 解码行为",
+        "存在 Base64 解码行为"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 example.invalid）",
+        "访问第三方网络地址（如 local）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 bilibili.com、douyin.com、instagram.com、monid.ai）",
+        "访问第三方网络地址（如 bilibili.com、douyin.com、instagram.com、monid.ai）",
+        "访问第三方网络地址（如 example.com）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 app.monid.ai、monid.ai）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "npm run build"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "client/index.jsx",
+          "line": 145,
+          "snippet": "window.addEventListener('keydown', onKey)"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "src/host.js",
+          "line": 376,
+          "snippet": "const videoCover = match ? Buffer.from(match[1], 'base64') : null"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "src/images.js",
+          "line": 148,
+          "snippet": "if (entry?.b64_json) return { buffer: Buffer.from(entry.b64_json, 'base64'), revisedPrompt: entry.revised_prompt }"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-11-02）"
+      ],
+      "reviewed_commit": "fc237f3388d048f51c3145cfd411dbb80ba2b388",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 110,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-09T11:36:47.900Z"
+    },
     {
       "id": "Ebony-Vinyl/EAC-Pack",
       "verdict": "flagged",
@@ -63589,191 +63697,6 @@
       "review_mode": "full",
       "scanned_files": 28,
       "total_files": 1506,
-      "osv": {
-        "status": "ok",
-        "findings": 1
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "cocofhu/anime-find",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件",
-        "存在 Base64 解码行为"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址（如 anibt.net、api.animes.garden、bgm.tv、dm1.xfdm.pro）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 dm1.xfdm.pro）",
-        "访问第三方网络地址（如 dm1.xfdm.pro）",
-        "访问第三方网络地址（如 anibt.net、api.animes.garden、mikanani.me）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 anibt.example、anibt.net、api.animes.garden、garden.example）",
-        "访问第三方网络地址（如 anibt.example、anibt.net、api.animes.garden、garden.example）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 anibt.net、api.animes.garden、media.example.test、mikanani.me）",
-        "访问第三方网络地址（如 anibt.net、api.animes.garden、media.example.test、mikanani.me）",
-        "访问第三方网络地址（如 cdn.example、mikanani.me）",
-        "访问第三方网络地址（如 anibt.net、api.animes.garden、cdn.example.test、cdn.media.example.test）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepare",
-          "severity": "warning",
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "npm run build"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "src/client.js",
-          "line": 653,
-          "snippet": "window.addEventListener(\"keydown\", onKey);"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "src/streaming.ts",
-          "line": 188,
-          "snippet": "if (encrypt === 2) return decodeURIComponent(Buffer.from(value, 'base64').toString('utf8'))"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-15）"
-      ],
-      "reviewed_commit": "c3f69a51c04f37e1ddd9ea46a739561e4bdef6ae",
-      "review_mode": "delta",
-      "scanned_files": 16,
-      "total_files": 57,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "weijiafu14/pi2dsh",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "存在疑似混淆内容（长 Base64 块）",
-        "使用屏幕/画面采集能力",
-        "使用屏幕/画面采集能力",
-        "存在疑似混淆内容（长 Base64 块）",
-        "依赖 yaml@2.8.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp）"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 api.npmjs.org）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.com、example.test）",
-        "访问第三方网络地址（如 example.com、example.test）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.openai.com）",
-        "访问第三方网络地址（如 api.openai.com）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepare",
-          "severity": "warning",
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "tsdown"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "scripts/blackbox-community.mjs",
-          "line": 67,
-          "snippet": "const tinyPng = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Wl2nX8AAAAASUVORK5CYII='"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "scripts/verify-codex-image-gen-e2e.mjs",
-          "line": 372,
-          "snippet": "await page.screenshot({ path: join(artifactDir, 'codex-image-edit-approval.png'), fullPage: true })"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "scripts/verify-codex-image-gen-e2e.mjs",
-          "line": 393,
-          "snippet": "await page.screenshot({ path: join(artifactDir, 'codex-image-edit-result.png'), fullPage: true })"
-        },
-        {
-          "rule": "obfuscation",
-          "severity": "warning",
-          "explanation": "存在疑似混淆内容（长 Base64 块）",
-          "file": "scripts/verify-community.mjs",
-          "line": 73,
-          "snippet": "const tinyPng = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Wl2nX8AAAAASUVORK5CYII='"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 yaml@2.8.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "yaml@2.8.1"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-13）"
-      ],
-      "reviewed_commit": "7aa2958953d09983af83c178d19273feff194fb4",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 263,
       "osv": {
         "status": "ok",
         "findings": 1

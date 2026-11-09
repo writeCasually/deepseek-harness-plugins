@@ -66,6 +66,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | Plugin | Author | Description |
 | --- | --- | --- |
 | [archify](https://github.com/tt-a1i/archify) | [@tt-a1i](https://github.com/tt-a1i) | Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export. |
+| [Mole](https://github.com/tw93/Mole) | [@tw93](https://github.com/tw93) | 🐹 Open-source Mac and PC cleaner. Keep your machine clean, light, and running like new. Fast CLI, plus native Mac and Windows apps. |
 | [dsh-our-free-model](https://github.com/zouyuxuan122/dsh-our-free-model) | [@zouyuxuan122](https://github.com/zouyuxuan122) | 在 dsh 里装上这个插件即可，无需登录、注册或填 API Key，就能使用包括 Muse Spark 1.3、MiMo V2.6 在内的前沿模型——完全免费，不限量。 All you do is install this plugin in dsh: no login, no sign-up, no API key — the frontier models are just there, Muse Spark 1.3 and MiMo V2.6 among them. Completely free, with no usage cap. |
 | [dsh-our-free-model](https://github.com/Ebony-Vinyl/dsh-our-free-model) | [@Ebony-Vinyl](https://github.com/Ebony-Vinyl) | 在 dsh 里装上这个插件即可，无需登录、注册或填 API Key，就能使用包括 DeepSeek V4.1 Flash、Kimi K3 在内的前沿模型——完全免费，不限量。 All you do is install this plugin in dsh: no login, no sign-up, no API key — the frontier models are just there, DeepSeek V4.1 Flash and Kimi K3 among them. Completely free, with no usage cap. |
 | [reactive-resume](https://github.com/amruthpillai/reactive-resume) | [@amruthpillai](https://github.com/amruthpillai) | A one-of-a-kind resume builder that keeps your privacy in mind. Completely secure, customizable, portable, open-source and free forever. Try it out today! |
@@ -192,6 +193,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [MisakaNet](https://github.com/Ikalus1988/MisakaNet) | [@Ikalus1988](https://github.com/Ikalus1988) | 📚 A zero-dependency, git-backed micro-lesson library for AI Agents to asynchronously share and search verified debugging experience. Python stdlib only. \| https://misakanet.org |
 | [Invoice-Downloader](https://github.com/EthanYoQ/Invoice-Downloader) | [@EthanYoQ](https://github.com/EthanYoQ) | InvoiceFlowAI：Windows 与 macOS 发票助手，自动下载邮箱电子发票、OCR 识别、分类归档并生成 Excel 报销汇总；可安装为 DeepSeek Harness 插件。 |
 | [dsh-meme](https://github.com/yyh-001/dsh-meme) | [@yyh-001](https://github.com/yyh-001) | DeepSeek Harness 表情包插件：输入框一键发图、文字 token 斗图、情绪主动发图、AI 自动学图，图库市场一键安装。 · Meme/sticker plugin for DeepSeek Harness: one-click picker in the composer, text-token memes, mood-driven sending, AI learns your images, marketplace packs. |
+| [dsh-media-desk](https://github.com/woniuniuniu/dsh-media-desk) | [@woniuniuniu](https://github.com/woniuniuniu) | DeepSeek Harness 自媒体工作台插件：一句话记灵感，一键生成脚本、封面、配图和分镜 |
 | [dsh-claude-style](https://github.com/Nwflower/dsh-claude-style) | [@Nwflower](https://github.com/Nwflower) | Claude Code Desktop theme for DeepSeek Harness｜ 为 DeepSeek Harness 复刻 Claude Code Desktop 风格与交互体验的主题插件 |
 | [fujiang-dsh](https://github.com/c3cvld7aag/fujiang-dsh) | [@c3cvld7aag](https://github.com/c3cvld7aag) | 富江DSH完美破甲｜富江破甲 DSH 本地插件，内置提示词规则，支持 Windows 一键安装、环境自动准备与一键卸载，全中文使用说明。 |
 | [dsh-skills-manager](https://github.com/MichengAI/dsh-skills-manager) | [@MichengAI](https://github.com/MichengAI) | DSH Skills Manager — 在 DeepSeek Harness 中统一加载并安全管理本机 Agent Skills · Load and safely manage local Agent Skills in DSH |
@@ -325,7 +327,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-Includes 259 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 261 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 

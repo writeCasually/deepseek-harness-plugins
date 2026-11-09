@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-09T07:52:35.148Z",
+  "generated_at": "2026-11-09T11:36:47.900Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -22100,40 +22100,12 @@
       "risk_level": "moderate",
       "risk_notes": [
         "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
-        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#2",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/fetch-assets.mjs:214",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/fetch-assets.mjs:232",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/fetch-assets.mjs:257",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/pack-delivery.mjs:13",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/pack-delivery.mjs:14",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/pack-delivery.mjs:15",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/publish-channel.mjs:31",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/publish-channel.mjs:147",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/publish-channel.mjs:148",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/repack/ensure-bundles.mjs:20",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/repack/ensure-bundles.mjs:24",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/repack/ensure-bundles.mjs:26",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/repack/fetch-eac-src.mjs:49",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/repack/kernel-compat.mjs:181",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/repack/repack.mjs:153",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/repack/repack.mjs:311",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/repack/resource-bundle.mjs:5",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/repack/resource-bundle.mjs:13",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/repack/source-patches.mjs:92",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/repack/verify.mjs:87",
-        "监听键盘输入事件 @ suite/client.js:1077",
-        "读取环境变量（可能包含敏感信息） @ suite/index.js:331",
-        "访问第三方网络地址（如 gh-proxy.example.com） @ suite/client.js:163",
-        "访问第三方网络地址（如 w3.org） @ suite/dev/mock-data.mjs:209"
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json#2"
       ],
       "risk_evidence": [
         {
           "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
           "file": "package.json"
-        },
-        {
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#2"
         },
         {
           "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
@@ -22278,16 +22250,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 gh-proxy.example.com）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "2541eb5755087783e7cb9980cbecd53b64a46fac",
       "source": "discovered",
       "review_status": "flagged",
@@ -22330,9 +22294,7 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/guard-publish.mjs:17",
-        "读取环境变量（可能包含敏感信息） @ src/index.js:146"
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json"
       ],
       "risk_evidence": [
         {
@@ -22352,18 +22314,204 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "8a5490885d23feec8aff6b035af95465d172c1f2",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-11-08T10:25:45.770Z",
       "description_i18n_checked_at": "2026-11-08T15:54:59.886Z"
+    },
+    {
+      "id": "tw93/Mole",
+      "name": "Mole",
+      "author": "tw93",
+      "description": "🐹 Open-source Mac and PC cleaner. Keep your machine clean, light, and running like new. Fast CLI, plus native Mac and Windows apps.",
+      "repo_url": "https://github.com/tw93/Mole",
+      "homepage": "https://mole.fit",
+      "stars": 74347,
+      "forks": 2672,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-11-09T11:13:46Z",
+      "archived": false,
+      "language": "Shell",
+      "license": "GPL-3.0",
+      "topics": [
+        "analyzer",
+        "appcleaner",
+        "clean",
+        "cleaner",
+        "cleanmymac",
+        "command-line",
+        "daisydisk",
+        "dsh-plugin",
+        "gemini-cli-extension",
+        "istat",
+        "mac",
+        "macos",
+        "macos-app",
+        "native",
+        "optimize",
+        "pearcleaner",
+        "sensei",
+        "shell",
+        "uninstall",
+        "windows"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "- 多合一命令行：把 CleanMyMac、AppCleaner、DaisyDisk 与 iStat Menus 的日常用法放进一个终端命令 - 深度清理：清除系统缓存、应用日志与卸载残留，释放磁盘空间 - 应用卸载：移除应用程序，同步清理配置文件与自启动项",
+        "en": "- All-in-one CLI toolkit: Combines CleanMyMac, AppCleaner, DaisyDisk, and iStat Menus style workflows in one terminal command - Deep clean: Removes caches, logs, leftovers, and orphaned app data to reclaim disk space - Smart uninstaller: Removes apps together"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "访问第三方网络地址（如 mole.fit） @ plugins/mole/package.json:23"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "访问第三方网络地址（如 mole.fit）",
+          "file": "plugins/mole/package.json",
+          "line": 23
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 mole.fit）"
+      ],
+      "security_notes": [],
+      "reviewed_commit": "6f2c0ce56c69f2e036a233101febf78f15a63afc",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-11-09T11:36:47.900Z"
+    },
+    {
+      "id": "woniuniuniu/dsh-media-desk",
+      "name": "dsh-media-desk",
+      "author": "woniuniuniu",
+      "description": "DeepSeek Harness 自媒体工作台插件：一句话记灵感，一键生成脚本、封面、配图和分镜",
+      "repo_url": "https://github.com/woniuniuniu/dsh-media-desk",
+      "homepage": "https://www.npmjs.com/package/dsh-media-desk",
+      "stars": 540,
+      "forks": 43,
+      "open_issues": 1,
+      "watchers": 0,
+      "pushed_at": "2026-11-08T03:58:14Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "content-creation",
+        "deepseek",
+        "deepseek-harness",
+        "dsh-plugin",
+        "xiaohongshu"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "装在 DeepSeek Harness 侧栏里的一个页面。打开是一面灵感墙，一句话记一个灵感；点开任何一条，一键生成口播脚本、标题、视频封面、配图和黑白线稿分镜；左边聊一句，右边就改。做好的稿子拖到日历上排期，发布之后回来看数据。",
+        "en": "Media Desk is a page in the DeepSeek Harness sidebar. It opens on a wall of your ideas, one line each. Open one, click Draft it, and you get a spoken script, a title, a video cover, images and a six-frame storyboard. Ask for changes in the chat on the left"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
+        "监听键盘输入事件 @ client/index.jsx:145",
+        "存在 Base64 解码行为 @ src/host.js:376",
+        "存在 Base64 解码行为 @ src/images.js:148",
+        "访问第三方网络地址（如 example.invalid） @ scripts/mock-monid.mjs:26",
+        "访问第三方网络地址（如 local） @ src/host.js:283",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 bilibili.com、douyin.com、instagram.com、monid.ai） @ src/monid.js:307",
+        "访问第三方网络地址（如 bilibili.com、douyin.com、instagram.com、monid.ai） @ src/monid.js:18",
+        "访问第三方网络地址（如 example.com） @ src/seed.js:11",
+        "读取环境变量（可能包含敏感信息） @ src/store.js:59",
+        "访问第三方网络地址（如 app.monid.ai、monid.ai） @ client/connect.jsx:7"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "client/index.jsx",
+          "line": 145,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "src/host.js",
+          "line": 376,
+          "confidence": 1
+        },
+        {
+          "explanation": "存在 Base64 解码行为",
+          "file": "src/images.js",
+          "line": 148,
+          "confidence": 1
+        },
+        {
+          "explanation": "访问第三方网络地址（如 example.invalid）",
+          "file": "scripts/mock-monid.mjs",
+          "line": 26
+        },
+        {
+          "explanation": "访问第三方网络地址（如 local）",
+          "file": "src/host.js",
+          "line": 283
+        },
+        {
+          "explanation": "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 bilibili.com、douyin.com、instagram.com、monid.ai）",
+          "file": "src/monid.js",
+          "line": 307
+        },
+        {
+          "explanation": "访问第三方网络地址（如 bilibili.com、douyin.com、instagram.com、monid.ai）",
+          "file": "src/monid.js",
+          "line": 18
+        },
+        {
+          "explanation": "访问第三方网络地址（如 example.com）",
+          "file": "src/seed.js",
+          "line": 11
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "src/store.js",
+          "line": 59
+        },
+        {
+          "explanation": "访问第三方网络地址（如 app.monid.ai、monid.ai）",
+          "file": "client/connect.jsx",
+          "line": 7
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 example.invalid）",
+        "访问第三方网络地址（如 local）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 bilibili.com、douyin.com、instagram.com、monid.ai）",
+        "访问第三方网络地址（如 bilibili.com、douyin.com、instagram.com、monid.ai）",
+        "访问第三方网络地址（如 example.com）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 app.monid.ai、monid.ai）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "监听键盘输入事件",
+        "存在 Base64 解码行为"
+      ],
+      "reviewed_commit": "fc237f3388d048f51c3145cfd411dbb80ba2b388",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-11-09T11:36:47.900Z"
     }
   ]
 }
