@@ -1,6 +1,121 @@
 {
-  "updated_at": "2026-11-09T11:36:47.900Z",
+  "updated_at": "2026-11-10T11:15:23.380Z",
   "decisions": [
+    {
+      "id": "openBitFun/OpenBitFun",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "code",
+        "reason": "存在 Cordis/DSH 落地标记（cordis.patch.yml/.dsh-plugin/dsh.client 等）"
+      },
+      "findings": [
+        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+        "监听键盘输入事件",
+        "依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp）",
+        "依赖 simple-git@3.27.0 存在已知漏洞（GHSA-858h-whjf-mvg5, GHSA-g4wm-2vf7-vfgr, GHSA-hffm-xvc3-vprc）"
+      ],
+      "privacy_notes": [],
+      "evidence": [
+        {
+          "rule": "lifecycle-postinstall",
+          "severity": "warning",
+          "explanation": "package.json 的 postinstall 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "pnpm run copy-assets"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "MiniApp/Demo/background-remover/source/ui/main.js",
+          "line": 309,
+          "snippet": "originalCanvas.addEventListener('keydown', event => {"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "pnpm@10.32.1"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 simple-git@3.27.0 存在已知漏洞（GHSA-858h-whjf-mvg5, GHSA-g4wm-2vf7-vfgr, GHSA-hffm-xvc3-vprc）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "simple-git@3.27.0"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "98612bb56aaf76485183ff727a4d47a1d22dadfb",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 10473,
+      "osv": {
+        "status": "ok",
+        "findings": 2
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-10T11:15:23.380Z"
+    },
+    {
+      "id": "keli-wen/agy-staff",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "使用动态代码执行（全局 eval / new Function）"
+      ],
+      "privacy_notes": [
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 w3.org）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 antigravity.google）",
+        "访问第三方网络地址（如 antigravity.google）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.invalid）",
+        "访问第三方网络地址（如 example.invalid）"
+      ],
+      "evidence": [
+        {
+          "rule": "eval-exec",
+          "severity": "warning",
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "tests/dsh-plugin.test.mjs",
+          "line": 588,
+          "snippet": "new Function(clientCode)();"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "1f66a8d21adeccba74939924c4dbb40a37f852e1",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 220,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-10T11:15:23.380Z"
+    },
     {
       "id": "tw93/Mole",
       "verdict": "flagged",
@@ -63581,131 +63696,6 @@
       },
       "llm_review": {
         "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "anysearch-team/anysearch-dsh",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 api.anysearch.com、httpbin.dev）",
-        "访问第三方网络地址（如 api.anysearch.com）",
-        "访问第三方网络地址（如 api.anysearch.test）",
-        "访问第三方网络地址（如 api.anysearch.test、example.test、first.test、result.test）",
-        "访问第三方网络地址（如 api.anysearch.test、example.test）",
-        "访问第三方网络地址（如 a.test、api.anysearch.com、api.anysearch.test、b.test）",
-        "访问第三方网络地址（如 a.test、api.anysearch.test、example.test、finance.test）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepare",
-          "severity": "warning",
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "tsc -p tsconfig.json"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-13）"
-      ],
-      "reviewed_commit": "dce7a51c74b80f8fa51e53f510a572ab6dd60f28",
-      "review_mode": "full",
-      "scanned_files": 18,
-      "total_files": 38,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "ningbainb/deepseek-harness-desktop",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址（如 1521003.xyz、ningbainb.github.io）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 host、xxx.trycloudflare.com）"
-      ],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepare",
-          "severity": "warning",
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#3",
-          "line": 0,
-          "snippet": "tsdown"
-        },
-        {
-          "rule": "lifecycle-prepare",
-          "severity": "warning",
-          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
-          "file": "package.json#5",
-          "line": 0,
-          "snippet": "tsdown"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "ws@8.18.3"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-13）"
-      ],
-      "reviewed_commit": "af031f42c0a223d8eb5719138ba0c676b575acec",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 1506,
-      "osv": {
-        "status": "ok",
-        "findings": 1
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }
