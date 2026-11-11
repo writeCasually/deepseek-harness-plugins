@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-11T02:43:34.010Z",
+  "generated_at": "2026-11-11T11:01:13.413Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -22529,7 +22529,6 @@
       "risk_level": "moderate",
       "risk_notes": [
         "package.json 的 postinstall 脚本会在安装/发布时自动执行 @ package.json",
-        "监听键盘输入事件 @ MiniApp/Demo/background-remover/source/ui/main.js:309",
         "依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp） @ <dependencies>",
         "依赖 simple-git@3.27.0 存在已知漏洞（GHSA-858h-whjf-mvg5, GHSA-g4wm-2vf7-vfgr, GHSA-hffm-xvc3-vprc） @ <dependencies>"
       ],
@@ -22555,12 +22554,7 @@
       ],
       "privacy_risk": false,
       "privacy_notes": [],
-      "security_notes": [
-        "package.json 的 postinstall 脚本会在安装/发布时自动执行",
-        "监听键盘输入事件",
-        "依赖 pnpm@10.32.1 存在已知漏洞（GHSA-3qhv-2rgh-x77r, GHSA-4gxm-v5v7-fqc4, GHSA-54hh-g5mx-jqcp）",
-        "依赖 simple-git@3.27.0 存在已知漏洞（GHSA-858h-whjf-mvg5, GHSA-g4wm-2vf7-vfgr, GHSA-hffm-xvc3-vprc）"
-      ],
+      "security_notes": [],
       "reviewed_commit": "98612bb56aaf76485183ff727a4d47a1d22dadfb",
       "source": "discovered",
       "review_status": "flagged",
@@ -22612,16 +22606,9 @@
         "zh": "agy-staff 把自带 Gemini 4 Argon 与 Gemini 3.8 Flash 的 agy 接入主力 agent：提供 lead、brain 两种编排模式，以及 staffer（通用）、researcher（调研）、reviewer（审代码与方案）、implementer（编码）、ask（简短问答）五种角色，配合 jobs 技能管理后台任务。",
         "en": "agy-staff pairs your senior agents with agy, which ships Gemini 4 Argon and fast Gemini 3.8 Flash. Two orchestration modes (lead and brain), five personas (staffer, researcher, reviewer for code and plans, implementer, ask), and a model-facing jobs skill."
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
-        "使用动态代码执行（全局 eval / new Function） @ tests/dsh-plugin.test.mjs:588",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ dsh/index.mjs",
-        "读取环境变量（可能包含敏感信息） @ dsh/index.mjs:149",
-        "访问第三方网络地址（如 w3.org） @ scripts/gen-diagrams.mjs:124",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 antigravity.google） @ companion/agy-companion.mjs:102",
-        "访问第三方网络地址（如 antigravity.google） @ companion/agy-companion.mjs:763",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.invalid） @ tests/opencode-packaging.test.mjs:78",
-        "访问第三方网络地址（如 example.invalid） @ tests/opencode-packaging.test.mjs:88"
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ dsh/index.mjs"
       ],
       "risk_evidence": [
         {
@@ -22666,18 +22653,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 w3.org）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 antigravity.google）",
-        "访问第三方网络地址（如 antigravity.google）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.invalid）",
-        "访问第三方网络地址（如 example.invalid）"
-      ],
-      "security_notes": [
-        "使用动态代码执行（全局 eval / new Function）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "1f66a8d21adeccba74939924c4dbb40a37f852e1",
       "source": "discovered",
       "review_status": "flagged",
