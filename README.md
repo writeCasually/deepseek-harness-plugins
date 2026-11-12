@@ -93,6 +93,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [skillhub](https://github.com/iflytek/skillhub) | [@iflytek](https://github.com/iflytek) | Self-hosted, open-source agent skill registry for enterprises. Publish & version skill packages, govern with RBAC and audit logs, deploy   on-premise with Docker or Kubernetes. |
 | [DSH-better-sidebar](https://github.com/omdsh-dev/DSH-better-sidebar) | [@omdsh-dev](https://github.com/omdsh-dev) | 开放的侧边栏底座，支持三方拓展注册新侧边栏页面。内置文件渲染编辑/终端/侧边对话/Git/子代理页面 ｜ Open sidebar foundation, supports third-party extensions to register new sidebar pages. Built-in file rendering/editing, terminal, side chat, Git, and sub-agent pages. |
 | [dsh-context](https://github.com/bowenliang123/dsh-context) | [@bowenliang123](https://github.com/bowenliang123) | The best DeepSeek Harness plugin for context insight and management, with context dashboard / browser and context command, for context statistics, composition, breakdown, evolution details, understanding how the context is made of, and how it evolves. 一站式 DeepSeek Harness 上下文可视化插件，Context 面板及浏览器与 Context 命令，透视上下文组成、演进、压缩、剪枝等事件与动作。 |
+| [crossdesk](https://github.com/kunkundi/crossdesk) | [@kunkundi](https://github.com/kunkundi) | A lightweight, cross-platform remote desktop software with support for Web Client access \| 一款支持 Web 客户端访问的轻量级跨平台远程桌面软件。 |
 | [petdex](https://github.com/crafter-station/petdex) | [@crafter-station](https://github.com/crafter-station) | A public gallery of animated pets for Codex, Claude Code, DeepSeek Harness, Hermes, OpenCode, Gemini CLI, and more. |
 | [dsh-infinite-gen-2](https://github.com/Minglink/dsh-infinite-gen-2) | [@Minglink](https://github.com/Minglink) | DeepSeek 专用破甲插件「无限二代」dsh-infinite-gen-2 — armor-breaking plugin for DeepSeek稳定化破甲提示词，求 Star 收藏 ⭐ |
 | [dsh-infinite-gen-3](https://github.com/Minglink/dsh-infinite-gen-3) | [@Minglink](https://github.com/Minglink) | DeepSeek 专用破甲插件「无限三代」dsh-infinite-gen-3 — armor-breaking plugin for DeepSeek，破甲版：稳定化破甲，求 Star 收藏 ⭐ |
@@ -189,6 +190,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [dsh-meme](https://github.com/yyh-001/dsh-meme) | [@yyh-001](https://github.com/yyh-001) | DeepSeek Harness 表情包插件：输入框一键发图、文字 token 斗图、情绪主动发图、AI 自动学图，图库市场一键安装。 · Meme/sticker plugin for DeepSeek Harness: one-click picker in the composer, text-token memes, mood-driven sending, AI learns your images, marketplace packs. |
 | [Invoice-Downloader](https://github.com/EthanYoQ/Invoice-Downloader) | [@EthanYoQ](https://github.com/EthanYoQ) | InvoiceFlowAI：Windows 与 macOS 发票助手，自动下载邮箱电子发票、OCR 识别、分类归档并生成 Excel 报销汇总；可安装为 DeepSeek Harness 插件。 |
 | [dsh-skills-manager](https://github.com/MichengAI/dsh-skills-manager) | [@MichengAI](https://github.com/MichengAI) | DSH Skills Manager — 在 DeepSeek Harness 中统一加载并安全管理本机 Agent Skills · Load and safely manage local Agent Skills in DSH |
+| [dsh-drawai](https://github.com/fourzkw/dsh-drawai) | [@fourzkw](https://github.com/fourzkw) | DSH 右侧栏里的可编辑画布 —— 加上让模型直接改图的两个工具 |
 | [memtrace-public](https://github.com/syncable-dev/memtrace-public) | [@syncable-dev](https://github.com/syncable-dev) | Structural memory for AI coding agents. Bi-temporal graph, MCP-native, zero LLM calls. Cursor · Claude Code · Codex · DeepSeek Harness · Hermes · VS Code · Windsurf. |
 | [awesome-dsh-plugin](https://github.com/bruc3van/awesome-dsh-plugin) | [@bruc3van](https://github.com/bruc3van) | 用 30 秒找到适合你的 DeepSeek Harness 插件：告诉你插件解决什么问题、适合谁、从哪里开始。 |
 | [k8e](https://github.com/xiaods/k8e) | [@xiaods](https://github.com/xiaods) | k8e.sh - OpenSource Agentic AI Sandbox Matrix  |
@@ -317,7 +319,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-共收录 263 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
+共收录 265 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
 
 <!-- PLUGINS_END -->
 
