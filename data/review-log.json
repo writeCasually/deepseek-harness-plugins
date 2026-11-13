@@ -1,6 +1,124 @@
 {
-  "updated_at": "2026-11-12T11:16:42.288Z",
+  "updated_at": "2026-11-13T11:01:44.729Z",
   "decisions": [
+    {
+      "id": "Roland0511/dsh-marktext",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "存在 Base64 解码行为",
+        "监听键盘输入事件",
+        "存在 Base64 解码行为",
+        "使用动态代码执行（全局 eval / new Function）",
+        "解码后直接执行代码（Base64/编码字符串 -> 全局 eval/Function）",
+        "解码后直接执行代码（Base64/编码字符串 -> 全局 eval/Function）",
+        "存在 Base64 解码行为",
+        "监听键盘输入事件",
+        "存在疑似混淆内容（长 Base64 块）"
+      ],
+      "privacy_notes": [
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 local）",
+        "访问第三方网络地址（如 local）",
+        "访问第三方网络地址（如 vega.github.io、w3.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 371,
+          "snippet": "const buffer = Buffer.from(data, 'base64')"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "src/renderer/main.js",
+          "line": 403,
+          "snippet": "document.addEventListener('keydown', (event) => {"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/screenshot.mjs",
+          "line": 217,
+          "snippet": "await writeFile(out, Buffer.from(data, 'base64'))"
+        },
+        {
+          "rule": "eval-exec",
+          "severity": "warning",
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "renderer/assets/embed-CIBROn62-A5qnOaDS.js",
+          "line": 9,
+          "snippet": "`),i!==Rt.text&&(Un(t,0),o=t.ownerDocument,l=La(n),a.forEach((s,u)=>{let f=ba(o,\"tspan\",ut);f.__data__=n,f.textContent=s,u&&(f.setAttribute(\"x\",0),f.setAttribut"
+        },
+        {
+          "rule": "decode-exec",
+          "severity": "critical",
+          "explanation": "解码后直接执行代码（Base64/编码字符串 -> 全局 eval/Function）",
+          "file": "renderer/assets/embed-CIBROn62-A5qnOaDS.js",
+          "line": 9,
+          "snippet": "`),i!==Rt.text&&(Un(t,0),o=t.ownerDocument,l=La(n),a.forEach((s,u)=>{let f=ba(o,\"tspan\",ut);f.__data__=n,f.textContent=s,u&&(f.setAttribute(\"x\",0),f.setAttribut"
+        },
+        {
+          "rule": "decode-exec",
+          "severity": "critical",
+          "explanation": "解码后直接执行代码（Base64/编码字符串 -> 全局 eval/Function）",
+          "file": "renderer/assets/embed-CIBROn62-A5qnOaDS.js",
+          "line": 11,
+          "snippet": "`&&++z;else{if(Rf(r.charCodeAt(0)))break;e+=r}return t!==\"\"&&Ee({},yt,Ct),{type:pc,value:e,octal:a,start:n,end:z}}function bZ(e,t){let n=e;t.includes(\"u\")&&(n=n"
+        },
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "renderer/assets/embed-CIBROn62-A5qnOaDS.js",
+          "line": 15,
+          "snippet": "`)}function u7(e){return\"[\"+e.map(f7).join(\", \")+\"]\"}function f7(e){return P(e)?\"[…]\":Q(e)&&!Da(e)?\"{…}\":e}function O4(){if(this.renderer()===\"canvas\"&&this._re"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "renderer/assets/embed-CIBROn62-A5qnOaDS.js",
+          "line": 70,
+          "snippet": "`)}var s1=(function(e){mde(t,e);function t(n,r,i,a,o){var l=this.constructor,s=e.call(this,FC(n,{name:r,index:i,operation:a,tree:o}))||this;return s.name=r,s.in"
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "renderer/assets/embed-CIBROn62-A5qnOaDS.js",
+          "line": 8,
+          "snippet": "`+e),pB(t.delimiter).parse(e+\"\")}C2.responseType=\"text\";function tW(e){return typeof Buffer==\"function\"&&he(Buffer.isBuffer)?Buffer.isBuffer(e):!1}function M2(e"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-11-02）"
+      ],
+      "reviewed_commit": "f8ebb6de2272edb7ebc4c542a93389bd106e72fb",
+      "review_mode": "full",
+      "scanned_files": 12,
+      "total_files": 718,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-13T11:01:44.729Z"
+    },
     {
       "id": "kunkundi/crossdesk",
       "verdict": "flagged",
@@ -63901,84 +64019,6 @@
       "total_files": 145,
       "osv": {
         "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Dominic789654/awesome-deepseek-harness",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
-      "privacy_notes": [],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#2",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#3",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "plugins/dsh-code-review/src/index.ts",
-          "line": 48,
-          "snippet": "return execFileSync('git', args, { cwd, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 })"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-13）"
-      ],
-      "reviewed_commit": "b1c0e5958314e36e45329fcc2a09e38ddf0dccef",
-      "review_mode": "full",
-      "scanned_files": 1,
-      "total_files": 47,
-      "osv": {
-        "status": "skipped",
         "findings": 0
       },
       "llm_review": {
