@@ -1,6 +1,176 @@
 {
-  "updated_at": "2026-11-13T11:01:44.729Z",
+  "updated_at": "2026-11-14T10:29:39.479Z",
   "decisions": [
+    {
+      "id": "JimLiu/open-artifacts",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "使用动态代码执行（全局 eval / new Function）",
+        "使用动态代码执行（全局 eval / new Function）",
+        "使用屏幕/画面采集能力",
+        "使用屏幕/画面采集能力",
+        "依赖 playwright@1.49.0 存在已知漏洞（GHSA-7mvr-c777-76hp）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 jimliu.github.io）",
+        "访问第三方网络地址（如 w3.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/entry.ts",
+          "line": 16,
+          "snippet": "captureScreenshot(spec: SlideSpec): Promise<void>;"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "dsh-plugins/dsh-claude-artifacts/package.json",
+          "line": 33,
+          "snippet": "\"en\": \"### Features\\n- **`claude-design`: see a page at another screen width, and save the whole page at that width as a PNG.** Open an artboard full window (th"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "dsh-plugins/dsh-claude-dashboard/package.json",
+          "line": 32,
+          "snippet": "\"en\": \"### Features\\n- **`claude-design`: see a page at another screen width, and save the whole page at that width as a PNG.** Open an artboard full window (th"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "dsh-plugins/dsh-claude-data/package.json",
+          "line": 36,
+          "snippet": "\"en\": \"### Features\\n- **`claude-design`: see a page at another screen width, and save the whole page at that width as a PNG.** Open an artboard full window (th"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "dsh-plugins/dsh-claude-design-system/package.json",
+          "line": 36,
+          "snippet": "\"en\": \"### Features\\n- **`claude-design`: see a page at another screen width, and save the whole page at that width as a PNG.** Open an artboard full window (th"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "dsh-plugins/dsh-claude-design/package.json",
+          "line": 36,
+          "snippet": "\"en\": \"### Features\\n- **`claude-design`: see a page at another screen width, and save the whole page at that width as a PNG.** Open an artboard full window (th"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "dsh-plugins/dsh-claude-motion/package.json",
+          "line": 36,
+          "snippet": "\"en\": \"### Features\\n- **`claude-design`: see a page at another screen width, and save the whole page at that width as a PNG.** Open an artboard full window (th"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "dsh-plugins/dsh-claude-slides/package.json",
+          "line": 35,
+          "snippet": "\"en\": \"### Features\\n- **`claude-design`: see a page at another screen width, and save the whole page at that width as a PNG.** Open an artboard full window (th"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "dsh-plugins/dsh-claude-whiteboard/package.json",
+          "line": 36,
+          "snippet": "\"en\": \"### Features\\n- **`claude-design`: see a page at another screen width, and save the whole page at that width as a PNG.** Open an artboard full window (th"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": ".github/scripts/dsh-plugin-index.mjs",
+          "line": 154,
+          "snippet": "fs.writeFileSync(file, bytes);"
+        },
+        {
+          "rule": "eval-exec",
+          "severity": "warning",
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/capture-editable.ts",
+          "line": 37,
+          "snippet": "new Function(spec.showJs)();"
+        },
+        {
+          "rule": "eval-exec",
+          "severity": "warning",
+          "explanation": "使用动态代码执行（全局 eval / new Function）",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts",
+          "line": 11,
+          "snippet": "new Function(spec.showJs)();"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts",
+          "line": 2,
+          "snippet": "// actual pixel grab is done Node-side via Playwright page.screenshot(). (←Nt)"
+        },
+        {
+          "rule": "screen-capture",
+          "severity": "warning",
+          "explanation": "使用屏幕/画面采集能力",
+          "file": "archive/baoyu-design/agents/gen-pptx/src/browser/capture-screenshot.ts",
+          "line": 8,
+          "snippet": "export async function captureScreenshot(spec: SlideSpec): Promise<void> {"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 playwright@1.49.0 存在已知漏洞（GHSA-7mvr-c777-76hp）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "playwright@1.49.0"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "d9e5123f888228cacdab69a157a4e94d2d1c629c",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 818,
+      "osv": {
+        "status": "ok",
+        "findings": 1
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-14T10:29:39.479Z"
+    },
     {
       "id": "Roland0511/dsh-marktext",
       "verdict": "blocked",
@@ -63943,83 +64113,6 @@
       "osv": {
         "status": "ok",
         "findings": 5
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "d-dev0101/open-sea-skin",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "监听键盘输入事件",
-        "使用屏幕/画面采集能力",
-        "监听键盘输入事件"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址（如 x）",
-        "访问第三方网络地址（如 dsh.local）",
-        "访问第三方网络地址（如 d-dev0101.github.io）",
-        "读取环境变量（可能包含敏感信息）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 fixture）",
-        "访问第三方网络地址（如 fixture）",
-        "访问第三方网络地址（如 w3.org）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "harness-plugin/src/client/OpenSeaQuickControls.tsx",
-          "line": 55,
-          "snippet": "document.addEventListener('keydown', onKeyDown)"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "scripts/capture-gallery.mjs",
-          "line": 73,
-          "snippet": "await page.screenshot({ path: resolve(frames, frame) })"
-        },
-        {
-          "rule": "keylog",
-          "severity": "warning",
-          "explanation": "监听键盘输入事件",
-          "file": "extension/vendor/addons/controls/OrbitControls.js",
-          "line": 1,
-          "snippet": "import{Controls as S,MOUSE as _,Quaternion as E,Spherical as P,TOUCH as u,Vector2 as c,Vector3 as p,Plane as w,Ray as O,MathUtils as R}from\"../../three.webgpu.j"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）"
-      ],
-      "reviewed_commit": "2437d80a96de4124c54fbe89872fa7090103f025",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 145,
-      "osv": {
-        "status": "ok",
-        "findings": 0
       },
       "llm_review": {
         "status": "skipped",
