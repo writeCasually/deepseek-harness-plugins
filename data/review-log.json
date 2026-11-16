@@ -1,6 +1,83 @@
 {
-  "updated_at": "2026-11-15T10:57:30.619Z",
+  "updated_at": "2026-11-16T11:24:41.634Z",
   "decisions": [
+    {
+      "id": "oneclickvirt/ecs",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "硬编码敏感凭据（私钥块）"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 tools.ietf.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "npm run check"
+        },
+        {
+          "rule": "secret-private-key",
+          "severity": "critical",
+          "explanation": "硬编码敏感凭据（私钥块）",
+          "file": "agent/vendor/ssh2/lib/protocol/constants.js",
+          "line": 16,
+          "snippet": "'-----BEGIN PRIVATE KEY-----\\r\\nMC4CAQAwBQYDK2VwBCIEIHKj+sVa9WcD'"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "2c1533906012a5d1f978ef23b1d483a2cd419939",
+      "review_mode": "full",
+      "scanned_files": 9,
+      "total_files": 169,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-16T11:24:41.634Z"
+    },
+    {
+      "id": "Bytedesk/bytedesk",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "fbf3162047385f210c2a8627ba1546cbe5440af4",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 12758,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-11-16T11:24:41.634Z"
+    },
     {
       "id": "JimLiu/open-artifacts",
       "verdict": "flagged",
@@ -63856,269 +63933,6 @@
       },
       "llm_review": {
         "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "liustack/modsearch",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
-      },
-      "findings": [
-        "下载远程脚本并直接执行（curl/wget | sh）",
-        "下载远程脚本并直接执行（curl/wget | sh）"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 example.com）",
-        "访问第三方网络地址（如 env.example.com、gw.example.com、user）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 api.example.com）",
-        "访问第三方网络地址（如 api.example.com）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 antigravity.google、x.ai）",
-        "访问第三方网络地址（如 antigravity.google、x.ai）"
-      ],
-      "evidence": [
-        {
-          "rule": "remote-exec",
-          "severity": "critical",
-          "explanation": "下载远程脚本并直接执行（curl/wget | sh）",
-          "file": "src/doctor.ts",
-          "line": 112,
-          "snippet": "const INSTALL_AGY = 'curl -fsSL https://antigravity.google/cli/install.sh | bash && agy';"
-        },
-        {
-          "rule": "remote-exec",
-          "severity": "critical",
-          "explanation": "下载远程脚本并直接执行（curl/wget | sh）",
-          "file": "src/doctor.ts",
-          "line": 113,
-          "snippet": "const INSTALL_GROK = 'curl -fsSL https://x.ai/cli/install.sh | bash && grok';"
-        }
-      ],
-      "trust_notes": [],
-      "reviewed_commit": "a5bd55aa09e259e0c34e7f86377c0c4c6f295e55",
-      "review_mode": "delta",
-      "scanned_files": 12,
-      "total_files": 115,
-      "osv": {
-        "status": "ok",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Devin-AXIS/deepseek-design",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-        "使用动态代码执行（eval/new Function）",
-        "存在 Base64 解码行为",
-        "存在 Base64 解码行为",
-        "使用动态代码执行（eval/new Function）",
-        "存在 Base64 解码行为",
-        "存在 Base64 解码行为",
-        "使用屏幕/画面采集能力",
-        "依赖 @hono/node-server@1.8.0 存在已知漏洞（GHSA-92pp-h63x-v22m, GHSA-frvp-7c67-39w9, GHSA-hgxw-5xg3-69jx）",
-        "依赖 adm-zip@0.5.16 存在已知漏洞（GHSA-xcpc-8h2w-3j85）",
-        "依赖 hono@4.0.0 存在已知漏洞（GHSA-2234-fmw7-43wr, GHSA-26pp-8wgv-hjvm, GHSA-2gcr-mfcq-wcc3）",
-        "依赖 postcss@8.5.8 存在已知漏洞（GHSA-6g55-p6wh-862q, GHSA-fxqj-rqcc-2cmp, GHSA-qx2v-qp2m-jg93）",
-        "依赖 sharp@0.34.5 存在已知漏洞（GHSA-f88m-g3jw-g9cj）"
-      ],
-      "privacy_notes": [
-        "访问第三方网络地址（如 json-schema.org）"
-      ],
-      "evidence": [
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#1",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#2",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#3",
-          "line": 0,
-          "snippet": "pnpm run build"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#3",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json#4",
-          "line": 0,
-          "snippet": "pnpm run build"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json#4",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "packages/deepseek-idesign/lib/index.js",
-          "line": 137,
-          "snippet": "new Function(\"\");"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "packages/deepseek-idesign/lib/index.js",
-          "line": 1099,
-          "snippet": "atob(data);"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "packages/deepseek-idesign/lib/index.js",
-          "line": 1150,
-          "snippet": "const parsedHeader = JSON.parse(atob(header));"
-        },
-        {
-          "rule": "eval-exec",
-          "severity": "warning",
-          "explanation": "使用动态代码执行（eval/new Function）",
-          "file": "packages/deepseek-ippt/lib/index.js",
-          "line": 137,
-          "snippet": "new Function(\"\");"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "packages/deepseek-ippt/lib/index.js",
-          "line": 1099,
-          "snippet": "atob(data);"
-        },
-        {
-          "rule": "base64",
-          "severity": "warning",
-          "explanation": "存在 Base64 解码行为",
-          "file": "packages/deepseek-ippt/lib/index.js",
-          "line": 1150,
-          "snippet": "const parsedHeader = JSON.parse(atob(header));"
-        },
-        {
-          "rule": "screen-capture",
-          "severity": "warning",
-          "explanation": "使用屏幕/画面采集能力",
-          "file": "packages/deepseek-ivideo/lib/hyperframes/commands/contrast-audit.browser.js",
-          "line": 16,
-          "snippet": "//   2. Caller takes ONE screenshot (page.screenshot()) — same number of"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 @hono/node-server@1.8.0 存在已知漏洞（GHSA-92pp-h63x-v22m, GHSA-frvp-7c67-39w9, GHSA-hgxw-5xg3-69jx）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "@hono/node-server@1.8.0"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 adm-zip@0.5.16 存在已知漏洞（GHSA-xcpc-8h2w-3j85）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "adm-zip@0.5.16"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 hono@4.0.0 存在已知漏洞（GHSA-2234-fmw7-43wr, GHSA-26pp-8wgv-hjvm, GHSA-2gcr-mfcq-wcc3）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "hono@4.0.0"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 postcss@8.5.8 存在已知漏洞（GHSA-6g55-p6wh-862q, GHSA-fxqj-rqcc-2cmp, GHSA-qx2v-qp2m-jg93）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "postcss@8.5.8"
-        },
-        {
-          "rule": "osv-vuln",
-          "severity": "warning",
-          "explanation": "依赖 sharp@0.34.5 存在已知漏洞（GHSA-f88m-g3jw-g9cj）",
-          "file": "<dependencies>",
-          "line": 0,
-          "snippet": "sharp@0.34.5"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-15）"
-      ],
-      "reviewed_commit": "d960f7af908433a06b811263f8b4d7f8f9c5c62a",
-      "review_mode": "full",
-      "scanned_files": 28,
-      "total_files": 844,
-      "osv": {
-        "status": "ok",
-        "findings": 5
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }
