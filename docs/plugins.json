@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-16T07:53:19.869Z",
+  "generated_at": "2026-11-16T11:24:41.634Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -22780,6 +22780,77 @@
       "review_status": "flagged",
       "reviewed_at": "2026-11-12T11:16:42.288Z",
       "description_i18n_checked_at": "2026-11-12T13:41:21.380Z"
+    },
+    {
+      "id": "oneclickvirt/ecs",
+      "name": "ecs",
+      "author": "oneclickvirt",
+      "description": "VPS Fusion Monster — Server Benchmark (Go Edition) Aims to be the most comprehensive and fastest server benchmarking project, built in Go with zero external dependencies.  VPS 融合怪服务器测评项目 · Go 版本 致力于成为最全面和最快速的服务器测评项目，使用 Go 语言实现，零环境依赖零广告",
+      "repo_url": "https://github.com/oneclickvirt/ecs",
+      "homepage": "https://t.me/+UHVoo2U4VyA5NTQ1",
+      "stars": 2476,
+      "forks": 155,
+      "open_issues": 0,
+      "watchers": 0,
+      "pushed_at": "2026-11-16T10:54:28Z",
+      "archived": false,
+      "language": "Go",
+      "license": "GPL-3.0",
+      "topics": [
+        "benchmark",
+        "benchmarks",
+        "darwin",
+        "docker",
+        "dsh-plugin",
+        "dsh-plugins",
+        "goecs",
+        "golang",
+        "linux",
+        "macos",
+        "windows"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "融合怪测评项目 - GO版本",
+        "en": "Fusion Monster Evaluation Project - GO Version"
+      },
+      "risk_level": "high",
+      "risk_notes": [
+        "【高风险，请自行审计】硬编码敏感凭据（私钥块） @ agent/vendor/ssh2/lib/protocol/constants.js:16",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
+        "访问第三方网络地址（如 tools.ietf.org） @ agent/vendor/ssh2/lib/agent.js:508"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "硬编码敏感凭据（私钥块）",
+          "file": "agent/vendor/ssh2/lib/protocol/constants.js",
+          "line": 16
+        },
+        {
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 tools.ietf.org）",
+          "file": "agent/vendor/ssh2/lib/agent.js",
+          "line": 508
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 tools.ietf.org）"
+      ],
+      "security_notes": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行"
+      ],
+      "reviewed_commit": "2c1533906012a5d1f978ef23b1d483a2cd419939",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-11-16T11:24:41.634Z"
     }
   ]
 }
