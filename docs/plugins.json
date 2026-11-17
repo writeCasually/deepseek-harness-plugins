@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-17T03:43:22.489Z",
+  "generated_at": "2026-11-17T11:55:18.397Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -22820,9 +22820,7 @@
       },
       "risk_level": "high",
       "risk_notes": [
-        "【高风险，请自行审计】硬编码敏感凭据（私钥块） @ agent/vendor/ssh2/lib/protocol/constants.js:16",
-        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json",
-        "访问第三方网络地址（如 tools.ietf.org） @ agent/vendor/ssh2/lib/agent.js:508"
+        "package.json 的 prepack 脚本会在安装/发布时自动执行 @ package.json"
       ],
       "risk_evidence": [
         {
@@ -22841,12 +22839,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 tools.ietf.org）"
-      ],
-      "security_notes": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "2c1533906012a5d1f978ef23b1d483a2cd419939",
       "source": "discovered",
       "review_status": "flagged",
