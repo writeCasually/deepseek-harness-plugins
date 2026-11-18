@@ -1,6 +1,65 @@
 {
-  "updated_at": "2026-11-17T11:55:18.397Z",
+  "updated_at": "2026-11-18T11:46:18.909Z",
   "decisions": [
+    {
+      "id": "bruc3van/awesome-dsh-plugin-pro",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "code",
+        "reason": "依赖 DSH/Cordis 生态包 @deepseek-ai/cordis"
+      },
+      "findings": [
+        "存在 Base64 解码行为",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）"
+      ],
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 example.com）",
+        "访问第三方网络地址（如 bruc3van.com）",
+        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.com）",
+        "访问第三方网络地址（如 example.com、u）",
+        "访问第三方网络地址（如 api.npmjs.org）",
+        "访问第三方网络地址（如 example.com、registry.example.com）",
+        "访问第三方网络地址（如 example.com、w3.org）",
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "scripts/host-market/audit-github.mjs",
+          "line": 67,
+          "snippet": "const bytes = Buffer.from(blob.content, 'base64')"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/host-market/git.test.mjs",
+          "line": 36,
+          "snippet": "execFileSync('git', ['-C', dir, ...args], { encoding: 'utf8' }).trim()"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "7a7029055e623455eda23b4024ced3b8b9344186",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 3803,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-18T11:46:18.909Z"
+    },
     {
       "id": "oneclickvirt/ecs",
       "verdict": "flagged",
@@ -63901,32 +63960,6 @@
       "review_mode": "full",
       "scanned_files": 0,
       "total_files": 49,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "hikariming/dshfind",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "7c1c7f15d42d69d56b7462d21dbdf224516fa250",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 404,
       "osv": {
         "status": "disabled",
         "findings": 0

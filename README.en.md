@@ -205,6 +205,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [Invoice-Downloader](https://github.com/EthanYoQ/Invoice-Downloader) | [@EthanYoQ](https://github.com/EthanYoQ) | InvoiceFlowAI：Windows 与 macOS 发票助手，自动下载邮箱电子发票、OCR 识别、分类归档并生成 Excel 报销汇总；可安装为 DeepSeek Harness 插件。 |
 | [dsh-plugin-hub](https://github.com/dshplugin/dsh-plugin-hub) | [@dshplugin](https://github.com/dshplugin) | DeepSeek Harness 社区内置插件市场（dsh-plugin）— 搜索插件、下载并安装 10000+ 人工精选社区插件，每日更新、完全免费。内置在 Harness「设置 → 插件中心」，无需离开应用即可浏览、搜索、安装各类 AI 插件。 |
 | [dsh-fish-memory](https://github.com/Yuuyuko-uu/dsh-fish-memory) | [@Yuuyuko-uu](https://github.com/Yuuyuko-uu) | 🐋 DSH 鱼的记忆：给会话一份会淡忘的长期记忆，每条都带时间。名字里的「鱼」来自 DeepSeek 的鲸鱼。 |
+| [awesome-dsh-plugin-pro](https://github.com/bruc3van/awesome-dsh-plugin-pro) | [@bruc3van](https://github.com/bruc3van) | DSH 插件精选目录专业版：人工核实真插件，剔除蹭标签和非插件项目，提供场景分类、精选推荐、热度排行与可订阅数据。DSH Market Pro 的社区数据源。 |
 | [awesome-dsh-plugin](https://github.com/bruc3van/awesome-dsh-plugin) | [@bruc3van](https://github.com/bruc3van) | 用 30 秒找到适合你的 DeepSeek Harness 插件：告诉你插件解决什么问题、适合谁、从哪里开始。 |
 | [operator-memory](https://github.com/aerovato/operator-memory) | [@aerovato](https://github.com/aerovato) | The self-improving context engine for coding agents. |
 | [flowix](https://github.com/text2future/flowix) | [@text2future](https://github.com/text2future) | Notes for you, Memory for your agents. / 内置 Deepseek harness Agent / 适用 办公 & 写作 & Coding |
@@ -331,7 +332,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-Includes 265 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 266 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 
