@@ -1,6 +1,185 @@
 {
-  "updated_at": "2026-11-18T11:46:18.909Z",
+  "updated_at": "2026-11-19T11:43:34.242Z",
   "decisions": [
+    {
+      "id": "ZXEB/dsh-purge",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "存在 Base64 解码行为",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "存在疑似混淆内容（长 Base64 块）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）"
+      ],
+      "evidence": [
+        {
+          "rule": "base64",
+          "severity": "warning",
+          "explanation": "存在 Base64 解码行为",
+          "file": "lib/index.js",
+          "line": 2501,
+          "snippet": "const packed = await skills.importArchive(dshHome, Buffer.from(body.data, \"base64\"), body.name || \"skill.zip\");"
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 2,
+          "snippet": "\"zr5nMefv8/VnyW3eVceHceaDHzCQ8giqpBmBa/ZikaKIE6H/+abwU+LyNqRLUBn3mHUdrJc3/DlKZc2ceiG3HP15LEZvFUo5\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 3,
+          "snippet": "\"DhQ02YEWvCPycc8fgkWNNASNnwGIOFCELBEX92Tw7fzu373T8QMgcv7JYpESlGtbpTbJ/cS513a7CU/uOgLZny1chcrVhoh2\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 4,
+          "snippet": "\"FrkU7pPYbH1pc9sYcA9fkcMUAKDQAYPrYcawTxDaPntzfyZ/tB2aYFynGgjmP2TqGThhTAMaLLkyJZhNZGqrEMlVqaMMR7o3\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 5,
+          "snippet": "\"DvNzeW9nyq5mh3qJvgNejGhv637X5EDdEhSdG/2zpLxSZw+CEAzS2x88wbh/YyaFXYiBm47Rw6VV1J57/TAB/pb42QbIljEU\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 6,
+          "snippet": "\"LLUYuqC2I1UW+EJmdOzi76w4Npfc3VspL9MBRwfZ3xy/3hqP8ak2HKkXRfHg4htzrHjHnV44rPZM4+RfEW54ms0GcV7UhJ6c\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 7,
+          "snippet": "\"FARHGAcj93X8HTdovv1XB9swEEWAUpVbHpgdXTMOsxOVH61yoRrbzW1DUKGMkjLDRnMqi5Jkd12SSDT8RXe5ro5GTKJKl3OZ\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 8,
+          "snippet": "\"uAQWTP6a8sSiGF9uLuzBU2myRH/pva0zStrT7Y6i0iQESGaUm+E+A1nR8OhxYhT42uZLI2Ooaz6PDR4DPTsxfSjIxQiYPnEy\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 9,
+          "snippet": "\"XV54ybvlMusXU3X1Wi4oCNBu8q59AzhKaRiFKx6eZAi5udHvA9D6U+FBog7qYocjI1kyLQD0Y59BuWWgAr6248RCgXcEEcBK\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 10,
+          "snippet": "\"Utpy1Cg0XbLpacbj6mcyJbxoaz0yOiQ+vtkh2NkcN/K1QG4l9PtijDKjW26clouVIgNMblLlyLG2ZkVZ/CR7SmM6ckPqTk9F\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 11,
+          "snippet": "\"AyklmHcs0MmkwUg8Z8BNX6CqDCCdrdZTJ+pFlAlOJYEcbeSfcI4k0VJ2rhmjrXM4IdBtHbMK/i0yVUyisdm6KT0CdX2FsgJ1\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 12,
+          "snippet": "\"L34vPOsJ63hjWaXT8EKu+QFxxAhp8hzrZb5opknuUy/9EF9oVYpM4jO+oUhj6yplFsuG8bolpLx4Tkia7tP/kRbox2y5vTgz\","
+        },
+        {
+          "rule": "obfuscation",
+          "severity": "warning",
+          "explanation": "存在疑似混淆内容（长 Base64 块）",
+          "file": "lib/asset-table.js",
+          "line": 13,
+          "snippet": "\"7bRHnmaznTA8c7kaCSQ63tx091yK1Gc93TxW0yZoLBH0863oXAaqVmjzzA/4zYp8ThQpOhtbg5h8/m3+HQ5oifRs9X734DD8\","
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/core.js",
+          "line": 118,
+          "snippet": "return execFileSync(bin, args, HIDDEN_EXEC).trim();"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/core.js",
+          "line": 1016,
+          "snippet": "const needle = 'execFileSync(\"git\", [';"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "lib/core.js",
+          "line": 1185,
+          "snippet": "execFileSync(\"schtasks\", [\"/Query\", \"/TN\", \"DSH Doctor Supervisor\"], {"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-10-23）"
+      ],
+      "reviewed_commit": "f979852c55d3eecfce7c7f359f3d2c84cc610f86",
+      "review_mode": "full",
+      "scanned_files": 9,
+      "total_files": 115,
+      "osv": {
+        "status": "skipped",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-19T11:43:34.242Z"
+    },
     {
       "id": "bruc3van/awesome-dsh-plugin-pro",
       "verdict": "flagged",
@@ -63940,32 +64119,6 @@
         "verdict": "none",
         "rationale": "未配置 LLM_API_KEY",
         "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "shanliuling/skills-link",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "26487aee4948e9e11000422c8278f81dcb245f20",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 49,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }
