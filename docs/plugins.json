@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-19T04:05:31.826Z",
+  "generated_at": "2026-11-19T11:43:34.242Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -22876,19 +22876,9 @@
         "zh": "本项目已更名为 Awesome DSH Plugins Pro（awesome-dsh-plugin-pro）。Pro 的依据是人工核实收录、剔除蹭标签与非插件仓库、场景分类与精选推荐，以及可核实安装目标的订阅数据；贴上标签不会自动进入目录。原有订阅地址和 npm 数据包 awesome-dsh-plugin-feed 保持兼容。",
         "en": "This project is now Awesome DSH Plugins Pro (awesome-dsh-plugin-pro). Pro reflects maintainer-reviewed inclusion, removal of unrelated and topic-spam repositories, practical categories and picks, and subscription data with verified installation targets. A"
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
-        "存在 Base64 解码行为 @ scripts/host-market/audit-github.mjs:67",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/host-market/git.test.mjs:36",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/catalog-mappings.mjs",
-        "访问第三方网络地址（如 example.com） @ scripts/host-market/audit.mjs:130",
-        "访问第三方网络地址（如 bruc3van.com） @ scripts/host-market/generate.mjs:20",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.com） @ scripts/host-market/git.mjs:103",
-        "访问第三方网络地址（如 example.com、u） @ scripts/host-market/git.test.mjs:12",
-        "访问第三方网络地址（如 api.npmjs.org） @ scripts/host-market/metrics.mjs:6",
-        "访问第三方网络地址（如 example.com、registry.example.com） @ scripts/host-market/metrics.test.mjs:21",
-        "访问第三方网络地址（如 example.com、w3.org） @ scripts/host-market/presentation.test.mjs:12",
-        "读取环境变量（可能包含敏感信息） @ scripts/host-market/publication.test.mjs:23"
+        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/catalog-mappings.mjs"
       ],
       "risk_evidence": [
         {
@@ -22949,21 +22939,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 example.com）",
-        "访问第三方网络地址（如 bruc3van.com）",
-        "读取环境变量并访问第三方地址，需确认未外发敏感信息（如 example.com）",
-        "访问第三方网络地址（如 example.com、u）",
-        "访问第三方网络地址（如 api.npmjs.org）",
-        "访问第三方网络地址（如 example.com、registry.example.com）",
-        "访问第三方网络地址（如 example.com、w3.org）",
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "security_notes": [
-        "存在 Base64 解码行为",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "7a7029055e623455eda23b4024ced3b8b9344186",
       "source": "discovered",
       "review_status": "flagged",
