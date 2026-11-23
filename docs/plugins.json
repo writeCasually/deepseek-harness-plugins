@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-23T01:34:25.456Z",
+  "generated_at": "2026-11-23T12:49:45.685Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -22945,6 +22945,151 @@
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-11-18T11:46:18.909Z"
+    },
+    {
+      "id": "lennney/stop-that-shit",
+      "name": "stop-that-shit",
+      "author": "lennney",
+      "description": "Stop That Shit（别再造史了）｜面向 Codex/GPT 场景的多平台 Hook + Skill Guard：拦截 AI coding agent 无需求的哈希、校验和与任务范围膨胀。 A multi-platform Hook + Skill Guard for AI coding agents in Codex/GPT workflows: stop unrequested hashes, checksums, and task-scope creep.",
+      "repo_url": "https://github.com/lennney/stop-that-shit",
+      "homepage": "https://lennney.com/zh/stop-that-shit",
+      "stars": 4075,
+      "forks": 87,
+      "open_issues": 11,
+      "watchers": 0,
+      "pushed_at": "2026-11-23T06:59:52Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "MIT",
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "ai-coding",
+        "claude-code",
+        "codex",
+        "codex-cli",
+        "codex-plugin",
+        "developer-tools",
+        "dsh-plugin",
+        "guardrails",
+        "hermes-agent",
+        "local-first",
+        "opencode",
+        "overengineering",
+        "scope-control",
+        "yagni"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "中文产品故事、成对案例与使用方式见 README。",
+        "en": "We call these behaviors SHIT:"
+      },
+      "risk_level": "low",
+      "risk_notes": [],
+      "risk_evidence": [],
+      "privacy_risk": false,
+      "privacy_notes": [],
+      "security_notes": [],
+      "reviewed_commit": "7fd4056030cb6c573e2fd3f37f58819c3269c922",
+      "source": "discovered",
+      "review_status": "approved",
+      "reviewed_at": "2026-11-23T12:49:45.685Z"
+    },
+    {
+      "id": "Minglink/dsh-jailbreak-workflow",
+      "name": "dsh-jailbreak-workflow",
+      "author": "Minglink",
+      "description": "Visual soft-workflow plugin for DeepSeek Harness (dsh-workflow-lite 0.11.0): canvas-to-plan-prompt engine paired with Minglink/dsh-workflows for LLM red-teaming & safety research.",
+      "repo_url": "https://github.com/Minglink/dsh-jailbreak-workflow",
+      "homepage": "https://github.com/Minglink/dsh-jailbreak-workflow",
+      "stars": 1224,
+      "forks": 402,
+      "open_issues": 5,
+      "watchers": 0,
+      "pushed_at": "2026-11-22T21:28:00Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "NOASSERTION",
+      "topics": [
+        "ai-agents",
+        "ai-safety",
+        "arxiv-research",
+        "deepseek",
+        "deepseek-harness",
+        "dsh-plugin",
+        "dsh-workflow-lite",
+        "llm-evaluation",
+        "llm-security",
+        "mcp-security",
+        "open-source",
+        "openorigin",
+        "prompt-engineering",
+        "react-flow",
+        "red-teaming",
+        "soft-orchestration",
+        "typescript",
+        "visual-workflow"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "description_i18n": {
+        "zh": "现成的工作流包托管在配套仓库 Minglink/dsh-workflows，均已通过 dsh-workflow-lite 0.11.0 结构校验与 SHA-256 哈希核对。下载 .wflite.zip 后在「工作流中心」一键导入即可运行：",
+        "en": "Ready-made .wflite.zip workflow bundles live in the companion repository Minglink/dsh-workflows (validated for dsh-workflow-lite 0.11.0 with SHA-256 skill checksums). Download any bundle and import it from the Workflow hub:"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
+        "监听键盘输入事件 @ site/src/scripts/images.ts:29",
+        "依赖 markdown-it@15.0.2 存在已知漏洞（GHSA-gfr2-rv44-r23c, GHSA-vfgh-jcmw-g37q） @ <dependencies>",
+        "依赖 astro@7.3.8 存在已知漏洞（GHSA-mh32-jxcr-mh9f, GHSA-r3h5-4585-7x3w） @ <dependencies>",
+        "访问第三方网络地址（如 eclipse.org） @ scripts/notices.mjs:48"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "site/src/scripts/images.ts",
+          "line": 29,
+          "confidence": 1
+        },
+        {
+          "explanation": "依赖 markdown-it@15.0.2 存在已知漏洞（GHSA-gfr2-rv44-r23c, GHSA-vfgh-jcmw-g37q）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 astro@7.3.8 存在已知漏洞（GHSA-mh32-jxcr-mh9f, GHSA-r3h5-4585-7x3w）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 eclipse.org）",
+          "file": "scripts/notices.mjs",
+          "line": 48
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 eclipse.org）"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "监听键盘输入事件",
+        "依赖 markdown-it@15.0.2 存在已知漏洞（GHSA-gfr2-rv44-r23c, GHSA-vfgh-jcmw-g37q）",
+        "依赖 astro@7.3.8 存在已知漏洞（GHSA-mh32-jxcr-mh9f, GHSA-r3h5-4585-7x3w）"
+      ],
+      "reviewed_commit": "52727fe91581b7d0e9df6267981fc3ea15074970",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-11-23T12:49:45.685Z"
     }
   ]
 }
