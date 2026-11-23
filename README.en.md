@@ -112,6 +112,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [BitFun](https://github.com/GCWing/BitFun) | [@GCWing](https://github.com/GCWing) | BitFun combines a high-performance agent runtime written in Rust with a polished desktop application. It pairs the depth of a Code Agent with open, general-purpose capabilities for work beyond software development. |
 | [OpenBitFun](https://github.com/GCWing/OpenBitFun) | [@GCWing](https://github.com/GCWing) | OpenBitFun combines a high-performance agent runtime written in Rust with a polished desktop application. It pairs the depth of a Code Agent with open, general-purpose capabilities for work beyond software development. |
 | [OpenBitFun](https://github.com/openBitFun/OpenBitFun) | [@openBitFun](https://github.com/openBitFun) | OpenBitFun combines a high-performance agent runtime written in Rust with a polished desktop application. It pairs the depth of a Code Agent with open, general-purpose capabilities for work beyond software development. |
+| [stop-that-shit](https://github.com/lennney/stop-that-shit) | [@lennney](https://github.com/lennney) | Stop That Shit（别再造史了）｜面向 Codex/GPT 场景的多平台 Hook + Skill Guard：拦截 AI coding agent 无需求的哈希、校验和与任务范围膨胀。 A multi-platform Hook + Skill Guard for AI coding agents in Codex/GPT workflows: stop unrequested hashes, checksums, and task-scope creep. |
 | [ReMe](https://github.com/agentscope-ai/ReMe) | [@agentscope-ai](https://github.com/agentscope-ai) | ReMe: Memory Management Kit for Agents - Remember Me, Refine Me. |
 | [mirage](https://github.com/strukto-ai/mirage) | [@strukto-ai](https://github.com/strukto-ai) | The World's First Unified Virtual Filesystem For AI Agents |
 | [dsh-im](https://github.com/xmanrui/dsh-im) | [@xmanrui](https://github.com/xmanrui) | 通过扫码或机器人凭据把IM机器人接入DeepSeek Harness（支持飞书、微信、钉钉、企业微信、QQ、Slack、Telegram、Discord和WhatsApp）。 Connect IM bots to DeepSeek Harness via QR code or credentials (9 channels). |
@@ -143,6 +144,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-vision-router](https://github.com/ysr666/dsh-vision-router) | [@ysr666](https://github.com/ysr666) | Eyes for text-only DeepSeek Harness agents: built-in free vision chain (no key) + pixel-level vision tools (Q&A, grounding, crop, pixel diff, colors, OCR, SVG trace, cutout, screenshots). One-command install, no Python, image turns work like ordinary tool-calling turns. |
 | [EAC-Pack](https://github.com/Ebony-Vinyl/EAC-Pack) | [@Ebony-Vinyl](https://github.com/Ebony-Vinyl) | Embracing All Creation (Plugin Suite) — Dedicated to the Harmonious Coexistence of Hundreds of DSH Plugins / 揽尽万象（插件整合包） —— 致力于让数百个DSH插件和谐共存 |
 | [mem9](https://github.com/mem9-ai/mem9) | [@mem9-ai](https://github.com/mem9-ai) | Unlimited memory for OpenClaw |
+| [dsh-jailbreak-workflow](https://github.com/Minglink/dsh-jailbreak-workflow) | [@Minglink](https://github.com/Minglink) | Visual soft-workflow plugin for DeepSeek Harness (dsh-workflow-lite 0.11.0): canvas-to-plan-prompt engine paired with Minglink/dsh-workflows for LLM red-teaming & safety research. |
 | [agentrq](https://github.com/agentrq/agentrq) | [@agentrq](https://github.com/agentrq) | AgentRQ: Human-in-loop realtime conversational task manager for AI Agents. Self-hosted! Control your own agents from wherever you want Mobile, Web, Desktop. Designed to work well with your own Claude subscriptions and any harness. |
 | [dsh-mobile-apk](https://github.com/kelai141/dsh-mobile-apk) | [@kelai141](https://github.com/kelai141) | dsh 安卓壳 APK——WebView UI + 内嵌 Termux 运行时快照（解压即跑）、SAF 目录桥、保活服务、看门狗、运行时在线更新。 |
 | [hol-guard](https://github.com/hashgraph-online/hol-guard) | [@hashgraph-online](https://github.com/hashgraph-online) | Open-source antivirus for AI agents: block risky tools, secret access, prompt injection, malicious packages, MCP servers, plugins, and skills at runtime. |
@@ -332,7 +334,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-Includes 266 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 268 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 

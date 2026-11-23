@@ -1,6 +1,132 @@
 {
-  "updated_at": "2026-11-22T11:28:25.774Z",
+  "updated_at": "2026-11-23T12:49:45.685Z",
   "decisions": [
+    {
+      "id": "mvanhorn/last30days-skill",
+      "verdict": "skip",
+      "compatibility": {
+        "official": false,
+        "compatible": false,
+        "kind": null,
+        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "331025e662756ca51e86dfddcf59969f6dba25a0",
+      "review_mode": "full",
+      "scanned_files": 0,
+      "total_files": 795,
+      "osv": {
+        "status": "disabled",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped"
+      },
+      "reviewed_at": "2026-11-23T12:49:45.685Z"
+    },
+    {
+      "id": "lennney/stop-that-shit",
+      "verdict": "approved",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [],
+      "privacy_notes": [],
+      "evidence": [],
+      "trust_notes": [],
+      "reviewed_commit": "7fd4056030cb6c573e2fd3f37f58819c3269c922",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 332,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-23T12:49:45.685Z"
+    },
+    {
+      "id": "Minglink/dsh-jailbreak-workflow",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "监听键盘输入事件",
+        "依赖 markdown-it@15.0.2 存在已知漏洞（GHSA-gfr2-rv44-r23c, GHSA-vfgh-jcmw-g37q）",
+        "依赖 astro@7.3.8 存在已知漏洞（GHSA-mh32-jxcr-mh9f, GHSA-r3h5-4585-7x3w）"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 eclipse.org）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepare",
+          "severity": "warning",
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "pnpm run build:types && pnpm run build"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "site/src/scripts/images.ts",
+          "line": 29,
+          "snippet": "img.addEventListener('keydown', (e) => {"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 markdown-it@15.0.2 存在已知漏洞（GHSA-gfr2-rv44-r23c, GHSA-vfgh-jcmw-g37q）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "markdown-it@15.0.2"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 astro@7.3.8 存在已知漏洞（GHSA-mh32-jxcr-mh9f, GHSA-r3h5-4585-7x3w）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "astro@7.3.8"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-11-01）"
+      ],
+      "reviewed_commit": "52727fe91581b7d0e9df6267981fc3ea15074970",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 570,
+      "osv": {
+        "status": "ok",
+        "findings": 2
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-23T12:49:45.685Z"
+    },
     {
       "id": "ai-timon/timon",
       "verdict": "skip",
@@ -64115,132 +64241,6 @@
       },
       "llm_review": {
         "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Ariestar/sivtr",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "9a742c20f896800cd1b9d90384c4a3770b801295",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 307,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "csyangwen/dsh-memory-evolve",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取浏览器 Cookie/存储并发送到网络",
-        "访问第三方网络地址（如 ...）",
-        "访问第三方网络地址（如 evil.example）"
-      ],
-      "evidence": [
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "tests/update.test.js",
-          "line": 42,
-          "snippet": "return execFileSync('git', args, { cwd: dir, encoding: 'utf8' }).trim()"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-05）"
-      ],
-      "reviewed_commit": "a08fff7f5c0228bf7a9dbf21d917579ccc08a5a8",
-      "review_mode": "delta",
-      "scanned_files": 11,
-      "total_files": 203,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "QCYTSN/dsh-dafeiyu",
-      "verdict": "blocked",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）"
-      ],
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）"
-      ],
-      "evidence": [
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "src/helper-process.js",
-          "line": 34,
-          "snippet": "return execFileSync('wslpath', ['-w', path], { encoding: 'utf8' }).trim()"
-        },
-        {
-          "rule": "shell-exec",
-          "severity": "critical",
-          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
-          "file": "src/helper-process.js",
-          "line": 52,
-          "snippet": "return execFileSync('wslpath', args, { encoding: 'utf8' }).trim()"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）"
-      ],
-      "reviewed_commit": "fba5fd256509485dfb5807ca9dda69e205d8d89a",
-      "review_mode": "full",
-      "scanned_files": 6,
-      "total_files": 111,
-      "osv": {
-        "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }
