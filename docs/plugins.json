@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-24T03:16:15.939Z",
+  "generated_at": "2026-11-24T13:46:27.032Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -23046,10 +23046,8 @@
       "risk_level": "moderate",
       "risk_notes": [
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
-        "监听键盘输入事件 @ site/src/scripts/images.ts:29",
         "依赖 markdown-it@15.0.2 存在已知漏洞（GHSA-gfr2-rv44-r23c, GHSA-vfgh-jcmw-g37q） @ <dependencies>",
-        "依赖 astro@7.3.8 存在已知漏洞（GHSA-mh32-jxcr-mh9f, GHSA-r3h5-4585-7x3w） @ <dependencies>",
-        "访问第三方网络地址（如 eclipse.org） @ scripts/notices.mjs:48"
+        "依赖 astro@7.3.8 存在已知漏洞（GHSA-mh32-jxcr-mh9f, GHSA-r3h5-4585-7x3w） @ <dependencies>"
       ],
       "risk_evidence": [
         {
@@ -23077,19 +23075,96 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 eclipse.org）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "监听键盘输入事件",
-        "依赖 markdown-it@15.0.2 存在已知漏洞（GHSA-gfr2-rv44-r23c, GHSA-vfgh-jcmw-g37q）",
-        "依赖 astro@7.3.8 存在已知漏洞（GHSA-mh32-jxcr-mh9f, GHSA-r3h5-4585-7x3w）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "52727fe91581b7d0e9df6267981fc3ea15074970",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-11-23T12:49:45.685Z"
+    },
+    {
+      "id": "Fei-Craft/DS-Bot",
+      "name": "DS-Bot",
+      "author": "Fei-Craft",
+      "description": "A team of long-lived bots for DeepSeek Harness, with main bots, bot-to-bot messages and group chats.",
+      "repo_url": "https://github.com/Fei-Craft/DS-Bot",
+      "homepage": "https://github.com/Fei-Craft/DS-Bot",
+      "stars": 8836,
+      "forks": 895,
+      "open_issues": 362,
+      "watchers": 0,
+      "pushed_at": "2026-11-24T13:09:07Z",
+      "archived": false,
+      "language": "JavaScript",
+      "license": "Apache-2.0",
+      "topics": [
+        "bot",
+        "deepseek-harness",
+        "dsh-plugin",
+        "multi-agent"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest",
+      "description_i18n": {
+        "zh": "DS Bot 是一个基于 DeepSeek Harness（简称 dsh）的开源项目，提供独立桌面应用和 dsh 插件两种形态。它将 dsh 改造为 bot 形式，你可以与自己创建的 bot 交流、工作。",
+        "en": "DS Bot is an open-source project built on DeepSeek Harness (DSH), available as a standalone desktop app or as a DSH plugin. It turns DSH into bots that you create, talk to and work with."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 pnpm@11.7.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-qrv3-253h-g69c, GHSA-vq4v-j7r6-jq4m） @ <dependencies>",
+        "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
+        "访问第三方网络地址（如 x） @ app/engine/index.js:9",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ app/src/main.mjs",
+        "读取环境变量（可能包含敏感信息） @ app/src/main.mjs:84",
+        "访问第三方网络地址（如 accounts.google.com、googleapis.com、openidconnect.googleapis.com） @ ds-bot/src/host/connectors/mail/index.js:14"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 pnpm@11.7.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-qrv3-253h-g69c, GHSA-vq4v-j7r6-jq4m）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 x）",
+          "file": "app/engine/index.js",
+          "line": 9
+        },
+        {
+          "explanation": "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+          "file": "app/src/main.mjs"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "app/src/main.mjs",
+          "line": 84
+        },
+        {
+          "explanation": "访问第三方网络地址（如 accounts.google.com、googleapis.com、openidconnect.googleapis.com）",
+          "file": "ds-bot/src/host/connectors/mail/index.js",
+          "line": 14
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "访问第三方网络地址（如 x）",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 accounts.google.com、googleapis.com、openidconnect.googleapis.com）"
+      ],
+      "security_notes": [
+        "依赖 pnpm@11.7.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-qrv3-253h-g69c, GHSA-vq4v-j7r6-jq4m）",
+        "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
+      ],
+      "reviewed_commit": "d104d9ca18d69a35460f14e15dff4d553181433a",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-11-24T13:46:27.032Z"
     }
   ]
 }

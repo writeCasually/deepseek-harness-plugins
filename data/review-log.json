@@ -1,6 +1,60 @@
 {
-  "updated_at": "2026-11-23T12:49:45.685Z",
+  "updated_at": "2026-11-24T13:46:27.032Z",
   "decisions": [
+    {
+      "id": "Fei-Craft/DS-Bot",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle manifest"
+      },
+      "findings": [
+        "依赖 pnpm@11.7.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-qrv3-253h-g69c, GHSA-vq4v-j7r6-jq4m）",
+        "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
+      ],
+      "privacy_notes": [
+        "访问第三方网络地址（如 x）",
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
+        "读取环境变量（可能包含敏感信息）",
+        "访问第三方网络地址（如 accounts.google.com、googleapis.com、openidconnect.googleapis.com）"
+      ],
+      "evidence": [
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 pnpm@11.7.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-qrv3-253h-g69c, GHSA-vq4v-j7r6-jq4m）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "pnpm@11.7.0"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "ws@8.18.3"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "d104d9ca18d69a35460f14e15dff4d553181433a",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 1136,
+      "osv": {
+        "status": "ok",
+        "findings": 2
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-24T13:46:27.032Z"
+    },
     {
       "id": "mvanhorn/last30days-skill",
       "verdict": "skip",
@@ -64209,32 +64263,6 @@
       "review_mode": "full",
       "scanned_files": 0,
       "total_files": 3,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Awesome-AI-Pedia/Awesome-AI-Pedia",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "7776171e9ac5b9225098256709f85fd82858b371",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 318,
       "osv": {
         "status": "disabled",
         "findings": 0
