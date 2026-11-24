@@ -88,6 +88,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [BrowserSkill](https://github.com/Tencent/BrowserSkill) | [@Tencent](https://github.com/Tencent) | Let AI agents use your real, logged-in browser without interrupting your work. CLI + extension for browser automation across any shell-capable AI agent. |
 | [dsh-web-ui](https://github.com/zhu1090093659/dsh-web-ui) | [@zhu1090093659](https://github.com/zhu1090093659) | Plugin and skin collection for DeepSeek Harness (DSH) Web UI - task board, git graph, right-side panel, remote mobile UI, pet, live token stats, and skin center. |
 | [dsh-web](https://github.com/zhu1090093659/dsh-web) | [@zhu1090093659](https://github.com/zhu1090093659) | DeepSeek Harness（DSH）Web 插件聚合生态包 · 一切皆插件，创意工坊分发 |
+| [DS-Bot](https://github.com/Fei-Craft/DS-Bot) | [@Fei-Craft](https://github.com/Fei-Craft) | A team of long-lived bots for DeepSeek Harness, with main bots, bot-to-bot messages and group chats. |
 | [treg](https://github.com/superdesigndev/treg) | [@superdesigndev](https://github.com/superdesigndev) | OpenRouter for agent tools. Join community here: https://discord.gg/6mQYYfFMAn |
 | [DeepSeek-Bot](https://github.com/FeiZhuLulu/DeepSeek-Bot) | [@FeiZhuLulu](https://github.com/FeiZhuLulu) | A team of long-lived bots for DeepSeek Harness, with main bots, bot-to-bot messages and group chats. |
 | [DeepSeek-Bot](https://github.com/Fei2411/DeepSeek-Bot) | [@Fei2411](https://github.com/Fei2411) | A team of long-lived bots for DeepSeek Harness, with main bots, bot-to-bot messages and group chats. |
@@ -334,7 +335,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-Includes 268 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 269 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 
