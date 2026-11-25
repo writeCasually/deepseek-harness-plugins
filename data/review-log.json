@@ -1,6 +1,132 @@
 {
-  "updated_at": "2026-11-24T13:46:27.032Z",
+  "updated_at": "2026-11-25T12:59:04.349Z",
   "decisions": [
+    {
+      "id": "kingcharleslzy-ai/DSH-Spicy",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-bundle+client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
+      },
+      "findings": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "监听键盘输入事件",
+        "监听键盘输入事件"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 w3.org）",
+        "读取本地环境配置文件（dotenv .env）"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepare",
+          "severity": "warning",
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "node scripts/prepare.mjs"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/build-market.mjs",
+          "line": 14,
+          "snippet": "const git=args=>execFileSync('git',args,{encoding:'utf8'}).trim();"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/check-private.mjs",
+          "line": 4,
+          "snippet": "const files=[...execFileSync('git',['ls-files','-z'],{encoding:'utf8'}).split('\\0').filter(Boolean),'lib/index.js','lib/client.js','lib/maintenance.js'];"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/npm-command.mjs",
+          "line": 9,
+          "snippet": "return execFileSync(process.execPath, [entry, ...args], options);"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/publish-bundle.mjs",
+          "line": 8,
+          "snippet": "const git=args=>execFileSync('git',args,{encoding:'utf8',env}).trim();"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/publish-bundle.mjs",
+          "line": 10,
+          "snippet": "try{"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/python-command.mjs",
+          "line": 5,
+          "snippet": "try { return execFileSync(candidate, ['-c', 'import sys; assert sys.version_info >= (3,10); print(sys.executable)'], {encoding:'utf8',stdio:['ignore','pipe','pi"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "warning",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/test-python.mjs",
+          "line": 3,
+          "snippet": "import { pythonCommand } from './python-command.mjs';"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/advanced-settings.tsx",
+          "line": 99,
+          "snippet": "window.addEventListener(\"keydown\", onKey);"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/parameter-help.tsx",
+          "line": 69,
+          "snippet": "document.addEventListener(\"keydown\", escape, true);"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "c7505df04c042eff60e54d035242b3719f46c094",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 191,
+      "osv": {
+        "status": "ok",
+        "findings": 0
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-25T12:59:04.349Z"
+    },
     {
       "id": "Fei-Craft/DS-Bot",
       "verdict": "flagged",
@@ -64243,32 +64369,6 @@
         "verdict": "none",
         "rationale": "未配置 LLM_API_KEY",
         "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "Zhiyuan-Fan/Awesome-DeepSeek-Harness-Plugins",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "bf32a705ddcd406fa7c0cdc2179e8cca514cc58a",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 3,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }

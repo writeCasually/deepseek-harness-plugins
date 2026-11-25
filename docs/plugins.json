@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-25T01:21:19.575Z",
+  "generated_at": "2026-11-25T12:59:04.349Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -23112,14 +23112,11 @@
         "zh": "DS Bot 是一个基于 DeepSeek Harness（简称 dsh）的开源项目，提供独立桌面应用和 dsh 插件两种形态。它将 dsh 改造为 bot 形式，你可以与自己创建的 bot 交流、工作。",
         "en": "DS Bot is an open-source project built on DeepSeek Harness (DSH), available as a standalone desktop app or as a DSH plugin. It turns DSH into bots that you create, talk to and work with."
       },
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
         "依赖 pnpm@11.7.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-qrv3-253h-g69c, GHSA-vq4v-j7r6-jq4m） @ <dependencies>",
         "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p） @ <dependencies>",
-        "访问第三方网络地址（如 x） @ app/engine/index.js:9",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ app/src/main.mjs",
-        "读取环境变量（可能包含敏感信息） @ app/src/main.mjs:84",
-        "访问第三方网络地址（如 accounts.google.com、googleapis.com、openidconnect.googleapis.com） @ ds-bot/src/host/connectors/mail/index.js:14"
+        "读取本地凭据文件（如 .ssh/.aws/.npmrc） @ app/src/main.mjs"
       ],
       "risk_evidence": [
         {
@@ -23151,20 +23148,166 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "访问第三方网络地址（如 x）",
-        "读取本地凭据文件（如 .ssh/.aws/.npmrc）",
-        "读取环境变量（可能包含敏感信息）",
-        "访问第三方网络地址（如 accounts.google.com、googleapis.com、openidconnect.googleapis.com）"
-      ],
-      "security_notes": [
-        "依赖 pnpm@11.7.0 存在已知漏洞（GHSA-c59q-g84q-2gj5, GHSA-qrv3-253h-g69c, GHSA-vq4v-j7r6-jq4m）",
-        "依赖 ws@8.18.3 存在已知漏洞（GHSA-58qx-3vcg-4xpx, GHSA-96hv-2xvq-fx4p）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "d104d9ca18d69a35460f14e15dff4d553181433a",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-11-24T13:46:27.032Z"
+    },
+    {
+      "id": "kingcharleslzy-ai/DSH-Spicy",
+      "name": "DSH-Spicy",
+      "author": "kingcharleslzy-ai",
+      "description": "完美适配 Purge 的 NSFW content creation 插件。在 DeepSeek Harness 中用自托管模型创作成人向图像、有声视频与多镜头短片，支持参考图编辑、LoRA 风格控制和 Agent 分镜剪辑。",
+      "repo_url": "https://github.com/kingcharleslzy-ai/DSH-Spicy",
+      "homepage": "https://kingcharleslzy-ai.github.io/DSH-Spicy/",
+      "stars": 573,
+      "forks": 118,
+      "open_issues": 3,
+      "watchers": 0,
+      "pushed_at": "2026-11-13T18:57:12Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "topics": [
+        "agent-skills",
+        "ai-agent-tools",
+        "apple-silicon",
+        "comfyui",
+        "controlnet",
+        "cuda",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "filmmaking",
+        "image-editing",
+        "image-generation",
+        "image-to-video",
+        "lora",
+        "minimax-h3",
+        "nsfw",
+        "qwen-image",
+        "self-hosted",
+        "text-to-video",
+        "video-generation"
+      ],
+      "category": "plugin",
+      "kind": "dsh-bundle+client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
+      "risk_level": "moderate",
+      "risk_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/build-market.mjs:14",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/check-private.mjs:4",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/npm-command.mjs:9",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/publish-bundle.mjs:8",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/publish-bundle.mjs:10",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/python-command.mjs:5",
+        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/test-python.mjs:3",
+        "监听键盘输入事件 @ src/client/advanced-settings.tsx:99",
+        "监听键盘输入事件 @ src/client/parameter-help.tsx:69",
+        "读取环境变量（可能包含敏感信息） @ film/index.js:8",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/build-market.mjs",
+        "访问第三方网络地址（如 w3.org） @ scripts/build-market.mjs:10",
+        "读取本地环境配置文件（dotenv .env） @ scripts/check-package.mjs"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "package.json 的 prepare 脚本会在安装/发布时自动执行",
+          "file": "package.json"
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/build-market.mjs",
+          "line": 14,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/check-private.mjs",
+          "line": 4,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/npm-command.mjs",
+          "line": 9,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/publish-bundle.mjs",
+          "line": 8,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/publish-bundle.mjs",
+          "line": 10,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/python-command.mjs",
+          "line": 5,
+          "confidence": 1
+        },
+        {
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "scripts/test-python.mjs",
+          "line": 3,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/advanced-settings.tsx",
+          "line": 99,
+          "confidence": 1
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "src/client/parameter-help.tsx",
+          "line": 69,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "film/index.js",
+          "line": 8
+        },
+        {
+          "explanation": "读取凭据类环境变量并发送到网络，可能泄露密钥",
+          "file": "scripts/build-market.mjs"
+        },
+        {
+          "explanation": "访问第三方网络地址（如 w3.org）",
+          "file": "scripts/build-market.mjs",
+          "line": 10
+        },
+        {
+          "explanation": "读取本地环境配置文件（dotenv .env）",
+          "file": "scripts/check-package.mjs"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取凭据类环境变量并发送到网络，可能泄露密钥",
+        "访问第三方网络地址（如 w3.org）",
+        "读取本地环境配置文件（dotenv .env）"
+      ],
+      "security_notes": [
+        "package.json 的 prepare 脚本会在安装/发布时自动执行",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "c7505df04c042eff60e54d035242b3719f46c094",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-11-25T12:59:04.349Z"
     }
   ]
 }
