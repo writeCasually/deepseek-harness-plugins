@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-26T09:23:59.478Z",
+  "generated_at": "2026-11-26T12:38:49.739Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -23197,21 +23197,10 @@
       "official": false,
       "compatibility": "compatible",
       "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest",
-      "risk_level": "moderate",
+      "risk_level": "high",
       "risk_notes": [
         "package.json 的 prepare 脚本会在安装/发布时自动执行 @ package.json",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/build-market.mjs:14",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/check-private.mjs:4",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/npm-command.mjs:9",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/publish-bundle.mjs:8",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/publish-bundle.mjs:10",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/python-command.mjs:5",
-        "通过子进程 shell 执行命令（child_process.exec/execSync） @ scripts/test-python.mjs:3",
-        "监听键盘输入事件 @ src/client/advanced-settings.tsx:99",
-        "监听键盘输入事件 @ src/client/parameter-help.tsx:69",
-        "读取环境变量（可能包含敏感信息） @ film/index.js:8",
         "读取凭据类环境变量并发送到网络，可能泄露密钥 @ scripts/build-market.mjs",
-        "访问第三方网络地址（如 w3.org） @ scripts/build-market.mjs:10",
         "读取本地环境配置文件（dotenv .env） @ scripts/check-package.mjs"
       ],
       "risk_evidence": [
@@ -23293,23 +23282,92 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取凭据类环境变量并发送到网络，可能泄露密钥",
-        "访问第三方网络地址（如 w3.org）",
-        "读取本地环境配置文件（dotenv .env）"
-      ],
-      "security_notes": [
-        "package.json 的 prepare 脚本会在安装/发布时自动执行",
-        "通过子进程 shell 执行命令（child_process.exec/execSync）",
-        "监听键盘输入事件"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "c7505df04c042eff60e54d035242b3719f46c094",
       "source": "discovered",
       "review_status": "flagged",
       "reviewed_at": "2026-11-25T12:59:04.349Z",
       "description_i18n": {},
       "description_i18n_checked_at": "2026-11-25T15:28:39.965Z"
+    },
+    {
+      "id": "JimLiu/open-artifact",
+      "name": "open-artifact",
+      "author": "JimLiu",
+      "description": "Open, agent- and model-agnostic artifacts, all saved locally as plain files — edit, comment on, and export slides, UI designs, design systems, whiteboards, sheets, dashboards, docs, and motion.",
+      "repo_url": "https://github.com/JimLiu/open-artifact",
+      "homepage": "https://openartifact.net/",
+      "stars": 592,
+      "forks": 66,
+      "open_issues": 7,
+      "watchers": 0,
+      "pushed_at": "2026-11-26T09:24:51Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "artifacts",
+        "claude-artifacts",
+        "claude-code",
+        "claude-design",
+        "codex",
+        "coding-agent",
+        "cursor",
+        "design-tools",
+        "dsh-plugin",
+        "dsh-plugins",
+        "github-copilot",
+        "local-first",
+        "mcp",
+        "mcp-apps"
+      ],
+      "category": "plugin",
+      "kind": "code",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 Cordis/DSH 落地标记（cordis.patch.yml/.dsh-plugin/dsh.client 等）",
+      "description_i18n": {
+        "zh": "> 前身是 baoyu-design。 本项目由 baoyu-design（旧地址会自动跳转到这里） > 演变而来。baoyu-design 把 claude.ai 风格的 Artifact 类型带到了本地编码 Agent 上，每种类型一个 skill。Open Artifact > 把它们重做成一套开放、不绑定任何 Agent 的格式：一个本地守护进程（daemon）、一个页面框架、一个 /open-artifact",
+        "en": "> Formerly baoyu-design. This project started as > baoyu-design (the old URL redirects here), which brought claude.ai-style > Artifact types to local coding agents as one skill per type. Open Artifact rebuilds them as an open, agent-agnostic"
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "监听键盘输入事件 @ packages/docs-editor/src/find/index.ts:16",
+        "读取环境变量（可能包含敏感信息） @ apps/desktop/src/main.ts:85",
+        "读取本地环境配置文件（dotenv .env） @ e2e/lib/cli.mjs"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "packages/docs-editor/src/find/index.ts",
+          "line": 16,
+          "confidence": 1
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "apps/desktop/src/main.ts",
+          "line": 85
+        },
+        {
+          "explanation": "读取本地环境配置文件（dotenv .env）",
+          "file": "e2e/lib/cli.mjs"
+        }
+      ],
+      "privacy_risk": true,
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取本地环境配置文件（dotenv .env）"
+      ],
+      "security_notes": [
+        "监听键盘输入事件"
+      ],
+      "reviewed_commit": "a325e46c37f9366132a2ce6b9a42b3654e74d35b",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-11-26T12:38:49.739Z"
     }
   ]
 }

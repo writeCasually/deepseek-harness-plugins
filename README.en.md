@@ -202,6 +202,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [Avernet](https://github.com/inclusionAI/Avernet) | [@inclusionAI](https://github.com/inclusionAI) | Distributed agent coordination platform where agents live, connect, coordinate, execute, and evolve together. |
 | [dsh-meme](https://github.com/yyh-001/dsh-meme) | [@yyh-001](https://github.com/yyh-001) | DeepSeek Harness 表情包插件：输入框一键发图、文字 token 斗图、情绪主动发图、AI 自动学图，图库市场一键安装。 · Meme/sticker plugin for DeepSeek Harness: one-click picker in the composer, text-token memes, mood-driven sending, AI learns your images, marketplace packs. |
 | [DSH-Spicy](https://github.com/kingcharleslzy-ai/DSH-Spicy) | [@kingcharleslzy-ai](https://github.com/kingcharleslzy-ai) | 完美适配 Purge 的 NSFW content creation 插件。在 DeepSeek Harness 中用自托管模型创作成人向图像、有声视频与多镜头短片，支持参考图编辑、LoRA 风格控制和 Agent 分镜剪辑。 |
+| [open-artifact](https://github.com/JimLiu/open-artifact) | [@JimLiu](https://github.com/JimLiu) | Open, agent- and model-agnostic artifacts, all saved locally as plain files — edit, comment on, and export slides, UI designs, design systems, whiteboards, sheets, dashboards, docs, and motion. |
 | [dsh-at-file](https://github.com/FSMargoo/dsh-at-file) | [@FSMargoo](https://github.com/FSMargoo) | Codex-style @file mentions for DeepSeek Harness: search workspace files in the composer and attach their path to prompts. |
 | [dsh-Mimir-Academic-research](https://github.com/1692775560/dsh-Mimir-Academic-research) | [@1692775560](https://github.com/1692775560) | Mimir — 一站式科研工作台插件：LaTeX 论文边写边编译、arXiv 文献管理、实验追踪、指标图表、GPU 服务器 SSH 任务编排，管理科研全周期。An open-source research workbench plugin for the whole research cycle. |
 | [Awesome-DeepSeek-Harness-Plugins](https://github.com/Zhiyuan-Fan/Awesome-DeepSeek-Harness-Plugins) | [@Zhiyuan-Fan](https://github.com/Zhiyuan-Fan) | Curated DeepSeek Harness (DSH) plugins, extensions, tools, skills, clients, runtimes, integrations, and verified references — English and Chinese. |
@@ -336,7 +337,7 @@ Full list with per-package descriptions is in [docs/official-plugins.json](docs/
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-Includes 270 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
+Includes 271 plugins, official plugins first; see [docs/plugins.json](docs/plugins.json) for source and update time.
 
 <!-- PLUGINS_END -->
 
