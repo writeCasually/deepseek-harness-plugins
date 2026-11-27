@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-27T03:36:06.382Z",
+  "generated_at": "2026-11-27T12:25:46.851Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -23335,8 +23335,6 @@
       },
       "risk_level": "moderate",
       "risk_notes": [
-        "监听键盘输入事件 @ packages/docs-editor/src/find/index.ts:16",
-        "读取环境变量（可能包含敏感信息） @ apps/desktop/src/main.ts:85",
         "读取本地环境配置文件（dotenv .env） @ e2e/lib/cli.mjs"
       ],
       "risk_evidence": [
@@ -23357,17 +23355,106 @@
         }
       ],
       "privacy_risk": true,
+      "privacy_notes": [],
+      "security_notes": [],
+      "reviewed_commit": "a325e46c37f9366132a2ce6b9a42b3654e74d35b",
+      "source": "discovered",
+      "review_status": "flagged",
+      "reviewed_at": "2026-11-26T12:38:49.739Z"
+    },
+    {
+      "id": "nexu-io/opengame",
+      "name": "opengame",
+      "author": "nexu-io",
+      "description": "The Super Game Agent — the Unity & Unreal for AI agents, with 100+ viral games to remix. Turn 20+ coding agents (Claude Code, Codex, DeepSeek, etc.) into a full-stack AI game studio. Build and publish 3D & mini-games to WeChat, Douyin, TikTok, Telegram, itch.io, and more.",
+      "repo_url": "https://github.com/nexu-io/opengame",
+      "homepage": "https://github.com/nexu-io/opengame",
+      "stars": 1795,
+      "forks": 295,
+      "open_issues": 69,
+      "watchers": 0,
+      "pushed_at": "2026-11-27T12:14:26Z",
+      "archived": false,
+      "language": "TypeScript",
+      "license": "Apache-2.0",
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "ai-game-generator",
+        "claude-code",
+        "codex",
+        "deepseek",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "game-development",
+        "game-engine",
+        "indie-game",
+        "local-first",
+        "mcp",
+        "mini-games",
+        "threejs",
+        "unity",
+        "unreal-engine",
+        "vibe-coding",
+        "wechat-minigame"
+      ],
+      "category": "plugin",
+      "kind": "dsh-client",
+      "official": false,
+      "compatibility": "compatible",
+      "compatibility_reason": "存在 DSH 插件注册文件：package.json 声明 dsh.client manifest",
+      "description_i18n": {
+        "zh": "OpenGame 是首个开源全栈 Super Game Agent——把 DeepSeek（DSH）、Claude Code、Codex 或任意本地编程 Agent 变成一座开源 AI 版虚幻引擎 / Unity 与全栈游戏工作台，从一句话创意出发，既能打造 3A 级 3D 大作，也能跑通 爆款小游戏上架变现 全链路。",
+        "en": "A Claude Code / Claude Agent Skills skill that generates single-file HTML horizontal-swipe decks with an \"editorial magazine × electronic ink\" aesthetic — picture Monocle with code stitched in."
+      },
+      "risk_level": "moderate",
+      "risk_notes": [
+        "依赖 @modelcontextprotocol/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险 @ package.json",
+        "监听键盘输入事件 @ packages/open-design-ui/site/main.tsx:53",
+        "依赖 remotion@4.0.0 存在已知漏洞（GHSA-2jqp-f4gr-44fr, GHSA-g6pc-6676-c23j） @ <dependencies>",
+        "读取环境变量（可能包含敏感信息） @ desktop/src/main.ts:53",
+        "读取本地环境配置文件（dotenv .env） @ package.json"
+      ],
+      "risk_evidence": [
+        {
+          "explanation": "依赖 @modelcontextprotocol/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
+          "file": "package.json"
+        },
+        {
+          "explanation": "监听键盘输入事件",
+          "file": "packages/open-design-ui/site/main.tsx",
+          "line": 53,
+          "confidence": 1
+        },
+        {
+          "explanation": "依赖 remotion@4.0.0 存在已知漏洞（GHSA-2jqp-f4gr-44fr, GHSA-g6pc-6676-c23j）",
+          "file": "<dependencies>"
+        },
+        {
+          "explanation": "读取环境变量（可能包含敏感信息）",
+          "file": "desktop/src/main.ts",
+          "line": 53
+        },
+        {
+          "explanation": "读取本地环境配置文件（dotenv .env）",
+          "file": "package.json"
+        }
+      ],
+      "privacy_risk": true,
       "privacy_notes": [
         "读取环境变量（可能包含敏感信息）",
         "读取本地环境配置文件（dotenv .env）"
       ],
       "security_notes": [
-        "监听键盘输入事件"
+        "依赖 @modelcontextprotocol/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
+        "监听键盘输入事件",
+        "依赖 remotion@4.0.0 存在已知漏洞（GHSA-2jqp-f4gr-44fr, GHSA-g6pc-6676-c23j）"
       ],
-      "reviewed_commit": "a325e46c37f9366132a2ce6b9a42b3654e74d35b",
+      "reviewed_commit": "8323885ac1ac31d136c353a997acfd0ad2ca554e",
       "source": "discovered",
       "review_status": "flagged",
-      "reviewed_at": "2026-11-26T12:38:49.739Z"
+      "reviewed_at": "2026-11-27T12:25:46.851Z"
     }
   ]
 }
