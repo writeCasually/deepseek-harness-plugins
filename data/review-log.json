@@ -1,6 +1,69 @@
 {
-  "updated_at": "2026-11-26T12:38:49.739Z",
+  "updated_at": "2026-11-27T12:25:46.851Z",
   "decisions": [
+    {
+      "id": "nexu-io/opengame",
+      "verdict": "flagged",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "dsh-client",
+        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.client manifest"
+      },
+      "findings": [
+        "依赖 @modelcontextprotocol/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
+        "监听键盘输入事件",
+        "依赖 remotion@4.0.0 存在已知漏洞（GHSA-2jqp-f4gr-44fr, GHSA-g6pc-6676-c23j）"
+      ],
+      "privacy_notes": [
+        "读取环境变量（可能包含敏感信息）",
+        "读取本地环境配置文件（dotenv .env）"
+      ],
+      "evidence": [
+        {
+          "rule": "typosquat",
+          "severity": "warning",
+          "explanation": "依赖 @modelcontextprotocol/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "@modelcontextprotocol/server"
+        },
+        {
+          "rule": "keylog",
+          "severity": "warning",
+          "explanation": "监听键盘输入事件",
+          "file": "packages/open-design-ui/site/main.tsx",
+          "line": 53,
+          "snippet": "window.addEventListener('keydown', onKeyDown);"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 remotion@4.0.0 存在已知漏洞（GHSA-2jqp-f4gr-44fr, GHSA-g6pc-6676-c23j）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "remotion@4.0.0"
+        }
+      ],
+      "trust_notes": [
+        "仓库创建不足 30 天（2026-11-25）"
+      ],
+      "reviewed_commit": "8323885ac1ac31d136c353a997acfd0ad2ca554e",
+      "review_mode": "full",
+      "scanned_files": 28,
+      "total_files": 14898,
+      "osv": {
+        "status": "ok",
+        "findings": 1
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-27T12:25:46.851Z"
+    },
     {
       "id": "JimLiu/open-artifact",
       "verdict": "flagged",
@@ -64279,32 +64342,6 @@
         "verdict": "none",
         "rationale": "未配置 LLM_API_KEY",
         "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "TencentCloud/tencentmeeting-cli",
-      "verdict": "skip",
-      "compatibility": {
-        "official": false,
-        "compatible": false,
-        "kind": null,
-        "reason": "未检测到 DSH 插件注册文件（package.json 的 dsh.* manifest）或 DSH/Cordis 代码标记"
-      },
-      "findings": [],
-      "privacy_notes": [],
-      "evidence": [],
-      "trust_notes": [],
-      "reviewed_commit": "0407d61aa333c38c34b06563882ba0986cf9bb7c",
-      "review_mode": "full",
-      "scanned_files": 0,
-      "total_files": 198,
-      "osv": {
-        "status": "disabled",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped"
       },
       "reviewed_at": "2026-08-20T11:21:36.540Z"
     }

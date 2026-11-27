@@ -122,6 +122,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [deepseek-design](https://github.com/Devin-AXIS/deepseek-design) | [@Devin-AXIS](https://github.com/Devin-AXIS) | DeepSeek Harness 可编辑设计系统：AI 生成、可视化编辑、模板市场与 PPT｜Native Design & PPT Studio for DeepSeek Harness. |
 | [EAC-design-world](https://github.com/Ebony-Vinyl/EAC-design-world) | [@Ebony-Vinyl](https://github.com/Ebony-Vinyl) | DeepSeek Harness 本地视频制作与设计插件：多轨剪辑、模板与设计体系、原生预览画布和真实文件导出 |
 | [powercontext](https://github.com/oceanbase/powercontext) | [@oceanbase](https://github.com/oceanbase) | Not only memory but a full story |
+| [opengame](https://github.com/nexu-io/opengame) | [@nexu-io](https://github.com/nexu-io) | The Super Game Agent — the Unity & Unreal for AI agents, with 100+ viral games to remix. Turn 20+ coding agents (Claude Code, Codex, DeepSeek, etc.) into a full-stack AI game studio. Build and publish 3D & mini-games to WeChat, Douyin, TikTok, Telegram, itch.io, and more. |
 | [dsh-image-gen](https://github.com/shanliuling/dsh-image-gen) | [@shanliuling](https://github.com/shanliuling) | Generate images directly in DeepSeek Harness chats |
 | [dsh-media-desk](https://github.com/woniuniuniu/dsh-media-desk) | [@woniuniuniu](https://github.com/woniuniuniu) | DeepSeek Harness 自媒体工作台插件：一句话记灵感，一键生成脚本、封面、配图和分镜 |
 | [dsh-free-search](https://github.com/DDDMUC/dsh-free-search) | [@DDDMUC](https://github.com/DDDMUC) | Free web search provider for DeepSeek Harness - DuckDuckGo backend, no API key needed |
@@ -325,7 +326,7 @@ DSH 随包分发一组官方内置插件（`@deepseek-ai/*`，位于官方仓库
 | [dsh-echocat-skill-panel](https://github.com/VDERR/dsh-echocat-skill-panel) | [@VDERR](https://github.com/VDERR) | DSH 技能调用审计 + 应用内 skill 管理器 |
 | [dsh-model-router](https://github.com/tianji-qingtian/dsh-model-router) | [@tianji-qingtian](https://github.com/tianji-qingtian) | 模型路由与成本优化器：简单问题 flash 直答、故障自动降级、会话 token/缓存/成本实时面板 \| Model router & cost optimizer for DeepSeek Harness: flash quick-answers for simple questions, failure fallback, live token/cache/cost panel |
 
-共收录 271 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
+共收录 272 个插件，官方插件优先展示；数据来源与更新时间见 [docs/plugins.json](docs/plugins.json)。
 
 <!-- PLUGINS_END -->
 
