@@ -1,6 +1,6 @@
 {
   "schema_version": 6,
-  "generated_at": "2026-11-28T08:51:29.218Z",
+  "generated_at": "2026-11-28T11:50:09.125Z",
   "plugins": [
     {
       "id": "omdsh-dev/dsh-open-in-vscode",
@@ -23411,9 +23411,7 @@
       "risk_level": "moderate",
       "risk_notes": [
         "依赖 @modelcontextprotocol/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险 @ package.json",
-        "监听键盘输入事件 @ packages/open-design-ui/site/main.tsx:53",
         "依赖 remotion@4.0.0 存在已知漏洞（GHSA-2jqp-f4gr-44fr, GHSA-g6pc-6676-c23j） @ <dependencies>",
-        "读取环境变量（可能包含敏感信息） @ desktop/src/main.ts:53",
         "读取本地环境配置文件（dotenv .env） @ package.json"
       ],
       "risk_evidence": [
@@ -23442,15 +23440,8 @@
         }
       ],
       "privacy_risk": true,
-      "privacy_notes": [
-        "读取环境变量（可能包含敏感信息）",
-        "读取本地环境配置文件（dotenv .env）"
-      ],
-      "security_notes": [
-        "依赖 @modelcontextprotocol/server 与知名包 semver 名称高度相似（编辑距离 1），存在仿冒风险",
-        "监听键盘输入事件",
-        "依赖 remotion@4.0.0 存在已知漏洞（GHSA-2jqp-f4gr-44fr, GHSA-g6pc-6676-c23j）"
-      ],
+      "privacy_notes": [],
+      "security_notes": [],
       "reviewed_commit": "8323885ac1ac31d136c353a997acfd0ad2ca554e",
       "source": "discovered",
       "review_status": "flagged",
