@@ -1,6 +1,84 @@
 {
-  "updated_at": "2026-11-27T12:25:46.851Z",
+  "updated_at": "2026-11-28T11:50:09.125Z",
   "decisions": [
+    {
+      "id": "rohitg00/agentmemory",
+      "verdict": "blocked",
+      "compatibility": {
+        "official": false,
+        "compatible": true,
+        "kind": "code",
+        "reason": "存在 Cordis/DSH 落地标记（cordis.patch.yml/.dsh-plugin/dsh.client 等）"
+      },
+      "findings": [
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "package.json 的 prepack 脚本会在安装/发布时自动执行",
+        "通过子进程 shell 执行命令（child_process.exec/execSync）",
+        "依赖 zod@4.0.0 存在已知漏洞（GHSA-mrhx-c7xc-m3w5）",
+        "依赖 yaml@2.8.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp）"
+      ],
+      "privacy_notes": [
+        "读取凭据类环境变量并发送到网络，可能泄露密钥"
+      ],
+      "evidence": [
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json",
+          "line": 0,
+          "snippet": "node scripts/plugins/prepare-native.mjs"
+        },
+        {
+          "rule": "lifecycle-prepack",
+          "severity": "warning",
+          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
+          "file": "package.json#4",
+          "line": 0,
+          "snippet": "node -e \"const fs=require('node:fs'); for(const p of ['dist/index.mjs','skills/remember/SKILL.md','LICENSE']) if(!fs.existsSync(p)) throw new Error('Run npm run"
+        },
+        {
+          "rule": "shell-exec",
+          "severity": "critical",
+          "explanation": "通过子进程 shell 执行命令（child_process.exec/execSync）",
+          "file": "integrations/omp/index.ts",
+          "line": 109,
+          "snippet": "const top = execSync(\"git rev-parse --show-toplevel\", {"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 zod@4.0.0 存在已知漏洞（GHSA-mrhx-c7xc-m3w5）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "zod@4.0.0"
+        },
+        {
+          "rule": "osv-vuln",
+          "severity": "warning",
+          "explanation": "依赖 yaml@2.8.1 存在已知漏洞（GHSA-48c2-rrv3-qjmp）",
+          "file": "<dependencies>",
+          "line": 0,
+          "snippet": "yaml@2.8.1"
+        }
+      ],
+      "trust_notes": [],
+      "reviewed_commit": "d2913a0b1e22ebd6128da01854334f471bcb83cf",
+      "review_mode": "full",
+      "scanned_files": 2,
+      "total_files": 1171,
+      "osv": {
+        "status": "ok",
+        "findings": 2
+      },
+      "llm_review": {
+        "status": "skipped",
+        "verdict": "none",
+        "rationale": "未配置 LLM_API_KEY",
+        "error": ""
+      },
+      "reviewed_at": "2026-11-28T11:50:09.125Z"
+    },
     {
       "id": "nexu-io/opengame",
       "verdict": "flagged",
@@ -64284,57 +64362,6 @@
       "total_files": 85,
       "osv": {
         "status": "skipped",
-        "findings": 0
-      },
-      "llm_review": {
-        "status": "skipped",
-        "verdict": "none",
-        "rationale": "未配置 LLM_API_KEY",
-        "error": ""
-      },
-      "reviewed_at": "2026-08-20T11:21:36.540Z"
-    },
-    {
-      "id": "PC2005-cloud/dsh-pet",
-      "verdict": "flagged",
-      "compatibility": {
-        "official": false,
-        "compatible": true,
-        "kind": "dsh-bundle+client",
-        "reason": "存在 DSH 插件注册文件：package.json 声明 dsh.bundle / dsh.client manifest"
-      },
-      "findings": [
-        "package.json 的 prepack 脚本会在安装/发布时自动执行",
-        "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险"
-      ],
-      "privacy_notes": [],
-      "evidence": [
-        {
-          "rule": "lifecycle-prepack",
-          "severity": "warning",
-          "explanation": "package.json 的 prepack 脚本会在安装/发布时自动执行",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "node scripts/prepack-check.js"
-        },
-        {
-          "rule": "typosquat",
-          "severity": "warning",
-          "explanation": "依赖 @deepseek-ai/cordis 与知名包 ioredis 名称高度相似（编辑距离 2），存在仿冒风险",
-          "file": "package.json",
-          "line": 0,
-          "snippet": "@deepseek-ai/cordis"
-        }
-      ],
-      "trust_notes": [
-        "仓库创建不足 30 天（2026-08-14）"
-      ],
-      "reviewed_commit": "815c0f556911fbc95b96d347c71d714e4debd922",
-      "review_mode": "full",
-      "scanned_files": 6,
-      "total_files": 129,
-      "osv": {
-        "status": "ok",
         "findings": 0
       },
       "llm_review": {
